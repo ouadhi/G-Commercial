@@ -1,15 +1,23 @@
 # README #
 
 Projet de gestion commercial 
-### plan? ###
+### Plan du travaille? ###
 
-* backend
-* frontend
-* controller
+* Design
+* Frontend
+* Controller
+* Backend
+* Conception et base de donnée 
 
-### les dossiers de projets? ###
+### Struture du projet: ###
 
-* src
-* resources
-* general
-* lib
+ Il ya 4 packages dans le projet
+* ### views ###: les classes d'interfaces
+* ### Models### : les classes de model + les classes utilitaires
+* ### Controllers### les classes qui fait la connextion entre les models et les interfaces
+* ### Schema hibernate ###: les classes des schema du base de donnée (bean Hibernate)
+
+Il ya trois dossier
+* ### resources ###: Pour les fichiers d'applicarion( le fichier de configuration :cfg.hibernate.xml).
+* ### general ###: Pour les fichiers que nous n'utiliserons pas dans l'application( exemple MCD, differents diagrams etc..).
+* ### lib ###: Pour les bibliotheques que nous utiliserons.
