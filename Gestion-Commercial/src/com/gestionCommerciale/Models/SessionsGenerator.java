@@ -30,8 +30,9 @@ public class SessionsGenerator {
                     .addAnnotatedClass(Chauffeur.class)
                     .addAnnotatedClass(Client.class)
                     .addAnnotatedClass(Dock.class)
-                    .addAnnotatedClass(Factuce.class)
-                    .addAnnotatedClass(Produit.class);
+                    .addAnnotatedClass(Facture.class)
+                    .addAnnotatedClass(Produit.class)
+                    .addAnnotatedClass(Payment.class);
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties());
             factory = configuration.buildSessionFactory(builder.build());

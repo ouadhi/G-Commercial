@@ -1,26 +1,29 @@
 package com.gestionCommerciale.HibernateSchema;
 
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author CHERABRAB
  */
 @Entity
-@Table(name = "factures")
-public class Factuce {
+@Table(name = "Facture")
+public class Facture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     int id;
     @Column(name = "date", nullable = false)
+    @Temporal(value = TemporalType.DATE)
     Date date;
     @Column(name = "montant", nullable = false)
     double montant;
@@ -28,11 +31,11 @@ public class Factuce {
     double tva;
     @Column(name = "timbre", nullable = false)
     double timbre;
-    
-    public Factuce() {
+
+    public Facture() {
     }
-    
-    public Factuce(Date date, double montant, double tva, double timbre) {
+
+    public Facture(Date date, double montant, double tva, double timbre) {
         this.date = date;
         this.montant = montant;
         this.tva = tva;
@@ -78,6 +81,5 @@ public class Factuce {
     public void setTimbre(double timbre) {
         this.timbre = timbre;
     }
-
 
 }

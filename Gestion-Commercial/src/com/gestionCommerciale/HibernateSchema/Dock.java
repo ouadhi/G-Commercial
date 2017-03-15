@@ -26,11 +26,11 @@ public class Dock {
     @Column(name = "distance", nullable = false)
     float distance;
     @Column(name = "prixUnitTrans", nullable = false)
-    String prixUnitTrans;
+    float prixUnitTrans;
     public Dock() {
     }
     
-    public Dock(String nom, String wilaya, float distance, String prixUnitTrans) {
+    public Dock(String nom, String wilaya, float distance, float prixUnitTrans) {
         this.nom = nom;
         this.wilaya = wilaya;
         this.distance = distance;
@@ -53,7 +53,7 @@ public class Dock {
         return distance;
     }
 
-    public String getPrixUnitTrans() {
+    public float getPrixUnitTrans() {
         return prixUnitTrans;
     }
 
@@ -73,7 +73,7 @@ public class Dock {
         this.distance = distance;
     }
 
-    public void setPrixUnitTrans(String prixUnitTrans) {
+    public void setPrixUnitTrans(float prixUnitTrans) {
         this.prixUnitTrans = prixUnitTrans;
     }
 

@@ -11,7 +11,7 @@ import org.hibernate.Session;
  */
 public class CamionQueries {
 
-    public void SaveOrUpdateCamion(Camion camion) {
+    public void SaveOrUpdate(Camion camion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -25,7 +25,7 @@ public class CamionQueries {
         }
     }
 
-    public void deleteProduct(Dock dock) {
+    public void delete(Dock dock) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -39,7 +39,7 @@ public class CamionQueries {
         }
     }
 
-    public List<Camion> camionsList() {
+    public List<Camion> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Camion> camionsList = new ArrayList<>();

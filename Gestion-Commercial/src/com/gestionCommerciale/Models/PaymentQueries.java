@@ -11,7 +11,7 @@ import org.hibernate.Session;
  */
 public class PaymentQueries {
 
-    public void SaveOrUpdateDock(Payment payment) {
+    public void SaveOrUpdate(Payment payment) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -25,7 +25,7 @@ public class PaymentQueries {
         }
     }
 
-    public void deleteProduct(Payment payment) {
+    public void delete(Payment payment) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -39,7 +39,7 @@ public class PaymentQueries {
         }
     }
 
-    public List<Payment> paymentsList() {
+    public List<Payment> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Payment> paymentsList = new ArrayList<>();

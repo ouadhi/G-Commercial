@@ -1,81 +1,74 @@
 package com.gestionCommerciale.HibernateSchema;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author CHERABRAB
  */
 @Entity
-@Table(name = "Dock")
+@Table(name = "Payment")
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     int id;
-    @Column(name = "nom", nullable = false)
-    String nom;
-    @Column(name = "wilaya", nullable = false)
-    String wilaya;
-    @Column(name = "distance", nullable = false)
-    float distance;
-    @Column(name = "prixUnitTrans", nullable = false)
-    String prixUnitTrans;
+    @Column(name = "type", nullable = false)
+    String type;
+    @Column(name = "montant", nullable = false)
+    double montant;
+    @Column(name = "date", nullable = false)
+    @Temporal(value = TemporalType.DATE)
+    Date date;
+
     public Payment() {
     }
-    
-    public Payment(String nom, String wilaya, float distance, String prixUnitTrans) {
-        this.nom = nom;
-        this.wilaya = wilaya;
-        this.distance = distance;
-        this.prixUnitTrans = prixUnitTrans;
+
+    public Payment(String type, double montant, Date date) {
+        this.type = type;
+        this.montant = montant;
+        this.date = date;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public String getWilaya() {
-        return wilaya;
-    }
-
-    public float getDistance() {
-        return distance;
-    }
-
-    public String getPrixUnitTrans() {
-        return prixUnitTrans;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public String getType() {
+        return type;
     }
 
-    public void setWilaya(String wilaya) {
-        this.wilaya = wilaya;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setDistance(float distance) {
-        this.distance = distance;
+    public double getMontant() {
+        return montant;
     }
 
-    public void setPrixUnitTrans(String prixUnitTrans) {
-        this.prixUnitTrans = prixUnitTrans;
+    public void setMontant(double montant) {
+        this.montant = montant;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
 }

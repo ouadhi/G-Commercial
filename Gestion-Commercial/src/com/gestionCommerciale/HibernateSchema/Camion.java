@@ -12,11 +12,10 @@ import javax.persistence.Table;
  * @author CHERABRAB
  */
 @Entity
-@Table(name = "Dock")
+@Table(name = "Camion")
 public class Camion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "matricule", nullable = false)
     int matricule;
     @Column(name = "type", nullable = false)

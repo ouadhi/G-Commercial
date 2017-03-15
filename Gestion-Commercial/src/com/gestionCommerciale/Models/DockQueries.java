@@ -11,7 +11,7 @@ import org.hibernate.Session;
  */
 public class DockQueries {
 
-    public void SaveOrUpdateDock(Dock dock) {
+    public void SaveOrUpdate(Dock dock) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -25,7 +25,7 @@ public class DockQueries {
         }
     }
 
-    public void deleteProduct(Dock dock) {
+    public void delete(Dock dock) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -39,7 +39,7 @@ public class DockQueries {
         }
     }
 
-    public List<Dock> docksList() {
+    public List<Dock> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Dock> docksList = new ArrayList<>();

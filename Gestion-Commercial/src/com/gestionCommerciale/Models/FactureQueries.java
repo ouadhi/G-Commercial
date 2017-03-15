@@ -5,7 +5,7 @@
  */
 package com.gestionCommerciale.Models;
 
-import com.gestionCommerciale.HibernateSchema.Factuce;
+import com.gestionCommerciale.HibernateSchema.Facture;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -16,13 +16,13 @@ import org.hibernate.Session;
  */
 public class FactureQueries {
 
-    public void SaveOrUpdateInovice(Factuce inovice) {
+    public void SaveOrUpdate(Facture facture) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
 
             session.beginTransaction();
-            session.saveOrUpdate(inovice);
+            session.saveOrUpdate(facture);
             session.getTransaction().commit();
 
         } finally {
@@ -30,25 +30,25 @@ public class FactureQueries {
         }
     }
     
-    public void deleteInovice(Factuce inovice) {
+    public void delete(Facture facture) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
 
             session.beginTransaction();
-            session.delete(inovice);
+            session.delete(facture);
             session.getTransaction().commit();
 
         } finally {
             session.close();
         }
     }
-    public List<Factuce> inovicesList(){
+    public List<Facture> list(){
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
-        List<Factuce> inovicesList= new ArrayList<>();
-        inovicesList= session.createQuery("from Inovice").list();       
-        return inovicesList;
+        List<Facture> list= new ArrayList<>();
+        list= session.createQuery("from Facture").list();       
+        return list;
     }
 
 }
