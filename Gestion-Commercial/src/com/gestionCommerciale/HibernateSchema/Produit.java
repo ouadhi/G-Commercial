@@ -6,13 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 /**
  *
  * @author CHERABRAB
  */
 @Entity
-@Table(name = "produit")
+@Table(name = "Produit")
 public class Produit {
 
     @Id

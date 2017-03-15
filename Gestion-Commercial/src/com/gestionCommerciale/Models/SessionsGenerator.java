@@ -5,7 +5,7 @@
  */
 package com.gestionCommerciale.Models;
 
-import com.gestionCommerciale.HibernateSchema.Client;
+import com.gestionCommerciale.HibernateSchema.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -26,7 +26,12 @@ public class SessionsGenerator {
             //create singleton factory object
             Configuration configuration = new Configuration()
                     .configure("/resources/hibernate.cfg.xml")
-                    .addAnnotatedClass(Client.class);
+                    .addAnnotatedClass(Camion.class)
+                    .addAnnotatedClass(Chauffeur.class)
+                    .addAnnotatedClass(Client.class)
+                    .addAnnotatedClass(Dock.class)
+                    .addAnnotatedClass(Factuce.class)
+                    .addAnnotatedClass(Produit.class);
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties());
             factory = configuration.buildSessionFactory(builder.build());
