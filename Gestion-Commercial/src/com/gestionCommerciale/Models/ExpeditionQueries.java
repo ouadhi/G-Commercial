@@ -1,6 +1,6 @@
 package com.gestionCommerciale.Models;
 
-import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.HibernateSchema.Expedition;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -9,15 +9,15 @@ import org.hibernate.Session;
  *
  * @author CHERABRAB
  */
-public class FactureQueries {
+public class ExpeditionQueries {
 
-    public void SaveOrUpdate(Facture facture) {
+    public void SaveOrUpdate(Expedition expedition) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
 
             session.beginTransaction();
-            session.saveOrUpdate(facture);
+            session.saveOrUpdate(expedition);
             session.getTransaction().commit();
 
         } finally {
@@ -25,24 +25,24 @@ public class FactureQueries {
         }
     }
     
-    public void delete(Facture facture) {
+    public void delete(Expedition expedition) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
 
             session.beginTransaction();
-            session.delete(facture);
+            session.delete(expedition);
             session.getTransaction().commit();
 
         } finally {
             session.close();
         }
     }
-    public List<Facture> list(){
+    public List<Expedition> list(){
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
-        List<Facture> list= new ArrayList<>();
-        list= session.createQuery("from Facture").list();       
+        List<Expedition> list= new ArrayList<>();
+        list= session.createQuery("from Expedition").list();       
         return list;
     }
 
