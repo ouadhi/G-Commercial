@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestion.commercial;
 
 import com.gestionCommerciale.HibernateSchema.*;
@@ -12,7 +7,7 @@ import javafx.application.Application;
 
 /**
  *
- * @author Hicham
+ * @author CHERABRAB
  */
 public class test2 {
 
@@ -20,7 +15,23 @@ public class test2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        testFacture();
+        testProduitFact();
+    }
+
+    public static void testProduitFact() {
+        ProduitQueries pQueries = new ProduitQueries();
+        Produit po = new Produit("p1", 22, 11.11f);
+        FactureQueries fQueries = new FactureQueries();
+        Date d = new Date();
+        Facture fo = new Facture(d, 111.00, 111.00, 111.00);
+        pQueries.SaveOrUpdate(po);
+        fQueries.SaveOrUpdate(fo);
+        Produit p = pQueries.list().get(0);
+        Facture f = fQueries.list().get(0);
+        p.factures.add(f);
+        f.produits.add(p);
+        pQueries.SaveOrUpdate(p);
+        fQueries.SaveOrUpdate(f);
     }
 
     public static void testProduit() {
@@ -35,6 +46,7 @@ public class test2 {
                     + pQueries.list().get(i).getPrix());
         }
     }
+
     public static void testDock() {
         DockQueries queries = new DockQueries();
         Dock o = new Dock("d1", "w1", 22.2f, 22.22f);
@@ -48,10 +60,11 @@ public class test2 {
                     + queries.list().get(i).getDistance());
             Dock o3 = queries.list().get(i);
             o3.setNom(o3.getNom() + " u");
-                    queries.SaveOrUpdate(o3);
+            queries.SaveOrUpdate(o3);
 
         }
     }
+
     public static void testCamion() {
         CamionQueries queries = new CamionQueries();
         Camion o = new Camion(22, "22", "22");
@@ -64,10 +77,11 @@ public class test2 {
                     + queries.list().get(i).getMarque());
             Camion o3 = queries.list().get(i);
             o3.setMarque(o3.getMarque() + " u");
-                    queries.SaveOrUpdate(o3);
+            queries.SaveOrUpdate(o3);
 
         }
     }
+
     public static void testPayment() {
         PaymentQueries queries = new PaymentQueries();
         Date d = new Date();
@@ -81,25 +95,26 @@ public class test2 {
                     + queries.list().get(i).getDate());
             Payment o3 = queries.list().get(i);
             o3.setType(o3.getType() + " u");
-                    queries.SaveOrUpdate(o3);
+            queries.SaveOrUpdate(o3);
 
         }
     }
+
     public static void testFacture() {
         FactureQueries queries = new FactureQueries();
         Date d = new Date();
-        Facture o1 = new Facture(d, 111.00, 111.00,111.00);
+        Facture o1 = new Facture(d, 111.00, 111.00, 111.00);
         queries.SaveOrUpdate(o1);
-        Facture o2 = new Facture(d, 222.00, 222.00,222.00);
+        Facture o2 = new Facture(d, 222.00, 222.00, 222.00);
         queries.SaveOrUpdate(o2);
         for (int i = 0; i < queries.list().size(); i++) {
-            System.out.println(queries.list().get(i).getTimbre()+ ","
+            System.out.println(queries.list().get(i).getTimbre() + ","
                     + queries.list().get(i).getMontant() + ","
-                    + queries.list().get(i).getTva()+ ","
+                    + queries.list().get(i).getTva() + ","
                     + queries.list().get(i).getDate());
             Facture o3 = queries.list().get(i);
-            o3.setMontant(o3.getMontant()+ 22);
-                    queries.SaveOrUpdate(o3);
+            o3.setMontant(o3.getMontant() + 22);
+            queries.SaveOrUpdate(o3);
 
         }
     }

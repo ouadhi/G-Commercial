@@ -1,10 +1,12 @@
 package com.gestionCommerciale.HibernateSchema;
 
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -17,7 +19,7 @@ public class ChauffeurClient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_chauffeurClient", nullable = false)
     int id;
     @Column(name = "nom", nullable = false)
     String nom;

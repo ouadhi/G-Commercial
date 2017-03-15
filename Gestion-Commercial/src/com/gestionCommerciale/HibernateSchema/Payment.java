@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,8 +22,8 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    int id;
+    @Column(name = "id_payment", nullable = false)
+    int idPayment;
     @Column(name = "type", nullable = false)
     String type;
     @Column(name = "montant", nullable = false)
@@ -39,12 +41,12 @@ public class Payment {
         this.date = date;
     }
 
-    public int getId() {
-        return id;
+    public int getIdPayment() {
+        return idPayment;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPayment(int idPayment) {
+        this.idPayment = idPayment;
     }
 
     public String getType() {

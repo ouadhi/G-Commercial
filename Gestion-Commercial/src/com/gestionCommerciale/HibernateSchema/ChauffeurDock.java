@@ -17,8 +17,8 @@ public class ChauffeurDock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    int id;
+    @Column(name = "id_chauffeurDock", nullable = false)
+    int idChauffeurDock;
     @Column(name = "nom", nullable = false)
     String nom;
     @Column(name = "prenom", nullable = false)
@@ -32,12 +32,12 @@ public class ChauffeurDock {
         this.prenom = prenom;
     }
 
-    public int getId() {
-        return id;
+    public int getIdChauffeurDock() {
+        return idChauffeurDock;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdChauffeurDock(int id) {
+        this.idChauffeurDock = id;
     }
 
     public String getNom() {

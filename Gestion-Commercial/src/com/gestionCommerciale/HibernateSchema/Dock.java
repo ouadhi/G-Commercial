@@ -17,8 +17,8 @@ public class Dock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id", nullable = false)
-    int id;
+    @Column(name = "id_dock", nullable = false)
+    int idDock;
     @Column(name = "nom", nullable = false)
     String nom;
     @Column(name = "wilaya", nullable = false)
@@ -37,8 +37,8 @@ public class Dock {
         this.prixUnitTrans = prixUnitTrans;
     }
 
-    public int getId() {
-        return id;
+    public int getIdDock() {
+        return idDock;
     }
 
     public String getNom() {
@@ -57,8 +57,8 @@ public class Dock {
         return prixUnitTrans;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdDock(int idDock) {
+        this.idDock = idDock;
     }
 
     public void setNom(String nom) {

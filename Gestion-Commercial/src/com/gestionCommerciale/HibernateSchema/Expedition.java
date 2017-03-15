@@ -19,8 +19,8 @@ public class Expedition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    int id;
+    @Column(name = "id_expedition", nullable = false)
+    int idExpedition;
     @Column(name = "num_acqt", nullable = false)
     String numAcqt;
     @Column(name = "date_acqt", nullable = false)
@@ -44,12 +44,12 @@ public class Expedition {
         this.quantiteDiff = quantiteDiff;
     }
 
-    public int getId() {
-        return id;
+    public int getIdExpedition() {
+        return idExpedition;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdExpedition(int idExpedition) {
+        this.idExpedition = idExpedition;
     }
 
     public String getNumAcqt() {

@@ -9,15 +9,15 @@ import org.hibernate.Session;
  *
  * @author CHERABRAB
  */
-public class CamionQueries {
+public class UserQueries {
 
-    public void SaveOrUpdate(Camion camion) {
+    public void SaveOrUpdate(User user) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
 
             session.beginTransaction();
-            session.saveOrUpdate(camion);
+            session.saveOrUpdate(user);
             session.getTransaction().commit();
 
         } finally {
@@ -25,13 +25,13 @@ public class CamionQueries {
         }
     }
 
-    public void delete(Camion camion) {
+    public void delete(User user) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
 
             session.beginTransaction();
-            session.delete(camion);
+            session.delete(user);
             session.getTransaction().commit();
 
         } finally {
@@ -39,13 +39,13 @@ public class CamionQueries {
         }
     }
 
-    public List<Camion> list() {
+    public List<User> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
-        List<Camion> camionsList = new ArrayList<>();
-        camionsList = session.createQuery("from Camion").list();
+        List<User> list = new ArrayList<>();
+        list = session.createQuery("from User").list();
 
-        return camionsList;
+        return list;
     }
 
 }
