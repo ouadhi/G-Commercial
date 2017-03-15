@@ -7,6 +7,7 @@ package gestion.commercial;
 
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.Models.ClientQueries;
+import java.util.Date;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -50,7 +51,8 @@ public class GestionCommercial extends Application {
         //launch(args);
         //test hibernate
         ClientQueries clQueries= new ClientQueries();
-        Client clientObject= new Client("attman","3riwat");
+        Date date= new Date();
+        Client clientObject= new Client("athman", "arriwatt", "", "", "", "", "", date);
         clQueries.insererOuModifieClient(clientObject);
         for (int i = 0; i <clQueries.clientsList().size() ; i++) {
                System.out.println(clQueries.clientsList().get(i).getName() +" "+
