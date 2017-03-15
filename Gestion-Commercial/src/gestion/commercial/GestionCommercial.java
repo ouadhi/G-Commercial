@@ -5,8 +5,8 @@
  */
 package gestion.commercial;
 
-import com.gestionCommerciale.HibernateSchema.Client;
-import com.gestionCommerciale.Models.ClientQueries;
+import com.gestionCommerciale.HibernateSchema.*;
+import com.gestionCommerciale.Models.*;
 import java.util.Date;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -54,10 +54,13 @@ public class GestionCommercial extends Application {
         Date date= new Date();
         Client clientObject= new Client("athman", "arriwatt", "", "", "", "", "", date);
         clQueries.insererOuModifieClient(clientObject);
-        for (int i = 0; i <clQueries.clientsList().size() ; i++) {
-               System.out.println(clQueries.clientsList().get(i).getName() +" "+
-                       clQueries.clientsList().get(i).getPrenom());
+        for (int i = 0; i < clQueries.clientsList().size(); i++) {
+            System.out.println(clQueries.clientsList().get(i).getName() + " "
+                    + clQueries.clientsList().get(i).getPrenom());
         }
-    }
 
+
+        
+
+    }
 }
