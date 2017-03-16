@@ -14,6 +14,9 @@ import java.util.Date;
 import java.util.List;
 import com.gestionCommerciale.HibernateSchema.*;
 import com.gestionCommerciale.Models.*;
+import com.gestionCommerciale.HibernateSchema.*;
+import com.gestionCommerciale.Models.*;
+import java.util.Date;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -87,22 +90,23 @@ public class GestionCommercial extends Application {
         chauffQueries.insererOuModifieChauffeur(ch2);
         chauffQueries.insererOuModifieChauffeur(ch3);
 
+
         for (int i = 0; i < clQueries.clientsList().size(); i++) {
             System.out.println(clQueries.clientsList().get(i).getName() + " "
                     + clQueries.clientsList().get(i).getPrenom());
         }
 
-        ProductQueries proQueries = new ProductQueries();
-        Product productObject = new Product("p1", 22, 2222.22f);
-        proQueries.SaveOrUpdateProduct(productObject);
-        productObject = new Product("p2", 33, 3333.33f);
-        proQueries.SaveOrUpdateProduct(productObject);
+        ProduitQueries proQueries = new ProduitQueries();
+        Produit productObject = new Produit("p1", 22, 2222.22f);
+        proQueries.SaveOrUpdate(productObject);
+        productObject = new Produit("p2", 33, 3333.33f);
+        proQueries.SaveOrUpdate(productObject);
         for (int i = 0; i < clQueries.clientsList().size(); i++) {
-            System.out.println(proQueries.productsList().get(i).getName() + ","
-                    + proQueries.productsList().get(i).getQuantity() + ","
-                    + proQueries.productsList().get(i).getPrice());
-
-        }
+            System.out.println(proQueries.list().get(i).getNom()+ ","
+                    + proQueries.list().get(i).getQuantite()+ ","
+                    + proQueries.list().get(i).getPrix());
+        
 
     }
+}
 }
