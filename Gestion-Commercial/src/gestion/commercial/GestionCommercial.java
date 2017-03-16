@@ -5,9 +5,13 @@
  */
 package gestion.commercial;
 
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
 import com.gestionCommerciale.HibernateSchema.Client;
+import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.gestionCommerciale.Models.ClientQueries;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -51,12 +55,45 @@ public class GestionCommercial extends Application {
         //launch(args);
         //test hibernate
         ClientQueries clQueries= new ClientQueries();
+        ChauffeurQueries chauffQueries= new ChauffeurQueries();
         Date date= new Date();
-        Client clientObject= new Client("athman", "arriwatt", "", "", "", "", "", date);
-        clQueries.insererOuModifieClient(clientObject);
+        Client clientObject1= new Client("athman", "arriwatt", "dssdd", "sss", "", "", "", date);
+        Client clientObject2= new Client("djdfhjdf", "dfdfdf", "", "ss", "", "", "", date);
+        Client clientObject3= new Client("atdsdsdhman", "fdffdf", "", "", "sssss", "", "", date);
+       
+        
+        Chauffeur ch1= new Chauffeur("anouch", "mafia");
+        Chauffeur ch2= new Chauffeur("hiphop", "almarikani");
+        Chauffeur ch3= new Chauffeur("najm", "mafia");
+        
+
+
+        
+        List<Chauffeur> listChauf= new ArrayList<>();
+        listChauf.add(ch1);
+        listChauf.add(ch2);
+        listChauf.add(ch3);
+        List<Client> listClient= new ArrayList<>();
+        listClient.add(clientObject1);
+        listClient.add(clientObject1);
+        listClient.add(clientObject1);
+        
+        //test manyToMany
+        clientObject1.setChauffeurs(listChauf);
+        ch2.setClients(listClient);
+        
+        clQueries.insererOuModifieClient(clientObject1);
+        clQueries.insererOuModifieClient(clientObject2);
+        clQueries.insererOuModifieClient(clientObject3);
+        chauffQueries.insererOuModifieChauffeur(ch1);
+        chauffQueries.insererOuModifieChauffeur(ch2);
+        chauffQueries.insererOuModifieChauffeur(ch3);
+        
+
         for (int i = 0; i <clQueries.clientsList().size() ; i++) {
-               System.out.println(clQueries.clientsList().get(i).getName() +" "+
+               System.out.println("this executes"+clQueries.clientsList().get(i).getName() +" "+
                        clQueries.clientsList().get(i).getPrenom());
+               
         }
     }
 

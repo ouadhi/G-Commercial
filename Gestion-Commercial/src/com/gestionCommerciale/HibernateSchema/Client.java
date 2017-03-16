@@ -5,12 +5,19 @@
  */
 package com.gestionCommerciale.HibernateSchema;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -48,6 +55,13 @@ public class Client {
     //@OneToMany(targetEntity=.class, mappedBy="client"
     //		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     //private List<> ;
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
+    @JoinTable(name = "Chauffeur_client", joinColumns = {
+    @JoinColumn(name = "Id", nullable = false, updatable = false) }
+    ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable = false, updatable = false) })
+    List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();
+    
     public Client( String nom, String prenom, String codeClient,String numRegCom, String numArticle
                    , String addressClient, String typeActivity, Date dateDepotDossier) {
         this.name = nom;
@@ -134,6 +148,14 @@ public class Client {
 
     public void setDateDepotDossier(Date dateDepotDossier) {
         this.dateDepotDossier = dateDepotDossier;
+    }
+
+    public List<Chauffeur> getChauffeurs() {
+        return chauffeurs;
+    }
+
+    public void setChauffeurs(List<Chauffeur> chauffeurs) {
+        this.chauffeurs = chauffeurs;
     }
     
 }

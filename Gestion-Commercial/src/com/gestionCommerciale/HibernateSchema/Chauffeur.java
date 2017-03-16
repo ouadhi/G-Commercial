@@ -5,11 +5,15 @@
  */
 package com.gestionCommerciale.HibernateSchema;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -22,12 +26,14 @@ public class Chauffeur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "IdChauffeur", nullable = false)
     int id;
     @Column(name = "nomChauffeur", nullable = false)
     String nomChauffeur;
     @Column(name = "prenomChauffeur", nullable = false)
     String prenomChauffeur;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
+    List<Client> clients= new ArrayList<Client>();
 
     public Chauffeur(String nomChauffeur, String prenomChauffeur) {
         this.nomChauffeur = nomChauffeur;
@@ -60,5 +66,14 @@ public class Chauffeur {
     public void setPrenomChauffeur(String prenomChauffeur) {
         this.prenomChauffeur = prenomChauffeur;
     }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
+    
 
 }
