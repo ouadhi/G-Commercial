@@ -2,6 +2,7 @@ package com.gestionCommerciale.HibernateSchema;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -39,13 +41,12 @@ public class Facture {
     double tva;
     @Column(name = "timbre", nullable = false)
     double timbre;
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "produit_facture",
-            joinColumns = {
-                @JoinColumn(name = "idFacture")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "idProduit")})
-    public Set<Produit> produits = new HashSet<Produit>();
+    @OneToMany(targetEntity=Payment.class, mappedBy="facture"
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Payment> payments ;
+    @ManyToOne
+    @JoinColumn(name="id_chauffeur")
+    private Chauffeur chauffeur;
 
     public Facture() {
     }
@@ -97,12 +98,20 @@ public class Facture {
         this.timbre = timbre;
     }
 
-    public Set<Produit> getProduits() {
-        return produits;
+    public List<Payment> getPayments() {
+        return payments;
     }
 
-    public void setProduits(Set<Produit> produits) {
-        this.produits = produits;
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 
+    public Chauffeur getChauffeur() {
+        return chauffeur;
+    }
+
+    public void setChauffeur(Chauffeur chauffeur) {
+        this.chauffeur = chauffeur;
+    }
+    
 }

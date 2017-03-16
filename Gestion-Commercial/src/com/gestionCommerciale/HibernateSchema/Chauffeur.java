@@ -7,13 +7,17 @@ package com.gestionCommerciale.HibernateSchema;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -31,9 +35,18 @@ public class Chauffeur {
     @Column(name = "nomChauffeur", nullable = false)
     String nomChauffeur;
     @Column(name = "prenomChauffeur", nullable = false)
-    String prenomChauffeur;
+    String prenomChauffeur; 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
     List<Client> clients= new ArrayList<Client>();
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
+    List<Dock> docks= new ArrayList<Dock>();
+    @OneToMany(targetEntity=Facture.class, mappedBy="chauffeur"
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Facture> factures;
+    @OneToMany(targetEntity=Camion.class, mappedBy="chauffeur"
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Camion> camions;
+
 
     public Chauffeur(String nomChauffeur, String prenomChauffeur) {
         this.nomChauffeur = nomChauffeur;
@@ -74,6 +87,31 @@ public class Chauffeur {
     public void setClients(List<Client> clients) {
         this.clients = clients;
     }
+
+    public List<Dock> getDocks() {
+        return docks;
+    }
+
+    public void setDocks(List<Dock> docks) {
+        this.docks = docks;
+    }
+
+    public List<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(List<Facture> factures) {
+        this.factures = factures;
+    }
+
+    public List<Camion> getCamions() {
+        return camions;
+    }
+
+    public void setCamions(List<Camion> camions) {
+        this.camions = camions;
+    }
+    
     
 
 }

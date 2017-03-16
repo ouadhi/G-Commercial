@@ -30,8 +30,6 @@ public class SessionsGenerator {
                     .addAnnotatedClass(Chauffeur.class)
                     .addAnnotatedClass(Camion.class)
                     .addAnnotatedClass(Chauffeur.class)
-                    .addAnnotatedClass(ChauffeurClient.class)
-                    .addAnnotatedClass(ChauffeurDock.class)
                     .addAnnotatedClass(Expedition.class)
                     .addAnnotatedClass(Client.class)
                     .addAnnotatedClass(Dock.class)

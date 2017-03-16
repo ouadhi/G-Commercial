@@ -29,7 +29,7 @@ public class test2 {
         Produit p = pQueries.list().get(0);
         Facture f = fQueries.list().get(0);
         p.factures.add(f);
-        f.produits.add(p);
+        //f.produits.add(p);
         pQueries.SaveOrUpdate(p);
         fQueries.SaveOrUpdate(f);
     }

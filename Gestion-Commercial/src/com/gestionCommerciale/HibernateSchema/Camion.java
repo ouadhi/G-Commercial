@@ -24,6 +24,9 @@ public class Camion {
     String type;
     @Column(name = "marque", nullable = false)
     String marque;
+    @ManyToOne
+    @JoinColumn(name="id_chauffeur")
+    private Chauffeur chauffeur;
 
     public Camion() {
     }
@@ -56,6 +59,14 @@ public class Camion {
 
     public void setMarque(String marque) {
         this.marque = marque;
+    }
+
+    public Chauffeur getChauffeur() {
+        return chauffeur;
+    }
+
+    public void setChauffeur(Chauffeur chauffeur) {
+        this.chauffeur = chauffeur;
     }
 
 }

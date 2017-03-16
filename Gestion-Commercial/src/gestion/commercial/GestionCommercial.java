@@ -80,7 +80,7 @@ public class GestionCommercial extends Application {
         listClient.add(clientObject1);
 
         //test manyToMany
-        clientObject1.setChauffeurs(listChauf);
+        // clientObject1.setChauffeurs(listChauf);
         ch2.setClients(listClient);
 
         clQueries.insererOuModifieClient(clientObject1);
@@ -101,7 +101,7 @@ public class GestionCommercial extends Application {
         proQueries.SaveOrUpdate(productObject);
         productObject = new Produit("p2", 33, 3333.33f);
         proQueries.SaveOrUpdate(productObject);
-        for (int i = 0; i < clQueries.clientsList().size(); i++) {
+        for (int i = 0; i < proQueries.list().size(); i++) {
             System.out.println(proQueries.list().get(i).getNom()+ ","
                     + proQueries.list().get(i).getQuantite()+ ","
                     + proQueries.list().get(i).getPrix());

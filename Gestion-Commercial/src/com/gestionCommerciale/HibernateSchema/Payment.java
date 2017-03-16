@@ -31,6 +31,9 @@ public class Payment {
     @Column(name = "date", nullable = false)
     @Temporal(value = TemporalType.DATE)
     Date date;
+    @ManyToOne
+    @JoinColumn(name="id_fact")
+    private Facture facture;
 
     public Payment() {
     }
@@ -73,4 +76,12 @@ public class Payment {
         this.date = date;
     }
 
+    public Facture getFacture() {
+        return facture;
+    }
+
+    public void setFacture(Facture facture) {
+        this.facture = facture;
+    }
+    
 }

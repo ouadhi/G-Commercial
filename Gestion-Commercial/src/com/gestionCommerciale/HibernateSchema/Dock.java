@@ -1,10 +1,17 @@
 package com.gestionCommerciale.HibernateSchema;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +34,11 @@ public class Dock {
     float distance;
     @Column(name = "prixUnitTrans", nullable = false)
     float prixUnitTrans;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
+    @JoinTable(name = "Chauffeur_dock", joinColumns = {
+    @JoinColumn(name = "id_dock", nullable = false, updatable = false) }
+    ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable = false, updatable = false) })
+    List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();
     public Dock() {
     }
     
@@ -75,6 +87,14 @@ public class Dock {
 
     public void setPrixUnitTrans(float prixUnitTrans) {
         this.prixUnitTrans = prixUnitTrans;
+    }
+
+    public List<Chauffeur> getChauffeurs() {
+        return chauffeurs;
+    }
+
+    public void setChauffeurs(List<Chauffeur> chauffeurs) {
+        this.chauffeurs = chauffeurs;
     }
 
 
