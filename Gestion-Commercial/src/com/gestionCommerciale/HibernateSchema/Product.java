@@ -5,6 +5,8 @@
  */
 package com.gestionCommerciale.HibernateSchema;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ import javax.persistence.Table;
  * @author Hicham
  */
 @Entity
-@Table(name = "Product")
+@Table(name = "Products")
 public class Product {
 
     @Id
@@ -30,11 +32,7 @@ public class Product {
     int quantity;
     @Column(name = "price", nullable = false)
     float price;
-    
 
-    //@OneToMany(targetEntity=.class, mappedBy="client"
-    //		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
-    //private List<> ;
     public Product( String name, int quantity, float price ) {
         this.name = name;
         this.quantity = quantity;

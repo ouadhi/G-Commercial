@@ -12,6 +12,8 @@ import com.gestionCommerciale.Models.ClientQueries;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import com.gestionCommerciale.HibernateSchema.*;
+import com.gestionCommerciale.Models.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -54,47 +56,53 @@ public class GestionCommercial extends Application {
     public static void main(String[] args) {
         //launch(args);
         //test hibernate
-        ClientQueries clQueries= new ClientQueries();
-        ChauffeurQueries chauffQueries= new ChauffeurQueries();
-        Date date= new Date();
-        Client clientObject1= new Client("athman", "arriwatt", "dssdd", "sss", "", "", "", date);
-        Client clientObject2= new Client("djdfhjdf", "dfdfdf", "", "ss", "", "", "", date);
-        Client clientObject3= new Client("atdsdsdhman", "fdffdf", "", "", "sssss", "", "", date);
-       
-        
-        Chauffeur ch1= new Chauffeur("anouch", "mafia");
-        Chauffeur ch2= new Chauffeur("hiphop", "almarikani");
-        Chauffeur ch3= new Chauffeur("najm", "mafia");
-        
+        ClientQueries clQueries = new ClientQueries();
+        ChauffeurQueries chauffQueries = new ChauffeurQueries();
+        Date date = new Date();
+        Client clientObject1 = new Client("athman", "arriwatt", "dssdd", "sss", "", "", "", date);
+        Client clientObject2 = new Client("djdfhjdf", "dfdfdf", "", "ss", "", "", "", date);
+        Client clientObject3 = new Client("atdsdsdhman", "fdffdf", "", "", "sssss", "", "", date);
 
+        Chauffeur ch1 = new Chauffeur("anouch", "mafia");
+        Chauffeur ch2 = new Chauffeur("hiphop", "almarikani");
+        Chauffeur ch3 = new Chauffeur("najm", "mafia");
 
-        
-        List<Chauffeur> listChauf= new ArrayList<>();
+        List<Chauffeur> listChauf = new ArrayList<>();
         listChauf.add(ch1);
         listChauf.add(ch2);
         listChauf.add(ch3);
-        List<Client> listClient= new ArrayList<>();
+        List<Client> listClient = new ArrayList<>();
         listClient.add(clientObject1);
         listClient.add(clientObject1);
         listClient.add(clientObject1);
-        
+
         //test manyToMany
         clientObject1.setChauffeurs(listChauf);
         ch2.setClients(listClient);
-        
+
         clQueries.insererOuModifieClient(clientObject1);
         clQueries.insererOuModifieClient(clientObject2);
         clQueries.insererOuModifieClient(clientObject3);
         chauffQueries.insererOuModifieChauffeur(ch1);
         chauffQueries.insererOuModifieChauffeur(ch2);
         chauffQueries.insererOuModifieChauffeur(ch3);
-        
 
-        for (int i = 0; i <clQueries.clientsList().size() ; i++) {
-               System.out.println("this executes"+clQueries.clientsList().get(i).getName() +" "+
-                       clQueries.clientsList().get(i).getPrenom());
-               
+        for (int i = 0; i < clQueries.clientsList().size(); i++) {
+            System.out.println(clQueries.clientsList().get(i).getName() + " "
+                    + clQueries.clientsList().get(i).getPrenom());
         }
-    }
 
+        ProductQueries proQueries = new ProductQueries();
+        Product productObject = new Product("p1", 22, 2222.22f);
+        proQueries.SaveOrUpdateProduct(productObject);
+        productObject = new Product("p2", 33, 3333.33f);
+        proQueries.SaveOrUpdateProduct(productObject);
+        for (int i = 0; i < clQueries.clientsList().size(); i++) {
+            System.out.println(proQueries.productsList().get(i).getName() + ","
+                    + proQueries.productsList().get(i).getQuantity() + ","
+                    + proQueries.productsList().get(i).getPrice());
+
+        }
+
+    }
 }
