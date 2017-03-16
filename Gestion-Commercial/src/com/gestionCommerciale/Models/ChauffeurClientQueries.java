@@ -1,28 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gestionCommerciale.Models;
 
-import com.gestionCommerciale.HibernateSchema.Inovice;
+import com.gestionCommerciale.HibernateSchema.ChauffeurClient;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
 /**
  *
- * @author Hicham
+ * @author CHERABRAB
  */
-public class InoviceQueries {
-
-    public void SaveOrUpdateInovice(Inovice inovice) {
+public class ChauffeurClientQueries {
+    public void saveOrUpdate(ChauffeurClient chauffeurClient) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
-
             session.beginTransaction();
-            session.saveOrUpdate(inovice);
+            session.saveOrUpdate(chauffeurClient);
             session.getTransaction().commit();
 
         } finally {
@@ -30,25 +23,28 @@ public class InoviceQueries {
         }
     }
     
-    public void deleteInovice(Inovice inovice) {
+
+    public void delete(ChauffeurClient chauffeurClient ) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
 
             session.beginTransaction();
-            session.delete(inovice);
+            session.delete(chauffeurClient);
             session.getTransaction().commit();
 
         } finally {
             session.close();
         }
     }
-    public List<Inovice> inovicesList(){
+    //la liste des chauffeurs
+    public List<ChauffeurClient> list(){
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
-        List<Inovice> inovicesList= new ArrayList<>();
-        inovicesList= session.createQuery("from Inovice").list();       
-        return inovicesList;
+        List<ChauffeurClient> list= new ArrayList<>();
+        //Requete HQL pour selectioné tout les client:
+        list= session.createQuery("from ChauffeurClient").list();
+       
+        return list;
     }
-
 }
