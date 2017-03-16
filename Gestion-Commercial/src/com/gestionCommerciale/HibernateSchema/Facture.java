@@ -44,6 +44,9 @@ public class Facture {
     @OneToMany(targetEntity=Payment.class, mappedBy="facture"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Payment> payments ;
+    @OneToMany(targetEntity=Facture_Produit.class, mappedBy="facture"
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Facture_Produit>  qtes;
     @ManyToOne
     @JoinColumn(name="id_chauffeur")
     private Chauffeur chauffeur;
@@ -112,6 +115,14 @@ public class Facture {
 
     public void setChauffeur(Chauffeur chauffeur) {
         this.chauffeur = chauffeur;
+    }
+
+    public List<Facture_Produit> getQtes() {
+        return qtes;
+    }
+
+    public void setQtes(List<Facture_Produit> qtes) {
+        this.qtes = qtes;
     }
     
 }

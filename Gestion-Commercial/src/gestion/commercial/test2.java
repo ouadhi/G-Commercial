@@ -28,7 +28,7 @@ public class test2 {
         fQueries.SaveOrUpdate(fo);
         Produit p = pQueries.list().get(0);
         Facture f = fQueries.list().get(0);
-        p.factures.add(f);
+        //p.factures.add(f);
         //f.produits.add(p);
         pQueries.SaveOrUpdate(p);
         fQueries.SaveOrUpdate(f);

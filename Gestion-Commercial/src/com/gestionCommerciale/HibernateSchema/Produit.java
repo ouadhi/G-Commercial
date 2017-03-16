@@ -1,22 +1,26 @@
 package com.gestionCommerciale.HibernateSchema;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  *
  * @author CHERABRAB
  */
+//class relation avec attribut
 @Entity
 @Table(name = "Produit")
 public class Produit {
@@ -31,13 +35,10 @@ public class Produit {
     int quantite;
     @Column(name = "prix", nullable = false)
     float prix;
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "produit_facture",
-            joinColumns = {
-                @JoinColumn(name = "idProduit")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "idFacture")})
-    public Set<Facture> factures = new HashSet<Facture>();
+    
+    @OneToMany(targetEntity=Facture_Produit.class, mappedBy="produit"
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Facture_Produit> qtes;
 
     public Produit() {
 
@@ -81,12 +82,13 @@ public class Produit {
         this.prix = prix;
     }
 
-    public Set<Facture> getFactures() {
-        return factures;
+    public List<Facture_Produit> getQtes() {
+        return qtes;
     }
 
-    public void setFactures(Set<Facture> factures) {
-        this.factures = factures;
+    public void setQtes(List<Facture_Produit> qtes) {
+        this.qtes = qtes;
     }
-
+    
+   
 }
