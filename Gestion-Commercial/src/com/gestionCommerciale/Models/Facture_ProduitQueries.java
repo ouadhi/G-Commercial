@@ -27,7 +27,7 @@ public class Facture_ProduitQueries {
         try {
 
             session.beginTransaction();
-            //set teh the corresponding objects before saving
+            //set  the corresponding objects before saving
             facture_Produit.setProduit(produit);
             facture_Produit.setFacture(facture);
             session.saveOrUpdate(facture_Produit);
