@@ -29,13 +29,14 @@ public class SessionsGenerator {
                     .addAnnotatedClass(Client.class)
                     .addAnnotatedClass(Chauffeur.class)
                     .addAnnotatedClass(Camion.class)
-                    .addAnnotatedClass(Chauffeur.class)
                     .addAnnotatedClass(Expedition.class)
-                    .addAnnotatedClass(Client.class)
                     .addAnnotatedClass(Dock.class)
                     .addAnnotatedClass(Facture.class)
+                    .addAnnotatedClass(Facture_Produit.class)
                     .addAnnotatedClass(Produit.class)
-                    .addAnnotatedClass(Payment.class);
+                    .addAnnotatedClass(Ble.class)
+                    .addAnnotatedClass(Payment.class)
+                    .addAnnotatedClass(User.class);
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties());
             factory = configuration.buildSessionFactory(builder.build());

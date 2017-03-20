@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,6 +34,12 @@ public class Expedition {
     int quantiteFour;
     @Column(name = "quantite_diff", nullable = false)
     int quantiteDiff;
+    @ManyToOne
+    @JoinColumn(name="id_chauffeur")
+    private Chauffeur chauffeur ;
+    @ManyToOne
+    @JoinColumn(name="id_ble")
+    private Ble ble;
 
     public Expedition() {
 
@@ -92,5 +100,21 @@ public class Expedition {
         this.quantiteDiff = quantiteDiff;
     }
 
+    public Chauffeur getChauffeur() {
+        return chauffeur;
+    }
 
+    public void setChauffeur(Chauffeur chauffeur) {
+        this.chauffeur = chauffeur;
+    }
+
+    public Ble getBle() {
+        return ble;
+    }
+
+    public void setBle(Ble ble) {
+        this.ble = ble;
+    }
+
+  
 }

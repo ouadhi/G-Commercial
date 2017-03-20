@@ -14,8 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -46,6 +44,10 @@ public class Chauffeur {
     @OneToMany(targetEntity=Camion.class, mappedBy="chauffeur"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Camion> camions;
+    
+    @OneToMany(targetEntity=Expedition.class, mappedBy="chauffeur"
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Expedition>  expeditions;
 
 
     public Chauffeur(String nomChauffeur, String prenomChauffeur) {
@@ -110,6 +112,14 @@ public class Chauffeur {
 
     public void setCamions(List<Camion> camions) {
         this.camions = camions;
+    }
+
+    public List<Expedition> getExpeditions() {
+        return expeditions;
+    }
+
+    public void setExpeditions(List<Expedition> expeditions) {
+        this.expeditions = expeditions;
     }
     
     
