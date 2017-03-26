@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="128.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrateur.MeunFXMLController">
+   <children>
+      <JFXButton fx:id="users_button" contentDisplay="TOP" layoutX="194.0" layoutY="1124.0" onAction="#show_users_list" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Utilisateur" textAlignment="CENTER" textOverrun="CLIP">
+         <HBox.margin>
+            <Insets left="194.0" />
+         </HBox.margin>
+         <graphic>
+            <ImageView fitHeight="72.0" fitWidth="73.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" x="194.0" y="116.0">
+               <image>
+                  <Image url="icons/users.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="Roles_button" contentDisplay="TOP" layoutX="204.0" layoutY="10.0" onAction="#show_role_liste" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Role" textAlignment="CENTER" textOverrun="CLIP">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="73.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" x="194.0" y="116.0">
+               <image>
+                  <Image url="icons/users.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="notificaton__button" contentDisplay="TOP" layoutX="404.0" layoutY="10.0" onAction="#show_notifcation_list" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Notification" textAlignment="CENTER" textOverrun="CLIP">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="73.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" x="194.0" y="116.0">
+               <image>
+                  <Image url="icons/notif.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="profiles__button" contentDisplay="TOP" layoutX="604.0" layoutY="10.0" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Profiles" textAlignment="CENTER" textOverrun="CLIP">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="73.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" x="194.0" y="116.0">
+               <image>
+                  <Image url="icons/profil.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="settings_button" contentDisplay="TOP" layoutX="604.0" layoutY="10.0" onAction="#show_setting" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Parametre" textAlignment="CENTER" textOverrun="CLIP">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="73.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" x="194.0" y="116.0">
+               <image>
+                  <Image url="icons/param.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</HBox>

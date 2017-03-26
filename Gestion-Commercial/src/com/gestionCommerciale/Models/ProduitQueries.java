@@ -40,11 +40,15 @@ public class ProduitQueries {
     }
 
     public List<Produit> list() {
+        List<Produit> produitsList = new ArrayList<>();
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
-        List<Produit> produitsList = new ArrayList<>();
-        produitsList = session.createQuery("from Produit").list();
-
+        try {
+            
+            produitsList = session.createQuery("from Produit").list();
+        } finally {
+            session.close();
+        }
         return produitsList;
     }
 

@@ -80,8 +80,9 @@ public class GestionCommercial extends Application {
         listClient.add(clientObject1);
 
         //test manyToMany
-        // clientObject1.setChauffeurs(listChauf);
-        ch2.setClients(listClient);
+        clientObject1.setChauffeurs(listChauf);
+        clientObject2.setChauffeurs(listChauf);
+        //ch2.setClients(listClient);
 
         clQueries.insererOuModifieClient(clientObject1);
         clQueries.insererOuModifieClient(clientObject2);
@@ -105,8 +106,11 @@ public class GestionCommercial extends Application {
             System.out.println(proQueries.list().get(i).getNom()+ ","
                     + proQueries.list().get(i).getQuantite()+ ","
                     + proQueries.list().get(i).getPrix());
+         }
         
-
-    }
+        
 }
+    public void testExpedition(){
+    
+    }
 }
