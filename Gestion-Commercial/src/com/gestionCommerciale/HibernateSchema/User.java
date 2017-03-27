@@ -26,19 +26,21 @@ public class User {
     int idUser;
     @Column(name = "nom", nullable = false)
     String nom;
-    @Column(name = "prenom", nullable = false)
-    String prenom;
+    //@Column(name = "prenom", nullable = false)
+    //String prenom;
     @Column(name = "password", nullable = false)
     String password;
     @Column(name = "type", nullable = false)
     String type;
+    @Column(name = "photo", nullable = false)
+    String photoLien;
 
     public User() {
     }
 
-    public User(String nom, String prenom, String password, String type) {
+    public User(String nom, String password, String type) {
         this.nom = nom;
-        this.prenom = prenom;
+        //this.prenom = prenom;
         this.password = password;
         this.type = type;
     }
@@ -59,13 +61,13 @@ public class User {
         this.nom = nom;
     }
 
-    public String getPrenom() {
+    /*public String getPrenom() {
         return prenom;
     }
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
+    }*/
 
     public String getPassword() {
         return password;
@@ -81,6 +83,14 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getPhotoLien() {
+        return photoLien;
+    }
+
+    public void setPhotoLien(String photoLien) {
+        this.photoLien = photoLien;
     }
 
 

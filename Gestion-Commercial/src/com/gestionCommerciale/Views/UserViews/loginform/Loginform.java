@@ -1,6 +1,8 @@
 
-package loginform;
+package com.gestionCommerciale.Views.UserViews.loginform;
 
+import java.io.File;
+import java.net.URL;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +16,10 @@ public class Loginform extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/FXMLDocument.fxml"));
+
         Scene scene = new Scene(root);
         
         stage.setScene(scene);

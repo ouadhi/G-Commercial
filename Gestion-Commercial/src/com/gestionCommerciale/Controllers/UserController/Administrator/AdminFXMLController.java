@@ -1,4 +1,4 @@
-package com.gestionCommerciale.Views.UserViews.administrateur;
+package com.gestionCommerciale.Controllers.UserController.Administrator;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;

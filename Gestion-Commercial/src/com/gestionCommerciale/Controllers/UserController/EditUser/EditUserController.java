@@ -1,6 +1,11 @@
+package com.gestionCommerciale.Controllers.UserController.EditUser;
 
-package com.gestionCommerciale.Views.UserViews.EditUser;
 
+
+import com.gestionCommerciale.Controllers.UserController.UIControle.Notification;
+import com.gestionCommerciale.Controllers.UserController.UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.User;
+import com.gestionCommerciale.Models.UserQueries;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.Optional;
@@ -8,10 +13,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import com.gestionCommerciale.Views.UIControle.Notification;
-import com.gestionCommerciale.Views.UserViews.UIControle.ShowPane;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -39,10 +40,11 @@ public class EditUserController implements Initializable {
     private ComboBox<String> role;
     @FXML
     private JFXButton update_button;
-    
+        
     String listeItems [] = {"Administrateur" , "Agent" } ; 
 
-    
+    private UserQueries userQueries= new UserQueries();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         role.getItems().setAll(listeItems) ; 
@@ -66,9 +68,11 @@ public class EditUserController implements Initializable {
     private void deleteUser(ActionEvent event) {
         
         Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
-        
+        String user  =  fullname.getText() ; 
+
         if (result.get() == ButtonType.OK) {
-          
+            User deletedUser=userQueries.getUser(user);
+            userQueries.delete(deletedUser);
             Notification.Deletenotification();
              new ShowPane().showUserList();
         } 

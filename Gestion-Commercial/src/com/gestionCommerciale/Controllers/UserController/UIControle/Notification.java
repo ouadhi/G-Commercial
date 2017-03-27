@@ -1,5 +1,5 @@
 
-package com.gestionCommerciale.Views.UIControle;
+package com.gestionCommerciale.Controllers.UserController.UIControle;
 
 import javafx.scene.control.Alert;
 import javafx.util.Duration;

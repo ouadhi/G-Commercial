@@ -16,10 +16,18 @@ import com.gestionCommerciale.HibernateSchema.*;
 import com.gestionCommerciale.Models.*;
 import com.gestionCommerciale.HibernateSchema.*;
 import com.gestionCommerciale.Models.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -32,20 +40,16 @@ import javafx.stage.Stage;
 public class GestionCommercial extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+    public void start(Stage primaryStage) throws IOException {
+        
 
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-
+        URL url=null;
+        try {
+            url = new File("/FXMLDocument.fxml").toURL();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(GestionCommercial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root, 300, 250);
 
         primaryStage.setTitle("Hello World!");
@@ -57,8 +61,9 @@ public class GestionCommercial extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //launch(args);
+        launch(args);
         //test hibernate
+        /*
         ClientQueries clQueries = new ClientQueries();
         ChauffeurQueries chauffQueries = new ChauffeurQueries();
         Date date = new Date();
@@ -108,7 +113,7 @@ public class GestionCommercial extends Application {
                     + proQueries.list().get(i).getPrix());
          }
         
-        
+  */      
 }
     public void testExpedition(){
     

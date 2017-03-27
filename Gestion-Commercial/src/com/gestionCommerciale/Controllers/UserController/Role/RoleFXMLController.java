@@ -1,9 +1,9 @@
-package com.gestionCommerciale.Views.UserViews.Role;
+package com.gestionCommerciale.Controllers.UserController.Role;
 
-import com.gestionCommerciale.Views.UIControle.Notification;
-import com.gestionCommerciale.Views.UserViews.UIControle.ShowPane;
-import com.gestionCommerciale.Views.UserViews.Users_List.Users_ListController;
-import com.gestionCommerciale.Views.UserViews.administrateur.AdminFXMLController;
+import com.gestionCommerciale.Controllers.UserController.Administrator.AdminFXMLController;
+import com.gestionCommerciale.Controllers.UserController.UIControle.Notification;
+import com.gestionCommerciale.Controllers.UserController.UIControle.ShowPane;
+import com.gestionCommerciale.Controllers.UserController.Users_List.Users_ListController;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;

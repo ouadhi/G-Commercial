@@ -1,5 +1,5 @@
 
-package Setting;
+package com.gestionCommerciale.Controllers.UserController.Settings;
 
 import java.net.URL;
 import java.util.ResourceBundle;

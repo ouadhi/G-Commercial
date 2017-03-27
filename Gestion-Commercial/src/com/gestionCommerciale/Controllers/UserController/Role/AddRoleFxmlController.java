@@ -1,7 +1,7 @@
-package  com.gestionCommerciale.Views.UserViews.Role;
+package  com.gestionCommerciale.Controllers.UserController.Role;
 
-import com.gestionCommerciale.Views.UIControle.Notification;
-import com.gestionCommerciale.Views.UserViews.UIControle.ShowPane;
+import com.gestionCommerciale.Controllers.UserController.UIControle.Notification;
+import com.gestionCommerciale.Controllers.UserController.UIControle.ShowPane;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 
 public class AddRoleFxmlController implements Initializable {
 

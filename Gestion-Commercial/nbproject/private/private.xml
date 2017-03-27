@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Models/Facture_ProduitQueries.java</file>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Models/ExpeditionQueries.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Views/UserViews/loginform/Loginform.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Views/UserViews/UIControle/Notification.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/HibernateSchema/User.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Models/UserQueries.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Views/UserViews/AddUser/AddUserFXMLController.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Views/UserViews/EditUser/EditUserController.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/gestion/commercial/GestionCommercial.java</file>
         </group>
     </open-files>
 </project-private>

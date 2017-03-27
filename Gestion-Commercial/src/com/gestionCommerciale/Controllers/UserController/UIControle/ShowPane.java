@@ -1,8 +1,8 @@
 
-package com.gestionCommerciale.Views.UserViews.UIControle;
+package com.gestionCommerciale.Controllers.UserController.UIControle;
 
-import com.gestionCommerciale.Views.UserViews.Users_List.Users_ListController;
-import com.gestionCommerciale.Views.UserViews.administrateur.AdminFXMLController;
+import com.gestionCommerciale.Controllers.UserController.Administrator.AdminFXMLController;
+import com.gestionCommerciale.Controllers.UserController.Users_List.Users_ListController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

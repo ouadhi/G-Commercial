@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gestionCommerciale.Views.UserViews.Users_List;
+package com.gestionCommerciale.Controllers.UserController.Users_List;
 
-import com.gestionCommerciale.Views.UserViews.EditUser.EditUserController;
-import com.gestionCommerciale.Views.UserViews.administrateur.AdminFXMLController;
+import com.gestionCommerciale.Controllers.UserController.Administrator.AdminFXMLController;
+import com.gestionCommerciale.Controllers.UserController.EditUser.EditUserController;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
