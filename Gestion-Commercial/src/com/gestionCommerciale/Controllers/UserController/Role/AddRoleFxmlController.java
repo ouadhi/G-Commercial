@@ -32,8 +32,10 @@ public class AddRoleFxmlController implements Initializable {
         String description = role_description.getText();
         if (role.isEmpty() || description.isEmpty()) {
             Notification.errorNotification();
+            
         } else {
-            Notification.Addnotification(); 
+            Notification.Addnotification();
+            //code to refresh table
             new ShowPane().showRole(); 
         }
 

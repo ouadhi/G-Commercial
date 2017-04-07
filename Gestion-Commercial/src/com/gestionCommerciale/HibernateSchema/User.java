@@ -32,17 +32,17 @@ public class User {
     String password;
     @Column(name = "type", nullable = false)
     String type;
-    @Column(name = "photo", nullable = false)
+    @Column(name = "photo", nullable = true)
     String photoLien;
 
     public User() {
     }
 
-    public User(String nom, String password, String type) {
+    public User(String nom, String password, String type, String photoLien) {
         this.nom = nom;
-        //this.prenom = prenom;
         this.password = password;
         this.type = type;
+        this.photoLien= photoLien;
     }
 
     public int getIdUser() {
@@ -60,14 +60,6 @@ public class User {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    /*public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }*/
 
     public String getPassword() {
         return password;

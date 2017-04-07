@@ -5,33 +5,20 @@
  */
 package gestion.commercial;
 
-import com.gestionCommerciale.HibernateSchema.Chauffeur;
-import com.gestionCommerciale.HibernateSchema.Client;
-import com.gestionCommerciale.Models.ChauffeurQueries;
-import com.gestionCommerciale.Models.ClientQueries;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import com.gestionCommerciale.HibernateSchema.*;
-import com.gestionCommerciale.Models.*;
-import com.gestionCommerciale.HibernateSchema.*;
-import com.gestionCommerciale.Models.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -40,22 +27,38 @@ import javafx.stage.Stage;
 public class GestionCommercial extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage stage) throws IOException {
         
 
-        URL url=null;
-        try {
-            url = new File("/FXMLDocument.fxml").toURL();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(GestionCommercial.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Parent root = FXMLLoader.load(url);
-        Scene scene = new Scene(root, 300, 250);
+        Parent root = FXMLLoader.load(getClass().getResource("resources/FXMLDocument.fxml"));
 
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        stage.show();
+        
+        transitionIN(root); 
+
+        
     }
+     public void transitionIN(Parent root) {
+        FadeTransition  fadeIn   = new FadeTransition(Duration.seconds(3), root) ;
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.setCycleCount(1);
+        
+        fadeIn.play();
+    }
+    
+    public void transitionOut(Parent root) {
+        FadeTransition  fadeIn   = new FadeTransition(Duration.seconds(3), root) ;
+        fadeIn.setFromValue(1);
+        fadeIn.setToValue(0);
+        fadeIn.setCycleCount(1);
+        
+        fadeIn.play();
+    }
+
 
     /**
      * @param args the command line arguments

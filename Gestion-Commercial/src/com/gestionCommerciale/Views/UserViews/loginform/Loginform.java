@@ -1,8 +1,6 @@
 
 package com.gestionCommerciale.Views.UserViews.loginform;
 
-import java.io.File;
-import java.net.URL;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

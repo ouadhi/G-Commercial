@@ -49,8 +49,8 @@ public class AddUserFXMLController implements Initializable {
            
         } else { 
             //add user
-            User user= new User(username_txt, password_txt, role_txt);
-            userQueries.SaveOrUpdate(user);
+            //User user= new User(username_txt, password_txt, role_txt);
+            //userQueries.SaveOrUpdate(user);
             Notification.Addnotification();
             new ShowPane().showUserList();
 

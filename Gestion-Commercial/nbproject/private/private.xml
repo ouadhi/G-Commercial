@@ -4,11 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Views/UserViews/loginform/Loginform.java</file>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Views/UserViews/UIControle/Notification.java</file>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/HibernateSchema/User.java</file>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Models/UserQueries.java</file>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Views/UserViews/AddUser/AddUserFXMLController.java</file>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Views/UserViews/EditUser/EditUserController.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Controllers/UserController/UIControle/ShowPane.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Controllers/UserController/Role/AddRoleFxmlController.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Controllers/UserController/Role/RoleFXMLController.java</file>
             <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/gestion/commercial/GestionCommercial.java</file>
         </group>
     </open-files>

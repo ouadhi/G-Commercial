@@ -58,9 +58,9 @@ public class UserQueries {
                 user=listOfUsers.get(i);
             }
         }
-        
         return user;
     }
+    
     public Map<Integer,String> getUsersId(){
         List<User> listOfUsers=list();
         Map<Integer,String> usersIds= new HashMap <>();
