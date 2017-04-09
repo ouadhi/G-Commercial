@@ -52,12 +52,12 @@ public class RoleQueries {
         return list;
     }
     
-    public Role getRole(String roleName){
+    public Role getRole(int  idRole){
         Role role=null;
         List<Role> listOfRoles=list();
 
         for (int i = 0; i < listOfRoles.size(); i++) {
-            if (roleName.equals(listOfRoles.get(i).getRole())) {
+            if (idRole==listOfRoles.get(i).getIdRole()) {
                 role=listOfRoles.get(i);
             }
         }

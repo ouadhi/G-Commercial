@@ -2,6 +2,8 @@ package Conroles;
 
 import UIControle.Notification;
 import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Role;
+import com.gestionCommerciale.Models.RoleQueries;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +23,8 @@ public class AddRoleFxmlController implements Initializable {
     private JFXButton save_button;
     @FXML
     private JFXButton cancel;
+    
+    RoleQueries roleQueries= new RoleQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -30,11 +34,13 @@ public class AddRoleFxmlController implements Initializable {
     @FXML
     private void save_role(ActionEvent event) {
 
-        String role = role_name.getText();
+        String roleText = role_name.getText();
         String description = role_description.getText();
-        if (role.isEmpty() || description.isEmpty()) {
+        if (roleText.isEmpty() || description.isEmpty()) {
             Notification.errorNotification();
         } else {
+            Role role= new Role(roleText, description);
+            roleQueries.SaveOrUpdate(role);
             Notification.Addnotification(); 
             new ShowPane().showRole(); 
         }

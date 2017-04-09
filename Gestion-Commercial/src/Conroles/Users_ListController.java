@@ -5,13 +5,11 @@
  */
 package Conroles;
 
-import Conroles.EditUserController;
 import com.gestionCommerciale.HibernateSchema.User;
 import com.gestionCommerciale.Models.UserQueries;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
