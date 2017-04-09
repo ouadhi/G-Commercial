@@ -43,10 +43,10 @@ public class RoleFXMLController implements Initializable {
 
     @FXML
     private TableView<EditableRow> table_roles;
-    
-    ObservableList<EditableRow> data ; 
-    
-    RoleQueries roleQueries= new RoleQueries();
+
+    ObservableList<EditableRow> data;
+
+    RoleQueries roleQueries = new RoleQueries();
 
     @FXML
     void show_add_role_form(ActionEvent event) {
@@ -64,25 +64,22 @@ public class RoleFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         /*data = FXCollections.observableArrayList(
+        /*data = FXCollections.observableArrayList(
                 new EditableRow(1, "kada", "mohammed")
           );*/
-        
-         data = FXCollections.observableArrayList();
-         List<Role> listOfDbRoles = roleQueries.list();
-         for (int i = 0; i < listOfDbRoles.size(); i++) {
-            data.add(new EditableRow(listOfDbRoles.get(i).getIdRole()
-                    , listOfDbRoles.get(i).getRole()
-                    , listOfDbRoles.get(i).getDescription()));
-        }
 
+        data = FXCollections.observableArrayList();
+        List<Role> listOfDbRoles = roleQueries.list();
+        for (int i = 0; i < listOfDbRoles.size(); i++) {
+            data.add(new EditableRow(listOfDbRoles.get(i).getIdRole(),
+                     listOfDbRoles.get(i).getRole(),
+                     listOfDbRoles.get(i).getDescription()));
+        }
 
         table_column();
     }
 
     private void table_column() {
-
-        
 
         // add clumn buttton
         TableColumn editColumn = new TableColumn("Action");
@@ -107,7 +104,7 @@ public class RoleFXMLController implements Initializable {
 
     }
 
-    public  class EditableRow {
+    public class EditableRow {
 
         private final SimpleIntegerProperty id;
         private final SimpleStringProperty role;
@@ -174,7 +171,7 @@ public class RoleFXMLController implements Initializable {
         }
     }
 
-    public   class EditButton extends Button {
+    public class EditButton extends Button {
 
         public EditButton() {
 
@@ -188,13 +185,13 @@ public class RoleFXMLController implements Initializable {
                     Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
 
                     if (result.get() == ButtonType.OK) {
-                        
-                        int id=table_roles.getSelectionModel().getSelectedItem().getId();
-
-                        Role role=roleQueries.getRole(id);
+                        //Role must be selected before deleting 
+                        //either let notify user when the row is not selected or auomatically select row
+                        int id = table_roles.getSelectionModel().getSelectedItem().getId();
+                        Role role = roleQueries.getRole(id);
                         roleQueries.delete(role);
                         Notification.Deletenotification();
-                        ShowPane show = new ShowPane() ; 
+                        ShowPane show = new ShowPane();
                         show.showRole();
                     }
                 } catch (Exception e) {
@@ -204,11 +201,10 @@ public class RoleFXMLController implements Initializable {
             });
         }
     }
-    
-    
-    public void addrows (ObservableList<EditableRow> data) {
+
+    public void addrows(ObservableList<EditableRow> data) {
         table_roles.getItems().clear();
-        
+
         table_roles.setItems(data);
     }
 
