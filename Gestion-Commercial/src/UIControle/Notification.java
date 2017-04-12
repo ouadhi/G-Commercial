@@ -53,6 +53,16 @@ public class Notification {
         tray.setNotificationType(type);
         tray.showAndDismiss(Duration.seconds(4));
      }
+    public static void errorNotification(String msg){
+    String title = "problème";
+        String message = msg;
+        NotificationType type  = NotificationType.WARNING ; 
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(type);
+        tray.showAndDismiss(Duration.seconds(4));
+     }
     public static void errorNotificationUserExists(){
     String title = "problème";
         String message = "L'utilisateur que vous avez specifie exit deja";

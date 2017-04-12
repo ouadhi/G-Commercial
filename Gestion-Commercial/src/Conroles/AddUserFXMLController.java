@@ -51,7 +51,7 @@ public class AddUserFXMLController implements Initializable {
 
             Notification.errorNotification();
         } else {
-            if ((username_txt.equals(userQueries.getUser(username_txt)))) {
+            if ((userQueries.getUser(username_txt)!=null) ) {
                 //notification for user already exists
 
                 Notification.errorNotificationUserExists();
