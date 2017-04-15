@@ -1,0 +1,29 @@
+.SearchBox {
+    -fx-background-radius: 24px;
+    -fx-background-color: #f6f7fb;
+}
+.searchiput{
+    -fx-font-family: OpenSans;
+    -fx-font-size: 14px;
+    -fx-line-height: 1.71;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill:  #98a5b8;
+    -fx-background-color: #f6f7fb;
+}
+
+.supp_button {
+    -fx-background-color:  #fe7587;
+    -fx-background-radius: 4px;
+    -fx-background-opacity : 0.5 ; 
+    -fx-font-family: OpenSans;
+    -fx-text-fill: #ffffff;
+}
+.ok_button {
+    -fx-background-color:  #2dcde3;
+    -fx-background-radius: 4px;
+    -fx-background-opacity : 0.5 ; 
+    -fx-font-family: OpenSans;
+    -fx-text-fill: #ffffff;
+}
+

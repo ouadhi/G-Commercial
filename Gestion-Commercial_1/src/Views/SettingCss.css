@@ -1,0 +1,34 @@
+.search-panel {
+  -fx-background-radius: 24px;
+  -fx-background-color: #f6f7fb;
+  -fx-border: solid 1px #e4e7ee;
+}
+
+.search-input {
+  -fx-font-family: OpenSans;
+  -fx-font-size: 14px;
+  -fx-font-weight: 600 ; 
+  -fx-font-stretch: normal;
+  -fx-text-align: left;
+  -fx-text-fill: #98a5b8;
+  -fx-background-color: #f6f7fb;
+
+}
+
+.headerline{
+  -fx-font-family: OpenSans;
+  -fx-font-size: 24px;
+  -fx-font-weight: normal;
+  -fx-font-stretch: normal;
+  -fx-text-align: left;
+  -fx-text-fill: #1b2943;
+}
+
+.settings-1 {
+  -fx-font-family: OpenSans;
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+  -fx-font-stretch: normal;
+  -fx-text-align: left;
+  -fx-text-fill: #404e68;
+}

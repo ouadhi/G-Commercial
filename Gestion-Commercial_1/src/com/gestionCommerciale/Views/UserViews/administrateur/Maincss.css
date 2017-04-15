@@ -1,0 +1,84 @@
+.topbar{
+    -fx-background-color : #00b5b8 ; 
+}
+
+.search-input{
+    -fx-background-color : #40c7ca ; 
+    -fx-background-radius: 24px; 
+}
+
+.Search {
+    -fx-font-family: OpenSans;
+    -fx-font-size: 14px;
+    -fx-font-style : normale ;
+    -fx-text-fill:  #ffffff ; 
+}
+
+.layer {
+    -fx-background-color : #ff637b ; 
+     -fx-background-radius: 1px; 
+    -fx-font-family: OpenSans;
+    -fx-font-size: 8px;
+    -fx-font-style : normale ;
+    -fx-text-fill: #fffcfc; 
+}
+
+.Admin {
+  
+  -fx-font-family: OpenSans;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill : #ffffff;
+}
+
+.full-name{
+  -fx-font-family: OpenSans;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-text-fill : #ffffff;
+}
+
+.txt-menu_button{
+    -fx-font-family: OpenSans;
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+  -fx-text-fill : #babec7;
+}
+
+.txt-menu_button:hover{
+    -fx-font-family: OpenSans;
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+  -fx-text-fill : #00b5b8;
+}
+
+USERS-LIST {
+  -fx-font-family: OpenSans;
+  -fx-font-size: 24px;
+  -font-weight: normal ; 
+  -fx-text-fill : #1b2943;
+}
+
+.add_button{
+  -fx-background-color: #00b5b8;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-font-family: OpenSans;
+  -fx-text-fill: #ffffff;
+ -fx-background-radius: 24px; 
+}
+
+.anchorpane{
+    -fx-background-color: #ffffff ; 
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 2, 5, 0);
+}
+
+
+.Background-main {
+    
+    -fx-background-image: url("background_image.jpg");
+    -fx-background-repeat: stretch;  
+    -fx-background-opacity:0.2  ;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+
+}
