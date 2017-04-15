@@ -1,0 +1,45 @@
+.AnchorPane {
+
+    -fx-background-color: #ffffff ; 
+}
+.Toppanel{
+
+    -fx-background-color: #fdbd39;
+}
+
+
+
+.button_connect {
+    -fx-background-color: #fdbd39; 
+    -fx-background-radius: 40px; 
+    -fx-font-family: "Opensans" ;
+    -fx-font-size : 24px ; 
+    -fx-text-fill: #ffffff ;
+}
+
+
+.button_connect:hover {
+    -fx-background-color: #ffffff; 
+}
+
+.txtfiled{
+    -fx-font-family: "Opensans" ;
+    -fx-font-size : 18px ; 
+    -fx-text-fill : #7d899f;
+}
+
+.label_erreur{
+    -fx-font-family: "Opensans" ;
+    -fx-font-size : 18px ; 
+    -fx-text-fill : #EE4035;
+    -fx-text-alignment: center ;
+}
+
+.Background-main {
+    
+    -fx-background-image: url("back1.jpg");
+    -fx-background-repeat: stretch;  
+    -fx-background-opacity:0.2  ;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+
+}

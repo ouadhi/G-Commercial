@@ -1,0 +1,20 @@
+.update-button{
+
+    -fx-pref-tile-width:  128px;
+    -fx-pref-tile-height: 48px;
+    -fx-background-radius:  24px;
+    -fx-background-color:  #ff637b;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: OpenSans;
+    -fx-text-fill: #ffffff;
+
+}
+
+.update-button:hover{
+    -fx-background-color: #c62828;
+}
+
+.update-button:pressed{
+    -fx-background-color:  #e95858;
+}
