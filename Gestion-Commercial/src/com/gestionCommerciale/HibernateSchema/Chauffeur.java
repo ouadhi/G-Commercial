@@ -34,6 +34,10 @@ public class Chauffeur {
     String nomChauffeur;
     @Column(name = "prenomChauffeur", nullable = false)
     String prenomChauffeur; 
+    @Column(name = "telephone", nullable = false)
+    String telephone; 
+    @Column(name = "type", nullable = false)
+    String type; 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
     List<Client> clients= new ArrayList<Client>();
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
@@ -50,9 +54,11 @@ public class Chauffeur {
     private List<Expedition>  expeditions;
 
 
-    public Chauffeur(String nomChauffeur, String prenomChauffeur) {
+    public Chauffeur(String nomChauffeur, String prenomChauffeur,String telephone, String type) {
         this.nomChauffeur = nomChauffeur;
         this.prenomChauffeur = prenomChauffeur;
+        this.telephone= telephone;
+        this.type= type;
     }
 
     public Chauffeur() {
@@ -120,6 +126,22 @@ public class Chauffeur {
 
     public void setExpeditions(List<Expedition> expeditions) {
         this.expeditions = expeditions;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
     
     

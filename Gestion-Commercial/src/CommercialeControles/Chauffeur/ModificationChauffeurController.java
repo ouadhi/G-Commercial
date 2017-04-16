@@ -1,6 +1,8 @@
 package CommercialeControles.Chauffeur;
 
 import UIControle.Notification;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -38,6 +40,9 @@ public class ModificationChauffeurController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
+    
+    private ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
+    Chauffeur chauffeur=null;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -48,17 +53,22 @@ public class ModificationChauffeurController implements Initializable {
     private void sauvegarder(ActionEvent event) {
         String nom = nomchauffeur.getText();
         String prenom = prenomchauffeur.getText();
-        String codech = codechauffeur.getText();
+        //String codech = codechauffeur.getText();
         String tel = telchauffeur.getText();
         String type = typechauffeur.getText();
 
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
-            if (nom.isEmpty() || prenom.isEmpty() || codech.isEmpty() || tel.isEmpty() || type.isEmpty()) {
+           if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty() || type.isEmpty()) {
 
                 Notification.champVideNotification();
             } else {
+                chauffeur.setNomChauffeur(nom);
+                chauffeur.setPrenomChauffeur(prenom);
+                chauffeur.setTelephone(tel);
+                chauffeur.setType(type);
 
+                chauffeurQueries.saveOrUpdate(chauffeur);
                 Notification.Updatenotification();
                 savelabel.setVisible(true);
             }
@@ -73,12 +83,14 @@ public class ModificationChauffeurController implements Initializable {
 
     }
 
-    public void setData(String nom, String codeCh, String tel, String type) {
+    public void setData(String nom,String prenom, String codeCh, String tel, String type) {
 
         nomchauffeur.setText(nom);
+        prenomchauffeur.setText(prenom);
         codechauffeur.setText(codeCh);
         telchauffeur.setText(tel);
         typechauffeur.setText(type);
+        chauffeur= chauffeurQueries.getChauffeur(nom+" "+prenom);
     }
 
     @FXML

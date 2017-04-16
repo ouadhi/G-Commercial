@@ -4,6 +4,8 @@ package CommercialeControles.Chauffeur;
 import CommercialeControles.Camion.ShowdDetailCamionController;
 import UIControle.Transition;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
@@ -76,10 +78,14 @@ public class ShowChauffeurController implements Initializable {
             loader.setLocation(getClass().getResource(ViewUrl.modifierChauffeur));
             loader.load();
 
-            ChauffeurCell chauffeur = liste.getItems().get(id);
+            ChauffeurCell chauffeurCell = liste.getItems().get(id);
 
             ModificationChauffeurController modification = loader.getController();
-             modification.setData(chauffeur.nom, "112", chauffeur.telephone, chauffeur.voyage);
+            //modification.setData(chauffeur.nom, "112", chauffeur.telephone, chauffeur.voyage);
+            ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
+            Chauffeur chauffeur=chauffeurQueries.getChauffeur(chauffeurCell.nom);
+            modification.setData(chauffeur.getNomChauffeur(), chauffeur.getPrenomChauffeur()
+                    ,String.valueOf(chauffeur.getId()) ,chauffeur.getTelephone() , chauffeur.getType());
 
             AnchorPane pane = loader.getRoot();
 

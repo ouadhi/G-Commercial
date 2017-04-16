@@ -1,5 +1,7 @@
 package CommercialeControles.Chauffeur;
 
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.Models.ChauffeurQueries;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +13,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class EditChauffeurDialog extends Stage {
-
     public EditChauffeurDialog(Stage owner, ChauffeurCell box) {
         super();
         try {
@@ -25,8 +26,12 @@ public class EditChauffeurDialog extends Stage {
             loader.load();
 
             ModificationChauffeurController  modification  = loader.getController();
-            modification.setData(box.nom, "112", box.telephone, box.voyage);
+            //modification.setData(box.nom, "112", box.telephone, box.voyage);
 
+            ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
+            Chauffeur chauffeur=chauffeurQueries.getChauffeur(box.nom);
+            modification.setData(chauffeur.getNomChauffeur(), chauffeur.getPrenomChauffeur()
+                    ,String.valueOf(chauffeur.getId()) ,chauffeur.getTelephone() , chauffeur.getType());
             AnchorPane pane  = loader.getRoot();
 
            
@@ -38,5 +43,8 @@ public class EditChauffeurDialog extends Stage {
         }
 
     }
+
+    
+    
 
 }

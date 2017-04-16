@@ -1,12 +1,23 @@
 package CommercialeControles.Chauffeur;
 
 import UIControle.Notification;
+import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
+import java.time.Clock;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -36,6 +47,9 @@ public class AjouterChauffeurViewController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
+    
+    
+    ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -47,15 +61,17 @@ public class AjouterChauffeurViewController implements Initializable {
 
         String nom = nomchauffeur.getText();
         String prenom = prenomchauffeur.getText();
-        String codech = codechauffeur.getText();
+        //String codech = codechauffeur.getText(); //autoIncrement
         String tel = telchauffeur.getText();
         String type = typechauffeur.getText();
 
-        if (nom.isEmpty() || prenom.isEmpty() || codech.isEmpty() || tel.isEmpty() || type.isEmpty()) {
+        if (nom.isEmpty() || prenom.isEmpty()  || tel.isEmpty() || type.isEmpty()) {
 
             Notification.champVideNotification();
         } else {
-
+            Chauffeur chauffeur= new Chauffeur(nom, prenom, tel,type );
+            chauffeurQueries.saveOrUpdate(chauffeur);
+            new ShowPane().showChauffeur();
             Notification.Addnotification();
             savelabel.setVisible(true);
         }
