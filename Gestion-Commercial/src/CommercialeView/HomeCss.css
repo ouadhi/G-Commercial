@@ -1,0 +1,88 @@
+
+.Background-main {
+    -fx-background-image: url("background.jpg") ;
+    -fx-background-opacity:0.2  ;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+}
+
+.buttonx{
+
+    -fx-background-opacity:0.7  ;
+    -fx-background-color: #74c080;
+    -fx-font-family: Roboto;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: center;
+    -fx-text-fill: #ffffff;
+
+}
+
+.buttoxn:hover {
+     -fx-background-color: #59b262 ;
+}
+
+.buttonx:pressed{
+    -fx-background-cloro : #96d496 ; 
+}
+
+.Menu-left{
+  
+	-fx-background-color: #ffffff;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 0, 0, 2, 0);
+
+}
+
+
+.button-menu {
+    -fx-background-color : #ffffff  ; 
+    -fx-text-fill:#1b2943 ; 
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: center;
+    -fx-text-fill: #90a4ae;
+}
+
+.button-menu:hover {
+    -fx-background-color : #7d7d8e  ; 
+}
+
+.button-menu:pressed {
+    -fx-background-color : #e7e7ec  ; 
+}
+
+.avatar {
+    -fx-border-raduis  :  50 ; 
+     -fx-background-radius: 10;  
+}
+
+
+.panelmenu {
+    
+}
+
+
+
+.menu_title {
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: center;
+    -fx-text-fill: #7d6dfb;
+}
+
+.menu_text{
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: center;
+    -fx-text-fill: #90a4ae;
+}

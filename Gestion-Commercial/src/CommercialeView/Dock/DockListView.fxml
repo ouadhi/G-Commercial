@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="back" stylesheets="@DockCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Dock.DockLisController">
+   <children>
+      <Text fill="#36d484" fontSmoothingType="LCD" layoutX="45.0" layoutY="49.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Dock" wrappingWidth="85.51513671875" />
+      <Label fx:id="total" layoutX="220.0" layoutY="28.0" styleClass="label_txt" text="100" />
+      <Label layoutX="261.0" layoutY="28.0" styleClass="label_txt" text="Total" />
+      <Label layoutX="602.0" layoutY="28.0" styleClass="label_txt" text="Trie par : " />
+      <MenuButton fx:id="Order" layoutX="689.0" layoutY="14.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code">
+         <items>
+            <MenuItem fx:id="bycode" mnemonicParsing="false" onAction="#oderByCode" text="Code" />
+            <MenuItem fx:id="byname" mnemonicParsing="false" onAction="#orederByName" text="Nom" />
+            <MenuItem fx:id="byActivite" mnemonicParsing="false" onAction="#OrderByWilaya" text="Wilaya" />
+            <MenuItem fx:id="byregistre" mnemonicParsing="false" onAction="#oderByDistance" text="Distance" />
+            <MenuItem mnemonicParsing="false" onAction="#OderByTarif" text="tarif " />
+         </items>
+      </MenuButton>
+      <MenuButton fx:id="NbShow" layoutX="411.0" layoutY="14.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="86.0" styleClass="menuButton" text="20">
+         <items>
+            <MenuItem fx:id="btn20" mnemonicParsing="false" onAction="#show20" text="20" />
+            <MenuItem fx:id="btn50" mnemonicParsing="false" onAction="#shwo50" text="50" />
+            <MenuItem fx:id="btn100" mnemonicParsing="false" onAction="#show100" text="100" />
+            <MenuItem fx:id="btntout" mnemonicParsing="false" onAction="#showtout" text="Tout" />
+         </items>
+      </MenuButton>
+      <JFXButton fx:id="ajouter" layoutX="1038.0" layoutY="14.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter" />
+      <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="136.0" prefHeight="55.0" prefWidth="1114.0" spacing="85.0" styleClass="title_panel">
+         <children>
+            <Label prefHeight="23.0" prefWidth="52.0" styleClass="listviewTitleLabel" text="Code">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Label prefHeight="23.0" prefWidth="49.0" styleClass="listviewTitleLabel" text="Nom" />
+            <Label prefHeight="23.0" prefWidth="64.0" styleClass="listviewTitleLabel" text="Wilaya" />
+            <Label prefHeight="23.0" prefWidth="83.0" styleClass="listviewTitleLabel" text="Distance" />
+            <Label layoutX="457.0" layoutY="26.0" prefHeight="23.0" prefWidth="49.0" styleClass="listviewTitleLabel" text="Traif ">
+               <HBox.margin>
+                  <Insets left="4.0" />
+               </HBox.margin></Label>
+            <Pane prefHeight="51.0" prefWidth="359.0" styleClass="rechereche">
+               <children>
+                  <JFXTextField fx:id="rechreche" layoutX="44.0" layoutY="8.0" maxWidth="321.0" minWidth="167.0" onAction="#rechrecher" prefHeight="35.0" prefWidth="301.0" promptText="Recherche" />
+                  <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/rechechenoir.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="4.0" />
+               </HBox.margin>
+            </Pane>
+         </children>
+         <opaqueInsets>
+            <Insets top="14.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </HBox>
+      <JFXListView fx:id="listedock" layoutX="45.0" layoutY="189.0" onMouseClicked="#showDockSlide" prefHeight="461.0" prefWidth="1114.0" />
+      <Separator layoutX="45.0" layoutY="188.0" prefWidth="1114.0" />
+   </children>
+</AnchorPane>

@@ -84,6 +84,16 @@ public class Notification {
         return  alert  ; 
     }
     
+    
+    public static  Alert updateAlert () {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation ");
+        alert.setHeaderText("Modification  ");
+        alert.setContentText("voulez vous vraiment effectuer cette opération ??");
+        
+        return  alert  ; 
+    }
+    
     public static void login_notification  () {
         String title = "Bonjour";
         String message = " Bonjour ";
