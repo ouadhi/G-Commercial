@@ -1,4 +1,4 @@
-package CommercialeControles.Dock;
+package CommercialeControles.Produit;
 
 import UIControle.Methode;
 import UIControle.Notification;
@@ -14,18 +14,17 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
-public class ModifierDockController implements Initializable {
+public class ModifierProduitController implements Initializable {
 
     @FXML
     private ImageView close;
     @FXML
     private JFXTextField nom;
     @FXML
-    private JFXTextField wilaya;
+    private JFXTextField categorie;
     @FXML
-    private JFXTextField distance;
+    private JFXTextField quantite;
     @FXML
     private JFXTextField prix;
     @FXML
@@ -37,53 +36,50 @@ public class ModifierDockController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Methode.setOnlyNumbre(quantite);
         Methode.setOnlyNumbre(prix);
-        Methode.setOnlyNumbre(distance);
-    }
-
-    @FXML
-    private void sauvgarder(ActionEvent event) {
-        String nom = this.nom.getText();
-        String wilaya = this.wilaya.getText();
-        String distance = this.distance.getText();
-        String prix = this.prix.getText();
-
-        if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
-
-            Notification.champVideNotification();
-
-        } else {
-            Optional<ButtonType> result = Notification.updateAlert().showAndWait();
-            if (result.get() == ButtonType.OK) {
-
-                // requete DELETE from Produit
-                Notification.Updatenotification();
-                savelabel.setVisible(true);
-            }
-
-        }
-    }
-
-    @FXML
-    private void quitter(ActionEvent event) {
-
-        Stage currentStage = Methode.getStage(event);
-        currentStage.close();
 
     }
 
     @FXML
     private void close(MouseEvent event) {
-        Stage currentStage = Methode.getStageMouses(event);
-        currentStage.close();
+        Methode.getStageMouses(event).close();
     }
 
-    public void setData(String nom, String wilaya, String distance, String prix) {
+    @FXML
+    private void sauvgarder(ActionEvent event) {
+        String nomVal = nom.getText();
+        String categorieVal = categorie.getText();
+        String quantiteVal = quantite.getText();
+        String prixVal = prix.getText();
 
+        if (nomVal.isEmpty() || categorieVal.isEmpty() || quantiteVal.isEmpty() || prixVal.isEmpty()) {
+
+            Notification.champVideNotification();
+
+        } else {
+
+            Optional<ButtonType> result = Notification.updateAlert().showAndWait();
+            if (result.get() == ButtonType.OK) {
+
+                Notification.Updatenotification();
+                savelabel.setVisible(true);
+            }
+        }
+
+    }
+
+    @FXML
+    private void quitter(ActionEvent event) {
+        Methode.getStage(event).close();
+    }
+
+    public void setData(String nom, String cate, float quan, double prix) {
         this.nom.setText(nom);
-        this.wilaya.setText(wilaya);
-        this.distance.setText(distance);
-        this.prix.setText(prix);
+        this.categorie.setText(cate);
+        this.quantite.setText(Float.toString(quan));
+        this.prix.setText(Double.toString(prix));
 
     }
+
 }

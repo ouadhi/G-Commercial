@@ -1,6 +1,7 @@
 
 package loginform;
 
+import UIControle.ViewUrl;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,7 @@ public class Loginform extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/Employee_LoginFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.ProduitList));
         
         Scene scene = new Scene(root);
         

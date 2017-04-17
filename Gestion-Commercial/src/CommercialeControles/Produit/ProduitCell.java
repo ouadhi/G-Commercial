@@ -1,5 +1,4 @@
-
-package CommercialeControles.Dock;
+package CommercialeControles.Produit;
 
 import CommercialeControles.Client.ClienCell;
 import UIControle.Methode;
@@ -23,23 +22,46 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+public class ProduitCell extends HBox {
 
-public class DockCell  extends HBox{
-    
-    private int code  ; 
-    private String nom  ; 
-    private String wilaya ; 
-    private float distance ; 
-    private double prix  ; 
+    private int codeProduit;
+    private String categorie;
+    private String nom;
+    private float quantite;
+    private double prix;
+
     private JFXPopup popup;
-    private JFXButton bttn;
+    private JFXButton bttn;  
 
-    public int getCode() {
-        return code;
+    public ProduitCell(int codeProduit, String categorie, String nom, float quantite, double prix) {
+        this.codeProduit = codeProduit;
+        this.categorie = categorie;
+        this.nom = nom;
+        this.quantite = quantite;
+        this.prix = prix;
+        
+        popup =  new  JFXPopup()  ; 
+        
+        create_box();
+        
+    }
+    
+    
+
+    public int getCodeProduit() {
+        return codeProduit;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setCodeProduit(int codeProduit) {
+        this.codeProduit = codeProduit;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
     }
 
     public String getNom() {
@@ -50,20 +72,12 @@ public class DockCell  extends HBox{
         this.nom = nom;
     }
 
-    public String getWilaya() {
-        return wilaya;
+    public Float getQuantite() {
+        return quantite;
     }
 
-    public void setWilaya(String wilaya) {
-        this.wilaya = wilaya;
-    }
-
-    public float getDistance() {
-        return distance;
-    }
-
-    public void setDistance(float distance) {
-        this.distance = distance;
+    public void setQuantité(Float quantité) {
+        this.quantite = quantité;
     }
 
     public double getPrix() {
@@ -73,24 +87,17 @@ public class DockCell  extends HBox{
     public void setPrix(double prix) {
         this.prix = prix;
     }
-
-    public DockCell(int code, String nom, String wilaya, float distance, double prix) {
-        this.code = code;
-        this.nom = nom;
-        this.wilaya = wilaya;
-        this.distance = distance;
-        this.prix = prix;
+    
+    private  void create_box  () {
         
-        popup = new JFXPopup(); 
-
-        Label codelabel = new Label(Integer.toString(this.code));
+        Label codelabel = new Label(Integer.toString(this.codeProduit));
         codelabel.setAlignment(Pos.CENTER_LEFT);
 
         Label nomlabel = new Label(this.nom);
 
-        Label wilayalabel = new Label(this.wilaya);
+        Label categorielabel = new Label(this.categorie);
 
-        Label distanceLabel = new Label(Float.toString(this.distance));
+        Label quantiteLabel = new Label(Float.toString(this.quantite));
         
         Label prixLabel = new Label(Double.toString(this.prix)) ; 
 
@@ -103,9 +110,9 @@ public class DockCell  extends HBox{
         bttn.prefWidth(50);
         bttn.setGraphic(imgviewbtn);
 
-        this.getChildren().setAll(codelabel, nomlabel, wilayalabel, distanceLabel,prixLabel, bttn);
+        this.getChildren().setAll(codelabel, categorielabel ,nomlabel,quantiteLabel,prixLabel, bttn);
         this.setPadding(new Insets(0, 0, 0, 50));
-        this.setSpacing(100);
+        this.setSpacing(105);
         this.setMargin(bttn, new Insets(0, 0, 0, 240));
         this.setAlignment(Pos.CENTER_LEFT);
         this.setPrefHeight(50);
@@ -116,7 +123,6 @@ public class DockCell  extends HBox{
 
             popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
         });
-        
     }
     
     public void intpopup() {
@@ -136,11 +142,11 @@ public class DockCell  extends HBox{
             
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(ViewUrl.ModifierDock));
+                loader.setLocation(getClass().getResource(ViewUrl.ModifierProduit));
                 loader.load();
                 
-                ModifierDockController ModifierDock =  loader.getController() ;
-                ModifierDock.setData(nom, wilaya, Float.toString(distance), Double.toString(prix));
+                ModifierProduitController ModifierProduit =  loader.getController() ;
+                ModifierProduit.setData(this.nom, this.categorie , this.quantite , this.prix );
                 
                 AnchorPane root = loader.getRoot();
                 
@@ -156,7 +162,7 @@ public class DockCell  extends HBox{
 
         supprimer.setOnAction(event -> {
 
-            Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
+            Optional<ButtonType> result = Notification.deleteAlert().showAndWait() ; 
             if (result.get() == ButtonType.OK) {
                 
                 // requete DELETE from client  Where  id.client  =  codeclient 
@@ -169,11 +175,6 @@ public class DockCell  extends HBox{
         });
 
     }
-    
-    
-    
-    
-    
     
     
 }

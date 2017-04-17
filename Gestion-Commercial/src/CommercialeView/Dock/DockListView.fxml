@@ -17,7 +17,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="back" stylesheets="@DockCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Dock.DockLisController">
    <children>
-      <Text fill="#36d484" fontSmoothingType="LCD" layoutX="45.0" layoutY="49.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Dock" wrappingWidth="85.51513671875" />
+      <Text fill="#36d484" fontSmoothingType="LCD" layoutX="45.0" layoutY="49.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Docks" wrappingWidth="94.51513671875" />
       <Label fx:id="total" layoutX="220.0" layoutY="28.0" styleClass="label_txt" text="100" />
       <Label layoutX="261.0" layoutY="28.0" styleClass="label_txt" text="Total" />
       <Label layoutX="602.0" layoutY="28.0" styleClass="label_txt" text="Trie par : " />

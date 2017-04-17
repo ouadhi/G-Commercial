@@ -1,9 +1,7 @@
 
 package CommercialeControles.Dock;
 
-import CommercialeControles.Client.ClienCell;
 import CommercialeControles.Client.ClientListController;
-import CommercialeControles.Client.ShowClienSlideController;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
@@ -29,7 +27,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sun.plugin.javascript.navig.Anchor;
 
 
 public class DockLisController implements Initializable {

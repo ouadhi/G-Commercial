@@ -27,4 +27,8 @@ public class ViewUrl {
     
     
     public static String ProduitList  = "/CommercialeView/Produit/ProduitList.fxml" ; 
+    public static String AjouterProduit = "/CommercialeView/Produit/AjouterProduit.fxml" ;
+    public static String ModifierProduit = "/CommercialeView/Produit/ModifierProduit.fxml" ;
+    public static String SlideProduit = "/CommercialeView/Produit/SlidProduit.fxml" ;
+    
 }
