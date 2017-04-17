@@ -1,7 +1,10 @@
+
 package CommercialeControles.Chauffeur;
 
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -57,16 +60,20 @@ public class ChauffeurController implements Initializable {
     @FXML
     private JFXTextField recherchetxt;
     
-    
+    private ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-   
+        List<Chauffeur> listChauffeursDB= chauffeurQueries.chauffeursList();
         List<ChauffeurCell> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(new ChauffeurCell("mohammed"+i, "0553485908", "camion 123", "13"));
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurCell(listChauffeursDB.get(i).getPrenomChauffeur()+" "+listChauffeursDB.get(i).getNomChauffeur()
+                    , listChauffeursDB.get(i).getTelephone()
+                    , ""
+                    , "13"));
+            
         }
 
         ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
@@ -78,13 +85,9 @@ public class ChauffeurController implements Initializable {
 
     @FXML
     private void AjouterMethode(ActionEvent event) {
-
         Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AjouterChauffeuerDialog dialog = new AjouterChauffeuerDialog(g);
         dialog.show();
-
-        ChauffeurCell chauffeur = new ChauffeurCell("mohammed", "112", "camin", "13");
-        listeView.getItems().add(chauffeur);
         setTotal();
 
     }

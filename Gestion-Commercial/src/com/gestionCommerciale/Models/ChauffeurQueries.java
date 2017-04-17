@@ -6,8 +6,11 @@
 package com.gestionCommerciale.Models;
 
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.HibernateSchema.User;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.hibernate.Session;
 
 /**
@@ -16,7 +19,7 @@ import org.hibernate.Session;
  */
 public class ChauffeurQueries {
     //method insertion/modification
-    public void insererOuModifieChauffeur(Chauffeur chauffeur) {
+    public void saveOrUpdate(Chauffeur chauffeur) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -54,5 +57,25 @@ public class ChauffeurQueries {
         listChauffeurs= session.createQuery("from Chauffeur").list();
        
         return listChauffeurs;
+    }
+    public Chauffeur getChauffeur(String nomPrenom){
+        Chauffeur chauffeur=null;
+        List<Chauffeur> listOfchauffeurs=chauffeursList();
+
+        for (int i = 0; i < listOfchauffeurs.size(); i++) {
+            if (nomPrenom.equals(listOfchauffeurs.get(i).getPrenomChauffeur()+" "+listOfchauffeurs.get(i).getNomChauffeur())) {
+                chauffeur=listOfchauffeurs.get(i);
+            }
+        }
+        return chauffeur;
+    }
+    
+    public Map<Integer,String> getUsersId(){
+        List<Chauffeur> listOfChauffeurs= chauffeursList();
+        Map<Integer,String> chauffeursIds= new HashMap <>();
+        for (int i = 0; i < listOfChauffeurs.size(); i++) {
+            chauffeursIds.put(listOfChauffeurs.get(i).getId(), listOfChauffeurs.get(i).getNomChauffeur());    
+        }
+        return chauffeursIds ;
     }
 }

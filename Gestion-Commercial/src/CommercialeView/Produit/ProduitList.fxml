@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="back" stylesheets="@ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Produit.ProduitListController">
+<AnchorPane id="AnchorPane" maxHeight="1000.0" maxWidth="2000.0" prefHeight="737.0" prefWidth="1218.0" snapToPixel="false" styleClass="back" stylesheets="@ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Produit.ProduitListController">
    <children>
       <Text fill="#36d484" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Produits" wrappingWidth="122.51513671875" />
       <Label fx:id="total" layoutX="230.0" layoutY="38.0" styleClass="label_txt" text="100" />
