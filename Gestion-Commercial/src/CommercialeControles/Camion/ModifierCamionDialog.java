@@ -34,7 +34,8 @@ public class ModifierCamionDialog extends Stage{
             // modification.setData(camion.id , camion.matricule , camion.taille );
             CamionQueries camionQueries= new CamionQueries();
             Camion camion=camionQueries.getCamion(camionCell.matricule);
-            modification.setData(Integer.parseInt(camion.getCodeCamion()), camion.getMatricule(),1000.0f);
+            ShowdDetailCamionController.setCamion(camion);
+            modification.setData(camion.getCodeCamion(), camion.getMatricule(),1000.0f);
 
             AnchorPane pane  = loader.getRoot();
 

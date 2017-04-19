@@ -110,5 +110,12 @@ public class ShowChauffeurController implements Initializable {
         return chauffeur;
     }
 
+    public static void setChauffeur(Chauffeur chauffeur) {
+        ShowChauffeurController.chauffeur = chauffeur;
+    }
+
+    
+    
+
     
 }

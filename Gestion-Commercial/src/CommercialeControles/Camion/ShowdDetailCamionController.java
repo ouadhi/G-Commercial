@@ -82,10 +82,11 @@ public class ShowdDetailCamionController implements Initializable {
             //modification.setData(camion.id, camion.marque, camion.matricule, camion.taille);
             CamionQueries camionQueries= new CamionQueries();
             camion=camionQueries.getCamion(camionCell.matricule);
-            modification.setData(Integer.parseInt(camion.getCodeCamion()), camion.getMatricule(),1000.0f);
+            System.out.println(camion.getCodeCamion()+" "+camion.getMatricule()+" "+camion.getType());
+            modification.setData(camion.getCodeCamion(), camion.getMatricule(),1000.0f);
 
             AnchorPane pane = loader.getRoot();
-
+            
             return pane;
 
         } catch (IOException ex) {
@@ -105,6 +106,12 @@ public class ShowdDetailCamionController implements Initializable {
     public static Camion getCamion() {
         return camion;
     }
+
+    public static void setCamion(Camion camion) {
+        ShowdDetailCamionController.camion = camion;
+    }
+
+   
     
 
 }

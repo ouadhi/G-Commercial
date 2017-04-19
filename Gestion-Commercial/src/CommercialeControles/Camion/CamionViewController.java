@@ -70,11 +70,11 @@ public class CamionViewController implements Initializable {
         List<Camion> listCamionsDB= camionQueries.list();
         List<CamionCell> list = new ArrayList<>();
         for (int i = 0; i < listCamionsDB.size(); i++) {
-            list.add(new CamionCell(Integer.parseInt(listCamionsDB.get(i).getCodeCamion())
-                    , listCamionsDB.get(i).getType()
+            list.add(new CamionCell(listCamionsDB.get(i).getId()
+                    ,listCamionsDB.get(i).getType()
                     ,listCamionsDB.get(i).getMatricule()
-                    , 123
-                , 1000));
+                    ,listCamionsDB.get(i).getCodeCamion()
+                 , 1000));
             
         }
          

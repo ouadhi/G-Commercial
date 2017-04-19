@@ -90,8 +90,8 @@ public class ModifierCamionController implements Initializable {
         stage.close();
     }
 
-    public void setData(int code, String matricule, float taille) {
-        codecamion.setText(Integer.toString(code));
+    public void setData(String code, String matricule, float taille) {
+        codecamion.setText(code);
         this.matricule.setText(matricule);
         taillecamion.setText(Float.toString(taille));
     }

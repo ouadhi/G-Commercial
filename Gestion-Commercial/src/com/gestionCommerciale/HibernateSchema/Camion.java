@@ -16,8 +16,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Camion")
 public class Camion {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    int id;
     @Column(name = "codeCamion", nullable = false)
     String codeCamion;
     @Column(name = "matricule", nullable = false)
@@ -79,6 +81,15 @@ public class Camion {
     public void setChauffeur(Chauffeur chauffeur) {
         this.chauffeur = chauffeur;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     
    
 
