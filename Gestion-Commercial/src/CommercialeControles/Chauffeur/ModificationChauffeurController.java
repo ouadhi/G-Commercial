@@ -1,6 +1,7 @@
 package CommercialeControles.Chauffeur;
 
 import UIControle.Notification;
+import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
 import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
@@ -42,7 +43,6 @@ public class ModificationChauffeurController implements Initializable {
     private ImageView close;
     
     private ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
-    Chauffeur chauffeur=null;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,10 +59,11 @@ public class ModificationChauffeurController implements Initializable {
 
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
-           if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty() || type.isEmpty()) {
+            if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty() || type.isEmpty()) {
 
                 Notification.champVideNotification();
             } else {
+                Chauffeur chauffeur = ShowChauffeurController.getChauffeur();
                 chauffeur.setNomChauffeur(nom);
                 chauffeur.setPrenomChauffeur(prenom);
                 chauffeur.setTelephone(tel);
@@ -70,7 +71,9 @@ public class ModificationChauffeurController implements Initializable {
 
                 chauffeurQueries.saveOrUpdate(chauffeur);
                 Notification.Updatenotification();
+                new ShowPane().showChauffeur();
                 savelabel.setVisible(true);
+                annuler(event);
             }
         }
 
@@ -90,7 +93,6 @@ public class ModificationChauffeurController implements Initializable {
         codechauffeur.setText(codeCh);
         telchauffeur.setText(tel);
         typechauffeur.setText(type);
-        chauffeur= chauffeurQueries.getChauffeur(nom+" "+prenom);
     }
 
     @FXML

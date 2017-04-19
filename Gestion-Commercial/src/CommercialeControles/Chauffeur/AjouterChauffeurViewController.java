@@ -74,6 +74,7 @@ public class AjouterChauffeurViewController implements Initializable {
             new ShowPane().showChauffeur();
             Notification.Addnotification();
             savelabel.setVisible(true);
+            annuler(event);
         }
 
     }

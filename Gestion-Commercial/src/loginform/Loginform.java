@@ -15,14 +15,14 @@ public class Loginform extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //Thread for creating the session factory
-//        new Thread() {
-//            public void run() {
-//                SessionsGenerator FactoryObject = new SessionsGenerator();
-//            }
-//        }.start();
+        new Thread() {
+            public void run() {
+                SessionsGenerator FactoryObject = new SessionsGenerator();
+            }
+        }.start();
 
         //Parent root = FXMLLoader.load(getClass().getResource("/CommercialeView/HomeFXML.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.ClientView));
+        Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.showHomeChauffeur));
         Scene scene = new Scene(root);
 
         stage.setScene(scene);

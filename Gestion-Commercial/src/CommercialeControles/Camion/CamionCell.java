@@ -1,10 +1,11 @@
 package CommercialeControles.Camion;
 
 import UIControle.Notification;
-import UIControle.StageDialog;
+import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Camion;
+import com.gestionCommerciale.Models.CamionQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
-import java.util.HashSet;
 import java.util.Optional;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,6 +29,7 @@ public class CamionCell extends HBox {
     
     
     JFXButton bttn  ; 
+    CamionQueries camionQueries= new CamionQueries();
 
     public CamionCell(int id, String marque, String matricule, int  code_chauffeur, float taille) {
         this.id = id;
@@ -113,6 +115,9 @@ public class CamionCell extends HBox {
 
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
+                Camion camion= camionQueries.getCamion(this.matricule);
+                camionQueries.delete(camion);
+                new ShowPane().showCamion();
                 Notification.Deletenotification();
             }
 

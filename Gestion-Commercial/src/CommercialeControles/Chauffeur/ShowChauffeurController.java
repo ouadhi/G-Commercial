@@ -30,7 +30,9 @@ public class ShowChauffeurController implements Initializable {
     private AnchorPane PaneMain;
     private JFXListView<ChauffeurCell> liste;
     private int i = 0;
-
+    
+    private static  Chauffeur chauffeur;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -83,7 +85,7 @@ public class ShowChauffeurController implements Initializable {
             ModificationChauffeurController modification = loader.getController();
             //modification.setData(chauffeur.nom, "112", chauffeur.telephone, chauffeur.voyage);
             ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
-            Chauffeur chauffeur=chauffeurQueries.getChauffeur(chauffeurCell.nom);
+            chauffeur=chauffeurQueries.getChauffeur(chauffeurCell.nom);
             modification.setData(chauffeur.getNomChauffeur(), chauffeur.getPrenomChauffeur()
                     ,String.valueOf(chauffeur.getId()) ,chauffeur.getTelephone() , chauffeur.getType());
 
@@ -103,5 +105,10 @@ public class ShowChauffeurController implements Initializable {
         i = idItemSelceted ; 
         PaneMain.getChildren().setAll(getChauffeur(i)) ;
     }
+
+    public static Chauffeur getChauffeur() {
+        return chauffeur;
+    }
+
     
 }

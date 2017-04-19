@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class EditChauffeurDialog extends Stage {
+    
     public EditChauffeurDialog(Stage owner, ChauffeurCell box) {
         super();
         try {
@@ -44,7 +45,7 @@ public class EditChauffeurDialog extends Stage {
 
     }
 
-    
+  
     
 
 }

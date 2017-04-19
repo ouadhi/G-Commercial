@@ -54,7 +54,11 @@ public class ChauffeurQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Chauffeur> listChauffeurs= new ArrayList<>();
         //Requete HQL pour selectioné tout les client:
+        try{
         listChauffeurs= session.createQuery("from Chauffeur").list();
+        }finally{
+            session.close();
+        }
        
         return listChauffeurs;
     }

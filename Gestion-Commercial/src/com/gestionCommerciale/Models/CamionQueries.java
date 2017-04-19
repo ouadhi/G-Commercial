@@ -47,5 +47,16 @@ public class CamionQueries {
 
         return camionsList;
     }
+     public Camion getCamion(String matricule){
+        Camion camion=null;
+        List<Camion> listOfCamion=list();
+
+        for (int i = 0; i < listOfCamion.size(); i++) {
+            if (matricule.equals(listOfCamion.get(i).getMatricule()+" "+listOfCamion.get(i).getMatricule())) {
+                camion=listOfCamion.get(i);
+            }
+        }
+        return camion;
+    }
 
 }

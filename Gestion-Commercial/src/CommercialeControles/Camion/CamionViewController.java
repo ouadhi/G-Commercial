@@ -4,6 +4,8 @@ package CommercialeControles.Camion;
 import CommercialeControles.Chauffeur.ChauffeurController;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Camion;
+import com.gestionCommerciale.Models.CamionQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -60,15 +62,21 @@ public class CamionViewController implements Initializable {
     @FXML
     private JFXTextField recherchetxt;
 
-    
+    CamionQueries camionQueries= new CamionQueries();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-       
+        
+        List<Camion> listCamionsDB= camionQueries.list();
         List<CamionCell> list = new ArrayList<>();
-          for (int i = 0; i < 20; i++) {
-               list.add(new CamionCell(i, "Reanult", "11224 599 02", 123, 1000));
-          }
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionCell(Integer.parseInt(listCamionsDB.get(i).getCodeCamion())
+                    , listCamionsDB.get(i).getType()
+                    ,listCamionsDB.get(i).getMatricule()
+                    , 123
+                , 1000));
+            
+        }
          
           ObservableList<CamionCell> myObservableList = FXCollections.observableList(list);
           listeView.setItems(myObservableList);

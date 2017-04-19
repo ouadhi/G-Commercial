@@ -1,6 +1,10 @@
 package CommercialeControles.Camion;
 
 import UIControle.Notification;
+import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Camion;
+import com.gestionCommerciale.Models.CamionQueries;
+import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -37,6 +41,9 @@ public class ModifierCamionController implements Initializable {
     private JFXComboBox<String> chauffeur;
     @FXML
     private JFXTextField taillecamion;
+    
+    private CamionQueries camionQueries= new CamionQueries();
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,9 +62,16 @@ public class ModifierCamionController implements Initializable {
                 Notification.champVideNotification();
 
             } else {
-
+                Camion camion= ShowdDetailCamionController.getCamion();
+                camion.setCodeCamion(code);
+                camion.setMatricule(matricule);
+                //missing marque and type
+                
+                camionQueries.SaveOrUpdate(camion);
                 Notification.Updatenotification();
+                new ShowPane().showCamion();
                 savelabel.setVisible(true);
+                annuler(event);
             }
         }
 
@@ -76,8 +90,8 @@ public class ModifierCamionController implements Initializable {
         stage.close();
     }
 
-    public void setData(int id, String marque, String matricule, float taille) {
-        codecamion.setText(Integer.toString(id));
+    public void setData(int code, String matricule, float taille) {
+        codecamion.setText(Integer.toString(code));
         this.matricule.setText(matricule);
         taillecamion.setText(Float.toString(taille));
     }

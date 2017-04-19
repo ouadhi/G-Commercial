@@ -1,6 +1,9 @@
 package CommercialeControles.Chauffeur;
 
 import UIControle.Notification;
+import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.util.Optional;
@@ -24,6 +27,9 @@ public class ChauffeurCell extends HBox {
     public JFXPopup popup;
 
     JFXButton bttn;
+    
+    ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
+
 
     public ChauffeurCell(String nom, String telephone, String camion, String voyage) {
         this.nom = nom;
@@ -61,6 +67,7 @@ public class ChauffeurCell extends HBox {
         this.setMargin(bttn, new Insets(0, 0, 0, 240));
         this.setAlignment(Pos.CENTER_LEFT);
         this.setPrefHeight(50);
+        
 
         intpopup();
 
@@ -96,7 +103,11 @@ public class ChauffeurCell extends HBox {
         supprimer.setOnAction(event -> {
 
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
-            if (result.get() == ButtonType.OK) {
+            if (result.get() == ButtonType.OK) { 
+                //get cell info
+                Chauffeur chauffeur= chauffeurQueries.getChauffeur(this.nom);
+                chauffeurQueries.deleteChauffeur(chauffeur);
+                new ShowPane().showChauffeur();
                 Notification.Deletenotification();
             }
 

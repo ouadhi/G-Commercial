@@ -3,6 +3,8 @@ package CommercialeControles.Camion;
 import CommercialeControles.Chauffeur.ChauffeurCell;
 import UIControle.Transition;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Camion;
+import com.gestionCommerciale.Models.CamionQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
@@ -26,6 +28,8 @@ public class ShowdDetailCamionController implements Initializable {
     private AnchorPane PaneMain;
     private JFXListView<CamionCell> liste;
     private int i = 0;
+    
+    private static Camion camion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -72,10 +76,13 @@ public class ShowdDetailCamionController implements Initializable {
             loader.setLocation(getClass().getResource(ViewUrl.modifierCamion));
             loader.load();
 
-            CamionCell camion = liste.getItems().get(i);
+            CamionCell camionCell = liste.getItems().get(i);
 
             ModifierCamionController modification = loader.getController();
-            modification.setData(camion.id, camion.marque, camion.matricule, camion.taille);
+            //modification.setData(camion.id, camion.marque, camion.matricule, camion.taille);
+            CamionQueries camionQueries= new CamionQueries();
+            camion=camionQueries.getCamion(camionCell.matricule);
+            modification.setData(Integer.parseInt(camion.getCodeCamion()), camion.getMatricule(),1000.0f);
 
             AnchorPane pane = loader.getRoot();
 
@@ -94,5 +101,10 @@ public class ShowdDetailCamionController implements Initializable {
         i = idItemSelceted;
         PaneMain.getChildren().setAll(getcamion(i));
     }
+
+    public static Camion getCamion() {
+        return camion;
+    }
+    
 
 }

@@ -66,20 +66,8 @@ public class test2 {
     }
 
     public static void testCamion() {
-        CamionQueries queries = new CamionQueries();
-        Camion o = new Camion(22, "22", "22");
-        queries.SaveOrUpdate(o);
-        Camion o2 = new Camion(33, "33", "33");
-        queries.SaveOrUpdate(o2);
-        for (int i = 0; i < queries.list().size(); i++) {
-            System.out.println(queries.list().get(i).getMatricule() + ","
-                    + queries.list().get(i).getType() + ","
-                    + queries.list().get(i).getMarque());
-            Camion o3 = queries.list().get(i);
-            o3.setMarque(o3.getMarque() + " u");
-            queries.SaveOrUpdate(o3);
-
-        }
+       
+      
     }
 
     public static void testPayment() {

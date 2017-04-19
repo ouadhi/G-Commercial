@@ -18,11 +18,13 @@ import javax.persistence.Table;
 public class Camion {
 
     @Id
+    @Column(name = "codeCamion", nullable = false)
+    String codeCamion;
     @Column(name = "matricule", nullable = false)
-    int matricule;
+    String matricule;
     @Column(name = "type", nullable = false)
     String type;
-    @Column(name = "marque", nullable = false)
+    @Column(name = "marque", nullable = true)
     String marque;
     @ManyToOne
     @JoinColumn(name="id_chauffeur")
@@ -31,17 +33,26 @@ public class Camion {
     public Camion() {
     }
 
-    public Camion(int matricule, String type, String marque) {
-        this.matricule = matricule;
+    public Camion(String codeCamion,String matricule, String type) {
+        this.codeCamion = codeCamion;
+        this.matricule= matricule;
         this.type = type;
-        this.marque = marque;
+        //this.marque = marque;
     }
 
-    public int getMatricule() {
+    public String getCodeCamion() {
+        return codeCamion;
+    }
+
+    public void setCodeCamion(String codeCamion) {
+        this.codeCamion = codeCamion;
+    }
+
+    public String getMatricule() {
         return matricule;
     }
 
-    public void setMatricule(int matricule) {
+    public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
@@ -68,5 +79,7 @@ public class Camion {
     public void setChauffeur(Chauffeur chauffeur) {
         this.chauffeur = chauffeur;
     }
+    
+   
 
 }

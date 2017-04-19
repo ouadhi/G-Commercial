@@ -2,6 +2,9 @@
 package CommercialeControles.Camion;
 
 import UIControle.Notification;
+import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Camion;
+import com.gestionCommerciale.Models.CamionQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -35,6 +38,9 @@ public class AjouterCamionController implements Initializable {
     private JFXTextField typecamion;
     @FXML
     private JFXComboBox<String> chauffeur;
+    
+    CamionQueries camionQueries= new CamionQueries();
+
 
     
     @Override
@@ -52,9 +58,12 @@ public class AjouterCamionController implements Initializable {
             Notification.champVideNotification();
             
         } else {
-            
+            Camion camion= new Camion(code, matricule, type);
+            camionQueries.SaveOrUpdate(camion);
+            new ShowPane().showCamion();
             Notification.Addnotification();
             savelabel.setVisible(true);
+            annuler(event);
         }
     }
 

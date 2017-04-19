@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/UIControle/Notification.java</file>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/resources/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/Conroles/Employee_LoginFXMLController.java</file>
-            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/UIControle/Erreurmsg.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/CommercialeControles/Chauffeur/ChauffeurCell.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/com/gestionCommerciale/Models/ChauffeurQueries.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/UIControle/ShowPane.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/CommercialeControles/Chauffeur/ChauffeurController.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/CommercialeControles/Chauffeur/EditChauffeurDialog.java</file>
+            <file>file:/C:/Users/Hicham/system-gestion/Gestion-Commercial/src/CommercialeControles/Chauffeur/ModificationChauffeurController.java</file>
         </group>
     </open-files>
 </project-private>

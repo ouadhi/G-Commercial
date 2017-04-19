@@ -3,6 +3,8 @@ package CommercialeControles.Camion;
 
 import CommercialeControles.Chauffeur.AjouterChauffeuerDialog;
 import CommercialeControles.Chauffeur.ModificationChauffeurController;
+import com.gestionCommerciale.HibernateSchema.Camion;
+import com.gestionCommerciale.Models.CamionQueries;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +18,7 @@ import javafx.stage.StageStyle;
 
 public class ModifierCamionDialog extends Stage{
 
-    public ModifierCamionDialog(Stage owner ,  CamionCell camion) {
+    public ModifierCamionDialog(Stage owner ,  CamionCell camionCell) {
         
         try {
             initOwner(owner);
@@ -29,7 +31,10 @@ public class ModifierCamionDialog extends Stage{
             loader.load();
 
             ModifierCamionController  modification  = loader.getController();
-            modification.setData(camion.id , camion.marque , camion.matricule , camion.taille );
+            // modification.setData(camion.id , camion.matricule , camion.taille );
+            CamionQueries camionQueries= new CamionQueries();
+            Camion camion=camionQueries.getCamion(camionCell.matricule);
+            modification.setData(Integer.parseInt(camion.getCodeCamion()), camion.getMatricule(),1000.0f);
 
             AnchorPane pane  = loader.getRoot();
 
