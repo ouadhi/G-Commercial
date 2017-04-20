@@ -52,7 +52,7 @@ public class CamionQueries {
         List<Camion> listOfCamion=list();
 
         for (int i = 0; i < listOfCamion.size(); i++) {
-            if (matricule.equals(listOfCamion.get(i).getMatricule()+" "+listOfCamion.get(i).getMatricule())) {
+            if (matricule.equals(listOfCamion.get(i).getMatricule())) {
                 camion=listOfCamion.get(i);
             }
         }

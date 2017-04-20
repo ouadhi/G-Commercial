@@ -23,7 +23,7 @@ public class CamionCell extends HBox {
     public int id;
     public String marque;
     public String matricule;
-    public int code_chauffeur;
+    public String code_chauffeur;
     public float taille;
     public JFXPopup popup;
     
@@ -31,7 +31,7 @@ public class CamionCell extends HBox {
     JFXButton bttn  ; 
     CamionQueries camionQueries= new CamionQueries();
 
-    public CamionCell(int id, String marque, String matricule, int  code_chauffeur, float taille) {
+    public CamionCell(int id, String marque, String matricule, String  code_chauffeur, float taille) {
         this.id = id;
         this.marque = marque;
         this.matricule = matricule;
@@ -48,7 +48,7 @@ public class CamionCell extends HBox {
         Label matriculelabl = new Label(this.matricule);
         matriculelabl.setAlignment(Pos.CENTER);
 
-        Label codechauffeurLabl = new Label(Integer.toString(this.code_chauffeur));
+        Label codechauffeurLabl = new Label(this.code_chauffeur);
         codechauffeurLabl.setAlignment(Pos.CENTER);
         
 
