@@ -35,8 +35,8 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false)
     int id;
-    @Column(name = "codeClient", nullable = false)
-    String codeClient;
+ //   @Column(name = "codeClient", nullable = false)
+ //   String codeClient;
     @Column(name = "nom", nullable = false)
     String name;
     @Column(name = "Prenom", nullable = false)
@@ -63,11 +63,11 @@ public class Client {
     ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable = false, updatable = false) })
     List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();
     
-    public Client( String nom, String prenom, String codeClient,String numRegCom, String numArticle
+    public Client( String nom, String prenom, String numRegCom, String numArticle
                    , String addressClient, String typeActivity, Date dateDepotDossier) {
         this.name = nom;
         this.prenom = prenom;
-        this.codeClient= codeClient;
+        //this.codeClient= codeClient;
         this.numRegCom=numRegCom;
         this.numArticle=numArticle;
         this.addressClient= addressClient;
@@ -102,7 +102,7 @@ public class Client {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-
+/*
     public String getCodeClient() {
         return codeClient;
     }
@@ -110,7 +110,7 @@ public class Client {
     public void setCodeClient(String codeClient) {
         this.codeClient = codeClient;
     }
-
+*/
     public String getNumRegCom() {
         return numRegCom;
     }

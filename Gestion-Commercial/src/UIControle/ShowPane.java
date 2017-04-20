@@ -1,7 +1,7 @@
-
 package UIControle;
 
 import CommercialeControles.Home2FXMLController;
+import CommercialeControles.HomeFXMLController;
 import Conroles.MeunFXMLController;
 import Conroles.Users_ListController;
 import java.io.IOException;
@@ -13,34 +13,40 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-
 public class ShowPane {
-    
-    public  void showRole () {
+
+    public void showRole() {
         try {
-                FXMLLoader loader = new FXMLLoader();
+            FXMLLoader loader = new FXMLLoader();
 
-                AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/RoleFXML.fxml"));
+            AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/RoleFXML.fxml"));
 
-                Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
-            } catch (IOException ex) {
-                Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
+        } catch (IOException ex) {
+            Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    
-    public void showUserList () {
-         try {
-                FXMLLoader loader = new FXMLLoader();
 
-                AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/Users_List.fxml"));
+    public void showUserList() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
 
-                Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
-            } catch (IOException ex) {
-                Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/Users_List.fxml"));
+
+            Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
+        } catch (IOException ex) {
+            Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
+    public void showClientList() {
+
+        String url = "/CommercialeView.Client/ClientListView.fxml";
+
+        show(url, HomeFXMLController.workespacepane);
+
+    }
+
     public void showChauffeur() {
 
         String url = "/CommercialeView/Chauffeur/ChauffeurView.fxml";
@@ -49,16 +55,13 @@ public class ShowPane {
 
     }
 
-    
-    
+    public void showCamion() {
 
-    public  void  showCamion (){
-        
         String url = "/CommercialeView/Camion/CamionView.fxml";
 
         show(url, Home2FXMLController.workespacepane);
-    
-}
+
+    }
 
     private TranslateTransition transitionout(AnchorPane node) {
         TranslateTransition transition = new TranslateTransition();
@@ -106,5 +109,5 @@ public class ShowPane {
         });
 
     }
-    
+
 }

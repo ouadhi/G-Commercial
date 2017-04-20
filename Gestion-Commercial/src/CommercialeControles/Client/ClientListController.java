@@ -1,4 +1,3 @@
-
 package CommercialeControles.Client;
 
 import UIControle.Methode;
@@ -26,7 +25,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+import com.gestionCommerciale.HibernateSchema.Client;
+import com.gestionCommerciale.Models.ClientQueries;
 
 public class ClientListController implements Initializable {
 
@@ -58,24 +58,27 @@ public class ClientListController implements Initializable {
     private MenuItem btn100;
     @FXML
     private MenuItem btntout;
+    private ClientQueries clientQueries = new ClientQueries();
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         List<ClienCell> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(new ClienCell(i, "ouadhi mohamemd ", "vendeur", "12344678654"));
+        List<Client> listClientsDB = clientQueries.clientsList();
+        List<ClienCell> list = new ArrayList<>();
+        for (int i = 0; i < listClientsDB.size(); i++) {
+            list.add(new ClienCell(listClientsDB.get(i).getId(),listClientsDB.get(i).getPrenom()+" "+listClientsDB.get(i).getName()
+                    , listClientsDB.get(i).getTypeActivity()
+                    , listClientsDB.get(i).getNumRegCom()
+                   ));            
         }
 
         ObservableList<ClienCell> myObservableList = FXCollections.observableList(list);
         clientLsit.setItems(myObservableList);
-        
+
         clientLsit.setExpanded(true);
-        
-        
+
         setTotal();
-       
-    }    
+
+    }
 
     @FXML
     private void setOrder(ActionEvent event) {
@@ -86,8 +89,8 @@ public class ClientListController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader();
             AnchorPane root = FXMLLoader.load(getClass().getResource(ViewUrl.AjouteClient));
-             
-            StageDialog dialog = new StageDialog(Methode.getStage(event), root) ; 
+
+            StageDialog dialog = new StageDialog(Methode.getStage(event), root);
             dialog.show();
         } catch (IOException ex) {
             Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
@@ -141,31 +144,31 @@ public class ClientListController implements Initializable {
 
     @FXML
     private void showClient(MouseEvent event) {
-        
+
         try {
-            
-            int seletedrow  = clientLsit.getSelectionModel().getSelectedIndex()  ; 
-            Stage stage =  Methode.getStageMouses(event) ; 
+
+            int seletedrow = clientLsit.getSelectionModel().getSelectedIndex();
+            Stage stage = Methode.getStageMouses(event);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.SlideClient));
             loader.load();
-            
-            ShowClienSlideController controlClient =  loader.getController() ;
+
+            ShowClienSlideController controlClient = loader.getController();
             controlClient.setData(seletedrow, clientLsit);
-            
+
             AnchorPane root = loader.getRoot();
-            
-            StageDialog dialog = new StageDialog(stage, root) ; 
+
+            StageDialog dialog = new StageDialog(stage, root);
             dialog.show();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     @FXML
     private void rechrecher(ActionEvent event) {
     }
-    
+
 }

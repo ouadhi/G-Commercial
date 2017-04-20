@@ -3,6 +3,7 @@ package CommercialeControles.Client;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -15,6 +16,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import com.gestionCommerciale.HibernateSchema.Client;
+import com.gestionCommerciale.HibernateSchema.User;
+import com.gestionCommerciale.Models.ClientQueries;
+import java.time.ZoneId;
+import java.util.Date;
+
 
 
 public class AjouterClientController implements Initializable {
@@ -41,6 +48,7 @@ public class AjouterClientController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
+    ClientQueries clientQueries = new ClientQueries();
 
     
     @Override
@@ -53,12 +61,14 @@ public class AjouterClientController implements Initializable {
     private void Sauvgarder(ActionEvent event) {
         
         String nom  = nomtxt.getText()  ; 
+        String codeClient  = "11"; 
         String prenom  = prenomtxt.getText() ; 
         String NR  =  NRtxt.getText()  ; 
         String NA = NAtxt.getText()  ; 
         String adresse  = adressetxt.getText()  ; 
         String activite = activitetxt.getText() ; 
         String Ncarte =  NCarteF.getText() ; 
+        Date dateDepotDossier =  Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());  
         
         if (nom.isEmpty()|| prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() ||Ncarte.isEmpty() ) {
             
@@ -66,7 +76,20 @@ public class AjouterClientController implements Initializable {
             
         } else {
             
-            Notification.Addnotification();
+            if (false ) {
+                //notification for user already exists
+                Notification.errorNotificationUserExists();
+            } else {
+                // add user to database
+                try {
+                    Client client = new Client(nom, prenom,  NR, NA, adresse, activite, dateDepotDossier);
+                    clientQueries.insererOuModifieClient(client);
+                    Notification.Addnotification();
+                    //new ShowPane().showClientList();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
             savelabel.setVisible(true);
             
         }

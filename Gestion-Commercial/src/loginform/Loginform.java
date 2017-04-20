@@ -21,8 +21,8 @@ public class Loginform extends Application {
             }
         }.start();
 
-        //Parent root = FXMLLoader.load(getClass().getResource("/CommercialeView/HomeFXML.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.showHomeChauffeur));
+        //Parent root = FXMLLoader.load(getClass().getResource("/Views/Employee_LoginFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.ClientView));
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
