@@ -1,4 +1,3 @@
-
 package CommercialeControles.Client;
 
 import UIControle.Methode;
@@ -17,12 +16,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import com.gestionCommerciale.HibernateSchema.Client;
-import com.gestionCommerciale.HibernateSchema.User;
 import com.gestionCommerciale.Models.ClientQueries;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-
-
 
 public class AjouterClientController implements Initializable {
 
@@ -50,66 +47,52 @@ public class AjouterClientController implements Initializable {
     private ImageView close;
     ClientQueries clientQueries = new ClientQueries();
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-        
-    }    
+        datedept.setValue(LocalDate.now());
+    }
 
     @FXML
     private void Sauvgarder(ActionEvent event) {
-        
-        String nom  = nomtxt.getText()  ; 
-        String codeClient  = "11"; 
-        String prenom  = prenomtxt.getText() ; 
-        String NR  =  NRtxt.getText()  ; 
-        String NA = NAtxt.getText()  ; 
-        String adresse  = adressetxt.getText()  ; 
-        String activite = activitetxt.getText() ; 
-        String Ncarte =  NCarteF.getText() ; 
-        Date dateDepotDossier =  Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());  
-        
-        if (nom.isEmpty()|| prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() ||Ncarte.isEmpty() ) {
-            
+        String nom = nomtxt.getText();
+        String prenom = prenomtxt.getText();
+        String NR = NRtxt.getText();
+        String NA = NAtxt.getText();
+        String adresse = adressetxt.getText();
+        String activite = activitetxt.getText();
+        String Ncarte = NCarteF.getText();
+        if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
             Notification.champVideNotification();
-            
+            Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
-            
-            if (false ) {
-                //notification for user already exists
-                Notification.errorNotificationUserExists();
+            Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            if (clientQueries.getClientByRegistre(NR) != null) {
+                //notification for already exists
+                Notification.error("Ce client est exite déja!");
             } else {
-                // add user to database
+                // add to database
                 try {
-                    Client client = new Client(nom, prenom,  NR, NA, adresse, activite, dateDepotDossier);
-                    clientQueries.insererOuModifieClient(client);
+                    Client client = new Client(nom, prenom, NR, NA, adresse, activite, dateDepotDossier,Ncarte);
+                    clientQueries.SaveOrUpdate(client);
                     Notification.Addnotification();
                     //new ShowPane().showClientList();
+                    savelabel.setVisible(true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
-            savelabel.setVisible(true);
-            
         }
-        
     }
 
     @FXML
     private void quitter(ActionEvent event) {
-        
-        Stage currentSatge = Methode.getStage(event) ; 
-        
+        Stage currentSatge = Methode.getStage(event);
         currentSatge.close();
     }
 
     @FXML
     private void close(MouseEvent event) {
-        
-        Stage currentSatge = Methode.getStageMouses(event) ; 
-        
+        Stage currentSatge = Methode.getStageMouses(event);
         currentSatge.close();
     }
-    
 }

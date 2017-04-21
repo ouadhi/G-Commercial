@@ -73,6 +73,15 @@ public class Notification {
         tray.setNotificationType(type);
         tray.showAndDismiss(Duration.seconds(4));
      }
+    public static void error(String message){
+    String title = "problème";
+        NotificationType type  = NotificationType.WARNING ; 
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(type);
+        tray.showAndDismiss(Duration.seconds(4));
+     }
     
     
     public static  Alert deleteAlert () {
@@ -109,6 +118,23 @@ public class Notification {
     public static void champVideNotification () {   
         String title = "Verification";
         String message = "" ;
+        NotificationType type  = NotificationType.ERROR ; 
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(type);
+        tray.showAndDismiss(Duration.seconds(4));
+    }
+    public static void check (String message) {   
+        String title = "Verification";
+        NotificationType type  = NotificationType.ERROR ; 
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(type);
+        tray.showAndDismiss(Duration.seconds(4));
+    }
+    public static void notif (String title,String message) {   
         NotificationType type  = NotificationType.ERROR ; 
         TrayNotification tray = new TrayNotification();
         tray.setTitle(title);

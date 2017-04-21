@@ -49,6 +49,8 @@ public class Client {
     String addressClient;
     @Column(name = "typeActivity", nullable = false)
     String typeActivity;
+    @Column(name = "nCarteFiscale", nullable = false)
+    String nCarteFiscale;
     @Column(name = "dateDepotDossier", nullable = false)
     @Temporal(value=TemporalType.DATE)
     Date dateDepotDossier;
@@ -64,7 +66,7 @@ public class Client {
     List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();
     
     public Client( String nom, String prenom, String numRegCom, String numArticle
-                   , String addressClient, String typeActivity, Date dateDepotDossier) {
+                   , String addressClient, String typeActivity, Date dateDepotDossier,String nCarteFiscale) {
         this.name = nom;
         this.prenom = prenom;
         //this.codeClient= codeClient;
@@ -73,6 +75,7 @@ public class Client {
         this.addressClient= addressClient;
         this.typeActivity= typeActivity;
         this.dateDepotDossier= dateDepotDossier;
+        this.nCarteFiscale= nCarteFiscale;
     }
 
     public Client() {
@@ -101,6 +104,10 @@ public class Client {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public void setnCarteFiscale(String nCarteFiscale) {
+        this.nCarteFiscale = nCarteFiscale;
     }
 /*
     public String getCodeClient() {
@@ -157,6 +164,10 @@ public class Client {
 
     public void setChauffeurs(List<Chauffeur> chauffeurs) {
         this.chauffeurs = chauffeurs;
+    }
+
+    public String getnCarteFiscale() {
+        return nCarteFiscale;
     }
     
 }

@@ -4,6 +4,8 @@ package CommercialeControles.Client;
 import CommercialeControles.Camion.ShowdDetailCamionController;
 import UIControle.Transition;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.HibernateSchema.Client;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
@@ -25,7 +27,8 @@ public class ShowClienSlideController implements Initializable {
     private JFXButton nextbutton;
     @FXML
     private AnchorPane panelMain;
-    
+        private static  Client client;
+
     
     private JFXListView<ClienCell> liste;
     private int i = 0;
@@ -81,7 +84,7 @@ public class ShowClienSlideController implements Initializable {
             ClienCell client  = liste.getItems().get(index);
 
             ModifierClientController modification = loader.getController();
-            modification.SetData(client.getCodeclient(),client.getNom(), client.getNom() ,client.getActivity(),client.getRegistre());
+            modification.SetData(client.getCodeclient());
 
             AnchorPane pane = loader.getRoot();
 
@@ -100,5 +103,8 @@ public class ShowClienSlideController implements Initializable {
         this.liste =   liste   ;
         panelMain.getChildren().setAll(getClient(rowselected)) ; 
     }
-    
+        public static Client getClient() {
+        return client;
+    }
+
 }
