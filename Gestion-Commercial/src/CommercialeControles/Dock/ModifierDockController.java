@@ -2,6 +2,8 @@ package CommercialeControles.Dock;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import com.gestionCommerciale.HibernateSchema.Dock;
+import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -10,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -34,6 +37,8 @@ public class ModifierDockController implements Initializable {
     private JFXButton cancelbttn;
     @FXML
     private Label savelabel;
+        private String id;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,13 +60,33 @@ public class ModifierDockController implements Initializable {
         } else {
             Optional<ButtonType> result = Notification.updateAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
+                if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
 
-                // requete DELETE from Produit
-                Notification.Updatenotification();
-                savelabel.setVisible(true);
+                    Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
+
+                } else {
+                    DockQueries dq = new DockQueries();
+                    Dock dock = dq.getDock(id);
+                    dock.setNom(nom);
+                    dock.setWilaya(wilaya);
+                    dock.setPrixUnitTrans(Double.parseDouble(prix));
+                    dock.setDistance(Float.parseFloat(distance));
+                    dq.SaveOrUpdate(dock);
+                    Notification.Updatenotification();
+                    //new ShowPane().show();
+                    savelabel.setVisible(true);
+                    //??
+                    annuler(event);
+                }
             }
 
         }
+    }
+
+    private void annuler(ActionEvent event) {
+        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        g.close();
+
     }
 
     @FXML
@@ -78,12 +103,12 @@ public class ModifierDockController implements Initializable {
         currentStage.close();
     }
 
-    public void setData(String nom, String wilaya, String distance, String prix) {
+    public void setData(String id,String nom, String wilaya, String distance, String prix) {
 
         this.nom.setText(nom);
         this.wilaya.setText(wilaya);
         this.distance.setText(distance);
         this.prix.setText(prix);
-
+        this.id = id;
     }
 }

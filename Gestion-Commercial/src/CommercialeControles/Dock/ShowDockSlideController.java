@@ -1,7 +1,6 @@
 
 package CommercialeControles.Dock;
 
-import CommercialeControles.Camion.ShowdDetailCamionController;
 import UIControle.Transition;
 import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
@@ -79,13 +78,13 @@ public class ShowDockSlideController implements Initializable {
             DockCell dock = liste.getItems().get(index);
 
             ModifierDockController modification = loader.getController();
-            modification.setData(dock.getNom(), dock.getWilaya() , Float.toString(dock.getDistance()) , Double.toString(dock.getPrix()));
+            modification.setData(dock.getId(), dock.getNom(), dock.getWilaya() , Float.toString(dock.getDistance()) , Double.toString(dock.getPrix()));
 
             AnchorPane pane = loader.getRoot();
 
             return pane  ;  
         } catch (IOException ex) {
-            Logger.getLogger(ShowdDetailCamionController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowDockSlideController.class.getName()).log(Level.SEVERE, null, ex);
             return null ; 
         }
 

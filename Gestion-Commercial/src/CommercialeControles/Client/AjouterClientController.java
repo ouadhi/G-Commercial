@@ -62,7 +62,6 @@ public class AjouterClientController implements Initializable {
         String activite = activitetxt.getText();
         String Ncarte = NCarteF.getText();
         if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
-            Notification.champVideNotification();
             Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
             Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());

@@ -1,10 +1,14 @@
 
 package CommercialeControles.Dock;
 
+import CommercialeControles.Client.ClienCell;
 import CommercialeControles.Client.ClientListController;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Dock;
+import com.gestionCommerciale.Models.ClientQueries;
+import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -59,23 +63,25 @@ public class DockLisController implements Initializable {
     private JFXTextField rechreche;
     @FXML
     private JFXListView<DockCell> listedock;
+    private DockQueries dockQueries = new DockQueries();
 
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-         List<DockCell> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(new DockCell(i, "Dock ch", "Chlef", 100, 40));
-        }
+                List<Dock> listDocksDB = dockQueries.list();
 
+         List<DockCell> list = new ArrayList<>();
+        for (int i = 0; i < listDocksDB.size(); i++) {
+            list.add(new DockCell(listDocksDB.get(i).getIdDock(),listDocksDB.get(i).getNom()
+                    ,listDocksDB.get(i).getWilaya(),listDocksDB.get(i).getDistance()
+                    , listDocksDB.get(i).getPrixUnitTrans()
+                   ));            
+        }
         ObservableList<DockCell> myObservableList = FXCollections.observableList(list);
         listedock.setItems(myObservableList);
-        
         listedock.setExpanded(true);
-        
-        
         setTotale();
+
        
     }    
 

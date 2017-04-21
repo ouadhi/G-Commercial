@@ -1,11 +1,11 @@
 
 package CommercialeControles.Dock;
 
-import CommercialeControles.Client.ClienCell;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.io.IOException;
@@ -140,14 +140,14 @@ public class DockCell  extends HBox{
                 loader.load();
                 
                 ModifierDockController ModifierDock =  loader.getController() ;
-                ModifierDock.setData(nom, wilaya, Float.toString(distance), Double.toString(prix));
+                ModifierDock.setData(code+"",nom, wilaya, Float.toString(distance), Double.toString(prix));
                 
                 AnchorPane root = loader.getRoot();
                 
                 StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
                 dialog.show();
             } catch (IOException ex) {
-                Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DockCell.class.getName()).log(Level.SEVERE, null, ex);
             }
            
             popup.close();
@@ -160,7 +160,8 @@ public class DockCell  extends HBox{
             if (result.get() == ButtonType.OK) {
                 
                 // requete DELETE from client  Where  id.client  =  codeclient 
-                
+                DockQueries dq = new DockQueries();
+                dq.delete(dq.getDock(code + ""));
                 Notification.Deletenotification();
             }
             

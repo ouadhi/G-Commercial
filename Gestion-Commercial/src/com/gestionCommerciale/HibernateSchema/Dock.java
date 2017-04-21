@@ -33,7 +33,7 @@ public class Dock {
     @Column(name = "distance", nullable = false)
     float distance;
     @Column(name = "prixUnitTrans", nullable = false)
-    float prixUnitTrans;
+    double prixUnitTrans;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
     @JoinTable(name = "Chauffeur_dock", joinColumns = {
     @JoinColumn(name = "id_dock", nullable = false, updatable = false) }
@@ -65,7 +65,7 @@ public class Dock {
         return distance;
     }
 
-    public float getPrixUnitTrans() {
+    public double getPrixUnitTrans() {
         return prixUnitTrans;
     }
 
@@ -85,7 +85,7 @@ public class Dock {
         this.distance = distance;
     }
 
-    public void setPrixUnitTrans(float prixUnitTrans) {
+    public void setPrixUnitTrans(double prixUnitTrans) {
         this.prixUnitTrans = prixUnitTrans;
     }
 

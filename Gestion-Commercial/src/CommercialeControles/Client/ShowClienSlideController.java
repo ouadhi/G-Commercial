@@ -1,10 +1,8 @@
 
 package CommercialeControles.Client;
 
-import CommercialeControles.Camion.ShowdDetailCamionController;
 import UIControle.Transition;
 import UIControle.ViewUrl;
-import com.gestionCommerciale.HibernateSchema.Chauffeur;
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -90,7 +88,7 @@ public class ShowClienSlideController implements Initializable {
 
             return pane  ;  
         } catch (IOException ex) {
-            Logger.getLogger(ShowdDetailCamionController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowClienSlideController.class.getName()).log(Level.SEVERE, null, ex);
             return null ; 
         }
 

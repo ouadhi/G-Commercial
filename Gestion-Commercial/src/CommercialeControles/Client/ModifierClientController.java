@@ -71,7 +71,6 @@ public class ModifierClientController implements Initializable {
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
             if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
-                Notification.champVideNotification();
                 Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
             } else {
                 Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
