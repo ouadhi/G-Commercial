@@ -20,6 +20,7 @@ import com.gestionCommerciale.Models.ClientQueries;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import tray.notification.NotificationType;
 
 public class AjouterClientController implements Initializable {
 
@@ -62,7 +63,7 @@ public class AjouterClientController implements Initializable {
         String activite = activitetxt.getText();
         String Ncarte = NCarteF.getText();
         if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
-            Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
+            Notification.notif(NotificationType.ERROR,"Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
             Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
             if (clientQueries.getClientByRegistre(NR) != null) {

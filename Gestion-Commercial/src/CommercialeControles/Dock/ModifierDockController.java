@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import tray.notification.NotificationType;
 
 public class ModifierDockController implements Initializable {
 
@@ -62,7 +63,7 @@ public class ModifierDockController implements Initializable {
             if (result.get() == ButtonType.OK) {
                 if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
 
-                    Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
+                    Notification.notif(NotificationType.ERROR,"Vérification", "Vérifier que tout les champs sont remplis!");
 
                 } else {
                     DockQueries dq = new DockQueries();

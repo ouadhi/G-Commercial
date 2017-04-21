@@ -1,10 +1,7 @@
 package CommercialeControles.Dock;
-
 import UIControle.Methode;
 import UIControle.Notification;
-import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Dock;
-import com.gestionCommerciale.Models.ClientQueries;
 import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -17,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import tray.notification.NotificationType;
 
 public class AjouterDockController implements Initializable {
 
@@ -36,7 +34,7 @@ public class AjouterDockController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
-    DockQueries dockQueries = new DockQueries();
+    DockQueries q = new DockQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -52,16 +50,16 @@ public class AjouterDockController implements Initializable {
         String distance = this.distance.getText();
 
         if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
-            Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
+            Notification.notif(NotificationType.ERROR,"Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
-            if (dockQueries.getDockByNameAndWilaya(nom, wilaya) != null) {
+            if (q.getDockByNameAndWilaya(nom, wilaya) != null) {
                 //notification for already exists
                 Notification.error("Ce dock est exite déja!");
             } else {
                 // add to database
                 try {
                     Dock dock = new Dock(nom, wilaya, Float.parseFloat(distance), Float.parseFloat(prix));
-                    dockQueries.SaveOrUpdate(dock);
+                    q.SaveOrUpdate(dock);
                     Notification.Addnotification();
                     //new ShowPane().showClientList();
                     savelabel.setVisible(true);

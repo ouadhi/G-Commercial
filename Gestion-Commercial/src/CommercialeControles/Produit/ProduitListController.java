@@ -1,10 +1,15 @@
 package CommercialeControles.Produit;
 
+import CommercialeControles.Ble.BelCell;
 import CommercialeControles.Dock.DockCell;
 import CommercialeControles.Dock.ModifierDockController;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Ble;
+import com.gestionCommerciale.HibernateSchema.Produit;
+import com.gestionCommerciale.Models.BleQueries;
+import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -60,22 +65,26 @@ public class ProduitListController implements Initializable {
     private JFXTextField rechreche;
     @FXML
     private JFXListView<ProduitCell> listeProduit;
+    private ProduitQueries queries = new ProduitQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        List<Produit> listBlesDB = queries.list();
         List<ProduitCell> list = new ArrayList<>();
-
-        for (int i = 0; i < 20; i++) {
-            list.add(new ProduitCell(i, "Farine", "Farine 50", 1000, 12.5));
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new ProduitCell(listBlesDB.get(i).getIdProduit(), 
+                    listBlesDB.get(i).getCategory(),
+                    listBlesDB.get(i).getNom(),
+                    listBlesDB.get(i).getQuantite(),
+                    listBlesDB.get(i).getPrix()
+            ));
         }
-
         ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
         listeProduit.setItems(myObservableList);
-
         listeProduit.setExpanded(true);
-
         setTotale();
+
     }
 
     @FXML
@@ -148,20 +157,18 @@ public class ProduitListController implements Initializable {
     private void showDockSlide(MouseEvent event) {
         try {
             int selectedcell = listeProduit.getSelectionModel().getSelectedIndex();
-            
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.SlideProduit));
             loader.load();
-            
-          
-            
+
             SlidProduitController slidProduit = loader.getController();
             slidProduit.setData(listeProduit, selectedcell);
-            
+
             AnchorPane pane = loader.getRoot();
-            
-           StageDialog stage  =  new StageDialog(Methode.getStageMouses(event), pane) ;  
-           stage.show(); 
+
+            StageDialog stage = new StageDialog(Methode.getStageMouses(event), pane);
+            stage.show();
         } catch (IOException ex) {
             Logger.getLogger(ProduitListController.class.getName()).log(Level.SEVERE, null, ex);
         }

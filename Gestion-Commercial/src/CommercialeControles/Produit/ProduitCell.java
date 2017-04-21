@@ -5,6 +5,8 @@ import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.Models.BleQueries;
+import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.io.IOException;
@@ -167,6 +169,8 @@ public class ProduitCell extends HBox {
                 
                 // requete DELETE from client  Where  id.client  =  codeclient 
                 
+                ProduitQueries q = new ProduitQueries();
+                q.delete(q.getProduit(codeProduit+""));
                 Notification.Deletenotification();
             }
             

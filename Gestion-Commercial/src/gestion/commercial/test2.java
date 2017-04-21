@@ -20,7 +20,7 @@ public class test2 {
 
     public static void testProduitFact() {
         ProduitQueries pQueries = new ProduitQueries();
-        Produit po = new Produit("p1", 22, 11.11f);
+        Produit po = new Produit("p1","", 22, 11.11f);
         FactureQueries fQueries = new FactureQueries();
         Date d = new Date();
         Facture fo = new Facture(d, 111.00, 111.00, 111.00);
@@ -36,9 +36,9 @@ public class test2 {
 
     public static void testProduit() {
         ProduitQueries pQueries = new ProduitQueries();
-        Produit po = new Produit("p1", 22, 11.11f);
+        Produit po = new Produit("p1","", 22, 11.11f);
         pQueries.SaveOrUpdate(po);
-        Produit po2 = new Produit("p2", 22, 22.22f);
+        Produit po2 = new Produit("p2","", 22, 22.22f);
         pQueries.SaveOrUpdate(po2);
         for (int i = 0; i < pQueries.list().size(); i++) {
             System.out.println(pQueries.list().get(i).getNom() + ","
