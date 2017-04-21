@@ -5,6 +5,7 @@ import CommercialeControles.Client.ClienCell;
 import CommercialeControles.Dock.ModifierDockController;
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.Models.BleQueries;
@@ -23,10 +24,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
-public class BelCell  extends HBox{
+public class BelCell  extends GridPane{
     
     private int code  ; 
     private float quantite ;  
@@ -34,6 +39,15 @@ public class BelCell  extends HBox{
     
     private JFXPopup popup;
     private JFXButton bttn;
+    
+    protected final ColumnConstraints columnConstraints;
+    protected final ColumnConstraints columnConstraints0;
+    protected final ColumnConstraints columnConstraints1;
+    protected final ColumnConstraints columnConstraints2;
+    protected final RowConstraints rowConstraints;
+    protected final Label label;
+    protected final Label label0;
+    protected final Label label1;
 
     public BelCell(int code, float quantite, double prix) {
         this.code = code;
@@ -42,13 +56,16 @@ public class BelCell  extends HBox{
         
         popup = new JFXPopup(); 
 
-        Label codelabel = new Label(Integer.toString(this.code));
-        codelabel.setAlignment(Pos.CENTER_LEFT);
-
-        Label quantitelabel = new Label(Float.toString(this.quantite));
-
-        Label prixlabel = new Label(Double.toString(this.prix));
-
+        columnConstraints = new ColumnConstraints();
+        columnConstraints0 = new ColumnConstraints();
+        columnConstraints1 = new ColumnConstraints();
+        columnConstraints2 = new ColumnConstraints();
+        rowConstraints = new RowConstraints();
+        label = new Label();
+        label0 = new Label();
+        label1 = new Label();
+        bttn = new JFXButton()  ; 
+        
         bttn = new JFXButton();
         Image imgbtn = new Image(getClass().getResourceAsStream("/icons/more3.png"));
         ImageView imgviewbtn = new ImageView(imgbtn);
@@ -57,13 +74,67 @@ public class BelCell  extends HBox{
         bttn.prefHeight(50);
         bttn.prefWidth(50);
         bttn.setGraphic(imgviewbtn);
+       
 
-        this.getChildren().setAll(codelabel,quantitelabel,prixlabel, bttn);
-        this.setPadding(new Insets(0, 0, 0, 50));
-        this.setSpacing(120);
-        this.setMargin(bttn, new Insets(0, 0, 0, 300));
-        this.setAlignment(Pos.CENTER_LEFT);
-        this.setPrefHeight(50);
+        setHgap(3.0);
+        setPrefHeight(60.0);
+        setPrefWidth(1114.0);
+
+        columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints.setMaxWidth(87.0);
+        columnConstraints.setMinWidth(70.0);
+        columnConstraints.setPrefWidth(87.0);
+
+        columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints0.setMaxWidth(253.0);
+        columnConstraints0.setMinWidth(145.0);
+        columnConstraints0.setPrefWidth(251.0);
+
+        columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints1.setMaxWidth(492.0);
+        columnConstraints1.setMinWidth(145.0);
+        columnConstraints1.setPrefWidth(255.0);
+
+        columnConstraints2.setHalignment(javafx.geometry.HPos.RIGHT);
+        columnConstraints2.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints2.setMaxWidth(554.0);
+        columnConstraints2.setMinWidth(77.0);
+        columnConstraints2.setPrefWidth(522.0);
+
+        rowConstraints.setMinHeight(10.0);
+        rowConstraints.setPrefHeight(30.0);
+        rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+
+        label.setText(Integer.toString(code));
+        label.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label0, 1);
+        label0.setText(Float.toString(quantite));
+        label0.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label1, 2);
+        label1.setText(Double.toString(prix));
+        label1.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(bttn, 3);
+        GridPane.setMargin(bttn, new Insets(0.0, 48.0, 0.0, 0.0));
+
+        getColumnConstraints().add(columnConstraints);
+        getColumnConstraints().add(columnConstraints0);
+        getColumnConstraints().add(columnConstraints1);
+        getColumnConstraints().add(columnConstraints2);
+        getRowConstraints().add(rowConstraints);
+        getChildren().add(label);
+        getChildren().add(label0);
+        getChildren().add(label1);
+        getChildren().add(bttn);
+
+        
+
+        
         
         intpopup();
 
@@ -134,6 +205,7 @@ public class BelCell  extends HBox{
 
         });
 
+
         supprimer.setOnAction(event -> {
 
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
@@ -144,6 +216,7 @@ public class BelCell  extends HBox{
                 BleQueries q = new BleQueries();
                 q.delete(q.getBle(code + ""));
                 Notification.Deletenotification();
+                 new ShowPane().showBle();
             }
             
             popup.close();

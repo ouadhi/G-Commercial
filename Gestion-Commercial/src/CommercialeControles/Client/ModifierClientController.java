@@ -86,21 +86,18 @@ public class ModifierClientController implements Initializable {
                 client.setnCarteFiscale(Ncarte);
                 client.setDateDepotDossier(dateDepotDossier);
                 cq.SaveOrUpdate(client);
+                
+                
                 Notification.Updatenotification();
-                //new ShowPane().show();
+                new ShowPane().showClient();
                 savelabel.setVisible(true);
-                //??
-                annuler(event);
+                quitter(event);
             }
         }
 
     }
 
-    private void annuler(ActionEvent event) {
-        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        g.close();
 
-    }
 
     @FXML
     private void quitter(ActionEvent event) {

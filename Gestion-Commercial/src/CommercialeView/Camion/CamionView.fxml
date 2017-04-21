@@ -7,76 +7,87 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" style="-fx-background-color: #f4f8f9;" stylesheets="@../Chauffeur/ChauffeurCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Camion.CamionViewController">
    <children>
-      <Label fx:id="total" layoutX="235.0" layoutY="26.0" styleClass="text" text="100" />
-      <Label layoutX="268.0" layoutY="26.0" styleClass="text" text="Total" />
-      <Label layoutX="617.0" layoutY="26.0" styleClass="text" text="Oredr By :" />
-      <JFXButton fx:id="Ajoute" layoutX="1027.0" layoutY="14.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Camion" />
-      <MenuButton fx:id="orderby" layoutX="710.0" layoutY="14.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="160.0" style="-fx-background-color: #f4f8f9;" text="Date">
+      <Label fx:id="total" layoutX="179.0" layoutY="37.0" styleClass="text" text="100" />
+      <Label layoutX="214.0" layoutY="37.0" styleClass="text" text="Total" />
+      <Label layoutX="734.0" layoutY="35.0" styleClass="text" text="Oredr By :" />
+      <JFXButton fx:id="Ajoute" layoutX="1007.0" layoutY="33.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Camion" />
+      <MenuButton fx:id="orderby" layoutX="811.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" style="-fx-background-color: #f4f8f9;" text="Date">
          <items>
             <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#orderDate" text="Date" />
             <MenuItem fx:id="VoyageMenuItem" mnemonicParsing="false" onAction="#oredrbyVoyage" text="Voyage" />
             <MenuItem fx:id="NomMenuItem" mnemonicParsing="false" onAction="#orderByNom" text="Nom et prenom" />
          </items>
       </MenuButton>
-      <Text fill="#7d6dfb" layoutX="51.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Camion">
+      <Text fill="#7d6dfb" layoutX="55.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Camion">
          <font>
             <Font size="63.0" />
          </font>
       </Text>
-      <JFXListView fx:id="listeView" layoutX="51.0" layoutY="171.0" onMouseClicked="#showCamions" prefHeight="542.0" prefWidth="1123.0" stylesheets="@../Chauffeur/ChauffeurCSS.css" />
-      <MenuButton fx:id="nbvisibel" layoutX="409.0" layoutY="14.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="80.0" style="-fx-background-color: #f4f8f9;" text="20">
-        <items>
-          <MenuItem fx:id="v20" mnemonicParsing="false" onAction="#show20" text="20" />
-          <MenuItem fx:id="V50" mnemonicParsing="false" onAction="#show50" text="50" />
-            <MenuItem fx:id="V100" mnemonicParsing="false" onAction="#show100" text="100" />
-            <MenuItem fx:id="All" mnemonicParsing="false" onAction="#showAll" text="Touts" />
-        </items>
-      </MenuButton>
-      <Pane layoutX="51.0" layoutY="126.0" prefHeight="45.0" prefWidth="1123.0" style="-fx-background-color: #f6f7fb;">
+      <JFXListView fx:id="listeView" layoutX="51.0" layoutY="177.0" onMouseClicked="#showCamions" prefHeight="438.0" prefWidth="1116.0" stylesheets="@../Chauffeur/ChauffeurCSS.css" />
+      <Pane layoutX="308.0" layoutY="25.0" prefHeight="44.0" prefWidth="379.0" style="-fx-border-color: #e4e7ee; -fx-border-radius: 36;">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="795.0" spacing="85.0">
-               <children>
-                  <Label layoutX="101.0" layoutY="28.0" prefHeight="16.0" prefWidth="19.0" styleClass="list_view_cell_titel" text="ID">
-                     <HBox.margin>
-                        <Insets left="45.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label prefHeight="17.0" prefWidth="63.0" styleClass="list_view_cell_titel" text="Marque">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Label prefHeight="20.0" prefWidth="73.0" styleClass="list_view_cell_titel" text="Matricule" />
-                  <Label prefHeight="24.0" prefWidth="78.0" styleClass="list_view_cell_titel" text="Chauffeur" />
-                  <Label prefHeight="18.0" prefWidth="44.0" styleClass="list_view_cell_titel" text="Taille">
-                     <HBox.margin>
-                        <Insets left="-8.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
-            <Pane layoutX="763.0" prefHeight="45.0" prefWidth="315.0" style="-fx-border-color: #e4e7ee; -fx-border-radius: 36;">
-               <children>
-                  <JFXTextField fx:id="recherchetxt" layoutX="41.0" layoutY="4.0" maxWidth="260.0" minWidth="226.0" onKeyTyped="#rechercher" prefHeight="35.0" prefWidth="260.0" promptText="Recherche" />
-                  <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="icons/rechechenoir.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
+            <JFXTextField fx:id="recherchetxt" layoutX="41.0" layoutY="4.0" maxWidth="318.0" minWidth="226.0" onKeyTyped="#rechercher" prefHeight="35.0" prefWidth="318.0" promptText="Recherche" />
+            <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="icons/rechechenoir.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
+      <Separator layoutX="51.0" layoutY="174.0" prefHeight="6.0" prefWidth="1116.0" styleClass="separateur" />
+      <GridPane hgap="3.0" layoutX="51.0" layoutY="126.0" prefHeight="51.0" prefWidth="1116.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="87.0" minWidth="67.0" prefWidth="76.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="253.0" minWidth="137.0" prefWidth="208.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="126.0" prefWidth="208.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="145.0" prefWidth="226.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="108.0" prefWidth="139.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="554.0" minWidth="77.0" prefWidth="242.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="22.0" prefWidth="30.0" text="ID">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label text="Marque" GridPane.columnIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label text="Matricule" GridPane.columnIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="333.0" layoutY="35.0" text="Chauffeur" GridPane.columnIndex="3">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label text="Taille" GridPane.columnIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
    </children>
    <opaqueInsets>
       <Insets />

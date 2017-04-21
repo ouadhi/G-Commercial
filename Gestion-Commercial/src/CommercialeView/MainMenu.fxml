@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -26,17 +27,20 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="import_button" layoutX="10.0" layoutY="61.0" onAction="#show_import" prefHeight="51.0" prefWidth="257.0" text="Import">
+            <JFXButton fx:id="import_button" alignment="CENTER" layoutX="10.0" layoutY="61.0" onAction="#show_import" prefHeight="51.0" prefWidth="257.0" text="Transport">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/select3.png" />
                      </image>
                   </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="export_button" layoutX="10.0" layoutY="112.0" onAction="#show_export" prefHeight="51.0" prefWidth="257.0" text="Export">
+               </graphic>
+               <VBox.margin>
+                  <Insets left="-1.0" />
+               </VBox.margin></JFXButton>
+            <JFXButton fx:id="export_button" layoutX="10.0" layoutY="112.0" onAction="#show_export" prefHeight="49.0" prefWidth="257.0" text="Rapport">
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="35.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/select4.png" />
                      </image>

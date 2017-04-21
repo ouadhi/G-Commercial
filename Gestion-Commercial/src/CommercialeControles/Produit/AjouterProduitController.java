@@ -2,6 +2,7 @@ package CommercialeControles.Produit;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.HibernateSchema.Produit;
 import com.gestionCommerciale.Models.BleQueries;
@@ -61,9 +62,12 @@ public class AjouterProduitController implements Initializable {
             try {
                 Produit ob = new Produit(nomVal,categorieVal, Integer.parseInt(quantiteVal), Float.parseFloat(prixVal));
                 queries.SaveOrUpdate(ob);
+                
                 Notification.Addnotification();
-                //new ShowPane().showClientList();
                 savelabel.setVisible(true);
+                new  ShowPane().showClient();
+                quitter(event);
+                
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

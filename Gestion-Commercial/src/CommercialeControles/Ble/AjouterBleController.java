@@ -1,6 +1,7 @@
 package CommercialeControles.Ble;
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.Models.BleQueries;
 import com.jfoenix.controls.JFXButton;
@@ -57,7 +58,8 @@ public class AjouterBleController implements Initializable {
                     Ble ble = new Ble(Integer.parseInt(codeval), Integer.parseInt(quantiteval), Double.parseDouble(prixval));
                     queries.SaveOrUpdate(ble);
                     Notification.Addnotification();
-                    //new ShowPane().showClientList();
+                   new ShowPane().showBle();
+                    closestage(event);
                     savelabel.setVisible(true);
                 } catch (Exception ex) {
                     ex.printStackTrace();

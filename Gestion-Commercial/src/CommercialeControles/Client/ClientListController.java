@@ -31,7 +31,6 @@ public class ClientListController implements Initializable {
     private Label total;
     @FXML
     private MenuButton Order;
-    @FXML
     private MenuButton NbShow;
     @FXML
     private JFXButton ajouter;
@@ -47,14 +46,6 @@ public class ClientListController implements Initializable {
     private MenuItem byActivite;
     @FXML
     private MenuItem byregistre;
-    @FXML
-    private MenuItem btn20;
-    @FXML
-    private MenuItem btn50;
-    @FXML
-    private MenuItem btn100;
-    @FXML
-    private MenuItem btntout;
     private ClientQueries clientQueries = new ClientQueries();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -104,19 +95,15 @@ public class ClientListController implements Initializable {
     private void oderByRegistre(ActionEvent event) {
         Order.setText("Registre");
     }
-    @FXML
     private void show20(ActionEvent event) {
         NbShow.setText("20");
     }
-    @FXML
     private void shwo50(ActionEvent event) {
         NbShow.setText("50");
     }
-    @FXML
     private void show100(ActionEvent event) {
         NbShow.setText("100");
     }
-    @FXML
     private void showtout(ActionEvent event) {
         NbShow.setText("Tout");
     }

@@ -2,6 +2,7 @@ package CommercialeControles.Produit;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -61,9 +62,12 @@ public class ModifierProduitController implements Initializable {
 
             Optional<ButtonType> result = Notification.updateAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
-
+                
+                
                 Notification.Updatenotification();
                 savelabel.setVisible(true);
+                new ShowPane().showProduit();
+                quitter(event);
             }
         }
 

@@ -14,18 +14,32 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class ChauffeurCell extends HBox {
+public class ChauffeurCell extends GridPane {
 
     public String nom;
     public String telephone;
     public String camion;
     public String voyage;
+    
+    protected final ColumnConstraints columnConstraints;
+    protected final ColumnConstraints columnConstraints0;
+    protected final ColumnConstraints columnConstraints1;
+    protected final ColumnConstraints columnConstraints2;
+    protected final ColumnConstraints columnConstraints3;
+    protected final RowConstraints rowConstraints;
+    protected final Label label;
+    protected final Label label0;
+    protected final Label label1;
+    protected final Label label2 ;  
     public JFXPopup popup;
-
     JFXButton bttn;
     
     ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
@@ -45,13 +59,7 @@ public class ChauffeurCell extends HBox {
         icon.prefHeight(10);
         icon.prefWidth(10);
         nomLabl.setGraphic(icon);
-
-        Label telLabl = new Label(this.telephone);
-
-        Label camionlabl = new Label(this.camion);
-
-        Label voyegeLabl = new Label(this.voyage);
-
+        
         bttn = new JFXButton();
         Image imgbtn = new Image(getClass().getResourceAsStream("/icons/more3.png"));
         ImageView imgviewbtn = new ImageView(imgbtn);
@@ -61,13 +69,88 @@ public class ChauffeurCell extends HBox {
         bttn.prefWidth(50) ; 
         bttn.setGraphic(imgviewbtn);
 
-        this.getChildren().setAll(nomLabl, telLabl, camionlabl, voyegeLabl, bttn);
-        this.setSpacing(85);
-        this.setMargin(nomLabl, new Insets(0, 0, 0, 45));
-        this.setMargin(bttn, new Insets(0, 0, 0, 240));
-        this.setAlignment(Pos.CENTER_LEFT);
-        this.setPrefHeight(50);
-        
+
+        columnConstraints = new ColumnConstraints();
+        columnConstraints0 = new ColumnConstraints();
+        columnConstraints1 = new ColumnConstraints();
+        columnConstraints2 = new ColumnConstraints();
+        columnConstraints3 = new ColumnConstraints();
+        rowConstraints = new RowConstraints();
+        label = new Label();
+        label0 = new Label();
+        label1 = new Label();
+        label2 = new Label();
+       
+        setHgap(3.0);
+        setPrefHeight(50.0);
+        setPrefWidth(1100.0);
+       
+
+        columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints.setMaxWidth(186.0);
+        columnConstraints.setMinWidth(36.0);
+        columnConstraints.setPrefWidth(112.0);
+
+        columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints0.setMaxWidth(254.0);
+        columnConstraints0.setMinWidth(100.0);
+        columnConstraints0.setPrefWidth(247.0);
+
+        columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints1.setMaxWidth(492.0);
+        columnConstraints1.setMinWidth(126.0);
+        columnConstraints1.setPrefWidth(234.0);
+
+        columnConstraints2.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints2.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints2.setMaxWidth(492.0);
+        columnConstraints2.setMinWidth(102.0);
+        columnConstraints2.setPrefWidth(102.0);
+
+        columnConstraints3.setHalignment(javafx.geometry.HPos.RIGHT);
+        columnConstraints3.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints3.setMaxWidth(554.0);
+        columnConstraints3.setMinWidth(77.0);
+        columnConstraints3.setPrefWidth(406.0);
+
+        rowConstraints.setMinHeight(10.0);
+        rowConstraints.setPrefHeight(30.0);
+        rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+
+        label.setPrefHeight(22.0);
+        label.setPrefWidth(46.0);
+        label.setText("1");
+        label.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(nomLabl, 1);
+        nomLabl.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label1, 2);
+        label1.setText(this.telephone);
+        label1.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label2, 3);
+        label2.setLayoutX(333.0);
+        label2.setLayoutY(35.0);
+        label2.setText(this.voyage);
+        label2.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(bttn, 4);
+
+        getColumnConstraints().add(columnConstraints);
+        getColumnConstraints().add(columnConstraints0);
+        getColumnConstraints().add(columnConstraints1);
+        getColumnConstraints().add(columnConstraints2);
+        getColumnConstraints().add(columnConstraints3);
+        getRowConstraints().add(rowConstraints);
+        getChildren().add(nomLabl);
+        getChildren().add(label0);
+        getChildren().add(label1);
+        getChildren().add(label2);
+        getChildren().add(bttn);
 
         intpopup();
 
@@ -76,8 +159,6 @@ public class ChauffeurCell extends HBox {
             popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
         });
         
-        
-
     }
 
     public void intpopup() {
@@ -99,6 +180,7 @@ public class ChauffeurCell extends HBox {
             dialog.show();
 
         });
+
 
         supprimer.setOnAction(event -> {
 

@@ -55,8 +55,7 @@ public class AjouterCamionController implements Initializable {
         String type  = typecamion.getText()  ;  
         
         if (code.isEmpty()|| matricule.isEmpty()|| type.isEmpty()) {
-            Notification.champVideNotification();
-            
+            Notification.champVideNotification();   
         } else {
             Camion camion= new Camion(code, matricule, type);
             camionQueries.SaveOrUpdate(camion);

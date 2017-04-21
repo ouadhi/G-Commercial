@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -42,23 +43,14 @@ public class DockLisController implements Initializable {
     private MenuItem byActivite;
     @FXML
     private MenuItem byregistre;
-    @FXML
     private MenuButton NbShow;
-    @FXML
-    private MenuItem btn20;
-    @FXML
-    private MenuItem btn50;
-    @FXML
-    private MenuItem btn100;
-    @FXML
-    private MenuItem btntout;
     @FXML
     private JFXButton ajouter;
     @FXML
-    private JFXTextField rechreche;
-    @FXML
     private JFXListView<DockCell> listedock;
     private DockQueries dockQueries = new DockQueries();
+    @FXML
+    private JFXTextField recherchetxt;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -86,22 +78,18 @@ public class DockLisController implements Initializable {
     private void setOrder(ActionEvent event) {
     }
 
-    @FXML
     private void show20(ActionEvent event) {
         NbShow.setText("20");
     }
 
-    @FXML
     private void shwo50(ActionEvent event) {
         NbShow.setText("50");
     }
 
-    @FXML
     private void show100(ActionEvent event) {
         NbShow.setText("100");
     }
 
-    @FXML
     private void showtout(ActionEvent event) {
         NbShow.setText("Tout");
     }
@@ -123,9 +111,6 @@ public class DockLisController implements Initializable {
 
     }
 
-    @FXML
-    private void rechrecher(ActionEvent event) {
-    }
 
     private void setTotale() {
         total.setText(Integer.toString(listedock.getItems().size()));
@@ -174,6 +159,10 @@ public class DockLisController implements Initializable {
             Logger.getLogger(DockLisController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    @FXML
+    private void rechercher(KeyEvent event) {
     }
 
 }

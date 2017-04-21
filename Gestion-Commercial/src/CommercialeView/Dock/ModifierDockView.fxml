@@ -43,22 +43,22 @@
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
             </Label>
-            <JFXTextField fx:id="nom" maxWidth="249.0" minWidth="249.0" prefHeight="45.0" prefWidth="249.0" styleClass="champtxt">
+            <JFXTextField fx:id="nom" focusColor="#405aa800" maxWidth="249.0" minWidth="249.0" prefHeight="45.0" prefWidth="249.0" styleClass="champtxt" unFocusColor="#4d4d4d02">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="wilaya" prefHeight="45.0" styleClass="champtxt" GridPane.columnIndex="1">
+            <JFXTextField fx:id="wilaya" focusColor="#405aa800" prefHeight="45.0" styleClass="champtxt" unFocusColor="#4d4d4d02" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="distance" prefHeight="45.0" styleClass="champtxt" GridPane.rowIndex="1">
+            <JFXTextField fx:id="distance" focusColor="#405aa800" prefHeight="45.0" styleClass="champtxt" unFocusColor="#4d4d4d02" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="prix" prefHeight="45.0" styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <JFXTextField fx:id="prix" focusColor="#405aa800" prefHeight="45.0" styleClass="champtxt" unFocusColor="#4d4d4d02" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>

@@ -7,6 +7,7 @@ package CommercialeControles.Ble;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.HibernateSchema.Dock;
 import com.gestionCommerciale.Models.BleQueries;
@@ -80,11 +81,7 @@ public class ModifierBleController implements Initializable {
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
 
             if (result.get() == ButtonType.OK) {
-                if (codeval.isEmpty() || quantiteval.isEmpty() || prixval.isEmpty()) {
-
-                    Notification.champVideNotification();
-
-                } else {
+                
                     BleQueries queries = new BleQueries();
                     Ble ble = queries.getBle(oldCode+"");
                     ble.setIdBle(Integer.parseInt(codeval));
@@ -92,15 +89,16 @@ public class ModifierBleController implements Initializable {
                     ble.setQte(Integer.parseInt(quantiteval));
                     queries.SaveOrUpdate(ble);
                     Notification.Updatenotification();
-                    //new ShowPane().show();
+                    
                     savelabel.setVisible(true);
-                    //??
+                 
                     annuler(event);
-                }
+                    closestage(event);
+                    new ShowPane().showBle();
+                
                 // requete `Update
 
-                Notification.Updatenotification();
-                savelabel.setVisible(true);
+               
 
             }
 

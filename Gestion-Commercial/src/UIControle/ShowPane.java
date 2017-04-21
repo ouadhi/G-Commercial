@@ -15,7 +15,7 @@ import javafx.util.Duration;
 
 public class ShowPane {
 
-    public void showRole() {
+      public void showRole() {
         try {
             FXMLLoader loader = new FXMLLoader();
 
@@ -39,14 +39,6 @@ public class ShowPane {
         }
     }
 
-    public void showClientList() {
-
-        String url = "/CommercialeView.Client/ClientListView.fxml";
-
-        show(url, Home2FXMLController.workespacepane);
-
-    }
-
     public void showChauffeur() {
 
         String url = "/CommercialeView/Chauffeur/ChauffeurView.fxml";
@@ -62,6 +54,29 @@ public class ShowPane {
         show(url, Home2FXMLController.workespacepane);
 
     }
+
+    public void showClient() {
+        
+        String url = ViewUrl.ClientView;
+
+        show(url, Home2FXMLController.workespacepane);
+    }
+
+    public void showProduit() {
+
+        show(ViewUrl.ProduitList, Home2FXMLController.workespacepane);
+    }
+
+    public void showBle() {
+
+        show(ViewUrl.bleview, Home2FXMLController.workespacepane);
+    }
+
+    public void showDock() {
+
+        show(ViewUrl.DockList, Home2FXMLController.workespacepane);
+    }
+
 
     private TranslateTransition transitionout(AnchorPane node) {
         TranslateTransition transition = new TranslateTransition();

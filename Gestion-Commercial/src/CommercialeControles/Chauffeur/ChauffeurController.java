@@ -47,16 +47,7 @@ public class ChauffeurController implements Initializable {
     private MenuItem VoyageMenuItem;
     @FXML
     private MenuItem NomMenuItem;
-    @FXML
     private MenuButton nbvisibel;
-    @FXML
-    private MenuItem v20;
-    @FXML
-    private MenuItem V50;
-    @FXML
-    private MenuItem V100;
-    @FXML
-    private MenuItem All;
     @FXML
     private JFXTextField recherchetxt;
     
@@ -113,23 +104,19 @@ public class ChauffeurController implements Initializable {
         orderby.setText("Nom et prenom");
     }
 
-    @FXML
     private void show20(ActionEvent event) {
         
         nbvisibel.setText("20");
     }
 
-    @FXML
     private void show50(ActionEvent event) {
          nbvisibel.setText("50");
     }
 
-    @FXML
     private void show100(ActionEvent event) {
          nbvisibel.setText("100");
     }
 
-    @FXML
     private void showAll(ActionEvent event) {
          nbvisibel.setText("All");
     }

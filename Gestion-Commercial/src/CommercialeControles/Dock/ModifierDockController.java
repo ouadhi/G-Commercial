@@ -2,6 +2,7 @@ package CommercialeControles.Dock;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Dock;
 import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
@@ -73,22 +74,18 @@ public class ModifierDockController implements Initializable {
                     dock.setPrixUnitTrans(Double.parseDouble(prix));
                     dock.setDistance(Float.parseFloat(distance));
                     dq.SaveOrUpdate(dock);
+                    
                     Notification.Updatenotification();
-                    //new ShowPane().show();
+                    new ShowPane().showDock();
                     savelabel.setVisible(true);
-                    //??
-                    annuler(event);
+                    quitter(event);
                 }
             }
 
         }
     }
 
-    private void annuler(ActionEvent event) {
-        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        g.close();
-
-    }
+   
 
     @FXML
     private void quitter(ActionEvent event) {

@@ -1,6 +1,7 @@
 package CommercialeControles.Client;
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.Models.ClientQueries;
@@ -18,26 +19,43 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
-public class ClienCell extends HBox {
+import javafx.scene.text.Font;
+
+
+
+public class ClienCell extends GridPane {
+
     private int codeclient;
     private String nom;
     private String activity;
     private String registre;
+  
+    protected final ColumnConstraints columnConstraints;
+    protected final ColumnConstraints columnConstraints0;
+    protected final ColumnConstraints columnConstraints1;
+    protected final ColumnConstraints columnConstraints2;
+    protected final ColumnConstraints columnConstraints3;
+    protected final RowConstraints rowConstraints;
+    protected final Label label;
+    protected final Label label0;
+    protected final Label label1;
+    protected final Label label2;
     private JFXPopup popup;
     private JFXButton bttn;
+
     public ClienCell(int codeclient, String nom, String activity, String registre) {
         this.codeclient = codeclient;
         this.nom = nom;
         this.activity = activity;
         this.registre = registre;
-        popup = new JFXPopup();
-        Label codeClientlabel = new Label(Integer.toString(this.codeclient));
-        codeClientlabel.setAlignment(Pos.CENTER_LEFT);
-        Label nomlabel = new Label(this.nom);
-        Label activitylabel = new Label(this.activity);
-        Label registrelabel = new Label(this.registre);
+        
+        popup = new JFXPopup(); 
+
         bttn = new JFXButton();
         Image imgbtn = new Image(getClass().getResourceAsStream("/icons/more3.png"));
         ImageView imgviewbtn = new ImageView(imgbtn);
@@ -46,64 +64,172 @@ public class ClienCell extends HBox {
         bttn.prefHeight(50);
         bttn.prefWidth(50);
         bttn.setGraphic(imgviewbtn);
-        this.getChildren().setAll(codeClientlabel, nomlabel, activitylabel, registrelabel, bttn);
-        this.setPadding(new Insets(0, 0, 0, 50));
-        this.setSpacing(85);
-        this.setMargin(bttn, new Insets(0, 0, 0, 240));
-        this.setAlignment(Pos.CENTER_LEFT);
-        this.setPrefHeight(50);
+
+       columnConstraints = new ColumnConstraints();
+        columnConstraints0 = new ColumnConstraints();
+        columnConstraints1 = new ColumnConstraints();
+        columnConstraints2 = new ColumnConstraints();
+        columnConstraints3 = new ColumnConstraints();
+        rowConstraints = new RowConstraints();
+        label = new Label();
+        label0 = new Label();
+        label1 = new Label();
+        label2 = new Label();
+      
+
+        setHgap(3.0);
+        setPrefHeight(55.0);
+        setPrefWidth(1100.0);
+
+        columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints.setMaxWidth(186.0);
+        columnConstraints.setMinWidth(36.0);
+        columnConstraints.setPrefWidth(112.0);
+
+        columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints0.setMaxWidth(254.0);
+        columnConstraints0.setMinWidth(100.0);
+        columnConstraints0.setPrefWidth(247.0);
+
+        columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints1.setMaxWidth(492.0);
+        columnConstraints1.setMinWidth(126.0);
+        columnConstraints1.setPrefWidth(220.0);
+
+        columnConstraints2.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints2.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints2.setMaxWidth(492.0);
+        columnConstraints2.setMinWidth(102.0);
+        columnConstraints2.setPrefWidth(198.0);
+
+        columnConstraints3.setHalignment(javafx.geometry.HPos.RIGHT);
+        columnConstraints3.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints3.setMaxWidth(550.0);
+        columnConstraints3.setMinWidth(73.0);
+        columnConstraints3.setPrefWidth(322.0);
+
+        rowConstraints.setMinHeight(10.0);
+        rowConstraints.setPrefHeight(30.0);
+        rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+
+        label.setPrefHeight(22.0);
+        label.setPrefWidth(46.0);
+        label.setText(Integer.toString(this.codeclient));
+        label.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label0, 1);
+        label0.setText(this.nom);
+        label0.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label1, 2);
+        label1.setText(this.activity);
+        label1.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label2, 3);
+        label2.setLayoutX(333.0);
+        label2.setLayoutY(35.0);
+        label2.setText(this.registre);
+        label2.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(bttn, 4);
+        GridPane.setMargin(bttn, new Insets(0.0, 35.0, 0.0, 0.0));
+
+        getColumnConstraints().add(columnConstraints);
+        getColumnConstraints().add(columnConstraints0);
+        getColumnConstraints().add(columnConstraints1);
+        getColumnConstraints().add(columnConstraints2);
+        getColumnConstraints().add(columnConstraints3);
+        getRowConstraints().add(rowConstraints);
+        getChildren().add(label);
+        getChildren().add(label0);
+        getChildren().add(label1);
+        getChildren().add(label2);
+        getChildren().add(bttn );
+        
         intpopup();
+
         bttn.setOnMouseClicked((event) -> {
+
             popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
         });
+        
+
     }
+
     public int getCodeclient() {
         return codeclient;
     }
+
     public void setCodeclient(int codeclient) {
         this.codeclient = codeclient;
     }
+
     public String getNom() {
         return nom;
     }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
+
     public String getActivity() {
         return activity;
     }
+
     public void setActivity(String activity) {
         this.activity = activity;
     }
+
     public String getRegistre() {
         return registre;
     }
+
     public void setRegistre(String registre) {
         this.registre = registre;
     }
-    public void intpopup() {
+
+    
+    
+     public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
         JFXButton supprimer = new JFXButton("Supprimer");
+
         modifier.setPadding(new Insets(10));
         supprimer.setPadding(new Insets(10));
+
         VBox box = new VBox(modifier, supprimer);
         box.setStyle("-fx-background-color: #ffffff");
+
         popup.setContent(box);
         popup.setSource(bttn);
+
         modifier.setOnAction(event -> {
+            
             try {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource(ViewUrl.ModifierClient));
                 loader.load();
-                ModifierClientController controlClient = loader.getController();
+                
+                ModifierClientController controlClient =  loader.getController() ;
                 controlClient.SetData(codeclient);
+                
                 AnchorPane root = loader.getRoot();
-                StageDialog dialog = new StageDialog(Methode.getStage(event), root);
+                
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
                 dialog.show();
             } catch (IOException ex) {
                 Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            popup.close();
+
+
         });
+
+        
         supprimer.setOnAction(event -> {
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
@@ -111,7 +237,9 @@ public class ClienCell extends HBox {
                 ClientQueries cq = new ClientQueries();
                 cq.delete(cq.getClient(codeclient + ""));
                 Notification.Deletenotification();
+                new ShowPane().showClient();
             }
         });
+        
     }
 }

@@ -65,9 +65,9 @@
 }
 
 .title_panel {
-    -fx-backgrounde-color : #edf1f5;
-     
-    
+    -fx-backgrounde-color :  #edf1f5  ;  
+    -fx-border-color  :  #F3F3F3 ;  
+    -fx-border-insets :  0 0.0 1 0 ;   
 }
 
 .rechereche {

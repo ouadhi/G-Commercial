@@ -75,7 +75,7 @@
 .jfx-list-view {
     -fx-background-insets: 0.0 ;  
     -fx-cell-vertical-margin : 10.0  ; 
-    -fx-vertical-gap : 40;   
+    -fx-vertical-gap : 5;   
     -fx-background-color : #f4f8f9; ; 
 }
 
@@ -142,7 +142,26 @@ button_annuler:pressed {
     -fx-background-color :  #ffb066; 
 }
 
+.separateur {
+   -fx-background-color : #7d6dfb ; 
+}
 
+.title_panel {
+    -fx-backgrounde-color :  #edf1f5  ;  
+    -fx-border-color  :  #F3F3F3 ;  
+    -fx-border-insets :  0 0.0 1 0 ;   
+}
+
+
+.champtxt {
+    -fx-background-color : #f6f7fb;
+    -fx-background-radius : 4px ;
+}
+
+
+.label_save {
+    -fx-text-fill : #36d484 ; 
+}
 
 
 

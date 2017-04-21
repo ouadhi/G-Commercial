@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -11,17 +10,20 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" maxHeight="1000.0" maxWidth="2000.0" prefHeight="737.0" prefWidth="1218.0" snapToPixel="false" styleClass="back" stylesheets="@ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Produit.ProduitListController">
    <children>
-      <Text fill="#36d484" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Produits" wrappingWidth="122.51513671875" />
-      <Label fx:id="total" layoutX="230.0" layoutY="38.0" styleClass="label_txt" text="100" />
-      <Label layoutX="271.0" layoutY="38.0" styleClass="label_txt" text="Total" />
-      <Label layoutX="612.0" layoutY="38.0" styleClass="label_txt" text="Trie par : " />
-      <MenuButton fx:id="Order" layoutX="699.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code">
+      <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Produits" wrappingWidth="122.51513671875" />
+      <Label fx:id="total" layoutX="188.0" layoutY="37.0" styleClass="label_txt" text="100" />
+      <Label layoutX="216.0" layoutY="38.0" styleClass="label_txt" text="Total" />
+      <Label layoutX="706.0" layoutY="37.0" styleClass="label_txt" text="Trie par : " />
+      <MenuButton fx:id="Order" layoutX="789.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code">
          <items>
             <MenuItem fx:id="bycode" mnemonicParsing="false" onAction="#oderByCode" text="Code" />
             <MenuItem fx:id="byname" mnemonicParsing="false" onAction="#orederByName" text="Nom" />
@@ -30,59 +32,64 @@
             <MenuItem fx:id="Byprix" mnemonicParsing="false" onAction="#OderByprix" text="prix" />
          </items>
       </MenuButton>
-      <MenuButton fx:id="NbShow" layoutX="421.0" layoutY="24.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="86.0" styleClass="menuButton" text="20">
-         <items>
-            <MenuItem fx:id="btn20" mnemonicParsing="false" onAction="#show20" text="20" />
-            <MenuItem fx:id="btn50" mnemonicParsing="false" onAction="#shwo50" text="50" />
-            <MenuItem fx:id="btn100" mnemonicParsing="false" onAction="#show100" text="100" />
-            <MenuItem fx:id="btntout" mnemonicParsing="false" onAction="#showtout" text="Tout" />
-         </items>
-      </MenuButton>
-      <JFXButton fx:id="ajouter" layoutX="1009.0" layoutY="24.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter Produit" />
-      <HBox alignment="CENTER_LEFT" layoutX="55.0" layoutY="146.0" prefHeight="55.0" prefWidth="1114.0" spacing="70.0" styleClass="title_panel">
+      <GridPane hgap="3.0" layoutX="51.0" layoutY="145.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1114.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="145.0" minWidth="145.0" prefWidth="145.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="145.0" minWidth="145.0" prefWidth="145.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="121.0" minWidth="100.0" prefWidth="121.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="121.0" prefWidth="121.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Label prefHeight="23.0" prefWidth="52.0" styleClass="listviewTitleLabel" text="Code">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
+            <Label text="Code">
+               <font>
+                  <Font size="17.0" />
+               </font>
             </Label>
-            <Label prefHeight="23.0" prefWidth="100.0" styleClass="listviewTitleLabel" text="Categorie" />
-            <Label prefHeight="23.0" prefWidth="64.0" styleClass="listviewTitleLabel" text="Nom">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <padding>
-                  <Insets left="-13.0" />
-               </padding>
+            <Label text="Info Produit" GridPane.columnIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
             </Label>
-            <Label prefHeight="23.0" prefWidth="83.0" styleClass="listviewTitleLabel" text="Qntité" />
-            <Label layoutX="457.0" layoutY="26.0" prefHeight="23.0" prefWidth="49.0" styleClass="listviewTitleLabel" text="Prix">
-               <HBox.margin>
-                  <Insets left="4.0" />
-               </HBox.margin>
+            <Label text="Categorie de produit" GridPane.columnIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font>
             </Label>
-            <Pane prefHeight="51.0" prefWidth="359.0" styleClass="rechereche">
-               <children>
-                  <JFXTextField fx:id="rechreche" layoutX="44.0" layoutY="8.0" maxWidth="321.0" minWidth="167.0" onAction="#rechrecher" prefHeight="35.0" prefWidth="301.0" promptText="Recherche" unFocusColor="#cf252500" />
-                  <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="icons/rechechenoir.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <HBox.margin>
-                  <Insets bottom="4.0" />
-               </HBox.margin>
-            </Pane>
+            <Label text="Qunatite Produit" GridPane.columnIndex="3">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label text="Prix Unitaire" GridPane.columnIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label text="TVA" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
          </children>
-         <opaqueInsets>
-            <Insets top="14.0" />
-         </opaqueInsets>
-         <padding>
-            <Insets left="50.0" />
-         </padding>
-      </HBox>
-      <JFXListView fx:id="listeProduit" layoutX="55.0" layoutY="199.0" onMouseClicked="#showDockSlide" prefHeight="461.0" prefWidth="1114.0" />
-      <Separator layoutX="55.0" layoutY="198.0" prefWidth="1114.0" />
+      </GridPane>
+      <Pane layoutX="308.0" layoutY="23.0" prefHeight="51.0" prefWidth="377.0" styleClass="rechereche">
+         <children>
+            <JFXTextField fx:id="rechreche" focusColor="#405aa800" layoutX="44.0" layoutY="8.0" maxWidth="321.0" minWidth="167.0" onAction="#rechrecher" prefHeight="35.0" prefWidth="315.0" promptText="Recherche" unFocusColor="#cf252500" />
+            <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="icons/rechechenoir.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <JFXButton fx:id="ajouter" layoutX="1009.0" layoutY="24.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter Produit" />
+      <JFXListView fx:id="listeProduit" layoutX="51.0" layoutY="196.0" minHeight="461.0" minWidth="1114.0" onMouseClicked="#showDockSlide" showTooltip="true" />
+      <Separator layoutX="51.0" layoutY="193.0" prefHeight="5.0" prefWidth="1114.0" style="-fx-background-color: #fd9252;" />
    </children>
 </AnchorPane>

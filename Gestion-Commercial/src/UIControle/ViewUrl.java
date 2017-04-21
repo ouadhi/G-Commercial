@@ -33,4 +33,13 @@ public class ViewUrl {
     public static String ModifierProduit = "/CommercialeView/Produit/ModifierProduit.fxml" ;
     public static String SlideProduit = "/CommercialeView/Produit/SlidProduit.fxml" ;
     
+    public static String CamionListe = "/CommercialeView/Camion/CamionView.fxml";
+    public static String ChauffeurListe = "/CommercialeView/Chauffeur/ChauffeurView.fxml";
+
+    public static String Home1 = "/CommercialeView/HomeFXML.fxml";
+    public static String Home2 = "/CommercialeView/Home2FXML.fxml";
+    public static String VenteMenu = "/CommercialeView/Menu/Vente/VenteMenu.fxml";
+    public static String AchatMenu = "/CommercialeView/Menu/Achat/AchatMenu.fxml";
+    public static String TransportMenu = "/CommercialeView/LeftMenu2FXML.fxml";
+    
 }

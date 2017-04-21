@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="962.0" prefWidth="128.0" stylesheets="@HomeCss.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.LeftMenu2Controller">
+<AnchorPane id="AnchorPane" prefHeight="962.0" prefWidth="128.0" stylesheets="@../../HomeCss.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Menu.Achat.AchatMenuController">
    <children>
       <VBox prefHeight="962.0" prefWidth="128.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,30 +19,33 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="chauffeur" alignment="BASELINE_LEFT" onAction="#showchauffeur" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Chauffeur">
+            <JFXButton fx:id="Dock" alignment="BASELINE_LEFT" onAction="#showDock" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Dock">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/driver.png" />
                      </image>
                   </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="camion" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" onAction="#showcamion" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Camion">
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="Ble" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" onAction="#showBle" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Ble">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/truck.png" />
                      </image>
                   </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="rapport" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="61.0" onAction="#showrapport" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Rapport">
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="Rapport" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="61.0" onAction="#showRapport" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Rapport">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/state.png" />
                      </image>
                   </ImageView>
-               </graphic></JFXButton>
+               </graphic>
+            </JFXButton>
          </children>
       </VBox>
    </children>

@@ -1,6 +1,7 @@
 package CommercialeControles.Dock;
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Dock;
 import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
@@ -61,8 +62,9 @@ public class AjouterDockController implements Initializable {
                     Dock dock = new Dock(nom, wilaya, Float.parseFloat(distance), Float.parseFloat(prix));
                     q.SaveOrUpdate(dock);
                     Notification.Addnotification();
-                    //new ShowPane().showClientList();
+                    new ShowPane().showDock();
                     savelabel.setVisible(true);
+                    quitter(event);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

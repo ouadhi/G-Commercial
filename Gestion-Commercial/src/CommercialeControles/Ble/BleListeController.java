@@ -48,16 +48,7 @@ public class BleListeController implements Initializable {
     private MenuItem byquantite;
     @FXML
     private MenuItem byprix;
-    @FXML
     private MenuButton NbShow;
-    @FXML
-    private MenuItem btn20;
-    @FXML
-    private MenuItem btn50;
-    @FXML
-    private MenuItem btn100;
-    @FXML
-    private MenuItem btntout;
     @FXML
     private JFXButton ajouter;
     @FXML
@@ -102,22 +93,18 @@ public class BleListeController implements Initializable {
     private void setOrder(ActionEvent event) {
     }
 
-    @FXML
     private void show20(ActionEvent event) {
         NbShow.setText("20");
     }
 
-    @FXML
     private void shwo50(ActionEvent event) {
         NbShow.setText("50");
     }
 
-    @FXML
     private void show100(ActionEvent event) {
         NbShow.setText("100");
     }
 
-    @FXML
     private void showtout(ActionEvent event) {
         NbShow.setText("Tout");
     }
