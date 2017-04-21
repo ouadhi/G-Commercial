@@ -3,10 +3,15 @@ package CommercialeControles.Ble;
 
 
 import CommercialeControles.Client.ClientListController;
+import CommercialeControles.Dock.DockCell;
 import CommercialeControles.Dock.ShowDockSlideController;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Ble;
+import com.gestionCommerciale.HibernateSchema.Dock;
+import com.gestionCommerciale.Models.BleQueries;
+import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -59,22 +64,21 @@ public class BleListeController implements Initializable {
     private JFXTextField rechreche;
     @FXML
     private JFXListView<BelCell> listeBle;
+    private BleQueries dockQueries = new BleQueries();
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+               List<Ble> listBlesDB = dockQueries.list();
         List<BelCell> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(new BelCell(i, 50000, 50));
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new BelCell(listBlesDB.get(i).getIdBle(), listBlesDB.get(i).getQte(),
+                     listBlesDB.get(i).getPrix()
+            ));
         }
-
         ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
         listeBle.setItems(myObservableList);
-        
         listeBle.setExpanded(true);
-        
-        
         setTotale();
 
     }    

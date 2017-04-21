@@ -7,6 +7,10 @@ package CommercialeControles.Ble;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import com.gestionCommerciale.HibernateSchema.Ble;
+import com.gestionCommerciale.HibernateSchema.Dock;
+import com.gestionCommerciale.Models.BleQueries;
+import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -15,6 +19,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -42,6 +47,8 @@ public class ModifierBleController implements Initializable {
     private JFXTextField prix;
     @FXML
     private Label savelabel;
+    //old id
+    int oldCode;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,7 +78,25 @@ public class ModifierBleController implements Initializable {
         } else {
 
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
+
             if (result.get() == ButtonType.OK) {
+                if (codeval.isEmpty() || quantiteval.isEmpty() || prixval.isEmpty()) {
+
+                    Notification.champVideNotification();
+
+                } else {
+                    BleQueries queries = new BleQueries();
+                    Ble ble = queries.getBle(oldCode+"");
+                    ble.setIdBle(Integer.parseInt(codeval));
+                    ble.setPrix(Double.parseDouble(prixval));
+                    ble.setQte(Integer.parseInt(quantiteval));
+                    queries.SaveOrUpdate(ble);
+                    Notification.Updatenotification();
+                    //new ShowPane().show();
+                    savelabel.setVisible(true);
+                    //??
+                    annuler(event);
+                }
                 // requete `Update
 
                 Notification.Updatenotification();
@@ -88,14 +113,20 @@ public class ModifierBleController implements Initializable {
 
         Methode.getStage(event).close();
     }
-    
-    
-    public  void setData (int code  , float  quantite ,  double  prix ) {
-        
+    private void annuler(ActionEvent event) {
+        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        g.close();
+
+    }
+
+    public void setData(int code, float quantite, double prix) {
+
         this.code.setText(Integer.toString(code));
         this.prix.setText(Double.toString(prix));
         this.quntite.setText(Float.toString(quantite));
-            
+        oldCode=code;
+        
+
     }
 
 }

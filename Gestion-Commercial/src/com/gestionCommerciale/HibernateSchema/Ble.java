@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @Table(name = "Ble")
 public class Ble {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_Ble", nullable = false)
     int idBle;
     @Column(name = "quantite", nullable = false)
@@ -38,7 +38,8 @@ public class Ble {
     public Ble() {
     }
 
-    public Ble(int qte, double prix) {
+    public Ble(int idBle, int qte, double prix) {
+        this.idBle = idBle;
         this.qte = qte;
         this.prix = prix;
     }

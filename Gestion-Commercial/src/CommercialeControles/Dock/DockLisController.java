@@ -1,13 +1,9 @@
-
 package CommercialeControles.Dock;
 
-import CommercialeControles.Client.ClienCell;
-import CommercialeControles.Client.ClientListController;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Dock;
-import com.gestionCommerciale.Models.ClientQueries;
 import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -31,7 +27,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 
 public class DockLisController implements Initializable {
 
@@ -65,32 +60,27 @@ public class DockLisController implements Initializable {
     private JFXListView<DockCell> listedock;
     private DockQueries dockQueries = new DockQueries();
 
-   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                List<Dock> listDocksDB = dockQueries.list();
-
-         List<DockCell> list = new ArrayList<>();
+        List<Dock> listDocksDB = dockQueries.list();
+        List<DockCell> list = new ArrayList<>();
         for (int i = 0; i < listDocksDB.size(); i++) {
-            list.add(new DockCell(listDocksDB.get(i).getIdDock(),listDocksDB.get(i).getNom()
-                    ,listDocksDB.get(i).getWilaya(),listDocksDB.get(i).getDistance()
-                    , listDocksDB.get(i).getPrixUnitTrans()
-                   ));            
+            list.add(new DockCell(listDocksDB.get(i).getIdDock(), listDocksDB.get(i).getNom(),
+                     listDocksDB.get(i).getWilaya(), listDocksDB.get(i).getDistance(),
+                     listDocksDB.get(i).getPrixUnitTrans()
+            ));
         }
         ObservableList<DockCell> myObservableList = FXCollections.observableList(list);
         listedock.setItems(myObservableList);
         listedock.setExpanded(true);
         setTotale();
 
-       
-    }    
-
+    }
 
     @FXML
     private void orederByName(ActionEvent event) {
         Order.setText("Nom");
     }
-
 
     @FXML
     private void setOrder(ActionEvent event) {
@@ -103,41 +93,41 @@ public class DockLisController implements Initializable {
 
     @FXML
     private void shwo50(ActionEvent event) {
-         NbShow.setText("50");
+        NbShow.setText("50");
     }
 
     @FXML
     private void show100(ActionEvent event) {
-         NbShow.setText("100");
+        NbShow.setText("100");
     }
 
     @FXML
     private void showtout(ActionEvent event) {
-         NbShow.setText("Tout");
+        NbShow.setText("Tout");
     }
 
     @FXML
     private void showAddStage(ActionEvent event) {
-        
+
         try {
-            Stage stage =  Methode.getStage(event) ; 
-            
-            AnchorPane pane  = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterDock)) ;
-            
-            StageDialog dialog  =  new StageDialog(stage, pane) ; 
+            Stage stage = Methode.getStage(event);
+
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterDock));
+
+            StageDialog dialog = new StageDialog(stage, pane);
             dialog.show();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(DockLisController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     @FXML
     private void rechrecher(ActionEvent event) {
     }
-    
-    private  void setTotale  () {
+
+    private void setTotale() {
         total.setText(Integer.toString(listedock.getItems().size()));
     }
 
@@ -163,27 +153,27 @@ public class DockLisController implements Initializable {
 
     @FXML
     private void showDockSlide(MouseEvent event) {
-        
-          try {
-            
-            int seletedrow  = listedock.getSelectionModel().getSelectedIndex()  ; 
-            Stage stage =  Methode.getStageMouses(event) ; 
+
+        try {
+
+            int seletedrow = listedock.getSelectionModel().getSelectedIndex();
+            Stage stage = Methode.getStageMouses(event);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.ShowDockSlide));
             loader.load();
-            
-            ShowDockSlideController controlClient =  loader.getController() ;
+
+            ShowDockSlideController controlClient = loader.getController();
             controlClient.setData(seletedrow, listedock);
-            
+
             AnchorPane root = loader.getRoot();
-            
-            StageDialog dialog = new StageDialog(stage, root) ; 
+
+            StageDialog dialog = new StageDialog(stage, root);
             dialog.show();
-            
+
         } catch (IOException ex) {
-            Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DockLisController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
+
 }

@@ -3,6 +3,10 @@ package CommercialeControles.Ble;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import com.gestionCommerciale.HibernateSchema.Ble;
+import com.gestionCommerciale.HibernateSchema.Dock;
+import com.gestionCommerciale.Models.BleQueries;
+import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -32,6 +36,7 @@ public class AjouterBleController implements Initializable {
     private JFXTextField prix;
     @FXML
     private Label savelabel;
+    BleQueries queries = new BleQueries();
 
     
     @Override
@@ -57,14 +62,23 @@ public class AjouterBleController implements Initializable {
         
         if (codeval.isEmpty() || quantiteval.isEmpty() || prixval.isEmpty()) {
                 
-                  Notification.champVideNotification();
+            Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
             
         } else {
-            
-              // requete `insertINto Ble
-              
-               Notification.Addnotification();
-               savelabel.setVisible(true);
+            if (queries.getBle(codeval) != null) {
+                //notification for already exists
+                Notification.error("Ce ble est exite déja!");
+            } else {
+            try {
+                    Ble ble = new Ble(Integer.parseInt(codeval),Integer.parseInt(quantiteval), Double.parseDouble(prixval));
+                    queries.SaveOrUpdate(ble);
+                    Notification.Addnotification();
+                    //new ShowPane().showClientList();
+                    savelabel.setVisible(true);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
         
         
