@@ -15,6 +15,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -29,6 +32,14 @@ public class AchatMenuController implements Initializable {
     private JFXButton Ble;
     @FXML
     private JFXButton Rapport;
+    @FXML
+    private ImageView homeimage;
+    @FXML
+    private ImageView dockicon;
+    @FXML
+    private ImageView bleicon;
+    @FXML
+    private ImageView rapporticon;
 
     
     @Override
@@ -63,6 +74,54 @@ public class AchatMenuController implements Initializable {
 
     @FXML
     private void showRapport(ActionEvent event) {
+    }
+
+    @FXML
+    private void exited(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/HomeGry.png"));
+        homeimage.setImage(img);
+    }
+
+    @FXML
+    private void entered(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/homegreen.png"));
+        homeimage.setImage(img);
+    }
+
+    @FXML
+    private void dockexited(MouseEvent event) {
+         Image img = new Image(getClass().getResourceAsStream("/icons/DockGry.png"));
+        dockicon.setImage(img);
+    }
+
+    @FXML
+    private void dockentered(MouseEvent event) {
+         Image img = new Image(getClass().getResourceAsStream("/icons/Dockgreen.png"));
+        dockicon.setImage(img);
+    }
+
+    @FXML
+    private void BleOut(MouseEvent event) {
+         Image img = new Image(getClass().getResourceAsStream("/icons/BleGry.png"));
+        bleicon.setImage(img);
+    }
+
+    @FXML
+    private void bleIN(MouseEvent event) {
+         Image img = new Image(getClass().getResourceAsStream("/icons/Blegreen.png"));
+        bleicon.setImage(img);
+    }
+
+    @FXML
+    private void rapportOut(MouseEvent event) {
+         Image img = new Image(getClass().getResourceAsStream("/icons/RapportGry.png"));
+        rapporticon.setImage(img);
+    }
+
+    @FXML
+    private void rapportIN(MouseEvent event) {
+         Image img = new Image(getClass().getResourceAsStream("/icons/statgreen.png"));
+        rapporticon.setImage(img);
     }
     
 }

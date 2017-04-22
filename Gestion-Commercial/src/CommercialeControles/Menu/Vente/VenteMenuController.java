@@ -15,6 +15,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -29,6 +32,14 @@ public class VenteMenuController implements Initializable {
     private JFXButton Produit;
     @FXML
     private JFXButton Facture;
+    @FXML
+    private ImageView homeicon;
+    @FXML
+    private ImageView iconclien;
+    @FXML
+    private ImageView iconProduit;
+    @FXML
+    private ImageView facturicon;
 
     /**
      * Initializes the controller class.
@@ -65,6 +76,38 @@ public class VenteMenuController implements Initializable {
     @FXML
     private void showfacture(ActionEvent event) {
          
+    }
+
+    @FXML
+    private void inhome(DragEvent event) {
+    }
+
+    @FXML
+    private void outhome(DragEvent event) {
+    }
+
+    @FXML
+    private void outclient(MouseEvent event) {
+    }
+
+    @FXML
+    private void incllient(MouseEvent event) {
+    }
+
+    @FXML
+    private void OutProduit(MouseEvent event) {
+    }
+
+    @FXML
+    private void Inproduit(MouseEvent event) {
+    }
+
+    @FXML
+    private void InFacture(MouseEvent event) {
+    }
+
+    @FXML
+    private void OutFacture(MouseEvent event) {
     }
     
 }
