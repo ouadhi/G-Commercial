@@ -22,19 +22,22 @@
    <children>
       <Label fx:id="total" layoutX="210.0" layoutY="37.0" styleClass="text" text="100" />
       <Label layoutX="238.0" layoutY="37.0" styleClass="text" text="Total" />
-      <Label layoutX="746.0" layoutY="35.0" styleClass="text" text="Oredr By :" />
-      <Pane layoutX="314.0" layoutY="23.0" prefHeight="44.0" prefWidth="381.0" style="-fx-border-color: #e4e7ee; -fx-border-radius: 36;">
+      <Label layoutX="306.0" layoutY="37.0" styleClass="text" text="Trie par:" />
+      <Pane layoutX="571.0" layoutY="25.0" prefHeight="44.0" prefWidth="412.0" styleClass="rechereche">
          <children>
-            <JFXTextField fx:id="recherchetxt" focusColor="#405aa80e" layoutX="41.0" layoutY="4.0" maxWidth="316.0" minWidth="226.0" onKeyTyped="#rechercher" prefHeight="35.0" prefWidth="316.0" promptText="Recherche" unFocusColor="#4d4d4d00" />
+            <JFXTextField fx:id="recherchetxt" focusColor="#405aa80e" layoutX="41.0" layoutY="4.0" maxWidth="352.0" minWidth="226.0" onKeyTyped="#rechercher" prefHeight="38.0" prefWidth="352.0" promptText="Recherche" unFocusColor="#4d4d4d00">
+               <font>
+                  <Font size="16.0" />
+               </font></JFXTextField>
             <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="icons/rechechenoir.png" />
+                  <Image url="icons/RechercheGry.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
       <JFXButton fx:id="Ajoute" layoutX="1016.0" layoutY="25.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Chauffeur" />
-      <MenuButton fx:id="orderby" layoutX="830.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="160.0" style="-fx-background-color: #f4f8f9;" text="Date">
+      <MenuButton fx:id="orderby" layoutX="390.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="160.0" style="-fx-background-color: #f4f8f9;" text="Date">
         <items>
           <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#orderDate" text="Date" />
             <MenuItem fx:id="VoyageMenuItem" mnemonicParsing="false" onAction="#oredrbyVoyage" text="Voyage" />

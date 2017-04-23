@@ -50,10 +50,12 @@ public class CamionViewController implements Initializable {
     private JFXListView<CamionCell> listeView;
    
     private MenuButton nbvisibel;
-    @FXML
-    private JFXTextField recherchetxt;
 
     CamionQueries camionQueries= new CamionQueries();
+    @FXML
+    private JFXTextField rechreche;
+    @FXML
+    private JFXTextField rechreche1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -122,9 +124,6 @@ public class CamionViewController implements Initializable {
          nbvisibel.setText("All");
     }
 
-    @FXML
-    private void rechercher(KeyEvent event) {
-    }
 
     @FXML
     private void showCamions(MouseEvent event) {
@@ -149,6 +148,10 @@ public class CamionViewController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void rechrecher(ActionEvent event) {
     }
     
 }

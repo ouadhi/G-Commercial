@@ -22,8 +22,8 @@
       <Text fill="#36d484" fontSmoothingType="LCD" layoutX="45.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Docks" wrappingWidth="94.51513671875" />
       <Label fx:id="total" layoutX="177.0" layoutY="38.0" styleClass="label_txt" text="100" />
       <Label layoutX="205.0" layoutY="38.0" styleClass="label_txt" text="Total" />
-      <Label layoutX="689.0" layoutY="38.0" styleClass="label_txt" text="Trie par : " />
-      <MenuButton fx:id="Order" layoutX="785.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code">
+      <Label layoutX="268.0" layoutY="38.0" styleClass="label_txt" text="Trie par : " />
+      <MenuButton fx:id="Order" layoutX="341.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code">
          <items>
             <MenuItem fx:id="bycode" mnemonicParsing="false" onAction="#oderByCode" text="Code" />
             <MenuItem fx:id="byname" mnemonicParsing="false" onAction="#orederByName" text="Nom" />
@@ -75,12 +75,15 @@
             </Label>
          </children>
       </GridPane>
-      <Pane layoutX="282.0" layoutY="23.0" prefHeight="45.0" prefWidth="367.0" style="-fx-border-color: #e4e7ee; -fx-border-radius: 36;">
+      <Pane layoutX="518.0" layoutY="23.0" prefHeight="43.0" prefWidth="431.0" styleClass="rechereche">
          <children>
-            <JFXTextField fx:id="recherchetxt" focusColor="#405aa800" layoutX="41.0" layoutY="4.0" maxWidth="302.0" minWidth="226.0" onKeyTyped="#rechercher" prefHeight="35.0" prefWidth="302.0" promptText="Recherche" unFocusColor="#4d4d4d00" />
+            <JFXTextField fx:id="recherchetxt" focusColor="#405aa800" layoutX="41.0" layoutY="4.0" maxWidth="372.0" minWidth="226.0" onKeyTyped="#rechercher" prefHeight="35.0" prefWidth="372.0" promptText="Recherche" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
+               <font>
+                  <Font size="16.0" />
+               </font></JFXTextField>
             <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="icons/rechechenoir.png" />
+                  <Image url="icons/RechercheGry.png" />
                </image>
             </ImageView>
          </children>

@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -22,8 +23,8 @@
       <Text fill="#36d484" fontSmoothingType="LCD" layoutX="66.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Ble" wrappingWidth="61.99999004602432" />
       <Label fx:id="total" layoutX="159.0" layoutY="37.0" styleClass="label_txt" text="100" />
       <Label layoutX="195.0" layoutY="37.0" styleClass="label_txt" text="Total" />
-      <Label layoutX="743.0" layoutY="40.0" styleClass="label_txt" text="Trie par : " />
-      <MenuButton fx:id="Order" layoutX="824.0" layoutY="26.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code">
+      <Label layoutX="270.0" layoutY="37.0" styleClass="label_txt" text="Trie par : " />
+      <MenuButton fx:id="Order" layoutX="351.0" layoutY="23.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code">
          <items>
             <MenuItem fx:id="bycode" mnemonicParsing="false" onAction="#oderByCode" text="Code" />
             <MenuItem fx:id="byquantite" mnemonicParsing="false" onAction="#orederByquantite" text="Quantité" />
@@ -33,12 +34,18 @@
       <JFXButton fx:id="ajouter" layoutX="1005.0" layoutY="24.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter" />
       <JFXListView fx:id="listeBle" layoutX="51.0" layoutY="212.0" onMouseClicked="#showDockSlide" prefHeight="461.0" prefWidth="1114.0" />
       <Separator layoutX="52.0" layoutY="205.0" prefHeight="7.0" prefWidth="1114.0" styleClass="separateur" />
-      <Pane layoutX="289.0" layoutY="22.0" prefHeight="51.0" prefWidth="397.0" styleClass="rechereche">
+      <Pane layoutX="547.0" layoutY="27.0" prefHeight="43.0" prefWidth="397.0" styleClass="rechereche">
          <children>
-            <JFXTextField fx:id="rechreche" focusColor="#405aa80a" layoutX="43.0" layoutY="4.0" maxWidth="333.0" minWidth="167.0" onAction="#rechrecher" prefHeight="43.0" prefWidth="333.0" promptText="Recherche" unFocusColor="#4d4d4d0d" />
+            <JFXTextField fx:id="rechreche" focusColor="#415aa600" layoutX="43.0" layoutY="4.0" maxWidth="333.0" minWidth="167.0" onAction="#rechrecher" prefHeight="35.0" prefWidth="333.0" promptText="Recherche" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font size="16.0" />
+               </font></JFXTextField>
             <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="icons/rechechenoir.png" />
+                  <Image url="icons/RechercheGry.png" />
                </image>
             </ImageView>
          </children>

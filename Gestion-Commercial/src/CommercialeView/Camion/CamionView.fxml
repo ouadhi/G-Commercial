@@ -20,11 +20,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" style="-fx-background-color: #f4f8f9;" stylesheets="@../Chauffeur/ChauffeurCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Camion.CamionViewController">
    <children>
-      <Label fx:id="total" layoutX="179.0" layoutY="37.0" styleClass="text" text="100" />
-      <Label layoutX="214.0" layoutY="37.0" styleClass="text" text="Total" />
-      <Label layoutX="734.0" layoutY="35.0" styleClass="text" text="Oredr By :" />
-      <JFXButton fx:id="Ajoute" layoutX="1007.0" layoutY="33.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Camion" />
-      <MenuButton fx:id="orderby" layoutX="811.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" style="-fx-background-color: #f4f8f9;" text="Date">
+      <Label fx:id="total" layoutX="177.0" layoutY="37.0" styleClass="text" text="100" />
+      <Label layoutX="212.0" layoutY="37.0" styleClass="text" text="Total" />
+      <Label layoutX="273.0" layoutY="35.0" styleClass="text" text="Trie par :" />
+      <JFXButton fx:id="Ajoute" layoutX="1007.0" layoutY="25.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Camion" />
+      <MenuButton fx:id="orderby" layoutX="350.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" style="-fx-background-color: #f4f8f9;" text="Date">
          <items>
             <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#orderDate" text="Date" />
             <MenuItem fx:id="VoyageMenuItem" mnemonicParsing="false" onAction="#oredrbyVoyage" text="Voyage" />
@@ -37,16 +37,6 @@
          </font>
       </Text>
       <JFXListView fx:id="listeView" layoutX="51.0" layoutY="177.0" onMouseClicked="#showCamions" prefHeight="438.0" prefWidth="1116.0" stylesheets="@../Chauffeur/ChauffeurCSS.css" />
-      <Pane layoutX="308.0" layoutY="25.0" prefHeight="44.0" prefWidth="379.0" style="-fx-border-color: #e4e7ee; -fx-border-radius: 36;">
-         <children>
-            <JFXTextField fx:id="recherchetxt" layoutX="41.0" layoutY="4.0" maxWidth="318.0" minWidth="226.0" onKeyTyped="#rechercher" prefHeight="35.0" prefWidth="318.0" promptText="Recherche" />
-            <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="icons/rechechenoir.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
       <Separator layoutX="51.0" layoutY="174.0" prefHeight="6.0" prefWidth="1116.0" styleClass="separateur" />
       <GridPane hgap="3.0" layoutX="51.0" layoutY="126.0" prefHeight="51.0" prefWidth="1116.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel">
          <columnConstraints>
@@ -88,6 +78,23 @@
             </Label>
          </children>
       </GridPane>
+      <Pane layoutX="560.0" layoutY="21.0" prefHeight="43.0" prefWidth="397.0" styleClass="rechereche">
+         <children>
+            <JFXTextField fx:id="rechreche1" focusColor="#415aa600" layoutX="43.0" layoutY="4.0" maxWidth="333.0" minWidth="167.0" onAction="#rechrecher" prefHeight="35.0" prefWidth="333.0" promptText="Recherche" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="icons/RechercheGry.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
    <opaqueInsets>
       <Insets />
