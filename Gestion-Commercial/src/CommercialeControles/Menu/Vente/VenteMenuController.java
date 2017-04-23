@@ -21,6 +21,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.PopOver;
 
 
 public class VenteMenuController implements Initializable {
@@ -80,6 +81,8 @@ public class VenteMenuController implements Initializable {
 
     @FXML
     private void showfacture(ActionEvent event) {
+        PopOver popup = new PopOver() ; 
+        
         
     }
 

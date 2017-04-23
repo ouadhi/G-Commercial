@@ -1,6 +1,7 @@
 package CommercialeControles;
 
 import UIControle.ShowPane;
+import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -19,10 +20,12 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import org.controlsfx.control.PopOver;
 
 public class Home2FXMLController implements Initializable {
 
@@ -51,6 +54,8 @@ public class Home2FXMLController implements Initializable {
     @FXML
     private AnchorPane workespace;
     public static AnchorPane workespacepane ;
+    @FXML
+    private ImageView iconMore;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -176,6 +181,21 @@ public class Home2FXMLController implements Initializable {
     private void InMenu(MouseEvent event) {
         transitionIn(panel_menu).play(); 
                 changeMenutoStrong() ; 
+    }
+
+    @FXML
+    private void showMore(MouseEvent event) throws IOException {
+        
+        PopOver  popup  = new  PopOver()  ; 
+       AnchorPane menu  = FXMLLoader.load(getClass().getResource(ViewUrl.moreMenu)) ; 
+        
+        popup.setContentNode(menu);
+        popup.setCornerRadius(4);
+        
+        popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
+        popup.show(iconMore);
+       
+        
     }
 
 }

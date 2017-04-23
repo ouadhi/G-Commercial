@@ -42,4 +42,7 @@ public class ViewUrl {
     public static String AchatMenu = "/CommercialeView/Menu/Achat/AchatMenu.fxml";
     public static String TransportMenu = "/CommercialeView/LeftMenu2FXML.fxml";
     
+    
+    public static String moreMenu  = "/CommercialeView/MoreMenuFXML.fxml" ; 
+    
 }
