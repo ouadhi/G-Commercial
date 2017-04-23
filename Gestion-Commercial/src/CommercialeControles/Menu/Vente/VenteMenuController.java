@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
@@ -40,6 +41,10 @@ public class VenteMenuController implements Initializable {
     private ImageView iconProduit;
     @FXML
     private ImageView facturicon;
+    @FXML
+    private ImageView facturicon1;
+    @FXML
+    private JFXButton Rapport;
 
     /**
      * Initializes the controller class.
@@ -75,31 +80,21 @@ public class VenteMenuController implements Initializable {
 
     @FXML
     private void showfacture(ActionEvent event) {
-         
+        
     }
 
-    @FXML
-    private void inhome(DragEvent event) {
-    }
-
-    @FXML
-    private void outhome(DragEvent event) {
-    }
-
-    @FXML
-    private void outclient(MouseEvent event) {
-    }
-
-    @FXML
-    private void incllient(MouseEvent event) {
-    }
+    
 
     @FXML
     private void OutProduit(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/ProduitGry.png"));
+        iconProduit.setImage(img);
     }
 
     @FXML
     private void Inproduit(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/ProduitOrange.png"));
+        iconProduit.setImage(img);
     }
 
     @FXML
@@ -109,5 +104,47 @@ public class VenteMenuController implements Initializable {
     @FXML
     private void OutFacture(MouseEvent event) {
     }
+
+    @FXML
+    private void outHome(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/HomeGry.png"));
+        homeicon.setImage(img);
+        
+    }
+
+    @FXML
+    private void inHome(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/HomeOrange.png"));
+        homeicon.setImage(img);
+    }
+
+    @FXML
+    private void OutClient(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/ClientGry.png"));
+        iconclien.setImage(img);
+    }
+
+    @FXML
+    private void InClient(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/ClientOrange.png"));
+        iconclien.setImage(img);
+    }
+
+    @FXML
+    private void OutRapport(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/RapportGry.png"));
+        facturicon1.setImage(img);
+    }
+
+    @FXML
+    private void InRapport(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/RapportOrange.png"));
+        facturicon1.setImage(img);
+    }
+
+    @FXML
+    private void showRapport(ActionEvent event) {
+    }
+
     
 }

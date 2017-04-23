@@ -14,6 +14,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -28,6 +31,14 @@ public class LeftMenu2Controller implements Initializable {
     private JFXButton camion;
     @FXML
     private JFXButton rapport;
+    @FXML
+    private ImageView iconHome;
+    @FXML
+    private ImageView iconCamion;
+    @FXML
+    private ImageView iconRapport;
+    @FXML
+    private ImageView iconChauffeur;
 
     
     @Override
@@ -63,6 +74,54 @@ public class LeftMenu2Controller implements Initializable {
     @FXML
     private void showrapport(ActionEvent event) {
       
+    }
+
+    @FXML
+    private void OutHome(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/HomeGry.png"));
+        iconHome.setImage(img);
+    }
+
+    @FXML
+    private void InHome(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/HomeMagent.png"));
+        iconHome.setImage(img);
+    }
+
+    @FXML
+    private void OutChauffeur(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/ChauffeurGry.png"));
+        iconChauffeur.setImage(img);
+    }
+
+    @FXML
+    private void InChauffeur(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/ChauffeurMagent.png"));
+        iconChauffeur.setImage(img);
+    }
+
+    @FXML
+    private void OutCamion(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/CamionGry.png"));
+        iconCamion.setImage(img);
+    }
+
+    @FXML
+    private void InCamion(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/CamionMagent.png"));
+        iconCamion.setImage(img);
+    }
+
+    @FXML
+    private void OutRapport(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/RapportGry.png"));
+        iconRapport.setImage(img);
+    }
+
+    @FXML
+    private void InRapport(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/RapportMagent.png"));
+        iconRapport.setImage(img);
     }
     
 }

@@ -106,11 +106,6 @@ public class Home2FXMLController implements Initializable {
 
     }
 
-    @FXML
-    private void nextmenu(MouseEvent event) {
-//        TranslateTransition translate = transitionIn(panel_menu);
-//        translate.play();
-    }
 
     private TranslateTransition transitionout(AnchorPane node) {
         TranslateTransition transition = new TranslateTransition();
@@ -169,6 +164,18 @@ public class Home2FXMLController implements Initializable {
             }
         }
         
+    }
+
+    @FXML
+    private void OutManu(MouseEvent event) {
+        transitionout(panel_menu).play();
+                changeMenutoSmall(); 
+    }
+
+    @FXML
+    private void InMenu(MouseEvent event) {
+        transitionIn(panel_menu).play(); 
+                changeMenutoStrong() ; 
     }
 
 }

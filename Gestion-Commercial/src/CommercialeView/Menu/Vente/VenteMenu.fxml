@@ -10,7 +10,7 @@
    <children>
       <VBox prefHeight="962.0" prefWidth="128.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton fx:id="home" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="112.0" onAction="#showhome" onDragEntered="#inhome" onDragExited="#outhome" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Home">
+            <JFXButton fx:id="home" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="112.0" onAction="#showhome" onMouseEntered="#inHome" onMouseExited="#outHome" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Home">
                <graphic>
                   <ImageView fx:id="homeicon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -19,9 +19,9 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="Client" alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#showClient" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Client">
+            <JFXButton fx:id="Client" alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#showClient" onMouseEntered="#InClient" onMouseExited="#OutClient" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Client">
                <graphic>
-                  <ImageView fx:id="iconclien" fitHeight="28.0" fitWidth="28.0" onMouseEntered="#incllient" onMouseExited="#outclient" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="iconclien" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/ClientGry.png" />
                      </image>
@@ -37,16 +37,16 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="Facture" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="61.0" onAction="#showfacture" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Facture">
+            <JFXButton fx:id="Facture" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="61.0" onAction="#showfacture" onMouseExited="#InFacture" onMouseMoved="#OutFacture" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Facture">
                <graphic>
-                  <ImageView fx:id="facturicon" fitHeight="28.0" fitWidth="28.0" onMouseExited="#InFacture" onMouseMoved="#OutFacture" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="facturicon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/state.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="Facture1" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="163.0" onAction="#showfacture" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Rapport">
+            <JFXButton fx:id="Rapport" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="163.0" onAction="#showRapport" onMouseEntered="#InRapport" onMouseExited="#OutRapport" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Rapport">
                <graphic>
                   <ImageView fx:id="facturicon1" fitHeight="28.0" fitWidth="28.0" onMouseExited="#InFacture" onMouseMoved="#OutFacture" pickOnBounds="true" preserveRatio="true">
                      <image>
