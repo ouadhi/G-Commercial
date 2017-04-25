@@ -5,12 +5,19 @@
  */
 package CommercialeControles;
 
+import UIControle.Methode;
+import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -28,16 +35,19 @@ public class MoreMenuController implements Initializable {
     @FXML
     private JFXButton exite;
 
-    /**
-     * Initializes the controller class.
-     */
+    
+    Stage stage  ; 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
     @FXML
-    private void showgestion(ActionEvent event) {
+    private void showgestion(ActionEvent event) throws IOException {
+        AnchorPane pane  = FXMLLoader.load(getClass().getResource(ViewUrl.GestionUtilisateur)) ; 
+        Scene scene  = new Scene(pane) ; 
+        
+        this.stage.setScene(scene);
     }
 
     @FXML
@@ -45,11 +55,24 @@ public class MoreMenuController implements Initializable {
     }
 
     @FXML
-    private void showLoginform(ActionEvent event) {
+    private void showLoginform(ActionEvent event) throws IOException {
+        AnchorPane pane  = FXMLLoader.load(getClass().getResource(ViewUrl.Login)) ; 
+        Scene scene  = new Scene(pane) ; 
+        
+        this.stage.setScene(scene);
+      
+        
     }
 
     @FXML
     private void quitter(ActionEvent event) {
+        System.exit(0);
     }
     
+    
+    public void setStage  (Stage curent)  {
+        
+        this.stage = curent ; 
+        
+    }
 }

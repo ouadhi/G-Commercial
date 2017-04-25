@@ -59,6 +59,8 @@ public class LeftMenu2Controller implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+         
     }
 
     @FXML

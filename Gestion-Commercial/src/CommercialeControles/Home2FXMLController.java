@@ -1,5 +1,6 @@
 package CommercialeControles;
 
+import UIControle.Methode;
 import UIControle.ShowPane;
 import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
@@ -19,41 +20,40 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.PopOver;
 
 public class Home2FXMLController implements Initializable {
 
-    
-
-    
-     public static JFXButton bttn_menu;
-     private boolean smalShow ; 
+    public static JFXButton bttn_menu;
+    private boolean smalShow;
 
     @FXML
     private JFXDrawer main_menu;
 
     @FXML
     private JFXButton menu_button;
-   
+
     @FXML
     private AnchorPane panel_menu;
-    
+
     @FXML
     private JFXHamburger hamburguerbutton;
-    
+
     @FXML
     private AnchorPane menu;
-    public static AnchorPane menup ; 
-    
+    public static AnchorPane menup;
+
     @FXML
     private AnchorPane workespace;
-    public static AnchorPane workespacepane ;
+    public static AnchorPane workespacepane;
     @FXML
     private ImageView iconMore;
 
@@ -61,15 +61,14 @@ public class Home2FXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            workespacepane = workespace ; 
-            menup = menu ; 
+            workespacepane = workespace;
+            menup = menu;
             bttn_menu = menu_button;
-            smalShow =  true  ; 
+            smalShow = true;
 
             AnchorPane menu_draw = FXMLLoader.load(getClass().getResource("/CommercialeView/MainMenu.fxml"));
             main_menu.setSidePane(menu_draw);
-            
-        
+
             hummberguer_transaction();
             new ShowPane().showChauffeur();
 
@@ -84,18 +83,16 @@ public class Home2FXMLController implements Initializable {
         hamburguerbutton.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
             transition.setRate(transition.getRate() * -1);
             transition.play();
-            
-             if (smalShow) {
-                transitionIn(panel_menu).play(); 
-                changeMenutoStrong() ; 
-                smalShow= false  ; 
-            }else{
+
+            if (smalShow) {
+                transitionIn(panel_menu).play();
+                changeMenutoStrong();
+                smalShow = false;
+            } else {
                 transitionout(panel_menu).play();
-                changeMenutoSmall(); 
-                smalShow = true  ;
+                changeMenutoSmall();
+                smalShow = true;
             }
-            
-            
 
         });
     }
@@ -110,7 +107,6 @@ public class Home2FXMLController implements Initializable {
         }
 
     }
-
 
     private TranslateTransition transitionout(AnchorPane node) {
         TranslateTransition transition = new TranslateTransition();
@@ -138,64 +134,68 @@ public class Home2FXMLController implements Initializable {
         return transition;
 
     }
-    
-    
+
     public void setMenu(AnchorPane Menu) {
         menu.getChildren().setAll(Menu);
-         changeMenutoSmall();
+        changeMenutoSmall();
     }
-    
-    
-    private void changeMenutoSmall ()  {
-        AnchorPane pane = (AnchorPane) menu.getChildren().get(0) ; 
-        VBox box = (VBox) pane.getChildren().get(0) ; 
-        
+
+    private void changeMenutoSmall() {
+        AnchorPane pane = (AnchorPane) menu.getChildren().get(0);
+        VBox box = (VBox) pane.getChildren().get(0);
+
         for (Node node : box.getChildren()) {
             if (node instanceof JFXButton) {
-                 ((JFXButton) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY) ; 
-                 ((JFXButton) node).setAlignment(Pos.CENTER_RIGHT); 
+                ((JFXButton) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                ((JFXButton) node).setAlignment(Pos.CENTER_RIGHT);
             }
         }
-        
+
     }
-    
-     private void changeMenutoStrong ()  {
-        AnchorPane pane = (AnchorPane) menu.getChildren().get(0) ; 
-        VBox box = (VBox) pane.getChildren().get(0) ; 
+
+    private void changeMenutoStrong() {
+        AnchorPane pane = (AnchorPane) menu.getChildren().get(0);
+        VBox box = (VBox) pane.getChildren().get(0);
         for (Node node : box.getChildren()) {
-            if (node instanceof JFXButton) { 
-                 ((JFXButton) node).setContentDisplay(ContentDisplay.LEFT) ; 
-                 ((JFXButton) node).setAlignment(Pos.BASELINE_LEFT); 
+            if (node instanceof JFXButton) {
+                ((JFXButton) node).setContentDisplay(ContentDisplay.LEFT);
+                ((JFXButton) node).setAlignment(Pos.BASELINE_LEFT);
             }
         }
-        
+
     }
 
     @FXML
     private void OutManu(MouseEvent event) {
         transitionout(panel_menu).play();
-                changeMenutoSmall(); 
+        changeMenutoSmall();
     }
 
     @FXML
     private void InMenu(MouseEvent event) {
-        transitionIn(panel_menu).play(); 
-                changeMenutoStrong() ; 
+        transitionIn(panel_menu).play();
+        changeMenutoStrong();
     }
 
     @FXML
     private void showMore(MouseEvent event) throws IOException {
-        
-        PopOver  popup  = new  PopOver()  ; 
-       AnchorPane menu  = FXMLLoader.load(getClass().getResource(ViewUrl.moreMenu)) ; 
-        
-        popup.setContentNode(menu);
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(ViewUrl.moreMenu));
+        loader.load();
+
+        MoreMenuController control = loader.getController();
+        control.setStage(Methode.getStageMouses(event));
+
+        AnchorPane root = loader.getRoot();
+
+        PopOver popup = new PopOver();
+        popup.setContentNode(root);
         popup.setCornerRadius(4);
-        
+
         popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
         popup.show(iconMore);
-       
-        
+
     }
 
 }

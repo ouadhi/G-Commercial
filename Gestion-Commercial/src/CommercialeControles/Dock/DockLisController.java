@@ -54,7 +54,9 @@ public class DockLisController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         List<Dock> listDocksDB = dockQueries.list();
+        
         List<DockCell> list = new ArrayList<>();
         for (int i = 0; i < listDocksDB.size(); i++) {
             list.add(new DockCell(listDocksDB.get(i).getIdDock(), listDocksDB.get(i).getNom(),

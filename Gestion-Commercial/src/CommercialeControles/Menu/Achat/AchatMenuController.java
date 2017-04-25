@@ -1,25 +1,21 @@
 
 package CommercialeControles.Menu.Achat;
 
-import CommercialeControles.HomeFXMLController;
+import CommercialeControles.Home2FXMLController;
 import UIControle.ShowPane;
+import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 
 public class AchatMenuController implements Initializable {
@@ -48,16 +44,11 @@ public class AchatMenuController implements Initializable {
     }    
 
     @FXML
-    private void showhome(ActionEvent event) {
-          try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/CommercialeView/HomeFXML.fxml"));
-            Scene scene = new Scene(pane) ; 
-            Stage  stage = (Stage) ((Node) (event.getSource())).getScene().getWindow() ; 
-            
-            stage.setScene(scene);
-        } catch (IOException ex) {
-            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void showhome(ActionEvent event) throws IOException {
+
+
+         new ShowPane().showOperationAchat();
+         
     }
 
     @FXML

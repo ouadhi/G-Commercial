@@ -88,7 +88,7 @@
     -fx-line-height: normal;
     -fx-letter-spacing: normal;
     -fx-text-align: left;
-   -fx-text-fill:#2c537a ;
+    -fx-text-fill:#2c537a ;
 }
 
 
@@ -109,13 +109,13 @@
     -fx-line-height: normal;
     -fx-letter-spacing: normal;
     -fx-text-align: left;
-   -fx-text-fill:#ffffff ;
-   -fx-background-color :  #48afea; 
-   -fx-background-raduis : 4px ; 
+    -fx-text-fill:#ffffff ;
+    -fx-background-color :  #48afea; 
+    -fx-background-raduis : 4px ; 
 }
 .button_save:hover {
     -fx-background-color :  #0083c5; 
-    
+
 }
 .button_save:pressed {
     -fx-background-color : #61bbf2; 
@@ -129,11 +129,11 @@
     -fx-line-height: normal;
     -fx-letter-spacing: normal;
     -fx-text-align: left;
-   -fx-text-fill:#ffffff ;
-   -fx-background-color :  #fa9f47; 
-   -fx-background-raduis : 4px ; 
+    -fx-text-fill:#ffffff ;
+    -fx-background-color :  #fa9f47; 
+    -fx-background-raduis : 4px ; 
 }
-    
+
 
 button_annuler:hover {
     -fx-background-color : #fa8733; 
@@ -143,7 +143,7 @@ button_annuler:pressed {
 }
 
 .separateur {
-   -fx-background-color : #7d6dfb ; 
+    -fx-background-color : #7d6dfb ; 
 }
 
 .title_panel {
