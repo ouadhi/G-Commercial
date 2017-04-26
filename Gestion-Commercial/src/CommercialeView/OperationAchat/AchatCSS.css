@@ -91,3 +91,72 @@
     -fx-vertical-gap : 5;   
     -fx-background-color : #f4f8f9; ; 
 }
+
+.finOperation{
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: 500;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill: #2c537a ; 
+}
+
+.champtxt {
+    -fx-background-color : #f6f7fb;
+    -fx-background-radius : 4px ;
+}
+
+.label_txt {
+    
+    -fx-font-family: Roboto;
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill : #90a4ae;  
+}
+
+.button_save {
+    -fx-font-family: Roboto;
+    -fx-font-size: 24px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+   -fx-text-fill:#ffffff ;
+   -fx-background-color :  #48afea; 
+   -fx-background-raduis : 4px ; 
+}
+.button_save:hover {
+    -fx-background-color :  #0083c5; 
+    
+}
+.button_save:pressed {
+    -fx-background-color : #61bbf2; 
+}
+
+.button_annuler {
+    -fx-font-family: Roboto;
+    -fx-font-size: 24px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+   -fx-text-fill:#ffffff ;
+   -fx-background-color :  #fa9f47; 
+   -fx-background-raduis : 4px ; 
+}
+    
+
+button_annuler:hover {
+    -fx-background-color : #fa8733; 
+}
+button_annuler:pressed {
+    -fx-background-color :  #ffb066; 
+}

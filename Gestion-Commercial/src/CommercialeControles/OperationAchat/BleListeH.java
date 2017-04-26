@@ -1,11 +1,17 @@
 package CommercialeControles.OperationAchat;
 
 import CommercialeControles.Chauffeur.AjouterChauffeuerDialog;
+import UIControle.Methode;
+import UIControle.StageDialog;
+import UIControle.ViewUrl;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import static javafx.scene.layout.Region.USE_PREF_SIZE;
@@ -13,7 +19,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class ChauffeurListH extends GridPane {
+public class BleListeH extends GridPane {
 
     protected ColumnConstraints columnConstraints;
     protected RowConstraints rowConstraints;
@@ -23,13 +29,12 @@ public class ChauffeurListH extends GridPane {
     protected Label label;
     protected Label label0;
 
-    private String nom, prenom;
-    private String telephone;
+    private int code_ble;
+    private double quantite;
 
-    public ChauffeurListH(String nom, String prenom, String telephone) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.telephone = telephone;
+    public BleListeH(int code_ble, double quantite) {
+        this.code_ble = code_ble;
+        this.quantite = quantite;
 
         columnConstraints = new ColumnConstraints();
         rowConstraints = new RowConstraints();
@@ -75,7 +80,7 @@ public class ChauffeurListH extends GridPane {
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
         GridPane.setMargin(imageView, new Insets(0.0, 0.0, 0.0, 39.0));
-        Image img = new Image(getClass().getResourceAsStream("/imgs/avatar3.jpg"));
+        Image img = new Image(getClass().getResourceAsStream("/icons/BleGry.png"));
         imageView.setImage(img);
 
         GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
@@ -83,7 +88,7 @@ public class ChauffeurListH extends GridPane {
         GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label.setText(this.nom + " " + this.prenom);
+        label.setText(Integer.toString(this.code_ble));
         label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));
@@ -94,7 +99,7 @@ public class ChauffeurListH extends GridPane {
         GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
         label0.setAlignment(javafx.geometry.Pos.CENTER);
         label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label0.setText(this.telephone);
+        label0.setText(Double.toString(this.quantite));
         label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));
@@ -110,8 +115,8 @@ public class ChauffeurListH extends GridPane {
 
     }
 
-    public ChauffeurListH() {
-        
+    public BleListeH() {
+
         columnConstraints = new ColumnConstraints();
         rowConstraints = new RowConstraints();
         rowConstraints0 = new RowConstraints();
@@ -173,7 +178,7 @@ public class ChauffeurListH extends GridPane {
         GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
         label0.setAlignment(javafx.geometry.Pos.CENTER);
         label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label0.setText("Chauffeur");
+        label0.setText("Ble");
         label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));
@@ -186,12 +191,20 @@ public class ChauffeurListH extends GridPane {
         getChildren().add(imageView);
         getChildren().add(label);
         getChildren().add(label0);
-        
-        this.setOnMouseClicked(event->{
-             Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        AjouterChauffeuerDialog dialog = new AjouterChauffeuerDialog(g);
-        dialog.show();
-        
+
+        this.setOnMouseClicked(event -> {
+            try {
+                Stage stage = Methode.getStageMouses(event) ;
+
+                AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterBle));
+
+                StageDialog dialog = new StageDialog(stage, pane);
+                dialog.show();
+
+            } catch (IOException ex) {
+
+            }
+
         });
     }
 

@@ -46,6 +46,9 @@ public class ViewUrl {
     // *********************
     
     public static String selectChauffeur  = "/CommercialeView/OperationAchat/SelectionnerChauffeur.fxml"; 
+    public static String selectCamion = "/CommercialeView/OperationAchat/SelectionnerCamion.fxml" ; 
     public static String operationAchat  =  "/CommercialeView/OperationAchat/OperationMain.fxml";
+    public static String selectBle =  "/CommercialeView/OperationAchat/SelectionnerBle.fxml" ; 
+    public static String informationAcaht  = "/CommercialeView/OperationAchat/FinOperation.fxml" ; 
     
 }

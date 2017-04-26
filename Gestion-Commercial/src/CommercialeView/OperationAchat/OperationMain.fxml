@@ -10,8 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="background" stylesheets="@AchatCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.OperationAchat.OperationMainController">
+<AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="background" stylesheets="@AchatCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.OperationAchat.OperationMainController">
    <children>
       <Text fill="#36d484" layoutX="93.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
          <font>
@@ -33,8 +32,8 @@
             </ImageView>
          </children>
       </Pane>
-      <AnchorPane fx:id="space" layoutX="88.0" layoutY="158.0" prefHeight="468.0" prefWidth="1075.0" style="-fx-background-color: white;" />
-      <JFXButton layoutX="535.0" layoutY="613.0" prefHeight="35.0" prefWidth="100.0" styleClass="buttn_suivant" text="Suivant" />
-      <JFXButton layoutX="653.0" layoutY="613.0" prefHeight="35.0" prefWidth="100.0" styleClass="buttn_suivant" text="Precédent" />
+      <AnchorPane fx:id="space" layoutX="72.0" layoutY="156.0" prefHeight="468.0" prefWidth="1075.0" style="-fx-background-color: white;" />
+      <JFXButton fx:id="suivant" layoutX="519.0" layoutY="611.0" onAction="#methodesuivant" prefHeight="35.0" prefWidth="100.0" styleClass="buttn_suivant" text="Suivant" />
+      <JFXButton fx:id="precedent" layoutX="637.0" layoutY="611.0" onAction="#methodeprecedent" prefHeight="35.0" prefWidth="100.0" styleClass="buttn_suivant" text="Precedent" />
    </children>
 </AnchorPane>

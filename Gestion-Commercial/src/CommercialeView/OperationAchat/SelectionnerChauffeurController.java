@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package CommercialeView.OperationAchat;
 
 import CommercialeControles.Dock.DockCell;
 import CommercialeControles.OperationAchat.ChauffeurListH;
+import CommercialeControles.OperationAchat.FinOperationController;
 import com.jfoenix.controls.JFXListView;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,16 +14,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
+import javafx.scene.input.MouseEvent;
 
-/**
- * FXML Controller class
- *
- * @author mac
- */
 public class SelectionnerChauffeurController implements Initializable {
 
     @FXML
     private JFXListView<ChauffeurListH> listeChaffeur;
+     ChauffeurListH chauffeurSelected ; 
 
     
     @Override
@@ -45,5 +39,13 @@ public class SelectionnerChauffeurController implements Initializable {
         listeChaffeur.setExpanded(true);
      
     }    
+
+    @FXML
+    private void select(MouseEvent event) {
+       
+        chauffeurSelected  = listeChaffeur.getSelectionModel().getSelectedItem() ; 
+        FinOperationController.chauffeur =  chauffeurSelected ; 
+        
+    }
     
 }
