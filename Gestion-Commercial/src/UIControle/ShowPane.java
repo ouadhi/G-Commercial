@@ -81,6 +81,10 @@ public class ShowPane {
          show(ViewUrl.operationAchat, Home2FXMLController.workespacepane);
     }
     
+    public void showListAchat() {
+         show(ViewUrl.ListAchats, Home2FXMLController.workespacepane);
+    }
+    
     
 
 

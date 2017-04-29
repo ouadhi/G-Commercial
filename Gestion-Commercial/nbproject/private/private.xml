@@ -5,11 +5,12 @@
         <group>
             <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeView/OperationAchat/AchatCSS.css</file>
             <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeControles/OperationAchat/FinOperationController.java</file>
-            <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeControles/OperationAchat/CamionListeH.java</file>
-            <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeControles/OperationAchat/BleListeH.java</file>
-            <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeView/Dock/DockCSS.css</file>
+            <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeControles/OperationAchat/AchatCell.java</file>
+            <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/UIControle/StageDialog.java</file>
+            <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeControles/OperationAchat/ModifierAchatController.java</file>
             <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/UIControle/ViewUrl.java</file>
-            <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeControles/OperationAchat/OperationMainController.java</file>
+            <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeView/Ble/BleCSS.css</file>
+            <file>file:/Users/mac/NetBeansProjects/Gestion%203/system-gestion/Gestion-Commercial/src/CommercialeControles/OperationAchat/ListeAchatController.java</file>
         </group>
     </open-files>
 </project-private>

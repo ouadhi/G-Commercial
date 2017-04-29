@@ -160,3 +160,29 @@ button_annuler:hover {
 button_annuler:pressed {
     -fx-background-color :  #ffb066; 
 }
+
+.Ajouter_button {
+    -fx-background-radius: 4px;
+    -fx-background-color: #48afea;
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: normal ;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill: #f6f7fb;
+}
+
+.menuButton {
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill : #90a4ae ;   
+    -fx-background-color  : #f4f8f9 ; 
+    
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="805.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.OperationAchat.AchatSlidController">
+   <children>
+      <JFXButton fx:id="laste" layoutY="1.0" onAction="#lastAchat" prefHeight="406.0" prefWidth="70.0" text="&lt;" />
+      <JFXButton fx:id="next" layoutX="735.0" layoutY="1.0" onAction="#nextAchat" prefHeight="406.0" prefWidth="70.0" text="&gt;" />
+      <AnchorPane fx:id="pane" layoutX="71.0" layoutY="4.0" prefHeight="406.0" prefWidth="664.0" />
+   </children>
+</AnchorPane>

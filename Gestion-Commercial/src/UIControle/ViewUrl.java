@@ -50,5 +50,8 @@ public class ViewUrl {
     public static String operationAchat  =  "/CommercialeView/OperationAchat/OperationMain.fxml";
     public static String selectBle =  "/CommercialeView/OperationAchat/SelectionnerBle.fxml" ; 
     public static String informationAcaht  = "/CommercialeView/OperationAchat/FinOperation.fxml" ; 
+    public static String ListAchats = "/CommercialeView/OperationAchat/ListeAchat.fxml" ;
+    public static String ModifierAchat = "/CommercialeView/OperationAchat/ModifierAchat.fxml" ; 
+    public static String AchatSlid  = "/CommercialeView/OperationAchat/AchatSlid.fxml" ; 
     
 }

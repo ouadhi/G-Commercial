@@ -1,21 +1,17 @@
 
 package CommercialeControles.Menu.Achat;
 
-import CommercialeControles.Home2FXMLController;
 import UIControle.ShowPane;
-import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 
 public class AchatMenuController implements Initializable {
@@ -47,7 +43,7 @@ public class AchatMenuController implements Initializable {
     private void showhome(ActionEvent event) throws IOException {
 
 
-         new ShowPane().showOperationAchat();
+         new ShowPane().showListAchat();
          
     }
 

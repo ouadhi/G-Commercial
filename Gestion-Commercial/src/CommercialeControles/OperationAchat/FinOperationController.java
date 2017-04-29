@@ -148,7 +148,7 @@ public class FinOperationController implements Initializable {
 
     @FXML
     private void founiePressed(KeyEvent event) {
-       float qun_acquit = Float.parseFloat(Q_Acquit.getText());
+        float qun_acquit = Float.parseFloat(Q_Acquit.getText());
         float qun_founier = Float.parseFloat(Q_fournie.getText());
         float d = qun_acquit - qun_founier;
         diff.setText(Float.toString(d));
@@ -184,7 +184,9 @@ public class FinOperationController implements Initializable {
         } else {
 
             Notification.Addnotification();
-            new ShowPane().showOperationAchat();
+            new ShowPane().showListAchat();
+            setnull();
+
         }
 
     }
@@ -192,6 +194,15 @@ public class FinOperationController implements Initializable {
     @FXML
     private void quitter(ActionEvent event) {
         new ShowPane().showOperationAchat();
+        setnull();
+
+    }
+
+    private void setnull() {
+        
+        camion = null;
+        chauffeur = null;
+        ble = null;
 
     }
 
