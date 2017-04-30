@@ -3,6 +3,7 @@ package CommercialeControles.Menu.Vente;
 
 import CommercialeControles.HomeFXMLController;
 import UIControle.ShowPane;
+import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
@@ -58,7 +59,7 @@ public class VenteMenuController implements Initializable {
     @FXML
     private void showhome(ActionEvent event) {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/CommercialeView/HomeFXML.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.nouveauVente));
             Scene scene = new Scene(pane) ; 
             Stage  stage = (Stage) ((Node) (event.getSource())).getScene().getWindow() ; 
             

@@ -85,6 +85,11 @@ public class ShowPane {
          show(ViewUrl.ListAchats, Home2FXMLController.workespacepane);
     }
     
+    
+    public void showVente() {
+          show(ViewUrl.nouveauVente, Home2FXMLController.workespacepane);
+    }
+    
     private TranslateTransition transitionout(AnchorPane node) {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(node);

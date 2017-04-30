@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="1091.0" style="-fx-background-color: white;" stylesheets="@Vente.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Vente.SelectionnerClientController">
+   <children>
+      <JFXListView fx:id="ClientListe" layoutX="32.0" layoutY="130.0" prefHeight="325.0" prefWidth="1043.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="412.0" layoutY="24.0" styleClass="titre" text="Selectionner Un Client" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="411.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="490.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="2" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="642.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="4" textAlignment="CENTER" />
+      <Line endX="15.0" layoutX="474.0" layoutY="77.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
+      <Line endX="15.0" layoutX="626.0" layoutY="78.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+      <Line endX="15.0" layoutX="550.0" layoutY="77.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+      <Label alignment="CENTER" layoutX="565.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="3" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="708.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="5" textAlignment="CENTER" />
+      <Line endX="15.0" layoutX="701.0" layoutY="78.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+   </children>
+</AnchorPane>
