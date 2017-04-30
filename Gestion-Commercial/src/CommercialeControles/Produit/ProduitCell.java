@@ -3,8 +3,11 @@ package CommercialeControles.Produit;
 import CommercialeControles.Client.ClienCell;
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.Models.BleQueries;
+import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.io.IOException;
@@ -19,26 +22,49 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
-public class ProduitCell extends HBox {
+public class ProduitCell extends GridPane{
 
     private int codeProduit;
     private String categorie;
     private String nom;
     private float quantite;
     private double prix;
+    private float TVA ; 
+    
+    protected  ColumnConstraints columnConstraints;
+    protected  ColumnConstraints columnConstraints0;
+    protected  ColumnConstraints columnConstraints1;
+    protected  ColumnConstraints columnConstraints2;
+    protected  ColumnConstraints columnConstraints3;
+    protected  ColumnConstraints columnConstraints4;
+    protected  ColumnConstraints columnConstraints5;
+    protected  RowConstraints rowConstraints;
+    
+    protected  Label label;
+    protected  Label label0;
+    protected Label label1;
+    protected  Label label2;
+    protected  Label label3;
+    protected  Label label4;
+    protected  JFXButton bttn;
 
     private JFXPopup popup;
-    private JFXButton bttn;  
 
-    public ProduitCell(int codeProduit, String categorie, String nom, float quantite, double prix) {
+
+    public ProduitCell(int codeProduit, String categorie, String nom, float quantite, double prix , float tva ) {
         this.codeProduit = codeProduit;
         this.categorie = categorie;
         this.nom = nom;
         this.quantite = quantite;
         this.prix = prix;
+        this.TVA = tva ; 
         
         popup =  new  JFXPopup()  ; 
         
@@ -90,17 +116,106 @@ public class ProduitCell extends HBox {
     
     private  void create_box  () {
         
-        Label codelabel = new Label(Integer.toString(this.codeProduit));
-        codelabel.setAlignment(Pos.CENTER_LEFT);
-
-        Label nomlabel = new Label(this.nom);
-
-        Label categorielabel = new Label(this.categorie);
-
-        Label quantiteLabel = new Label(Float.toString(this.quantite));
         
-        Label prixLabel = new Label(Double.toString(this.prix)) ; 
+        columnConstraints = new ColumnConstraints();
+        columnConstraints0 = new ColumnConstraints();
+        columnConstraints1 = new ColumnConstraints();
+        columnConstraints2 = new ColumnConstraints();
+        columnConstraints3 = new ColumnConstraints();
+        columnConstraints4 = new ColumnConstraints();
+        columnConstraints5 = new ColumnConstraints();
+        rowConstraints = new RowConstraints();
+        label = new Label();
+        label0 = new Label();
+        label1 = new Label();
+        label2 = new Label();
+        label3 = new Label();
+        label4 = new Label();
+       
 
+      setHgap(3.0);
+        setPrefHeight(57.0);
+        setPrefWidth(1114.0);
+        
+
+        columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints.setMaxWidth(70.0);
+        columnConstraints.setMinWidth(70.0);
+        columnConstraints.setPrefWidth(70.0);
+
+        columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints0.setMaxWidth(170.0);
+        columnConstraints0.setMinWidth(170.0);
+        columnConstraints0.setPrefWidth(170.0);
+
+        columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints1.setMaxWidth(170.0);
+        columnConstraints1.setMinWidth(170.0);
+        columnConstraints1.setPrefWidth(170.0);
+
+        columnConstraints2.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints2.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints2.setMaxWidth(145.0);
+        columnConstraints2.setMinWidth(145.0);
+        columnConstraints2.setPrefWidth(145.0);
+
+        columnConstraints3.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints3.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints3.setMaxWidth(145.0);
+        columnConstraints3.setMinWidth(145.0);
+        columnConstraints3.setPrefWidth(145.0);
+
+        columnConstraints4.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints4.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints4.setMaxWidth(121.0);
+        columnConstraints4.setMinWidth(121.0);
+        columnConstraints4.setPrefWidth(121.0);
+
+        columnConstraints5.setHalignment(javafx.geometry.HPos.RIGHT);
+        columnConstraints5.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints5.setMaxWidth(300.0);
+        columnConstraints5.setMinWidth(100.0);
+        columnConstraints5.setPrefWidth(100.0);
+
+        rowConstraints.setMinHeight(10.0);
+        rowConstraints.setPrefHeight(30.0);
+        rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+
+        label.setText(Integer.toString(this.codeProduit));
+         GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
+        label.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label0, 1);
+        label0.setText(this.nom);
+         GridPane.setHalignment(label0, javafx.geometry.HPos.CENTER);
+        label0.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label1, 2);
+        label1.setText(this.categorie);
+         GridPane.setHalignment(label1, javafx.geometry.HPos.CENTER);
+        label1.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label2, 3);
+        label2.setText(Float.toString(this.quantite));
+         GridPane.setHalignment(label2, javafx.geometry.HPos.CENTER);
+        label2.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label3, 4);
+         GridPane.setHalignment(label3, javafx.geometry.HPos.CENTER);
+        label3.setText(Double.toString(this.prix));
+        label3.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label4, 5);
+        GridPane.setHalignment(label4, javafx.geometry.HPos.CENTER);
+        label4.setText(Float.toString(TVA));
+        label4.setFont(new Font(17.0));
+
+        
+        
+        
         bttn = new JFXButton();
         Image imgbtn = new Image(getClass().getResourceAsStream("/icons/more3.png"));
         ImageView imgviewbtn = new ImageView(imgbtn);
@@ -109,14 +224,26 @@ public class ProduitCell extends HBox {
         bttn.prefHeight(50);
         bttn.prefWidth(50);
         bttn.setGraphic(imgviewbtn);
-
-        this.getChildren().setAll(codelabel, categorielabel ,nomlabel,quantiteLabel,prixLabel, bttn);
-        this.setPadding(new Insets(0, 0, 0, 50));
-        this.setSpacing(105);
-        this.setMargin(bttn, new Insets(0, 0, 0, 240));
-        this.setAlignment(Pos.CENTER_LEFT);
-        this.setPrefHeight(50);
         
+        GridPane.setColumnIndex(bttn, 6);
+        GridPane.setHalignment(bttn, javafx.geometry.HPos.CENTER);
+
+        getColumnConstraints().add(columnConstraints);
+        getColumnConstraints().add(columnConstraints0);
+        getColumnConstraints().add(columnConstraints1);
+        getColumnConstraints().add(columnConstraints2);
+        getColumnConstraints().add(columnConstraints3);
+        getColumnConstraints().add(columnConstraints4);
+        getColumnConstraints().add(columnConstraints5);
+        getRowConstraints().add(rowConstraints);
+        getChildren().add(label);
+        getChildren().add(label0);
+        getChildren().add(label1);
+        getChildren().add(label2);
+        getChildren().add(label3);
+        getChildren().add(label4);
+        getChildren().add(bttn);
+
         intpopup();
 
         bttn.setOnMouseClicked((event) -> {
@@ -159,7 +286,6 @@ public class ProduitCell extends HBox {
             popup.close();
 
         });
-
         supprimer.setOnAction(event -> {
 
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait() ; 
@@ -167,7 +293,10 @@ public class ProduitCell extends HBox {
                 
                 // requete DELETE from client  Where  id.client  =  codeclient 
                 
+                ProduitQueries q = new ProduitQueries();
+                q.delete(q.getProduit(codeProduit+""));
                 Notification.Deletenotification();
+                new  ShowPane().showProduit();
             }
             
             popup.close();

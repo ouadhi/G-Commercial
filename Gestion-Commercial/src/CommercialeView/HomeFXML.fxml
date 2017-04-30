@@ -10,7 +10,7 @@
    <children>
       <HBox layoutX="287.0" layoutY="296.0" prefHeight="192.0" prefWidth="792.0" spacing="9.0">
          <children>
-            <Button id="button" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" opacity="0.7" prefHeight="192.0" prefWidth="192.0" styleClass="buttonx" text="Achat">
+            <Button id="button" fx:id="achat" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#showAchat" opacity="0.7" prefHeight="192.0" prefWidth="192.0" styleClass="buttonx" text="Achat">
                <graphic>
                   <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -19,7 +19,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="button" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" opacity="0.7" prefHeight="192.0" prefWidth="192.0" styleClass="buttonx" text="Vente">
+            <Button id="button" fx:id="vente" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showvente" opacity="0.7" prefHeight="192.0" prefWidth="192.0" styleClass="buttonx" text="Vente">
                <graphic>
                   <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,7 +28,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="button" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" opacity="0.7" prefHeight="192.0" prefWidth="192.0" styleClass="buttonx" text="Rapport">
+            <Button id="button" fx:id="rapport" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showRapport" opacity="0.7" prefHeight="192.0" prefWidth="192.0" styleClass="buttonx" text="Rapport">
                <graphic>
                   <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="buttoxn">
                      <image>

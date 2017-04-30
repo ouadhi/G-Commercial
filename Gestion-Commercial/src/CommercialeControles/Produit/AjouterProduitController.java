@@ -1,8 +1,12 @@
-
 package CommercialeControles.Produit;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Ble;
+import com.gestionCommerciale.HibernateSchema.Produit;
+import com.gestionCommerciale.Models.BleQueries;
+import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -13,7 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
+import tray.notification.NotificationType;
 
 public class AjouterProduitController implements Initializable {
 
@@ -33,42 +37,45 @@ public class AjouterProduitController implements Initializable {
     private JFXButton cancelbttn;
     @FXML
     private Label savelabel;
+    ProduitQueries queries = new ProduitQueries();
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyNumbre(quantite);
-        Methode.setOnlyNumbre(prix);
-       
-    }    
+        Methode.setOnlyInteger(quantite, 9);
+        Methode.setOnlyFloat(prix, 16);
+    }
 
     @FXML
     private void close(MouseEvent event) {
-        Methode.getStageMouses(event).close()  ;
+        Methode.getStageMouses(event).close();
     }
 
     @FXML
     private void sauvgarder(ActionEvent event) {
-        String nomVal  = nom.getText() ; 
-        String categorieVal  = categorie.getText()  ; 
-        String quantiteVal  =  quantite.getText() ;  
-        String prixVal  =  prix.getText()  ;
-        
+        String nomVal = nom.getText();
+        String categorieVal = categorie.getText();
+        String quantiteVal = quantite.getText();
+        String prixVal = prix.getText();
         if (nomVal.isEmpty() || categorieVal.isEmpty() || quantiteVal.isEmpty() || prixVal.isEmpty()) {
-            
-            Notification.champVideNotification();
-            
+            Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
-            
-            Notification.Addnotification(); 
-            savelabel.setVisible(true);
+            try {
+                Produit ob = new Produit(nomVal,categorieVal, Integer.parseInt(quantiteVal), Float.parseFloat(prixVal));
+                queries.SaveOrUpdate(ob);
+                
+                Notification.Addnotification();
+                savelabel.setVisible(true);
+                new  ShowPane().showClient();
+                quitter(event);
+                
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
-        
     }
 
     @FXML
     private void quitter(ActionEvent event) {
         Methode.getStage(event).close();
     }
-    
 }

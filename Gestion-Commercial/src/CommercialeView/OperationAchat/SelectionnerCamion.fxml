@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane prefHeight="468.0" prefWidth="1050.0" style="-fx-background-color: white;" stylesheets="@AchatCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.OperationAchat.SelectionnerCamionController">
+   <children>
+      <Label contentDisplay="CENTER" layoutX="366.0" layoutY="14.0" styleClass="titre" text="Selectionner Un Camion" textAlignment="CENTER" />
+      <JFXButton layoutX="-29.0" layoutY="227.0" prefHeight="55.0" prefWidth="59.0" styleClass="nextbutton" />
+      <JFXListView fx:id="listeCamion" layoutX="63.0" layoutY="107.0" onMouseClicked="#select" orientation="HORIZONTAL" prefHeight="312.0" prefWidth="949.0" showTooltip="true" />
+      <Label alignment="CENTER" layoutX="358.0" layoutY="71.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="569.0" layoutY="71.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="3" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="463.0" layoutY="71.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="2" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="674.0" layoutY="71.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="4" textAlignment="CENTER" />
+      <Line endX="41.0" layoutX="421.0" layoutY="82.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
+      <Line endX="41.0" layoutX="633.0" layoutY="83.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+      <Line endX="41.0" layoutX="527.0" layoutY="82.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
+      <Pane layoutX="1097.0" layoutY="-6.0" prefHeight="474.0" prefWidth="59.0" style="-fx-background-color: #f4f8f9;" />
+      <JFXButton layoutX="1067.0" layoutY="224.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="59.0" styleClass="nextbutton" />
+   </children>
+</AnchorPane>

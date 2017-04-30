@@ -101,7 +101,9 @@ public class ShowClienSlideController implements Initializable {
         this.liste =   liste   ;
         panelMain.getChildren().setAll(getClient(rowselected)) ; 
     }
-        public static Client getClient() {
+        
+    
+    public static Client getClient() {
         return client;
     }
 

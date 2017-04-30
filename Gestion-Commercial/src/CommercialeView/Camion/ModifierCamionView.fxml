@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,11 +15,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Camion.ModifierCamionController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="475.0" prefWidth="614.0" style="-fx-background-color: #ffffff;" stylesheets="@../Chauffeur/ChauffeurCSS.css">
+      <AnchorPane id="AnchorPane" prefHeight="426.0" prefWidth="614.0" style="-fx-background-color: #ffffff;" stylesheets="@../Chauffeur/ChauffeurCSS.css">
          <children>
-            <Pane prefHeight="54.0" prefWidth="614.0" style="-fx-background-color: #f6f7fb;">
+            <Pane prefHeight="68.0" prefWidth="614.0" style="-fx-background-color: #f6f7fb;">
                <children>
-                  <Text fill="#2c537a" layoutX="34.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ajouter_chaufeur" text="Modifier Camion :" />
+                  <Text fill="#7d6dfb" layoutX="34.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ajouter_chaufeur" text="Modifier Camion :" />
                   <ImageView fx:id="close" fitHeight="28.0" fitWidth="28.0" layoutX="555.0" layoutY="13.0" onMouseClicked="#closewindow" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/close.png" />
@@ -40,18 +40,17 @@
                </rowConstraints>
                <children>
                   <Label styleClass="label_info" text="Code  Camion" />
-                  <JFXTextField fx:id="codecamion" maxWidth="270.0" minWidth="270.0" prefHeight="42.0" prefWidth="270.0" GridPane.rowIndex="1" />
-                  <JFXTextField fx:id="matricule" maxWidth="268.0" minWidth="268.0" prefHeight="45.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="codecamion" focusColor="#405aa800" maxWidth="270.0" minWidth="270.0" prefHeight="42.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="matricule" focusColor="#405aa800" maxWidth="268.0" minWidth="268.0" prefHeight="45.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label styleClass="label_info" text="Matricule Camion" GridPane.columnIndex="1" />
                   <Label styleClass="label_info" text="Taille Camion :" GridPane.rowIndex="2" />
-                  <Label styleClass="label_info" text="Chaufeur Camion:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <JFXTextField fx:id="taillecamion" prefHeight="42.0" GridPane.rowIndex="3" />
-                  <JFXComboBox fx:id="chauffeur" prefHeight="24.0" prefWidth="259.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="taillecamion" focusColor="#405aa800" prefHeight="42.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <JFXButton fx:id="savebttn" layoutX="460.0" layoutY="418.0" onAction="#sauvegarder" prefHeight="36.0" prefWidth="126.0" styleClass="button_save" text="Enregistrer" />
-            <JFXButton fx:id="anullerbttn" layoutX="340.0" layoutY="418.0" onAction="#annuler" prefHeight="34.0" prefWidth="105.0" styleClass="button_annuler" text="Annuler" />
-            <Label fx:id="savelabel" layoutX="74.0" layoutY="423.0" text="Enregistré" visible="false" />
+            <JFXButton fx:id="savebttn" layoutX="408.0" layoutY="337.0" onAction="#sauvegarder" prefHeight="55.0" prefWidth="179.0" styleClass="button_save" text="Enregistrer" />
+            <JFXButton fx:id="anullerbttn" layoutX="222.0" layoutY="337.0" onAction="#annuler" prefHeight="55.0" prefWidth="179.0" styleClass="button_annuler" text="Annuler" />
+            <Label fx:id="savelabel" layoutX="75.0" layoutY="361.0" text="Enregistré" textFill="#36d484" visible="false" />
+            <Separator layoutY="67.0" prefHeight="5.0" prefWidth="614.0" styleClass="separateur" />
          </children>
       </AnchorPane>
    </children>

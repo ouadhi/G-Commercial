@@ -1,5 +1,6 @@
 package com.gestionCommerciale.Models;
 
+import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.HibernateSchema.Produit;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,18 @@ public class ProduitQueries {
             session.close();
         }
         return produitsList;
+    }
+    public Produit getProduit(String id) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        Produit d;
+        try {
+            //Requete HQL pour selectioné tout les client:
+            d = (Produit) session.createQuery("from Produit where id='" + id + "'").uniqueResult();
+        } finally {
+            session.close();
+        }
+        return d;
     }
 
 }

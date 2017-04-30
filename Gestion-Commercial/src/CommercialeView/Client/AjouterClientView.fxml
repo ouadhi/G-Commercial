@@ -20,7 +20,7 @@
    <children>
       <Pane prefHeight="66.0" prefWidth="597.0" style="-fx-background-color: #f6f7fb;">
          <children>
-            <Separator layoutX="-4.0" layoutY="67.0" prefHeight="2.0" prefWidth="603.0" style="-fx-background-color: #36d484;" />
+            <Separator layoutX="-4.0" layoutY="67.0" prefHeight="2.0" prefWidth="603.0" style="-fx-background-color: #fd9252;" />
             <ImageView fx:id="close" fitHeight="28.0" fitWidth="28.0" layoutX="560.0" layoutY="19.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="icons/close.png" />
@@ -28,7 +28,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Text fill="#36d484" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Ajouter Client" />
+      <Text fill="#fd9252" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Ajouter Client" />
       <GridPane hgap="13.0" layoutX="23.0" layoutY="88.0" prefHeight="330.0" prefWidth="551.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="303.0" minWidth="10.0" prefWidth="281.0" />
@@ -81,37 +81,37 @@
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <JFXTextField fx:id="nomtxt" maxWidth="276.0" minWidth="276.0" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt">
+            <JFXTextField fx:id="nomtxt" focusColor="#405aa800" maxWidth="276.0" minWidth="276.0" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="prenomtxt" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" GridPane.columnIndex="1">
+            <JFXTextField fx:id="prenomtxt" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="NRtxt" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" GridPane.rowIndex="1">
+            <JFXTextField fx:id="NRtxt" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="NAtxt" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <JFXTextField fx:id="NAtxt" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="adressetxt" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" GridPane.rowIndex="2">
+            <JFXTextField fx:id="adressetxt" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="activitetxt" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <JFXTextField fx:id="activitetxt" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="NCarteF" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <JFXTextField fx:id="NCarteF" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>

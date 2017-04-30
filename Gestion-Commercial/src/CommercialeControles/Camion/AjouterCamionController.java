@@ -54,9 +54,9 @@ public class AjouterCamionController implements Initializable {
         String matricule  = this.matricule.getText() ; 
         String type  = typecamion.getText()  ;  
         
-        if (code.isEmpty() || matricule.isEmpty() || type.isEmpty()) {
-            Notification.champVideNotification();
 
+        if (code.isEmpty()|| matricule.isEmpty()|| type.isEmpty()) {
+            Notification.champVideNotification();   
         } else {
             if(camionQueries.getCamion(matricule)!=null){              
                  Notification.error("Ce camion exist deja");

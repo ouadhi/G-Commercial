@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import tray.notification.NotificationType;
 
 public class ModifierClientController implements Initializable {
 
@@ -71,7 +72,7 @@ public class ModifierClientController implements Initializable {
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
             if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
-                Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
+                Notification.notif(NotificationType.ERROR,"Vérification", "Vérifier que tout les champs sont remplis!");
             } else {
                 Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 ClientQueries cq = new ClientQueries();
@@ -85,21 +86,18 @@ public class ModifierClientController implements Initializable {
                 client.setnCarteFiscale(Ncarte);
                 client.setDateDepotDossier(dateDepotDossier);
                 cq.SaveOrUpdate(client);
+                
+                
                 Notification.Updatenotification();
-                //new ShowPane().show();
+                new ShowPane().showClient();
                 savelabel.setVisible(true);
-                //??
-                annuler(event);
+                quitter(event);
             }
         }
 
     }
 
-    private void annuler(ActionEvent event) {
-        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        g.close();
 
-    }
 
     @FXML
     private void quitter(ActionEvent event) {

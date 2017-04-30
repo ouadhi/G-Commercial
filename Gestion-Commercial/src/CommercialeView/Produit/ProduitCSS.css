@@ -70,10 +70,13 @@
     
 }
 
-.rechereche {
+    .rechereche {
     -fx-border-color :  #e4e7ee ; 
     -fx-border-radius :  36 ; 
+    -fx-background-radius : 36 ; 
+    -fx-background-color : #ffffff ; 
 }
+
 
 .list_view_cell_titel {
     -fx-font-family: Roboto;

@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -11,17 +10,20 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="back" stylesheets="@clientCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Client.ClientListController">
    <children>
-      <Text fill="#36d484" fontSmoothingType="LCD" layoutX="44.0" layoutY="51.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Client" wrappingWidth="85.51513671875" />
-      <Label fx:id="total" layoutX="197.0" layoutY="30.0" styleClass="label_txt" text="100" />
-      <Label layoutX="240.0" layoutY="30.0" styleClass="label_txt" text="Total" />
-      <Label layoutX="663.0" layoutY="30.0" styleClass="label_txt" text="Trie par : " />
-      <MenuButton fx:id="Order" layoutX="736.0" layoutY="16.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code Client">
+      <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Client" wrappingWidth="85.51513671875" />
+      <Label fx:id="total" layoutX="153.0" layoutY="40.0" styleClass="label_txt" text="100" />
+      <Label layoutX="181.0" layoutY="40.0" styleClass="label_txt" text="Total" />
+      <Label layoutX="261.0" layoutY="40.0" styleClass="label_txt" text="Trie par : " />
+      <MenuButton fx:id="Order" layoutX="334.0" layoutY="26.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code Client">
         <items>
             <MenuItem fx:id="bycode" mnemonicParsing="false" onAction="#oderByCodeClient" text="Code client" />
           <MenuItem fx:id="byname" mnemonicParsing="false" onAction="#orederByName" text="Nom et  prenom" />
@@ -29,47 +31,55 @@
             <MenuItem fx:id="byregistre" mnemonicParsing="false" onAction="#oderByRegistre" text="N°registre" />
         </items>
       </MenuButton>
-      <MenuButton fx:id="NbShow" layoutX="403.0" layoutY="16.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="86.0" styleClass="menuButton" text="20">
-         <items>
-            <MenuItem fx:id="btn20" mnemonicParsing="false" onAction="#show20" text="20" />
-            <MenuItem fx:id="btn50" mnemonicParsing="false" onAction="#shwo50" text="50" />
-            <MenuItem fx:id="btn100" mnemonicParsing="false" onAction="#show100" text="100" />
-            <MenuItem fx:id="btntout" mnemonicParsing="false" onAction="#showtout" text="Tout" />
-         </items>
-      </MenuButton>
-      <JFXButton fx:id="ajouter" layoutX="993.0" layoutY="16.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter" />
-      <JFXListView fx:id="clientLsit" layoutX="44.0" layoutY="207.0" onMouseClicked="#showClient" prefHeight="461.0" prefWidth="1114.0" />
-      <HBox alignment="CENTER_LEFT" layoutX="44.0" layoutY="151.0" prefHeight="55.0" prefWidth="1114.0" spacing="85.0" styleClass="title_panel">
+      <JFXButton fx:id="ajouter" layoutX="1001.0" layoutY="26.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter" />
+      <JFXListView fx:id="clientLsit" layoutX="51.0" layoutY="205.0" onMouseClicked="#showClient" prefHeight="461.0" prefWidth="1117.0" />
+      <Separator layoutX="51.0" layoutY="200.0" prefHeight="5.0" prefWidth="1117.0" style="-fx-background-color: #fd9252;" />
+      <GridPane hgap="3.0" layoutX="51.0" layoutY="145.0" prefHeight="55.0" prefWidth="1117.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="36.0" prefWidth="112.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="254.0" minWidth="100.0" prefWidth="247.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="126.0" prefWidth="220.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="102.0" prefWidth="198.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="554.0" minWidth="77.0" prefWidth="326.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Label styleClass="listviewTitleLabel" text="ID">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
+            <Label prefHeight="22.0" prefWidth="46.0" text="Code">
+               <font>
+                  <Font size="17.0" />
+               </font>
             </Label>
-            <Label styleClass="listviewTitleLabel" text="Nom et prenom" />
-            <Label styleClass="listviewTitleLabel" text="Activité" />
-            <Label styleClass="listviewTitleLabel" text="N° Registre" />
-            <Pane prefHeight="37.0" prefWidth="363.0" styleClass="rechereche">
-               <children>
-                  <JFXTextField fx:id="rechreche" layoutX="44.0" layoutY="8.0" maxWidth="321.0" minWidth="167.0" onAction="#rechrecher" prefHeight="35.0" prefWidth="301.0" promptText="Recherche" />
-                  <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="icons/rechechenoir.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <HBox.margin>
-                  <Insets bottom="4.0" />
-               </HBox.margin>
-            </Pane>
+            <Label text="Info Client" GridPane.columnIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label text="Type d'activité" GridPane.columnIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="333.0" layoutY="35.0" text="N° Registre" GridPane.columnIndex="3">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
          </children>
-         <opaqueInsets>
-            <Insets top="14.0" />
-         </opaqueInsets>
-         <padding>
-            <Insets left="50.0" />
-         </padding>
-      </HBox>
-      <Separator layoutX="44.0" layoutY="204.0" prefHeight="0.0" prefWidth="1114.0" style="-fx-background-color: #36d484;" />
+      </GridPane>
+      <Pane layoutX="528.0" layoutY="26.0" prefHeight="41.0" prefWidth="412.0" styleClass="rechereche">
+         <children>
+            <JFXTextField fx:id="rechreche" focusColor="#405aa800" layoutX="46.0" layoutY="2.0" maxWidth="350.0" minWidth="167.0" onAction="#rechrecher" prefHeight="35.0" prefWidth="350.0" promptText="Recherche" style="-fx-background-color: white;" unFocusColor="#cf252500">
+               <font>
+                  <Font size="16.0" />
+               </font></JFXTextField>
+            <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="icons/RechercheGry.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

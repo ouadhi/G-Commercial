@@ -14,21 +14,43 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class CamionCell extends HBox {
+public class CamionCell extends GridPane {
 
     public int id;
     public String marque;
     public String matricule;
     public String code_chauffeur;
     public float taille;
+    
+    
+    protected final ColumnConstraints columnConstraints;
+    protected final ColumnConstraints columnConstraints0;
+    protected final ColumnConstraints columnConstraints1;
+    protected final ColumnConstraints columnConstraints2;
+    protected final ColumnConstraints columnConstraints3;
+    protected final ColumnConstraints columnConstraints4;
+    protected final RowConstraints rowConstraints;
+    protected final Label label;
+    protected final Label label0;
+    protected final Label label1;
+    protected final Label label2;
+    protected final Label label3;
+    protected final JFXButton bttn;
     public JFXPopup popup;
     
     
-    JFXButton bttn  ; 
+
+   
+
+   
     CamionQueries camionQueries= new CamionQueries();
 
     public CamionCell(int id, String marque, String matricule, String  code_chauffeur, float taille) {
@@ -39,21 +61,6 @@ public class CamionCell extends HBox {
         this.taille = taille;
         this.popup = new JFXPopup();
 
-        Label idLabel = new Label(Integer.toString(id));
-        idLabel.setAlignment(Pos.CENTER_LEFT);
-
-        Label marqueLabl = new Label(this.marque);
-        marqueLabl.setAlignment(Pos.CENTER);
-
-        Label matriculelabl = new Label(this.matricule);
-        matriculelabl.setAlignment(Pos.CENTER);
-
-        Label codechauffeurLabl = new Label(this.code_chauffeur);
-        codechauffeurLabl.setAlignment(Pos.CENTER);
-        
-
-        Label tailleLabel = new Label(Float.toString(this.taille));
-        tailleLabel.setAlignment(Pos.CENTER);
         
         bttn = new JFXButton();
         Image imgbtn = new Image(getClass().getResourceAsStream("/icons/more3.png"));
@@ -63,24 +70,106 @@ public class CamionCell extends HBox {
         bttn.prefHeight(50) ; 
         bttn.prefWidth(50) ; 
         bttn.setGraphic(imgviewbtn);
-
         
+        columnConstraints = new ColumnConstraints();
+        columnConstraints0 = new ColumnConstraints();
+        columnConstraints1 = new ColumnConstraints();
+        columnConstraints2 = new ColumnConstraints();
+        columnConstraints3 = new ColumnConstraints();
+        columnConstraints4 = new ColumnConstraints();
+        rowConstraints = new RowConstraints();
+        label = new Label();
+        label0 = new Label();
+        label1 = new Label();
+        label2 = new Label();
+        label3 = new Label();
+  
 
-        this.getChildren().setAll(idLabel, marqueLabl, matriculelabl, codechauffeurLabl, tailleLabel ,bttn);
-        this.setSpacing(85);
-        this.setMargin(idLabel, new Insets(0,0,0,45));
-        this.setMargin(bttn, new Insets(0, 0, 0, 220));
-        this.setAlignment(Pos.CENTER_LEFT);
-        this.setPrefHeight(50);
+        columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints.setMaxWidth(87.0);
+        columnConstraints.setMinWidth(67.0);
+        columnConstraints.setPrefWidth(76.0);
 
+        columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints0.setMaxWidth(253.0);
+        columnConstraints0.setMinWidth(137.0);
+        columnConstraints0.setPrefWidth(208.0);
+
+        columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints1.setMaxWidth(492.0);
+        columnConstraints1.setMinWidth(126.0);
+        columnConstraints1.setPrefWidth(208.0);
+
+        columnConstraints2.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints2.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints2.setMaxWidth(492.0);
+        columnConstraints2.setMinWidth(145.0);
+        columnConstraints2.setPrefWidth(226.0);
+
+        columnConstraints3.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints3.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints3.setMaxWidth(492.0);
+        columnConstraints3.setMinWidth(108.0);
+        columnConstraints3.setPrefWidth(139.0);
+
+        columnConstraints4.setHalignment(javafx.geometry.HPos.RIGHT);
+        columnConstraints4.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints4.setMaxWidth(554.0);
+        columnConstraints4.setMinWidth(77.0);
+        columnConstraints4.setPrefWidth(242.0);
+
+        rowConstraints.setMinHeight(10.0);
+        rowConstraints.setPrefHeight(30.0);
+        rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+
+        label.setPrefHeight(22.0);
+        label.setPrefWidth(30.0);
+        label.setText(Integer.toString(id));
+        label.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label0, 1);
+        label0.setText(this.marque);
+        label0.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label1, 2);
+        label1.setText(this.marque);
+        label1.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label2, 3);
+        label2.setLayoutX(333.0);
+        label2.setLayoutY(35.0);
+        label2.setText(this.code_chauffeur);
+        label2.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(label3, 4);
+        label3.setText(Float.toString(taille));
+        label3.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(bttn, 5);
+
+        getColumnConstraints().add(columnConstraints);
+        getColumnConstraints().add(columnConstraints0);
+        getColumnConstraints().add(columnConstraints1);
+        getColumnConstraints().add(columnConstraints2);
+        getColumnConstraints().add(columnConstraints3);
+        getColumnConstraints().add(columnConstraints4);
+        getRowConstraints().add(rowConstraints);
+        getChildren().add(label);
+        getChildren().add(label0);
+        getChildren().add(label1);
+        getChildren().add(label2);
+        getChildren().add(label3);
+        getChildren().add(bttn);
+        
         intpopup();
 
         bttn.setOnMouseClicked((event) -> {
 
             popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX() , event.getY());
         });
-        
-        
         
         
     }
@@ -108,6 +197,7 @@ public class CamionCell extends HBox {
             
             ModifierCamionDialog dialog  =  new ModifierCamionDialog(stage, this)  ; 
             dialog.show();
+            popup.close();
 
         });
 

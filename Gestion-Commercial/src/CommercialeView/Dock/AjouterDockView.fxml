@@ -15,8 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="551.0" style="-fx-background-color: #ffffff;" stylesheets="@DockCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Dock.AjouterDockController">
+<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="551.0" style="-fx-background-color: #ffffff;" stylesheets="@DockCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Dock.AjouterDockController">
    <children>
       <Pane layoutX="-2.0" prefHeight="66.0" prefWidth="553.0" style="-fx-background-color: #f6f7fb;">
          <children>
@@ -29,10 +28,10 @@
          </children>
       </Pane>
       <Separator layoutY="66.0" prefHeight="0.0" prefWidth="551.0" style="-fx-background-color: #36d484;" />
-      <GridPane hgap="8.0" layoutX="24.0" layoutY="86.0" prefHeight="225.0" prefWidth="497.0">
+      <GridPane hgap="11.0" layoutX="24.0" layoutY="86.0" prefHeight="225.0" prefWidth="497.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="10.0" prefWidth="244.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="10.0" prefWidth="245.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -44,22 +43,22 @@
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
             </Label>
-            <JFXTextField fx:id="nom" maxWidth="249.0" minWidth="249.0" prefHeight="45.0" prefWidth="249.0" styleClass="champtxt">
+            <JFXTextField fx:id="nom" focusColor="#405aa800" maxWidth="249.0" minWidth="240.0" prefHeight="45.0" prefWidth="240.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="wilaya" prefHeight="45.0" styleClass="champtxt" GridPane.columnIndex="1">
+            <JFXTextField fx:id="wilaya" focusColor="#405aa800" prefHeight="45.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="distance" prefHeight="45.0" styleClass="champtxt" GridPane.rowIndex="1">
+            <JFXTextField fx:id="distance" focusColor="#405aa800" prefHeight="45.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="prix" prefHeight="45.0" styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <JFXTextField fx:id="prix" focusColor="#405aa800" prefHeight="45.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>

@@ -20,6 +20,7 @@ import com.gestionCommerciale.Models.ClientQueries;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import tray.notification.NotificationType;
 
 public class AjouterClientController implements Initializable {
 
@@ -54,6 +55,7 @@ public class AjouterClientController implements Initializable {
 
     @FXML
     private void Sauvgarder(ActionEvent event) {
+        
         String nom = nomtxt.getText();
         String prenom = prenomtxt.getText();
         String NR = NRtxt.getText();
@@ -61,10 +63,13 @@ public class AjouterClientController implements Initializable {
         String adresse = adressetxt.getText();
         String activite = activitetxt.getText();
         String Ncarte = NCarteF.getText();
+        
         if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
-            Notification.notif("Vérification", "Vérifier que tout les champs sont remplis!");
+            Notification.notif(NotificationType.ERROR,"Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
+            
             Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            
             if (clientQueries.getClientByRegistre(NR) != null) {
                 //notification for already exists
                 Notification.error("Ce client est exite déja!");
@@ -74,8 +79,9 @@ public class AjouterClientController implements Initializable {
                     Client client = new Client(nom, prenom, NR, NA, adresse, activite, dateDepotDossier,Ncarte);
                     clientQueries.SaveOrUpdate(client);
                     Notification.Addnotification();
-                    //new ShowPane().showClientList();
+                    new ShowPane().showClient();
                     savelabel.setVisible(true);
+                    quitter(event);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

@@ -44,6 +44,7 @@ public class Client {
     @Column(name = "numRegCom", nullable = false)
     String numRegCom;
     @Column(name = "numArticle", nullable = false)
+            
     String numArticle;
     @Column(name = "addressClient", nullable = false)
     String addressClient;

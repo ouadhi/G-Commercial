@@ -31,6 +31,8 @@ public class Produit {
     int idProduit;
     @Column(name = "nom", nullable = false)
     String nom;
+    @Column(name = "Category", nullable = false)
+    String category;
     @Column(name = "quantite", nullable = false)
     int quantite;
     @Column(name = "prix", nullable = false)
@@ -44,10 +46,11 @@ public class Produit {
 
     }
 
-    public Produit(String nom, int quantite, float prix) {
+    public Produit(String nom,String category, int quantite, float prix) {
         this.nom = nom;
         this.quantite = quantite;
         this.prix = prix;
+        this.category = category;
     }
 
     public int getIdProduit() {
@@ -88,6 +91,14 @@ public class Produit {
 
     public void setQtes(List<Facture_Produit> qtes) {
         this.qtes = qtes;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
     
    

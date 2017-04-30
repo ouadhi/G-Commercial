@@ -134,8 +134,7 @@ public class Notification {
         tray.setNotificationType(type);
         tray.showAndDismiss(Duration.seconds(4));
     }
-    public static void notif (String title,String message) {   
-        NotificationType type  = NotificationType.ERROR ; 
+    public static void notif (NotificationType type,String title,String message) {   
         TrayNotification tray = new TrayNotification();
         tray.setTitle(title);
         tray.setMessage(message);
