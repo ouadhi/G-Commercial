@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="492.0" prefWidth="666.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Produit.SlidProduitController">
+   <children>
+      <VBox prefHeight="492.0" prefWidth="70.0">
+         <children>
+            <JFXButton fx:id="last" onAction="#lastslid" prefHeight="491.0" prefWidth="70.0" text="&lt;" />
+         </children>
+      </VBox>
+      <VBox layoutX="596.0" prefHeight="492.0" prefWidth="70.0">
+         <children>
+            <JFXButton fx:id="next" onAction="#nextslid" prefHeight="492.0" prefWidth="70.0" text="&gt;" />
+         </children>
+      </VBox>
+      <AnchorPane fx:id="panemain" layoutX="70.0" prefHeight="491.0" prefWidth="519.0" />
+   </children>
+</AnchorPane>

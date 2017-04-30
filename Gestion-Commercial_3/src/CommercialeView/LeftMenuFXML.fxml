@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="64.0" stylesheets="@HomeCss.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.LeftMenuFXMLController">
+   <children>
+      <VBox prefHeight="1024.0" prefWidth="64.0" stylesheets="@HomeCss.css" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="icons/select1.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="19.0" top="5.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button fx:id="home" contentDisplay="CENTER" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#showhome" prefHeight="64.0" prefWidth="64.0" styleClass="button-menu">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/home.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="bttnchauffeur" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showchauffeur" prefHeight="64.0" prefWidth="64.0" styleClass="button-menu">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/driver.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="bttnCamion" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showCamion" prefHeight="64.0" prefWidth="64.0" styleClass="button-menu">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/truck.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="rapport" contentDisplay="CENTER" layoutX="10.0" layoutY="74.0" mnemonicParsing="false" onAction="#showrapport" prefHeight="64.0" prefWidth="64.0" styleClass="button-menu">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/state.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

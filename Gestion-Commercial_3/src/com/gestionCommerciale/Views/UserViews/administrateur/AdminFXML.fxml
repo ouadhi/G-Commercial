@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="maipane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrateur.AdminFXMLController">
+    <children>
+        <JFXDrawer fx:id="drawer" direction="TOP" layoutY="83.0" overLayVisible="false" prefHeight="100.0" prefWidth="1366.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Pane prefHeight="80.0" prefWidth="1677.0" styleClass="topbar" stylesheets="@Maincss.css" AnchorPane.leftAnchor="0.0">
+            <children>
+                <Label fx:id="ntifcount" alignment="CENTER" contentDisplay="CENTER" layoutX="1062.0" layoutY="28.0" minHeight="12.0" minWidth="12.0" styleClass="layer" text="0" />
+                <Label fx:id="msgcount" alignment="CENTER" layoutX="1099.0" layoutY="28.0" minHeight="12.0" minWidth="12.0" styleClass="layer" text="0" />
+                <Label fx:id="pseudo" layoutX="1189.0" layoutY="33.0" prefHeight="13.0" prefWidth="63.0" styleClass="Admin" text="PSEUDO" />
+                <JFXButton fx:id="showprofile" layoutX="1258.0" layoutY="35.0" text="&lt;" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </JFXButton>
+                <ImageView fx:id="profileimg" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" styleClass="Search" x="1133.0" y="16.0">
+                     <image>
+                        <Image url="icons/man.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="notificationicon" fitHeight="19.0" fitWidth="19.0" layoutX="-0.0" layoutY="-0.0" pickOnBounds="true" preserveRatio="true" x="1041.0" y="32.0">
+                    
+                    <image>
+                        <Image url="icons/notification.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="msgicon" fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" x="1078.0" y="32.0">
+                    
+                        <image>
+                           <Image url="icons/mail.png" />
+                        </image>
+                </ImageView>
+                <Pane layoutX="202.0" layoutY="16.0" prefHeight="48.0" prefWidth="466.0" styleClass="search-input">
+                    <children>
+                        <ImageView fx:id="searchicon" fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+            <Image url="icons/search.png" />
+        </image>
+            </ImageView>
+                        <JFXTextField fx:id="search" focusColor="WHITE" layoutX="48.0" layoutY="5.0" maxWidth="396.0" minWidth="368.0" prefHeight="38.0" prefWidth="396.0" styleClass="search-input" stylesheets="@Maincss.css" unFocusColor="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </JFXTextField>
+                    </children>
+                </Pane>
+            <JFXHamburger fx:id="humberguerbttn" layoutX="43.0" layoutY="36.0" />
+            </children>
+        </Pane>
+      <AnchorPane fx:id="root" layoutX="132.0" layoutY="196.0" prefHeight="513.0" prefWidth="1132.0" style="-fx-background-color: white;" />
+    </children>
+</AnchorPane>

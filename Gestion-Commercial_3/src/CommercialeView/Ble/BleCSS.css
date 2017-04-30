@@ -1,0 +1,164 @@
+.back{
+    -fx-background-color: #f4f8f9 ; 
+}
+
+.title {
+    -fx-font-family: Roboto;
+    -fx-font-size: 30px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill: #7d6dfb;
+
+}
+
+.label_txt {
+    
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill : #90a4ae;  
+}
+
+.menuButton {
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill : #90a4ae ;   
+    -fx-background-color  : #f4f8f9 ; 
+    
+}
+
+
+.Ajouter_button {
+    -fx-background-radius: 4px;
+    -fx-background-color: #48afea;
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: normal ;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill: #f6f7fb;
+}
+
+.listviewTitleLabel {
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill : #1b2943; 
+}
+
+.title_panel {
+    -fx-backgrounde-color : #edf1f5; 
+}
+
+.rechereche {
+    -fx-border-color :  #e4e7ee ; 
+    -fx-border-radius :  36 ; 
+}
+
+.list_view_cell_titel {
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill :  #1b2943; ; 
+
+}
+
+.jfx-list-cell:selected{
+    -fx-background-color: #0083C5; 
+}
+
+.jfx-list-cell:selected{
+    -fx-background-insets: 0.0 ; 
+}
+
+.jfx-list-cell .jfx-rippler{
+    -fx-rippler-fill : BLUE ; 
+}
+
+.jfx-list-cell:hover{
+    -fx-background-color:#cff4f5 ; 
+}
+
+.jfx-list-view {
+    -fx-background-insets: 0.0 ;  
+    -fx-cell-vertical-margin : 10.0  ; 
+    -fx-vertical-gap : 5;   
+    -fx-background-color : #f4f8f9; ; 
+}
+
+.champtxt {
+    -fx-background-color : #f6f7fb;
+    -fx-background-radius : 4px ;
+}
+
+.button_save {
+    -fx-font-family: Roboto;
+    -fx-font-size: 24px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+   -fx-text-fill:#ffffff ;
+   -fx-background-color :  #48afea; 
+   -fx-background-raduis : 4px ; 
+}
+.button_save:hover {
+    -fx-background-color :  #0083c5; 
+    
+}
+.button_save:pressed {
+    -fx-background-color : #61bbf2; 
+}
+
+.button_annuler {
+    -fx-font-family: Roboto;
+    -fx-font-size: 24px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+   -fx-text-fill:#ffffff ;
+   -fx-background-color :  #fa9f47; 
+   -fx-background-raduis : 4px ; 
+}
+    
+
+button_annuler:hover {
+    -fx-background-color : #fa8733; 
+}
+button_annuler:pressed {
+    -fx-background-color :  #ffb066; 
+}
+
+.Toppanel {
+      -fx-background-color : #f6f7fb;
+
+}
+
+.separateur {
+   -fx-background-color : #36d484 ; 
+}
