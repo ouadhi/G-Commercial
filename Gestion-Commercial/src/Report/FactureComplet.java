@@ -1,6 +1,4 @@
 package Report;
-
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,7 +21,8 @@ public class FactureComplet {
 	public static List<List<String>> combineLists() throws IOException{
 
 		List<List<String>> listOfFactures= new ArrayList<>();
-		List<List<String>> listOfExpeditions= ExcelExpedition.getExpeditions();
+		//List<List<String>> listOfExpeditions= ExcelExpedition.getExpeditions();
+                List<List<String>> listOfExpeditions= ExcelExpedition.getExpeditions();
 		List<List<String>> listOfClients= ExcelClient.getExcelClient();
 		for (int i = 0; i < listOfExpeditions.size(); i++) {
 			boolean foundName= false;
