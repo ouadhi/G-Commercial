@@ -57,5 +57,6 @@ public class ViewUrl {
     //***********************
     public static String nouveauVente = "/CommercialeView/Vente/OperationVente.fxml" ; 
     public static String selectClient = "/CommercialeView/Vente/SelectionnerClient.fxml" ; 
+    public static String selectChauffeurVente = "/CommercialeView/Vente/SelectionnerCahffeur.fxml" ; 
     
 }

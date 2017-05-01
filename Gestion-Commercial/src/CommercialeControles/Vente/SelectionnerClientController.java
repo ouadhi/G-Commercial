@@ -2,6 +2,7 @@
 package CommercialeControles.Vente;
 
 import CommercialeControles.Client.ClienCell;
+import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXListView;
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,6 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.Models.ClientQueries;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 
 
 public class SelectionnerClientController implements Initializable {
@@ -37,6 +42,12 @@ public class SelectionnerClientController implements Initializable {
         ClientListe.setExpanded(true);
         
     }    
+
+    @FXML
+    private void nextEtape(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.selectChauffeurVente)); 
+        OperationVenteController.staticpane.getChildren().setAll(pane) ; 
+    }
 
     
 }

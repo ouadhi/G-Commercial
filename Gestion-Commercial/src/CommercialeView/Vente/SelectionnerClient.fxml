@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="1091.0" style="-fx-background-color: white;" stylesheets="@Vente.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Vente.SelectionnerClientController">
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1160.0" style="-fx-background-color: white;" stylesheets="@Vente.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Vente.SelectionnerClientController">
    <children>
-      <JFXListView fx:id="ClientListe" layoutX="32.0" layoutY="130.0" prefHeight="325.0" prefWidth="1043.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="412.0" layoutY="24.0" styleClass="titre" text="Selectionner Un Client" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="411.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="490.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="2" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="642.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="4" textAlignment="CENTER" />
-      <Line endX="15.0" layoutX="474.0" layoutY="77.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
-      <Line endX="15.0" layoutX="626.0" layoutY="78.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
-      <Line endX="15.0" layoutX="550.0" layoutY="77.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
-      <Label alignment="CENTER" layoutX="565.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="3" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="708.0" layoutY="66.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="5" textAlignment="CENTER" />
-      <Line endX="15.0" layoutX="701.0" layoutY="78.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+      <JFXListView fx:id="ClientListe" layoutX="22.0" layoutY="98.0" prefHeight="356.0" prefWidth="1117.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="23.0" styleClass="titre" text="Selectionner Un Client" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="421.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="500.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="2" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="652.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="4" textAlignment="CENTER" />
+      <Line endX="15.0" layoutX="484.0" layoutY="76.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
+      <Line endX="15.0" layoutX="636.0" layoutY="77.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+      <Line endX="15.0" layoutX="560.0" layoutY="76.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+      <Label alignment="CENTER" layoutX="575.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="3" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="718.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="5" textAlignment="CENTER" />
+      <Line endX="15.0" layoutX="711.0" layoutY="77.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+      <JFXButton layoutX="960.0" layoutY="477.0" onAction="#nextEtape" prefHeight="37.0" prefWidth="149.0" styleClass="nextbutton" text="Suivant" />
    </children>
 </AnchorPane>

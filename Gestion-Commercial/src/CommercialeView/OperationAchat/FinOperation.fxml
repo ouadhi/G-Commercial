@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Chip?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -107,6 +106,5 @@
       <JFXButton fx:id="save" layoutX="809.0" layoutY="379.0" onAction="#sauvgarder" prefHeight="55.0" prefWidth="174.0" styleClass="button_save" text="Sauvgarder" />
       <JFXButton fx:id="annuler" layoutX="607.0" layoutY="379.0" onAction="#quitter" prefHeight="55.0" prefWidth="174.0" styleClass="button_annuler" text="Annuler" />
       <ImageView fx:id="diffIcon" fitHeight="32.0" fitWidth="32.0" layoutX="967.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" />
-      <Chip layoutX="83.0" layoutY="60.0" text="Chip" />
    </children>
 </AnchorPane>

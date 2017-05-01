@@ -16,15 +16,18 @@ public class OperationVenteController implements Initializable {
 
     @FXML
     private JFXTextField recherchetxt;
-    @FXML
     private AnchorPane workespace;
+    @FXML
+    private AnchorPane space;
+    public static AnchorPane staticpane ; 
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            staticpane = space ; 
             AnchorPane pane  =  FXMLLoader.load(getClass().getResource(ViewUrl.selectClient)) ;
-            workespace.getChildren().setAll(pane);
+            space.getChildren().setAll(pane);
         } catch (Exception e) {
         }
         

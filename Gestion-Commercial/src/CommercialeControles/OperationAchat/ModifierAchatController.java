@@ -3,8 +3,6 @@ package CommercialeControles.OperationAchat;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
-import com.gestionCommerciale.HibernateSchema.Dock;
-import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -18,7 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.PopOver;
-import tray.notification.NotificationType;
 
 public class ModifierAchatController implements Initializable {
 
@@ -72,7 +69,7 @@ public class ModifierAchatController implements Initializable {
 
     @FXML
     private void sauvgarder(ActionEvent event) {
-          String num = numero.getText();
+        String num = numero.getText();
         String Q_acquit = Q_Acquit.getText();
         String Q_four = this.Q_fournie.getText();
 

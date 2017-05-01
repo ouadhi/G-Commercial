@@ -58,16 +58,7 @@ public class VenteMenuController implements Initializable {
 
     @FXML
     private void showhome(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.nouveauVente));
-            Scene scene = new Scene(pane) ; 
-            Stage  stage = (Stage) ((Node) (event.getSource())).getScene().getWindow() ; 
-            
-            stage.setScene(scene);
-        } catch (IOException ex) {
-            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
+        new ShowPane().showVente();
     }
 
     @FXML

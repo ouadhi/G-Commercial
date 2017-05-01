@@ -1,4 +1,5 @@
-package jasperreport;
+package Report;
+
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -86,9 +87,9 @@ public class ExcelExpedition {
 	} 
 	
 	public static List<List<String>>getExpeditions() throws IOException{
-		String excelPath="C:\\Users\\Hicham\\Desktop\\janvier expidition(1).xls";
-		String excelPath1="C:\\Users\\Hicham\\Desktop\\fevrie expidition.xls";
-		String excelPath2="C:\\Users\\Hicham\\Desktop\\mars expidition.xls";
+		String excelPath="ExcelData/janvier expidition(1).xls";
+		String excelPath1="ExcelData/fevrie expidition.xls";
+		String excelPath2="ExcelData/mars expidition.xls";
 
 		List<List<String>>	list= iterateOverSheet(excelPath);
 		List<List<String>>	list1= iterateOverSheet(excelPath1);

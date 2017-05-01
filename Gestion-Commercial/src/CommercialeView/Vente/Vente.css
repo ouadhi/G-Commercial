@@ -33,9 +33,16 @@
 }
 
 .nextbutton{
-    -fx-background-radius :50  ; 
-    -fx-background-color: #39e18c;
-    -fx-border-radius : 50 ;
+    -fx-background-radius :30  ; 
+    -fx-background-color: #fd9252;
+    -fx-border-radius : 30 ;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill: #f6f7fb;
 }
 
 .etapenumero{
@@ -50,7 +57,7 @@
 }
 
 .lien_clor {
-     -fx-stroke : #fd9252; 
+    -fx-stroke : #fd9252; 
 }
 
 
@@ -66,7 +73,7 @@
     -fx-letter-spacing: normal;
     -fx-text-align: left;
     -fx-text-fill: #f6f7fb;
-        
+
 }
 
 .jfx-list-cell:selected{
@@ -109,7 +116,7 @@
 }
 
 .label_txt {
-    
+
     -fx-font-family: Roboto;
     -fx-font-size: 14px;
     -fx-font-weight: normal;
@@ -128,13 +135,13 @@
     -fx-line-height: normal;
     -fx-letter-spacing: normal;
     -fx-text-align: left;
-   -fx-text-fill:#ffffff ;
-   -fx-background-color :  #48afea; 
-   -fx-background-raduis : 4px ; 
+    -fx-text-fill:#ffffff ;
+    -fx-background-color :  #48afea; 
+    -fx-background-raduis : 4px ; 
 }
 .button_save:hover {
     -fx-background-color :  #0083c5; 
-    
+
 }
 .button_save:pressed {
     -fx-background-color : #61bbf2; 
@@ -148,11 +155,11 @@
     -fx-line-height: normal;
     -fx-letter-spacing: normal;
     -fx-text-align: left;
-   -fx-text-fill:#ffffff ;
-   -fx-background-color :  #fa9f47; 
-   -fx-background-raduis : 4px ; 
+    -fx-text-fill:#ffffff ;
+    -fx-background-color :  #fa9f47; 
+    -fx-background-raduis : 4px ; 
 }
-    
+
 
 button_annuler:hover {
     -fx-background-color : #fa8733; 
@@ -184,5 +191,26 @@ button_annuler:pressed {
     -fx-text-align: left;
     -fx-text-fill : #90a4ae ;   
     -fx-background-color  : #f4f8f9 ; 
-    
+}
+.jfx-list-cell:selected{
+    -fx-background-color: #0083C5; 
+}
+
+.jfx-list-cell:selected{
+    -fx-background-insets: 0.0 ; 
+}
+
+.jfx-list-cell .jfx-rippler{
+    -fx-rippler-fill : BLUE ; 
+}
+
+.jfx-list-cell:hover{
+    -fx-background-color:#cff4f5 ; 
+}
+
+.jfx-list-view {
+    -fx-background-insets: 0.0 ;  
+    -fx-cell-vertical-margin : 10.0  ; 
+    -fx-vertical-gap : 5;   
+    -fx-background-color : #f4f8f9; ; 
 }

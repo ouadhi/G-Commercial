@@ -12,13 +12,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="background" stylesheets="@Vente.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Vente.OperationVenteController">
    <children>
-      <Text fill="#fd9252" layoutX="82.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+      <Text fill="#fd9252" layoutX="40.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Label layoutX="174.0" layoutY="64.0" styleClass="nouvelle_operation_achat" text="Nouvelle Operation Vente" />
-      <Pane layoutX="742.0" layoutY="53.0" prefHeight="43.0" prefWidth="431.0" styleClass="rechereche">
+      <Label layoutX="132.0" layoutY="46.0" styleClass="nouvelle_operation_achat" text="Nouvelle Operation Vente" />
+      <Pane layoutX="749.0" layoutY="35.0" prefHeight="43.0" prefWidth="431.0" styleClass="rechereche">
          <children>
             <JFXTextField fx:id="recherchetxt" focusColor="#405aa800" layoutX="41.0" layoutY="4.0" maxWidth="372.0" minWidth="226.0" onKeyTyped="#rechercher" prefHeight="35.0" prefWidth="372.0" promptText="Recherche" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
                <font>
@@ -32,6 +32,6 @@
             </ImageView>
          </children>
       </Pane>
-      <AnchorPane fx:id="workespace" layoutX="82.0" layoutY="166.0" prefHeight="468.0" prefWidth="1091.0" style="-fx-background-color: white;" />
+      <AnchorPane fx:id="space" layoutX="21.0" layoutY="110.0" prefHeight="498.0" prefWidth="1160.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>
