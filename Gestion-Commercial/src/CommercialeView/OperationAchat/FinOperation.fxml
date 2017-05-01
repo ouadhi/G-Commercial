@@ -15,43 +15,43 @@
 
 <AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="1050.0" style="-fx-background-color: white;" stylesheets="@AchatCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.OperationAchat.FinOperationController">
    <children>
-      <Label layoutX="155.0" layoutY="132.0" styleClass="finOperation" text="Chaffeur" />
-      <Label layoutX="347.0" layoutY="23.0" styleClass="titre" text="Les informations D'Achat" />
-      <Label layoutX="344.0" layoutY="132.0" styleClass="finOperation" text="Camion" />
-      <Label alignment="CENTER" layoutX="347.0" layoutY="76.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="558.0" layoutY="76.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="3" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="452.0" layoutY="76.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="2" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="663.0" layoutY="76.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="4" textAlignment="CENTER" />
-      <Line endX="41.0" layoutX="410.0" layoutY="87.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
-      <Line endX="41.0" layoutX="622.0" layoutY="88.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
-      <Line endX="41.0" layoutX="516.0" layoutY="87.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
-      <Label layoutX="540.0" layoutY="132.0" styleClass="finOperation" text="Ble" />
-      <ImageView fx:id="infochaffeur" fitHeight="23.0" fitWidth="31.0" layoutX="225.0" layoutY="131.0" onMouseEntered="#opneInfoChauufeur" onMouseExited="#CloseInforChauffeur" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="392.0" layoutY="127.0" styleClass="finOperation" text="Chaffeur" />
+      <Label layoutX="338.0" layoutY="14.0" styleClass="titre" text="Les informations D'Achat" />
+      <Label layoutX="581.0" layoutY="127.0" styleClass="finOperation" text="Camion" />
+      <Label alignment="CENTER" layoutX="337.0" layoutY="60.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="505.0" layoutY="59.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="3" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="420.0" layoutY="61.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="2" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="586.0" layoutY="59.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="4" textAlignment="CENTER" />
+      <Line endX="20.0" layoutX="401.0" layoutY="71.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
+      <Line endX="20.0" layoutX="565.0" layoutY="71.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
+      <Line endX="20.0" layoutX="484.0" layoutY="71.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
+      <Label layoutX="777.0" layoutY="127.0" styleClass="finOperation" text="Ble" />
+      <ImageView fx:id="infochaffeur" fitHeight="23.0" fitWidth="31.0" layoutX="462.0" layoutY="126.0" onMouseEntered="#opneInfoChauufeur" onMouseExited="#CloseInforChauffeur" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="infocamion" fitHeight="23.0" fitWidth="31.0" layoutX="403.0" layoutY="131.0" onMouseEntered="#opneInfoCamion" onMouseExited="#CloseInfoCamion" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infocamion" fitHeight="23.0" fitWidth="31.0" layoutX="640.0" layoutY="126.0" onMouseEntered="#opneInfoCamion" onMouseExited="#CloseInfoCamion" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="infoBle" fitHeight="23.0" fitWidth="31.0" layoutX="569.0" layoutY="131.0" onMouseEntered="#opneInfoBle" onMouseExited="#CloseinfoBle" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infoBle" fitHeight="23.0" fitWidth="31.0" layoutX="806.0" layoutY="126.0" onMouseEntered="#opneInfoBle" onMouseExited="#CloseinfoBle" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="statechauffeur" fitHeight="23.0" fitWidth="31.0" layoutX="121.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="statechauffeur" fitHeight="23.0" fitWidth="31.0" layoutX="358.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/OkGreen.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="statecamion" fitHeight="23.0" fitWidth="31.0" layoutX="313.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="statecamion" fitHeight="23.0" fitWidth="31.0" layoutX="550.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/OkGreen.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="stateble" fitHeight="23.0" fitWidth="31.0" layoutX="505.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="stateble" fitHeight="23.0" fitWidth="31.0" layoutX="742.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/OkGreen.png" />
          </image>
@@ -106,5 +106,18 @@
       <JFXButton fx:id="save" layoutX="809.0" layoutY="379.0" onAction="#sauvgarder" prefHeight="55.0" prefWidth="174.0" styleClass="button_save" text="Sauvgarder" />
       <JFXButton fx:id="annuler" layoutX="607.0" layoutY="379.0" onAction="#quitter" prefHeight="55.0" prefWidth="174.0" styleClass="button_annuler" text="Annuler" />
       <ImageView fx:id="diffIcon" fitHeight="32.0" fitWidth="32.0" layoutX="967.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="220.0" layoutY="128.0" styleClass="finOperation" text="Dock" />
+      <ImageView fx:id="infodock" fitHeight="23.0" fitWidth="31.0" layoutX="272.0" layoutY="126.0" onMouseEntered="#opneInfoDock" onMouseExited="#CloseInforDock" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/icons/preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statedock" fitHeight="23.0" fitWidth="31.0" layoutX="185.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/icons/OkGreen.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="670.0" layoutY="59.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="5" textAlignment="CENTER" />
+      <Line endX="20.0" layoutX="650.0" layoutY="71.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
    </children>
 </AnchorPane>

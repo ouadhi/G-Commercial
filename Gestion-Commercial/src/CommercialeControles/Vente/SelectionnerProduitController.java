@@ -1,27 +1,66 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package CommercialeControles.Vente;
 
+import CommercialeControles.Produit.ProduitCell;
+import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Produit;
+import com.gestionCommerciale.Models.ProduitQueries;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
-/**
- * FXML Controller class
- *
- * @author mac
- */
+
 public class SelectionnerProduitController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private JFXListView<PorduitH> listeProduit;
+     private ProduitQueries queries = new ProduitQueries();
+    @FXML
+    private JFXButton suivant;
+    
+    public static ArrayList<PorduitH> listeProduitSelected = new ArrayList<>() ; 
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        List<Produit> listBlesDB = queries.list();
+        List<PorduitH> list = new ArrayList<>();
+        
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new PorduitH( listBlesDB.get(i) )); 
+        }
+        list.add(new PorduitH()) ;
+        ObservableList<PorduitH> myObservableList = FXCollections.observableList(list);
+        listeProduit.setItems(myObservableList);
+        
     }    
+
+    @FXML
+    private void select(MouseEvent event) {
+    }
+
+    @FXML
+    private void nextEtape(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.infotmationVente)); 
+            OperationVenteController.staticpane.getChildren().setAll(pane) ;
+        } catch (IOException ex) {
+            Logger.getLogger(SelectionnerProduitController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

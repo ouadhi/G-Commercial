@@ -40,23 +40,25 @@ public class ViewUrl {
     public static String moreMenu = "/CommercialeView/MoreMenuFXML.fxml";
 
     public static String Login = "/Views/Employee_LoginFXML.fxml";
-    public static String GestionUtilisateur  =  "/Views/AdminFXML.fxml";
-    
-    
+    public static String GestionUtilisateur = "/Views/AdminFXML.fxml";
+
     // *********************
-    
-    public static String selectChauffeur  = "/CommercialeView/OperationAchat/SelectionnerChauffeur.fxml"; 
-    public static String selectCamion = "/CommercialeView/OperationAchat/SelectionnerCamion.fxml" ; 
-    public static String operationAchat  =  "/CommercialeView/OperationAchat/OperationMain.fxml";
-    public static String selectBle =  "/CommercialeView/OperationAchat/SelectionnerBle.fxml" ; 
-    public static String informationAcaht  = "/CommercialeView/OperationAchat/FinOperation.fxml" ; 
-    public static String ListAchats = "/CommercialeView/OperationAchat/ListeAchat.fxml" ;
-    public static String ModifierAchat = "/CommercialeView/OperationAchat/ModifierAchat.fxml" ; 
-    public static String AchatSlid  = "/CommercialeView/OperationAchat/AchatSlid.fxml" ; 
-    
+    public static String selectChauffeur = "/CommercialeView/OperationAchat/SelectionnerChauffeur.fxml";
+    public static String selectCamion = "/CommercialeView/OperationAchat/SelectionnerCamion.fxml";
+    public static String operationAchat = "/CommercialeView/OperationAchat/OperationMain.fxml";
+    public static String selectBle = "/CommercialeView/OperationAchat/SelectionnerBle.fxml";
+    public static String informationAcaht = "/CommercialeView/OperationAchat/FinOperation.fxml";
+    public static String ListAchats = "/CommercialeView/OperationAchat/ListeAchat.fxml";
+    public static String ModifierAchat = "/CommercialeView/OperationAchat/ModifierAchat.fxml";
+    public static String selectDock = "/CommercialeView/OperationAchat/SelectionnerDock.fxml";
+    public static String AchatSlid = "/CommercialeView/OperationAchat/AchatSlid.fxml";
+
     //***********************
-    public static String nouveauVente = "/CommercialeView/Vente/OperationVente.fxml" ; 
-    public static String selectClient = "/CommercialeView/Vente/SelectionnerClient.fxml" ; 
-    public static String selectChauffeurVente = "/CommercialeView/Vente/SelectionnerCahffeur.fxml" ; 
+    public static String nouveauVente = "/CommercialeView/Vente/OperationVente.fxml";
+    public static String selectClient = "/CommercialeView/Vente/SelectionnerClient.fxml";
+    public static String selectChauffeurVente = "/CommercialeView/Vente/SelectionnerCahffeur.fxml";
+    public static String selectProduit = "/CommercialeView/Vente/SelectionnerProduit.fxml";
+    public static String infotmationVente = "/CommercialeView/Vente/FinOperationVente.fxml";
+    
     
 }

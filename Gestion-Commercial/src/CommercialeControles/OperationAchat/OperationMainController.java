@@ -28,21 +28,29 @@ public class OperationMainController implements Initializable {
     private JFXButton precedent;
 
     private int etape;
-    private AnchorPane chauffeur, camion, Ble, information;
+    private AnchorPane chauffeur, camion, Ble, information , dock;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
+        
+            
+            
+        try { 
+            dock  = FXMLLoader.load(getClass().getResource(ViewUrl.selectDock)) ;
+            showEtape(dock);
             chauffeur = FXMLLoader.load(getClass().getResource(ViewUrl.selectChauffeur));
             camion = FXMLLoader.load(getClass().getResource(ViewUrl.selectCamion));
             Ble = FXMLLoader.load(getClass().getResource(ViewUrl.selectBle));
             information = FXMLLoader.load(getClass().getResource(ViewUrl.informationAcaht));
-        } catch (Exception e) {
+            etape = 1;
+        } catch (IOException ex) {
+            Logger.getLogger(OperationMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
 
-        etape = 1;
+        
 
-        showEtape(chauffeur);
+        
 
     }
 
@@ -53,7 +61,7 @@ public class OperationMainController implements Initializable {
     @FXML
     private void methodesuivant(ActionEvent event) {
 
-        if (this.etape <= 4) {
+        if (this.etape <= 5) {
             etape++;
             quelleEtape(etape);
         }
@@ -78,34 +86,46 @@ public class OperationMainController implements Initializable {
     public void quelleEtape(int etape) {
         switch (etape) {
             case 1:
-                showEtape(chauffeur);
+                showEtape(dock);
                 break;
+                
             case 2:
+                if (FinOperationController.dock== null) {
+                    Notification.champVideNotification();
+                    --this.etape;
+                } else {
+                    showEtape(chauffeur);
+                }
+
+                break;
+                
+            case 3:
                 if (FinOperationController.chauffeur == null) {
                     Notification.champVideNotification();
                     --this.etape;
                 } else {
-                    showEtape(camion);
-                }
-
-                break;
-            case 3:
-                if (FinOperationController.camion == null) {
-                    Notification.champVideNotification();
-                    --this.etape;
-                } else {
-                   showEtape(Ble);
+                   showEtape(camion);
                 }
      
                 break;
-            default:
+                
+            case 4 :
                 if (FinOperationController.camion == null) {
                     Notification.champVideNotification();
                     --this.etape;
                 } else {
-                    showEtape(information);
-                FinOperationController.stateicon();
+                    showEtape(Ble);
                 }
+                break;
+                
+             default:
+                 if (FinOperationController.ble == null) {
+                     Notification.champVideNotification();
+                    --this.etape;
+                 } else {
+                     showEtape(information);
+                  FinOperationController.stateicon();   
+                 }
                
                 break;
         }

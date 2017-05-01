@@ -118,7 +118,7 @@
 .label_txt {
 
     -fx-font-family: Roboto;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: normal;
     -fx-font-stretch: normal;
     -fx-line-height: normal;
@@ -213,4 +213,15 @@ button_annuler:pressed {
     -fx-cell-vertical-margin : 10.0  ; 
     -fx-vertical-gap : 5;   
     -fx-background-color : #f4f8f9; ; 
+}
+
+.labelselecte{
+    -fx-background-color: fd9252; 
+    -fx-background-radius :50  ; 
+    -fx-border-radius : 50 ;
+}
+
+.champtxt {
+    -fx-background-color : #f6f7fb;
+    -fx-background-radius : 4px ;
 }

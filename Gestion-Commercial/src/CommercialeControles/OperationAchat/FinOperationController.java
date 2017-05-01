@@ -19,6 +19,7 @@ import org.controlsfx.control.PopOver;
 
 public class FinOperationController implements Initializable {
 
+    public static DockListeH dock = null;
     public static CamionListeH camion = null;
     public static ChauffeurListH chauffeur = null;
     public static BleListeH ble = null;
@@ -65,12 +66,18 @@ public class FinOperationController implements Initializable {
     private JFXButton annuler;
     @FXML
     private ImageView diffIcon;
+    @FXML
+    private ImageView infodock;
+    @FXML
+    private ImageView statedock;
+    static ImageView statDock;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         statech = this.statechauffeur;
         statecam = statecamion;
         stateb = stateble;
+        statDock = statedock; 
 
         Methode.setOnlyInteger(numero, 10);
         Methode.setOnlyFloat(diff, 10);
@@ -103,6 +110,12 @@ public class FinOperationController implements Initializable {
             stateb.setImage(new Image(imgfaux));
         } else {
             stateb.setImage(new Image(imgOk));
+        }
+
+        if (dock == null) {
+            statDock.setImage(new Image(imgfaux));
+        } else {
+            statDock.setImage(new Image(imgOk));
         }
     }
 
@@ -199,11 +212,25 @@ public class FinOperationController implements Initializable {
     }
 
     private void setnull() {
-        
+
         camion = null;
         chauffeur = null;
         ble = null;
+        dock = null;
 
+    }
+
+    @FXML
+    private void CloseInforDock(MouseEvent event) {
+        infodock.setImage(view);
+        popup.hide();
+    }
+
+    @FXML
+    private void opneInfoDock(MouseEvent event) {
+        infodock.setImage(viewHover);
+        popup.setContentNode(dock);
+        popup.show(infodock);
     }
 
 }
