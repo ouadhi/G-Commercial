@@ -3,11 +3,12 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1160.0" style="-fx-background-color: white;" stylesheets="@Vente.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Vente.SelectionnerProduitController">
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1160.0" stylesheets="@Vente.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Vente.SelectionnerProduitController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="454.0" layoutY="31.0" styleClass="titre" text="Selectionner Produits" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="441.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
@@ -19,7 +20,14 @@
       <Label alignment="CENTER" layoutX="595.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" styleClass="labelselecte" text="3" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="738.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="5" textAlignment="CENTER" />
       <Line endX="15.0" layoutX="731.0" layoutY="97.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
-      <JFXButton fx:id="suivant" layoutX="988.0" layoutY="478.0" onAction="#nextEtape" prefHeight="44.0" prefWidth="149.0" styleClass="nextbutton" text="Suivant" />
+      <JFXButton fx:id="suivant" layoutX="989.0" layoutY="464.0" onAction="#nextEtape" prefHeight="50.0" prefWidth="150.0" styleClass="nextbutton" text="Suivant" />
       <JFXListView fx:id="listeProduit" layoutX="43.0" layoutY="139.0" onMouseClicked="#select" orientation="HORIZONTAL" prefHeight="312.0" prefWidth="1095.0" showTooltip="true" />
+      <ImageView fitHeight="50.0" fitWidth="80.0" layoutX="1033.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/icons/basket.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="suivant1" layoutX="816.0" layoutY="464.0" onAction="#nextEtape" prefHeight="50.0" prefWidth="150.0" styleClass="nextbutton" text="Precedent" />
+      <Label fx:id="nbselected" alignment="CENTER" layoutX="1063.0" layoutY="49.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

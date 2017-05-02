@@ -157,11 +157,13 @@ public class PorduitH extends GridPane{
                  spinner.setVisible(true);
                  selected = true ; 
                  SelectionnerProduitController.listeProduitSelected.add(this) ; 
+                 SelectionnerProduitController.staticNbselected.setText(Integer.toString(SelectionnerProduitController.listeProduitSelected.size()));
             }else{
                 Ajouterbttn.setStyle("-fx-background-color: #74c080;-fx-background-radius: 30; -fx-text-fill: white;");
                 spinner.setVisible(false);
                  selected = false ; 
                  SelectionnerProduitController.listeProduitSelected.remove(this) ;
+                  SelectionnerProduitController.staticNbselected.setText(Integer.toString(SelectionnerProduitController.listeProduitSelected.size()));
             }
             
         });

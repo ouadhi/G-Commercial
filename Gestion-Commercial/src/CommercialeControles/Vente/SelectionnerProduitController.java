@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -33,10 +34,16 @@ public class SelectionnerProduitController implements Initializable {
     private JFXButton suivant;
     
     public static ArrayList<PorduitH> listeProduitSelected = new ArrayList<>() ; 
+    @FXML
+    private JFXButton suivant1;
+    @FXML
+    private Label nbselected;
+    static Label staticNbselected ; 
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        staticNbselected = nbselected ; 
         List<Produit> listBlesDB = queries.list();
         List<PorduitH> list = new ArrayList<>();
         
