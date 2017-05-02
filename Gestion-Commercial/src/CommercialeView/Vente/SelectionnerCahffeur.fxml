@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1160.0" stylesheets="@Vente.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Vente.SelectionnerCahffeurController">
+   <children>
+      <JFXListView fx:id="listeChaffeur" layoutX="33.0" layoutY="129.0" onMouseClicked="#select" orientation="HORIZONTAL" prefHeight="312.0" prefWidth="1095.0" showTooltip="true" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="397.0" layoutY="31.0" styleClass="titre" text="Selectionner Un Chauffeur" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="431.0" layoutY="75.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="510.0" layoutY="75.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: fd9252;" styleClass="etapenumero" text="2" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="662.0" layoutY="75.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="4" textAlignment="CENTER" />
+      <Line endX="15.0" layoutX="494.0" layoutY="86.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
+      <Line endX="15.0" layoutX="646.0" layoutY="87.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+      <Line endX="15.0" layoutX="570.0" layoutY="86.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
+      <Label alignment="CENTER" layoutX="585.0" layoutY="75.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="3" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="728.0" layoutY="75.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="5" textAlignment="CENTER" />
+      <Line endX="15.0" layoutX="721.0" layoutY="87.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien" />
+      <JFXButton fx:id="suivant" layoutX="978.0" layoutY="468.0" onAction="#nextEtape" prefHeight="44.0" prefWidth="149.0" styleClass="nextbutton" text="Suivant" />
+   </children>
+</AnchorPane>
