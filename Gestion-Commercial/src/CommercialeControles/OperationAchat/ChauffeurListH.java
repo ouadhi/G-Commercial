@@ -1,6 +1,7 @@
 package CommercialeControles.OperationAchat;
 
 import CommercialeControles.Chauffeur.AjouterChauffeuerDialog;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -23,14 +24,11 @@ public class ChauffeurListH extends GridPane {
     protected Label label;
     protected Label label0;
 
-    private String nom, prenom;
-    private String telephone;
+    private Chauffeur chauffeur ; 
 
-    public ChauffeurListH(String nom, String prenom, String telephone) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.telephone = telephone;
-
+    public ChauffeurListH( Chauffeur chauffeur) {
+        this.chauffeur = chauffeur; 
+        
         columnConstraints = new ColumnConstraints();
         rowConstraints = new RowConstraints();
         rowConstraints0 = new RowConstraints();
@@ -83,7 +81,7 @@ public class ChauffeurListH extends GridPane {
         GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label.setText(this.nom + " " + this.prenom);
+        label.setText(this.chauffeur.getNomChauffeur() + " " + this.chauffeur.getPrenomChauffeur());
         label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));
@@ -94,7 +92,7 @@ public class ChauffeurListH extends GridPane {
         GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
         label0.setAlignment(javafx.geometry.Pos.CENTER);
         label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label0.setText(this.telephone);
+        label0.setText(this.chauffeur.getTelephone());
         label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));

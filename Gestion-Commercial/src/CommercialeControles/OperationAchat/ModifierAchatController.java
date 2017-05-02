@@ -92,7 +92,7 @@ public class ModifierAchatController implements Initializable {
     public void setData(int numeroAquict) {
         numero.setText(Integer.toString(numeroAquict));
 
-        ch = new ChauffeurListH("OUADHI", "Mohammed", "1234567");
+        //ch = new ChauffeurListH("OUADHI", "Mohammed", "1234567");
         camionH = new CamionListeH("JMC", "1234567");
 
         pop.setCornerRadius(4);

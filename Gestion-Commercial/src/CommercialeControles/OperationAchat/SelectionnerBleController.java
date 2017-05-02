@@ -1,6 +1,9 @@
 
 package CommercialeControles.OperationAchat;
 
+import CommercialeControles.Ble.BelCell;
+import com.gestionCommerciale.HibernateSchema.Ble;
+import com.gestionCommerciale.Models.BleQueries;
 import com.jfoenix.controls.JFXListView;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,13 +22,17 @@ public class SelectionnerBleController implements Initializable {
     @FXML
     private JFXListView<BleListeH> listeBle;
     private BleListeH  bleselected ;
+    private BleQueries dockQueries = new BleQueries();
 
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         List<Ble> listBlesDB = dockQueries.list();
         List<BleListeH> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(new BleListeH(i, 123)) ; 
+        
+        for (int i = 0; i < listBlesDB.size(); i++) {
+           list.add(new BleListeH(listBlesDB.get(i).getIdBle(), listBlesDB.get(i).getQte())) ; 
+         
             
         }
         

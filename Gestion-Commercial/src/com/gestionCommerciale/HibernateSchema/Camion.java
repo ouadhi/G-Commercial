@@ -9,10 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author CHERABRAB
- */
+
 @Entity
 @Table(name = "Camion")
 public class Camion {
@@ -39,7 +36,7 @@ public class Camion {
         this.codeCamion = codeCamion;
         this.matricule= matricule;
         this.type = type;
-        //this.marque = marque;
+        this.marque = type;
     }
 
     public String getCodeCamion() {

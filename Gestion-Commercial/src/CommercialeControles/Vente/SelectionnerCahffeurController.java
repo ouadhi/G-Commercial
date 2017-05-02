@@ -3,6 +3,8 @@ package CommercialeControles.Vente;
 
 import CommercialeControles.OperationAchat.ChauffeurListH;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
@@ -29,13 +31,14 @@ public class SelectionnerCahffeurController implements Initializable {
     private JFXListView<ChauffeurListH> listeChaffeur;
     @FXML
     private JFXButton suivant;
-
+ private ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         List<ChauffeurListH> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(new ChauffeurListH("OUADHI", "Mohammed", "0553485908")) ; 
+        List<Chauffeur> listChauffeursDB= chauffeurQueries.chauffeursList();
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurListH(listChauffeursDB.get(i))) ; 
             
         }
         

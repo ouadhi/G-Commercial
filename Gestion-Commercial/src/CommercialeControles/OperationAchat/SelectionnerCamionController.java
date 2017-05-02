@@ -1,6 +1,8 @@
 
 package CommercialeControles.OperationAchat;
 
+import com.gestionCommerciale.HibernateSchema.Camion;
+import com.gestionCommerciale.Models.CamionQueries;
 import com.jfoenix.controls.JFXListView;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,13 +21,16 @@ public class SelectionnerCamionController implements Initializable {
     @FXML
     private JFXListView<CamionListeH> listeCamion;
     private CamionListeH camion; 
+    
+    private CamionQueries camionQueries= new CamionQueries();
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         List<Camion> listCamionsDB= camionQueries.list();
          List<CamionListeH> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(new CamionListeH("JMC", "12345TY78909")) ; 
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionListeH(listCamionsDB.get(i).getMarque(), listCamionsDB.get(i).getMatricule())) ; 
             
         }
         
