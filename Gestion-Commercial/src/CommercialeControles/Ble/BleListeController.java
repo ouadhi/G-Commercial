@@ -3,15 +3,11 @@ package CommercialeControles.Ble;
 
 
 import CommercialeControles.Client.ClientListController;
-import CommercialeControles.Dock.DockCell;
-import CommercialeControles.Dock.ShowDockSlideController;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Ble;
-import com.gestionCommerciale.HibernateSchema.Dock;
 import com.gestionCommerciale.Models.BleQueries;
-import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;

@@ -32,9 +32,7 @@ public class OperationMainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-            
-            
+       
         try { 
             dock  = FXMLLoader.load(getClass().getResource(ViewUrl.selectDock)) ;
             showEtape(dock);
