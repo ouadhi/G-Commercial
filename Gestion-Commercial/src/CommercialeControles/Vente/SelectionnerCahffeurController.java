@@ -52,7 +52,7 @@ public class SelectionnerCahffeurController implements Initializable {
 
     @FXML
     private void select(MouseEvent event)  {
-        
+        OperationVenteController.chauffeur  =  listeChaffeur.getSelectionModel().getSelectedItem().getChauffeur()  ; 
     }
 
     @FXML

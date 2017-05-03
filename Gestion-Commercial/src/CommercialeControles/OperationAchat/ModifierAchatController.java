@@ -93,7 +93,7 @@ public class ModifierAchatController implements Initializable {
         numero.setText(Integer.toString(numeroAquict));
 
         //ch = new ChauffeurListH("OUADHI", "Mohammed", "1234567");
-        camionH = new CamionListeH("JMC", "1234567");
+        //camionH = new CamionListeH("JMC", "1234567");
 
         pop.setCornerRadius(4);
         pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);

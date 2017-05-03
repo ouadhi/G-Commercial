@@ -26,6 +26,16 @@ public class ChauffeurListH extends GridPane {
 
     private Chauffeur chauffeur ; 
 
+    public Chauffeur getChauffeur() {
+        return chauffeur;
+    }
+
+    public void setChauffeur(Chauffeur chauffeur) {
+        this.chauffeur = chauffeur;
+    }
+    
+    
+
     public ChauffeurListH( Chauffeur chauffeur) {
         this.chauffeur = chauffeur; 
         

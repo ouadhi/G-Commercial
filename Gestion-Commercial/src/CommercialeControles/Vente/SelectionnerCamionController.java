@@ -1,6 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package CommercialeControles.Vente;
 
-package CommercialeControles.OperationAchat;
-
+import CommercialeControles.OperationAchat.CamionListeH;
 import com.gestionCommerciale.HibernateSchema.Camion;
 import com.gestionCommerciale.Models.CamionQueries;
 import com.jfoenix.controls.JFXListView;
@@ -20,9 +25,8 @@ public class SelectionnerCamionController implements Initializable {
 
     @FXML
     private JFXListView<CamionListeH> listeCamion;
-    private CamionListeH camion; 
-    
-    private CamionQueries camionQueries= new CamionQueries();
+
+     private CamionQueries camionQueries= new CamionQueries();
 
     
     @Override
@@ -30,7 +34,7 @@ public class SelectionnerCamionController implements Initializable {
          List<Camion> listCamionsDB= camionQueries.list();
          List<CamionListeH> list = new ArrayList<>();
         for (int i = 0; i < listCamionsDB.size(); i++) {
-            list.add(new CamionListeH(listCamionsDB.get(i))) ; 
+            list.add(new CamionListeH(listCamionsDB.get(i)))  ; 
             
         }
         
@@ -40,14 +44,12 @@ public class SelectionnerCamionController implements Initializable {
         listeCamion.setItems(myObservableList);
         listeCamion.setOrientation(Orientation.HORIZONTAL);
         listeCamion.setExpanded(true);
-       
     }    
 
     @FXML
     private void select(MouseEvent event) {
         
-        camion =   (CamionListeH) listeCamion.getSelectionModel().getSelectedItem(); 
-        FinOperationController.camion =  camion  ; 
+        OperationVenteController.camion  =  listeCamion.getSelectionModel().getSelectedItem().getCamion() ; 
     }
     
 }

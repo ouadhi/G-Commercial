@@ -1,6 +1,7 @@
 package CommercialeControles.OperationAchat;
 
 import CommercialeControles.Camion.AjouterCamionDialog;
+import com.gestionCommerciale.HibernateSchema.Camion;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -23,12 +24,20 @@ public class CamionListeH extends GridPane {
     protected Label label;
     protected Label label0;
 
-    private String marque;
-    private String matriqule;
+    private Camion camion  ;    
 
-    public CamionListeH(String marque, String matriqule) {
-        this.marque = marque;
-        this.matriqule = matriqule;
+    public Camion getCamion() {
+        return camion;
+    }
+
+    public void setCamion(Camion camion) {
+        this.camion = camion;
+    }
+    
+    
+
+    public CamionListeH(Camion camion) {
+        this.camion  =  camion  ; 
 
         columnConstraints = new ColumnConstraints();
         rowConstraints = new RowConstraints();
@@ -82,7 +91,7 @@ public class CamionListeH extends GridPane {
         GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label.setText(this.marque);
+        label.setText(this.camion.getMarque());
         label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));
@@ -93,7 +102,7 @@ public class CamionListeH extends GridPane {
         GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
         label0.setAlignment(javafx.geometry.Pos.CENTER);
         label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label0.setText(this.matriqule);
+        label0.setText(this.camion.getMatricule());
         label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));

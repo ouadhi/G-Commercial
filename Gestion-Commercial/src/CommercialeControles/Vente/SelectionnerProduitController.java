@@ -1,11 +1,9 @@
 
 package CommercialeControles.Vente;
 
-import CommercialeControles.Produit.ProduitCell;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Produit;
 import com.gestionCommerciale.Models.ProduitQueries;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
 import java.net.URL;
@@ -30,12 +28,7 @@ public class SelectionnerProduitController implements Initializable {
     @FXML
     private JFXListView<PorduitH> listeProduit;
      private ProduitQueries queries = new ProduitQueries();
-    @FXML
-    private JFXButton suivant;
     
-    public static ArrayList<PorduitH> listeProduitSelected = new ArrayList<>() ; 
-    @FXML
-    private JFXButton suivant1;
     @FXML
     private Label nbselected;
     static Label staticNbselected ; 
@@ -60,7 +53,6 @@ public class SelectionnerProduitController implements Initializable {
     private void select(MouseEvent event) {
     }
 
-    @FXML
     private void nextEtape(ActionEvent event) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.infotmationVente)); 

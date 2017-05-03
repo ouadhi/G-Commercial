@@ -82,7 +82,7 @@ public class ShowClienSlideController implements Initializable {
             ClienCell client  = liste.getItems().get(index);
 
             ModifierClientController modification = loader.getController();
-            modification.SetData(client.getCodeclient());
+            modification.SetData(client.getClient().getId());
 
             AnchorPane pane = loader.getRoot();
 

@@ -17,6 +17,7 @@ import com.gestionCommerciale.Models.ClientQueries;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 
@@ -32,10 +33,7 @@ public class SelectionnerClientController implements Initializable {
         List<Client> listClientsDB = clientQueries.list();
         List<ClienCell> list = new ArrayList<>();
         for (int i = 0; i < listClientsDB.size(); i++) {
-            list.add(new ClienCell(listClientsDB.get(i).getId(),listClientsDB.get(i).getPrenom()+" "+listClientsDB.get(i).getName()
-                    , listClientsDB.get(i).getTypeActivity()
-                    , listClientsDB.get(i).getNumRegCom()
-                   ));            
+            list.add(new ClienCell(listClientsDB.get(i) ));            
         }
         ObservableList<ClienCell> myObservableList = FXCollections.observableList(list);
         ClientListe.setItems(myObservableList);
@@ -43,10 +41,14 @@ public class SelectionnerClientController implements Initializable {
         
     }    
 
-    @FXML
     private void nextEtape(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.selectChauffeurVente)); 
         OperationVenteController.staticpane.getChildren().setAll(pane) ; 
+    }
+
+    @FXML
+    private void select(MouseEvent event) {
+        OperationVenteController.client = ClientListe.getSelectionModel().getSelectedItem().getClient()  ; 
     }
 
     

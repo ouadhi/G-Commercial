@@ -4,6 +4,7 @@ import UIControle.Notification;
 import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.Models.ClientQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
@@ -30,10 +31,7 @@ import javafx.scene.text.Font;
 
 public class ClienCell extends GridPane {
 
-    private int codeclient;
-    private String nom;
-    private String activity;
-    private String registre;
+    private Client  client ; 
   
     protected final ColumnConstraints columnConstraints;
     protected final ColumnConstraints columnConstraints0;
@@ -48,11 +46,18 @@ public class ClienCell extends GridPane {
     private JFXPopup popup;
     private JFXButton bttn;
 
-    public ClienCell(int codeclient, String nom, String activity, String registre) {
-        this.codeclient = codeclient;
-        this.nom = nom;
-        this.activity = activity;
-        this.registre = registre;
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+    
+    
+
+    public ClienCell(Client client ) {
+       this.client = client  ; 
         
         popup = new JFXPopup(); 
 
@@ -117,21 +122,21 @@ public class ClienCell extends GridPane {
 
         label.setPrefHeight(22.0);
         label.setPrefWidth(46.0);
-        label.setText(Integer.toString(this.codeclient));
+        label.setText(Integer.toString(this.client.getId()));
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);
-        label0.setText(this.nom);
+        label0.setText(this.client.getName());
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(this.activity);
+        label1.setText(this.client.getAddressClient());
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
         label2.setLayoutX(333.0);
         label2.setLayoutY(35.0);
-        label2.setText(this.registre);
+        label2.setText(this.client.getNumRegCom());
         label2.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(bttn, 4);
@@ -159,37 +164,7 @@ public class ClienCell extends GridPane {
 
     }
 
-    public int getCodeclient() {
-        return codeclient;
-    }
-
-    public void setCodeclient(int codeclient) {
-        this.codeclient = codeclient;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getActivity() {
-        return activity;
-    }
-
-    public void setActivity(String activity) {
-        this.activity = activity;
-    }
-
-    public String getRegistre() {
-        return registre;
-    }
-
-    public void setRegistre(String registre) {
-        this.registre = registre;
-    }
+   
 
     
     
@@ -214,7 +189,7 @@ public class ClienCell extends GridPane {
                 loader.load();
                 
                 ModifierClientController controlClient =  loader.getController() ;
-                controlClient.SetData(codeclient);
+                controlClient.SetData(this.client.getId());
                 
                 AnchorPane root = loader.getRoot();
                 
@@ -235,7 +210,7 @@ public class ClienCell extends GridPane {
             if (result.get() == ButtonType.OK) {
                 // requete DELETE from client  Where  id.client  =  codeclient 
                 ClientQueries cq = new ClientQueries();
-                cq.delete(cq.getClient(codeclient + ""));
+                cq.delete(cq.getClient(this.client.getId() + ""));
                 Notification.Deletenotification();
                 new ShowPane().showClient();
             }

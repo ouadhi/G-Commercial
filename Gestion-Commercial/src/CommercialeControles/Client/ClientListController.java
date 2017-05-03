@@ -52,10 +52,7 @@ public class ClientListController implements Initializable {
         List<Client> listClientsDB = clientQueries.list();
         List<ClienCell> list = new ArrayList<>();
         for (int i = 0; i < listClientsDB.size(); i++) {
-            list.add(new ClienCell(listClientsDB.get(i).getId(),listClientsDB.get(i).getPrenom()+" "+listClientsDB.get(i).getName()
-                    , listClientsDB.get(i).getTypeActivity()
-                    , listClientsDB.get(i).getNumRegCom()
-                   ));            
+            list.add(new ClienCell(listClientsDB.get(i)));            
         }
         ObservableList<ClienCell> myObservableList = FXCollections.observableList(list);
         clientLsit.setItems(myObservableList);

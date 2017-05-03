@@ -27,6 +27,7 @@ public class PorduitH extends GridPane{
     
    private  Produit  produit   ; 
    private boolean  selected ; 
+   private JFXTextField quantite ; 
    
 
     public Produit getProduit() {
@@ -36,6 +37,13 @@ public class PorduitH extends GridPane{
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
+
+    public int getQuantite() {
+        return Integer.parseInt(quantite.getText());
+    }
+    
+    
+    
 
     public PorduitH(Produit produit) {
         this.produit = produit;
@@ -48,7 +56,7 @@ public class PorduitH extends GridPane{
         ImageView imageView;
         Label label;
         Label label0;
-        JFXTextField spinner ; 
+       
         JFXButton Ajouterbttn ;
 
         columnConstraints = new ColumnConstraints();
@@ -59,7 +67,7 @@ public class PorduitH extends GridPane{
         imageView = new ImageView();
         label = new Label();
         label0 = new Label();
-        spinner = new JFXTextField(); 
+        quantite = new JFXTextField(); 
         Ajouterbttn = new JFXButton();
 
         setPrefHeight(275.0);
@@ -118,14 +126,14 @@ public class PorduitH extends GridPane{
         label0.setFont(new Font(15.0));
         GridPane.setMargin(label0, new Insets(0.0, 0.0, 31.0, 0.0));
         
-        GridPane.setRowIndex(spinner, 2);
-        spinner.setMaxSize(75, 40);
-        spinner.setPrefSize(75, 40);
-        spinner.setMinSize(75, 40);
-        spinner.setVisible(false);
-        spinner.setAlignment(javafx.geometry.Pos.CENTER);
-        spinner.setFont(new Font(14.0));
-        spinner.setPromptText("Quantité");
+        GridPane.setRowIndex(quantite, 2);
+        quantite.setMaxSize(75, 40);
+        quantite.setPrefSize(75, 40);
+        quantite.setMinSize(75, 40);
+        quantite.setVisible(false);
+        quantite.setAlignment(javafx.geometry.Pos.CENTER);
+        quantite.setFont(new Font(14.0));
+        quantite.setPromptText("Quantité");
         
 
         GridPane.setRowIndex(Ajouterbttn, 3);
@@ -144,26 +152,26 @@ public class PorduitH extends GridPane{
         getChildren().add(imageView);
         getChildren().add(label);
         getChildren().add(label0);
-        getChildren().add(spinner);
+        getChildren().add(quantite);
         getChildren().add(Ajouterbttn);
         
         
-        Methode.setOnlyInteger(spinner, 5);
+        Methode.setOnlyInteger(quantite, 5);
         
         
         Ajouterbttn.setOnAction(event ->{
             if (!selected) {
                  Ajouterbttn.setStyle("-fx-background-color: #d64242;-fx-background-radius: 30; -fx-text-fill: white;");
-                 spinner.setVisible(true);
+                 quantite.setVisible(true);
                  selected = true ; 
-                 SelectionnerProduitController.listeProduitSelected.add(this) ; 
-                 SelectionnerProduitController.staticNbselected.setText(Integer.toString(SelectionnerProduitController.listeProduitSelected.size()));
+                 OperationVenteController.produitselected.add(this);
+                 SelectionnerProduitController.staticNbselected.setText(Integer.toString(  OperationVenteController.produitselected.size()));
             }else{
                 Ajouterbttn.setStyle("-fx-background-color: #74c080;-fx-background-radius: 30; -fx-text-fill: white;");
-                spinner.setVisible(false);
+                quantite.setVisible(false);
                  selected = false ; 
-                 SelectionnerProduitController.listeProduitSelected.remove(this) ;
-                  SelectionnerProduitController.staticNbselected.setText(Integer.toString(SelectionnerProduitController.listeProduitSelected.size()));
+                  OperationVenteController.produitselected.remove(this) ;
+                  SelectionnerProduitController.staticNbselected.setText(Integer.toString(  OperationVenteController.produitselected.size()));
             }
             
         });
