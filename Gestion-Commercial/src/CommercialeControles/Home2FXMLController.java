@@ -1,5 +1,5 @@
 package CommercialeControles;
-
+//
 import UIControle.Methode;
 import UIControle.ShowPane;
 import UIControle.ViewUrl;
