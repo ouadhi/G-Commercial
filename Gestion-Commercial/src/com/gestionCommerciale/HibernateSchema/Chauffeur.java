@@ -38,13 +38,17 @@ public class Chauffeur {
     String telephone; 
     @Column(name = "type", nullable = false)
     String type; 
+    
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
     List<Client> clients= new ArrayList<Client>();
+    
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
     List<Dock> docks= new ArrayList<Dock>();
+    
     @OneToMany(targetEntity=Facture.class, mappedBy="chauffeur"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Facture> factures;
+    
     @OneToMany(targetEntity=Camion.class, mappedBy="chauffeur"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Camion> camions;

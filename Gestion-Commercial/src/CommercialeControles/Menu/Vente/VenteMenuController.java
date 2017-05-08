@@ -58,7 +58,7 @@ public class VenteMenuController implements Initializable {
 
     @FXML
     private void showhome(ActionEvent event) {
-        new ShowPane().showVente();
+        new ShowPane().showVenteListe();
     }
 
     @FXML

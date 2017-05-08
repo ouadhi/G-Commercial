@@ -35,10 +35,10 @@ public class Dock {
     @Column(name = "prixUnitTrans", nullable = false)
     double prixUnitTrans;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
-    @JoinTable(name = "Chauffeur_dock", joinColumns = {
-    @JoinColumn(name = "id_dock", nullable = false, updatable = false) }
+    @JoinTable(name = "Chauffeur_dock", joinColumns = { @JoinColumn(name = "id_dock", nullable = false, updatable = false) }
     ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable = false, updatable = false) })
     List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();
+    
     public Dock() {
     }
     

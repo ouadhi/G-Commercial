@@ -60,6 +60,7 @@ public class ViewUrl {
     public static String selectProduit = "/CommercialeView/Vente/SelectionnerProduit.fxml";
     public static String infotmationVente = "/CommercialeView/Vente/FinOperationVente.fxml";
     public static String selectCamionVente = "/CommercialeView/Vente/SelectionnerCamion.fxml";
+    public static String ListeVentes = "/CommercialeView/Vente/VenteList.fxml";
     
     
 }
