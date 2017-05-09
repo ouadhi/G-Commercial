@@ -1,20 +1,23 @@
 package CommercialeControles.Chauffeur;
 
+import CommercialeControles.Ble.ModifierBleController;
+import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
+import UIControle.StageDialog;
+import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Camion;
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
 import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Clock;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +26,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AjouterChauffeurViewController implements Initializable {
@@ -49,10 +53,17 @@ public class AjouterChauffeurViewController implements Initializable {
     private ImageView close;
     
     
+    public ArrayList<Camion> camions_Chauffeur   = new ArrayList<>()  ; 
     ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
+    
+    @FXML
+    private JFXComboBox<String> camionbox;
+   
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+      // camionboxstatic = camionbox ; 
+      
 
     }
 
@@ -103,5 +114,36 @@ public class AjouterChauffeurViewController implements Initializable {
         g.close();
 
     }
+
+    @FXML
+    private void deletecamion(ActionEvent event) {
+        int com  = camionbox.getSelectionModel().getSelectedIndex() ;
+        if (com >=0) {
+            camionbox.getItems().remove(com) ; 
+            camions_Chauffeur.remove(com) ; 
+        }
+    }
+
+    @FXML
+    private void addmaion(ActionEvent event) {
+        try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.SelectCamionchauffeur));
+                loader.load();
+                
+                selectionnerCamionController Modifier =  loader.getController() ;
+                Modifier.setData(camions_Chauffeur, camionbox);
+                
+                AnchorPane root = loader.getRoot();
+                
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
+                dialog.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterChauffeurViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+
 
 }

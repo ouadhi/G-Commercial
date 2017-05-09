@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="468.0" prefWidth="1050.0" style="-fx-background-color: white;" stylesheets="@ChauffeurCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Chauffeur.selectionnerCamionController">
+   <children>
+      <JFXListView fx:id="listeCamion" layoutX="51.0" layoutY="78.0" onMouseClicked="#select" orientation="HORIZONTAL" prefHeight="312.0" prefWidth="949.0" showTooltip="true" />
+      <JFXButton fx:id="btnnenvoyer" layoutX="832.0" layoutY="399.0" onAction="#envoyer" prefHeight="55.0" prefWidth="168.0" styleClass="button_save" text="Envoyer" />
+      <Text fill="#7d6dfb" layoutX="355.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Selectionner Un Camion" />
+      <JFXButton layoutX="625.0" layoutY="399.0" onAction="#quitter" prefHeight="55.0" prefWidth="168.0" styleClass="button_annuler" text="Annuler" />
+   </children>
+</AnchorPane>

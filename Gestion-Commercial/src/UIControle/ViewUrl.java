@@ -7,6 +7,7 @@ public class ViewUrl {
     public static String detailcamion = "/CommercialeView/Camion/ShowdDetailCamion.fxml";
     public static String modifierCamion = "/CommercialeView/Camion/ModifierCamionView.fxml";
     public static String showHomeChauffeur = "/CommercialeView/HomeFXML.fxml";
+    public static String SelectCamionchauffeur = "/CommercialeView/Chauffeur/SelectionnerCamion.fxml" ; 
 
     public static String ClientView = "/CommercialeView/Client/ClientListView.fxml";
     public static String AjouteClient = "/CommercialeView/Client/AjouterClientView.fxml";
