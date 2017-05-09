@@ -1,5 +1,5 @@
 
-package CommercialeControles.Vente;
+package CommercialeView.Vente;
 
 import CommercialeControles.Vente.VenteCell;
 import UIControle.ShowPane;
@@ -43,9 +43,8 @@ public class VenteListController implements Initializable {
     private JFXTextField rechreche;
     @FXML
     private JFXButton ajouter;
- 
     @FXML
-    private JFXListView<VenteCell> listevente;
+    private JFXListView<VenteCell> listeProduit;
 
     
     @Override
@@ -58,8 +57,8 @@ public class VenteListController implements Initializable {
             list.add(new VenteCell(facture)) ; 
         }
         ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
-        listevente.setItems(myObservableList);
-        listevente.setExpanded(true);
+        listeProduit.setItems(myObservableList);
+        listeProduit.setExpanded(true);
         setTotale();
        
     }    
