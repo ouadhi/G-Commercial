@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,15 +37,24 @@ public class Facture {
     double tva;
     @Column(name = "timbre", nullable = false)
     double timbre;
+    @ManyToOne
+    @JoinColumn(name="Id")
+    private Client client;
+    @ManyToOne
+    @JoinColumn(name="id_chauffeur")
+    private Chauffeur chauffeur;
+    @ManyToOne
+    @JoinColumn(name="id")
+    private Camion camion;
     @OneToMany(targetEntity=Payment.class, mappedBy="facture"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Payment> payments ;
     @OneToMany(targetEntity=Facture_Produit.class, mappedBy="facture"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Facture_Produit>  qtes;
-    @ManyToOne
-    @JoinColumn(name="id_chauffeur")
-    private Chauffeur chauffeur;
+    //
+    
+   
 
     public Facture() {
     }

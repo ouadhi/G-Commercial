@@ -5,7 +5,6 @@
  */
 package com.gestionCommerciale.HibernateSchema;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,7 +13,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -38,20 +36,21 @@ public class Chauffeur {
     String telephone; 
     @Column(name = "type", nullable = false)
     String type; 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
-    List<Client> clients= new ArrayList<Client>();
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
-    List<Dock> docks= new ArrayList<Dock>();
     @OneToMany(targetEntity=Facture.class, mappedBy="chauffeur"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Facture> factures;
+    @OneToMany(targetEntity=Achat.class, mappedBy="chauffeur"
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Achat> achats;
+     
+    //
+    /*@ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
+    List<Client> clients= new ArrayList<Client>();
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "chauffeurs")
+    List<Dock> docks= new ArrayList<Dock>();
     @OneToMany(targetEntity=Camion.class, mappedBy="chauffeur"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
-    private List<Camion> camions;
-    
-    @OneToMany(targetEntity=Expedition.class, mappedBy="chauffeur"
-    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
-    private List<Expedition>  expeditions;
+    private List<Camion> camions;*/
 
 
     public Chauffeur(String nomChauffeur, String prenomChauffeur,String telephone, String type) {
@@ -88,44 +87,13 @@ public class Chauffeur {
         this.prenomChauffeur = prenomChauffeur;
     }
 
-    public List<Client> getClients() {
-        return clients;
-    }
-
-    public void setClients(List<Client> clients) {
-        this.clients = clients;
-    }
-
-    public List<Dock> getDocks() {
-        return docks;
-    }
-
-    public void setDocks(List<Dock> docks) {
-        this.docks = docks;
-    }
-
+    
     public List<Facture> getFactures() {
         return factures;
     }
 
     public void setFactures(List<Facture> factures) {
         this.factures = factures;
-    }
-
-    public List<Camion> getCamions() {
-        return camions;
-    }
-
-    public void setCamions(List<Camion> camions) {
-        this.camions = camions;
-    }
-
-    public List<Expedition> getExpeditions() {
-        return expeditions;
-    }
-
-    public void setExpeditions(List<Expedition> expeditions) {
-        this.expeditions = expeditions;
     }
 
     public String getTelephone() {
@@ -142,6 +110,14 @@ public class Chauffeur {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<Achat> getAchats() {
+        return achats;
+    }
+
+    public void setAchats(List<Achat> achats) {
+        this.achats = achats;
     }
     
     

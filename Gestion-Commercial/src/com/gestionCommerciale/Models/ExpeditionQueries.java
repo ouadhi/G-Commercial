@@ -2,7 +2,7 @@ package com.gestionCommerciale.Models;
 
 import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
-import com.gestionCommerciale.HibernateSchema.Expedition;
+import com.gestionCommerciale.HibernateSchema.Achat;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -13,7 +13,7 @@ import org.hibernate.Session;
  */
 public class ExpeditionQueries {
 
-    public void SaveOrUpdate(Expedition expedition, Ble ble, Chauffeur chauffeur) {
+    public void SaveOrUpdate(Achat expedition, Ble ble, Chauffeur chauffeur) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -29,7 +29,7 @@ public class ExpeditionQueries {
         }
     }
     
-    public void delete(Expedition expedition) {
+    public void delete(Achat expedition) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -42,10 +42,10 @@ public class ExpeditionQueries {
             session.close();
         }
     }
-    public List<Expedition> list(){
+    public List<Achat> list(){
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
-        List<Expedition> list= new ArrayList<>();
+        List<Achat> list= new ArrayList<>();
         list= session.createQuery("from Expedition").list();       
         return list;
     }

@@ -29,7 +29,7 @@ public class SessionsGenerator {
                     .addAnnotatedClass(Client.class)
                     .addAnnotatedClass(Chauffeur.class)
                     .addAnnotatedClass(Camion.class)
-                    .addAnnotatedClass(Expedition.class)
+                    .addAnnotatedClass(Achat.class)
                     .addAnnotatedClass(Dock.class)
                     .addAnnotatedClass(Facture.class)
                     .addAnnotatedClass(Facture_Produit.class)

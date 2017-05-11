@@ -16,12 +16,12 @@ import javax.persistence.TemporalType;
  * @author CHERABRAB
  */
 @Entity
-@Table(name = "Expedition")
-public class Expedition {
+@Table(name = "Achat")
+public class Achat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_expedition", nullable = false)
+    @Column(name = "id_achat", nullable = false)
     int idExpedition;
     @Column(name = "num_acqt", nullable = false)
     String numAcqt;
@@ -36,16 +36,25 @@ public class Expedition {
     int quantiteDiff;
     @ManyToOne
     @JoinColumn(name="id_chauffeur")
-    private Chauffeur chauffeur ;
+    private Chauffeur chauffeur;
+    @ManyToOne
+    @JoinColumn(name="id")
+    private Camion camion;   
     @ManyToOne
     @JoinColumn(name="id_ble")
     private Ble ble;
+    @ManyToOne
+    @JoinColumn(name="id_dock")
+    private Dock dock;
+    
+    //
+    
 
-    public Expedition() {
+    public Achat() {
 
     }
 
-    public Expedition(String numAcqt, int quantiteAcqt, int quantiteFour, int quantiteDiff) {
+    public Achat(String numAcqt, int quantiteAcqt, int quantiteFour, int quantiteDiff) {
         this.numAcqt = numAcqt;
         this.quantiteAcqt = quantiteAcqt;
         this.quantiteFour = quantiteFour;
@@ -116,5 +125,20 @@ public class Expedition {
         this.ble = ble;
     }
 
+    public Camion getCamion() {
+        return camion;
+    }
+
+    public void setCamion(Camion camion) {
+        this.camion = camion;
+    }
+
+    public Dock getDock() {
+        return dock;
+    }
+
+    public void setDock(Dock dock) {
+        this.dock = dock;
+    }
   
 }

@@ -31,9 +31,9 @@ public class Ble {
     int qte;
     @Column(name = "prix", nullable = false)
     double prix;
-    @OneToMany(targetEntity=Expedition.class, mappedBy="ble"
+    @OneToMany(targetEntity=Achat.class, mappedBy="ble"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
-    private List<Expedition>  expeditions;
+    private List<Achat>  achats;
 
     public Ble() {
     }
@@ -68,13 +68,15 @@ public class Ble {
         this.prix = prix;
     }
 
-    public List<Expedition> getExpeditions() {
-        return expeditions;
+    public List<Achat> getAchats() {
+        return achats;
     }
 
-    public void setExpeditions(List<Expedition> expeditions) {
-        this.expeditions = expeditions;
+    public void setAchats(List<Achat> achats) {
+        this.achats = achats;
     }
+
+   
     
     
 }

@@ -1,12 +1,14 @@
 package com.gestionCommerciale.HibernateSchema;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,9 +27,16 @@ public class Camion {
     String type;
     @Column(name = "marque", nullable = true)
     String marque;
-    @ManyToOne
+    @OneToMany(targetEntity=Facture.class, mappedBy="camion"
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Facture> factures;
+    @OneToMany(targetEntity=Achat.class, mappedBy=""
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Achat> achats;
+    //
+    /*@ManyToOne
     @JoinColumn(name="id_chauffeur")
-    private Chauffeur chauffeur;
+    private Chauffeur chauffeur;*/
 
     public Camion() {
     }
@@ -71,20 +80,20 @@ public class Camion {
         this.marque = marque;
     }
 
-    public Chauffeur getChauffeur() {
-        return chauffeur;
-    }
-
-    public void setChauffeur(Chauffeur chauffeur) {
-        this.chauffeur = chauffeur;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(List<Facture> factures) {
+        this.factures = factures;
     }
     
     

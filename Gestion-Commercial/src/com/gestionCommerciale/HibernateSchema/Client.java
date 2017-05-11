@@ -5,7 +5,6 @@
  */
 package com.gestionCommerciale.HibernateSchema;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -16,8 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.
         Temporal;
@@ -35,16 +34,13 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false)
     int id;
- //   @Column(name = "codeClient", nullable = false)
- //   String codeClient;
     @Column(name = "nom", nullable = false)
     String name;
     @Column(name = "Prenom", nullable = false)
     String prenom;
     @Column(name = "numRegCom", nullable = false)
     String numRegCom;
-    @Column(name = "numArticle", nullable = false)
-            
+    @Column(name = "numArticle", nullable = false)            
     String numArticle;
     @Column(name = "addressClient", nullable = false)
     String addressClient;
@@ -54,17 +50,17 @@ public class Client {
     String nCarteFiscale;
     @Column(name = "dateDepotDossier", nullable = false)
     @Temporal(value=TemporalType.DATE)
-    Date dateDepotDossier;
+    Date dateDepotDossier;   
+    @OneToMany(targetEntity=Facture.class, mappedBy="client"
+    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Facture> factures ;
     
-    //@OneToMany(targetEntity=.class, mappedBy="client"
-    //		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
-    //private List<> ;
-    
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
+    //
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
     @JoinTable(name = "Chauffeur_client", joinColumns = {
     @JoinColumn(name = "Id", nullable = false, updatable = false) }
     ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable = false, updatable = false) })
-    List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();
+    List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();*/
     
     public Client( String nom, String prenom, String numRegCom, String numArticle
                    , String addressClient, String typeActivity, Date dateDepotDossier,String nCarteFiscale) {
@@ -159,16 +155,16 @@ public class Client {
         this.dateDepotDossier = dateDepotDossier;
     }
 
-    public List<Chauffeur> getChauffeurs() {
-        return chauffeurs;
-    }
-
-    public void setChauffeurs(List<Chauffeur> chauffeurs) {
-        this.chauffeurs = chauffeurs;
-    }
-
     public String getnCarteFiscale() {
         return nCarteFiscale;
+    }
+
+    public List<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(List<Facture> factures) {
+        this.factures = factures;
     }
     
 }

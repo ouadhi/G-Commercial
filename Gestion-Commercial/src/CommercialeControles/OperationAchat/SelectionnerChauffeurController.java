@@ -1,9 +1,6 @@
 
 package CommercialeControles.OperationAchat;
 
-import CommercialeControles.Dock.DockCell;
-import CommercialeControles.OperationAchat.ChauffeurListH;
-import CommercialeControles.OperationAchat.FinOperationController;
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
 import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXListView;
@@ -28,7 +25,7 @@ public class SelectionnerChauffeurController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       List<ChauffeurListH> list = new ArrayList<>();
+        List<ChauffeurListH> list = new ArrayList<>();
         List<Chauffeur> listChauffeursDB= chauffeurQueries.chauffeursList();
         for (int i = 0; i < listChauffeursDB.size(); i++) {
             list.add(new ChauffeurListH(listChauffeursDB.get(i))) ; 
