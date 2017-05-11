@@ -40,7 +40,7 @@ public class Chauffeur {
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Facture> factures;
     @OneToMany(targetEntity=Achat.class, mappedBy="chauffeur"
-    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+      ,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Achat> achats;
      
     //

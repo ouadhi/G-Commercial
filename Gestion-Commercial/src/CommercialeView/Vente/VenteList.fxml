@@ -17,9 +17,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="1000.0" maxWidth="2000.0" prefHeight="737.0" prefWidth="1218.0" snapToPixel="false" styleClass="back" stylesheets="@ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Produit.ProduitListController">
+<AnchorPane id="AnchorPane" maxHeight="1000.0" maxWidth="2000.0" prefHeight="737.0" prefWidth="1218.0" snapToPixel="false" styleClass="back" stylesheets="@../Produit/ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Vente.VenteListController">
    <children>
-      <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Produits" wrappingWidth="122.51513671875" />
+      <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Ventes" wrappingWidth="122.51513671875" />
       <Label fx:id="total" layoutX="188.0" layoutY="37.0" styleClass="label_txt" text="100" />
       <Label layoutX="216.0" layoutY="38.0" styleClass="label_txt" text="Total" />
       <Label layoutX="292.0" layoutY="39.0" styleClass="label_txt" text="Trie par : " />
@@ -37,7 +37,8 @@
             <JFXTextField fx:id="rechreche" focusColor="#405aa800" layoutX="43.0" layoutY="2.0" maxWidth="350.0" minWidth="167.0" onAction="#rechrecher" prefHeight="41.0" prefWidth="350.0" promptText="Recherche" style="-fx-background-color: white;" unFocusColor="#cf252500">
                <font>
                   <Font size="16.0" />
-               </font></JFXTextField>
+               </font>
+            </JFXTextField>
             <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="8.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="icons/RechercheGry.png" />
@@ -45,49 +46,43 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton fx:id="ajouter" layoutX="1009.0" layoutY="24.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter Produit" />
-      <JFXListView fx:id="listeproduit" layoutX="52.0" layoutY="193.0" minHeight="461.0" minWidth="1114.0" onMouseClicked="#showDockSlide" showTooltip="true" />
+      <JFXButton fx:id="ajouter" layoutX="1009.0" layoutY="24.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Nouvelle vente" />
+      <JFXListView fx:id="listevente" layoutX="51.0" layoutY="196.0" minHeight="461.0" minWidth="1114.0" onMouseClicked="#showDockSlide" showTooltip="true" />
       <Separator layoutX="51.0" layoutY="193.0" prefHeight="5.0" prefWidth="1114.0" style="-fx-background-color: #fd9252;" />
-      <GridPane hgap="3.0" layoutX="48.0" layoutY="142.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1114.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;">
+      <GridPane hgap="3.0" layoutX="51.0" layoutY="142.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1114.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;">
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="134.0" minWidth="70.0" prefWidth="134.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="170.0" minWidth="106.0" prefWidth="106.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="145.0" minWidth="145.0" prefWidth="145.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="145.0" minWidth="145.0" prefWidth="145.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="121.0" minWidth="100.0" prefWidth="121.0" />
             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="121.0" prefWidth="121.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Code">
+            <Label text="N° Facture">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Info Produit" GridPane.columnIndex="1">
+            <Label text="Client" GridPane.columnIndex="1">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Categorie de produit" GridPane.columnIndex="2">
+            <Label text="Date" GridPane.columnIndex="2">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Qunatite Produit" GridPane.columnIndex="3">
+            <Label text="Montant" GridPane.columnIndex="3">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Prix Unitaire" GridPane.columnIndex="4">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label text="TVA" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+            <Label text="Reste" GridPane.columnIndex="4">
                <font>
                   <Font size="17.0" />
                </font>

@@ -4,6 +4,7 @@ import CommercialeControles.OperationAchat.CamionListeH;
 import CommercialeControles.OperationAchat.ChauffeurListH;
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -87,8 +88,7 @@ public class FinOperationVenteController implements Initializable {
 
     @FXML
     private void quitter(ActionEvent event) throws IOException {
-        AnchorPane etapeClient = FXMLLoader.load(getClass().getResource(ViewUrl.selectClient));
-        OperationVenteController.staticpane.getChildren().setAll(etapeClient);
+        new  ShowPane().showVenteListe();
     }
 
     public static void setmontantFacture() {

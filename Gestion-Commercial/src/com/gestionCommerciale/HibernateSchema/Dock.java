@@ -44,6 +44,7 @@ public class Dock {
     @JoinColumn(name = "id_dock", nullable = false, updatable = false) }
     ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable = false, updatable = false) })
     List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();*/
+
     public Dock() {
     }
     

@@ -52,7 +52,9 @@ public class OperationVenteController implements Initializable {
             etapeInformation = FXMLLoader.load(getClass().getResource(ViewUrl.infotmationVente));
             space.getChildren().setAll(etapeClient);
             etape = 1;
+            precedent.setVisible(false);
         } catch (Exception e) {
+            System.out.println(e);
         }
 
     }
@@ -82,14 +84,17 @@ public class OperationVenteController implements Initializable {
         switch (etape) {
             case 1:
                 showEtape(etapeClient);
+                precedent.setVisible(false);
                 break;
 
             case 2:
                 if (client == null) {
                     Notification.champVideNotification();
                     --this.etape;
+                   
                 } else {
                     showEtape(etapeChauffeur);
+                     precedent.setVisible(true);
                 }
 
                 break;
@@ -110,6 +115,7 @@ public class OperationVenteController implements Initializable {
                     --this.etape;
                 } else {
                     showEtape(etapePrdouit);
+                    next.setVisible(true);
                 }
                 break;
 
@@ -120,6 +126,7 @@ public class OperationVenteController implements Initializable {
                 } else {
                     FinOperationVenteController.setmontantFacture();
                     showEtape(etapeInformation);
+                    next.setVisible(false);
                    
                 }
 

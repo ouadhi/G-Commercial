@@ -54,9 +54,10 @@ public class ProduitListController implements Initializable {
     private JFXButton ajouter;
     @FXML
     private JFXTextField rechreche;
-    @FXML
-    private JFXListView<ProduitCell> listeProduit;
+   
     private ProduitQueries queries = new ProduitQueries();
+    @FXML
+    private JFXListView<ProduitCell> listeproduit;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,8 +74,8 @@ public class ProduitListController implements Initializable {
             ));
         }
         ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
-        listeProduit.setItems(myObservableList);
-        listeProduit.setExpanded(true);
+        listeproduit.setItems(myObservableList);
+        listeproduit.setExpanded(true);
         setTotale();
 
     }
@@ -144,14 +145,14 @@ public class ProduitListController implements Initializable {
     @FXML
     private void showDockSlide(MouseEvent event) {
         try {
-            int selectedcell = listeProduit.getSelectionModel().getSelectedIndex();
+            int selectedcell = listeproduit.getSelectionModel().getSelectedIndex();
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.SlideProduit));
             loader.load();
 
             SlidProduitController slidProduit = loader.getController();
-            slidProduit.setData(listeProduit, selectedcell);
+            slidProduit.setData(listeproduit, selectedcell);
 
             AnchorPane pane = loader.getRoot();
 
@@ -165,7 +166,7 @@ public class ProduitListController implements Initializable {
 
     public void setTotale() {
 
-        total.setText(Integer.toString(listeProduit.getItems().size()));
+        total.setText(Integer.toString(listeproduit.getItems().size()));
 
     }
 }

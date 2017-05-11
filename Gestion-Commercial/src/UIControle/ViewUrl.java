@@ -7,6 +7,7 @@ public class ViewUrl {
     public static String detailcamion = "/CommercialeView/Camion/ShowdDetailCamion.fxml";
     public static String modifierCamion = "/CommercialeView/Camion/ModifierCamionView.fxml";
     public static String showHomeChauffeur = "/CommercialeView/HomeFXML.fxml";
+    public static String SelectCamionchauffeur = "/CommercialeView/Chauffeur/SelectionnerCamion.fxml" ; 
 
     public static String ClientView = "/CommercialeView/Client/ClientListView.fxml";
     public static String AjouteClient = "/CommercialeView/Client/AjouterClientView.fxml";
@@ -60,6 +61,7 @@ public class ViewUrl {
     public static String selectProduit = "/CommercialeView/Vente/SelectionnerProduit.fxml";
     public static String infotmationVente = "/CommercialeView/Vente/FinOperationVente.fxml";
     public static String selectCamionVente = "/CommercialeView/Vente/SelectionnerCamion.fxml";
+    public static String ListeVentes = "/CommercialeView/Vente/VenteList.fxml";
     
     
 }

@@ -1,22 +1,33 @@
 package CommercialeControles.Chauffeur;
 
+import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
+import UIControle.StageDialog;
+import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Camion;
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
 import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ModificationChauffeurController implements Initializable {
@@ -42,7 +53,10 @@ public class ModificationChauffeurController implements Initializable {
     @FXML
     private ImageView close;
     
+    public ArrayList<Camion> camions_Chauffeur   = new ArrayList<>()  ; 
     private ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
+    @FXML
+    private JFXComboBox<String> camionbox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -101,5 +115,34 @@ public class ModificationChauffeurController implements Initializable {
         g.close();
 
         
+    }
+
+    @FXML
+    private void deletecamion(ActionEvent event) {
+        int com  = camionbox.getSelectionModel().getSelectedIndex() ;
+        if (com >=0) {
+            camionbox.getItems().remove(com) ; 
+            camions_Chauffeur.remove(com) ; 
+        }
+    }
+
+    @FXML
+    private void addmaion(ActionEvent event) {
+        try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.SelectCamionchauffeur));
+                loader.load();
+                
+                selectionnerCamionController Modifier =  loader.getController() ;
+                Modifier.setData(camions_Chauffeur, camionbox);
+                
+                AnchorPane root = loader.getRoot();
+                
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
+                dialog.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterChauffeurViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
