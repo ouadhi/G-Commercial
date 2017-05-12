@@ -1,7 +1,6 @@
 
-package CommercialeView.Vente;
+package CommercialeControles.Vente;
 
-import CommercialeControles.Vente.VenteCell;
 import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.jfoenix.controls.JFXButton;
@@ -44,12 +43,11 @@ public class VenteListController implements Initializable {
     @FXML
     private JFXButton ajouter;
     @FXML
-    private JFXListView<VenteCell> listeProduit;
+    private JFXListView<VenteCell> listevente;
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         
         List<VenteCell> list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
@@ -57,8 +55,8 @@ public class VenteListController implements Initializable {
             list.add(new VenteCell(facture)) ; 
         }
         ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
-        listeProduit.setItems(myObservableList);
-        listeProduit.setExpanded(true);
+        listevente.setItems(myObservableList);
+        listevente.setExpanded(true);
         setTotale();
        
     }    
