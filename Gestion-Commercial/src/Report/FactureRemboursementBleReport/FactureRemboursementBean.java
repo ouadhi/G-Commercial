@@ -25,7 +25,10 @@ public class FactureRemboursementBean {
     public List<String>prixs;
     public List<String>montants;
 
-    public FactureRemboursementBean(String doit, String numFacture, String dateDebut, String dateFin, String qteTotal, String montantTotal, String montantLettre, List<String> references, List<String> qtes, List<String> designations, List<String> prixs, List<String> montants) {
+    public FactureRemboursementBean(String doit, String numFacture, String dateDebut, String dateFin
+            , String qteTotal, String montantTotal, String montantLettre
+            , List<String> references, List<String> qtes, List<String> designations
+            , List<String> prixs, List<String> montants) {
         this.doit = doit;
         this.numFacture = numFacture;
         this.dateDebut = dateDebut;

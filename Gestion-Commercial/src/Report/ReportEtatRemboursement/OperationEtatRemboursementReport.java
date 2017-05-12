@@ -59,8 +59,6 @@ public class OperationEtatRemboursementReport {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}    
-        
-
     }
 }
 
