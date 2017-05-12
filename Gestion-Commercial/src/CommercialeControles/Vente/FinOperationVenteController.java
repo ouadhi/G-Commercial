@@ -11,14 +11,18 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.PopOver;
@@ -50,10 +54,13 @@ public class FinOperationVenteController implements Initializable {
     private ImageView camionIcon;
     @FXML
     private ImageView produitIcon;
-    PopOver popup   ; 
+    PopOver popup;
     private Image view = new Image(getClass().getResourceAsStream("/icons/preview.png"));
     private Image viewHover = new Image(getClass().getResourceAsStream("/icons/previewGreen.png"));
-    
+    private static JFXTextField tva_static;
+    private static JFXTextField montantFinal_static;
+    private static JFXTextField versement_static;
+    private static JFXTextField reste_static;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,11 +69,77 @@ public class FinOperationVenteController implements Initializable {
         Methode.setOnlyFloat(versement, 10);
         Methode.setOnlyFloat(reste, 10);
         Methode.setOnlyFloat(tva, 2);
-
-        dateOperation.setTime(LocalTime.now());
+        tva.setText(17 + "");
+        versement.setText("0.00");
+        dateOperation.setValue(LocalDate.now());
         montant_static = montant;
+        tva_static = tva;
+        montantFinal_static = montantFinal;
+        reste_static = reste;
+        versement_static = versement;
         intpop();
+        versement_static.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(javafx.scene.input.KeyEvent event) {
+                if (versement.getText().isEmpty()) {
+                    versement.setText("0.00");
+                    versement.selectAll();
+                }
+                calculeReste();
+            }
+        });
+        versement_static.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent event) {
+                versement.selectAll();
+            }
+        });
+        tva_static.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(javafx.scene.input.KeyEvent event) {
+                if (versement.getText().isEmpty()) {
+                    versement.setText("0.00");
+                    versement.selectAll();
+                }
+                calculeMontantFinal();
+            }
+        });
+        tva_static.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent event) {
+                versement.selectAll();
+            }
+        });
+    }
 
+    public static void calculeMontantFinal() {
+        DecimalFormat f = new DecimalFormat("##.00");
+        Float montant_val = Float.parseFloat(montant_static.getText());
+        Float tva_val = Float.parseFloat(tva_static.getText());
+        Float montantFinal_val = montant_val + (montant_val * tva_val / 100);
+        montantFinal_static.setText(floatFormat(montantFinal_val));
+        versement_static.setText(floatFormat(0));
+        reste_static.setText(floatFormat(montantFinal_val));
+    }
+
+    public static void calculeReste() {
+        Float montantFinal_val = Float.parseFloat(montantFinal_static.getText());
+        Float versement_val = Float.parseFloat(versement_static.getText());
+        Float rest_val = montantFinal_val - versement_val;
+        if (rest_val < 0) {
+            reste_static.setText(floatFormat(0));
+        } else {
+            reste_static.setText(floatFormat(rest_val));
+        }
+    }
+
+    public static String floatFormat(float f) {
+        DecimalFormat df = new DecimalFormat("##.00");
+        String value = df.format(f);
+        if (value.startsWith(".")) {
+            value = "0" + value;
+        }
+        return value;
     }
 
     @FXML
@@ -88,22 +161,17 @@ public class FinOperationVenteController implements Initializable {
 
     @FXML
     private void quitter(ActionEvent event) throws IOException {
-        new  ShowPane().showVenteListe();
+        new ShowPane().showVenteListe();
     }
 
     public static void setmontantFacture() {
         float prix = 0;
-
         System.out.println("" + OperationVenteController.produitselected.size());
-
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
-
             prix = (OperationVenteController.produitselected.get(i).getProduit().getPrix() * OperationVenteController.produitselected.get(i).getQuantite()) + prix;
-
         }
-
         montant_static.setText(Float.toString(prix));
-    }
+        calculeMontantFinal();    }
 
     @FXML
     private void clientOUT(MouseEvent event) {
@@ -118,37 +186,37 @@ public class FinOperationVenteController implements Initializable {
 
     @FXML
     private void chauffeurOUT(MouseEvent event) {
-        
-        popup.hide();  
+
+        popup.hide();
         chauffeuricon.setImage(view);
-        
+
     }
 
     @FXML
     private void chauffeurIN(MouseEvent event) {
         chauffeuricon.setImage(viewHover);
-        ChauffeurListH ch = new ChauffeurListH(OperationVenteController.chauffeur) ; 
+        ChauffeurListH ch = new ChauffeurListH(OperationVenteController.chauffeur);
         popup.setContentNode(ch);
         popup.show(chauffeuricon);
     }
 
     @FXML
     private void camionOUT(MouseEvent event) {
-         popup.hide();  
+        popup.hide();
         camionIcon.setImage(view);
     }
 
     @FXML
     private void camionIN(MouseEvent event) {
-         camionIcon.setImage(viewHover);
-        CamionListeH ch = new CamionListeH(OperationVenteController.camion) ; 
+        camionIcon.setImage(viewHover);
+        CamionListeH ch = new CamionListeH(OperationVenteController.camion);
         popup.setContentNode(ch);
         popup.show(camionIcon);
     }
 
     @FXML
     private void produitOUT(MouseEvent event) {
-         popup.hide();  
+        popup.hide();
         produitIcon.setImage(view);
     }
 
@@ -158,10 +226,9 @@ public class FinOperationVenteController implements Initializable {
         popup.setContentNode(OperationVenteController.produitselected.get(0));
         popup.show(produitIcon);
     }
-    
-    
-    private  void intpop ()  {
-        popup  = new  PopOver()  ; 
+
+    private void intpop() {
+        popup = new PopOver();
         popup.setCornerRadius(4);
         popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
     }
