@@ -5,9 +5,10 @@
         <group>
             <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/ReportEtatRemboursement/OperationEtatRemboursementReport.java</file>
             <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/FactureReportBean.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/FactureRemboursementBleReport/OperationFactureRemboursementReport.java</file>
             <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/ReportEtatRemboursement/GenerateEtatRemboursementReport.java</file>
             <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/ReportEtatRemboursement/EtatRemboursementBean.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/ReportOperation.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/FactureRemboursementBleReport/FactureRemboursementBean.java</file>
         </group>
     </open-files>
 </project-private>
