@@ -4,6 +4,7 @@ import CommercialeControles.Chauffeur.AjouterChauffeuerDialog;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Ble;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -28,12 +29,12 @@ public class BleListeH extends GridPane {
     protected ImageView imageView;
     protected Label label;
     protected Label label0;
-
+    private Ble ble;
     private int code_ble;
     private double quantite;
 
-    public BleListeH(int code_ble, double quantite) {
-        this.code_ble = code_ble;
+    public BleListeH(Ble ble, double quantite) {
+        this.ble = ble;
         this.quantite = quantite;
 
         columnConstraints = new ColumnConstraints();
@@ -206,6 +207,14 @@ public class BleListeH extends GridPane {
             }
 
         });
+    }
+
+    public Ble getBle() {
+        return ble;
+    }
+
+    public void setBle(Ble ble) {
+        this.ble = ble;
     }
 
 }
