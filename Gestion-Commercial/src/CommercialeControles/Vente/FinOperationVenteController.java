@@ -255,7 +255,8 @@ public class FinOperationVenteController implements Initializable {
     public void addFacture() {
         Date date = java.sql.Date.valueOf(dateOperation.getValue());
         double tva = Double.parseDouble(tva_static.getText());
-        double montant = Double.parseDouble(montant_static.getText());
+        double montant = Double.parseDouble(montantFinal_static.getText());
+        double versment = Double.parseDouble(versement_static.getText());
         Facture f = new Facture(date, montant, tva, 0);
         java.util.List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
@@ -267,7 +268,7 @@ public class FinOperationVenteController implements Initializable {
             fpsList.add(fp);
         }
         f.setQtes(fpsList);
-        Payment payment = new Payment("", montant, date);
+        Payment payment = new Payment("", versment, date);
         payment.setFacture(f);
         java.util.List<Payment> PaymentsList = new ArrayList<Payment>();
         PaymentsList.add(payment);
