@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Report.FactureRemboursementBleReport;
+package Report.EtatReceptionReport;
 
-import Report.ReportEtatRemboursement.EtatRemboursementBean;
+import Report.FactureRemboursementBleReport.FactureRemboursementBean;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,23 +27,23 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Hicham
  */
-public class OperationFactureRemboursementReport {
-    Collection<FactureRemboursementBean> collBean = new ArrayList<>();
-    
+public class OperationEtatReceptionReport {
+    Collection<EtatReceptionBean> collBean = new ArrayList<>();
+    String date;
     public JRDataSource getData(){
 		return new JRBeanCollectionDataSource(collBean,false);
 
 	}
-     public  void putReportInfo(String doit, String numFacture, String dateDebut, String dateFin
-            , String qteTotal, String montantTotal, String montantLettre
-            , List<String> references, List<String> qtes, List<String> designations
-            , List<String> prixs, List<String> montants ){
-		//patient info is the first to be written
-
-		FactureRemboursementBean beanInfo= new FactureRemboursementBean( doit,  numFacture,  dateDebut,  dateFin
-            ,  qteTotal,  montantTotal,  montantLettre
-            ,  references,  qtes,  designations
-            ,  prixs,  montants );
+     public  void putReportInfo(String dateDebut, String dateFin, String date
+            , String totalFour, String totalMoulin, String totalDif
+            , String montantTotal, String montantLettre, List<String> nums
+            , List<String> qteFours, List<String> qteMoulins, List<String> qteDifs ){
+            // add date field here for each line
+            
+		EtatReceptionBean beanInfo= new EtatReceptionBean( dateDebut,  dateFin, date //change date here
+            ,  totalFour,  totalMoulin,  totalDif
+            ,  montantTotal,  montantLettre,  nums
+            ,  qteFours,  qteMoulins,  qteDifs);
 		collBean.add(beanInfo);
 	}
       public void printReport(String fileName){
@@ -53,7 +53,7 @@ public class OperationFactureRemboursementReport {
 			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
 			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
 			//InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-			InputStream stream= getClass().getResourceAsStream("FactureRemboursementBle.jasper");
+			InputStream stream= getClass().getResourceAsStream("EtatReception.jasper");
 			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(report
 					,params, getData());
