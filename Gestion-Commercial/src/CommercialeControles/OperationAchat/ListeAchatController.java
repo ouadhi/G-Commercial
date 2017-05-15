@@ -1,10 +1,12 @@
-
 package CommercialeControles.OperationAchat;
 
 import UIControle.Methode;
 import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Achat;
+import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.Models.AchatQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -29,7 +31,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import sun.plugin.javascript.navig.Anchor;
 
-
 public class ListeAchatController implements Initializable {
 
     @FXML
@@ -48,22 +49,23 @@ public class ListeAchatController implements Initializable {
     private JFXListView<AchatCell> listeAchats;
     @FXML
     private JFXTextField rechreche;
+    private AchatQueries achatQueries = new AchatQueries();
 
-   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-        
+
+        List<Achat> achatList = achatQueries.list();
+
         List<AchatCell> list = new ArrayList<>();
-        for (int i = 0; i < 20 ; i++) {
-            list.add(new AchatCell(i, new Date(), 200) );
+        for (int i = 0; i < achatList.size(); i++) {
+            list.add(new AchatCell(achatList.get(i)));
         }
         ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
         listeAchats.setItems(myObservableList);
         listeAchats.setExpanded(true);
         setTotale();
-        
-    }    
+
+    }
 
     @FXML
     private void oderByCode(ActionEvent event) {
@@ -87,40 +89,32 @@ public class ListeAchatController implements Initializable {
     }
 
     @FXML
-    private void showAchatSlide(MouseEvent event)  {
+    private void showAchatSlide(MouseEvent event) {
         try {
-            FXMLLoader loader   = new  FXMLLoader()   ;
-            loader.setLocation(getClass().getResource(ViewUrl.AchatSlid));  
-            loader.load() ;
-            
-            AchatSlidController controler  =  loader.getController() ; 
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(ViewUrl.AchatSlid));
+            loader.load();
+
+            AchatSlidController controler = loader.getController();
             controler.setData(listeAchats, listeAchats.getSelectionModel().getSelectedIndex());
-            
-            AnchorPane pane  =  loader.getRoot()  ; 
-            
-            StageDialog dialog  =  new StageDialog(Methode.getStageMouses(event), pane) ; 
+
+            AnchorPane pane = loader.getRoot();
+
+            StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
             dialog.show();
-            
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ListeAchatController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-                
-                
-        
-        
-       
-        
+
     }
 
     @FXML
     private void rechrecher(ActionEvent event) {
     }
-    
-    private void setTotale () {
+
+    private void setTotale() {
         total.setText(Integer.toString(listeAchats.getItems().size()));
     }
-    
+
 }

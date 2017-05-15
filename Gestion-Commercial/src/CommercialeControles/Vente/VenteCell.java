@@ -1,8 +1,10 @@
-
 package CommercialeControles.Vente;
 
 import UIControle.Notification;
 import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.Models.ClientQueries;
+import com.gestionCommerciale.Models.FactureQueries;
+import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.util.Optional;
@@ -17,11 +19,10 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+public class VenteCell extends GridPane {
 
-public class VenteCell extends GridPane{
-    
-  private  Facture facture  ; 
-  
+    private Facture facture;
+
     protected final ColumnConstraints columnConstraints;
     protected final ColumnConstraints columnConstraints0;
     protected final ColumnConstraints columnConstraints1;
@@ -35,11 +36,11 @@ public class VenteCell extends GridPane{
     protected final Label label2;
     protected final Label label3;
     protected final JFXButton bttn;
-      private JFXPopup popup;
+    private JFXPopup popup;
 
     public VenteCell(Facture facture) {
         this.facture = facture;
-        
+
         columnConstraints = new ColumnConstraints();
         columnConstraints0 = new ColumnConstraints();
         columnConstraints1 = new ColumnConstraints();
@@ -53,7 +54,7 @@ public class VenteCell extends GridPane{
         label2 = new Label();
         label3 = new Label();
         bttn = new JFXButton();
-        popup = new JFXPopup() ;
+        popup = new JFXPopup();
 
         setHgap(3.0);
         setMaxHeight(51.0);
@@ -104,11 +105,15 @@ public class VenteCell extends GridPane{
         rowConstraints.setPrefHeight(30.0);
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        label.setText(""+this.facture.getIdFacture());
+        FactureQueries fq = new FactureQueries();
+        ClientQueries cq = new ClientQueries();
+        PaymentQueries pq = new PaymentQueries();
+
+        label.setText("" + this.facture.getIdFacture());
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);
-        label0.setText("Client");
+        label0.setText(this.facture.getClient().getName() + " " + this.facture.getClient().getPrenom());
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
@@ -116,13 +121,17 @@ public class VenteCell extends GridPane{
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
-        label2.setText(""+this.facture.getMontant());
+        label2.setText("" + this.facture.getMontant());
         label2.setFont(new Font(17.0));
+        double versment = 0;
+        for (int i = 0; i < this.facture.getPayments().size(); i++) {
+                    System.err.println(versment);
 
+            versment += this.facture.getPayments().get(i).getMontant();
+        }
         GridPane.setColumnIndex(label3, 4);
-        label3.setText(Double.toString(this.facture.getMontant()));
+        label3.setText(Double.toString(this.facture.getMontant()-versment));
         label3.setFont(new Font(17.0));
-        
 
         GridPane.setColumnIndex(bttn, 5);
         Image imgbtn = new Image(getClass().getResourceAsStream("/icons/more3.png"));
@@ -146,7 +155,7 @@ public class VenteCell extends GridPane{
         getChildren().add(label2);
         getChildren().add(label3);
         getChildren().add(bttn);
-        
+
         intpopup();
 
         bttn.setOnMouseClicked((event) -> {
@@ -155,41 +164,37 @@ public class VenteCell extends GridPane{
         });
 
     }
-    
+
     public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
         JFXButton supprimer = new JFXButton("Supprimer");
-        JFXButton details =  new JFXButton("détails");
+        JFXButton details = new JFXButton("détails");
 
         modifier.setPadding(new Insets(10));
         supprimer.setPadding(new Insets(10));
 
-        VBox box = new VBox(modifier, supprimer,details);
+        VBox box = new VBox(modifier, supprimer, details);
         box.setStyle("-fx-background-color: #ffffff");
 
         popup.setContent(box);
         popup.setSource(bttn);
 
         modifier.setOnAction(event -> {
-            
-            
+
             popup.close();
 
         });
         supprimer.setOnAction(event -> {
 
-            Optional<ButtonType> result = Notification.deleteAlert().showAndWait() ; 
+            Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
-                
-                
+
             }
-            
+
             popup.close();
 
         });
 
     }
-  
-  
-    
+
 }

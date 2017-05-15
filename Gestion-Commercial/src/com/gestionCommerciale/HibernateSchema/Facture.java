@@ -38,13 +38,13 @@ public class Facture {
     @Column(name = "timbre", nullable = false)
     double timbre;
     @ManyToOne
-    @JoinColumn(name="Id")
+    @JoinColumn(name="id_client")
     private Client client;
     @ManyToOne
     @JoinColumn(name="id_chauffeur")
     private Chauffeur chauffeur;
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="id_camion")
     private Camion camion;
     @OneToMany(targetEntity=Payment.class, mappedBy="facture"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
@@ -57,6 +57,22 @@ public class Facture {
    
 
     public Facture() {
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Camion getCamion() {
+        return camion;
+    }
+
+    public void setCamion(Camion camion) {
+        this.camion = camion;
     }
 
     public Facture(Date date, double montant, double tva, double timbre) {

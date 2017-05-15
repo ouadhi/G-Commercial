@@ -31,7 +31,7 @@ public class SelectionnerBleController implements Initializable {
         List<BleListeH> list = new ArrayList<>();
         
         for (int i = 0; i < listBlesDB.size(); i++) {
-           list.add(new BleListeH(listBlesDB.get(i).getIdBle(), listBlesDB.get(i).getQte())) ; 
+           list.add(new BleListeH(listBlesDB.get(i), listBlesDB.get(i).getQte())) ; 
          
             
         }

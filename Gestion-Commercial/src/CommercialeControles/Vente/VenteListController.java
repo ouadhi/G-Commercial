@@ -1,8 +1,10 @@
-
 package CommercialeControles.Vente;
 
+import CommercialeControles.Client.ClienCell;
 import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.Models.ClientQueries;
+import com.gestionCommerciale.Models.FactureQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -20,7 +22,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
-
 
 public class VenteListController implements Initializable {
 
@@ -44,22 +45,23 @@ public class VenteListController implements Initializable {
     private JFXButton ajouter;
     @FXML
     private JFXListView<VenteCell> listevente;
+    private FactureQueries factureQueries = new FactureQueries();
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
+        List<Facture> factureList = factureQueries.list();
         List<VenteCell> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            Facture facture  = new Facture(new Date(), 2000,2000,200) ; 
-            list.add(new VenteCell(facture)) ; 
+        for (int i = 0; i < factureList.size(); i++) {
+            list.add(new VenteCell(factureList.get(i)));            
         }
+
         ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
         listevente.setItems(myObservableList);
         listevente.setExpanded(true);
         setTotale();
-       
-    }    
+
+    }
 
     @FXML
     private void oderByCode(ActionEvent event) {
@@ -91,15 +93,15 @@ public class VenteListController implements Initializable {
 
     @FXML
     private void showAddStage(ActionEvent event) {
-        new  ShowPane().showAjouterVente();
+        new ShowPane().showAjouterVente();
     }
 
     @FXML
     private void showDockSlide(MouseEvent event) {
     }
-    
-    public  void setTotale () {
-        
+
+    public void setTotale() {
+
     }
-    
+
 }

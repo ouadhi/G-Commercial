@@ -5,6 +5,7 @@ import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Achat;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.io.IOException;
@@ -29,34 +30,6 @@ import javafx.stage.Stage;
 
 public class AchatCell extends GridPane {
 
-    private int numero;
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public float getQuantite() {
-        return quantite;
-    }
-
-    public void setQuantite(float quantite) {
-        this.quantite = quantite;
-    }
-    private Date date;
-    private float quantite;
-
     protected final ColumnConstraints columnConstraints;
     protected final ColumnConstraints columnConstraints0;
     protected final ColumnConstraints columnConstraints1;
@@ -67,11 +40,11 @@ public class AchatCell extends GridPane {
     protected final Label label1;
     private JFXPopup popup;
     private JFXButton bttn;
+    Achat achat;
 
-    public AchatCell(int numero, Date date, float quantite) {
-        this.numero = numero;
-        this.date = date;
-        this.quantite = quantite;
+    //edited by mohammed
+    public AchatCell(Achat achat) {
+        this.achat = achat;
 
         columnConstraints = new ColumnConstraints();
         columnConstraints0 = new ColumnConstraints();
@@ -130,20 +103,23 @@ public class AchatCell extends GridPane {
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
         label.setAlignment(javafx.geometry.Pos.CENTER);
-        label.setText(Integer.toString(this.numero));
+        //edited
+        label.setText(this.achat.getNumAcqt());
         label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label.setFont(new Font(16.0));
 
         GridPane.setColumnIndex(label0, 1);
         label0.setAlignment(javafx.geometry.Pos.CENTER);
-        label0.setText(this.date.toString());
+        //edited
+        label0.setText(this.achat.getDateAcqt().toString());
         label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label0.setFont(new Font(16.0));
 
         GridPane.setColumnIndex(label1, 2);
         label1.setAlignment(javafx.geometry.Pos.CENTER);
         label1.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label1.setText(Float.toString(quantite));
+        //edited
+        label1.setText(Float.toString(achat.getQuantiteAcqt()));
         label1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label1.setFont(new Font(16.0));
 
@@ -187,12 +163,13 @@ public class AchatCell extends GridPane {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource(ViewUrl.ModifierAchat));
                 loader.load();
-                
-               ModifierAchatController controler = loader.getController();
-                controler.setData(this.numero )  ; 
-                
+
+                ModifierAchatController controler = loader.getController();
+                //edited 
+                controler.setData(Integer.parseInt(this.achat.getNumAcqt()));
+
                 AnchorPane root = loader.getRoot();
-                
+
                 StageDialog dialog = new StageDialog(Methode.getStage(event), root);
                 dialog.show();
             } catch (IOException ex) {
