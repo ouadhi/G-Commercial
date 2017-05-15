@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Report.EtatBleReport;
+package Report.BonChargementReport;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -26,25 +26,19 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Hicham
  */
-public class OperationEtatBleReport {
-    Collection<EtatBleBean> collBean = new ArrayList<EtatBleBean>();
-	int id=1;
+public class OperationBonChargementReport {
+    Collection<BonChargementBean> collBean = new ArrayList<BonChargementBean>();
 	public JRDataSource getData(){
 		return new JRBeanCollectionDataSource(collBean,false);
 
 	}
-        public  void putReportInfo( String jour, String totalPoid, String totalNet, String totalEcart,
-            List<String> numBls, List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs
-            , List<String> matricules, List<String> ptcs, List<String> tares
-            , List<String> nets, List<String> ecarts){
+        public  void putReportInfo(String num, String date, String nomEtPrenom, String code
+            , String address, List<String> designations, List<String> qtes){
 		//patient info is the first to be written
 
-		EtatBleBean beanInfo= new EtatBleBean( jour,id, totalPoid,  totalNet,  totalEcart,
-             numBls,  numTiquets,  poidTiquets, chauffeurs
-            ,  matricules,  ptcs,  tares
-            , nets,  ecarts);
+		BonChargementBean beanInfo= new BonChargementBean( num,  date,  nomEtPrenom,  code
+            ,  address,  designations,  qtes );
             collBean.add(beanInfo);
-		id++;
 	}
         public void printReport(String fileName){
 		try {
@@ -53,7 +47,7 @@ public class OperationEtatBleReport {
 			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
 			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
 			//InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-			InputStream stream= getClass().getResourceAsStream("EtatBle.jasper");
+			InputStream stream= getClass().getResourceAsStream("BonChargement.jasper");
 			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(report
 					,params, getData());
