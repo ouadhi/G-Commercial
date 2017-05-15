@@ -27,9 +27,12 @@ public class EtatBleBean {
     public List<String>nets;
     public List<String>ecarts;
 
-    public EtatBleBean(String jour, int num, String totalPoid, String totalNet, String totalEcart, List<String> numBls, List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs, List<String> matricules, List<String> ptcs, List<String> tares, List<String> nets, List<String> ecarts) {
+    public EtatBleBean(String jour,int num, String totalPoid, String totalNet, String totalEcart,
+            List<String> numBls, List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs
+            , List<String> matricules, List<String> ptcs, List<String> tares
+            , List<String> nets, List<String> ecarts) {
         this.jour = jour;
-        this.num = num;
+        this.num=num;
         this.totalPoid = totalPoid;
         this.totalNet = totalNet;
         this.totalEcart = totalEcart;
