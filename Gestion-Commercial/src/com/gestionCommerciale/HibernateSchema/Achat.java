@@ -22,7 +22,7 @@ public class Achat {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_achat", nullable = false)
-    int idExpedition;
+    int idAchat;
     @Column(name = "num_acqt", nullable = false)
     String numAcqt;
     @Column(name = "date_acqt", nullable = false)
@@ -38,7 +38,7 @@ public class Achat {
     @JoinColumn(name="id_chauffeur")
     private Chauffeur chauffeur;
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="id_camion")
     private Camion camion;   
     @ManyToOne
     @JoinColumn(name="id_ble")
@@ -61,12 +61,12 @@ public class Achat {
         this.quantiteDiff = quantiteDiff;
     }
 
-    public int getIdExpedition() {
-        return idExpedition;
+    public int getIdAchat() {
+        return idAchat;
     }
 
-    public void setIdExpedition(int idExpedition) {
-        this.idExpedition = idExpedition;
+    public void setIdAchat(int idExpedition) {
+        this.idAchat = idExpedition;
     }
 
     public String getNumAcqt() {

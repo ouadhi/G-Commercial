@@ -32,7 +32,7 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id_client", nullable = false)
     int id;
     @Column(name = "nom", nullable = false)
     String name;

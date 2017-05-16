@@ -3,12 +3,18 @@ package CommercialeControles.OperationAchat;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Achat;
+import com.gestionCommerciale.Models.AchatQueries;
+import com.gestionCommerciale.Models.BleQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -77,12 +83,32 @@ public class FinOperationController implements Initializable {
         statech = this.statechauffeur;
         statecam = statecamion;
         stateb = stateble;
-        statDock = statedock; 
+        statDock = statedock;
 
         Methode.setOnlyInteger(numero, 10);
         Methode.setOnlyFloat(diff, 10);
         Methode.setOnlyFloat(Q_Acquit, 10);
         Methode.setOnlyFloat(Q_fournie, 10);
+        date.setValue(LocalDate.now());
+        diff.setEditable(false);
+        numero.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent event) {
+                numero.selectAll();
+            }
+        });
+        Q_Acquit.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent event) {
+                Q_Acquit.selectAll();
+            }
+        });
+        Q_fournie.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent event) {
+                Q_fournie.selectAll();
+            }
+        });
 
         popup = new PopOver();
         PopOver popup = new PopOver();
@@ -195,7 +221,7 @@ public class FinOperationController implements Initializable {
         if (num.isEmpty() || Q_acquit.isEmpty() || Q_four.isEmpty()) {
             Notification.champVideNotification();
         } else {
-
+            addAchat();
             Notification.Addnotification();
             new ShowPane().showListAchat();
             setnull();
@@ -233,4 +259,15 @@ public class FinOperationController implements Initializable {
         popup.show(infodock);
     }
 
+    public void addAchat() {
+        Achat achat = new Achat(numero.getText(), Integer.parseInt(Q_Acquit.getText()), Integer.parseInt(Q_fournie.getText()), 0);
+        achat.setCamion(camion.getCamion());
+        achat.setChauffeur(chauffeur.getChauffeur());
+        achat.setDock(dock.getDock());
+        achat.setBle(ble.getBle());
+        Date dd = java.sql.Date.valueOf(this.date.getValue());
+        achat.setDateAcqt(dd);
+        AchatQueries bq = new AchatQueries();
+        bq.SaveOrUpdate(achat);
+    }
 }
