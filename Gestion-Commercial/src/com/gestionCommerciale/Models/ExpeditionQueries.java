@@ -11,6 +11,7 @@ import org.hibernate.Session;
  *
  * @author CHERABRAB
  */
+
 public class ExpeditionQueries {
 
     public void SaveOrUpdate(Achat expedition, Ble ble, Chauffeur chauffeur) {
