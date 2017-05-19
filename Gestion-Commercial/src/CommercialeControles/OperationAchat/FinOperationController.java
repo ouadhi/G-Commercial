@@ -5,7 +5,6 @@ import UIControle.Notification;
 import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Achat;
 import com.gestionCommerciale.Models.AchatQueries;
-import com.gestionCommerciale.Models.BleQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;

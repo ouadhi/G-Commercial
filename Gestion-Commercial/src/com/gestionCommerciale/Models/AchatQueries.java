@@ -11,17 +11,15 @@ import org.hibernate.Session;
  *
  * @author CHERABRAB
  */
-public class ExpeditionQueries {
+public class AchatQueries {
 
-    public void SaveOrUpdate(Achat expedition, Ble ble, Chauffeur chauffeur) {
+    public void SaveOrUpdate(Achat achat) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
 
             session.beginTransaction();
-            expedition.setBle(ble);
-            expedition.setChauffeur(chauffeur);
-            session.saveOrUpdate(expedition);
+            session.saveOrUpdate(achat);
             session.getTransaction().commit();
 
         } finally {
@@ -42,11 +40,12 @@ public class ExpeditionQueries {
             session.close();
         }
     }
+    
     public List<Achat> list(){
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Achat> list= new ArrayList<>();
-        list= session.createQuery("from Expedition").list();       
+        list= session.createQuery("from Achat").list();       
         return list;
     }
 

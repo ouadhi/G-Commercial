@@ -1,18 +1,29 @@
 package CommercialeControles.Vente;
 
+import CommercialeControles.Client.ClienCell;
+import CommercialeControles.Client.ModifierClientController;
+import CommercialeControles.Payement.PayementListeController;
+import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.StageDialog;
+import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.Models.ClientQueries;
 import com.gestionCommerciale.Models.FactureQueries;
 import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
+import java.io.IOException;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -169,11 +180,14 @@ public class VenteCell extends GridPane {
         JFXButton modifier = new JFXButton("Modifier");
         JFXButton supprimer = new JFXButton("Supprimer");
         JFXButton details = new JFXButton("détails");
+        JFXButton payement = new JFXButton("payement");
 
         modifier.setPadding(new Insets(10));
         supprimer.setPadding(new Insets(10));
+        details.setPadding(new Insets(10));
+        payement.setPadding(new Insets(10));
 
-        VBox box = new VBox(modifier, supprimer, details);
+        VBox box = new VBox(modifier, supprimer, details , payement);
         box.setStyle("-fx-background-color: #ffffff");
 
         popup.setContent(box);
@@ -184,6 +198,7 @@ public class VenteCell extends GridPane {
             popup.close();
 
         });
+        
         supprimer.setOnAction(event -> {
 
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
@@ -193,6 +208,27 @@ public class VenteCell extends GridPane {
 
             popup.close();
 
+        });
+        
+        payement.setOnAction(event -> {
+               
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.payement));
+                loader.load();
+                
+                PayementListeController pay  = loader.getController(); 
+                pay.setDate(this.facture.getIdFacture());
+                
+                AnchorPane root = loader.getRoot();
+                
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
+                dialog.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        
         });
 
     }
