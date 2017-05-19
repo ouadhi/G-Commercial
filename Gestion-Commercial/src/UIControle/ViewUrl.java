@@ -64,4 +64,10 @@ public class ViewUrl {
     public static String ListeVentes = "/CommercialeView/Vente/VenteList.fxml";
     
     
+    // *****************************************
+    public static  String payement  =  "/CommercialeView/Payement/PayementListe.fxml" ; 
+    public static String  Addpayement = "/CommercialeView/Payement/AjouterPayement.fxml" ;  
+     public static String  modifierpayement = "/CommercialeView/Payement/ModifierPayment.fxml" ;  
+    
+    
 }
