@@ -12,18 +12,19 @@ import java.util.List;
  * @author Hicham
  */
 public class EtatRecetteDepenseBean {
-        String date;
-        String montantTotal;
-        String depenseTotal;
-        public List<String>nums;
-        public List<String>clients;
-        public List<String>montants;
-        public List<String>depenses;
-        public List<String>soldes;
 
-    public EtatRecetteDepenseBean(String date, String montantTotal, String depenseTotal
-            , List<String> nums, List<String> clients, List<String> montants
-            , List<String> depenses, List<String> soldes) {
+    String date;
+    String montantTotal;
+    String depenseTotal;
+    public List<String> nums;
+    public List<String> clients;
+    public List<String> montants;
+    public List<String> depenses;
+    public List<String> soldes;
+
+    public EtatRecetteDepenseBean(String date, String montantTotal, String depenseTotal,
+             List<String> nums, List<String> clients, List<String> montants,
+             List<String> depenses, List<String> soldes) {
         this.date = date;
         this.montantTotal = montantTotal;
         this.depenseTotal = depenseTotal;
@@ -97,5 +98,5 @@ public class EtatRecetteDepenseBean {
     public void setSoldes(List<String> soldes) {
         this.soldes = soldes;
     }
-        
+
 }

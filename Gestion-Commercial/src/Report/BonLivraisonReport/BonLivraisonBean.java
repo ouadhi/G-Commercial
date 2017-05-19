@@ -12,6 +12,7 @@ import java.util.List;
  * @author Hicham
  */
 public class BonLivraisonBean {
+
     int id;
     String nom;
     String code;
@@ -23,13 +24,13 @@ public class BonLivraisonBean {
     String article;
     String chauffeur;
     String matricule;
-    public List<String>designations;
-    public List<String>qtes;
+    public List<String> designations;
+    public List<String> qtes;
 
-    public BonLivraisonBean(int id, String nom, String code, String address
-            , String rc, String fiscal, String date, String numFacture
-            , String article, String chauffeur
-            , String matricule, List<String> designations, List<String> qtes) {
+    public BonLivraisonBean(int id, String nom, String code, String address,
+            String rc, String fiscal, String date, String numFacture,
+            String article, String chauffeur,
+            String matricule, List<String> designations, List<String> qtes) {
         this.id = id;
         this.nom = nom;
         this.code = code;
@@ -148,5 +149,5 @@ public class BonLivraisonBean {
     public void setQtes(List<String> qtes) {
         this.qtes = qtes;
     }
-        
+
 }

@@ -12,6 +12,7 @@ import java.util.List;
  * @author Hicham
  */
 public class EtatExpeditionBean {
+
     String date;
     String totalFarine;
     String totalSon;
@@ -24,22 +25,22 @@ public class EtatExpeditionBean {
     String montantTotal;
     String versementTotal;
     String differenceTotal;
-    public List<String>clients;
-    public List<String>nums;
-    public List<String>produits;
-    public List<String>qteFarins;
-    public List<String>qteSons;
-    public List<String>prixs;
-    public List<String>montants;
-    public List<String>versements;
-    public List<String>observations;
+    public List<String> clients;
+    public List<String> nums;
+    public List<String> produits;
+    public List<String> qteFarins;
+    public List<String> qteSons;
+    public List<String> prixs;
+    public List<String> montants;
+    public List<String> versements;
+    public List<String> observations;
 
-    public EtatExpeditionBean(String date, String totalFarine, String totalSon
-            , String totalMontant, String totalVersement, String totalVersemntMoinMontant
-            , String totalQuantite, String farineTotal, String sonTotal, String montantTotal
-            , String versementTotal, String differenceTotal, List<String> clients
-            , List<String> nums, List<String> produits, List<String> qteFarins, List<String> qteSons
-            , List<String> prixs, List<String> montants, List<String> versements, List<String> observations) {
+    public EtatExpeditionBean(String date, String totalFarine, String totalSon,
+            String totalMontant, String totalVersement, String totalVersemntMoinMontant,
+            String totalQuantite, String farineTotal, String sonTotal, String montantTotal,
+            String versementTotal, String differenceTotal, List<String> clients,
+            List<String> nums, List<String> produits, List<String> qteFarins, List<String> qteSons,
+            List<String> prixs, List<String> montants, List<String> versements, List<String> observations) {
         this.date = date;
         this.totalFarine = totalFarine;
         this.totalSon = totalSon;
@@ -62,7 +63,6 @@ public class EtatExpeditionBean {
         this.versements = versements;
         this.observations = observations;
     }
-    
 
     public String getDate() {
         return date;
@@ -231,9 +231,5 @@ public class EtatExpeditionBean {
     public void setObservations(List<String> observations) {
         this.observations = observations;
     }
-    
 
-
-
-    
 }

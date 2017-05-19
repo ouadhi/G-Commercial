@@ -27,37 +27,41 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Hicham
  */
 public class OperationBonLivraisonReport {
-        Collection<BonLivraisonBean> collBean = new ArrayList<BonLivraisonBean>();
-	int id=1;
-	public JRDataSource getData(){
-		return new JRBeanCollectionDataSource(collBean,false);
 
-	}
-	public  void putReportInfo( String nom, String code, String address
-            , String rc, String fiscal, String date, String numFacture
-            , String article, String chauffeur
-            , String matricule, List<String> designations, List<String> qtes){
-		BonLivraisonBean beanInfo= new BonLivraisonBean( id,nom,code,address,rc,fiscal,date,numFacture
-                        ,article,chauffeur,matricule,designations, qtes);
-		collBean.add(beanInfo);
-		id++;
-	}
-	public void printReport(String fileName){
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
-			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
-			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
-			//InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-			InputStream stream= getClass().getResourceAsStream("BonLivraison.jasper");
-			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(report
-					,params, getData());
-			JasperViewer.viewReport(jasperPrint);			
-			//this.collBean.clear();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}    
-	}
-    
+    Collection<BonLivraisonBean> collBean = new ArrayList<BonLivraisonBean>();
+    int id = 1;
+
+    public JRDataSource getData() {
+        return new JRBeanCollectionDataSource(collBean, false);
+
+    }
+
+    public void putReportInfo(String nom, String code, String address,
+             String rc, String fiscal, String date, String numFacture,
+             String article, String chauffeur,
+             String matricule, List<String> designations, List<String> qtes) {
+        BonLivraisonBean beanInfo = new BonLivraisonBean(id, nom, code, address, rc, fiscal, date, numFacture,
+                 article, chauffeur, matricule, designations, qtes);
+        collBean.add(beanInfo);
+        id++;
+    }
+
+    public void printReport(String fileName) {
+        try {
+            Map<String, Object> params = new HashMap<String, Object>();
+            JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
+            JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
+            jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
+            //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
+            InputStream stream = getClass().getResourceAsStream("BonLivraison.jasper");
+            JasperReport report = (JasperReport) JRLoader.loadObject(stream);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(report,
+                     params, getData());
+            JasperViewer.viewReport(jasperPrint);
+            //this.collBean.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -5,7 +5,6 @@
  */
 package Report.FactureRemboursementBleReport;
 
-import Report.ReportEtatRemboursement.EtatRemboursementBean;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,40 +27,43 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Hicham
  */
 public class OperationFactureRemboursementReport {
+
     Collection<FactureRemboursementBean> collBean = new ArrayList<>();
-    
-    public JRDataSource getData(){
-		return new JRBeanCollectionDataSource(collBean,false);
 
-	}
-     public  void putReportInfo(String doit, String numFacture, String dateDebut, String dateFin
-            , String qteTotal, String montantTotal, String montantLettre
-            , List<String> references, List<String> qtes, List<String> designations
-            , List<String> prixs, List<String> montants ){
-		//patient info is the first to be written
+    public JRDataSource getData() {
+        return new JRBeanCollectionDataSource(collBean, false);
 
-		FactureRemboursementBean beanInfo= new FactureRemboursementBean( doit,  numFacture,  dateDebut,  dateFin
-            ,  qteTotal,  montantTotal,  montantLettre
-            ,  references,  qtes,  designations
-            ,  prixs,  montants );
-		collBean.add(beanInfo);
-	}
-      public void printReport(String fileName){
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
-			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
-			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
-			//InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-			InputStream stream= getClass().getResourceAsStream("FactureRemboursementBle.jasper");
-			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(report
-					,params, getData());
-			JasperViewer.viewReport(jasperPrint);			
-			//this.collBean.clear();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}    
     }
-    
+
+    public void putReportInfo(String doit, String numFacture, String dateDebut, String dateFin,
+             String qteTotal, String montantTotal, String montantLettre,
+             List<String> references, List<String> qtes, List<String> designations,
+             List<String> prixs, List<String> montants) {
+        //patient info is the first to be written
+
+        FactureRemboursementBean beanInfo = new FactureRemboursementBean(doit, numFacture, dateDebut, dateFin,
+                 qteTotal, montantTotal, montantLettre,
+                 references, qtes, designations,
+                 prixs, montants);
+        collBean.add(beanInfo);
+    }
+
+    public void printReport(String fileName) {
+        try {
+            Map<String, Object> params = new HashMap<String, Object>();
+            JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
+            JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
+            jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
+            //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
+            InputStream stream = getClass().getResourceAsStream("FactureRemboursementBle.jasper");
+            JasperReport report = (JasperReport) JRLoader.loadObject(stream);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(report,
+                     params, getData());
+            JasperViewer.viewReport(jasperPrint);
+            //this.collBean.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

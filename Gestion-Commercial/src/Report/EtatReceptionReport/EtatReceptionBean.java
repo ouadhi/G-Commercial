@@ -12,6 +12,7 @@ import java.util.List;
  * @author Hicham
  */
 public class EtatReceptionBean {
+
     String dateDebut;
     String dateFin;
     String date;
@@ -20,15 +21,15 @@ public class EtatReceptionBean {
     String totalDif;
     String montantTotal;
     String montantLettre;
-    public List<String>nums;
-    public List<String>qteFours;
-    public List<String>qteMoulins;
-    public List<String>qteDifs;
+    public List<String> nums;
+    public List<String> qteFours;
+    public List<String> qteMoulins;
+    public List<String> qteDifs;
 
-    public EtatReceptionBean(String dateDebut, String dateFin, String date
-            , String totalFour, String totalMoulin, String totalDif
-            , String montantTotal, String montantLettre, List<String> nums
-            , List<String> qteFours, List<String> qteMoulins, List<String> qteDifs) {
+    public EtatReceptionBean(String dateDebut, String dateFin, String date,
+             String totalFour, String totalMoulin, String totalDif,
+             String montantTotal, String montantLettre, List<String> nums,
+             List<String> qteFours, List<String> qteMoulins, List<String> qteDifs) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.date = date;
@@ -138,9 +139,5 @@ public class EtatReceptionBean {
     public void setQteDifs(List<String> qteDifs) {
         this.qteDifs = qteDifs;
     }
-    
-
-
-
 
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Report.EtatReceptionReport;
+package Report.EtatExpeditionReport;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -26,27 +26,29 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Hicham
  */
-public class OperationEtatReceptionReport {
+public class OperationEtatExpedition {
 
-    Collection<EtatReceptionBean> collBean = new ArrayList<>();
-    String date;
+    Collection<EtatExpeditionBean> collBean = new ArrayList<EtatExpeditionBean>();
 
     public JRDataSource getData() {
         return new JRBeanCollectionDataSource(collBean, false);
 
     }
 
-    public void putReportInfo(String dateDebut, String dateFin, String date,
-             String totalFour, String totalMoulin, String totalDif,
-             String montantTotal, String montantLettre, List<String> nums,
-             List<String> qteFours, List<String> qteMoulins, List<String> qteDifs) {
-        // add date field here for each line
+    public void putReportInfo(String date, String totalFarine, String totalSon,
+             String totalMontant, String totalVersement, String totalVersemntMoinMontant,
+             String totalQuantite, String farineTotal, String sonTotal, String montantTotal,
+             String versementTotal, String differenceTotal, List<String> clients,
+             List<String> nums, List<String> produits, List<String> qteFarins, List<String> qteSons,
+             List<String> prixs, List<String> montants, List<String> versements, List<String> observations) {
+        //patient info is the first to be written
 
-        EtatReceptionBean beanInfo = new EtatReceptionBean(dateDebut, dateFin, date //change date here
-                ,
-                 totalFour, totalMoulin, totalDif,
-                 montantTotal, montantLettre, nums,
-                 qteFours, qteMoulins, qteDifs);
+        EtatExpeditionBean beanInfo = new EtatExpeditionBean(date, totalFarine, totalSon,
+                 totalMontant, totalVersement, totalVersemntMoinMontant,
+                 totalQuantite, farineTotal, sonTotal, montantTotal,
+                 versementTotal, differenceTotal, clients,
+                 nums, produits, qteFarins, qteSons,
+                 prixs, montants, versements, observations);
         collBean.add(beanInfo);
     }
 
@@ -57,7 +59,7 @@ public class OperationEtatReceptionReport {
             JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
             jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
             //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-            InputStream stream = getClass().getResourceAsStream("EtatReception.jasper");
+            InputStream stream = getClass().getResourceAsStream("EtatExpedition.jasper");
             JasperReport report = (JasperReport) JRLoader.loadObject(stream);
             JasperPrint jasperPrint = JasperFillManager.fillReport(report,
                      params, getData());

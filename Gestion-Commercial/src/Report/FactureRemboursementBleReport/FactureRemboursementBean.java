@@ -12,6 +12,7 @@ import java.util.List;
  * @author Hicham
  */
 public class FactureRemboursementBean {
+
     String doit;
     String numFacture;
     String dateDebut;
@@ -19,16 +20,16 @@ public class FactureRemboursementBean {
     String qteTotal;
     String montantTotal;
     String montantLettre;
-    public List<String>references;
-    public List<String>qtes;
-    public List<String>designations;
-    public List<String>prixs;
-    public List<String>montants;
+    public List<String> references;
+    public List<String> qtes;
+    public List<String> designations;
+    public List<String> prixs;
+    public List<String> montants;
 
-    public FactureRemboursementBean(String doit, String numFacture, String dateDebut, String dateFin
-            , String qteTotal, String montantTotal, String montantLettre
-            , List<String> references, List<String> qtes, List<String> designations
-            , List<String> prixs, List<String> montants) {
+    public FactureRemboursementBean(String doit, String numFacture, String dateDebut, String dateFin,
+             String qteTotal, String montantTotal, String montantLettre,
+             List<String> references, List<String> qtes, List<String> designations,
+             List<String> prixs, List<String> montants) {
         this.doit = doit;
         this.numFacture = numFacture;
         this.dateDebut = dateDebut;
@@ -42,9 +43,6 @@ public class FactureRemboursementBean {
         this.prixs = prixs;
         this.montants = montants;
     }
-    
-    
-    
 
     public String getDoit() {
         return doit;
@@ -141,10 +139,5 @@ public class FactureRemboursementBean {
     public void setMontants(List<String> montants) {
         this.montants = montants;
     }
-    
 
-
-
-    
-    
 }

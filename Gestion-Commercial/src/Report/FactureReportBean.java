@@ -1,217 +1,215 @@
 package Report;
 
-
 import java.util.List;
 
 public class FactureReportBean {
-	
-	public int id;
-	public String nom;
-	public String code;
-	public String address;
-	public String rc;
-	public String fiscal;
-	public String date;
-	public String numFacture;
-	public String article;
-	public String montantHT;
-	public String tva;
-	public String timbre;
-	public String ttc;
-	public String montantlettre;
-	public String chauffeur;
-	public String matricule;
-	public List<String>designations;
-	public List<String>qtes;
-	public List<String>prixs;
-	public List<String>montants;
-	
-	public FactureReportBean(int id, String nom, String code, String address, String rc, String fiscal, String date,
-			String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
-			String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
-			List<String> prixs, List<String> montants) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.code = code;
-		this.address = address;
-		this.rc = rc;
-		this.fiscal = fiscal;
-		this.date = date;
-		this.numFacture = numFacture;
-		this.article = article;
-		this.montantHT = montantHT;
-		this.tva = tva;
-		this.timbre = timbre;
-		this.ttc = ttc;
-		this.montantlettre = montantlettre;
-		this.chauffeur = chauffeur;
-		this.matricule = matricule;
-		this.designations = designations;
-		this.qtes = qtes;
-		this.prixs = prixs;
-		this.montants = montants;
-	}
 
-	public int getId() {
-		return id;
-	}
+    public int id;
+    public String nom;
+    public String code;
+    public String address;
+    public String rc;
+    public String fiscal;
+    public String date;
+    public String numFacture;
+    public String article;
+    public String montantHT;
+    public String tva;
+    public String timbre;
+    public String ttc;
+    public String montantlettre;
+    public String chauffeur;
+    public String matricule;
+    public List<String> designations;
+    public List<String> qtes;
+    public List<String> prixs;
+    public List<String> montants;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public FactureReportBean(int id, String nom, String code, String address, String rc, String fiscal, String date,
+            String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
+            String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
+            List<String> prixs, List<String> montants) {
+        super();
+        this.id = id;
+        this.nom = nom;
+        this.code = code;
+        this.address = address;
+        this.rc = rc;
+        this.fiscal = fiscal;
+        this.date = date;
+        this.numFacture = numFacture;
+        this.article = article;
+        this.montantHT = montantHT;
+        this.tva = tva;
+        this.timbre = timbre;
+        this.ttc = ttc;
+        this.montantlettre = montantlettre;
+        this.chauffeur = chauffeur;
+        this.matricule = matricule;
+        this.designations = designations;
+        this.qtes = qtes;
+        this.prixs = prixs;
+        this.montants = montants;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public String getRc() {
-		return rc;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setRc(String rc) {
-		this.rc = rc;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public String getFiscal() {
-		return fiscal;
-	}
+    public String getRc() {
+        return rc;
+    }
 
-	public void setFiscal(String fiscal) {
-		this.fiscal = fiscal;
-	}
+    public void setRc(String rc) {
+        this.rc = rc;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public String getFiscal() {
+        return fiscal;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public void setFiscal(String fiscal) {
+        this.fiscal = fiscal;
+    }
 
-	public String getNumFacture() {
-		return numFacture;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public void setNumFacture(String numFacture) {
-		this.numFacture = numFacture;
-	}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public String getArticle() {
-		return article;
-	}
+    public String getNumFacture() {
+        return numFacture;
+    }
 
-	public void setArticle(String article) {
-		this.article = article;
-	}
+    public void setNumFacture(String numFacture) {
+        this.numFacture = numFacture;
+    }
 
-	public String getMontantHT() {
-		return montantHT;
-	}
+    public String getArticle() {
+        return article;
+    }
 
-	public void setMontantHT(String montantHT) {
-		this.montantHT = montantHT;
-	}
+    public void setArticle(String article) {
+        this.article = article;
+    }
 
-	public String getTva() {
-		return tva;
-	}
+    public String getMontantHT() {
+        return montantHT;
+    }
 
-	public void setTva(String tva) {
-		this.tva = tva;
-	}
+    public void setMontantHT(String montantHT) {
+        this.montantHT = montantHT;
+    }
 
-	public String getTimbre() {
-		return timbre;
-	}
+    public String getTva() {
+        return tva;
+    }
 
-	public void setTimbre(String timbre) {
-		this.timbre = timbre;
-	}
+    public void setTva(String tva) {
+        this.tva = tva;
+    }
 
-	public String getTtc() {
-		return ttc;
-	}
+    public String getTimbre() {
+        return timbre;
+    }
 
-	public void setTtc(String ttc) {
-		this.ttc = ttc;
-	}
+    public void setTimbre(String timbre) {
+        this.timbre = timbre;
+    }
 
-	public String getMontantlettre() {
-		return montantlettre;
-	}
+    public String getTtc() {
+        return ttc;
+    }
 
-	public void setMontantlettre(String montantlettre) {
-		this.montantlettre = montantlettre;
-	}
+    public void setTtc(String ttc) {
+        this.ttc = ttc;
+    }
 
-	public String getChauffeur() {
-		return chauffeur;
-	}
+    public String getMontantlettre() {
+        return montantlettre;
+    }
 
-	public void setChauffeur(String chauffeur) {
-		this.chauffeur = chauffeur;
-	}
+    public void setMontantlettre(String montantlettre) {
+        this.montantlettre = montantlettre;
+    }
 
-	public String getMatricule() {
-		return matricule;
-	}
+    public String getChauffeur() {
+        return chauffeur;
+    }
 
-	public void setMatricule(String matricule) {
-		this.matricule = matricule;
-	}
+    public void setChauffeur(String chauffeur) {
+        this.chauffeur = chauffeur;
+    }
 
-	public List<String> getDesignations() {
-		return designations;
-	}
+    public String getMatricule() {
+        return matricule;
+    }
 
-	public void setDesignations(List<String> designations) {
-		this.designations = designations;
-	}
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
 
-	public List<String> getQtes() {
-		return qtes;
-	}
+    public List<String> getDesignations() {
+        return designations;
+    }
 
-	public void setQtes(List<String> qtes) {
-		this.qtes = qtes;
-	}
+    public void setDesignations(List<String> designations) {
+        this.designations = designations;
+    }
 
-	public List<String> getPrixs() {
-		return prixs;
-	}
+    public List<String> getQtes() {
+        return qtes;
+    }
 
-	public void setPrixs(List<String> prixs) {
-		this.prixs = prixs;
-	}
+    public void setQtes(List<String> qtes) {
+        this.qtes = qtes;
+    }
 
-	public List<String> getMontants() {
-		return montants;
-	}
+    public List<String> getPrixs() {
+        return prixs;
+    }
 
-	public void setMontants(List<String> montants) {
-		this.montants = montants;
-	}
+    public void setPrixs(List<String> prixs) {
+        this.prixs = prixs;
+    }
 
-	
+    public List<String> getMontants() {
+        return montants;
+    }
+
+    public void setMontants(List<String> montants) {
+        this.montants = montants;
+    }
+
 }

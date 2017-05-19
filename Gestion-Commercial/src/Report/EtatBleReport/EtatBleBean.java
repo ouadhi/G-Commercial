@@ -12,27 +12,28 @@ import java.util.List;
  * @author Hicham
  */
 public class EtatBleBean {
+
     String jour;
     int num;
     String totalPoid;
     String totalNet;
     String totalEcart;
-    public List<String>numBls;
-    public List<String>numTiquets;
-    public List<String>poidTiquets;
-    public List<String>chauffeurs;
-    public List<String>matricules;
-    public List<String>ptcs;
-    public List<String>tares;
-    public List<String>nets;
-    public List<String>ecarts;
+    public List<String> numBls;
+    public List<String> numTiquets;
+    public List<String> poidTiquets;
+    public List<String> chauffeurs;
+    public List<String> matricules;
+    public List<String> ptcs;
+    public List<String> tares;
+    public List<String> nets;
+    public List<String> ecarts;
 
-    public EtatBleBean(String jour,int num, String totalPoid, String totalNet, String totalEcart,
-            List<String> numBls, List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs
-            , List<String> matricules, List<String> ptcs, List<String> tares
-            , List<String> nets, List<String> ecarts) {
+    public EtatBleBean(String jour, int num, String totalPoid, String totalNet, String totalEcart,
+            List<String> numBls, List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs,
+             List<String> matricules, List<String> ptcs, List<String> tares,
+             List<String> nets, List<String> ecarts) {
         this.jour = jour;
-        this.num=num;
+        this.num = num;
         this.totalPoid = totalPoid;
         this.totalNet = totalNet;
         this.totalEcart = totalEcart;
@@ -158,7 +159,5 @@ public class EtatBleBean {
     public void setEcarts(List<String> ecarts) {
         this.ecarts = ecarts;
     }
-    
 
-    
 }

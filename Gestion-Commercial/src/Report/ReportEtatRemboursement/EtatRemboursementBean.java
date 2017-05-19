@@ -12,22 +12,22 @@ import java.util.List;
  * @author Hicham
  */
 public class EtatRemboursementBean {
-    
+
     String doit;
     String date;
     String jour;
     String montantTotal;
     String montantLettre;
-    public List<String>parcours;
-    public List<String>distances;
-    public List<String>nums;
-    public List<String>qtes;
-    public List<String>prixs;
-    public List<String>montants;
+    public List<String> parcours;
+    public List<String> distances;
+    public List<String> nums;
+    public List<String> qtes;
+    public List<String> prixs;
+    public List<String> montants;
 
-    public EtatRemboursementBean(String doit, String date, String jour, String montantTotal
-            , String montantLettre, List<String> parcours, List<String> distances
-            , List<String> nums, List<String> qtes, List<String> prixs, List<String> montants) {
+    public EtatRemboursementBean(String doit, String date, String jour, String montantTotal,
+             String montantLettre, List<String> parcours, List<String> distances,
+             List<String> nums, List<String> qtes, List<String> prixs, List<String> montants) {
         this.doit = doit;
         this.date = date;
         this.jour = jour;
@@ -128,8 +128,5 @@ public class EtatRemboursementBean {
     public void setMontants(List<String> montants) {
         this.montants = montants;
     }
-    
 
-
-    
 }

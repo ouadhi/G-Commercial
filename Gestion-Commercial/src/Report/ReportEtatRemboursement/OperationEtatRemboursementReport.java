@@ -27,39 +27,39 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Hicham
  */
 public class OperationEtatRemboursementReport {
+
     Collection<EtatRemboursementBean> collBean = new ArrayList<>();
-    
-    public JRDataSource getData(){
-		return new JRBeanCollectionDataSource(collBean,false);
 
-	}
-    
-    public  void putReportInfo( String doit, String date, String jour, String montantTotal
-            , String montantLettre, List<String> parcours, List<String> distances
-            , List<String> nums, List<String> qtes, List<String> prixs, List<String> montants){
-		//patient info is the first to be written
+    public JRDataSource getData() {
+        return new JRBeanCollectionDataSource(collBean, false);
 
-		EtatRemboursementBean beanInfo= new EtatRemboursementBean( doit, date, jour, montantTotal, montantLettre
-                        ,parcours, distances,  nums,  qtes, prixs,montants);
-		collBean.add(beanInfo);
-	}
-    public void printReport(String fileName){
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
-			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
-			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
-			//InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-			InputStream stream= getClass().getResourceAsStream("EtatRemboursement.jasper");
-			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(report
-					,params, getData());
-			JasperViewer.viewReport(jasperPrint);			
-			//this.collBean.clear();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}    
+    }
+
+    public void putReportInfo(String doit, String date, String jour, String montantTotal,
+             String montantLettre, List<String> parcours, List<String> distances,
+             List<String> nums, List<String> qtes, List<String> prixs, List<String> montants) {
+        //patient info is the first to be written
+
+        EtatRemboursementBean beanInfo = new EtatRemboursementBean(doit, date, jour, montantTotal, montantLettre,
+                 parcours, distances, nums, qtes, prixs, montants);
+        collBean.add(beanInfo);
+    }
+
+    public void printReport(String fileName) {
+        try {
+            Map<String, Object> params = new HashMap<String, Object>();
+            JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
+            JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
+            jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
+            //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
+            InputStream stream = getClass().getResourceAsStream("EtatRemboursement.jasper");
+            JasperReport report = (JasperReport) JRLoader.loadObject(stream);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(report,
+                     params, getData());
+            JasperViewer.viewReport(jasperPrint);
+            //this.collBean.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
-
-

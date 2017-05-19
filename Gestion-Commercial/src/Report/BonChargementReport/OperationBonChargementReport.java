@@ -27,34 +27,39 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Hicham
  */
 public class OperationBonChargementReport {
+
     Collection<BonChargementBean> collBean = new ArrayList<BonChargementBean>();
-	public JRDataSource getData(){
-		return new JRBeanCollectionDataSource(collBean,false);
 
-	}
-        public  void putReportInfo(String num, String date, String nomEtPrenom, String code
-            , String address, List<String> designations, List<String> qtes){
-		//patient info is the first to be written
+    public JRDataSource getData() {
+        return new JRBeanCollectionDataSource(collBean, false);
 
-		BonChargementBean beanInfo= new BonChargementBean( num,  date,  nomEtPrenom,  code
-            ,  address,  designations,  qtes );
-            collBean.add(beanInfo);
-	}
-        public void printReport(String fileName){
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
-			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
-			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
-			//InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-			InputStream stream= getClass().getResourceAsStream("BonChargement.jasper");
-			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(report
-					,params, getData());
-			JasperViewer.viewReport(jasperPrint);			
-			//this.collBean.clear();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}    
     }
+
+    public void putReportInfo(String num, String date, String nomEtPrenom, String code,
+            String address, List<String> designations, List<String> qtes) {
+        //patient info is the first to be written
+
+        BonChargementBean beanInfo = new BonChargementBean(num, date, nomEtPrenom, code,
+                address, designations, qtes);
+        collBean.add(beanInfo);
+    }
+
+    public void printReport(String fileName) {
+        try {
+            Map<String, Object> params = new HashMap<String, Object>();
+            JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
+            JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
+            jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
+            //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
+            InputStream stream = getClass().getResourceAsStream("BonChargement.jasper");
+            JasperReport report = (JasperReport) JRLoader.loadObject(stream);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(report,
+                    params, getData());
+            JasperViewer.viewReport(jasperPrint);
+            //this.collBean.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
