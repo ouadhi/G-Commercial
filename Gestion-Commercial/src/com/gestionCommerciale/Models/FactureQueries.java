@@ -24,7 +24,7 @@ public class FactureQueries {
             session.close();
         }
     }
-    
+
     public void delete(Facture facture) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -38,11 +38,18 @@ public class FactureQueries {
             session.close();
         }
     }
-    public List<Facture> list(){
+
+    public List<Facture> list() {
+        List<Facture> list = null;
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
-        List<Facture> list= new ArrayList<>();
-        list= session.createQuery("from Facture").list();       
+        try {
+
+            list = new ArrayList<>();
+            list = session.createQuery("from Facture").list();
+        } finally {
+            session.close();
+        }
         return list;
     }
 
