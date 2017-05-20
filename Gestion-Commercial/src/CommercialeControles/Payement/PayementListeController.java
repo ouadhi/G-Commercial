@@ -4,11 +4,15 @@ import CommercialeControles.Client.ClienCell;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Payment;
+import com.gestionCommerciale.Models.FactureQueries;
+import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +36,7 @@ public class PayementListeController implements Initializable {
     @FXML
     private JFXListView<PayementCell> listepayement;
     public static JFXListView<PayementCell> listepay;
-    
+
     @FXML
     private JFXTextField totalefacture;
     @FXML
@@ -41,24 +45,52 @@ public class PayementListeController implements Initializable {
     private JFXTextField reste;
 
     private int numero_facture;
+    private PaymentQueries queries = new PaymentQueries();
+    private FactureQueries fQueries = new FactureQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         AfficheListePayement();
+        //printFactureDetails();
         listepayement.setExpanded(true);
 
     }
 
+    public static String floatFormat(Double f) {
+        DecimalFormat df = new DecimalFormat("##.00");
+        String value = df.format(f);
+        if (value.startsWith(".")) {
+            value = "0" + value;
+        }
+        return value;
+    }
+
+    private void printFactureDetails() {
+        FactureQueries fq = new FactureQueries();
+        Facture f = fq.getFacture(numero_facture);
+        System.err.println(numero_facture + "++++++++++++");
+
+        double totale = f.getMontant();
+        double totalePaye = f.getPaymentsMontant();
+        double reste = totale - totalePaye;
+        totalefacture.setText(floatFormat(totale));
+        totlepaye.setText(floatFormat(totalePaye));
+        this.reste.setText(floatFormat(reste));
+    }
+
     private void AfficheListePayement() {
+        List<Payment> listDB = queries.listByFacture(numero_facture);
+        System.err.println(numero_facture + "---------------");
+
         List<PayementCell> list = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            Payment payement = new Payment("Cache", 4000, new Date());
-            PayementCell cell = new PayementCell(payement);
-            list.add(cell);
+        for (int i = 0; i < listDB.size(); i++) {
+            list.add(new PayementCell(listDB.get(i)));
         }
         ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
         listepayement.setItems(myObservableList);
+        listepayement.setExpanded(true);
+
     }
 
     @FXML
@@ -91,7 +123,7 @@ public class PayementListeController implements Initializable {
         Nfacture.setText(Integer.toString(facture));
         AfficheListePayement();
         listepayement.setExpanded(true);
-        this.listepayement = listepay ; 
+        this.listepayement = listepay;
 
     }
 

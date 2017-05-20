@@ -47,5 +47,14 @@ public class PaymentQueries {
 
         return paymentsList;
     }
+    
+    public List<Payment> listByFacture(int idFact) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Payment> paymentsList = new ArrayList<>();
+        paymentsList = session.createQuery("from Payment where id_fact='"+idFact+"'").list();
+
+        return paymentsList;
+    }
 
 }

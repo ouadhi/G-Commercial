@@ -53,4 +53,16 @@ public class FactureQueries {
         return list;
     }
 
+    public Facture getFacture(int id) {
+        Facture f = null;
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        try {
+            f = (Facture) session.createQuery("from Facture where id_facture='" + id + "'").uniqueResult();
+        } finally {
+            session.close();
+        }
+        return f;
+    }
+
 }

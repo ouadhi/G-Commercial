@@ -1,5 +1,7 @@
 package com.gestionCommerciale.HibernateSchema;
 
+import com.gestionCommerciale.Models.SessionsGenerator;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -15,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.Session;
 
 /**
  *
@@ -38,23 +41,21 @@ public class Facture {
     @Column(name = "timbre", nullable = false)
     double timbre;
     @ManyToOne
-    @JoinColumn(name="id_client")
+    @JoinColumn(name = "id_client")
     private Client client;
     @ManyToOne
-    @JoinColumn(name="id_chauffeur")
+    @JoinColumn(name = "id_chauffeur")
     private Chauffeur chauffeur;
     @ManyToOne
-    @JoinColumn(name="id_camion")
+    @JoinColumn(name = "id_camion")
     private Camion camion;
-    @OneToMany(targetEntity=Payment.class, mappedBy="facture"
-    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
-    private List<Payment> payments ;
-    @OneToMany(targetEntity=Facture_Produit.class, mappedBy="facture"
-    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
-    private List<Facture_Produit>  qtes;
+    @OneToMany(targetEntity = Payment.class, mappedBy = "facture",
+            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Payment> payments;
+    @OneToMany(targetEntity = Facture_Produit.class, mappedBy = "facture",
+            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Facture_Produit> qtes;
     //
-    
-   
 
     public Facture() {
     }
@@ -145,5 +146,14 @@ public class Facture {
     public void setQtes(List<Facture_Produit> qtes) {
         this.qtes = qtes;
     }
-    
+
+    public float getPaymentsMontant() {
+        float montant = 0;
+        for (Payment p : payments) {
+
+            montant += p.montant;
+        }
+        return montant;
+    }
+
 }
