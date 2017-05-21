@@ -7,7 +7,7 @@ public class ViewUrl {
     public static String detailcamion = "/CommercialeView/Camion/ShowdDetailCamion.fxml";
     public static String modifierCamion = "/CommercialeView/Camion/ModifierCamionView.fxml";
     public static String showHomeChauffeur = "/CommercialeView/HomeFXML.fxml";
-    public static String SelectCamionchauffeur = "/CommercialeView/Chauffeur/SelectionnerCamion.fxml" ; 
+    public static String SelectCamionchauffeur = "/CommercialeView/Chauffeur/SelectionnerCamion.fxml";
 
     public static String ClientView = "/CommercialeView/Client/ClientListView.fxml";
     public static String AjouteClient = "/CommercialeView/Client/AjouterClientView.fxml";
@@ -62,12 +62,22 @@ public class ViewUrl {
     public static String infotmationVente = "/CommercialeView/Vente/FinOperationVente.fxml";
     public static String selectCamionVente = "/CommercialeView/Vente/SelectionnerCamion.fxml";
     public static String ListeVentes = "/CommercialeView/Vente/VenteList.fxml";
-    
-    
+    public static String printvent = "/CommercialeView/Vente/PrintView.fxml";
+
     // *****************************************
-    public static  String payement  =  "/CommercialeView/Payement/PayementListe.fxml" ; 
-    public static String  Addpayement = "/CommercialeView/Payement/AjouterPayement.fxml" ;  
-     public static String  modifierpayement = "/CommercialeView/Payement/ModifierPayment.fxml" ;  
-    
-    
+    public static String payement = "/CommercialeView/Payement/PayementListe.fxml";
+    public static String Addpayement = "/CommercialeView/Payement/AjouterPayement.fxml";
+    public static String modifierpayement = "/CommercialeView/Payement/ModifierPayment.fxml";
+
+    // *******************************************
+    public static String rapportMenu = "/CommercialeView/Rapport/RapportMenu.fxml";
+    public static String rapportMain = "/CommercialeView/Rapport/AllReport.fxml";
+
+    public static String Recette = "/CommercialeView/Rapport/Vente/RecetteView.fxml";
+    public static String etatBle = "/CommercialeView/Rapport/Achat/EtatBle.fxml";
+    public static String etatRecpetion = "/CommercialeView/Rapport/Achat/EtatDeRecepetion.fxml";
+    public static String etatRembourcementBle = "/CommercialeView/Rapport/Achat/FactureRembourecementBle.fxml";
+    public static String etatRembourecementTransport  = "/CommercialeView/Rapport/Achat/EtatRembourcementTransportBle.fxml" ; 
+    public static String etatExpedition = "/CommercialeView/Rapport/Vente/Expedition.fxml";
+
 }

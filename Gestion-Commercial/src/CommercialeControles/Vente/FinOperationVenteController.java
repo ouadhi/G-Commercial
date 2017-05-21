@@ -1,10 +1,13 @@
 package CommercialeControles.Vente;
 
+import CommercialeControles.Client.ClienCell;
 import CommercialeControles.OperationAchat.CamionListeH;
 import CommercialeControles.OperationAchat.ChauffeurListH;
+import CommercialeControles.Produit.ModifierProduitController;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
+import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Produit;
@@ -23,6 +26,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -170,7 +175,7 @@ public class FinOperationVenteController implements Initializable {
             if (versement_val > montantFinal_val) {
                 Notification.error("Le versement est supérieur au montant final");
             } else {
-                addFacture();
+                addFacture(event);
                 Notification.Addnotification();
                 quitter(event);
             }
@@ -252,7 +257,7 @@ public class FinOperationVenteController implements Initializable {
         popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
     }
 
-    public void addFacture() {
+    public void addFacture(ActionEvent event) {
         Date date = java.sql.Date.valueOf(dateOperation.getValue());
         double tva = Double.parseDouble(tva_static.getText());
         double montant = Double.parseDouble(montantFinal_static.getText());
@@ -278,6 +283,28 @@ public class FinOperationVenteController implements Initializable {
         f.setCamion(OperationVenteController.camion);
         FactureQueries fq = new FactureQueries();
         fq.SaveOrUpdate(f);
+        imprimer(f, event);
+        
+        
 
+    }
+    
+    
+    public void imprimer(Facture f ,ActionEvent event ) {
+        try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.printvent));
+                loader.load();
+                
+                PrintViewController print  =  loader.getController()  ; 
+               print.setData(f);
+                
+                AnchorPane root = loader.getRoot();
+                
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
+                dialog.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 }

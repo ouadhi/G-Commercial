@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FactureRemboursementBle" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="108bb688-037b-4c70-966d-1326663df965">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="64608ffb-566e-4933-90c1-f2c67ce83d37">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="reference" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="qte" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="designation" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="prix" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="montant" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="doit" class="java.lang.String"/>
+	<field name="numFacture" class="java.lang.String"/>
+	<field name="dateDebut" class="java.lang.String"/>
+	<field name="dateFin" class="java.lang.String"/>
+	<field name="references" class="java.util.Collection"/>
+	<field name="qtes" class="java.util.Collection"/>
+	<field name="designations" class="java.util.Collection"/>
+	<field name="prixs" class="java.util.Collection"/>
+	<field name="montants" class="java.util.Collection"/>
+	<field name="qteTotal" class="java.lang.String"/>
+	<field name="montantTotal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="montantLettre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="0" width="310" height="21" uuid="2a257a15-3885-4752-9996-f4eee1ebfe24">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SARL LES MOULINS DE OULED FARES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="180" height="13" uuid="347620e5-d48d-43ab-9671-39baae3848e0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[N° R.C. 06/B/0905530-00/02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="43" width="180" height="13" uuid="14ea9192-7a12-4309-b3a1-63d8431fc061">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[l Fiscal: 000602090553038]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="56" width="180" height="13" uuid="f03bf0a3-a4b4-4664-9852-498845295fef">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[N° Article Impo: 02101101621]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="69" width="180" height="13" uuid="6cef7501-3877-4d5f-abc4-fee97fb479c2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[TEL: 027 72 77 30]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="82" width="260" height="13" uuid="e442394b-1206-4eae-853d-3d40d736f03f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Fax: 027 72 77 30 -EMail : moulinsofares@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="39" width="41" height="21" uuid="df8623dd-4947-4ca4-a92c-e94ca1d3c286"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doit:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="331" y="39" width="244" height="21" uuid="fef00896-9913-4ebb-bdd4-e40e21739527"/>
+				<textFieldExpression><![CDATA[$F{doit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="78" splitType="Stretch">
+			<staticText>
+				<reportElement x="69" y="10" width="331" height="30" uuid="50e68672-1fe1-47b7-a654-05bdf69074f8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Facture Du Remboursement Blé Tendre N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="10" width="130" height="30" uuid="f2d3b7cc-fc84-4cc0-a795-1f324ff77f4b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numFacture}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="101" y="46" width="59" height="24" uuid="7a233815-e239-4995-8f72-566de4f1b511"/>
+				<text><![CDATA[Date du:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="46" width="150" height="24" uuid="b2d78656-c160-49c3-8939-a5215b3170fc"/>
+				<textFieldExpression><![CDATA[$F{dateDebut}+" au"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="46" width="150" height="24" uuid="4eaa78b7-9dc3-4ff8-8de2-10ac515d2721"/>
+				<textFieldExpression><![CDATA[$F{dateFin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="40" height="25" uuid="90c5186f-a6aa-4ad5-bca7-bedc822f1ea0"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[    Réf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="1" width="80" height="25" uuid="04a61749-4ed3-4667-be76-c035188c2402"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[     Quantité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="1" width="240" height="25" uuid="86f1cdef-5290-4c3c-8923-c9654061cb9d"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[                             Designation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="1" width="70" height="25" uuid="ec822eb1-5ab9-486e-8696-9562d7069feb"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[  Prix Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="1" width="130" height="25" uuid="29797bfe-9d04-492d-b4df-ca6b2eb69679"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[            Montant]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="40" height="30" uuid="e7a2734e-e333-4c61-8b5b-b6a0e65f62ac"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="7bf9f687-819b-47f9-a7a8-267c6c286fa9">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{references})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="40">
+						<textField>
+							<reportElement x="0" y="0" width="40" height="30" uuid="6f0c2fbe-c59f-4287-b174-26aaf35a697b"/>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{reference}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement x="40" y="0" width="80" height="30" uuid="e11c1244-d688-4914-9a6c-14ed74637db1"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="8890f0e1-927e-44c5-8453-1313413b5f18">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{qtes})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="80">
+						<textField>
+							<reportElement x="0" y="0" width="80" height="30" uuid="71c09089-d021-4f5c-b80f-e068715b570e"/>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{qte}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement x="120" y="0" width="240" height="30" uuid="23ec0555-3416-423a-a244-dc0ba588aaca"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="a1c2257b-b930-4f57-baed-fca9aeaa149c">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{designations})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="240">
+						<textField>
+							<reportElement x="0" y="0" width="240" height="30" uuid="bbc3969f-899a-47f9-be34-1e4d2120c800"/>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{designation}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<frame>
+				<reportElement x="360" y="0" width="70" height="30" uuid="594cd54d-5c32-4da5-a234-e9558dff9fac"/>
+				<componentElement>
+					<reportElement x="0" y="0" width="70" height="30" uuid="ef3fc964-0e6c-4922-b3c4-2757ea9a94b8"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="Dataset1" uuid="26e99739-9ba6-410d-a66b-66cd6c63eb18">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{prixs})]]></dataSourceExpression>
+						</datasetRun>
+						<jr:listContents height="30" width="70">
+							<textField>
+								<reportElement x="0" y="0" width="70" height="30" uuid="68ff72a6-23f5-4f78-ada8-e3da1c009be5"/>
+								<box>
+									<leftPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textFieldExpression><![CDATA[$F{prix}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</frame>
+			<componentElement>
+				<reportElement x="430" y="0" width="130" height="30" uuid="90c40905-91f6-4d32-b8f6-9e9e591372de"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="5dd2ba80-94af-4c43-8df8-f1642167d927">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{montants})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="130">
+						<textField>
+							<reportElement x="0" y="0" width="130" height="30" uuid="0e392ef7-ed5f-4c45-be29-bac2e162dac7"/>
+							<box>
+								<leftPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="30" uuid="7f04b736-30e6-4897-a3ba-61d3704b2f4e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="0" width="80" height="30" uuid="a9a41c05-79da-4a5d-ad01-c2e99859592d"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{qteTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="120" y="0" width="240" height="30" uuid="0304419f-4823-4abf-84d3-c205bc8391d3"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[                          TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="0" width="200" height="30" uuid="920141f9-7f0d-4c8d-b3ae-511ec84a457d"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{montantTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="51" width="252" height="19" uuid="d1fc030d-519f-435b-8cbf-a3d83a2ef60f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Arretée la presente facture a la somme de:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="280" y="51" width="280" height="19" uuid="350d84c3-e890-412e-ac43-97702d0e93d7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantLettre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="291.0" prefWidth="604.0" style="-fx-background-color: white;" stylesheets="@../CssRapport.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Rapport.Vente.RecetteViewController">
+   <children>
+      <Pane layoutX="-3.0" prefHeight="50.0" prefWidth="607.0" style="-fx-background-color: #0083c5;">
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="556.0" layoutY="3.0" onMouseClicked="#quitter" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="/icons/close.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="33.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recette ">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <JFXDatePicker fx:id="debut" layoutX="160.0" layoutY="83.0" prefHeight="45.0" prefWidth="265.0" />
+      <JFXButton layoutX="309.0" layoutY="175.0" onAction="#print" prefHeight="60.0" prefWidth="180.0" styleClass="button_save" text="Imprimer" />
+      <JFXButton layoutX="113.0" layoutY="175.0" onAction="#close" prefHeight="60.0" prefWidth="180.0" styleClass="button_annuler" text="Annuler" />
+   </children>
+</AnchorPane>

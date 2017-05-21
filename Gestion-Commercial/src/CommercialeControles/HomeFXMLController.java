@@ -122,5 +122,27 @@ public class HomeFXMLController implements Initializable {
 
     @FXML
     private void showRapport(ActionEvent event) {
+        
+        try{
+            AnchorPane menu2 = FXMLLoader.load(getClass().getResource(ViewUrl.rapportMenu));
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/CommercialeView/Home2FXML.fxml"));
+            loader.load();
+
+            Home2FXMLController control = loader.getController();
+            control.setMenu(menu2);
+
+            AnchorPane root = loader.getRoot();
+            
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+            stage.setScene(scene);
+            
+            new  ShowPane().showRapport();
+
+        } catch (IOException ex) {
+            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

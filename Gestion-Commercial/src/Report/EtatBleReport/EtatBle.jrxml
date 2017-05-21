@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EtatBle" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1bdd0020-62ab-4e4c-82ae-25b4980734d7">
+	<subDataset name="Dataset1" uuid="be087054-722f-479c-bddd-a956209d20b1">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="numBl" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="numTiquet" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="poidTiquet" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="chauffeur" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="matricule" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="ptc" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="tare" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="net" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="ecart" class="java.lang.String">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="jour" class="java.lang.String"/>
+	<field name="num" class="java.lang.Integer"/>
+	<field name="numBls" class="java.util.Collection"/>
+	<field name="numTiquets" class="java.util.Collection"/>
+	<field name="poidTiquets" class="java.util.Collection"/>
+	<field name="chauffeurs" class="java.util.Collection"/>
+	<field name="matricules" class="java.util.Collection"/>
+	<field name="ptcs" class="java.util.Collection"/>
+	<field name="tares" class="java.util.Collection"/>
+	<field name="nets" class="java.util.Collection"/>
+	<field name="ecarts" class="java.util.Collection"/>
+	<field name="totalPoid" class="java.lang.String"/>
+	<field name="totalNet" class="java.lang.String"/>
+	<field name="totalEcart" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="246" y="0" width="310" height="21" uuid="665aad50-1750-47f6-a997-fc2a41ed87f8">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SARL LES MOULINS DE OULED FARES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="20" width="260" height="22" uuid="3c0f5095-d09a-4364-9015-68f2f45f4c2d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ouled Bouchakour  -  Ouled Fares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="42" width="50" height="21" uuid="fc972ca6-c8f5-4f1d-a462-00a9ef98b968">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chlef]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="70" width="180" height="13" uuid="ed05a832-30b9-4d51-970d-091e0f82d062">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Tel.Fax:027 72 77 30]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="250" y="20" width="162" height="30" uuid="884f088f-d9d5-4011-b301-81a0b32ba959"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Etat du Blé Journée du:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="412" y="20" width="268" height="30" uuid="64dc390d-6258-44cc-b2ed-0c56bfea0118"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jour}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="30" height="40" uuid="d6e8c8db-6de0-4d0f-b562-27466b159833"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="0" width="150" height="18" uuid="93d6450c-f909-448b-b4fd-6304bd210422"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bascule O.A.I.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="18" width="60" height="22" uuid="be48fc38-30b5-42f7-b941-097ffc343cf7"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Tiquet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="18" width="90" height="22" uuid="ef9ec0e1-70b1-4262-92be-ca7b95d461d3"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[pds.Tiquet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="150" height="40" uuid="4c1e64c1-04ae-4fb5-95da-1aece00dfcfd"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chauffeur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="96" height="40" uuid="efe29770-dd83-4b71-b11b-7fc57f1f6dea"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Matricule]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="526" y="0" width="204" height="20" uuid="1f6f2691-c691-43c5-ad6e-9d8f918313cc"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bascule Minoterie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="20" width="70" height="20" uuid="dcda2a2a-7e11-414f-841c-92c17c63afd4"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tare]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="20" width="80" height="20" uuid="45ee6a35-3207-4c2f-a49e-7d8c0f446cbf"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="526" y="20" width="54" height="20" uuid="f4e47c4e-ffa5-4239-8b39-b25086094d91"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PTC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="730" y="0" width="80" height="40" uuid="f39c7bcf-6aa0-488e-abd1-481cddcf7277"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ecart]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="0" width="100" height="40" uuid="c6663866-2ee7-441a-bc35-1300220c099b"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° BL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<componentElement>
+				<reportElement x="30" y="0" width="100" height="30" uuid="e1a0fa62-4225-47c6-bf5c-b3bf3fee27e5"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="e1994d2d-f6a0-4f77-9897-7e5db772c166">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{numBls})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="100">
+						<textField>
+							<reportElement x="0" y="0" width="100" height="30" uuid="3cd2476d-ab68-4e1e-b112-3871d326a08b"/>
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{numBl}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="0" width="30" height="30" uuid="9ec1f33c-25c9-46de-afc6-30a8b10b4ba6"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{num}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="130" y="0" width="60" height="30" uuid="e30d9306-d7a9-4ebc-ab17-8ea3a618bee7"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="4147c547-f7ab-454b-913a-029bb31014fe">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{numTiquets})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="60">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="30" uuid="5f4eda6c-d5dd-4fe2-95cf-e75b270916f2"/>
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{numTiquet}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement x="430" y="0" width="96" height="30" uuid="f047ccf1-3e77-4fa9-be00-598541373692"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="9eab3b4e-5733-4bb6-960a-791aaa98f22e">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{matricules})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="96">
+						<textField>
+							<reportElement x="0" y="0" width="96" height="30" uuid="61d0f004-5daf-4d93-9f4e-9a55749f59c4"/>
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement x="650" y="0" width="80" height="30" uuid="1f5cf287-c150-4f4a-99ae-badcc193d445"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="179dec2c-2200-4d2e-89eb-011e008771bd">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{nets})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="80">
+						<textField>
+							<reportElement x="0" y="0" width="80" height="30" uuid="17a44c5e-1d04-49ca-bac3-683e1226dfd3"/>
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{net}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement x="281" y="0" width="149" height="30" uuid="54a4d8da-cfa0-4b6d-a4c7-5e66ca1fcb1b"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="5a965963-210d-444c-a15b-36df3569e556">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{chauffeurs})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="149">
+						<textField>
+							<reportElement x="0" y="0" width="149" height="30" uuid="72481cce-1cac-41e3-90e3-e06823ba3683"/>
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{chauffeur}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement x="730" y="0" width="80" height="30" uuid="386062ef-deb4-42f9-9ef9-b064cf70dd38"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="253cede4-8baa-4180-8326-0f3ff69c99ee">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{ecarts})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="80">
+						<textField>
+							<reportElement x="0" y="0" width="80" height="30" uuid="bb6380dc-c8c0-4e0a-ab19-cff57474c799"/>
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{ecart}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement x="526" y="0" width="54" height="30" uuid="39a9ab22-2dcf-404f-a5e3-491977382270"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="4dce15f1-316e-4437-a62a-86d89b75d62a">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{ptcs})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="54">
+						<textField>
+							<reportElement x="0" y="0" width="54" height="30" uuid="54489c91-f717-4890-bf0e-ed114718a40f"/>
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{ptc}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement x="190" y="0" width="90" height="30" uuid="735447e2-2012-459a-8a0b-ced0aab09c6c"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="68980730-94ab-4801-a6e1-170549bab53b">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{poidTiquets})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="90">
+						<textField>
+							<reportElement x="0" y="0" width="90" height="30" uuid="dfe81958-6da5-411d-ba1b-c7728e49d4e2"/>
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{poidTiquet}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement x="580" y="0" width="70" height="30" uuid="7809bf64-4859-4576-83b7-8b153b879c96"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="a967a16b-10a5-4d66-99a5-b9dd58b7565d">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{tares})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="70">
+						<textField>
+							<reportElement x="0" y="0" width="70" height="30" uuid="2a39d298-6af9-4e19-adde-984726377a60"/>
+							<box>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{tare}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="190" height="30" uuid="4cc9f31f-dfee-4fc0-be58-180ac8246cae"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[                   TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="0" width="91" height="30" uuid="84860370-6387-45ba-ab97-5e5fd657d8b2"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalPoid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="281" y="0" width="369" height="30" uuid="55e91796-00bf-4f4b-9852-72fe87d61e61"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="650" y="0" width="80" height="30" uuid="88e2cc08-b123-4cef-985d-b113eea87edd"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalNet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="730" y="0" width="80" height="30" uuid="1c9c27a4-43eb-45df-af67-7134db0396c2"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalEcart}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

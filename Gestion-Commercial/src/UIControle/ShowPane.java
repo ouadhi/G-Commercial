@@ -8,13 +8,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class ShowPane {
 
-      public void showRole() {
+    public void showRole() {
         try {
             FXMLLoader loader = new FXMLLoader();
 
@@ -55,7 +56,7 @@ public class ShowPane {
     }
 
     public void showClient() {
-        
+
         String url = ViewUrl.ClientView;
 
         show(url, Home2FXMLController.workespacepane);
@@ -75,25 +76,87 @@ public class ShowPane {
 
         show(ViewUrl.DockList, Home2FXMLController.workespacepane);
     }
-    
-    public void showOperationAchat () {
-         show(ViewUrl.operationAchat, Home2FXMLController.workespacepane);
+
+    public void showOperationAchat() {
+        show(ViewUrl.operationAchat, Home2FXMLController.workespacepane);
     }
-    
-    
+
     public void showListAchat() {
-         show(ViewUrl.ListAchats, Home2FXMLController.workespacepane);
+        show(ViewUrl.ListAchats, Home2FXMLController.workespacepane);
     }
-    
-    
+
     public void showAjouterVente() {
-          show(ViewUrl.nouveauVente, Home2FXMLController.workespacepane);
+        show(ViewUrl.nouveauVente, Home2FXMLController.workespacepane);
     }
+
     public void showVenteListe() {
-          show(ViewUrl.ListeVentes, Home2FXMLController.workespacepane);
+        show(ViewUrl.ListeVentes, Home2FXMLController.workespacepane);
     }
-   
+
+    public void showRapport() {
+        show(ViewUrl.rapportMain, Home2FXMLController.workespacepane);
+    }
+
+    public void showRecette(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.Recette));
+            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void EtatdeBle(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatBle));
+            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void EtatdeReception(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatRecpetion));
+            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void EtatRembourcementBle(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatRembourcementBle));
+            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void EtatRembourcementTransport(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatRembourecementTransport));
+            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
+    public void EtatExpedition(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatExpedition));
+            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private TranslateTransition transitionout(AnchorPane node) {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(node);

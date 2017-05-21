@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="962.0" prefWidth="128.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Rapport.RapportMenuController">
+   <children>
+      <VBox layoutX="3.0" layoutY="3.0" prefHeight="962.0" prefWidth="128.0">
+         <children>
+            <JFXButton fx:id="home" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="112.0" onAction="#showhome" onMouseEntered="#inHome" onMouseExited="#outHome" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Home">
+               <graphic>
+                  <ImageView fx:id="homeicon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/HomeGry.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="Rapport" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="163.0" onAction="#showRapport" onMouseEntered="#InRapport" onMouseExited="#OutRapport" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Rapport">
+               <graphic>
+                  <ImageView fx:id="facturicon1" fitHeight="28.0" fitWidth="28.0" onMouseExited="#InFacture" onMouseMoved="#OutFacture" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/RapportGry.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="Facture" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="61.0" onAction="#showfacture" onMouseExited="#InFacture" onMouseMoved="#OutFacture" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Statistique">
+               <graphic>
+                  <ImageView fx:id="facturicon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/state.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

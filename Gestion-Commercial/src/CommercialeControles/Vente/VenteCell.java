@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.ButtonType;
@@ -179,7 +180,7 @@ public class VenteCell extends GridPane {
     public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
         JFXButton supprimer = new JFXButton("Supprimer");
-        JFXButton details = new JFXButton("détails");
+        JFXButton details = new JFXButton("imprimer");
         JFXButton payement = new JFXButton("payement");
 
         modifier.setPadding(new Insets(10));
@@ -210,6 +211,12 @@ public class VenteCell extends GridPane {
 
         });
         
+        
+        details.setOnAction(evnet -> {
+            imprimer(facture, evnet);
+        
+        });
+        
         payement.setOnAction(event -> {
                
             try {
@@ -231,6 +238,24 @@ public class VenteCell extends GridPane {
         
         });
 
+    }
+    
+     public void imprimer(Facture f ,ActionEvent event ) {
+        try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.printvent));
+                loader.load();
+                
+                PrintViewController print  =  loader.getController()  ; 
+               print.setData(f);
+                
+                AnchorPane root = loader.getRoot();
+                
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
+                dialog.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
 }
