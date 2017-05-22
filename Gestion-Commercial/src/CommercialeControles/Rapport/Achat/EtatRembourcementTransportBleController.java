@@ -9,12 +9,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 
 
 public class EtatRembourcementTransportBleController implements Initializable {
 
     @FXML
-    private JFXDatePicker date;
+    private HBox Hbox;
+    @FXML
+    private JFXDatePicker datedebut;
+    @FXML
+    private JFXDatePicker datefin;
 
     
     @Override

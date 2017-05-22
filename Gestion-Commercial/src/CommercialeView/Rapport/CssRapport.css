@@ -78,3 +78,19 @@
 .button_annuler:pressed {
     -fx-background-color :  #ffb066; 
 }
+
+.label_txt {
+    
+    -fx-font-family: Roboto;
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+    -fx-font-stretch: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: normal;
+    -fx-text-align: left;
+    -fx-text-fill : #90a4ae;  
+}
+.champtxt {
+    -fx-background-color : #f6f7fb;
+    -fx-background-radius : 4px ;
+}

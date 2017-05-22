@@ -47,7 +47,6 @@ public class FinOperationVenteController implements Initializable {
     private static JFXTextField montant_static;
     @FXML
     private JFXDatePicker dateOperation;
-    @FXML
     private JFXTextField tva;
     @FXML
     private JFXTextField montantFinal;
@@ -70,13 +69,9 @@ public class FinOperationVenteController implements Initializable {
     PopOver popup;
     private Image view = new Image(getClass().getResourceAsStream("/icons/preview.png"));
     private Image viewHover = new Image(getClass().getResourceAsStream("/icons/previewGreen.png"));
-    @FXML
     private static JFXTextField tva_static;
-    @FXML
     private static JFXTextField montantFinal_static;
-    @FXML
     private static JFXTextField versement_static;
-    @FXML
     private static JFXTextField reste_static;
 
     @Override

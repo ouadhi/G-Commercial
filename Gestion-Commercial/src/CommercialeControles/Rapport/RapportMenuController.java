@@ -1,6 +1,7 @@
 
 package CommercialeControles.Rapport;
 
+import UIControle.ShowPane;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +26,8 @@ public class RapportMenuController implements Initializable {
     private JFXButton Facture;
     @FXML
     private ImageView facturicon;
+    @FXML
+    private ImageView facturicon2;
 
     
     @Override
@@ -66,6 +69,11 @@ public class RapportMenuController implements Initializable {
 
     @FXML
     private void showfacture(ActionEvent event) {
+    }
+
+    @FXML
+    private void showbanque(ActionEvent event) {
+        new ShowPane().showBanque();
     }
     
 }
