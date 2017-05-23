@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 /**
  *
  * @author CHERABRAB
@@ -26,7 +27,7 @@ public class Achat {
     @Column(name = "num_acqt", nullable = false)
     String numAcqt;
     @Column(name = "date_acqt", nullable = false)
-    @Temporal(value = TemporalType.DATE)            
+    @Temporal(value = TemporalType.DATE)
     Date dateAcqt;
     @Column(name = "quantite_acqt", nullable = false)
     double quantiteAcqt;
@@ -34,35 +35,46 @@ public class Achat {
     double quantiteFour;
     @Column(name = "quantite_diff", nullable = false)
     double quantiteDiff;
+    @Column(name = "num_Bon", nullable = false)
+    String numBon;
     @ManyToOne
-    @JoinColumn(name="id_chauffeur")
+    @JoinColumn(name = "id_chauffeur")
     private Chauffeur chauffeur;
     @ManyToOne
-    @JoinColumn(name="id_camion")
-    private Camion camion;   
+    @JoinColumn(name = "id_camion")
+    private Camion camion;
     @ManyToOne
-    @JoinColumn(name="id_ble")
+    @JoinColumn(name = "id_ble")
     private Ble ble;
     @ManyToOne
-    @JoinColumn(name="id_dock")
+    @JoinColumn(name = "id_dock")
     private Dock dock;
-    
-    //
-    
 
+    //
     public Achat() {
 
     }
 
-    public Achat(String numAcqt, int quantiteAcqt, int quantiteFour, int quantiteDiff) {
+    public Achat(String numAcqt, int quantiteAcqt, int quantiteFour,
+             int quantiteDiff, Date dateAcqt, String numBon) {
         this.numAcqt = numAcqt;
         this.quantiteAcqt = quantiteAcqt;
         this.quantiteFour = quantiteFour;
         this.quantiteDiff = quantiteDiff;
+        this.numBon = numBon;
+        this.dateAcqt = dateAcqt;
     }
 
     public int getIdAchat() {
         return idAchat;
+    }
+
+    public String getNumBon() {
+        return numBon;
+    }
+
+    public void setNumBon(String numBon) {
+        this.numBon = numBon;
     }
 
     public void setIdAchat(int idExpedition) {
@@ -140,5 +152,5 @@ public class Achat {
     public void setDock(Dock dock) {
         this.dock = dock;
     }
-  
+
 }
