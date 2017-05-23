@@ -259,8 +259,8 @@ public class FinOperationController implements Initializable {
     }
 
     public void addAchat() {
-        Achat achat = new Achat(numero.getText(), Integer.parseInt(Q_Acquit.getText())
-                , Integer.parseInt(Q_fournie.getText()), 0,new Date(),"NumBon24445");
+        Achat achat = new Achat("numTiquet874345",numero.getText(), Integer.parseInt(Q_Acquit.getText()),
+                 Integer.parseInt(Q_fournie.getText()), 0, new Date(), "NumBon24445");
         achat.setCamion(camion.getCamion());
         achat.setChauffeur(chauffeur.getChauffeur());
         achat.setDock(dock.getDock());

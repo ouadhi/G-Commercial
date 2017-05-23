@@ -48,6 +48,7 @@ public class GenerateEtatBleReport {
     public void generateReport(Date jour) throws IOException, JRException {
         OperationEtatBleReport operationEtatBleReport = new OperationEtatBleReport();
         getAchatDuJour(jour);
+        
 
     }
 

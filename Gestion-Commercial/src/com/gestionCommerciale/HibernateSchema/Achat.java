@@ -26,6 +26,8 @@ public class Achat {
     int idAchat;
     @Column(name = "num_acqt", nullable = false)
     String numAcqt;
+    @Column(name = "num_Tiquet", nullable = false)
+    String numTiquet;
     @Column(name = "date_acqt", nullable = false)
     @Temporal(value = TemporalType.DATE)
     Date dateAcqt;
@@ -55,7 +57,7 @@ public class Achat {
 
     }
 
-    public Achat(String numAcqt, int quantiteAcqt, int quantiteFour,
+    public Achat(String numTiquet,String numAcqt, int quantiteAcqt, int quantiteFour,
              int quantiteDiff, Date dateAcqt, String numBon) {
         this.numAcqt = numAcqt;
         this.quantiteAcqt = quantiteAcqt;
@@ -64,6 +66,15 @@ public class Achat {
         this.numBon = numBon;
         this.dateAcqt = dateAcqt;
     }
+
+    public String getNumTiquet() {
+        return numTiquet;
+    }
+
+    public void setNumTiquet(String numTiquet) {
+        this.numTiquet = numTiquet;
+    }
+    
 
     public int getIdAchat() {
         return idAchat;
