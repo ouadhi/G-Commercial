@@ -49,6 +49,12 @@ public class GenerateEtatBleReport {
         OperationEtatBleReport operationEtatBleReport = new OperationEtatBleReport();
         getAchatDuJour(jour);
         
+        for (int i = 0; i < achatDuJour.size(); i++) {
+            operationEtatBleReport.putReportInfo(jour, totalPoid, totalNet, totalEcart, numBls
+                , numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares, nets, ecarts); 
+        }
+        
+        
 
     }
 
