@@ -96,7 +96,11 @@ public class ShowPane {
     public void showRapport() {
         show(ViewUrl.rapportMain, Home2FXMLController.workespacepane);
     }
-
+    
+     public void showBanque() {
+        show(ViewUrl.BanqueListe, Home2FXMLController.workespacepane);
+    }
+ 
     public void showRecette(ActionEvent event) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.Recette));

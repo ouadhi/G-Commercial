@@ -29,11 +29,11 @@ public class Achat {
     @Temporal(value = TemporalType.DATE)            
     Date dateAcqt;
     @Column(name = "quantite_acqt", nullable = false)
-    int quantiteAcqt;
+    double quantiteAcqt;
     @Column(name = "quantite_four", nullable = false)
-    int quantiteFour;
+    double quantiteFour;
     @Column(name = "quantite_diff", nullable = false)
-    int quantiteDiff;
+    double quantiteDiff;
     @ManyToOne
     @JoinColumn(name="id_chauffeur")
     private Chauffeur chauffeur;
@@ -85,15 +85,15 @@ public class Achat {
         this.dateAcqt = dateAcqt;
     }
 
-    public int getQuantiteAcqt() {
+    public double getQuantiteAcqt() {
         return quantiteAcqt;
     }
 
-    public void setQuantiteAcqt(int quantiteAcqt) {
+    public void setQuantiteAcqt(double quantiteAcqt) {
         this.quantiteAcqt = quantiteAcqt;
     }
 
-    public int getQuantiteFour() {
+    public double getQuantiteFour() {
         return quantiteFour;
     }
 
@@ -101,7 +101,7 @@ public class Achat {
         this.quantiteFour = quantiteFour;
     }
 
-    public int getQuantiteDiff() {
+    public double getQuantiteDiff() {
         return quantiteDiff;
     }
 

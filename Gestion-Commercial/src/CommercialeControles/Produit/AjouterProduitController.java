@@ -3,9 +3,7 @@ package CommercialeControles.Produit;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
-import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.HibernateSchema.Produit;
-import com.gestionCommerciale.Models.BleQueries;
 import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -38,6 +36,8 @@ public class AjouterProduitController implements Initializable {
     @FXML
     private Label savelabel;
     ProduitQueries queries = new ProduitQueries();
+    @FXML
+    private JFXTextField code;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

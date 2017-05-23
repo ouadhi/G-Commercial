@@ -2,10 +2,10 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -126,19 +126,22 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="309.0" layoutY="149.0" styleClass="title_panel" text="TVA : (%)" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label layoutX="309.0" layoutY="149.0" styleClass="title_panel" text="TVA : " GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="10.0" top="-45.0" />
+                  <Insets bottom="-0.0" left="10.0" top="-45.0" />
                </GridPane.margin>
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Spinner fx:id="tva" prefHeight="42.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <JFXToggleButton fx:id="TVA" text="Non/Oui" unToggleColor="#ff1c1c" unToggleLineColor="#c94545" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="15.0" />
+               </font>
                <GridPane.margin>
-                  <Insets bottom="-20.0" />
+                  <Insets top="18.0" />
                </GridPane.margin>
-            </Spinner>
+            </JFXToggleButton>
          </children>
          <opaqueInsets>
             <Insets />

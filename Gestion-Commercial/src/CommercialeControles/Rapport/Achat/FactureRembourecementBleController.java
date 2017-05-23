@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 
 
 public class FactureRembourecementBleController implements Initializable {
@@ -17,6 +18,8 @@ public class FactureRembourecementBleController implements Initializable {
     private JFXDatePicker datedebut;
     @FXML
     private JFXDatePicker dateFin;
+    @FXML
+    private HBox Hbox;
 
    
     @Override

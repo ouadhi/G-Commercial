@@ -36,23 +36,23 @@ public class OperationEtatExpedition {
     }
 
     public void putReportInfo(String date, String totalFarine, String totalSon,
-             String totalMontant, String totalVersement, String totalVersemntMoinMontant,
-             String totalQuantite, String farineTotal, String sonTotal, String montantTotal,
-             String versementTotal, String differenceTotal, List<String> clients,
-             List<String> nums, List<String> produits, List<String> qteFarins, List<String> qteSons,
-             List<String> prixs, List<String> montants, List<String> versements, List<String> observations) {
+            String totalMontant, String totalVersement, String totalVersemntMoinMontant,
+            String totalQuantite, String farineTotal, String sonTotal, String montantTotal,
+            String versementTotal, String differenceTotal, List<String> clients,
+            List<String> nums, List<String> produits, List<String> qteFarins, List<String> qteSons,
+            List<String> prixs, List<String> montants, List<String> versements, List<String> observations) {
         //patient info is the first to be written
 
         EtatExpeditionBean beanInfo = new EtatExpeditionBean(date, totalFarine, totalSon,
-                 totalMontant, totalVersement, totalVersemntMoinMontant,
-                 totalQuantite, farineTotal, sonTotal, montantTotal,
-                 versementTotal, differenceTotal, clients,
-                 nums, produits, qteFarins, qteSons,
-                 prixs, montants, versements, observations);
+                totalMontant, totalVersement, totalVersemntMoinMontant,
+                totalQuantite, farineTotal, sonTotal, montantTotal,
+                versementTotal, differenceTotal, clients,
+                nums, produits, qteFarins, qteSons,
+                prixs, montants, versements, observations);
         collBean.add(beanInfo);
     }
 
-    public void printReport(String fileName) {
+    public void printReport() {
         try {
             Map<String, Object> params = new HashMap<String, Object>();
             JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
@@ -62,7 +62,7 @@ public class OperationEtatExpedition {
             InputStream stream = getClass().getResourceAsStream("EtatExpedition.jasper");
             JasperReport report = (JasperReport) JRLoader.loadObject(stream);
             JasperPrint jasperPrint = JasperFillManager.fillReport(report,
-                     params, getData());
+                    params, getData());
             JasperViewer.viewReport(jasperPrint);
             //this.collBean.clear();
         } catch (Exception e) {

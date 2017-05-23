@@ -5,6 +5,7 @@ import UIControle.Notification;
 import UIControle.ShowPane;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXToggleButton;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -34,6 +35,10 @@ public class ModifierProduitController implements Initializable {
     private JFXButton cancelbttn;
     @FXML
     private Label savelabel;
+    @FXML
+    private JFXTextField code;
+    @FXML
+    private JFXToggleButton TVA;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
