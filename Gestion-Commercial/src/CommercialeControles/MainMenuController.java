@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,8 +49,6 @@ public class MainMenuController implements Initializable {
         Home2FXMLController.menup.getChildren().setAll(menu) ; 
         new ShowPane().showBle();
         
-        
-        
     }
 
     @FXML
@@ -68,22 +68,39 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void show_import(ActionEvent event) {
-        Image img = new Image(getClass().getResourceAsStream("/icons/select3.png"));
-        ImageView icon = new ImageView(img);
-        icon.prefHeight(35);
-        icon.prefWidth(50);
-        Home2FXMLController.bttn_menu.setGraphic(icon);
-        
-        
+         try {
+            Image img = new Image(getClass().getResourceAsStream("/icons/select4.png"));
+            ImageView icon = new ImageView(img);
+            icon.prefHeight(35);
+            icon.prefWidth(50);
+            Home2FXMLController.bttn_menu.setGraphic(icon);
+            
+            AnchorPane  menu   = FXMLLoader.load(getClass().getResource(ViewUrl.TransportMenu)) ;
+            Home2FXMLController.menup.getChildren().setAll(menu) ; 
+            new ShowPane().showCamion();
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void show_export(ActionEvent event) {
-        Image img = new Image(getClass().getResourceAsStream("/icons/select4.png"));
-        ImageView icon = new ImageView(img);
-        icon.prefHeight(35);
-        icon.prefWidth(50);
-        Home2FXMLController.bttn_menu.setGraphic(icon);
+        
+        try {
+            Image img = new Image(getClass().getResourceAsStream("/icons/select3.png"));
+            ImageView icon = new ImageView(img);
+            icon.prefHeight(35);
+            icon.prefWidth(50);
+            Home2FXMLController.bttn_menu.setGraphic(icon);
+            
+            
+            AnchorPane  menu   = FXMLLoader.load(getClass().getResource(ViewUrl.rapportMenu)) ;
+            Home2FXMLController.menup.getChildren().setAll(menu) ;
+            new ShowPane().showUIRapport(event);
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
 
 }

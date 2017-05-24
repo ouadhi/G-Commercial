@@ -28,7 +28,7 @@ public class ChauffeurCell extends GridPane {
     public String telephone;
     public String camion;
     public String voyage;
-    
+
     protected final ColumnConstraints columnConstraints;
     protected final ColumnConstraints columnConstraints0;
     protected final ColumnConstraints columnConstraints1;
@@ -38,12 +38,12 @@ public class ChauffeurCell extends GridPane {
     protected final Label label;
     protected final Label label0;
     protected final Label label1;
-    protected final Label label2 ;  
+    protected final Label label2;
+
     public JFXPopup popup;
     JFXButton bttn;
-    
-    ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
 
+    ChauffeurQueries chauffeurQueries = new ChauffeurQueries();
 
     public ChauffeurCell(String nom, String telephone, String camion, String voyage) {
         this.nom = nom;
@@ -59,16 +59,15 @@ public class ChauffeurCell extends GridPane {
         icon.prefHeight(10);
         icon.prefWidth(10);
         nomLabl.setGraphic(icon);
-        
+
         bttn = new JFXButton();
         Image imgbtn = new Image(getClass().getResourceAsStream("/icons/more3.png"));
         ImageView imgviewbtn = new ImageView(imgbtn);
-        imgviewbtn.prefHeight(50) ; 
         imgviewbtn.prefHeight(50);
-        bttn.prefHeight(50) ; 
-        bttn.prefWidth(50) ; 
+        imgviewbtn.prefHeight(50);
+        bttn.prefHeight(50);
+        bttn.prefWidth(50);
         bttn.setGraphic(imgviewbtn);
-
 
         columnConstraints = new ColumnConstraints();
         columnConstraints0 = new ColumnConstraints();
@@ -80,11 +79,10 @@ public class ChauffeurCell extends GridPane {
         label0 = new Label();
         label1 = new Label();
         label2 = new Label();
-       
+
         setHgap(3.0);
         setPrefHeight(50.0);
         setPrefWidth(1100.0);
-       
 
         columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
@@ -158,7 +156,7 @@ public class ChauffeurCell extends GridPane {
 
             popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
         });
-        
+
     }
 
     public void intpopup() {
@@ -181,20 +179,19 @@ public class ChauffeurCell extends GridPane {
 
         });
 
-
         supprimer.setOnAction(event -> {
 
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
-            if (result.get() == ButtonType.OK) { 
+            if (result.get() == ButtonType.OK) {
                 //get cell info
-                Chauffeur chauffeur= chauffeurQueries.getChauffeur(this.nom);
+                Chauffeur chauffeur = chauffeurQueries.getChauffeur(this.nom);
                 chauffeurQueries.deleteChauffeur(chauffeur);
                 new ShowPane().showChauffeur();
                 Notification.Deletenotification();
             }
 
         });
-         
+
     }
 
 }

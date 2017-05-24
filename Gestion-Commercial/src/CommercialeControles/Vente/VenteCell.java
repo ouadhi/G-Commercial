@@ -181,14 +181,13 @@ public class VenteCell extends GridPane {
         JFXButton modifier = new JFXButton("Modifier");
         JFXButton supprimer = new JFXButton("Supprimer");
         JFXButton details = new JFXButton("imprimer");
-        JFXButton payement = new JFXButton("payement");
+       
 
         modifier.setPadding(new Insets(10));
         supprimer.setPadding(new Insets(10));
-        details.setPadding(new Insets(10));
-        payement.setPadding(new Insets(10));
+        details.setPadding(new Insets(10)); 
 
-        VBox box = new VBox(modifier, supprimer, details , payement);
+        VBox box = new VBox(modifier, supprimer, details );
         box.setStyle("-fx-background-color: #ffffff");
 
         popup.setContent(box);
@@ -217,27 +216,7 @@ public class VenteCell extends GridPane {
         
         });
         
-        payement.setOnAction(event -> {
-               
-            try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(ViewUrl.payement));
-                loader.load();
-                
-                PayementListeController pay  = loader.getController(); 
-                pay.setDate(this.facture.getIdFacture());
-                
-                AnchorPane root = loader.getRoot();
-                
-                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
-                dialog.show();
-            } catch (IOException ex) {
-                Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
         
-        });
-
     }
     
      public void imprimer(Facture f ,ActionEvent event ) {
