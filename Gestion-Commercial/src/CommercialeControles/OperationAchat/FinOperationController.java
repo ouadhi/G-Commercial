@@ -76,6 +76,10 @@ public class FinOperationController implements Initializable {
     @FXML
     private ImageView statedock;
     static ImageView statDock;
+    @FXML
+    private JFXTextField numerotickit;
+    @FXML
+    private JFXTextField numeroBon;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -85,15 +89,30 @@ public class FinOperationController implements Initializable {
         statDock = statedock;
 
         Methode.setOnlyInteger(numero, 10);
+        Methode.setOnlyInteger(numeroBon, 10);
+        Methode.setOnlyInteger(numerotickit, 10);
         Methode.setOnlyFloat(diff, 10);
         Methode.setOnlyFloat(Q_Acquit, 10);
         Methode.setOnlyFloat(Q_fournie, 10);
         date.setValue(LocalDate.now());
         diff.setEditable(false);
+        
         numero.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
                 numero.selectAll();
+            }
+        });
+         numeroBon.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent event) {
+                numeroBon.selectAll();
+            }
+        });
+          numerotickit.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent event) {
+                numerotickit.selectAll();
             }
         });
         Q_Acquit.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -108,6 +127,8 @@ public class FinOperationController implements Initializable {
                 Q_fournie.selectAll();
             }
         });
+        
+        
 
         popup = new PopOver();
         PopOver popup = new PopOver();
@@ -216,8 +237,10 @@ public class FinOperationController implements Initializable {
         String num = numero.getText();
         String Q_acquit = Q_Acquit.getText();
         String Q_four = this.Q_fournie.getText();
+        String  bon  =  numeroBon.getText()  ; 
+        String tickit  =  numerotickit.getText()  ;
 
-        if (num.isEmpty() || Q_acquit.isEmpty() || Q_four.isEmpty()) {
+        if (num.isEmpty() || Q_acquit.isEmpty() || Q_four.isEmpty() ||bon.isEmpty() || tickit.isEmpty() ) {
             Notification.champVideNotification();
         } else {
             addAchat();
