@@ -65,7 +65,7 @@ public class AjouterCamionController implements Initializable {
                  Notification.error("Ce camion exist deja");
             }else{
             try {
-                Camion camion = new Camion(code, matricule, type);
+                Camion camion = new Camion(code, matricule, type,33);
                 camionQueries.SaveOrUpdate(camion);
                 new ShowPane().showCamion();
                 Notification.Addnotification();

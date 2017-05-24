@@ -5,10 +5,156 @@
  */
 package Report.ReportEtatRemboursement;
 
+import com.gestionCommerciale.HibernateSchema.Achat;
+import com.gestionCommerciale.Models.SessionsGenerator;
+import com.ibm.icu.text.RuleBasedNumberFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Locale;
+import org.hibernate.Session;
+
 /**
  *
  * @author Hicham
  */
 public class GenerateEtatRemboursementReport {
-    
+
+    List<List<Achat>> listAchats = new ArrayList<>();
+    List<Date> jour = new ArrayList<>();
+    double montantTotal = 0;
+
+    public void achatParJour(Date startDate, Date lastDate) {
+        List<Date> intervalDate = getDaysBetweenDates(startDate, lastDate);
+        List<Achat> list = null;
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        try {
+
+            list = new ArrayList<>();
+            list = session.createQuery("from Achat").list();
+            for (int i = 0; i < intervalDate.size(); i++) {
+                boolean notAddedDate = false;
+                List<Achat> achatParJour = new ArrayList<>();
+                for (int j = 0; j < list.size(); j++) {
+                    if (intervalDate.get(i).equals(list.get(j).getDateAcqt())) {
+                        //calcule total montant
+                        montantTotal = montantTotal
+                                + ((list.get(j).getQuantiteAcqt()) * (list.get(j).getDock().getPrixUnitTrans()));
+                        achatParJour.add(list.get(j));
+                        if (!notAddedDate) {
+                            jour.add(intervalDate.get(i));
+                            notAddedDate = true;
+                        }
+                    } else {
+                        //fait rien
+                    }
+                }
+                listAchats.add(achatParJour);
+            }
+
+        } finally {
+            session.close();
+        }
+    }
+
+    public static List<Date> getDaysBetweenDates(Date startdate, Date enddate) {
+        List<Date> dates = new ArrayList<Date>();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(startdate);
+
+        while (calendar.getTime().before(enddate)) {
+            Date result = calendar.getTime();
+            dates.add(result);
+            calendar.add(Calendar.DATE, 1);
+        }
+        return dates;
+    }
+
+    public String calculeMantant(double qte, double prix) {
+        double montant = qte * prix;
+        return new Double(montant).toString();
+    }
+
+    public List<String> getParcourList(int n) {
+        List<String> parcours = new ArrayList<>();
+        for (int i = 0; i < listAchats.get(n).size(); i++) {
+            String parcour = listAchats.get(n).get(i).getDock().getNom() + " O/Fres";
+            parcours.add(parcour);
+        }
+        return parcours;
+    }
+
+    public List<String> getDistancesList(int n) {
+        List<String> distances = new ArrayList<>();
+        for (int i = 0; i < listAchats.get(n).size(); i++) {
+            String distance = String.valueOf(listAchats.get(n).get(i).getDock().getDistance());
+            distances.add(distance);
+        }
+        return distances;
+    }
+
+    public List<String> getnumTiquetList(int n) {
+        List<String> nums = new ArrayList<>();
+        for (int i = 0; i < listAchats.get(n).size(); i++) {
+            String num = listAchats.get(n).get(i).getNumAcqt();
+            nums.add(num);
+        }
+        return nums;
+    }
+
+    public List<String> getQteList(int n) {
+        List<String> qtes = new ArrayList<>();
+        for (int i = 0; i < listAchats.get(n).size(); i++) {
+            String qte = String.valueOf(listAchats.get(n).get(i).getQuantiteAcqt());
+            qtes.add(qte);
+        }
+        return qtes;
+    }
+
+    public List<String> getPrixList(int n) {
+        List<String> prixs = new ArrayList<>();
+        for (int i = 0; i < listAchats.get(n).size(); i++) {
+            String prix = String.valueOf(listAchats.get(n).get(i).getDock().getPrixUnitTrans());
+            prixs.add(prix);
+        }
+        return prixs;
+    }
+
+    public List<String> getMontantsList(int n) {
+        List<String> montants = new ArrayList<>();
+        for (int i = 0; i < listAchats.get(n).size(); i++) {
+            String montant = calculeMantant(listAchats.get(n).get(i).getQuantiteAcqt(),
+                    listAchats.get(n).get(i).getDock().getPrixUnitTrans());
+
+            montants.add(montant);
+        }
+        return montants;
+    }
+
+    public void generateReport(Date startDate, Date endDate, String doit) {
+        OperationEtatRemboursementReport operationEtatRemboursementReport = new OperationEtatRemboursementReport();
+        achatParJour(startDate, endDate);
+        String date = "De: " + startDate + " a" + endDate;
+        RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
+                RuleBasedNumberFormat.SPELLOUT);
+        String montantlettre = ruleBasedNumberFormat.format(new Double(montantTotal)) + " Dinars Algérien";
+
+        for (int i = 0; i < jour.size(); i++) {
+            List<String> parcours = getParcourList(i);
+            List<String> distances = getDistancesList(i);
+            List<String> nums = getnumTiquetList(i);
+            List<String> qtes = getQteList(i);
+            List<String> prixs = getPrixList(i);
+            List<String> montants = getMontantsList(i);
+            operationEtatRemboursementReport.putReportInfo(doit, date, jour.get(i).toString(),
+                    new Double(montantTotal).toString(), montantlettre,
+                    parcours, distances, nums, qtes, prixs, montants);
+        }
+        operationEtatRemboursementReport.printReport();
+
+    }
+
 }

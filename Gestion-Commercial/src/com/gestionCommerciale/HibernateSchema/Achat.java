@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 /**
  *
  * @author CHERABRAB
@@ -25,44 +26,66 @@ public class Achat {
     int idAchat;
     @Column(name = "num_acqt", nullable = false)
     String numAcqt;
+    @Column(name = "num_Tiquet", nullable = false)
+    String numTiquet;
     @Column(name = "date_acqt", nullable = false)
-    @Temporal(value = TemporalType.DATE)            
+    @Temporal(value = TemporalType.DATE)
     Date dateAcqt;
     @Column(name = "quantite_acqt", nullable = false)
-    int quantiteAcqt;
+    double quantiteAcqt;
     @Column(name = "quantite_four", nullable = false)
-    int quantiteFour;
+    double quantiteFour;
     @Column(name = "quantite_diff", nullable = false)
-    int quantiteDiff;
+    double quantiteDiff;
+    @Column(name = "num_Bon", nullable = false)
+    String numBon;
     @ManyToOne
-    @JoinColumn(name="id_chauffeur")
+    @JoinColumn(name = "id_chauffeur")
     private Chauffeur chauffeur;
     @ManyToOne
-    @JoinColumn(name="id_camion")
-    private Camion camion;   
+    @JoinColumn(name = "id_camion")
+    private Camion camion;
     @ManyToOne
-    @JoinColumn(name="id_ble")
+    @JoinColumn(name = "id_ble")
     private Ble ble;
     @ManyToOne
-    @JoinColumn(name="id_dock")
+    @JoinColumn(name = "id_dock")
     private Dock dock;
-    
-    //
-    
 
+    //
     public Achat() {
 
     }
 
-    public Achat(String numAcqt, int quantiteAcqt, int quantiteFour, int quantiteDiff) {
+    public Achat(String numTiquet,String numAcqt, int quantiteAcqt, int quantiteFour,
+             int quantiteDiff, Date dateAcqt, String numBon) {
         this.numAcqt = numAcqt;
         this.quantiteAcqt = quantiteAcqt;
         this.quantiteFour = quantiteFour;
         this.quantiteDiff = quantiteDiff;
+        this.numBon = numBon;
+        this.dateAcqt = dateAcqt;
     }
+
+    public String getNumTiquet() {
+        return numTiquet;
+    }
+
+    public void setNumTiquet(String numTiquet) {
+        this.numTiquet = numTiquet;
+    }
+    
 
     public int getIdAchat() {
         return idAchat;
+    }
+
+    public String getNumBon() {
+        return numBon;
+    }
+
+    public void setNumBon(String numBon) {
+        this.numBon = numBon;
     }
 
     public void setIdAchat(int idExpedition) {
@@ -85,15 +108,15 @@ public class Achat {
         this.dateAcqt = dateAcqt;
     }
 
-    public int getQuantiteAcqt() {
+    public double getQuantiteAcqt() {
         return quantiteAcqt;
     }
 
-    public void setQuantiteAcqt(int quantiteAcqt) {
+    public void setQuantiteAcqt(double quantiteAcqt) {
         this.quantiteAcqt = quantiteAcqt;
     }
 
-    public int getQuantiteFour() {
+    public double getQuantiteFour() {
         return quantiteFour;
     }
 
@@ -101,7 +124,7 @@ public class Achat {
         this.quantiteFour = quantiteFour;
     }
 
-    public int getQuantiteDiff() {
+    public double getQuantiteDiff() {
         return quantiteDiff;
     }
 
@@ -140,5 +163,5 @@ public class Achat {
     public void setDock(Dock dock) {
         this.dock = dock;
     }
-  
+
 }
