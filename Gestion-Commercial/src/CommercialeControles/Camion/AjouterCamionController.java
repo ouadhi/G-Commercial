@@ -1,6 +1,7 @@
 
 package CommercialeControles.Camion;
 
+import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Camion;
@@ -26,7 +27,6 @@ public class AjouterCamionController implements Initializable {
     private JFXButton savebttn;
     @FXML
     private JFXButton anullerbttn;
-    @FXML
     private Label savelabel;
     @FXML
     private ImageView close;
@@ -36,15 +36,18 @@ public class AjouterCamionController implements Initializable {
     private JFXTextField matricule;
     @FXML
     private JFXTextField typecamion;
-    @FXML
-    private JFXComboBox<String> chauffeur;
     
     CamionQueries camionQueries= new CamionQueries();
+    @FXML
+    private JFXTextField poisCamion;
+    @FXML
+    private Label labelsave;
 
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Methode.setOnlyFloat(poisCamion, 5);
         
     }    
 
