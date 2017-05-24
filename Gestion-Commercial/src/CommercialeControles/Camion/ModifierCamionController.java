@@ -38,11 +38,11 @@ public class ModifierCamionController implements Initializable {
     private JFXTextField matricule;
 
     @FXML
-    private JFXComboBox<String> chauffeur;
-    @FXML
     private JFXTextField taillecamion;
     
     private CamionQueries camionQueries= new CamionQueries();
+    @FXML
+    private JFXTextField PoisCamion;
 
 
     @Override

@@ -1,6 +1,7 @@
 package UIControle;
 
 import CommercialeControles.Home2FXMLController;
+import CommercialeControles.HomeFXMLController;
 import Conroles.MeunFXMLController;
 import Conroles.Users_ListController;
 import java.io.IOException;
@@ -10,10 +11,26 @@ import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class ShowPane {
+
+    public void showHome(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/CommercialeView/HomeFXML.fxml"));
+            Scene scene = new Scene(pane);
+            Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+
+            stage.setScene(scene);
+
+        } catch (IOException ex) {
+            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void showRole() {
         try {
@@ -96,11 +113,11 @@ public class ShowPane {
     public void showRapport() {
         show(ViewUrl.rapportMain, Home2FXMLController.workespacepane);
     }
-    
-     public void showBanque() {
+
+    public void showBanque() {
         show(ViewUrl.BanqueListe, Home2FXMLController.workespacepane);
     }
- 
+
     public void showRecette(ActionEvent event) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.Recette));
@@ -150,7 +167,7 @@ public class ShowPane {
             Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void EtatExpedition(ActionEvent event) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatExpedition));
@@ -205,6 +222,30 @@ public class ShowPane {
 
         });
 
+    }
+    
+    public void showUIRapport(ActionEvent event) {
+        try{
+            AnchorPane menu2 = FXMLLoader.load(getClass().getResource(ViewUrl.rapportMenu));
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/CommercialeView/Home2FXML.fxml"));
+            loader.load();
+
+            Home2FXMLController control = loader.getController();
+            control.setMenu(menu2);
+
+            AnchorPane root = loader.getRoot();
+            
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+            stage.setScene(scene);
+            
+            new  ShowPane().showRapport();
+
+        } catch (IOException ex) {
+            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

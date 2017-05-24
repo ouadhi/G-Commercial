@@ -47,10 +47,16 @@ public class AjouterClientController implements Initializable {
     @FXML
     private ImageView close;
     ClientQueries clientQueries = new ClientQueries();
+    @FXML
+    private JFXTextField Solde;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         datedept.setValue(LocalDate.now());
+         Methode.setOnlyNumbre(Solde);
+        Methode.setOnlyNumbre(NRtxt);
+        Methode.setOnlyNumbre(NAtxt);
+        Methode.setOnlyNumbre(NCarteF);
     }
 
     @FXML

@@ -100,11 +100,18 @@ public class DockLisController implements Initializable {
     private void showAddStage(ActionEvent event) {
 
         try {
-            Stage stage = Methode.getStage(event);
+             
+            Stage stage = Methode.getStage(event) ; 
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(ViewUrl.AjouterDock));
+            loader.load();
 
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterDock));
+            AjouterDockController AddDock = loader.getController();
+           AddDock.SetData(listedock , total);
 
-            StageDialog dialog = new StageDialog(stage, pane);
+            AnchorPane root = loader.getRoot();
+
+            StageDialog dialog = new StageDialog(stage, root);
             dialog.show();
 
         } catch (IOException ex) {

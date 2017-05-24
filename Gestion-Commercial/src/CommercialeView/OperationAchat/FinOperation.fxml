@@ -15,9 +15,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="1050.0" style="-fx-background-color: white;" stylesheets="@AchatCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.OperationAchat.FinOperationController">
    <children>
-      <Label layoutX="392.0" layoutY="127.0" styleClass="finOperation" text="Chaffeur" />
+      <Label layoutX="392.0" layoutY="94.0" styleClass="finOperation" text="Chaffeur" />
       <Label layoutX="338.0" layoutY="14.0" styleClass="titre" text="Les informations D'Achat" />
-      <Label layoutX="581.0" layoutY="127.0" styleClass="finOperation" text="Camion" />
+      <Label layoutX="581.0" layoutY="94.0" styleClass="finOperation" text="Camion" />
       <Label alignment="CENTER" layoutX="337.0" layoutY="60.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="505.0" layoutY="59.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="3" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="420.0" layoutY="61.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="2" textAlignment="CENTER" />
@@ -25,33 +25,33 @@
       <Line endX="20.0" layoutX="401.0" layoutY="71.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
       <Line endX="20.0" layoutX="565.0" layoutY="71.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
       <Line endX="20.0" layoutX="484.0" layoutY="71.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
-      <Label layoutX="777.0" layoutY="127.0" styleClass="finOperation" text="Ble" />
-      <ImageView fx:id="infochaffeur" fitHeight="23.0" fitWidth="31.0" layoutX="462.0" layoutY="126.0" onMouseEntered="#opneInfoChauufeur" onMouseExited="#CloseInforChauffeur" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="777.0" layoutY="94.0" styleClass="finOperation" text="Ble" />
+      <ImageView fx:id="infochaffeur" fitHeight="23.0" fitWidth="31.0" layoutX="462.0" layoutY="93.0" onMouseEntered="#opneInfoChauufeur" onMouseExited="#CloseInforChauffeur" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="infocamion" fitHeight="23.0" fitWidth="31.0" layoutX="640.0" layoutY="126.0" onMouseEntered="#opneInfoCamion" onMouseExited="#CloseInfoCamion" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infocamion" fitHeight="23.0" fitWidth="31.0" layoutX="640.0" layoutY="93.0" onMouseEntered="#opneInfoCamion" onMouseExited="#CloseInfoCamion" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="infoBle" fitHeight="23.0" fitWidth="31.0" layoutX="806.0" layoutY="126.0" onMouseEntered="#opneInfoBle" onMouseExited="#CloseinfoBle" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infoBle" fitHeight="23.0" fitWidth="31.0" layoutX="806.0" layoutY="93.0" onMouseEntered="#opneInfoBle" onMouseExited="#CloseinfoBle" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="statechauffeur" fitHeight="23.0" fitWidth="31.0" layoutX="358.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="statechauffeur" fitHeight="23.0" fitWidth="31.0" layoutX="358.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/OkGreen.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="statecamion" fitHeight="23.0" fitWidth="31.0" layoutX="550.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="statecamion" fitHeight="23.0" fitWidth="31.0" layoutX="550.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/OkGreen.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="stateble" fitHeight="23.0" fitWidth="31.0" layoutX="742.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="stateble" fitHeight="23.0" fitWidth="31.0" layoutX="742.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/OkGreen.png" />
          </image>
@@ -64,6 +64,7 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -83,36 +84,56 @@
                   <Insets left="115.0" />
                </GridPane.margin>
             </JFXDatePicker>
-            <Label styleClass="label_txt" text="Qauntite Acquit :" GridPane.rowIndex="1" />
-            <JFXTextField fx:id="Q_Acquit" focusColor="#405aa800" layoutX="75.0" layoutY="27.0" maxWidth="187.0" minHeight="-Infinity" minWidth="165.0" prefHeight="33.0" prefWidth="187.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Qauntite Acquit :" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="Q_Acquit" focusColor="#405aa800" layoutX="75.0" layoutY="27.0" maxWidth="193.0" minHeight="-Infinity" minWidth="165.0" prefHeight="33.0" prefWidth="193.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="113.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label layoutX="10.0" layoutY="100.0" prefHeight="20.0" prefWidth="120.0" styleClass="label_txt" text="Qauntite Fournie:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <JFXTextField fx:id="Q_fournie" focusColor="#405aa800" layoutX="116.0" layoutY="92.0" maxWidth="205.0" minHeight="-Infinity" minWidth="165.0" onKeyPressed="#founiePressed" onKeyReleased="#FournirReleased" prefHeight="33.0" prefWidth="187.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label layoutX="10.0" layoutY="100.0" prefHeight="20.0" prefWidth="120.0" styleClass="label_txt" text="Qauntite Fournie:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="Q_fournie" focusColor="#405aa800" layoutX="116.0" layoutY="92.0" maxWidth="205.0" minHeight="-Infinity" minWidth="165.0" onKeyPressed="#founiePressed" onKeyReleased="#FournirReleased" prefHeight="33.0" prefWidth="187.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="115.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label layoutX="299.0" layoutY="100.0" styleClass="label_txt" text="Difference :" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <JFXTextField fx:id="diff" focusColor="#405aa800" layoutX="409.0" layoutY="92.0" maxWidth="134.0" minHeight="-Infinity" minWidth="94.0" prefHeight="33.0" prefWidth="134.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label layoutX="299.0" layoutY="100.0" styleClass="label_txt" text="Difference :" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="diff" focusColor="#405aa800" layoutX="409.0" layoutY="92.0" maxWidth="134.0" minHeight="-Infinity" minWidth="94.0" prefHeight="33.0" prefWidth="134.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="79.0" />
                </GridPane.margin>
             </JFXTextField>
+            <JFXTextField fx:id="numerotickit" focusColor="#405aa800" maxWidth="196.0" minHeight="-Infinity" minWidth="170.0" prefHeight="33.0" prefWidth="189.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="103.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <Label styleClass="label_txt" text="N°tickit :" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="28.0" />
+               </GridPane.margin>
+            </Label>
+            <JFXTextField fx:id="numeroBon" focusColor="#405aa800" maxWidth="196.0" minHeight="-Infinity" minWidth="170.0" prefHeight="33.0" prefWidth="170.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="115.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <Label styleClass="label_txt" text="N°Bon :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="32.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
-      <JFXButton fx:id="save" layoutX="809.0" layoutY="379.0" onAction="#sauvgarder" prefHeight="55.0" prefWidth="174.0" styleClass="button_save" text="Sauvgarder" />
-      <JFXButton fx:id="annuler" layoutX="607.0" layoutY="379.0" onAction="#quitter" prefHeight="55.0" prefWidth="174.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton fx:id="save" layoutX="815.0" layoutY="355.0" onAction="#sauvgarder" prefHeight="55.0" prefWidth="174.0" styleClass="button_save" text="Sauvgarder" />
+      <JFXButton fx:id="annuler" layoutX="613.0" layoutY="355.0" onAction="#quitter" prefHeight="55.0" prefWidth="174.0" styleClass="button_annuler" text="Annuler" />
       <ImageView fx:id="diffIcon" fitHeight="32.0" fitWidth="32.0" layoutX="967.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="220.0" layoutY="128.0" styleClass="finOperation" text="Dock" />
-      <ImageView fx:id="infodock" fitHeight="23.0" fitWidth="31.0" layoutX="272.0" layoutY="126.0" onMouseEntered="#opneInfoDock" onMouseExited="#CloseInforDock" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="220.0" layoutY="95.0" styleClass="finOperation" text="Dock" />
+      <ImageView fx:id="infodock" fitHeight="23.0" fitWidth="31.0" layoutX="272.0" layoutY="93.0" onMouseEntered="#opneInfoDock" onMouseExited="#CloseInforDock" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="statedock" fitHeight="23.0" fitWidth="31.0" layoutX="185.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="statedock" fitHeight="23.0" fitWidth="31.0" layoutX="185.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/OkGreen.png" />
          </image>

@@ -1,7 +1,6 @@
 
 package CommercialeControles.OperationAchat;
 
-import CommercialeControles.Chauffeur.AjouterChauffeuerDialog;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
@@ -11,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,7 +19,6 @@ import javafx.scene.layout.GridPane;
 import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 
 public class DockListeH extends GridPane{
@@ -35,6 +32,7 @@ public class DockListeH extends GridPane{
     protected Label label0;
 
     private Dock dock  ; 
+   
 
     public Dock getDock() {
         return dock;

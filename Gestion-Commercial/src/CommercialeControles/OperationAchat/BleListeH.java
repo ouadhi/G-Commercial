@@ -1,11 +1,16 @@
 package CommercialeControles.OperationAchat;
 
+import CommercialeControles.Ble.AjouterBleController;
 import CommercialeControles.Chauffeur.AjouterChauffeuerDialog;
+import CommercialeControles.Client.ClientListController;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Ble;
+import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -115,8 +120,10 @@ public class BleListeH extends GridPane {
         getChildren().add(label0);
 
     }
+    JFXListView<BleListeH> listeBle;
 
-    public BleListeH() {
+    public BleListeH(JFXListView<BleListeH> listeBle) {
+        this.listeBle = listeBle;
 
         columnConstraints = new ColumnConstraints();
         rowConstraints = new RowConstraints();
@@ -194,16 +201,25 @@ public class BleListeH extends GridPane {
         getChildren().add(label0);
 
         this.setOnMouseClicked(event -> {
+
             try {
-                Stage stage = Methode.getStageMouses(event) ;
 
-                AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterBle));
+                Stage stage = Methode.getStageMouses(event);
 
-                StageDialog dialog = new StageDialog(stage, pane);
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.AjouterBle));
+                loader.load();
+
+                AjouterBleController control = loader.getController();
+                control.setData2(listeBle);
+
+                AnchorPane root = loader.getRoot();
+
+                StageDialog dialog = new StageDialog(stage, root);
                 dialog.show();
 
             } catch (IOException ex) {
-
+                Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });

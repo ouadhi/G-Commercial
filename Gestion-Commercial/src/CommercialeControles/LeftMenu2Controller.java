@@ -48,19 +48,7 @@ public class LeftMenu2Controller implements Initializable {
 
     @FXML
     private void showhome(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/CommercialeView/HomeFXML.fxml"));
-            Scene scene = new Scene(pane) ; 
-            Stage  stage = (Stage) ((Node) (event.getSource())).getScene().getWindow() ; 
-            
-            stage.setScene(scene);
-            
-            
-        } catch (IOException ex) {
-            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-         
+       new ShowPane().showHome(event);  
     }
 
     @FXML
@@ -75,7 +63,7 @@ public class LeftMenu2Controller implements Initializable {
 
     @FXML
     private void showrapport(ActionEvent event) {
-      
+      new ShowPane().showUIRapport(event);
     }
 
     @FXML

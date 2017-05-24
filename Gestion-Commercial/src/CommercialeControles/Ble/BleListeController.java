@@ -1,6 +1,4 @@
-
 package CommercialeControles.Ble;
-
 
 import CommercialeControles.Client.ClientListController;
 import UIControle.Methode;
@@ -31,7 +29,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
 public class BleListeController implements Initializable {
 
     @FXML
@@ -53,14 +50,13 @@ public class BleListeController implements Initializable {
     private JFXListView<BelCell> listeBle;
     private BleQueries dockQueries = new BleQueries();
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-               List<Ble> listBlesDB = dockQueries.list();
+        List<Ble> listBlesDB = dockQueries.list();
         List<BelCell> list = new ArrayList<>();
         for (int i = 0; i < listBlesDB.size(); i++) {
             list.add(new BelCell(listBlesDB.get(i).getIdBle(), listBlesDB.get(i).getQte(),
-                     listBlesDB.get(i).getPrix()
+                    listBlesDB.get(i).getPrix()
             ));
         }
         ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
@@ -68,7 +64,7 @@ public class BleListeController implements Initializable {
         listeBle.setExpanded(true);
         setTotale();
 
-    }    
+    }
 
     @FXML
     private void oderByCode(ActionEvent event) {
@@ -107,17 +103,25 @@ public class BleListeController implements Initializable {
 
     @FXML
     private void showAddStage(ActionEvent event) {
-        
-          try {
-            Stage stage =  Methode.getStage(event) ; 
-            
-            AnchorPane pane  = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterBle)) ;
-            
-            StageDialog dialog  =  new StageDialog(stage, pane) ; 
+
+        try {
+
+            Stage stage = Methode.getStage(event);
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(ViewUrl.AjouterBle));
+            loader.load();
+
+            AjouterBleController control = loader.getController();
+            control.setData(listeBle , total);
+
+            AnchorPane root = loader.getRoot();
+
+            StageDialog dialog = new StageDialog(stage, root);
             dialog.show();
-            
+
         } catch (IOException ex) {
-            
+            Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -127,32 +131,31 @@ public class BleListeController implements Initializable {
 
     @FXML
     private void showDockSlide(MouseEvent event) {
-        
+
         try {
-            
-            int seletedrow  = listeBle.getSelectionModel().getSelectedIndex()  ; 
-            Stage stage =  Methode.getStageMouses(event) ; 
-            
+
+            int seletedrow = listeBle.getSelectionModel().getSelectedIndex();
+            Stage stage = Methode.getStageMouses(event);
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.slideBle));
             loader.load();
-            
-            BleSlideController control =  loader.getController() ;
+
+            BleSlideController control = loader.getController();
             control.setData(seletedrow, listeBle);
-            
+
             AnchorPane root = loader.getRoot();
-            
-            StageDialog dialog = new StageDialog(stage, root) ; 
+
+            StageDialog dialog = new StageDialog(stage, root);
             dialog.show();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private  void setTotale  () {
+
+    private void setTotale() {
         total.setText(Integer.toString(listeBle.getItems().size()));
     }
 
-    
 }

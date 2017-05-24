@@ -37,9 +37,27 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <JFXButton fx:id="achat" alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#showAchat" onMouseEntered="#rapportIN" onMouseExited="#rapportOut" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Achat">
+               <graphic>
+                  <ImageView fx:id="achaticon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/RapportGry.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
             <JFXButton fx:id="Rapport" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="61.0" onAction="#showRapport" onMouseEntered="#rapportIN" onMouseExited="#rapportOut" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Rapport">
                <graphic>
                   <ImageView fx:id="rapporticon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/RapportGry.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#showAutre" onMouseEntered="#rapportIN" onMouseExited="#rapportOut" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Autre">
+               <graphic>
+                  <ImageView fx:id="Autreicon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/RapportGry.png" />
                      </image>

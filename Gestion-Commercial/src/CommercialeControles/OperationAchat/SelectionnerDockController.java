@@ -21,10 +21,12 @@ public class SelectionnerDockController implements Initializable {
      private DockQueries dockQueries = new DockQueries();
     @FXML
     private JFXListView<DockListeH> listeDock;
+    public  static JFXListView<DockListeH> listeDocks;
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        listeDocks = listeDock ; 
         
         List<Dock> listDocksDB = dockQueries.list();
         

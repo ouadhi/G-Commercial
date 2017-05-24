@@ -56,12 +56,7 @@
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXDatePicker>
-            <Label styleClass="label_txt" text="versement :" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="40.0" />
-               </GridPane.margin>
-            </Label>
-            <Label styleClass="label_txt" text="Reste :" GridPane.rowIndex="2">
+            <Label styleClass="label_txt" text="versement :" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="40.0" />
                </GridPane.margin>
@@ -76,16 +71,19 @@
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="versement" focusColor="#405aa800" maxWidth="276.0" minWidth="165.0" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <JFXTextField fx:id="versement" focusColor="#405aa800" maxWidth="276.0" minWidth="165.0" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="reste" focusColor="#405aa800" maxWidth="276.0" minWidth="165.0" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="2">
+            <Label styleClass="label_txt" text="Solde Client :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets bottom="-20.0" />
-               </GridPane.margin>
-            </JFXTextField>
+                  <Insets bottom="40.0" />
+               </GridPane.margin></Label>
+            <JFXTextField fx:id="solde" focusColor="#405aa800" maxWidth="276.0" minWidth="165.0" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="-25.0" />
+               </GridPane.margin></JFXTextField>
          </children>
       </GridPane>
       <JFXButton fx:id="save" layoutX="902.0" layoutY="453.0" onAction="#sauvgader" prefHeight="48.0" prefWidth="183.0" styleClass="button_save" text="Sauvgarder" />

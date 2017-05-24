@@ -51,9 +51,15 @@ public class ModifierClientController implements Initializable {
     @FXML
     private Label savelabel;
     private String id;
+    @FXML
+    private JFXTextField Solde;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Methode.setOnlyNumbre(Solde);
+        Methode.setOnlyNumbre(NRtxt);
+        Methode.setOnlyNumbre(NAtxt);
+        Methode.setOnlyNumbre(NCarteF);
 
     }
 
@@ -72,7 +78,7 @@ public class ModifierClientController implements Initializable {
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
             if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
-                Notification.notif(NotificationType.ERROR,"Vérification", "Vérifier que tout les champs sont remplis!");
+                Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
             } else {
                 Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 ClientQueries cq = new ClientQueries();
@@ -86,8 +92,7 @@ public class ModifierClientController implements Initializable {
                 client.setnCarteFiscale(Ncarte);
                 client.setDateDepotDossier(dateDepotDossier);
                 cq.SaveOrUpdate(client);
-                
-                
+
                 Notification.Updatenotification();
                 new ShowPane().showClient();
                 savelabel.setVisible(true);
@@ -96,8 +101,6 @@ public class ModifierClientController implements Initializable {
         }
 
     }
-
-
 
     @FXML
     private void quitter(ActionEvent event) {

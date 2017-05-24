@@ -21,13 +21,13 @@ public class RapportMenuController implements Initializable {
     @FXML
     private JFXButton Rapport;
     @FXML
-    private ImageView facturicon1;
-    @FXML
     private JFXButton Facture;
     @FXML
-    private ImageView facturicon;
+    private ImageView rapporticon;
     @FXML
-    private ImageView facturicon2;
+    private ImageView staticon;
+    @FXML
+    private ImageView banqueicon;
 
     
     @Override
@@ -45,6 +45,7 @@ public class RapportMenuController implements Initializable {
 
     @FXML
     private void showhome(ActionEvent event) {
+        new  ShowPane().showHome(event);
     }
 
     @FXML
@@ -65,15 +66,17 @@ public class RapportMenuController implements Initializable {
 
     @FXML
     private void showRapport(ActionEvent event) {
+        new ShowPane().showRapport();
     }
 
-    @FXML
-    private void showfacture(ActionEvent event) {
-    }
 
     @FXML
     private void showbanque(ActionEvent event) {
         new ShowPane().showBanque();
+    }
+
+    @FXML
+    private void showStatistique(ActionEvent event) {
     }
     
 }

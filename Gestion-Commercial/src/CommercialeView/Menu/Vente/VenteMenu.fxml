@@ -55,6 +55,15 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <JFXButton fx:id="Rapport1" alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#showautre" onMouseEntered="#InRapport" onMouseExited="#OutRapport" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Autre">
+               <graphic>
+                  <ImageView fx:id="autreicon" fitHeight="28.0" fitWidth="28.0" onMouseExited="#InFacture" onMouseMoved="#OutFacture" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="icons/RapportGry.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </VBox>
    </children>

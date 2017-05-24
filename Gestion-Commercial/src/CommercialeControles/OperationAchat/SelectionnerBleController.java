@@ -27,7 +27,8 @@ public class SelectionnerBleController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         List<Ble> listBlesDB = dockQueries.list();
+        
+        List<Ble> listBlesDB = dockQueries.list();
         List<BleListeH> list = new ArrayList<>();
         
         for (int i = 0; i < listBlesDB.size(); i++) {
@@ -36,7 +37,7 @@ public class SelectionnerBleController implements Initializable {
             
         }
         
-        BleListeH ch  = new BleListeH() ; 
+        BleListeH ch  = new BleListeH(listeBle) ; 
         list.add(ch) ; 
         ObservableList<BleListeH> myObservableList = FXCollections.observableList(list);
         listeBle.setItems(myObservableList);

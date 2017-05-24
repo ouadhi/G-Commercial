@@ -3,7 +3,6 @@ package CommercialeControles.Vente;
 import CommercialeControles.Client.ClienCell;
 import CommercialeControles.OperationAchat.CamionListeH;
 import CommercialeControles.OperationAchat.ChauffeurListH;
-import CommercialeControles.Produit.ModifierProduitController;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
@@ -14,7 +13,6 @@ import com.gestionCommerciale.HibernateSchema.Produit;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Payment;
 import com.gestionCommerciale.Models.FactureQueries;
-import com.itextpdf.text.List;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -22,7 +20,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -33,6 +30,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -52,7 +50,6 @@ public class FinOperationVenteController implements Initializable {
     private JFXTextField montantFinal;
     @FXML
     private JFXTextField versement;
-    @FXML
     private JFXTextField reste;
     @FXML
     private JFXButton save;
@@ -73,11 +70,14 @@ public class FinOperationVenteController implements Initializable {
     private static JFXTextField montantFinal_static;
     private static JFXTextField versement_static;
     private static JFXTextField reste_static;
+    @FXML
+    private JFXTextField solde;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyFloat(montant, 10);
         Methode.setOnlyFloat(montantFinal, 10);
+          Methode.setOnlyFloat(solde, 10);
         Methode.setOnlyFloat(versement, 10);
         Methode.setOnlyFloat(reste, 10);
         Methode.setOnlyFloat(tva, 2);

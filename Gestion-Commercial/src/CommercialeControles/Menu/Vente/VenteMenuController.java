@@ -1,6 +1,7 @@
 
 package CommercialeControles.Menu.Vente;
 
+import CommercialeControles.Home2FXMLController;
 import CommercialeControles.HomeFXMLController;
 import UIControle.ShowPane;
 import UIControle.ViewUrl;
@@ -47,18 +48,20 @@ public class VenteMenuController implements Initializable {
     private ImageView facturicon1;
     @FXML
     private JFXButton Rapport;
+    @FXML
+    private JFXButton Rapport1;
+    @FXML
+    private ImageView autreicon;
 
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     @FXML
     private void showhome(ActionEvent event) {
-        new ShowPane().showVenteListe();
+       new ShowPane().showHome(event);
     }
 
     @FXML
@@ -73,12 +76,8 @@ public class VenteMenuController implements Initializable {
 
     @FXML
     private void showfacture(ActionEvent event) {
-        PopOver popup = new PopOver() ; 
-        
-        
+         new ShowPane().showVenteListe();
     }
-
-    
 
     @FXML
     private void OutProduit(MouseEvent event) {
@@ -139,6 +138,37 @@ public class VenteMenuController implements Initializable {
 
     @FXML
     private void showRapport(ActionEvent event) {
+        showUIRapport(event); 
+    }
+
+    
+
+    @FXML
+    private void showautre(ActionEvent event) {
+    }
+    
+    private void showUIRapport(ActionEvent event) {
+        try{
+            AnchorPane menu2 = FXMLLoader.load(getClass().getResource(ViewUrl.rapportMenu));
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/CommercialeView/Home2FXML.fxml"));
+            loader.load();
+
+            Home2FXMLController control = loader.getController();
+            control.setMenu(menu2);
+
+            AnchorPane root = loader.getRoot();
+            
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+            stage.setScene(scene);
+            
+            new  ShowPane().showRapport();
+
+        } catch (IOException ex) {
+            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

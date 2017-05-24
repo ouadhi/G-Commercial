@@ -1,17 +1,27 @@
 
 package CommercialeControles.Menu.Achat;
 
+import CommercialeControles.Home2FXMLController;
+import CommercialeControles.HomeFXMLController;
 import UIControle.ShowPane;
+import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 
 public class AchatMenuController implements Initializable {
@@ -32,6 +42,12 @@ public class AchatMenuController implements Initializable {
     private ImageView bleicon;
     @FXML
     private ImageView rapporticon;
+    @FXML
+    private JFXButton achat;
+    @FXML
+    private ImageView achaticon;
+    @FXML
+    private ImageView Autreicon;
 
     
     @Override
@@ -42,9 +58,7 @@ public class AchatMenuController implements Initializable {
     @FXML
     private void showhome(ActionEvent event) throws IOException {
 
-
-         new ShowPane().showListAchat();
-         
+        new  ShowPane().showHome(event);
     }
 
     @FXML
@@ -61,6 +75,7 @@ public class AchatMenuController implements Initializable {
 
     @FXML
     private void showRapport(ActionEvent event) {
+        showUIRapport(event);
     }
 
     @FXML
@@ -110,5 +125,38 @@ public class AchatMenuController implements Initializable {
          Image img = new Image(getClass().getResourceAsStream("/icons/statgreen.png"));
         rapporticon.setImage(img);
     }
+
+    @FXML
+    private void showAchat(ActionEvent event) {
+         new ShowPane().showListAchat();
+    }
+
+    @FXML
+    private void showAutre(ActionEvent event) {
+    }
     
+    
+    private void showUIRapport(ActionEvent event) {
+        try{
+            AnchorPane menu2 = FXMLLoader.load(getClass().getResource(ViewUrl.rapportMenu));
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/CommercialeView/Home2FXML.fxml"));
+            loader.load();
+
+            Home2FXMLController control = loader.getController();
+            control.setMenu(menu2);
+
+            AnchorPane root = loader.getRoot();
+            
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+            stage.setScene(scene);
+            
+            new  ShowPane().showRapport();
+
+        } catch (IOException ex) {
+            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

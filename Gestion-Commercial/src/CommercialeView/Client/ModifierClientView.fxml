@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="534.0" prefWidth="597.0" style="-fx-background-color: #ffffff;" stylesheets="@clientCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Client.ModifierClientController">
+<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="597.0" style="-fx-background-color: #ffffff;" stylesheets="@clientCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Client.ModifierClientController">
    <children>
       <Pane prefHeight="66.0" prefWidth="597.0" style="-fx-background-color: #f6f7fb;">
          <children>
@@ -35,6 +35,7 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="270.0" />
          </columnConstraints>
          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -71,12 +72,12 @@
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Date depot Dossier" GridPane.rowIndex="3">
+            <Label styleClass="title_panel" text="Date depot Dossier" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="N° carte Fiscalle" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label styleClass="title_panel" text="N° carte Fiscalle" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
@@ -111,20 +112,30 @@
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="NCarteF" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <JFXTextField fx:id="NCarteF" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <DatePicker fx:id="datedept" prefHeight="40.0" prefWidth="275.0" showWeekNumbers="true" styleClass="champtxt" GridPane.rowIndex="3">
+            <DatePicker fx:id="datedept" prefHeight="40.0" prefWidth="275.0" showWeekNumbers="true" styleClass="champtxt" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </DatePicker>
+            <Label styleClass="title_panel" text="Solde" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets top="-40.0" />
+               </GridPane.margin>
+            </Label>
+            <JFXTextField fx:id="Solde" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="-25.0" />
+               </GridPane.margin>
+            </JFXTextField>
          </children>
       </GridPane>
-      <JFXButton layoutX="420.0" layoutY="442.0" onAction="#Sauvgarder" prefHeight="54.0" prefWidth="161.0" styleClass="button_save" text="Enregistrer" />
-      <JFXButton fx:id="annuler" layoutX="250.0" layoutY="442.0" onAction="#quitter" prefHeight="54.0" prefWidth="154.0" styleClass="button_annuler" text="Anuuler" />
+      <JFXButton layoutX="413.0" layoutY="496.0" onAction="#Sauvgarder" prefHeight="54.0" prefWidth="161.0" styleClass="button_save" text="Enregistrer" />
+      <JFXButton fx:id="annuler" layoutX="247.0" layoutY="496.0" onAction="#quitter" prefHeight="54.0" prefWidth="154.0" styleClass="button_annuler" text="Anuuler" />
       <Label fx:id="savelabel" layoutX="67.0" layoutY="447.0" prefHeight="35.0" prefWidth="86.0" text="Enregistré " textFill="#36d484" visible="false">
          <font>
             <Font size="16.0" />

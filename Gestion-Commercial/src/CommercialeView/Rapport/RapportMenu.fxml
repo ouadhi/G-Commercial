@@ -21,16 +21,16 @@
             </JFXButton>
             <JFXButton fx:id="Rapport" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="163.0" onAction="#showRapport" onMouseEntered="#InRapport" onMouseExited="#OutRapport" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Rapport">
                <graphic>
-                  <ImageView fx:id="facturicon1" fitHeight="28.0" fitWidth="28.0" onMouseExited="#InFacture" onMouseMoved="#OutFacture" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="rapporticon" fitHeight="28.0" fitWidth="28.0" onMouseExited="#InFacture" onMouseMoved="#OutFacture" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/RapportGry.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="Facture" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="61.0" onAction="#showfacture" onMouseExited="#InFacture" onMouseMoved="#OutFacture" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Statistique">
+            <JFXButton fx:id="Facture" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="61.0" onAction="#showStatistique" onMouseExited="#InFacture" onMouseMoved="#OutFacture" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Statistique">
                <graphic>
-                  <ImageView fx:id="facturicon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="staticon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/state.png" />
                      </image>
@@ -39,7 +39,7 @@
             </JFXButton>
             <JFXButton alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#showbanque" onMouseExited="#InFacture" onMouseMoved="#OutFacture" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Banque">
                <graphic>
-                  <ImageView fx:id="facturicon2" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="banqueicon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/state.png" />
                      </image>
