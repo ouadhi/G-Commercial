@@ -6,14 +6,11 @@
 package Report.EtatBleReport;
 
 import com.gestionCommerciale.HibernateSchema.Achat;
-import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import net.sf.jasperreports.engine.JRException;
 import org.hibernate.Session;
 
@@ -24,6 +21,10 @@ import org.hibernate.Session;
 public class GenerateEtatBleReport {
 
     List<Achat> achatDuJour = new ArrayList<>();
+    double totalPoidTiquet = 0;
+    double totalPoid;
+    double totalNet;
+    double totalEcart;
 
     public void getAchatDuJour(Date jour) {
 
@@ -45,17 +46,59 @@ public class GenerateEtatBleReport {
         }
     }
 
+    public List<String> getPoidTiquet() {
+        List<String> poidTiquet = new ArrayList<>();
+
+        for (int i = 0; i < achatDuJour.size(); i++) {
+            poidTiquet.add(String.valueOf(achatDuJour.get(i).getQuantiteFour()));
+            totalPoidTiquet = totalPoidTiquet + achatDuJour.get(i).getQuantiteFour();
+        }
+        return poidTiquet;
+    }
+
     public void generateReport(Date jour) throws IOException, JRException {
         OperationEtatBleReport operationEtatBleReport = new OperationEtatBleReport();
         getAchatDuJour(jour);
-        
-        for (int i = 0; i < achatDuJour.size(); i++) {
-            operationEtatBleReport.putReportInfo(jour, totalPoid, totalNet, totalEcart, numBls
-                , numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares, nets, ecarts); 
-        }
-        
-        
 
+        for (int i = 0; i < achatDuJour.size(); i++) {
+            List<String> poidTiquets = new ArrayList<>();
+            totalPoid = totalPoid + achatDuJour.get(i).getQuantiteFour();
+            String poidTiquet = String.valueOf(achatDuJour.get(i).getQuantiteFour());
+            poidTiquets.add(poidTiquet);
+            List<String> chauffeurs = new ArrayList<>();
+            String chauffeur = String.valueOf(achatDuJour.get(i).getChauffeur());
+            chauffeurs.add(chauffeur);
+            List<String> matricules = new ArrayList<>();
+            String matricule = achatDuJour.get(i).getCamion().getMatricule();
+            matricules.add(matricule);
+            List<String> ptcs = new ArrayList<>();
+            String ptc = String.valueOf(achatDuJour.get(i).getQuantiteAcqt() 
+                    + achatDuJour.get(i).getCamion().getPoid());
+            ptcs.add(ptc);
+            List<String> tares = new ArrayList<>();
+            String tare = String.valueOf(achatDuJour.get(i).getCamion().getPoid());
+            tares.add(tare);
+            List<String> nets = new ArrayList<>();
+            totalNet = totalNet + achatDuJour.get(i).getQuantiteAcqt();
+            String net = String.valueOf(achatDuJour.get(i).getQuantiteAcqt());
+            nets.add(net);
+            List<String> ecarts = new ArrayList<>();
+            double ecrt = achatDuJour.get(i).getQuantiteAcqt() - achatDuJour.get(i).getQuantiteFour();
+            totalEcart = totalEcart + ecrt;
+            String ecart = String.valueOf(ecrt);
+            ecarts.add(ecart);
+            List<String> numTiquets = new ArrayList<>();
+            String numTiquet = String.valueOf(achatDuJour.get(i).getNumTiquet());
+            numTiquets.add(numTiquet);
+            List<String> numBls = new ArrayList<>();
+            String numBl = String.valueOf(achatDuJour.get(i).getNumBon());
+            numBls.add(numTiquet);
+            operationEtatBleReport.putReportInfo(jour.toString(), String.valueOf(totalPoid),
+                     String.valueOf(totalNet), String.valueOf(totalEcart), numBls,
+                    numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares, nets, ecarts);
+        }
+        operationEtatBleReport.printReport();
+     
     }
 
 }
