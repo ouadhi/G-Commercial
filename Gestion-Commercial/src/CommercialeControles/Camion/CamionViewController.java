@@ -30,6 +30,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 
 public class CamionViewController implements Initializable {
@@ -53,8 +54,6 @@ public class CamionViewController implements Initializable {
 
     CamionQueries camionQueries= new CamionQueries();
     @FXML
-    private JFXTextField rechreche;
-    @FXML
     private JFXTextField rechreche1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -74,8 +73,10 @@ public class CamionViewController implements Initializable {
           ObservableList<CamionCell> myObservableList = FXCollections.observableList(list);
           listeView.setItems(myObservableList);
          
-          
           setTotal();
+          
+          possibleMot();
+          
     }    
 
     @FXML
@@ -149,9 +150,23 @@ public class CamionViewController implements Initializable {
             Logger.getLogger(ChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     public void possibleMot() {
+      
+        ArrayList<String> list = new ArrayList<>();
+        list.add("karim");
+        list.add("hichem1");
+        list.add("hichem2");
+        list.add("mohammed ouadhi");
+        list.add("mohammed cherberabe");
+
+        TextFields.bindAutoCompletion(rechreche1, list);
+
+    }
 
     @FXML
-    private void rechrecher(ActionEvent event) {
+    private void rechrecher(KeyEvent event) {
+        System.out.println(rechreche1.getText());
     }
     
 }

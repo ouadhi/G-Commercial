@@ -28,6 +28,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 public class DockLisController implements Initializable {
 
@@ -54,20 +55,24 @@ public class DockLisController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         List<Dock> listDocksDB = dockQueries.list();
-        
+
         List<DockCell> list = new ArrayList<>();
         for (int i = 0; i < listDocksDB.size(); i++) {
             list.add(new DockCell(listDocksDB.get(i).getIdDock(), listDocksDB.get(i).getNom(),
-                     listDocksDB.get(i).getWilaya(), listDocksDB.get(i).getDistance(),
-                     listDocksDB.get(i).getPrixUnitTrans()
+                    listDocksDB.get(i).getWilaya(), listDocksDB.get(i).getDistance(),
+                    listDocksDB.get(i).getPrixUnitTrans()
             ));
         }
+        
         ObservableList<DockCell> myObservableList = FXCollections.observableList(list);
         listedock.setItems(myObservableList);
         listedock.setExpanded(true);
+        
         setTotale();
+        
+        possibleMot(); 
 
     }
 
@@ -100,14 +105,14 @@ public class DockLisController implements Initializable {
     private void showAddStage(ActionEvent event) {
 
         try {
-             
-            Stage stage = Methode.getStage(event) ; 
+
+            Stage stage = Methode.getStage(event);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.AjouterDock));
             loader.load();
 
             AjouterDockController AddDock = loader.getController();
-           AddDock.SetData(listedock , total);
+            AddDock.SetData(listedock, total);
 
             AnchorPane root = loader.getRoot();
 
@@ -119,7 +124,6 @@ public class DockLisController implements Initializable {
         }
 
     }
-
 
     private void setTotale() {
         total.setText(Integer.toString(listedock.getItems().size()));
@@ -171,7 +175,21 @@ public class DockLisController implements Initializable {
     }
 
     @FXML
-    private void rechercher(KeyEvent event) {
+    private void rechrecher(KeyEvent event) {
+        System.out.println(recherchetxt.getText());
+    }
+    
+    public void possibleMot() {
+      
+        ArrayList<String> list = new ArrayList<>();
+        list.add("karim");
+        list.add("hichem1");
+        list.add("hichem2");
+        list.add("mohammed ouadhi");
+        list.add("mohammed cherberabe");
+
+        TextFields.bindAutoCompletion(recherchetxt, list);
+
     }
 
 }

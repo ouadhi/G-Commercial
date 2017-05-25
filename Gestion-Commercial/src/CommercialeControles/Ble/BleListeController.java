@@ -25,9 +25,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 public class BleListeController implements Initializable {
 
@@ -52,17 +54,23 @@ public class BleListeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         List<Ble> listBlesDB = dockQueries.list();
+
         List<BelCell> list = new ArrayList<>();
         for (int i = 0; i < listBlesDB.size(); i++) {
             list.add(new BelCell(listBlesDB.get(i).getIdBle(), listBlesDB.get(i).getQte(),
                     listBlesDB.get(i).getPrix()
             ));
         }
+
         ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
         listeBle.setItems(myObservableList);
         listeBle.setExpanded(true);
+
         setTotale();
+
+        possibleMot();
 
     }
 
@@ -113,7 +121,7 @@ public class BleListeController implements Initializable {
             loader.load();
 
             AjouterBleController control = loader.getController();
-            control.setData(listeBle , total);
+            control.setData(listeBle, total);
 
             AnchorPane root = loader.getRoot();
 
@@ -123,10 +131,6 @@ public class BleListeController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @FXML
-    private void rechrecher(ActionEvent event) {
     }
 
     @FXML
@@ -156,6 +160,28 @@ public class BleListeController implements Initializable {
 
     private void setTotale() {
         total.setText(Integer.toString(listeBle.getItems().size()));
+    }
+
+    public void possibleMot() {
+      
+        ArrayList<String> list = new ArrayList<>();
+        list.add("karim");
+        list.add("hichem1");
+        list.add("hichem2");
+        list.add("mohammed ouadhi");
+        list.add("mohammed cherberabe");
+
+        TextFields.bindAutoCompletion(rechreche, list);
+
+    }
+
+    @FXML
+    private void rechrecheKeyReleased(KeyEvent event) {
+        System.out.println(rechreche.getText());
+    }
+
+    private void rechrecheKeyTyped(KeyEvent event) {
+        System.out.println(rechreche.getText());
     }
 
 }

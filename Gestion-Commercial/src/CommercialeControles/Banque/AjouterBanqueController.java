@@ -6,6 +6,8 @@ import UIControle.Notification;
 import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Banque;
+import com.gestionCommerciale.Models.BanqueQueries;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +32,8 @@ public class AjouterBanqueController implements Initializable {
     private JFXTextField NumCompte;
     @FXML
     private JFXTextField telephone;
+    
+    private  BanqueQueries querie  =  new BanqueQueries() ; 
 
    
     @Override
@@ -54,6 +58,7 @@ public class AjouterBanqueController implements Initializable {
         if (nom.isEmpty()|| adresse.isEmpty()||compte.isEmpty()|| tele.isEmpty()) {
              Notification.champVideNotification(); 
         } else {
+            querie.SaveOrUpdate(makeBanque());
             Notification.Addnotification(); 
             
             new ShowPane().showBanque();
@@ -64,6 +69,13 @@ public class AjouterBanqueController implements Initializable {
     @FXML
     private void close(ActionEvent event) {
         Methode.getStage(event).close();
+    }
+    
+    private  Banque  makeBanque ()  {
+        Banque banque  = new Banque(nombanque.getText(), this.NumCompte.getText(), adresse.getText() , telephone.getText()) ; 
+        
+        return  banque ;
+      
     }
     
 }

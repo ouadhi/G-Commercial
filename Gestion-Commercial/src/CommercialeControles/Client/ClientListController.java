@@ -1,4 +1,5 @@
 package CommercialeControles.Client;
+
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
@@ -26,12 +27,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.Models.ClientQueries;
+import javafx.scene.input.KeyEvent;
+import org.controlsfx.control.textfield.TextFields;
+
 public class ClientListController implements Initializable {
+
     @FXML
     private Label total;
     @FXML
     private MenuButton Order;
     private MenuButton NbShow;
+
     @FXML
     private JFXButton ajouter;
     @FXML
@@ -46,22 +52,32 @@ public class ClientListController implements Initializable {
     private MenuItem byActivite;
     @FXML
     private MenuItem byregistre;
+
     private ClientQueries clientQueries = new ClientQueries();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         List<Client> listClientsDB = clientQueries.list();
+
         List<ClienCell> list = new ArrayList<>();
         for (int i = 0; i < listClientsDB.size(); i++) {
-            list.add(new ClienCell(listClientsDB.get(i)));            
+            list.add(new ClienCell(listClientsDB.get(i)));
         }
+
         ObservableList<ClienCell> myObservableList = FXCollections.observableList(list);
         clientLsit.setItems(myObservableList);
         clientLsit.setExpanded(true);
+
         setTotal();
+
+        possibleMot();
     }
+
     @FXML
     private void setOrder(ActionEvent event) {
     }
+
     @FXML
     private void showAddStage(ActionEvent event) {
         try {
@@ -73,55 +89,85 @@ public class ClientListController implements Initializable {
             Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     private void setTotal() {
         total.setText(Integer.toString(clientLsit.getItems().size()));
     }
+
     @FXML
     private void oderByCodeClient(ActionEvent event) {
         Order.setText("CodeClient");
     }
+
     @FXML
     private void orederByName(ActionEvent event) {
         Order.setText("Nom");
     }
+
     @FXML
     private void OrderByActivity(ActionEvent event) {
         Order.setText("Activité");
     }
+
     @FXML
     private void oderByRegistre(ActionEvent event) {
         Order.setText("Registre");
     }
+
     private void show20(ActionEvent event) {
         NbShow.setText("20");
     }
+
     private void shwo50(ActionEvent event) {
         NbShow.setText("50");
     }
+
     private void show100(ActionEvent event) {
         NbShow.setText("100");
     }
+
     private void showtout(ActionEvent event) {
         NbShow.setText("Tout");
     }
+
     @FXML
     private void showClient(MouseEvent event) {
         try {
             int seletedrow = clientLsit.getSelectionModel().getSelectedIndex();
+            
             Stage stage = Methode.getStageMouses(event);
+            
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.SlideClient));
             loader.load();
+            
             ShowClienSlideController controlClient = loader.getController();
             controlClient.setData(seletedrow, clientLsit);
+            
             AnchorPane root = loader.getRoot();
             StageDialog dialog = new StageDialog(stage, root);
             dialog.show();
+            
         } catch (IOException ex) {
             Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @FXML
-    private void rechrecher(ActionEvent event) {
+    private void rechreche(KeyEvent event) {
+        System.out.println(rechreche.getText());
+    }
+
+    public void possibleMot() {
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("karim");
+        list.add("hichem1");
+        list.add("hichem2");
+        list.add("mohammed ouadhi");
+        list.add("mohammed cherberabe");
+
+        TextFields.bindAutoCompletion(rechreche, list);
+
     }
 }
