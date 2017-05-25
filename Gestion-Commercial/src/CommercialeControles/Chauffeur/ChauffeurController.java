@@ -29,6 +29,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 public class ChauffeurController implements Initializable {
 
@@ -71,6 +72,8 @@ public class ChauffeurController implements Initializable {
         listeView.setItems(myObservableList);
         
         setTotal();
+        
+        possibleMot();
 
     }
 
@@ -121,9 +124,6 @@ public class ChauffeurController implements Initializable {
          nbvisibel.setText("All");
     }
 
-    @FXML
-    private void rechercher(KeyEvent event) {
-    }
 
     @FXML
     private void showChaffeur(MouseEvent event) {
@@ -154,6 +154,23 @@ public class ChauffeurController implements Initializable {
         
         
         
+    }
+
+    @FXML
+    private void recherche(KeyEvent event) {
+    }
+    
+    public void possibleMot() {
+      
+        ArrayList<String> list = new ArrayList<>();
+        list.add("karim");
+        list.add("hichem1");
+        list.add("hichem2");
+        list.add("mohammed ouadhi");
+        list.add("mohammed cherberabe");
+
+        TextFields.bindAutoCompletion(recherchetxt, list);
+
     }
 
      

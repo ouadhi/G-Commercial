@@ -6,6 +6,7 @@ import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Banque;
+import com.gestionCommerciale.Models.BanqueQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -25,6 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.textfield.TextFields;
 
 
 public class BanqueListeController implements Initializable {
@@ -37,30 +39,33 @@ public class BanqueListeController implements Initializable {
     private JFXButton ajouter;
     @FXML
     private JFXListView<BanqueCell> listebanque;
+    
+    private  BanqueQueries querie  = new  BanqueQueries()  ; 
+    
+    
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         List<BanqueCell> list = new ArrayList<>();
-        for (int i = 0; i < 10 ; i++) {
-            list.add(new BanqueCell(new Banque())) ; 
+        
+        for (int i = 0; i < querie.list().size() ; i++) {
+            list.add(new BanqueCell( querie.list().get(i))) ; 
             
         }
         ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
         listebanque.setItems(myObservableList);
         listebanque.setExpanded(true);
+        
         setTotale();
+        
+        possibleMot();
     }    
-
-   
-
-    @FXML
-    private void rechercher(KeyEvent event) {
-        System.out.println(rechreche.getText());
-    }
 
     @FXML
     private void showAddStage(ActionEvent event) {
+        
         try {
             AnchorPane pane  =  FXMLLoader.load(getClass().getResource(ViewUrl.AjouterBanque)) ;
             StageDialog dialog  =  new StageDialog(Methode.getStage(event), pane) ;  
@@ -72,6 +77,24 @@ public class BanqueListeController implements Initializable {
 
     private void setTotale() {
        total.setText(""+listebanque.getItems().size());
+    }
+
+    @FXML
+    private void recherche(KeyEvent event) {
+        System.out.println(rechreche.getText());
+    }
+    
+     public void possibleMot() {
+      
+        ArrayList<String> list = new ArrayList<>();
+        list.add("karim");
+        list.add("hichem1");
+        list.add("hichem2");
+        list.add("mohammed ouadhi");
+        list.add("mohammed cherberabe");
+
+        TextFields.bindAutoCompletion(rechreche, list);
+
     }
 
     

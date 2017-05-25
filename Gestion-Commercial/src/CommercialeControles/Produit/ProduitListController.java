@@ -29,9 +29,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 public class ProduitListController implements Initializable {
 
@@ -64,6 +66,7 @@ public class ProduitListController implements Initializable {
 
         List<Produit> listBlesDB = queries.list();
         List<ProduitCell> list = new ArrayList<>();
+        
         for (int i = 0; i < listBlesDB.size(); i++) {
             list.add(new ProduitCell(listBlesDB.get(i).getIdProduit(), 
                     listBlesDB.get(i).getCategory(),
@@ -73,10 +76,14 @@ public class ProduitListController implements Initializable {
                     12
             ));
         }
+        
         ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
         listeproduit.setItems(myObservableList);
         listeproduit.setExpanded(true);
+        
         setTotale();
+        
+        possibleMot();
 
     }
 
@@ -138,9 +145,6 @@ public class ProduitListController implements Initializable {
         }
     }
 
-    @FXML
-    private void rechrecher(ActionEvent event) {
-    }
 
     @FXML
     private void showDockSlide(MouseEvent event) {
@@ -167,6 +171,24 @@ public class ProduitListController implements Initializable {
     public void setTotale() {
 
         total.setText(Integer.toString(listeproduit.getItems().size()));
+
+    }
+
+    @FXML
+    private void rechrecher(KeyEvent event) {
+        System.out.println(rechreche.getText());
+    }
+    
+    public void possibleMot() {
+      
+        ArrayList<String> list = new ArrayList<>();
+        list.add("karim");
+        list.add("hichem1");
+        list.add("hichem2");
+        list.add("mohammed ouadhi");
+        list.add("mohammed cherberabe");
+
+        TextFields.bindAutoCompletion(rechreche, list);
 
     }
 }

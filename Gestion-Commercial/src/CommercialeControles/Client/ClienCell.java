@@ -1,4 +1,5 @@
 package CommercialeControles.Client;
+import CommercialeControles.Payement.PayementListeController;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
@@ -171,11 +172,13 @@ public class ClienCell extends GridPane {
      public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
         JFXButton supprimer = new JFXButton("Supprimer");
+        JFXButton versement =  new JFXButton("Versement"); 
 
         modifier.setPadding(new Insets(10));
         supprimer.setPadding(new Insets(10));
+        versement.setPadding(new Insets(10));
 
-        VBox box = new VBox(modifier, supprimer);
+        VBox box = new VBox(modifier, supprimer , versement);
         box.setStyle("-fx-background-color: #ffffff");
 
         popup.setContent(box);
@@ -215,6 +218,25 @@ public class ClienCell extends GridPane {
                 new ShowPane().showClient();
             }
         });
+        
+        versement.setOnAction(event ->{
+          try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.payement));
+                loader.load();
+                
+                PayementListeController pay  = loader.getController(); 
+                pay.setDate(this.client.getId());
+                
+                AnchorPane root = loader.getRoot();
+                
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
+                dialog.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        } );
         
     }
 }

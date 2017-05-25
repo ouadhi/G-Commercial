@@ -17,19 +17,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="672.0" prefWidth="683.0" style="-fx-background-color: white;" stylesheets="@payementCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Payement.PayementListeController">
    <children>
-      <Text fill="#fd9252" layoutX="13.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payements " wrappingWidth="177.21875">
+      <Text fill="#fd9252" layoutX="13.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versement" wrappingWidth="177.21875">
          <font>
             <Font size="30.0" />
-         </font>
-      </Text>
-      <Text fill="#fd9252" layoutX="232.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facture" wrappingWidth="71.21875">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text fx:id="Nfacture" fill="#fd9252" layoutX="309.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" wrappingWidth="55.21875">
-         <font>
-            <Font size="19.0" />
          </font>
       </Text>
       <JFXButton layoutX="514.0" layoutY="65.0" onAction="#addpayment" prefHeight="45.0" prefWidth="159.0" styleClass="button_save" text="Ajouter" />
@@ -102,7 +92,7 @@
       </GridPane>
       <Pane prefHeight="51.0" prefWidth="683.0" style="-fx-background-color: #0083c5;">
          <children>
-            <ImageView fitHeight="33.0" fitWidth="36.0" layoutX="633.0" layoutY="9.0" onMouseClicked="#quitter" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="640.0" layoutY="12.0" onMouseClicked="#quitter" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="/icons/close.png" />
                </image>

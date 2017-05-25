@@ -23,15 +23,18 @@ public class Banque {
     String address;
     @Column(name = "deleted", nullable = false)
     boolean deleted;
+    @Column(name = "telephone", nullable = false)
+    String telephone;
 
     public Banque() {
 
     }
 
-    public Banque(String nom, String compte, String address) {
+    public Banque(String nom, String compte, String address , String telephone) {
         this.nom = nom;
         this.compte = compte;
         this.address = address;
+        this.telephone = telephone ; 
     }
 
     public int getIdDock() {
@@ -73,4 +76,15 @@ public class Banque {
         this.deleted = deleted;
     }
 
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+    
+    
+   
 }

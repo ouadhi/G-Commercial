@@ -132,11 +132,11 @@ public class Home2FXMLController implements Initializable {
         transition.setCycleCount(1);
 
         return transition;
-
     }
 
     public void setMenu(AnchorPane Menu) {
         menu.getChildren().setAll(Menu);
+        smalShow = true ; 
         changeMenutoSmall();
     }
 
@@ -165,13 +165,11 @@ public class Home2FXMLController implements Initializable {
 
     }
 
-    @FXML
     private void OutManu(MouseEvent event) {
         transitionout(panel_menu).play();
         changeMenutoSmall();
     }
 
-    @FXML
     private void InMenu(MouseEvent event) {
         transitionIn(panel_menu).play();
         changeMenutoStrong();

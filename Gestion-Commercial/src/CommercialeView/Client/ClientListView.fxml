@@ -70,7 +70,7 @@
       </GridPane>
       <Pane layoutX="528.0" layoutY="26.0" prefHeight="41.0" prefWidth="412.0" styleClass="rechereche">
          <children>
-            <JFXTextField fx:id="rechreche" focusColor="#405aa800" layoutX="46.0" layoutY="2.0" maxWidth="350.0" minWidth="167.0" onAction="#rechrecher" prefHeight="35.0" prefWidth="350.0" promptText="Recherche" style="-fx-background-color: white;" unFocusColor="#cf252500">
+            <JFXTextField fx:id="rechreche" focusColor="#405aa800" layoutX="46.0" layoutY="2.0" maxWidth="350.0" minWidth="167.0" onKeyReleased="#rechreche" prefHeight="35.0" prefWidth="350.0" promptText="Recherche" style="-fx-background-color: white;" unFocusColor="#cf252500">
                <font>
                   <Font size="16.0" />
                </font></JFXTextField>

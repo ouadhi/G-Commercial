@@ -126,23 +126,23 @@ public class BanqueCell extends GridPane {
         rowConstraints.setPrefHeight(30.0);
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        label.setText("Code");
+        label.setText(""+this.banque.getIdDock());
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);
-        label0.setText("Nom de  Banque");
+        label0.setText(banque.getNom());
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText("N° de Compte");
+        label1.setText(this.banque.getCompte());
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
-        label2.setText("Adresse");
+        label2.setText(banque.getAddress());
         label2.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label3, 4);
-        label3.setText("N°Telephone");
+        label3.setText(this.banque.getTelephone());
         label3.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(bttn, 5);

@@ -65,7 +65,7 @@ public class AjouterProduitController implements Initializable {
                 
                 Notification.Addnotification();
                 savelabel.setVisible(true);
-                new  ShowPane().showClient();
+                new  ShowPane().showProduit();
                 quitter(event);
                 
             } catch (Exception ex) {

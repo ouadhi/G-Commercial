@@ -85,4 +85,9 @@ public class ViewUrl {
     public static String BanqueListe  =  "/CommercialeView/Banque/BanqueListe.fxml";
     public static String AjouterBanque  =  "/CommercialeView/Banque/AjouterBanque.fxml";
     public static  String  modfierBanque  =  "/CommercialeView/Banque/ModfierBanque.fxml";
+    
+    
+    // **************************************************** 
+    public static String parametreView  = "/CommercialeView/Autre/paramaitre.fxml"  ; 
+    public static String addAnneeEtTva = "/CommercialeView/Autre/AddAnnee.fxml" ; 
 }

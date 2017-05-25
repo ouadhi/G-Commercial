@@ -25,7 +25,7 @@
                   <Image url="/icons/close.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Payement">
+            <Text fill="WHITE" layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Versement">
                <font>
                   <Font size="22.0" />
                </font>
