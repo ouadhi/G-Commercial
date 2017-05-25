@@ -39,6 +39,8 @@ public class Camion {
     /*@ManyToOne
     @JoinColumn(name="id_chauffeur")
     private Chauffeur chauffeur;*/
+    @Column(name = "deleted", nullable = false)
+    boolean deleted;
 
     public Camion() {
     }
@@ -115,7 +117,14 @@ public class Camion {
         this.factures = factures;
     }
     
-    
+        public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
    
 
 }

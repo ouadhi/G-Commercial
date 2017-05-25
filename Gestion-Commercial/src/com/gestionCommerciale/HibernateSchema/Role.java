@@ -27,7 +27,9 @@ public class Role {
     String role;
     @Column(name = "description", nullable = false)
     String description;
-    
+        @Column(name = "deleted", nullable = false)
+    boolean deleted;
+
     public Role(String role, String description) {
         this.role = role;
         this.description = description;
@@ -61,5 +63,12 @@ public class Role {
     }
     
     
-    
+        public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
 }

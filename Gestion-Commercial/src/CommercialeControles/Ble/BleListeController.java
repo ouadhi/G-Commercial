@@ -55,7 +55,7 @@ public class BleListeController implements Initializable {
         List<Ble> listBlesDB = dockQueries.list();
         List<BelCell> list = new ArrayList<>();
         for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new BelCell(listBlesDB.get(i).getIdBle(), listBlesDB.get(i).getQte(),
+            list.add(new BelCell(listBlesDB.get(i).getIdBle(),(float) listBlesDB.get(i).getQte(),
                     listBlesDB.get(i).getPrix()
             ));
         }

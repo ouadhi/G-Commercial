@@ -54,8 +54,8 @@ public class GenerateEtatExpeditionReport {
                         sonTotal = sonTotal + list.get(i).getQtes().get(j).getQte_fact();
                     }
                 }
-                for (int j = 0; j < list.get(i).getPayments().size(); j++) {
-                    versementTotal = versementTotal + list.get(i).getPayments().get(j).getMontant();
+                for (int j = 0; j < list.get(i).getClient().getPayments().size(); j++) {
+                    versementTotal = versementTotal + list.get(i).getClient().getPayments().get(j).getMontant();
                 }
                 montantTotal = montantTotal + list.get(i).getMontant();
                 
@@ -98,8 +98,8 @@ public class GenerateEtatExpeditionReport {
     public double sommeVersement() {
         double total = 0;
         for (Facture facture : map.keySet()) {
-            for (int i = 0; i < facture.getPayments().size(); i++) {
-                total = total + facture.getPayments().get(i).getMontant();
+            for (int i = 0; i < facture.getClient().getPayments().size(); i++) {
+                total = total + facture.getClient().getPayments().get(i).getMontant();
             }
         }
         return total;

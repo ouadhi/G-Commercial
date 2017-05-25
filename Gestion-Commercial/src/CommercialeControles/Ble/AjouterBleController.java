@@ -1,4 +1,5 @@
 package CommercialeControles.Ble;
+
 import CommercialeControles.OperationAchat.BleListeH;
 import CommercialeControles.OperationAchat.SelectionnerBleController;
 import UIControle.Methode;
@@ -23,7 +24,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tray.notification.NotificationType;
+
 public class AjouterBleController implements Initializable {
+
     @FXML
     private ImageView close;
     @FXML
@@ -39,22 +42,23 @@ public class AjouterBleController implements Initializable {
     @FXML
     private Label savelabel;
     BleQueries queries = new BleQueries();
-    Label total ; 
-    
-    JFXListView<BelCell> listeBle = null; 
-    JFXListView<BleListeH> listeBleH = null  ; 
-    
-    
+    Label total;
+
+    JFXListView<BelCell> listeBle = null;
+    JFXListView<BleListeH> listeBleH = null;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyInteger(quntite, 16);
         Methode.setOnlyFloat(prix, 16);
     }
+
     @FXML
     private void close(MouseEvent event) {
         Stage stage = Methode.getStageMouses(event);
         stage.close();
     }
+
     @FXML
     private void saveble(ActionEvent event) {
         String codeval = this.code.getText();
@@ -63,12 +67,12 @@ public class AjouterBleController implements Initializable {
         if (codeval.isEmpty() || quantiteval.isEmpty() || prixval.isEmpty()) {
             Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
-            if (queries.getBle(codeval) != null) {
+            if (queries.getBle(Integer.parseInt(codeval)) != null) {
                 //notification for already exists
-                Notification.error("Ce ble est exite déja!");
+                Notification.error("Ce ble exite déja!");
             } else {
                 try {
-                    Ble ble = new Ble(Integer.parseInt(codeval), Integer.parseInt(quantiteval), Double.parseDouble(prixval));
+                    Ble ble = new Ble(codeval, Integer.parseInt(quantiteval), Double.parseDouble(prixval));
                     queries.SaveOrUpdate(ble);
                     Notification.Addnotification();
                     closestage(event);
@@ -84,30 +88,29 @@ public class AjouterBleController implements Initializable {
             }
         }
     }
+
     @FXML
     private void closestage(ActionEvent event) {
         Methode.getStage(event).close();
     }
-    
-    public  void  setData(JFXListView<BelCell> listeBle , Label total ) {
-        this.listeBle  = listeBle  ; 
-        this.total = total  ; 
-        
+
+    public void setData(JFXListView<BelCell> listeBle, Label total) {
+        this.listeBle = listeBle;
+        this.total = total;
+
     }
-    
-    public  void  setData2(JFXListView<BleListeH> listeBle ) {
-        this.listeBleH = listeBle  ; 
-        
-        
+
+    public void setData2(JFXListView<BleListeH> listeBle) {
+        this.listeBleH = listeBle;
+
     }
-    
-    
-    public void refresheV (){
-        
-         List<Ble> listBlesDB = queries.list();
+
+    public void refresheV() {
+
+        List<Ble> listBlesDB = queries.list();
         List<BelCell> list = new ArrayList<>();
         for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new BelCell(listBlesDB.get(i).getIdBle(), listBlesDB.get(i).getQte(),
+            list.add(new BelCell(listBlesDB.get(i).getIdBle(),(float)listBlesDB.get(i).getQte(),
                     listBlesDB.get(i).getPrix()
             ));
         }
@@ -115,22 +118,22 @@ public class AjouterBleController implements Initializable {
         listeBle.setItems(myObservableList);
         listeBle.setExpanded(true);
         total.setText(Integer.toString(listeBle.getItems().size()));
-             
+
     }
-    
-    public void refresheH (){
+
+    public void refresheH() {
         listeBleH.getItems().clear();
         List<Ble> listBlesDB = queries.list();
         List<BleListeH> list = new ArrayList<>();
-        
+
         for (int i = 0; i < listBlesDB.size(); i++) {
-           list.add(new BleListeH(listBlesDB.get(i), listBlesDB.get(i).getQte())) ; 
+            list.add(new BleListeH(listBlesDB.get(i), listBlesDB.get(i).getQte()));
         }
-        
-        BleListeH ch  = new BleListeH(listeBleH) ; 
-        list.add(ch) ; 
+
+        BleListeH ch = new BleListeH(listeBleH);
+        list.add(ch);
         ObservableList<BleListeH> myObservableList = FXCollections.observableList(list);
-       listeBleH.setItems(myObservableList);
-        
+        listeBleH.setItems(myObservableList);
+
     }
 }

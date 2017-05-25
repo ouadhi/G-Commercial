@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Report.BonLivraisonReport;
+package Report.FactureReport;
 
+import Report.FactureReportBean;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,9 +27,8 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Hicham
  */
-public class OperationBonLivraisonReport {
-
-    Collection<BonLivraisonBean> collBean = new ArrayList<BonLivraisonBean>();
+public class OperationFactuReport {
+    Collection<FactureReportBean> collBean = new ArrayList<FactureReportBean>();
     int id = 1;
 
     public JRDataSource getData() {
@@ -36,32 +36,42 @@ public class OperationBonLivraisonReport {
 
     }
 
-    public void putReportInfo(String nom, String code, String address,
-             String rc, String fiscal, String date, String numFacture,
-             String article, String chauffeur,
-             String matricule, List<String> designations, List<String> qtes) {
-        BonLivraisonBean beanInfo = new BonLivraisonBean(id, nom, code, address, rc, fiscal, date, numFacture,
-                 article, chauffeur, matricule, designations, qtes);
+    public void putReportInfo(String nom, String code, String address, String rc, String fiscal, String date,
+            String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
+            String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
+            List<String> prixs, List<String> montants) {
+        //patient info is the first to be written
+
+        FactureReportBean beanInfo = new FactureReportBean(id, nom, code, address, rc, fiscal, date,
+                numFacture, article, montantHT, tva, timbre, ttc,
+                montantlettre, chauffeur, matricule, designations, qtes, prixs, montants);
         collBean.add(beanInfo);
         id++;
     }
 
-    public void printReport() {
+    public JasperPrint printReport() {
+        JasperPrint jasperPrint = null;
         try {
             Map<String, Object> params = new HashMap<String, Object>();
             JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
             JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
             jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
             //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-            InputStream stream = getClass().getResourceAsStream("BonLivraison.jasper");
+            InputStream stream = getClass().getResourceAsStream("ReportFacture.jasper");
+
             JasperReport report = (JasperReport) JRLoader.loadObject(stream);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(report,
+            jasperPrint = JasperFillManager.fillReport(report,
                      params, getData());
             JasperViewer.viewReport(jasperPrint);
-            //this.collBean.clear();
+
+           
+            this.id = 1;
+            this.collBean.clear();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
+        return jasperPrint;
+    }
 }

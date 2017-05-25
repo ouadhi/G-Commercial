@@ -2,14 +2,12 @@
 package CommercialeControles.Ble;
 
 import CommercialeControles.Client.ClienCell;
-import CommercialeControles.Dock.ModifierDockController;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.Models.BleQueries;
-import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.io.IOException;
@@ -18,7 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -26,7 +23,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -214,7 +210,7 @@ public class BelCell  extends GridPane{
                 // requete DELETE from client  Where  id.client  =  codeclient 
                 
                 BleQueries q = new BleQueries();
-                q.delete(q.getBle(code + ""));
+                q.delete(q.getBle(code));
                 Notification.Deletenotification();
                  new ShowPane().showBle();
             }

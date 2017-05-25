@@ -24,22 +24,26 @@ import javax.persistence.Table;
 @Table(name = "Ble")
 public class Ble {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_Ble", nullable = false)
     int idBle;
     @Column(name = "quantite", nullable = false)
-    int qte;
+    double qte;
     @Column(name = "prix", nullable = false)
     double prix;
+    @Column(name = "code_ble", nullable = false)
+    String codeBle;
     @OneToMany(targetEntity=Achat.class, mappedBy="ble"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Achat>  achats;
+    @Column(name = "deleted", nullable = false)
+    boolean deleted;
 
     public Ble() {
     }
 
-    public Ble(int idBle, int qte, double prix) {
-        this.idBle = idBle;
+    public Ble(String codeBle, int qte, double prix) {
+        this.codeBle = codeBle;
         this.qte = qte;
         this.prix = prix;
     }
@@ -52,7 +56,7 @@ public class Ble {
         this.idBle = idBle;
     }
 
-    public int getQte() {
+    public double getQte() {
         return qte;
     }
 
@@ -74,6 +78,21 @@ public class Ble {
 
     public void setAchats(List<Achat> achats) {
         this.achats = achats;
+    }
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public String getCodeBle() {
+        return codeBle;
+    }
+
+    public void setCodeBle(String codeBle) {
+        this.codeBle = codeBle;
     }
 
    

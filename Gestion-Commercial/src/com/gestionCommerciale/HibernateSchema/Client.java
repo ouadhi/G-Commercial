@@ -14,8 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.
@@ -54,7 +52,12 @@ public class Client {
     @OneToMany(targetEntity=Facture.class, mappedBy="client"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Facture> factures ;
-    
+        @Column(name = "deleted", nullable = false)
+    boolean deleted;
+    @OneToMany(targetEntity = Payment.class, mappedBy = "client",
+            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Payment> payments;
+
     //
     /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
     @JoinTable(name = "Chauffeur_client", joinColumns = {
@@ -166,6 +169,22 @@ public class Client {
     public void setFactures(List<Facture> factures) {
         this.factures = factures;
     }
+        public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
+    }
     
+
 }
  

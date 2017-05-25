@@ -4,6 +4,7 @@ import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Achat;
+import com.gestionCommerciale.HibernateSchema.Annee;
 import com.gestionCommerciale.Models.AchatQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -282,8 +283,9 @@ public class FinOperationController implements Initializable {
     }
 
     public void addAchat() {
+        Annee annee= new Annee();
         Achat achat = new Achat("numTiquet874345",numero.getText(), Integer.parseInt(Q_Acquit.getText()),
-                 Integer.parseInt(Q_fournie.getText()), 0, new Date(), "NumBon24445");
+                 Integer.parseInt(Q_fournie.getText()), 0, new Date(), "NumBon24445",annee);
         achat.setCamion(camion.getCamion());
         achat.setChauffeur(chauffeur.getChauffeur());
         achat.setDock(dock.getDock());

@@ -49,12 +49,15 @@ public class Facture {
     @ManyToOne
     @JoinColumn(name = "id_camion")
     private Camion camion;
-    @OneToMany(targetEntity = Payment.class, mappedBy = "facture",
-            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Payment> payments;
     @OneToMany(targetEntity = Facture_Produit.class, mappedBy = "facture",
             cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Facture_Produit> qtes;
+        @Column(name = "deleted", nullable = false)
+    boolean deleted;
+    @ManyToOne
+    @JoinColumn(name="id_annee")
+    private Annee annee;
+
     //
 
     public Facture() {
@@ -123,14 +126,6 @@ public class Facture {
         this.timbre = timbre;
     }
 
-    public List<Payment> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
-    }
-
     public Chauffeur getChauffeur() {
         return chauffeur;
     }
@@ -147,13 +142,20 @@ public class Facture {
         this.qtes = qtes;
     }
 
-    public float getPaymentsMontant() {
-        float montant = 0;
-        for (Payment p : payments) {
+    public boolean isDeleted() {
+        return deleted;
+    }
 
-            montant += p.montant;
-        }
-        return montant;
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public Annee getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(Annee annee) {
+        this.annee = annee;
     }
 
 }

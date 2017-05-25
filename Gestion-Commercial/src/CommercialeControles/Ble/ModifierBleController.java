@@ -9,9 +9,7 @@ import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Ble;
-import com.gestionCommerciale.HibernateSchema.Dock;
 import com.gestionCommerciale.Models.BleQueries;
-import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -83,7 +81,7 @@ public class ModifierBleController implements Initializable {
             if (result.get() == ButtonType.OK) {
                 
                     BleQueries queries = new BleQueries();
-                    Ble ble = queries.getBle(oldCode+"");
+                    Ble ble = queries.getBle(oldCode);
                     ble.setIdBle(Integer.parseInt(codeval));
                     ble.setPrix(Double.parseDouble(prixval));
                     ble.setQte(Integer.parseInt(quantiteval));

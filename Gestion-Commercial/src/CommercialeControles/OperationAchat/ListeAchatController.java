@@ -5,7 +5,6 @@ import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Achat;
-import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.Models.AchatQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -13,7 +12,6 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -54,7 +52,7 @@ public class ListeAchatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<Achat> achatList = achatQueries.list();
+        List<Achat> achatList = achatQueries.list2();
 
         List<AchatCell> list = new ArrayList<>();
         for (int i = 0; i < achatList.size(); i++) {

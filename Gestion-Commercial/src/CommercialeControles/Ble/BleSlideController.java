@@ -2,8 +2,6 @@
 package CommercialeControles.Ble;
 
 import CommercialeControles.Camion.ShowdDetailCamionController;
-import CommercialeControles.Dock.DockCell;
-import CommercialeControles.Dock.ModifierDockController;
 import UIControle.Transition;
 import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;

@@ -34,6 +34,9 @@ public class Dock {
     @OneToMany(targetEntity=Achat.class, mappedBy="dock"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Achat> achats;
+        @Column(name = "deleted", nullable = false)
+    boolean deleted;
+
     //
     /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
     @JoinTable(name = "Chauffeur_dock", joinColumns = {
@@ -97,6 +100,13 @@ public class Dock {
 
     public void setAchats(List<Achat> achats) {
         this.achats = achats;
+    }
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
 

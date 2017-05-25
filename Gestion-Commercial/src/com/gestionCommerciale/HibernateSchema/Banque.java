@@ -21,6 +21,8 @@ public class Banque {
     String compte;
     @Column(name = "address", nullable = false)
     String address;
+    @Column(name = "deleted", nullable = false)
+    boolean deleted;
 
     public Banque() {
 
@@ -63,5 +65,12 @@ public class Banque {
     public void setAddress(String address) {
         this.address = address;
     }
-   
+       public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
 }

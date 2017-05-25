@@ -51,6 +51,11 @@ public class Achat {
     @ManyToOne
     @JoinColumn(name = "id_dock")
     private Dock dock;
+    @Column(name = "deleted", nullable = false)
+    boolean deleted;
+    @ManyToOne
+    @JoinColumn(name="id_annee")
+    private Annee annee;
 
     //
     public Achat() {
@@ -58,13 +63,15 @@ public class Achat {
     }
 
     public Achat(String numTiquet,String numAcqt, int quantiteAcqt, int quantiteFour,
-             int quantiteDiff, Date dateAcqt, String numBon) {
+             int quantiteDiff, Date dateAcqt, String numBon,Annee annee) {
         this.numAcqt = numAcqt;
+        this.numTiquet = numTiquet;
         this.quantiteAcqt = quantiteAcqt;
         this.quantiteFour = quantiteFour;
         this.quantiteDiff = quantiteDiff;
         this.numBon = numBon;
         this.dateAcqt = dateAcqt;
+        this.annee = annee;
     }
 
     public String getNumTiquet() {
@@ -164,4 +171,20 @@ public class Achat {
         this.dock = dock;
     }
 
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public Annee getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(Annee annee) {
+        this.annee = annee;
+    }
+    
 }

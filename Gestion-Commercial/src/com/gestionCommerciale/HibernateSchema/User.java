@@ -34,6 +34,8 @@ public class User {
     String type;
     @Column(name = "photo", nullable = true)
     String photoLien;
+    @Column(name = "deleted", nullable = false)
+    boolean deleted;
 
     public User() {
     }
@@ -85,5 +87,12 @@ public class User {
         this.photoLien = photoLien;
     }
 
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
 }

@@ -32,8 +32,13 @@ public class Payment {
     @Temporal(value = TemporalType.DATE)
     Date date;
     @ManyToOne
-    @JoinColumn(name="id_fact")
-    private Facture facture;
+    @JoinColumn(name = "id_client")
+    private Client client;
+    @Column(name = "deleted", nullable = false)
+    boolean deleted;
+    @ManyToOne
+    @JoinColumn(name = "id_annee")
+    private Annee annee;
 
     public Payment() {
     }
@@ -76,12 +81,28 @@ public class Payment {
         this.date = date;
     }
 
-    public Facture getFacture() {
-        return facture;
+    public Client getClient() {
+        return client;
     }
 
-    public void setFacture(Facture facture) {
-        this.facture = facture;
+    public void setClient(Client client) {
+        this.client = client;
     }
-    
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public Annee getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(Annee annee) {
+        this.annee = annee;
+    }
+
 }

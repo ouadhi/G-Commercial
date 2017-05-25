@@ -37,7 +37,9 @@ public class Produit {
     int quantite;
     @Column(name = "prix", nullable = false)
     float prix;
-    
+        @Column(name = "deleted", nullable = false)
+    boolean deleted;
+
     @OneToMany(targetEntity=Facture_Produit.class, mappedBy="produit"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Facture_Produit> qtes;
@@ -101,5 +103,12 @@ public class Produit {
         this.category = category;
     }
     
-   
+       public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
 }

@@ -21,24 +21,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Facture_Produit")
 public class Facture_Produit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_facture_produit", nullable = false)
     int id_facture_produit;
-    @Column(name = "", nullable = false)
+    @Column(name = "qte_fact", nullable = false)
     int qte_fact;
+    @Column(name = "prix_fact", nullable = false)
+    double prix_fact;
     @ManyToOne
-    @JoinColumn(name="id_fact")
+    @JoinColumn(name = "id_fact")
     private Facture facture;
+
     @ManyToOne
-    @JoinColumn(name="id_produit")
+    @JoinColumn(name = "id_produit")
     private Produit produit;
-    
-    public Facture_Produit(int qte_fact) {
+    @Column(name = "deleted", nullable = false)
+    boolean deleted;
+
+    public Facture_Produit(int qte_fact, double tva_fact, double prix_fact) {
         this.qte_fact = qte_fact;
+        this.prix_fact = prix_fact;
     }
+
     public Facture_Produit() {
-        
+
     }
 
     public int getId_facture_produit() {
@@ -72,6 +80,13 @@ public class Facture_Produit {
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
-    
-    
+
+    public double getPrix_fact() {
+        return prix_fact;
+    }
+
+    public void setPrix_fact(double prix_fact) {
+        this.prix_fact = prix_fact;
+    }
+
 }
