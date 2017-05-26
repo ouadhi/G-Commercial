@@ -60,7 +60,7 @@ public class AjouterProduitController implements Initializable {
             Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
             try {
-                Produit ob = new Produit(nomVal,categorieVal, Integer.parseInt(quantiteVal), Float.parseFloat(prixVal));
+                Produit ob = new Produit("C1",nomVal,categorieVal, Integer.parseInt(quantiteVal), Double.parseDouble(prixVal),true);
                 queries.SaveOrUpdate(ob);
                 
                 Notification.Addnotification();

@@ -6,6 +6,7 @@ import UIControle.Notification;
 import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Produit;
 import com.gestionCommerciale.Models.BleQueries;
 import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
@@ -29,94 +30,51 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class ProduitCell extends GridPane{
+public class ProduitCell extends GridPane {
 
-    private int codeProduit;
+    Produit produit;
     private String categorie;
     private String nom;
     private float quantite;
     private double prix;
-    private float TVA ; 
-    
-    protected  ColumnConstraints columnConstraints;
-    protected  ColumnConstraints columnConstraints0;
-    protected  ColumnConstraints columnConstraints1;
-    protected  ColumnConstraints columnConstraints2;
-    protected  ColumnConstraints columnConstraints3;
-    protected  ColumnConstraints columnConstraints4;
-    protected  ColumnConstraints columnConstraints5;
-    protected  RowConstraints rowConstraints;
-    
-    protected  Label label;
-    protected  Label label0;
+    private float TVA;
+
+    protected ColumnConstraints columnConstraints;
+    protected ColumnConstraints columnConstraints0;
+    protected ColumnConstraints columnConstraints1;
+    protected ColumnConstraints columnConstraints2;
+    protected ColumnConstraints columnConstraints3;
+    protected ColumnConstraints columnConstraints4;
+    protected ColumnConstraints columnConstraints5;
+    protected RowConstraints rowConstraints;
+
+    protected Label label;
+    protected Label label0;
     protected Label label1;
-    protected  Label label2;
-    protected  Label label3;
-    protected  Label label4;
-    protected  JFXButton bttn;
+    protected Label label2;
+    protected Label label3;
+    protected Label label4;
+    protected JFXButton bttn;
 
     private JFXPopup popup;
 
+    public ProduitCell(Produit produit) {
+        this.produit = produit;
+        popup = new JFXPopup();
 
-    public ProduitCell(int codeProduit, String categorie, String nom, float quantite, double prix , float tva ) {
-        this.codeProduit = codeProduit;
-        this.categorie = categorie;
-        this.nom = nom;
-        this.quantite = quantite;
-        this.prix = prix;
-        this.TVA = tva ; 
-        
-        popup =  new  JFXPopup()  ; 
-        
         create_box();
-        
-    }
-    
-    
 
-    public int getCodeProduit() {
-        return codeProduit;
     }
 
-    public void setCodeProduit(int codeProduit) {
-        this.codeProduit = codeProduit;
+    public Produit getProduit() {
+        return produit;
     }
 
-    public String getCategorie() {
-        return categorie;
+    public void setCodeProduit(Produit produit) {
+        this.produit = produit;
     }
+    private void create_box() {
 
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public Float getQuantite() {
-        return quantite;
-    }
-
-    public void setQuantité(Float quantité) {
-        this.quantite = quantité;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
-    
-    private  void create_box  () {
-        
-        
         columnConstraints = new ColumnConstraints();
         columnConstraints0 = new ColumnConstraints();
         columnConstraints1 = new ColumnConstraints();
@@ -131,12 +89,10 @@ public class ProduitCell extends GridPane{
         label2 = new Label();
         label3 = new Label();
         label4 = new Label();
-       
 
-      setHgap(3.0);
+        setHgap(3.0);
         setPrefHeight(57.0);
         setPrefWidth(1114.0);
-        
 
         columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
@@ -184,27 +140,27 @@ public class ProduitCell extends GridPane{
         rowConstraints.setPrefHeight(30.0);
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        label.setText(Integer.toString(this.codeProduit));
-         GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
+        label.setText(Integer.toString(produit.getIdProduit()));
+        GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);
         label0.setText(this.nom);
-         GridPane.setHalignment(label0, javafx.geometry.HPos.CENTER);
+        GridPane.setHalignment(label0, javafx.geometry.HPos.CENTER);
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
         label1.setText(this.categorie);
-         GridPane.setHalignment(label1, javafx.geometry.HPos.CENTER);
+        GridPane.setHalignment(label1, javafx.geometry.HPos.CENTER);
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
         label2.setText(Float.toString(this.quantite));
-         GridPane.setHalignment(label2, javafx.geometry.HPos.CENTER);
+        GridPane.setHalignment(label2, javafx.geometry.HPos.CENTER);
         label2.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label3, 4);
-         GridPane.setHalignment(label3, javafx.geometry.HPos.CENTER);
+        GridPane.setHalignment(label3, javafx.geometry.HPos.CENTER);
         label3.setText(Double.toString(this.prix));
         label3.setFont(new Font(17.0));
 
@@ -213,9 +169,6 @@ public class ProduitCell extends GridPane{
         label4.setText(Float.toString(TVA));
         label4.setFont(new Font(17.0));
 
-        
-        
-        
         bttn = new JFXButton();
         Image imgbtn = new Image(getClass().getResourceAsStream("/icons/more3.png"));
         ImageView imgviewbtn = new ImageView(imgbtn);
@@ -224,7 +177,7 @@ public class ProduitCell extends GridPane{
         bttn.prefHeight(50);
         bttn.prefWidth(50);
         bttn.setGraphic(imgviewbtn);
-        
+
         GridPane.setColumnIndex(bttn, 6);
         GridPane.setHalignment(bttn, javafx.geometry.HPos.CENTER);
 
@@ -251,7 +204,7 @@ public class ProduitCell extends GridPane{
             popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
         });
     }
-    
+
     public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
         JFXButton supprimer = new JFXButton("Supprimer");
@@ -266,44 +219,41 @@ public class ProduitCell extends GridPane{
         popup.setSource(bttn);
 
         modifier.setOnAction(event -> {
-            
+
             try {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource(ViewUrl.ModifierProduit));
                 loader.load();
-                
-                ModifierProduitController ModifierProduit =  loader.getController() ;
-                ModifierProduit.setData(this.nom, this.categorie , this.quantite , this.prix );
-                
+
+                ModifierProduitController ModifierProduit = loader.getController();
+                ModifierProduit.setData(produit);
+
                 AnchorPane root = loader.getRoot();
-                
-                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
+
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root);
                 dialog.show();
             } catch (IOException ex) {
                 Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
+
             popup.close();
 
         });
         supprimer.setOnAction(event -> {
 
-            Optional<ButtonType> result = Notification.deleteAlert().showAndWait() ; 
+            Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
-                
+
                 // requete DELETE from client  Where  id.client  =  codeclient 
-                
-                ProduitQueries q = new ProduitQueries();
-                q.delete(q.getProduit(codeProduit+""));
+                ProduitQueries.archive(produit);
                 Notification.Deletenotification();
-                new  ShowPane().showProduit();
+                new ShowPane().showProduit();
             }
-            
+
             popup.close();
 
         });
 
     }
-    
-    
+
 }

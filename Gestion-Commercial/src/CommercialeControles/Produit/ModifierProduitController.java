@@ -3,6 +3,7 @@ package CommercialeControles.Produit;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Produit;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
@@ -39,7 +40,7 @@ public class ModifierProduitController implements Initializable {
     private JFXTextField code;
     @FXML
     private JFXToggleButton TVA;
-
+    Produit produit;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyNumbre(quantite);
@@ -83,11 +84,13 @@ public class ModifierProduitController implements Initializable {
         Methode.getStage(event).close();
     }
 
-    public void setData(String nom, String cate, float quan, double prix) {
-        this.nom.setText(nom);
-        this.categorie.setText(cate);
-        this.quantite.setText(Float.toString(quan));
-        this.prix.setText(Double.toString(prix));
+    public void setData(Produit produit) {
+        
+        this.produit= produit;
+        this.nom.setText(produit.getNom());
+        this.categorie.setText(produit.getCategory());
+        this.quantite.setText(Integer.toString(produit.getQuantite()));
+        this.prix.setText(Double.toString(produit.getPrix()));
 
     }
 

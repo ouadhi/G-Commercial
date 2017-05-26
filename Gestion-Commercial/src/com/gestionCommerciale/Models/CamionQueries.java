@@ -1,10 +1,8 @@
 package com.gestionCommerciale.Models;
-
 import com.gestionCommerciale.HibernateSchema.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
-
 /**
  *
  * @author CHERABRAB
@@ -24,7 +22,6 @@ public class CamionQueries {
             return true;
         }
     }
-
     public static boolean archive(Camion camion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -40,7 +37,6 @@ public class CamionQueries {
         }
         return true;
     }
-
     public static boolean delete(Camion camion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -55,7 +51,6 @@ public class CamionQueries {
         }
         return true;
     }
-
     public static List<Camion> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -67,7 +62,6 @@ public class CamionQueries {
         }
         return list;
     }
-
     public static List<Camion> listArchived() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -79,7 +73,6 @@ public class CamionQueries {
         }
         return list;
     }
-
     public static List<Camion> listAll() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -91,7 +84,6 @@ public class CamionQueries {
         }
         return list;
     }
-
     public static Camion getCamionById(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -103,13 +95,12 @@ public class CamionQueries {
         }
         return d;
     }
-
     public static Camion getCamionByCode(String codeCamion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         Camion d;
         try {
-            d = (Camion) session.createQuery("from Camion where nomCamion='" + codeCamion + "'").uniqueResult();
+            d = (Camion) session.createQuery("from Camion where codeCamion='" + codeCamion + "'").uniqueResult();
         } finally {
             session.close();
         }
@@ -126,8 +117,6 @@ public class CamionQueries {
         }
         return d;
     }
-
-
     
     
 /*
@@ -135,42 +124,34 @@ public class CamionQueries {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
-
             session.beginTransaction();
             session.saveOrUpdate(camion);
             session.getTransaction().commit();
-
         } finally {
             session.close();
         }
     }
-
     public void delete(Camion camion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
-
             session.beginTransaction();
             session.delete(camion);
             session.getTransaction().commit();
-
         } finally {
             session.close();
         }
     }
-
     public List<Camion> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Camion> camionsList = new ArrayList<>();
         camionsList = session.createQuery("from Camion").list();
-
         return camionsList;
     }
      public Camion getCamion(String matricule){
         Camion camion=null;
         List<Camion> listOfCamion=list();
-
         for (int i = 0; i < listOfCamion.size(); i++) {
             if (matricule.equals(listOfCamion.get(i).getMatricule())) {
                 camion=listOfCamion.get(i);

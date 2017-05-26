@@ -68,13 +68,7 @@ public class ProduitListController implements Initializable {
         List<ProduitCell> list = new ArrayList<>();
         
         for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new ProduitCell(listBlesDB.get(i).getIdProduit(), 
-                    listBlesDB.get(i).getCategory(),
-                    listBlesDB.get(i).getNom(),
-                    listBlesDB.get(i).getQuantite(),
-                    listBlesDB.get(i).getPrix(),
-                    12
-            ));
+            list.add(new ProduitCell(listBlesDB.get(i)));
         }
         
         ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);

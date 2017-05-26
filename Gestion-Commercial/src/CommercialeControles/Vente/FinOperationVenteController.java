@@ -163,12 +163,12 @@ public class FinOperationVenteController implements Initializable {
     }
 
     public static void setmontantFacture() {
-        float prix = 0;
+        double prix = 0;
         System.out.println("" + OperationVenteController.produitselected.size());
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
             prix = (OperationVenteController.produitselected.get(i).getProduit().getPrix() * OperationVenteController.produitselected.get(i).getQuantite()) + prix;
         }
-        montant_static.setText(Float.toString(prix));
+        montant_static.setText(Double.toString(prix));
         calculeMontantFinal();
     }
 

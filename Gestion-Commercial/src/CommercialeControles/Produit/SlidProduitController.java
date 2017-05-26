@@ -79,7 +79,7 @@ public class SlidProduitController implements Initializable {
             ProduitCell produit = liste.getItems().get(index);
 
             ModifierProduitController produitController = loader.getController();
-            produitController.setData(produit.getNom(), produit.getCategorie(), produit.getQuantite(), produit.getPrix());
+            produitController.setData(produit.getProduit());
 
             AnchorPane pane = loader.getRoot();
 

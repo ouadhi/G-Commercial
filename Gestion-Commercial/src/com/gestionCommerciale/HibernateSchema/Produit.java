@@ -1,8 +1,6 @@
 package com.gestionCommerciale.HibernateSchema;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,12 +26,16 @@ public class Produit {
     int idProduit;
     @Column(name = "nom", nullable = false)
     String nom;
+    @Column(name = "code_produit", nullable = false,unique = true)
+    String codeProduit;
     @Column(name = "Category", nullable = false)
     String category;
     @Column(name = "quantite", nullable = false)
     int quantite;
+    @Column(name = "have_tva", nullable = false)
+    boolean haveTva;
     @Column(name = "prix", nullable = false)
-    float prix;
+    double prix;
         @Column(name = "deleted", nullable = false)
     boolean deleted;
 
@@ -48,11 +47,13 @@ public class Produit {
 
     }
 
-    public Produit(String nom,String category, int quantite, float prix) {
+    public Produit(String codeProduit, String nom,String category, int quantite, double prix,boolean haveTva) {
+        this.codeProduit = codeProduit;
         this.nom = nom;
         this.quantite = quantite;
         this.prix = prix;
         this.category = category;
+        this.haveTva = haveTva;
     }
 
     public int getIdProduit() {
@@ -71,7 +72,7 @@ public class Produit {
         return quantite;
     }
 
-    public float getPrix() {
+    public double getPrix() {
         return prix;
     }
 
@@ -83,7 +84,7 @@ public class Produit {
         this.quantite = quantite;
     }
 
-    public void setPrix(float prix) {
+    public void setPrix(Double prix) {
         this.prix = prix;
     }
 

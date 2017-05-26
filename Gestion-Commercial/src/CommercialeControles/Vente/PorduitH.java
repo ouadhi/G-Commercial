@@ -121,7 +121,7 @@ public class PorduitH extends GridPane{
         GridPane.setRowIndex(label0, 1);
         label0.setAlignment(javafx.geometry.Pos.CENTER);
         label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label0.setText(Float.toString(this.produit.getPrix()));
+        label0.setText(Double.toString(this.produit.getPrix()));
         label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label0.setFont(new Font(15.0));
         GridPane.setMargin(label0, new Insets(0.0, 0.0, 31.0, 0.0));
