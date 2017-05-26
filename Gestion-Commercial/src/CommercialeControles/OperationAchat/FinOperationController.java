@@ -6,6 +6,7 @@ import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Achat;
 import com.gestionCommerciale.HibernateSchema.Annee;
 import com.gestionCommerciale.Models.AchatQueries;
+import com.gestionCommerciale.Models.AnneeQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -290,6 +291,7 @@ public class FinOperationController implements Initializable {
         achat.setChauffeur(chauffeur.getChauffeur());
         achat.setDock(dock.getDock());
         achat.setBle(ble.getBle());
+        achat.setAnnee(AnneeQueries.getSelected());
         Date dd = java.sql.Date.valueOf(this.date.getValue());
         achat.setDateAcqt(dd);
         AchatQueries bq = new AchatQueries();

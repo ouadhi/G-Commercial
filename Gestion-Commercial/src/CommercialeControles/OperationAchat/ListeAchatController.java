@@ -47,12 +47,11 @@ public class ListeAchatController implements Initializable {
     private JFXListView<AchatCell> listeAchats;
     @FXML
     private JFXTextField rechreche;
-    private AchatQueries achatQueries = new AchatQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<Achat> achatList = achatQueries.list2();
+        List<Achat> achatList = AchatQueries.list();
 
         List<AchatCell> list = new ArrayList<>();
         for (int i = 0; i < achatList.size(); i++) {
