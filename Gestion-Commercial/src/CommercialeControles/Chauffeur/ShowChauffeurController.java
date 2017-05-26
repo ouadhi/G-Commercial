@@ -81,15 +81,13 @@ public class ShowChauffeurController implements Initializable {
             loader.load();
 
             ChauffeurCell chauffeurCell = liste.getItems().get(id);
+            chauffeur = chauffeurCell.getChauffeur();
 
             ModificationChauffeurController modification = loader.getController();
             //modification.setData(chauffeur.nom, "112", chauffeur.telephone, chauffeur.voyage);
             try{
                 
-            ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
-            chauffeur=chauffeurQueries.getChauffeur(chauffeurCell.nom);
-            modification.setData(chauffeur.getNomChauffeur(), chauffeur.getPrenomChauffeur()
-                    ,String.valueOf(chauffeur.getId()) ,chauffeur.getTelephone() , chauffeur.getType());
+            modification.setData(chauffeurCell.getChauffeur());
             }catch(Exception ex){
                 
                 ex.printStackTrace();

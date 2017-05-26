@@ -28,13 +28,11 @@ public class EditChauffeurDialog extends Stage {
 
             ModificationChauffeurController  modification  = loader.getController();
             //modification.setData(box.nom, "112", box.telephone, box.voyage);
+            //back
             System.out.println("this is editchauffeurdialog edit");
-            ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
-            Chauffeur chauffeur=chauffeurQueries.getChauffeur(box.nom);
-            ShowChauffeurController.setChauffeur(chauffeur);
+            ShowChauffeurController.setChauffeur(box.getChauffeur());
 
-            modification.setData(chauffeur.getNomChauffeur(), chauffeur.getPrenomChauffeur()
-                    ,String.valueOf(chauffeur.getId()) ,chauffeur.getTelephone() , chauffeur.getType());
+            modification.setData(box.getChauffeur());
             AnchorPane pane  = loader.getRoot();
 
            

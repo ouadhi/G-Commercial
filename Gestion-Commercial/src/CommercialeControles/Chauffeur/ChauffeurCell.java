@@ -24,11 +24,7 @@ import javafx.stage.Stage;
 
 public class ChauffeurCell extends GridPane {
 
-    public String nom;
-    public String telephone;
-    public String camion;
-    public String voyage;
-
+    Chauffeur chauffeur;
     protected final ColumnConstraints columnConstraints;
     protected final ColumnConstraints columnConstraints0;
     protected final ColumnConstraints columnConstraints1;
@@ -43,16 +39,11 @@ public class ChauffeurCell extends GridPane {
     public JFXPopup popup;
     JFXButton bttn;
 
-    ChauffeurQueries chauffeurQueries = new ChauffeurQueries();
-
-    public ChauffeurCell(String nom, String telephone, String camion, String voyage) {
-        this.nom = nom;
-        this.telephone = telephone;
-        this.camion = camion;
-        this.voyage = voyage;
+    public ChauffeurCell(Chauffeur chauffeur) {
+        this.chauffeur = chauffeur;
         this.popup = new JFXPopup();
-
-        Label nomLabl = new Label(this.nom);
+        //back
+        Label nomLabl = new Label(this.chauffeur.getNomChauffeur());
         nomLabl.setAlignment(Pos.CENTER_LEFT);
         Image img = new Image(getClass().getResourceAsStream("/icons/man.png"));
         ImageView icon = new ImageView(img);
@@ -127,13 +118,13 @@ public class ChauffeurCell extends GridPane {
         nomLabl.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(this.telephone);
+        label1.setText(this.chauffeur.getTelephone());
         label1.setFont(new Font(17.0));
-
+        //back voyage
         GridPane.setColumnIndex(label2, 3);
         label2.setLayoutX(333.0);
         label2.setLayoutY(35.0);
-        label2.setText(this.voyage);
+        label2.setText("0");
         label2.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(bttn, 4);
@@ -184,8 +175,7 @@ public class ChauffeurCell extends GridPane {
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
                 //get cell info
-                Chauffeur chauffeur = chauffeurQueries.getChauffeur(this.nom);
-                chauffeurQueries.deleteChauffeur(chauffeur);
+                ChauffeurQueries.archive(chauffeur);
                 new ShowPane().showChauffeur();
                 Notification.Deletenotification();
             }
@@ -193,5 +183,11 @@ public class ChauffeurCell extends GridPane {
         });
 
     }
+
+    public Chauffeur getChauffeur() {
+        return chauffeur;
+    }
+    
+    
 
 }

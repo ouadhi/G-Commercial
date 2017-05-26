@@ -54,8 +54,7 @@ public class AjouterChauffeurViewController implements Initializable {
     
     
     public ArrayList<Camion> camions_Chauffeur   = new ArrayList<>()  ; 
-    ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
-    
+   
     @FXML
     private JFXComboBox<String> camionbox;
    
@@ -80,14 +79,14 @@ public class AjouterChauffeurViewController implements Initializable {
 
             Notification.champVideNotification();
         } else {
-            if(chauffeurQueries.getChauffeur(prenom+" "+nom)!=null){
+            if(ChauffeurQueries.getChauffeurByNomPrenom(nom,prenom)!=null){
                 
                  Notification.error("Ce chauffeur exist deja");
             }else{
             
             try{
                 Chauffeur chauffeur = new Chauffeur(nom, prenom, tel, type);
-                chauffeurQueries.saveOrUpdate(chauffeur);
+                ChauffeurQueries.SaveOrUpdate(chauffeur);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

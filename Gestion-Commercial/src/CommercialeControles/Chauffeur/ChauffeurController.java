@@ -52,19 +52,15 @@ public class ChauffeurController implements Initializable {
     @FXML
     private JFXTextField recherchetxt;
     
-    private ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<Chauffeur> listChauffeursDB= chauffeurQueries.chauffeursList();
+        List<Chauffeur> listChauffeursDB= ChauffeurQueries.list();
         List<ChauffeurCell> list = new ArrayList<>();
         for (int i = 0; i < listChauffeursDB.size(); i++) {
-            list.add(new ChauffeurCell(listChauffeursDB.get(i).getPrenomChauffeur()+" "+listChauffeursDB.get(i).getNomChauffeur()
-                    , listChauffeursDB.get(i).getTelephone()
-                    , ""
-                    , "13"));
+            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
             
         }
 

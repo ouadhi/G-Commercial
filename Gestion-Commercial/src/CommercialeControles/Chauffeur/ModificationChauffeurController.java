@@ -54,10 +54,9 @@ public class ModificationChauffeurController implements Initializable {
     private ImageView close;
     
     public ArrayList<Camion> camions_Chauffeur   = new ArrayList<>()  ; 
-    private ChauffeurQueries chauffeurQueries= new ChauffeurQueries();
     @FXML
     private JFXComboBox<String> camionbox;
-
+    private Chauffeur chauffeur;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -83,7 +82,7 @@ public class ModificationChauffeurController implements Initializable {
                 chauffeur.setTelephone(tel);
                 chauffeur.setType(type);
 
-                chauffeurQueries.saveOrUpdate(chauffeur);
+                ChauffeurQueries.SaveOrUpdate(chauffeur);
                 Notification.Updatenotification();
                 new ShowPane().showChauffeur();
                 savelabel.setVisible(true);
@@ -100,13 +99,14 @@ public class ModificationChauffeurController implements Initializable {
 
     }
 
-    public void setData(String nom,String prenom, String codeCh, String tel, String type) {
+    public void setData(Chauffeur chauffeur) {
 
-        nomchauffeur.setText(nom);
-        prenomchauffeur.setText(prenom);
-        codechauffeur.setText(codeCh);
-        telchauffeur.setText(tel);
-        typechauffeur.setText(type);
+        nomchauffeur.setText(chauffeur.getNomChauffeur());
+        prenomchauffeur.setText(chauffeur.getPrenomChauffeur());
+        codechauffeur.setText(chauffeur.getId()+"");
+        telchauffeur.setText(chauffeur.getTelephone());
+        typechauffeur.setText(chauffeur.getType());
+        this.chauffeur=chauffeur;
     }
 
     @FXML
