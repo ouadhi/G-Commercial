@@ -48,8 +48,8 @@ public class AjouterBleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyInteger(quntite, 16);
-        Methode.setOnlyFloat(prix, 16);
+        Methode.setOnlyDouble(quntite, 16);
+        Methode.setOnlyDouble(prix, 16);
     }
 
     @FXML
@@ -70,7 +70,7 @@ public class AjouterBleController implements Initializable {
                 Notification.error("Ce ble exite déja!");
             } else {
                 try {
-                    Ble ble = new Ble(codeval, Integer.parseInt(quantiteval), Double.parseDouble(prixval));
+                    Ble ble = new Ble(codeval, Double.parseDouble(quantiteval), Double.parseDouble(prixval));
                     if (!BleQueries.SaveOrUpdate(ble)) {
                         Notification.error("Erreur!");
 

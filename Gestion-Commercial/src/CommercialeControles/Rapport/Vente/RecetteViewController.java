@@ -30,7 +30,7 @@ public class RecetteViewController implements Initializable {
             banque.getItems().add("Banque"+i) ; 
         }
         
-        Methode.setOnlyFloat(versement, 10);
+        Methode.setOnlyDouble(versement, 10);
         
     }    
 

@@ -42,7 +42,7 @@ public class AjouterProduitController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyInteger(quantite, 9);
-        Methode.setOnlyFloat(prix, 16);
+        Methode.setOnlyDouble(prix, 16);
     }
 
     @FXML

@@ -72,7 +72,7 @@ public class AjouterPayementController implements Initializable {
         
         datepayment.setTime(LocalTime.now());
         
-        Methode.setOnlyFloat(montont, 8);
+        Methode.setOnlyDouble(montont, 8);
     }
     
     private void AfficheListePayement() {

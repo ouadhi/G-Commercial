@@ -93,9 +93,9 @@ public class FinOperationController implements Initializable {
         Methode.setOnlyInteger(numero, 10);
         Methode.setOnlyInteger(numeroBon, 10);
         Methode.setOnlyInteger(numerotickit, 10);
-        Methode.setOnlyFloat(diff, 10);
-        Methode.setOnlyFloat(Q_Acquit, 10);
-        Methode.setOnlyFloat(Q_fournie, 10);
+        Methode.setOnlyDouble(diff, 10);
+        Methode.setOnlyDouble(Q_Acquit, 10);
+        Methode.setOnlyDouble(Q_fournie, 10);
         date.setValue(LocalDate.now());
         diff.setEditable(false);
         

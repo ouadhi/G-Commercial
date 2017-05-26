@@ -84,7 +84,7 @@ public class ModifierPaymentController implements Initializable {
 
         datepayment.setTime(LocalTime.now());
 
-        Methode.setOnlyFloat(montont, 8);
+        Methode.setOnlyDouble(montont, 8);
 
     }
 

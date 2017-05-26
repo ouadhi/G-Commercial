@@ -45,12 +45,11 @@ public class VenteListController implements Initializable {
     private JFXButton ajouter;
     @FXML
     private JFXListView<VenteCell> listevente;
-    private FactureQueries factureQueries = new FactureQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<Facture> factureList = factureQueries.list();
+        List<Facture> factureList = FactureQueries.list();
         List<VenteCell> list = new ArrayList<>();
         for (int i = 0; i < factureList.size(); i++) {
             list.add(new VenteCell(factureList.get(i)));            

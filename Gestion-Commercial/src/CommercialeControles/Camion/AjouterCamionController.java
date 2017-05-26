@@ -47,7 +47,7 @@ public class AjouterCamionController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyFloat(poisCamion, 5);
+        Methode.setOnlyDouble(poisCamion, 5);
         
     }    
 

@@ -77,11 +77,11 @@ public class FinOperationVenteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyFloat(montant, 10);
-        Methode.setOnlyFloat(montantFinal, 10);
-        Methode.setOnlyFloat(solde, 10);
-        Methode.setOnlyFloat(versement, 10);
-        Methode.setOnlyFloat(reste, 10);
+        Methode.setOnlyDouble(montant, 10);
+        Methode.setOnlyDouble(montantFinal, 10);
+        Methode.setOnlyDouble(solde, 10);
+        Methode.setOnlyDouble(versement, 10);
+        Methode.setOnlyDouble(reste, 10);
         versement.setText("0.00");
         dateOperation.setValue(LocalDate.now());
         montant_static = montant;

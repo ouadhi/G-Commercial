@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package CommercialeControles.Ble;
 
 import UIControle.Methode;
@@ -46,14 +41,13 @@ public class ModifierBleController implements Initializable {
     private JFXTextField prix;
     @FXML
     private Label savelabel;
-    //old id
     Ble ble;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        Methode.setOnlyNumbre(quntite);
-        Methode.setOnlyNumbre(prix);
+        Methode.setOnlyDouble(quntite,16);
+        Methode.setOnlyDouble(prix,16);
 
     }
 
@@ -82,15 +76,17 @@ public class ModifierBleController implements Initializable {
                 //back
                 ble.setCodeBle((codeval));
                 ble.setPrix(Double.parseDouble(prixval));
-                ble.setQte(Integer.parseInt(quantiteval));
-                //if(BleQueries.get)
-                if (BleQueries.SaveOrUpdate(ble)) {
+                ble.setQte(Double.parseDouble(quantiteval));
+                Ble ble2 = BleQueries.getBleByCode(codeval);
+                if (ble2 != null && ble2.getIdBle()!=ble.getIdBle() ) {
+                    Notification.error("Ce code existe déja, utilisé un autre");
+                }else if (BleQueries.SaveOrUpdate(ble)) {
                     Notification.Updatenotification();
                     savelabel.setVisible(true);
                     annuler(event);
                     closestage(event);
                     new ShowPane().showBle();
-                }else{
+                } else {
                     Notification.error("Erreur!");
                 }
 
@@ -121,14 +117,4 @@ public class ModifierBleController implements Initializable {
         this.quntite.setText(Double.toString(ble.getQte()));
 
     }
-//    public void setData(int code, float quantite, double prix) {
-//
-//        this.code.setText(Integer.toString(code));
-//        this.prix.setText(Double.toString(prix));
-//        this.quntite.setText(Float.toString(quantite));
-//        oldCode=code;
-//        
-//
-//    }
-
 }

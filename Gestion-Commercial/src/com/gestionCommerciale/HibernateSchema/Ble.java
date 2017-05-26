@@ -42,7 +42,7 @@ public class Ble {
     public Ble() {
     }
 
-    public Ble(String codeBle, int qte, double prix) {
+    public Ble(String codeBle, double qte, double prix) {
         this.codeBle = codeBle;
         this.qte = qte;
         this.prix = prix;
@@ -60,7 +60,7 @@ public class Ble {
         return qte;
     }
 
-    public void setQte(int qte) {
+    public void setQte(double qte) {
         this.qte = qte;
     }
 
