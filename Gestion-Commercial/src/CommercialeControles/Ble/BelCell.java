@@ -7,6 +7,7 @@ import UIControle.Notification;
 import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.Models.BleQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
@@ -29,10 +30,11 @@ import javafx.scene.text.Font;
 
 public class BelCell  extends GridPane{
     
-    private int code  ; 
-    private float quantite ;  
-    private double  prix  ;  
-    
+//    private String code  ; 
+//    private int id  ; 
+//    private float quantite ;  
+//    private double  prix  ;  
+    private Ble ble;
     private JFXPopup popup;
     private JFXButton bttn;
     
@@ -45,11 +47,12 @@ public class BelCell  extends GridPane{
     protected final Label label0;
     protected final Label label1;
 
-    public BelCell(int code, float quantite, double prix) {
-        this.code = code;
-        this.quantite = quantite;
-        this.prix = prix;
-        
+    public BelCell(Ble ble) {
+//        this.id = id;
+//        this.code = code;
+//        this.quantite = quantite;
+//        this.prix = prix;
+        this.ble = ble;
         popup = new JFXPopup(); 
 
         columnConstraints = new ColumnConstraints();
@@ -104,15 +107,15 @@ public class BelCell  extends GridPane{
         rowConstraints.setPrefHeight(30.0);
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        label.setText(Integer.toString(code));
+        label.setText(ble.getCodeBle());
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);
-        label0.setText(Float.toString(quantite));
+        label0.setText(Double.toString(ble.getQte()));
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(Double.toString(prix));
+        label1.setText(Double.toString(ble.getPrix()));
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(bttn, 3);
@@ -140,31 +143,35 @@ public class BelCell  extends GridPane{
         });
         
     }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public float getQuantite() {
-        return quantite;
-    }
-
-    public void setQuantite(float quantite) {
-        this.quantite = quantite;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
     
+    public Ble getBle(){
+    return ble;
+    }
+//
+//    public String getCode() {
+//        return code;
+//    }
+//
+//    public void setCode(String code) {
+//        this.code = code;
+//    }
+//
+//    public float getQuantite() {
+//        return quantite;
+//    }
+//
+//    public void setQuantite(float quantite) {
+//        this.quantite = quantite;
+//    }
+//
+//    public double getPrix() {
+//        return prix;
+//    }
+//
+//    public void setPrix(double prix) {
+//        this.prix = prix;
+//    }
+//    
     
     public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
@@ -187,7 +194,7 @@ public class BelCell  extends GridPane{
                 loader.load();
                 
                 ModifierBleController Modifier =  loader.getController() ;
-                Modifier.setData(code, quantite, prix);
+                Modifier.setData(ble);
                 
                 AnchorPane root = loader.getRoot();
                 
@@ -209,8 +216,7 @@ public class BelCell  extends GridPane{
                 
                 // requete DELETE from client  Where  id.client  =  codeclient 
                 
-                BleQueries q = new BleQueries();
-                q.delete(q.getBle(code));
+                BleQueries.delete(ble);
                 Notification.Deletenotification();
                  new ShowPane().showBle();
             }

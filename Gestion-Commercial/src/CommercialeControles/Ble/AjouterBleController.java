@@ -41,7 +41,6 @@ public class AjouterBleController implements Initializable {
     private JFXTextField prix;
     @FXML
     private Label savelabel;
-    BleQueries queries = new BleQueries();
     Label total;
 
     JFXListView<BelCell> listeBle = null;
@@ -67,20 +66,24 @@ public class AjouterBleController implements Initializable {
         if (codeval.isEmpty() || quantiteval.isEmpty() || prixval.isEmpty()) {
             Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
-            if (queries.getBle(Integer.parseInt(codeval)) != null) {
-                //notification for already exists
+            if (BleQueries.getBleByCode(codeval) != null) {
                 Notification.error("Ce ble exite déja!");
             } else {
                 try {
                     Ble ble = new Ble(codeval, Integer.parseInt(quantiteval), Double.parseDouble(prixval));
-                    queries.SaveOrUpdate(ble);
-                    Notification.Addnotification();
-                    closestage(event);
-                    savelabel.setVisible(true);
-                    if (listeBle == null) {
-                        refresheH();
+                    if (!BleQueries.SaveOrUpdate(ble)) {
+                        Notification.error("Erreur!");
+
                     } else {
-                        refresheV();
+                        Notification.Addnotification();
+                        closestage(event);
+                        savelabel.setVisible(true);
+                        if (listeBle == null) {
+                            refresheH();
+                        } else {
+                            refresheV();
+                        }
+
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -107,12 +110,10 @@ public class AjouterBleController implements Initializable {
 
     public void refresheV() {
 
-        List<Ble> listBlesDB = queries.list();
+        List<Ble> listBlesDB = BleQueries.list();
         List<BelCell> list = new ArrayList<>();
         for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new BelCell(listBlesDB.get(i).getIdBle(),(float)listBlesDB.get(i).getQte(),
-                    listBlesDB.get(i).getPrix()
-            ));
+            list.add(new BelCell(listBlesDB.get(i)));
         }
         ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
         listeBle.setItems(myObservableList);
@@ -123,7 +124,7 @@ public class AjouterBleController implements Initializable {
 
     public void refresheH() {
         listeBleH.getItems().clear();
-        List<Ble> listBlesDB = queries.list();
+        List<Ble> listBlesDB = BleQueries.list();
         List<BleListeH> list = new ArrayList<>();
 
         for (int i = 0; i < listBlesDB.size(); i++) {

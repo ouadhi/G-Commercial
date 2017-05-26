@@ -50,18 +50,15 @@ public class BleListeController implements Initializable {
     private JFXTextField rechreche;
     @FXML
     private JFXListView<BelCell> listeBle;
-    private BleQueries dockQueries = new BleQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<Ble> listBlesDB = dockQueries.list();
+        List<Ble> listBlesDB = BleQueries.list();
 
         List<BelCell> list = new ArrayList<>();
         for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new BelCell(listBlesDB.get(i).getIdBle(),(float) listBlesDB.get(i).getQte(),
-                    listBlesDB.get(i).getPrix()
-            ));
+            list.add(new BelCell(listBlesDB.get(i)));
         }
 
         ObservableList<BelCell> myObservableList = FXCollections.observableList(list);

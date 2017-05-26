@@ -47,7 +47,7 @@ public class ModifierBleController implements Initializable {
     @FXML
     private Label savelabel;
     //old id
-    int oldCode;
+    Ble ble;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -79,25 +79,22 @@ public class ModifierBleController implements Initializable {
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
 
             if (result.get() == ButtonType.OK) {
-                
-                    BleQueries queries = new BleQueries();
-                    Ble ble = queries.getBle(oldCode);
-                    ble.setIdBle(Integer.parseInt(codeval));
-                    ble.setPrix(Double.parseDouble(prixval));
-                    ble.setQte(Integer.parseInt(quantiteval));
-                    queries.SaveOrUpdate(ble);
+                //back
+                ble.setCodeBle((codeval));
+                ble.setPrix(Double.parseDouble(prixval));
+                ble.setQte(Integer.parseInt(quantiteval));
+                //if(BleQueries.get)
+                if (BleQueries.SaveOrUpdate(ble)) {
                     Notification.Updatenotification();
-                    
                     savelabel.setVisible(true);
-                 
                     annuler(event);
                     closestage(event);
                     new ShowPane().showBle();
-                
+                }else{
+                    Notification.error("Erreur!");
+                }
+
                 // requete `Update
-
-               
-
             }
 
         }
@@ -109,20 +106,29 @@ public class ModifierBleController implements Initializable {
 
         Methode.getStage(event).close();
     }
+
     private void annuler(ActionEvent event) {
         Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
         g.close();
 
     }
 
-    public void setData(int code, float quantite, double prix) {
+    public void setData(Ble ble) {
 
-        this.code.setText(Integer.toString(code));
-        this.prix.setText(Double.toString(prix));
-        this.quntite.setText(Float.toString(quantite));
-        oldCode=code;
-        
+        this.ble = ble;
+        this.code.setText(ble.getCodeBle());
+        this.prix.setText(Double.toString(ble.getPrix()));
+        this.quntite.setText(Double.toString(ble.getQte()));
 
     }
+//    public void setData(int code, float quantite, double prix) {
+//
+//        this.code.setText(Integer.toString(code));
+//        this.prix.setText(Double.toString(prix));
+//        this.quntite.setText(Float.toString(quantite));
+//        oldCode=code;
+//        
+//
+//    }
 
 }

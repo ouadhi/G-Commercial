@@ -89,12 +89,12 @@ public class DockQueries {
         }
         return list;
     }
-    public static Dock getDock(String id) {
+    public static Dock getDockById(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         Dock d;
         try {
-            d = (Dock) session.createQuery("from Dock where id='" + id + "'").uniqueResult();
+            d = (Dock) session.createQuery("from Dock where id_dock='" + id + "'").uniqueResult();
         } finally {
             session.close();
         }

@@ -39,7 +39,7 @@ public class ModifierDockController implements Initializable {
     private JFXButton cancelbttn;
     @FXML
     private Label savelabel;
-        private String id;
+        private int id;
 
 
     @Override
@@ -67,13 +67,12 @@ public class ModifierDockController implements Initializable {
                     Notification.notif(NotificationType.ERROR,"Vérification", "Vérifier que tout les champs sont remplis!");
 
                 } else {
-                    DockQueries dq = new DockQueries();
-                    Dock dock = dq.getDock(id);
+                    Dock dock = DockQueries.getDockById(id);
                     dock.setNom(nom);
                     dock.setWilaya(wilaya);
                     dock.setPrixUnitTrans(Double.parseDouble(prix));
                     dock.setDistance(Float.parseFloat(distance));
-                    dq.SaveOrUpdate(dock);
+                    DockQueries.SaveOrUpdate(dock);
                     
                     Notification.Updatenotification();
                     new ShowPane().showDock();
@@ -101,7 +100,7 @@ public class ModifierDockController implements Initializable {
         currentStage.close();
     }
 
-    public void setData(String id,String nom, String wilaya, String distance, String prix) {
+    public void setData(int id,String nom, String wilaya, String distance, String prix) {
 
         this.nom.setText(nom);
         this.wilaya.setText(wilaya);

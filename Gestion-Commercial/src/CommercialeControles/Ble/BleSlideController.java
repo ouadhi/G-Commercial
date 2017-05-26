@@ -80,7 +80,7 @@ public class BleSlideController implements Initializable {
             BelCell ble = liste.getItems().get(index);
 
             ModifierBleController Modifier =  loader.getController() ;
-            Modifier.setData(ble.getCode(), ble.getQuantite(), ble.getPrix());
+            Modifier.setData(ble.getBle());
 
             AnchorPane pane = loader.getRoot();
 

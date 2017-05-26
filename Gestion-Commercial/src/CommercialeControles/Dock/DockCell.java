@@ -243,7 +243,7 @@ public class DockCell  extends GridPane{
                 loader.load();
                 
                 ModifierDockController ModifierDock =  loader.getController() ;
-                ModifierDock.setData( Integer.toString(this.code), nom, wilaya, Double.toString(distance), Double.toString(prix));
+                ModifierDock.setData( code, nom, wilaya, Double.toString(distance), Double.toString(prix));
                 
                 AnchorPane root = loader.getRoot();
                 
@@ -262,7 +262,7 @@ public class DockCell  extends GridPane{
             if (result.get() == ButtonType.OK) {
                 
                 // requete DELETE from client  Where  id.client  =  codeclient 
-                DockQueries.archive(DockQueries.getDock(code + ""));
+                DockQueries.archive(DockQueries.getDockById(code));
                 Notification.Deletenotification();
                 new  ShowPane().showDock();
             }
