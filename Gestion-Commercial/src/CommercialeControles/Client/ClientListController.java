@@ -53,12 +53,11 @@ public class ClientListController implements Initializable {
     @FXML
     private MenuItem byregistre;
 
-    private ClientQueries clientQueries = new ClientQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<Client> listClientsDB = clientQueries.list();
+        List<Client> listClientsDB = ClientQueries.list();
 
         List<ClienCell> list = new ArrayList<>();
         for (int i = 0; i < listClientsDB.size(); i++) {

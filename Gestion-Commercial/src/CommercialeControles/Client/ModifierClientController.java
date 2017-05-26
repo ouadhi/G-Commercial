@@ -50,7 +50,7 @@ public class ModifierClientController implements Initializable {
     private JFXButton annuler;
     @FXML
     private Label savelabel;
-    private String id;
+    private Client client;
     @FXML
     private JFXTextField Solde;
 
@@ -81,8 +81,6 @@ public class ModifierClientController implements Initializable {
                 Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
             } else {
                 Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-                ClientQueries cq = new ClientQueries();
-                Client client = cq.getClient(id);
                 client.setName(nom);
                 client.setPrenom(prenom);
                 client.setNumArticle(NA);
@@ -91,7 +89,7 @@ public class ModifierClientController implements Initializable {
                 client.setTypeActivity(activite);
                 client.setnCarteFiscale(Ncarte);
                 client.setDateDepotDossier(dateDepotDossier);
-                cq.SaveOrUpdate(client);
+                ClientQueries.SaveOrUpdate(client);
 
                 Notification.Updatenotification();
                 new ShowPane().showClient();
@@ -118,11 +116,10 @@ public class ModifierClientController implements Initializable {
         currentSatge.close();
     }
 
-    public void SetData(int id) {
+    public void SetData(Client client) {
 
         // requete sql pour remplir  les  champs  vide  
-        ClientQueries cq = new ClientQueries();
-        Client client = cq.getClient(id + "");
+        this.client=client;
         nomtxt.setText(client.getName());
         prenomtxt.setText(client.getPrenom());
         activitetxt.setText(client.getTypeActivity());
@@ -132,7 +129,6 @@ public class ModifierClientController implements Initializable {
         NRtxt.setText(client.getNumRegCom());
         NCarteF.setText(client.getnCarteFiscale());
         datedept.setValue(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(client.getDateDepotDossier())));
-        this.id = id + "";
 
     }
 

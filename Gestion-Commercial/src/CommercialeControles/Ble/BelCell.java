@@ -216,7 +216,7 @@ public class BelCell  extends GridPane{
                 
                 // requete DELETE from client  Where  id.client  =  codeclient 
                 
-                BleQueries.delete(ble);
+                BleQueries.archive(ble);
                 Notification.Deletenotification();
                  new ShowPane().showBle();
             }

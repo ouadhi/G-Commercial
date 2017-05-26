@@ -46,7 +46,6 @@ public class AjouterClientController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
-    ClientQueries clientQueries = new ClientQueries();
     @FXML
     private JFXTextField Solde;
 
@@ -76,14 +75,14 @@ public class AjouterClientController implements Initializable {
             
             Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
             
-            if (clientQueries.getClientByRegistre(NR) != null) {
+            if (ClientQueries.getClientByRegistre(NR) != null) {
                 //notification for already exists
                 Notification.error("Ce client est exite déja!");
             } else {
                 // add to database
                 try {
                     Client client = new Client(nom, prenom, NR, NA, adresse, activite, dateDepotDossier,Ncarte);
-                    clientQueries.SaveOrUpdate(client);
+                    ClientQueries.SaveOrUpdate(client);
                     Notification.Addnotification();
                     new ShowPane().showClient();
                     savelabel.setVisible(true);

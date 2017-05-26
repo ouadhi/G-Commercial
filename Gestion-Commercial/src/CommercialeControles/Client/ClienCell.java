@@ -192,7 +192,7 @@ public class ClienCell extends GridPane {
                 loader.load();
                 
                 ModifierClientController controlClient =  loader.getController() ;
-                controlClient.SetData(this.client.getId());
+                controlClient.SetData(this.client);
                 
                 AnchorPane root = loader.getRoot();
                 
@@ -209,11 +209,11 @@ public class ClienCell extends GridPane {
 
         
         supprimer.setOnAction(event -> {
+            //back
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
                 // requete DELETE from client  Where  id.client  =  codeclient 
-                ClientQueries cq = new ClientQueries();
-                cq.delete(cq.getClient(this.client.getId() + ""));
+                ClientQueries.archive(ClientQueries.getClientById(this.client.getId()));
                 Notification.Deletenotification();
                 new ShowPane().showClient();
             }

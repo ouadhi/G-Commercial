@@ -31,7 +31,7 @@ public class Ble {
     double qte;
     @Column(name = "prix", nullable = false)
     double prix;
-    @Column(name = "code_ble", nullable = false)
+    @Column(name = "code_ble", nullable = false,unique=true)
     String codeBle;
     @OneToMany(targetEntity=Achat.class, mappedBy="ble"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
