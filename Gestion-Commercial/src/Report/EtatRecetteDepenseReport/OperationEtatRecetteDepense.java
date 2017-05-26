@@ -35,18 +35,17 @@ public class OperationEtatRecetteDepense {
 
     }
 
-    public void putReportInfo(String date, String montantTotal, String depenseTotal,
-             List<String> nums, List<String> clients, List<String> montants,
-             List<String> depenses, List<String> soldes) {
-        //patient info is the first to be written
+    public void putReportInfo(String date, String montantTotal, String depenseTotal, String banque
+            , String reste, List<String> nums, List<String> clients, List<String> montants
+            , List<String> depenses, List<String> soldes) {
 
-        EtatRecetteDepenseBean beanInfo = new EtatRecetteDepenseBean(date, montantTotal, depenseTotal,
-                 nums, clients, montants,
-                 depenses, soldes);
+        EtatRecetteDepenseBean beanInfo = new EtatRecetteDepenseBean( date,  montantTotal,  depenseTotal,  banque
+            ,  reste, nums,  clients,  montants
+            ,  depenses,  soldes);
         collBean.add(beanInfo);
     }
 
-    public void printReport(String fileName) {
+    public void printReport() {
         try {
             Map<String, Object> params = new HashMap<String, Object>();
             JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();

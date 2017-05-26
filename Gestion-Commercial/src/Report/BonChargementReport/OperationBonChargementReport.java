@@ -44,7 +44,7 @@ public class OperationBonChargementReport {
         collBean.add(beanInfo);
     }
 
-    public void printReport(String fileName) {
+    public void printReport() {
         try {
             Map<String, Object> params = new HashMap<String, Object>();
             JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();

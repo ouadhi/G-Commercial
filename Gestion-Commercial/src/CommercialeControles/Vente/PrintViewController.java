@@ -1,5 +1,6 @@
 package CommercialeControles.Vente;
 
+import Report.BonChargementReport.GenerateBonChargementReport;
 import Report.BonLivraisonReport.GenerateBonLivraisonReport;
 import Report.FactureReport.GenerateFactureReport;
 import UIControle.Methode;
@@ -78,13 +79,8 @@ public class PrintViewController implements Initializable {
         }
 
         if (chregement.isSelected()) {
-
-        }
-
-        if (livraison.isSelected()) {
             try {
-                GenerateBonLivraisonReport generateBonLivraisonReport= new GenerateBonLivraisonReport();
-                
+                GenerateBonChargementReport generateBonChargementReport = new GenerateBonChargementReport();
 
                 //get list produits, qte 
                 List<String> designationsVente = new ArrayList<>();
@@ -93,18 +89,39 @@ public class PrintViewController implements Initializable {
                     designationsVente.add(factureimp.getQtes().get(i).getProduit().getNom());
                     qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
                 }
-                
-                //back
-//               generateBonLivraisonReport.generateReport(
-//                        factureimp.getClient().getName() + factureimp.getClient().getPrenom(),
-//                        String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient()
-//                        , factureimp.getClient().getNumRegCom(),
-//                        factureimp.getClient().getnCarteFiscale(), new Date().toString(),
-//                        String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle()
-//                        , String.valueOf(factureimp.getMontant())
-//                        ,factureimp.getChauffeur().getNomChauffeur()+" "+factureimp.getChauffeur().getPrenomChauffeur()
-//                        , factureimp.getCamion().getMatricule(), designationsVente,
-//                        qtesVente);
+
+                generateBonChargementReport.generateReport(
+                        factureimp.getClient().getName() + factureimp.getClient().getPrenom(),
+                        String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient(),
+                        new Date().toString(),
+                        String.valueOf(factureimp.getIdFacture()), designationsVente, qtesVente);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+        }
+
+        if (livraison.isSelected()) {
+            try {
+                GenerateBonLivraisonReport generateBonLivraisonReport = new GenerateBonLivraisonReport();
+
+                //get list produits, qte 
+                List<String> designationsVente = new ArrayList<>();
+                List<String> qtesVente = new ArrayList<>();
+                for (int i = 0; i < factureimp.getQtes().size(); i++) {
+                    designationsVente.add(factureimp.getQtes().get(i).getProduit().getNom());
+                    qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
+                }
+                generateBonLivraisonReport.generateReport(
+                        factureimp.getClient().getName() + factureimp.getClient().getPrenom(),
+                        String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient(),
+                        factureimp.getClient().getNumRegCom(),
+                        factureimp.getClient().getnCarteFiscale(), new Date().toString(),
+                        String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(),
+                        factureimp.getChauffeur().getNomChauffeur() + " " + factureimp.getChauffeur().getPrenomChauffeur(),
+                        factureimp.getCamion().getMatricule(), designationsVente,
+                        qtesVente);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

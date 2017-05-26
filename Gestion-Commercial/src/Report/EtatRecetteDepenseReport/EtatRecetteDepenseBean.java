@@ -16,24 +16,46 @@ public class EtatRecetteDepenseBean {
     String date;
     String montantTotal;
     String depenseTotal;
+    String banque;
+    String reste;
     public List<String> nums;
     public List<String> clients;
     public List<String> montants;
     public List<String> depenses;
     public List<String> soldes;
 
-    public EtatRecetteDepenseBean(String date, String montantTotal, String depenseTotal,
-             List<String> nums, List<String> clients, List<String> montants,
-             List<String> depenses, List<String> soldes) {
+    public EtatRecetteDepenseBean(String date, String montantTotal, String depenseTotal, String banque
+            , String reste, List<String> nums, List<String> clients, List<String> montants
+            , List<String> depenses, List<String> soldes) {
         this.date = date;
         this.montantTotal = montantTotal;
         this.depenseTotal = depenseTotal;
+        this.banque = banque;
+        this.reste = reste;
         this.nums = nums;
         this.clients = clients;
         this.montants = montants;
         this.depenses = depenses;
         this.soldes = soldes;
     }
+
+    public String getBanque() {
+        return banque;
+    }
+
+    public void setBanque(String banque) {
+        this.banque = banque;
+    }
+
+    public String getReste() {
+        return reste;
+    }
+
+    public void setReste(String reste) {
+        this.reste = reste;
+    }
+
+   
 
     public String getDate() {
         return date;
