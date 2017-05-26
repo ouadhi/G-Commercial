@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gestionCommerciale.HibernateSchema;
 
 import java.util.List;
@@ -10,8 +5,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,7 +17,6 @@ import javax.persistence.Table;
     @Table(name = "Annee")
 public class Annee {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_annee", nullable = false)
     int idAnnee;
     @Column(name = "tva", nullable = false)
@@ -46,11 +38,11 @@ public class Annee {
     public Annee() {
     }
 
-    public Annee(int idAnnee, double tva, boolean deleted, boolean selected) {
+    public Annee(int idAnnee, double tva) {
         this.idAnnee = idAnnee;
         this.tva = tva;
-        this.deleted = deleted;
-        this.selected = selected;
+        this.deleted = false;
+        this.selected = false;
     }
 
     public int getIdAnnee() {

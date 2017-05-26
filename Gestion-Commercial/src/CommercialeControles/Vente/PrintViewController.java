@@ -93,16 +93,18 @@ public class PrintViewController implements Initializable {
                     designationsVente.add(factureimp.getQtes().get(i).getProduit().getNom());
                     qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
                 }
-               generateBonLivraisonReport.generateReport(
-                        factureimp.getClient().getName() + factureimp.getClient().getPrenom(),
-                        String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient()
-                        , factureimp.getClient().getNumRegCom(),
-                        factureimp.getClient().getnCarteFiscale(), new Date().toString(),
-                        String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle()
-                        , String.valueOf(factureimp.getMontant())
-                        ,factureimp.getChauffeur().getNomChauffeur()+" "+factureimp.getChauffeur().getPrenomChauffeur()
-                        , factureimp.getCamion().getMatricule(), designationsVente,
-                        qtesVente);
+                
+                //back
+//               generateBonLivraisonReport.generateReport(
+//                        factureimp.getClient().getName() + factureimp.getClient().getPrenom(),
+//                        String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient()
+//                        , factureimp.getClient().getNumRegCom(),
+//                        factureimp.getClient().getnCarteFiscale(), new Date().toString(),
+//                        String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle()
+//                        , String.valueOf(factureimp.getMontant())
+//                        ,factureimp.getChauffeur().getNomChauffeur()+" "+factureimp.getChauffeur().getPrenomChauffeur()
+//                        , factureimp.getCamion().getMatricule(), designationsVente,
+//                        qtesVente);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

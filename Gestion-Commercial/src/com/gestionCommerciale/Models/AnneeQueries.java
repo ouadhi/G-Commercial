@@ -3,9 +3,7 @@ package com.gestionCommerciale.Models;
 import com.gestionCommerciale.HibernateSchema.Annee;
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
 
 /**
  *
@@ -13,67 +11,117 @@ import org.hibernate.criterion.Projections;
  */
 public class AnneeQueries {
 
-    public static void SaveOrUpdate(Annee annee) {
+    public static boolean SaveOrUpdate(Annee annee) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
-
             session.beginTransaction();
             session.saveOrUpdate(annee);
             session.getTransaction().commit();
-
+        } catch (Exception e) {
+            return false;
         } finally {
             session.close();
+            return true;
         }
     }
 
-    public void delete(Annee annee) {
+    public static boolean archive(Annee annee) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
-
+            annee.setDeleted(true);
             session.beginTransaction();
-            session.delete(annee);
+            session.update(annee);
+            if (annee.isSelected()) {
+                select(maxId());
+            }
             session.getTransaction().commit();
-
+        } catch (Exception e) {
+            return false;
         } finally {
             session.close();
         }
+        return true;
     }
 
-    public List<Annee> list() {
+    public static boolean delete(Annee annee) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.delete(annee);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            return false;
+        } finally {
+            session.close();
+        }
+        return true;
+    }
+
+    public static List<Annee> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Annee> list = new ArrayList<>();
-        list = session.createQuery("from Annee").list();
-
+        try {
+            list = session.createQuery("from Annee where deleted='"+false+"'").list();
+        } finally {
+            session.close();
+        }
         return list;
     }
 
-    public Annee getAnnee(String id) {
+    public static List<Annee> listArchived() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Annee> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Annee where deleted='"+true+"'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public static List<Annee> listAll() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Annee> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Annee").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public static Annee getAnneeById(int idAnnee) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         Annee d;
         try {
-            //Requete HQL pour selectioné tout les client:
-            d = (Annee) session.createQuery("from Annee where id_annee='" + id + "'").uniqueResult();
+            d = (Annee) session.createQuery("from Annee where id_annee='" + idAnnee + "'").uniqueResult();
         } finally {
             session.close();
         }
         return d;
     }
 
-    public void select(int oldYear, int newYear) {
+    public static boolean select(int idAnnee) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
-            //Requete HQL pour selectioné tout les client:
-            session.createQuery("update Annee where id_annee='" + oldYear + "' set is_selected='" + false + "'").uniqueResult();
-            session.createQuery("update Annee where id_annee='" + newYear + "' set is_selected='" + true + "'").uniqueResult();
+            session.beginTransaction();
+            session.createQuery("update Annee set selected='" + false + "'");
+            session.createQuery("update Annee set selected='" + true + "'where id_annee='" + idAnnee + "' ");
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            return false;
         } finally {
             session.close();
         }
-
+        return true;
     }
 
     public static Annee getSelected() {
@@ -81,8 +129,6 @@ public class AnneeQueries {
         Session session = FactoryObject.getFactory().openSession();
         Annee d;
         try {
-            //checkSelected();
-            //Requete HQL pour selectioné tout les client:
             d = (Annee) session.createQuery("from Annee where selected=" + true).uniqueResult();
         } finally {
             session.close();
@@ -90,24 +136,15 @@ public class AnneeQueries {
         return d;
     }
 
-    public static void checkSelected() {
-
+    public static int maxId() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
+        int d;
         try {
-            List<Annee> list = new ArrayList<>();
-            list = session.createQuery("from Annee where selected=" + true).list();
-            if (list.size() > 1) {
-                Criteria criteria = session.createCriteria(Annee.class).setProjection(Projections.max("idAnnee"));
-                int maxAnnee = (Integer) criteria.uniqueResult();
-                System.out.println("------" + maxAnnee);
-                session.createQuery("update Annee set selected='" + true + "' where id_annee='" + maxAnnee + "'").uniqueResult();
-
-            }
+            d = (int) session.createQuery("select max(id_annee) from Annee where deleted='" + false + "'").uniqueResult();
         } finally {
             session.close();
         }
-
+        return d;
     }
-
 }

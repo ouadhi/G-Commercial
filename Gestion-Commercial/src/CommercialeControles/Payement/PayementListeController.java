@@ -5,6 +5,7 @@ import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.HibernateSchema.Payment;
 import com.gestionCommerciale.Models.FactureQueries;
 import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXListView;
@@ -12,9 +13,14 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +31,8 @@ import javafx.scene.text.Text;
 
 public class PayementListeController implements Initializable {
 
-   
+    @FXML
+    private Text Nfacture;
     @FXML
     private JFXListView<PayementCell> listepayement;
     public static JFXListView<PayementCell> listepay;
@@ -37,14 +44,14 @@ public class PayementListeController implements Initializable {
     @FXML
     private JFXTextField reste;
 
-    private int numero_Client;
+    private int numero_facture;
     private PaymentQueries queries = new PaymentQueries();
     private FactureQueries fQueries = new FactureQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-      //  AfficheListePayement();
+        AfficheListePayement();
         //printFactureDetails();
         listepayement.setExpanded(true);
 
@@ -59,32 +66,32 @@ public class PayementListeController implements Initializable {
         return value;
     }
 
-    private void printFactureDetails() {
-        FactureQueries fq = new FactureQueries();
-        Facture f = fq.getFacture(numero_Client);
-        System.err.println(numero_Client + "++++++++++++");
-
-        double totale = f.getMontant();
-        double totalePaye = f.getPaymentsMontant();
-        double reste = totale - totalePaye;
-        totalefacture.setText(floatFormat(totale));
-        totlepaye.setText(floatFormat(totalePaye));
-        this.reste.setText(floatFormat(reste));
-    }
-
-//    private void AfficheListePayement() {
-//        List<Payment> listDB = queries.listByFacture(numero_Client);
-//        System.err.println(numero_Client + "---------------");
+//    private void printFactureDetails() {
+//        FactureQueries fq = new FactureQueries();
+//        Facture f = fq.getFacture(numero_facture);
+//        System.err.println(numero_facture + "++++++++++++");
 //
-//        List<PayementCell> list = new ArrayList<>();
-//        for (int i = 0; i < listDB.size(); i++) {
-//            list.add(new PayementCell(listDB.get(i)));
-//        }
-//        ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
-//        listepayement.setItems(myObservableList);
-  //      listepayement.setExpanded(true);
+//        double totale = f.getMontant();
+//        double totalePaye = f.getPaymentsMontant();
+//        double reste = totale - totalePaye;
+//        totalefacture.setText(floatFormat(totale));
+//        totlepaye.setText(floatFormat(totalePaye));
+//        this.reste.setText(floatFormat(reste));
+//    }
 
- //   }
+    private void AfficheListePayement() {
+        List<Payment> listDB = queries.listByFacture(numero_facture);
+        System.err.println(numero_facture + "---------------");
+
+        List<PayementCell> list = new ArrayList<>();
+        for (int i = 0; i < listDB.size(); i++) {
+            list.add(new PayementCell(listDB.get(i)));
+        }
+        ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
+        listepayement.setItems(myObservableList);
+        listepayement.setExpanded(true);
+
+    }
 
     @FXML
     private void addpayment(ActionEvent event) {
@@ -94,7 +101,7 @@ public class PayementListeController implements Initializable {
             loader.load();
 
             AjouterPayementController pay = loader.getController();
-            pay.setdata(numero_Client, listepayement);
+            pay.setdata(numero_facture, listepayement);
 
             AnchorPane root = loader.getRoot();
 
@@ -111,9 +118,10 @@ public class PayementListeController implements Initializable {
         Methode.getStageMouses(event).close();
     }
 
-    public void setDate(int client) {
-        this.numero_Client = client;
-     //   AfficheListePayement();
+    public void setDate(int facture) {
+        this.numero_facture = facture;
+        Nfacture.setText(Integer.toString(facture));
+        AfficheListePayement();
         listepayement.setExpanded(true);
         this.listepayement = listepay;
 

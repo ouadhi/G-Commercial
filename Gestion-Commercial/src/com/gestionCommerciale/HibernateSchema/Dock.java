@@ -28,30 +28,24 @@ public class Dock {
     @Column(name = "wilaya", nullable = false)
     String wilaya;
     @Column(name = "distance", nullable = false)
-    float distance;
+    double distance;
     @Column(name = "prixUnitTrans", nullable = false)
     double prixUnitTrans;
-    @OneToMany(targetEntity=Achat.class, mappedBy="dock"
-    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    @OneToMany(targetEntity = Achat.class, mappedBy = "dock",
+             cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Achat> achats;
-        @Column(name = "deleted", nullable = false)
+    @Column(name = "deleted", nullable = false)
     boolean deleted;
-
-    //
-    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
-    @JoinTable(name = "Chauffeur_dock", joinColumns = {
-    @JoinColumn(name = "id_dock", nullable = false, updatable = false) }
-    ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable = false, updatable = false) })
-    List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();*/
 
     public Dock() {
     }
-    
-    public Dock(String nom, String wilaya, float distance, float prixUnitTrans) {
+
+    public Dock(String nom, String wilaya, double distance, double prixUnitTrans) {
         this.nom = nom;
         this.wilaya = wilaya;
         this.distance = distance;
         this.prixUnitTrans = prixUnitTrans;
+        deleted=false;
     }
 
     public int getIdDock() {
@@ -66,7 +60,7 @@ public class Dock {
         return wilaya;
     }
 
-    public float getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -86,7 +80,7 @@ public class Dock {
         this.wilaya = wilaya;
     }
 
-    public void setDistance(float distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 
@@ -101,6 +95,7 @@ public class Dock {
     public void setAchats(List<Achat> achats) {
         this.achats = achats;
     }
+
     public boolean isDeleted() {
         return deleted;
     }
@@ -108,7 +103,4 @@ public class Dock {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
-
-
-
 }

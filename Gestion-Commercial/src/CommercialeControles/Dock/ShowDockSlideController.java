@@ -78,7 +78,7 @@ public class ShowDockSlideController implements Initializable {
             DockCell dock = liste.getItems().get(index);
 
             ModifierDockController modification = loader.getController();
-            modification.setData(dock.getId(), dock.getNom(), dock.getWilaya() , Float.toString(dock.getDistance()) , Double.toString(dock.getPrix()));
+            modification.setData(dock.getId(), dock.getNom(), dock.getWilaya() , Double.toString(dock.getDistance()) , Double.toString(dock.getPrix()));
 
             AnchorPane pane = loader.getRoot();
 

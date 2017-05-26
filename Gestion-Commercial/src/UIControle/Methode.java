@@ -2,6 +2,8 @@
 package UIControle;
 
 import com.jfoenix.controls.JFXTextField;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -67,6 +69,11 @@ public class Methode {
         });
          
      }
-    
+            public static Double DoubleFormat(double f) {
+        BigDecimal bd = new BigDecimal(f);
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
     
 }

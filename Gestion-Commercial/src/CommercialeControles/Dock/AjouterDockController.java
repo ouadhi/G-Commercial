@@ -42,7 +42,6 @@ public class AjouterDockController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
-    DockQueries q = new DockQueries();
 
     JFXListView<DockCell> listedock = null;
     Label totale;
@@ -63,18 +62,22 @@ public class AjouterDockController implements Initializable {
         if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
             Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
-            if (q.getDockByNameAndWilaya(nom, wilaya) != null) {
+            if (DockQueries.getDockByNameAndWilaya(nom, wilaya) != null) {
                 //notification for already exists
                 Notification.error("Ce dock est exite déja!");
             } else {
                 // add to database
                 try {
-                    Dock dock = new Dock(nom, wilaya, Float.parseFloat(distance), Float.parseFloat(prix));
-                    q.SaveOrUpdate(dock);
-                    Notification.Addnotification();
+                    Dock dock = new Dock(nom, wilaya, Double.parseDouble(distance), Double.parseDouble(prix));
+                    if (DockQueries.SaveOrUpdate(dock)) {
+                        Notification.Addnotification();
+                    } else {
+                        Notification.error("Erreur!");
+
+                    }
                     savelabel.setVisible(true);
                     quitter(event);
-                    
+
                     if (listedock == null) {
                         refreshHliste();
                     } else {
@@ -105,7 +108,7 @@ public class AjouterDockController implements Initializable {
 
     public void refreshHliste() {
         SelectionnerDockController.listeDocks.getItems().clear();
-        List<Dock> listDocksDB = q.list();
+        List<Dock> listDocksDB = DockQueries.list();
 
         List<DockListeH> list = new ArrayList<>();
         for (int i = 0; i < listDocksDB.size(); i++) {
@@ -120,7 +123,7 @@ public class AjouterDockController implements Initializable {
 
     public void refreshVliste() {
 
-        List<Dock> listDocksDB = q.list();
+        List<Dock> listDocksDB = DockQueries.list();
 
         List<DockCell> list = new ArrayList<>();
         for (int i = 0; i < listDocksDB.size(); i++) {

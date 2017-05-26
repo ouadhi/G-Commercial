@@ -1,4 +1,3 @@
-
 package CommercialeControles.Autre;
 
 import UIControle.Methode;
@@ -18,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-
 public class ParamaitreController implements Initializable {
 
     @FXML
@@ -26,18 +24,17 @@ public class ParamaitreController implements Initializable {
     @FXML
     private Label tva;
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+
+    }
 
     @FXML
     private void addAnnee(ActionEvent event) {
         try {
-            AnchorPane   pane  =  FXMLLoader.load(getClass().getResource(ViewUrl.addAnneeEtTva))   ; 
-            StageDialog dialog  =  new StageDialog(Methode.getStage(event),pane ) ;
-            dialog.show(); 
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.addAnneeEtTva));
+            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+            dialog.show();
         } catch (IOException ex) {
             Logger.getLogger(ParamaitreController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,5 +48,5 @@ public class ParamaitreController implements Initializable {
     private void close(MouseEvent event) {
         Methode.getStageMouses(event).close();
     }
-    
+
 }

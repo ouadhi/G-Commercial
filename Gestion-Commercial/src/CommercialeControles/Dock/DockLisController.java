@@ -49,14 +49,13 @@ public class DockLisController implements Initializable {
     private JFXButton ajouter;
     @FXML
     private JFXListView<DockCell> listedock;
-    private DockQueries dockQueries = new DockQueries();
     @FXML
     private JFXTextField recherchetxt;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<Dock> listDocksDB = dockQueries.list();
+        List<Dock> listDocksDB = DockQueries.list();
 
         List<DockCell> list = new ArrayList<>();
         for (int i = 0; i < listDocksDB.size(); i++) {

@@ -1,6 +1,5 @@
 package com.gestionCommerciale.Models;
 
-import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Dock;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,60 +11,100 @@ import org.hibernate.Session;
  */
 public class DockQueries {
 
-    public void SaveOrUpdate(Dock dock) {
+    public static boolean SaveOrUpdate(Dock dock) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
-
             session.beginTransaction();
             session.saveOrUpdate(dock);
             session.getTransaction().commit();
-
+        } catch (Exception e) {
+            return false;
         } finally {
             session.close();
+            return true;
         }
     }
-
-    public void delete(Dock dock) {
+    public static boolean archive(Dock dock) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
-
+            dock.setDeleted(true);
             session.beginTransaction();
-            session.delete(dock);
+            session.update(dock);
             session.getTransaction().commit();
-
+        } catch (Exception e) {
+            return false;
         } finally {
             session.close();
         }
+        return true;
     }
 
-    public List<Dock> list() {
+    public static boolean delete(Dock dock) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
-        List<Dock> docksList = new ArrayList<>();
-        docksList = session.createQuery("from Dock").list();
-
-        return docksList;
+        try {
+            session.beginTransaction();
+            session.delete(dock);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            return false;
+        } finally {
+            session.close();
+        }
+        return true;
     }
-    public Dock getDock(String id) {
+
+    public static List<Dock> list() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Dock> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Dock where deleted='"+false+"'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+    public static List<Dock> listArchived() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Dock> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Dock where deleted='"+true+"'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+    public static List<Dock> listAll() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Dock> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Dock").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+    public static Dock getDock(String id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         Dock d;
         try {
-            //Requete HQL pour selectioné tout les client:
             d = (Dock) session.createQuery("from Dock where id='" + id + "'").uniqueResult();
         } finally {
             session.close();
         }
         return d;
     }
-    public Dock getDockByNameAndWilaya(String name, String wilaya) {
+    public static Dock getDockByNameAndWilaya(String name, String wilaya) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         Dock d;
         try {
-            //Requete HQL pour selectioné tout les client:
             d = (Dock) session.createQuery("from Dock where nom='" +name  + "' and wilaya='"+wilaya+"'").uniqueResult();
         } finally {
             session.close();

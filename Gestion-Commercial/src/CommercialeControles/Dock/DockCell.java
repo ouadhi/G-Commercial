@@ -35,7 +35,7 @@ public class DockCell  extends GridPane{
     private int code  ; 
     private String nom  ; 
     private String wilaya ; 
-    private float distance ; 
+    private double distance ; 
     private double prix  ; 
     
     
@@ -78,11 +78,11 @@ public class DockCell  extends GridPane{
         this.wilaya = wilaya;
     }
 
-    public float getDistance() {
+    public double getDistance() {
         return distance;
     }
 
-    public void setDistance(float distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 
@@ -94,7 +94,7 @@ public class DockCell  extends GridPane{
         this.prix = prix;
     }
 
-    public DockCell(int code, String nom, String wilaya, float distance, double prix) {
+    public DockCell(int code, String nom, String wilaya, double distance, double prix) {
         this.code = code;
         this.nom = nom;
         this.wilaya = wilaya;
@@ -187,7 +187,7 @@ public class DockCell  extends GridPane{
         GridPane.setColumnIndex(label2, 3);
         label2.setLayoutX(333.0);
         label2.setLayoutY(35.0);
-        label2.setText(Float.toString(distance));
+        label2.setText(Double.toString(distance));
         label2.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label3, 4);
@@ -243,7 +243,7 @@ public class DockCell  extends GridPane{
                 loader.load();
                 
                 ModifierDockController ModifierDock =  loader.getController() ;
-                ModifierDock.setData( Integer.toString(this.code), nom, wilaya, Float.toString(distance), Double.toString(prix));
+                ModifierDock.setData( Integer.toString(this.code), nom, wilaya, Double.toString(distance), Double.toString(prix));
                 
                 AnchorPane root = loader.getRoot();
                 
@@ -262,8 +262,7 @@ public class DockCell  extends GridPane{
             if (result.get() == ButtonType.OK) {
                 
                 // requete DELETE from client  Where  id.client  =  codeclient 
-                DockQueries dq = new DockQueries();
-                dq.delete(dq.getDock(code + ""));
+                DockQueries.archive(DockQueries.getDock(code + ""));
                 Notification.Deletenotification();
                 new  ShowPane().showDock();
             }

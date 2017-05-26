@@ -116,8 +116,8 @@ public class Notification {
     }
     
     public static void champVideNotification () {   
-        String title = "Verification";
-        String message = "" ;
+        String title = "Vérification";
+        String message = "Vérifier tous les champs s'il vous plait!" ;
         NotificationType type  = NotificationType.ERROR ; 
         TrayNotification tray = new TrayNotification();
         tray.setTitle(title);
