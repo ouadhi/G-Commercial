@@ -28,21 +28,19 @@ public class ShowdDetailCamionController implements Initializable {
     private AnchorPane PaneMain;
     private JFXListView<CamionCell> liste;
     private int i = 0;
-    
+
     private static Camion camion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 
     @FXML
     private void suivant(ActionEvent event) {
         if (i < liste.getItems().size()) {
             i++;
-            Transition transition = new Transition(PaneMain, getcamion(i), -2000,0, 2000) ; 
+            Transition transition = new Transition(PaneMain, getcamion(i), -2000, 0, 2000);
             transition.show();
-
             if (i == liste.getItems().size() - 1) {
                 suivant.setDisable(true);
             } else {
@@ -50,16 +48,14 @@ public class ShowdDetailCamionController implements Initializable {
                 precedent.setDisable(false);
             }
         }
-
     }
 
     @FXML
     private void precedent(ActionEvent event) {
         if (i > 0) {
             --i;
-           Transition transition = new Transition(PaneMain, getcamion(i),2000 ,0, -2000) ; 
+            Transition transition = new Transition(PaneMain, getcamion(i), 2000, 0, -2000);
             transition.show();
-
             if (i == 0) {
                 precedent.setDisable(true);
             } else {
@@ -67,7 +63,6 @@ public class ShowdDetailCamionController implements Initializable {
                 precedent.setDisable(false);
             }
         }
-
     }
 
     public AnchorPane getcamion(int id) {
@@ -75,26 +70,17 @@ public class ShowdDetailCamionController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.modifierCamion));
             loader.load();
-
             CamionCell camionCell = liste.getItems().get(i);
-
             ModifierCamionController modification = loader.getController();
             //modification.setData(camion.id, camion.marque, camion.matricule, camion.taille);
-            CamionQueries camionQueries= new CamionQueries();
-            camion=camionQueries.getCamion(camionCell.matricule);
-            System.out.println(camion.getCodeCamion()+" "+camion.getMatricule()+" "+camion.getType());
-            modification.setData(camion.getCodeCamion(), camion.getMatricule(),1000.0f);
-
+            modification.setData(camion);
             AnchorPane pane = loader.getRoot();
-            
+
             return pane;
-
         } catch (IOException ex) {
-
             Logger.getLogger(ShowdDetailCamionController.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-
     }
 
     public void setListechauffeur(JFXListView<CamionCell> liste, int idItemSelceted) {
@@ -110,8 +96,5 @@ public class ShowdDetailCamionController implements Initializable {
     public static void setCamion(Camion camion) {
         ShowdDetailCamionController.camion = camion;
     }
-
-   
-    
 
 }

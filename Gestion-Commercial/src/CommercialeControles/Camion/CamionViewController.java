@@ -1,4 +1,3 @@
-
 package CommercialeControles.Camion;
 
 import CommercialeControles.Chauffeur.ChauffeurController;
@@ -32,7 +31,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 
-
 public class CamionViewController implements Initializable {
 
     @FXML
@@ -49,42 +47,37 @@ public class CamionViewController implements Initializable {
     private MenuItem NomMenuItem;
     @FXML
     private JFXListView<CamionCell> listeView;
-   
-    private MenuButton nbvisibel;
 
-    CamionQueries camionQueries= new CamionQueries();
+    private MenuButton nbvisibel;
+    CamionQueries camionQueries = new CamionQueries();
     @FXML
     private JFXTextField rechreche1;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        List<Camion> listCamionsDB= camionQueries.list();
+
+        List<Camion> listCamionsDB = camionQueries.list();
         List<CamionCell> list = new ArrayList<>();
         for (int i = 0; i < listCamionsDB.size(); i++) {
-            list.add(new CamionCell(listCamionsDB.get(i).getId()
-                    ,listCamionsDB.get(i).getType()
-                    ,listCamionsDB.get(i).getMatricule()
-                    ,listCamionsDB.get(i).getCodeCamion()
-                 , 1000));
-            
+            list.add(new CamionCell(listCamionsDB.get(i)));
+
         }
-         
-          ObservableList<CamionCell> myObservableList = FXCollections.observableList(list);
-          listeView.setItems(myObservableList);
-         
-          setTotal();
-          
-          possibleMot();
-          
-    }    
+
+        ObservableList<CamionCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+
+        setTotal();
+
+        possibleMot();
+
+    }
 
     @FXML
     private void AjouterMethode(ActionEvent event) {
-        
-       Stage stage  = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
-       
-        AjouterCamionDialog dialog  = new AjouterCamionDialog(stage) ; 
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        AjouterCamionDialog dialog = new AjouterCamionDialog(stage);
         dialog.show();
     }
 
@@ -102,71 +95,66 @@ public class CamionViewController implements Initializable {
     private void orderByNom(ActionEvent event) {
         orderby.setText("Nom");
     }
-    
-    public void setTotal () {
-       String  total  =  Integer.toString(listeView.getItems().size() ) ; 
-       this.total.setText(total);
+
+    public void setTotal() {
+        String total = Integer.toString(listeView.getItems().size());
+        this.total.setText(total);
     }
 
     private void show20(ActionEvent event) {
-        
+
         nbvisibel.setText("20");
     }
 
     private void show50(ActionEvent event) {
-         nbvisibel.setText("50");
+        nbvisibel.setText("50");
     }
 
     private void show100(ActionEvent event) {
-         nbvisibel.setText("100");
+        nbvisibel.setText("100");
     }
 
     private void showAll(ActionEvent event) {
-         nbvisibel.setText("All");
+        nbvisibel.setText("All");
     }
-
 
     @FXML
     private void showCamions(MouseEvent event) {
         try {
-            Stage courrentStage  =(Stage) ((Node)(event.getSource())).getScene().getWindow() ; 
-            int selectitem =  listeView.getSelectionModel().getSelectedIndex() ;
-            
+            Stage courrentStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+            int selectitem = listeView.getSelectionModel().getSelectedIndex();
+
             System.out.println(selectitem);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.detailcamion));
             loader.load();
-            
-            
-            ShowdDetailCamionController showcamion =  loader.getController() ; 
-            showcamion.setListechauffeur(this.listeView, selectitem);
 
-            AnchorPane pane  = loader.getRoot();
-            
-            StageDialog stage  = new StageDialog(courrentStage, pane) ;
-            stage.show(); 
-            
+            ShowdDetailCamionController showcamion = loader.getController();
+            showcamion.setListechauffeur(this.listeView, selectitem);
+            AnchorPane pane = loader.getRoot();
+
+            StageDialog stage = new StageDialog(courrentStage, pane);
+            stage.show();
+
         } catch (IOException ex) {
             Logger.getLogger(ChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     public void possibleMot() {
-      
+
+    public void possibleMot() {
+
         ArrayList<String> list = new ArrayList<>();
         list.add("karim");
         list.add("hichem1");
         list.add("hichem2");
         list.add("mohammed ouadhi");
         list.add("mohammed cherberabe");
-
         TextFields.bindAutoCompletion(rechreche1, list);
-
     }
 
     @FXML
     private void rechrecher(KeyEvent event) {
         System.out.println(rechreche1.getText());
     }
-    
+
 }

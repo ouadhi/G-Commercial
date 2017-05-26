@@ -36,14 +36,12 @@ public class ModifierCamionController implements Initializable {
     private JFXTextField codecamion;
     @FXML
     private JFXTextField matricule;
-
     @FXML
     private JFXTextField taillecamion;
-    
-    private CamionQueries camionQueries= new CamionQueries();
+
     @FXML
     private JFXTextField PoisCamion;
-
+    Camion camion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,31 +53,28 @@ public class ModifierCamionController implements Initializable {
         String code = codecamion.getText();
         String matricule = this.matricule.getText();
         String taille = taillecamion.getText();
-
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
             if (code.isEmpty() || matricule.isEmpty() || taille.isEmpty()) {
                 Notification.champVideNotification();
-
             } else {
-                Camion camion= ShowdDetailCamionController.getCamion();
+                Camion camion = ShowdDetailCamionController.getCamion();
                 camion.setCodeCamion(code);
                 camion.setMatricule(matricule);
-                //missing marque and type
-                
-                camionQueries.SaveOrUpdate(camion);
+                camion.setPoid(Double.parseDouble(taille));
+                //back
+                //missing type
+                CamionQueries.SaveOrUpdate(camion);
                 Notification.Updatenotification();
                 new ShowPane().showCamion();
                 savelabel.setVisible(true);
                 annuler(event);
             }
         }
-
     }
 
     @FXML
     private void annuler(ActionEvent event) {
-
         Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
         stage.close();
     }
@@ -90,10 +85,10 @@ public class ModifierCamionController implements Initializable {
         stage.close();
     }
 
-    public void setData(String code, String matricule, float taille) {
-        codecamion.setText(code);
-        this.matricule.setText(matricule);
-        taillecamion.setText(Float.toString(taille));
+    public void setData(Camion camion) {
+        this.camion = camion;
+        codecamion.setText(camion.getCodeCamion());
+        matricule.setText(camion.getMatricule());
+        taillecamion.setText(Double.toString(camion.getPoid()));
     }
-
 }

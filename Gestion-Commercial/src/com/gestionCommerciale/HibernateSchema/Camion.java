@@ -19,9 +19,9 @@ public class Camion {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_camion", nullable = false)
     int id;
-    @Column(name = "codeCamion", nullable = false)
+    @Column(name = "codeCamion", nullable = false, unique = true)
     String codeCamion;
-    @Column(name = "matricule", nullable = false)
+    @Column(name = "matricule", nullable = false, unique = true)
     String matricule;
     @Column(name = "type", nullable = false)
     String type;

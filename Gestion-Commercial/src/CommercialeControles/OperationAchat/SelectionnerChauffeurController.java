@@ -26,7 +26,7 @@ public class SelectionnerChauffeurController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         List<ChauffeurListH> list = new ArrayList<>();
-        List<Chauffeur> listChauffeursDB= chauffeurQueries.chauffeursList();
+        List<Chauffeur> listChauffeursDB= chauffeurQueries.list();
         for (int i = 0; i < listChauffeursDB.size(); i++) {
             list.add(new ChauffeurListH(listChauffeursDB.get(i))) ; 
             

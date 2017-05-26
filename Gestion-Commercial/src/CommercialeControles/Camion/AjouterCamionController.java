@@ -56,16 +56,16 @@ public class AjouterCamionController implements Initializable {
         String code  = codecamion.getText()  ; 
         String matricule  = this.matricule.getText() ; 
         String type  = typecamion.getText()  ;  
-        
+        Double poid= Double.parseDouble(poisCamion.getText());
 
-        if (code.isEmpty()|| matricule.isEmpty()|| type.isEmpty()) {
+        if (code.isEmpty()|| matricule.isEmpty()|| type.isEmpty()|| poid.equals(0)) {
             Notification.champVideNotification();   
         } else {
-            if(camionQueries.getCamion(matricule)!=null){              
+            if(camionQueries.getCamionByMatricule(matricule)!=null){              
                  Notification.error("Ce camion exist deja");
             }else{
             try {
-                Camion camion = new Camion(code, matricule, type,33);
+                Camion camion = new Camion(code, matricule, type,poid);
                 camionQueries.SaveOrUpdate(camion);
                 new ShowPane().showCamion();
                 Notification.Addnotification();
