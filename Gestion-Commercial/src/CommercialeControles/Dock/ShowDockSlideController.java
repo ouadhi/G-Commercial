@@ -79,7 +79,7 @@ public class ShowDockSlideController implements Initializable {
 
             ModifierDockController modification = loader.getController();
             //back
-            modification.setData(dock.getCode(), dock.getNom(), dock.getWilaya() , Double.toString(dock.getDistance()) , Double.toString(dock.getPrix()));
+            modification.setData(dock.getDock());
 
             AnchorPane pane = loader.getRoot();
 

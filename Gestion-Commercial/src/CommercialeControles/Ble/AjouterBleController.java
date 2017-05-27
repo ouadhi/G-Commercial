@@ -1,10 +1,8 @@
 package CommercialeControles.Ble;
 
 import CommercialeControles.OperationAchat.BleListeH;
-import CommercialeControles.OperationAchat.SelectionnerBleController;
 import UIControle.Methode;
 import UIControle.Notification;
-import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.Models.BleQueries;
 import com.jfoenix.controls.JFXButton;

@@ -42,14 +42,13 @@ public class AjouterDockController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
-
     JFXListView<DockCell> listedock = null;
     Label totale;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyNumbre(prix);
-        Methode.setOnlyNumbre(distance);
+        Methode.setOnlyDouble(prix, 16);
+        Methode.setOnlyDouble(distance, 16);
     }
 
     @FXML
@@ -58,26 +57,21 @@ public class AjouterDockController implements Initializable {
         String wilaya = this.wilaya.getText();
         String prix = this.prix.getText();
         String distance = this.distance.getText();
-
         if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
             Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
             if (DockQueries.getDockByNameAndWilaya(nom, wilaya) != null) {
-                //notification for already exists
                 Notification.error("Ce dock est exite déja!");
             } else {
-                // add to database
                 try {
                     Dock dock = new Dock(nom, wilaya, Double.parseDouble(distance), Double.parseDouble(prix));
                     if (DockQueries.SaveOrUpdate(dock)) {
                         Notification.Addnotification();
                     } else {
                         Notification.error("Erreur!");
-
                     }
                     savelabel.setVisible(true);
                     quitter(event);
-
                     if (listedock == null) {
                         refreshHliste();
                     } else {
@@ -93,10 +87,8 @@ public class AjouterDockController implements Initializable {
     @FXML
     private void quitter(ActionEvent event
     ) {
-
         Stage currentStage = Methode.getStage(event);
         currentStage.close();
-
     }
 
     @FXML
@@ -109,7 +101,6 @@ public class AjouterDockController implements Initializable {
     public void refreshHliste() {
         SelectionnerDockController.listeDocks.getItems().clear();
         List<Dock> listDocksDB = DockQueries.list();
-
         List<DockListeH> list = new ArrayList<>();
         for (int i = 0; i < listDocksDB.size(); i++) {
             list.add(new DockListeH(listDocksDB.get(i)));
@@ -118,31 +109,22 @@ public class AjouterDockController implements Initializable {
         ObservableList<DockListeH> myObservableList = FXCollections.observableList(list);
         SelectionnerDockController.listeDocks.setItems(myObservableList);
         SelectionnerDockController.listeDocks.setExpanded(true);
-
     }
 
     public void refreshVliste() {
-
         List<Dock> listDocksDB = DockQueries.list();
-
         List<DockCell> list = new ArrayList<>();
         for (int i = 0; i < listDocksDB.size(); i++) {
-            list.add(new DockCell(listDocksDB.get(i).getIdDock(), listDocksDB.get(i).getNom(),
-                    listDocksDB.get(i).getWilaya(), listDocksDB.get(i).getDistance(),
-                    listDocksDB.get(i).getPrixUnitTrans()
-            ));
+            list.add(new DockCell(listDocksDB.get(i)));
         }
         ObservableList<DockCell> myObservableList = FXCollections.observableList(list);
         listedock.setItems(myObservableList);
         listedock.setExpanded(true);
         totale.setText("" + listedock.getItems().size());
-
     }
 
     public void SetData(JFXListView<DockCell> listedock, Label totale) {
         this.listedock = listedock;
         this.totale = totale;
-
     }
-
 }

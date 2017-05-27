@@ -53,22 +53,16 @@ public class BleListeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         List<Ble> listBlesDB = BleQueries.list();
-
         List<BelCell> list = new ArrayList<>();
         for (int i = 0; i < listBlesDB.size(); i++) {
             list.add(new BelCell(listBlesDB.get(i)));
         }
-
         ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
         listeBle.setItems(myObservableList);
         listeBle.setExpanded(true);
-
         setTotale();
-
         possibleMot();
-
     }
 
     @FXML
@@ -108,23 +102,16 @@ public class BleListeController implements Initializable {
 
     @FXML
     private void showAddStage(ActionEvent event) {
-
         try {
-
             Stage stage = Methode.getStage(event);
-
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.AjouterBle));
             loader.load();
-
             AjouterBleController control = loader.getController();
             control.setData(listeBle, total);
-
             AnchorPane root = loader.getRoot();
-
             StageDialog dialog = new StageDialog(stage, root);
             dialog.show();
-
         } catch (IOException ex) {
             Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -132,24 +119,17 @@ public class BleListeController implements Initializable {
 
     @FXML
     private void showDockSlide(MouseEvent event) {
-
         try {
-
             int seletedrow = listeBle.getSelectionModel().getSelectedIndex();
             Stage stage = Methode.getStageMouses(event);
-
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.slideBle));
             loader.load();
-
             BleSlideController control = loader.getController();
             control.setData(seletedrow, listeBle);
-
             AnchorPane root = loader.getRoot();
-
             StageDialog dialog = new StageDialog(stage, root);
             dialog.show();
-
         } catch (IOException ex) {
             Logger.getLogger(ClientListController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -160,16 +140,14 @@ public class BleListeController implements Initializable {
     }
 
     public void possibleMot() {
-      
+
         ArrayList<String> list = new ArrayList<>();
         list.add("karim");
         list.add("hichem1");
         list.add("hichem2");
         list.add("mohammed ouadhi");
         list.add("mohammed cherberabe");
-
         TextFields.bindAutoCompletion(rechreche, list);
-
     }
 
     @FXML
@@ -180,5 +158,4 @@ public class BleListeController implements Initializable {
     private void rechrecheKeyTyped(KeyEvent event) {
         System.out.println(rechreche.getText());
     }
-
 }

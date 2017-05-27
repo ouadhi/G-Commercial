@@ -39,13 +39,12 @@ public class ModifierDockController implements Initializable {
     private JFXButton cancelbttn;
     @FXML
     private Label savelabel;
-        private int id;
-
+    private Dock dock;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyNumbre(prix);
-        Methode.setOnlyNumbre(distance);
+        Methode.setOnlyDouble(prix,16);
+        Methode.setOnlyDouble(distance,16);
     }
 
     @FXML
@@ -64,16 +63,15 @@ public class ModifierDockController implements Initializable {
             if (result.get() == ButtonType.OK) {
                 if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
 
-                    Notification.notif(NotificationType.ERROR,"Vérification", "Vérifier que tout les champs sont remplis!");
+                    Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
 
                 } else {
-                    Dock dock = DockQueries.getDockById(id);
                     dock.setNom(nom);
                     dock.setWilaya(wilaya);
                     dock.setPrixUnitTrans(Double.parseDouble(prix));
                     dock.setDistance(Float.parseFloat(distance));
                     DockQueries.SaveOrUpdate(dock);
-                    
+
                     Notification.Updatenotification();
                     new ShowPane().showDock();
                     savelabel.setVisible(true);
@@ -83,8 +81,6 @@ public class ModifierDockController implements Initializable {
 
         }
     }
-
-   
 
     @FXML
     private void quitter(ActionEvent event) {
@@ -100,12 +96,11 @@ public class ModifierDockController implements Initializable {
         currentStage.close();
     }
 
-    public void setData(int id,String nom, String wilaya, String distance, String prix) {
-
-        this.nom.setText(nom);
-        this.wilaya.setText(wilaya);
-        this.distance.setText(distance);
-        this.prix.setText(prix);
-        this.id = id;
+    public void setData(Dock dock) {
+        this.dock = dock;
+        this.nom.setText(dock.getNom());
+        this.wilaya.setText(dock.getWilaya());
+        this.distance.setText(dock.getDistance()+"");
+        this.prix.setText(dock.getPrixUnitTrans()+"");
     }
 }

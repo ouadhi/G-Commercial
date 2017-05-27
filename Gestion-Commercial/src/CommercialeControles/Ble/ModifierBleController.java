@@ -45,10 +45,8 @@ public class ModifierBleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        Methode.setOnlyDouble(quntite,16);
-        Methode.setOnlyDouble(prix,16);
-
+        Methode.setOnlyDouble(quntite, 16);
+        Methode.setOnlyDouble(prix, 16);
     }
 
     @FXML
@@ -59,28 +57,21 @@ public class ModifierBleController implements Initializable {
 
     @FXML
     private void saveble(ActionEvent event) {
-
         String codeval = this.code.getText();
         String quantiteval = this.quntite.getText();
         String prixval = this.prix.getText();
-
         if (codeval.isEmpty() || quantiteval.isEmpty() || prixval.isEmpty()) {
-
             Notification.champVideNotification();
-
         } else {
-
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
-
             if (result.get() == ButtonType.OK) {
-                //back
                 ble.setCodeBle((codeval));
                 ble.setPrix(Double.parseDouble(prixval));
                 ble.setQte(Double.parseDouble(quantiteval));
                 Ble ble2 = BleQueries.getBleByCode(codeval);
-                if (ble2 != null && ble2.getIdBle()!=ble.getIdBle() ) {
+                if (ble2 != null && ble2.getIdBle() != ble.getIdBle()) {
                     Notification.error("Ce code existe déja, utilisé un autre");
-                }else if (BleQueries.SaveOrUpdate(ble)) {
+                } else if (BleQueries.SaveOrUpdate(ble)) {
                     Notification.Updatenotification();
                     savelabel.setVisible(true);
                     annuler(event);
@@ -89,32 +80,24 @@ public class ModifierBleController implements Initializable {
                 } else {
                     Notification.error("Erreur!");
                 }
-
-                // requete `Update
             }
-
         }
-
     }
 
     @FXML
     private void closestage(ActionEvent event) {
-
         Methode.getStage(event).close();
     }
 
     private void annuler(ActionEvent event) {
         Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
         g.close();
-
     }
 
     public void setData(Ble ble) {
-
         this.ble = ble;
         this.code.setText(ble.getCodeBle());
         this.prix.setText(Double.toString(ble.getPrix()));
         this.quntite.setText(Double.toString(ble.getQte()));
-
     }
 }
