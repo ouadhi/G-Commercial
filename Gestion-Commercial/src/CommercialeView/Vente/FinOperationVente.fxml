@@ -87,7 +87,7 @@
          </children>
       </GridPane>
       <JFXButton fx:id="save" layoutX="902.0" layoutY="453.0" onAction="#sauvgader" prefHeight="48.0" prefWidth="183.0" styleClass="button_save" text="Sauvgarder" />
-      <JFXButton fx:id="annuler" layoutX="702.0" layoutY="453.0" onAction="#quitter" prefHeight="48.0" prefWidth="183.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton fx:id="annuler" layoutX="689.0" layoutY="453.0" onAction="#quitter" prefHeight="48.0" prefWidth="183.0" styleClass="button_annuler" text="Annuler" />
       <Label layoutX="384.0" layoutY="139.0" styleClass="label_txt" text="Client" />
       <Label layoutX="479.0" layoutY="139.0" styleClass="label_txt" text="Chauffeur" />
       <Label layoutX="618.0" layoutY="139.0" styleClass="label_txt" text="Camion" />

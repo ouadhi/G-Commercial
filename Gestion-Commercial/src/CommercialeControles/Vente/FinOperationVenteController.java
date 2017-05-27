@@ -45,14 +45,18 @@ public class FinOperationVenteController implements Initializable {
 
     @FXML
     private JFXTextField montant;
-    private static JFXTextField montant_static;
+    public  static JFXTextField montant_static = new JFXTextField();
+   
+    
     @FXML
     private JFXDatePicker dateOperation;
     @FXML
     private JFXTextField montantFinal;
+    
     @FXML
     private JFXTextField versement;
-    private JFXTextField reste;
+    private JFXTextField reste = new JFXTextField();
+    
     @FXML
     private JFXButton save;
     @FXML
@@ -65,34 +69,45 @@ public class FinOperationVenteController implements Initializable {
     private ImageView camionIcon;
     @FXML
     private ImageView produitIcon;
+    
+
     PopOver popup;
     private Image view = new Image(getClass().getResourceAsStream("/icons/preview.png"));
     private Image viewHover = new Image(getClass().getResourceAsStream("/icons/previewGreen.png"));
-    private static JFXTextField montantFinal_static;
-    private static JFXTextField versement_static;
-    private static JFXTextField reste_static;
+   
+    private static JFXTextField montantFinal_static =new JFXTextField();
+    private static JFXTextField versement_static =new JFXTextField();
+    private static JFXTextField reste_static =new JFXTextField();
     @FXML
     private JFXTextField solde;
     static double selectedTVA;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         Methode.setOnlyDouble(montant, 10);
         Methode.setOnlyDouble(montantFinal, 10);
         Methode.setOnlyDouble(solde, 10);
         Methode.setOnlyDouble(versement, 10);
         Methode.setOnlyDouble(reste, 10);
+        
         versement.setText("0.00");
         dateOperation.setValue(LocalDate.now());
-        montant_static = montant;
+        
+        montant_static = this.montant ; 
+        
         selectedTVA = AnneeQueries.getSelected().getTva();
+        
         montantFinal_static = montantFinal;
         reste_static = reste;
         versement_static = versement;
+        
         reste_static.setEditable(false);
         montantFinal_static.setEditable(false);
-        montant_static.setEditable(false);
+        montant.setEditable(false);
+        
         intpop();
+        
         versement_static.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(javafx.scene.input.KeyEvent event) {
@@ -112,9 +127,11 @@ public class FinOperationVenteController implements Initializable {
     }
 
     public static void calculeMontantFinal() {
+        
         DecimalFormat f = new DecimalFormat("##.00");
         Double montant_val = Double.parseDouble(montant_static.getText());
         Double montantFinal_val = montant_val + (montant_val * selectedTVA / 100);
+        
         montantFinal_static.setText(Methode.DoubleFormat(montantFinal_val)+"");
         versement_static.setText(Methode.DoubleFormat(montantFinal_val)+"");
         reste_static.setText(Methode.DoubleFormat(0)+"");
@@ -162,15 +179,7 @@ public class FinOperationVenteController implements Initializable {
         new ShowPane().showVenteListe();
     }
 
-    public static void setmontantFacture() {
-        double prix = 0;
-        System.out.println("" + OperationVenteController.produitselected.size());
-        for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
-            prix = (OperationVenteController.produitselected.get(i).getProduit().getPrix() * OperationVenteController.produitselected.get(i).getQuantite()) + prix;
-        }
-        montant_static.setText(Double.toString(prix));
-        calculeMontantFinal();
-    }
+   
 
     @FXML
     private void clientOUT(MouseEvent event) {

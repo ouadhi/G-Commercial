@@ -1,16 +1,13 @@
 package CommercialeControles.Vente;
 
-import CommercialeControles.Client.ClienCell;
 import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Facture;
-import com.gestionCommerciale.Models.ClientQueries;
 import com.gestionCommerciale.Models.FactureQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;

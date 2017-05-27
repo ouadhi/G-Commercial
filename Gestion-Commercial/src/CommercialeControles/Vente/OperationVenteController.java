@@ -43,7 +43,9 @@ public class OperationVenteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         try {
+            
             staticpane = space;
             etapeClient = FXMLLoader.load(getClass().getResource(ViewUrl.selectClient));
             etapeChauffeur = FXMLLoader.load(getClass().getResource(ViewUrl.selectChauffeurVente));
@@ -124,7 +126,7 @@ public class OperationVenteController implements Initializable {
                     Notification.champVideNotification();
                     --this.etape;
                 } else {
-                    FinOperationVenteController.setmontantFacture();
+                    setmontantFacture();
                     showEtape(etapeInformation);
                     next.setVisible(false);
                    
@@ -136,6 +138,17 @@ public class OperationVenteController implements Initializable {
 
     private void showEtape(AnchorPane pane) {
         space.getChildren().setAll(pane);
+    }
+    
+    
+     public static void setmontantFacture() {
+        double prix = 0;
+        System.out.println("" + OperationVenteController.produitselected.size());
+        for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
+            prix = (OperationVenteController.produitselected.get(i).getProduit().getPrix() * OperationVenteController.produitselected.get(i).getQuantite()) + prix;
+        }
+        FinOperationVenteController.montant_static.setText(Double.toString(prix));
+        FinOperationVenteController.calculeMontantFinal();
     }
 
 }
