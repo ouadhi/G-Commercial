@@ -127,7 +127,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXToggleButton fx:id="TVA" text="Non/Oui" unToggleColor="#ff1c1c" unToggleLineColor="#c94545" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <JFXToggleButton fx:id="haveTVA" text="Non/Oui" unToggleColor="#ff1c1c" unToggleLineColor="#c94545" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="18.0" />
                </GridPane.margin>

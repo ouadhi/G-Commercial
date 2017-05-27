@@ -27,7 +27,7 @@
             </Text>
          </children>
       </Pane>
-      <JFXComboBox fx:id="Annee" layoutX="226.0" layoutY="78.0" prefHeight="45.0" prefWidth="180.0" styleClass="champtxt" />
+      <JFXComboBox fx:id="Annee" layoutX="226.0" layoutY="78.0" onAction="#select" prefHeight="45.0" prefWidth="180.0" styleClass="champtxt" />
       <Label layoutX="144.0" layoutY="90.0" styleClass="label_txt" text="Année :" />
       <Label layoutX="158.0" layoutY="164.0" styleClass="label_txt" text="TVA : " />
       <Label fx:id="tva" layoutX="226.0" layoutY="143.0" prefHeight="45.0" prefWidth="180.0" styleClass="champtxt" />

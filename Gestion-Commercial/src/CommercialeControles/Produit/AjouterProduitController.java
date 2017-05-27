@@ -7,6 +7,7 @@ import com.gestionCommerciale.HibernateSchema.Produit;
 import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXToggleButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -38,6 +39,8 @@ public class AjouterProduitController implements Initializable {
     ProduitQueries queries = new ProduitQueries();
     @FXML
     private JFXTextField code;
+    @FXML
+    private JFXToggleButton haveTVA;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -52,15 +55,20 @@ public class AjouterProduitController implements Initializable {
 
     @FXML
     private void sauvgarder(ActionEvent event) {
+        
         String nomVal = nom.getText();
         String categorieVal = categorie.getText();
         String quantiteVal = quantite.getText();
         String prixVal = prix.getText();
-        if (nomVal.isEmpty() || categorieVal.isEmpty() || quantiteVal.isEmpty() || prixVal.isEmpty()) {
+        String code  = this.code.getText()  ; 
+        
+        if (nomVal.isEmpty() || categorieVal.isEmpty() || quantiteVal.isEmpty() || prixVal.isEmpty()|| code.isEmpty()) {
             Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
+            
         } else {
+            
             try {
-                Produit ob = new Produit("C1",nomVal,categorieVal, Integer.parseInt(quantiteVal), Double.parseDouble(prixVal),true);
+                Produit ob = new Produit(code,nomVal,categorieVal, Integer.parseInt(quantiteVal), Double.parseDouble(prixVal),haveTVA.isSelected());
                 queries.SaveOrUpdate(ob);
                 
                 Notification.Addnotification();
@@ -71,6 +79,7 @@ public class AjouterProduitController implements Initializable {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+            
         }
     }
 

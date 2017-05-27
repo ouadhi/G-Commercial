@@ -3,6 +3,8 @@ package CommercialeControles.Autre;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Annee;
+import com.gestionCommerciale.Models.AnneeQueries;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +28,12 @@ public class ParamaitreController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        for (Annee annee : AnneeQueries.list()) {
+            Annee.getItems().add(Integer.toString(annee.getIdAnnee())) ; 
+        }
+        
 
+        
     }
 
     @FXML
@@ -47,6 +54,17 @@ public class ParamaitreController implements Initializable {
     @FXML
     private void close(MouseEvent event) {
         Methode.getStageMouses(event).close();
+    }
+    
+    public void getTVASelected () {
+     Annee annee    = AnneeQueries.getAnneeById(Integer.parseInt(Annee.getSelectionModel().getSelectedItem())) ; 
+     tva.setText(annee.getTva()+"");
+        
+    }
+
+    @FXML
+    private void select(ActionEvent event) {
+        getTVASelected();
     }
 
 }

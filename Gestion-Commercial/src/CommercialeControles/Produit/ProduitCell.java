@@ -7,6 +7,7 @@ import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Produit;
+import com.gestionCommerciale.Models.AnneeQueries;
 import com.gestionCommerciale.Models.BleQueries;
 import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
@@ -33,11 +34,7 @@ import javafx.scene.text.Font;
 public class ProduitCell extends GridPane {
 
     Produit produit;
-    private String categorie;
-    private String nom;
-    private float quantite;
-    private double prix;
-    private float TVA;
+    
 
     protected ColumnConstraints columnConstraints;
     protected ColumnConstraints columnConstraints0;
@@ -145,28 +142,33 @@ public class ProduitCell extends GridPane {
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);
-        label0.setText(this.nom);
+        label0.setText(this.produit.getNom());
         GridPane.setHalignment(label0, javafx.geometry.HPos.CENTER);
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(this.categorie);
+        label1.setText(this.produit.getCategory());
         GridPane.setHalignment(label1, javafx.geometry.HPos.CENTER);
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
-        label2.setText(Float.toString(this.quantite));
+        label2.setText(Integer.toString(this.produit.getQuantite()));
         GridPane.setHalignment(label2, javafx.geometry.HPos.CENTER);
         label2.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label3, 4);
         GridPane.setHalignment(label3, javafx.geometry.HPos.CENTER);
-        label3.setText(Double.toString(this.prix));
+        label3.setText(Double.toString(this.produit.getPrix()));
         label3.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label4, 5);
         GridPane.setHalignment(label4, javafx.geometry.HPos.CENTER);
-        label4.setText(Float.toString(TVA));
+        if (this.produit.isHaveTva()) {
+             label4.setText(""+AnneeQueries.getSelected().getTva());
+        } else {
+             label4.setText("0");
+        }
+       
         label4.setFont(new Font(17.0));
 
         bttn = new JFXButton();

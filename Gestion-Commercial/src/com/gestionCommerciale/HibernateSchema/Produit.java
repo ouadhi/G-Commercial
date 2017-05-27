@@ -112,4 +112,22 @@ public class Produit {
         this.deleted = deleted;
     }
 
+    public boolean isHaveTva() {
+        return haveTva;
+    }
+
+    public void setHaveTva(boolean haveTva) {
+        this.haveTva = haveTva;
+    }
+
+    public String getCodeProduit() {
+        return codeProduit;
+    }
+
+    public void setCodeProduit(String codeProduit) {
+        this.codeProduit = codeProduit;
+    }
+    
+    
+
 }

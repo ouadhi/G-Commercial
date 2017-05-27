@@ -91,6 +91,13 @@ public class ModifierProduitController implements Initializable {
         this.categorie.setText(produit.getCategory());
         this.quantite.setText(Integer.toString(produit.getQuantite()));
         this.prix.setText(Double.toString(produit.getPrix()));
+        this.code.setText(this.produit.getCodeProduit());
+        if (this.produit.isHaveTva()) {
+             TVA.setSelected(true);
+        } else {
+             TVA.setSelected(false);
+        }
+       
 
     }
 
