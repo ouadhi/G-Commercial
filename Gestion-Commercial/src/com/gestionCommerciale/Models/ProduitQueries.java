@@ -97,7 +97,7 @@ public class ProduitQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Produit> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Produit where nom like '%"+nom+"%'").list();
+            list = session.createQuery("from Produit where (nom like '%"+nom+"%' OR category like '%"+nom+"%') and deleted='" + false + "'").list();
         } finally {
             session.close();
         }

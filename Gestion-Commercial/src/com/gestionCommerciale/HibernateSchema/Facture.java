@@ -79,10 +79,10 @@ public class Facture {
         this.camion = camion;
     }
 
-    public Facture(Date date, double montant, double tva, double timbre) {
+    public Facture(Date date, double montant, double tva) {
         this.date = date;
         this.montant = montant;
-        this.tva = tva;
+//        this.tva = tva;
         this.timbre = timbre;
     }
 
