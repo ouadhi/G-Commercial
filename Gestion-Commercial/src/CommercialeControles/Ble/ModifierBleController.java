@@ -20,11 +20,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author mac
- */
 public class ModifierBleController implements Initializable {
 
     @FXML
@@ -47,6 +42,8 @@ public class ModifierBleController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyDouble(quntite, 16);
         Methode.setOnlyDouble(prix, 16);
+
+        Methode.SetUpper(code);
     }
 
     @FXML
@@ -95,6 +92,8 @@ public class ModifierBleController implements Initializable {
     }
 
     public void setData(Ble ble) {
+
+        Methode.SetUpper(code);
         this.ble = ble;
         this.code.setText(ble.getCodeBle());
         this.prix.setText(Double.toString(ble.getPrix()));

@@ -203,13 +203,13 @@ public class ProduitCell extends GridPane {
 
         bttn.setOnMouseClicked((event) -> {
 
-            popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
+            popup.show(JFXPopup.PopupVPosition.BOTTOM, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
         });
     }
 
     public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
-        JFXButton supprimer = new JFXButton("Supprimer");
+        JFXButton supprimer = new JFXButton("Archiver");
 
         modifier.setPadding(new Insets(10));
         supprimer.setPadding(new Insets(10));

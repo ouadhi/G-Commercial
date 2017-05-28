@@ -117,6 +117,9 @@ public class ModifierClientController implements Initializable {
     }
 
     public void SetData(Client client) {
+        
+        Methode.SetUpper(nomtxt);
+       
 
         // requete sql pour remplir  les  champs  vide  
         this.client=client;

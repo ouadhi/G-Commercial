@@ -91,6 +91,18 @@ public class ProduitQueries {
         }
         return list;
     }
+    
+     public static List<Produit> listRechreche(String nom) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Produit> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Produit where nom like '%"+nom+"%'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
 
     public static Produit getProduitById(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();

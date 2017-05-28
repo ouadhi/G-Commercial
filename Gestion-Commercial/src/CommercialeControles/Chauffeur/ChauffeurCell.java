@@ -152,7 +152,7 @@ public class ChauffeurCell extends GridPane {
 
     public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
-        JFXButton supprimer = new JFXButton("Supprimer");
+        JFXButton supprimer = new JFXButton("Archiver");
 
         modifier.setPadding(new Insets(10));
         supprimer.setPadding(new Insets(10));

@@ -49,6 +49,8 @@ public class AjouterDockController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyDouble(prix, 16);
         Methode.setOnlyDouble(distance, 16);
+        
+         Methode.SetUpper(nom);
     }
 
     @FXML

@@ -56,6 +56,8 @@ public class AjouterClientController implements Initializable {
         Methode.setOnlyNumbre(NRtxt);
         Methode.setOnlyNumbre(NAtxt);
         Methode.setOnlyNumbre(NCarteF);
+        
+        Methode.SetUpper(nomtxt);
     }
 
     @FXML

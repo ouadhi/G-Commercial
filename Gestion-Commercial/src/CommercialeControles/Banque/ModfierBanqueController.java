@@ -33,6 +33,8 @@ public class ModfierBanqueController implements Initializable {
         Methode.setOnlyInteger(NumCompte, 30);
         Methode.setOnlyInteger(NumCompte, 12);
         
+        Methode.SetUpper(nombanque);
+        
     }    
     
     @FXML
@@ -70,7 +72,7 @@ public class ModfierBanqueController implements Initializable {
     
     public void setData(Banque banque) {
         this.banque = banque;    
-        
+         Methode.SetUpper(nombanque);
         this.NumCompte.setText(banque.getCompte());
         this.adresse.setText(this.banque.getAddress());
         this.nombanque.setText(this.banque.getNom());

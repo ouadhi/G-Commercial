@@ -170,7 +170,20 @@ public class ProduitListController implements Initializable {
 
     @FXML
     private void rechrecher(KeyEvent event) {
-        System.out.println(rechreche.getText());
+        
+         listeproduit.getItems().clear();
+        List<Produit> listBlesDB = queries.listRechreche(rechreche.getText()) ; 
+        List<ProduitCell> list = new ArrayList<>();
+        
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new ProduitCell(listBlesDB.get(i)));
+        }
+        
+        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+        listeproduit.setItems(myObservableList);
+        
+        setTotale();
+      
     }
     
     public void possibleMot() {
@@ -183,6 +196,7 @@ public class ProduitListController implements Initializable {
         list.add("mohammed cherberabe");
 
         TextFields.bindAutoCompletion(rechreche, list);
-
     }
+    
+    
 }

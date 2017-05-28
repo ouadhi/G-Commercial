@@ -45,6 +45,8 @@ public class ModifierProduitController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyNumbre(quantite);
         Methode.setOnlyNumbre(prix);
+        
+         Methode.SetUpper(nom);
 
     }
 
@@ -85,6 +87,7 @@ public class ModifierProduitController implements Initializable {
     }
 
     public void setData(Produit produit) {
+          Methode.SetUpper(nom);
         
         this.produit= produit;
         this.nom.setText(produit.getNom());

@@ -61,7 +61,8 @@ public class AjouterChauffeurViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      // camionboxstatic = camionbox ; 
+        Methode.SetUpper(codechauffeur);
+        Methode.SetUpper(nomchauffeur);
       
 
     }

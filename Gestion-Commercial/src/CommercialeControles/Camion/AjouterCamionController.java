@@ -48,6 +48,8 @@ public class AjouterCamionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyDouble(poisCamion, 5);
+        Methode.SetUpper(codecamion);
+        Methode.SetUpper(matricule);
         
     }    
 

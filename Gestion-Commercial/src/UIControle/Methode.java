@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 
 public class Methode {
 
@@ -29,7 +31,7 @@ public class Methode {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
-                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,2})?")) {
                     field.setText(oldValue);
                 }
 
@@ -76,5 +78,11 @@ public class Methode {
         return bd.doubleValue();
     }
 
+    public static void SetUpper(JFXTextField field) {
+        field.textProperty().addListener((ov, oldValue, newValue) -> {
+            field.setText(newValue.toUpperCase());
+        });
+
+    }
 
 }

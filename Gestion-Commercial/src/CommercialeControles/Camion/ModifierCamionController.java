@@ -1,5 +1,6 @@
 package CommercialeControles.Camion;
 
+import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Camion;
@@ -45,7 +46,8 @@ public class ModifierCamionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Methode.SetUpper(codecamion);
+        Methode.SetUpper(matricule);
     }
 
     @FXML
@@ -86,6 +88,8 @@ public class ModifierCamionController implements Initializable {
     }
 
     public void setData(Camion camion) {
+        Methode.SetUpper(codecamion);
+        Methode.SetUpper(matricule);
         this.camion = camion;
         codecamion.setText(camion.getCodeCamion());
         matricule.setText(camion.getMatricule());

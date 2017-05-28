@@ -59,6 +59,9 @@ public class ModificationChauffeurController implements Initializable {
     private Chauffeur chauffeur;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+         Methode.SetUpper(codechauffeur);
+        Methode.SetUpper(nomchauffeur);
 
     }
 
@@ -100,7 +103,9 @@ public class ModificationChauffeurController implements Initializable {
     }
 
     public void setData(Chauffeur chauffeur) {
-
+        Methode.SetUpper(codechauffeur);
+        Methode.SetUpper(nomchauffeur);
+        
         nomchauffeur.setText(chauffeur.getNomChauffeur());
         prenomchauffeur.setText(chauffeur.getPrenomChauffeur());
         codechauffeur.setText(chauffeur.getId()+"");
