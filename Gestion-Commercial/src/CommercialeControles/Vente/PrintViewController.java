@@ -48,11 +48,7 @@ public class PrintViewController implements Initializable {
             //print facture
             try {
                 GenerateFactureReport generateFactureReport = new GenerateFactureReport();
-                double ttc = factureimp.getMontant() * factureimp.getTva() + factureimp.getMontant();
-                RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
-                        RuleBasedNumberFormat.SPELLOUT);
-                String montantlettre = ruleBasedNumberFormat.format(new Double(ttc)) + " Dinars Algérien";
-
+                double montantTotal = 0;
                 //get list produits, qte 
                 List<String> designationsVente = new ArrayList<>();
                 List<String> qtesVente = new ArrayList<>();
@@ -64,11 +60,19 @@ public class PrintViewController implements Initializable {
                     prixsVente.add(String.valueOf(factureimp.getQtes().get(i).getProduit().getPrix()));
                     montantsVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()
                             * factureimp.getQtes().get(i).getProduit().getPrix()));
+                    montantTotal = montantTotal + (factureimp.getQtes().get(i).getQte_fact()
+                            * factureimp.getQtes().get(i).getProduit().getPrix());
                 }
-                generateFactureReport.generateReport(factureimp.getClient().getName() + factureimp.getClient().getPrenom(),
+                //double ttc = factureimp.getMontant() * ((factureimp.getTva() / 100) + factureimp.getMontant());
+                double ttc = (montantTotal * (factureimp.getTva() / 100)) + montantTotal;
+                RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
+                        RuleBasedNumberFormat.SPELLOUT);
+                String montantlettre = ruleBasedNumberFormat.format(new Double(ttc)) + " Dinars Algérien";
+
+                generateFactureReport.generateReport(factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
                         String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient(), factureimp.getClient().getNumRegCom(),
-                        factureimp.getClient().getnCarteFiscale(), new Date().toString(),
-                        String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(), String.valueOf(factureimp.getMontant()),
+                        factureimp.getClient().getnCarteFiscale(), factureimp.getDate().toString(),
+                        String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(), String.valueOf(montantTotal),
                         String.valueOf(factureimp.getTva()), "0.00", new Double(ttc).toString(), montantlettre,
                         factureimp.getChauffeur().getNomChauffeur() + factureimp.getChauffeur().getPrenomChauffeur(),
                         factureimp.getCamion().getMatricule(), designationsVente,
@@ -89,12 +93,10 @@ public class PrintViewController implements Initializable {
                     designationsVente.add(factureimp.getQtes().get(i).getProduit().getNom());
                     qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
                 }
-
-                generateBonChargementReport.generateReport(
-                        factureimp.getClient().getName() + factureimp.getClient().getPrenom(),
+                generateBonChargementReport.generateReport(String.valueOf(factureimp.getClient().getId()),
+                        factureimp.getDate().toString(), factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
                         String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient(),
-                        new Date().toString(),
-                        String.valueOf(factureimp.getIdFacture()), designationsVente, qtesVente);
+                        designationsVente, qtesVente);
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -114,10 +116,10 @@ public class PrintViewController implements Initializable {
                     qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
                 }
                 generateBonLivraisonReport.generateReport(
-                        factureimp.getClient().getName() + factureimp.getClient().getPrenom(),
+                        factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
                         String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient(),
                         factureimp.getClient().getNumRegCom(),
-                        factureimp.getClient().getnCarteFiscale(), new Date().toString(),
+                        factureimp.getClient().getnCarteFiscale(), factureimp.getDate().toString(),
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(),
                         factureimp.getChauffeur().getNomChauffeur() + " " + factureimp.getChauffeur().getPrenomChauffeur(),
                         factureimp.getCamion().getMatricule(), designationsVente,

@@ -18,8 +18,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -33,7 +31,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -45,18 +42,17 @@ public class FinOperationVenteController implements Initializable {
 
     @FXML
     private JFXTextField montant;
-    public  static JFXTextField montant_static = new JFXTextField();
-   
-    
+    public static JFXTextField montant_static = new JFXTextField();
+
     @FXML
     private JFXDatePicker dateOperation;
     @FXML
     private JFXTextField montantFinal;
-    
+
     @FXML
     private JFXTextField versement;
     private JFXTextField reste = new JFXTextField();
-    
+
     @FXML
     private JFXButton save;
     @FXML
@@ -69,45 +65,44 @@ public class FinOperationVenteController implements Initializable {
     private ImageView camionIcon;
     @FXML
     private ImageView produitIcon;
-    
 
     PopOver popup;
     private Image view = new Image(getClass().getResourceAsStream("/icons/preview.png"));
     private Image viewHover = new Image(getClass().getResourceAsStream("/icons/previewGreen.png"));
-   
-    private static JFXTextField montantFinal_static =new JFXTextField();
-    private static JFXTextField versement_static =new JFXTextField();
-    private static JFXTextField reste_static =new JFXTextField();
+
+    private static JFXTextField montantFinal_static = new JFXTextField();
+    private static JFXTextField versement_static = new JFXTextField();
+    private static JFXTextField reste_static = new JFXTextField();
     @FXML
     private JFXTextField solde;
     static double selectedTVA;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         Methode.setOnlyDouble(montant, 10);
         Methode.setOnlyDouble(montantFinal, 10);
         Methode.setOnlyDouble(solde, 10);
         Methode.setOnlyDouble(versement, 10);
         Methode.setOnlyDouble(reste, 10);
-        
+
         versement.setText("0.00");
         dateOperation.setValue(LocalDate.now());
-        
-        montant_static = this.montant ; 
-        
+
+        montant_static = this.montant;
+
         selectedTVA = AnneeQueries.getSelected().getTva();
-        
+
         montantFinal_static = montantFinal;
         reste_static = reste;
         versement_static = versement;
-        
+
         reste_static.setEditable(false);
         montantFinal_static.setEditable(false);
         montant.setEditable(false);
-        
+
         intpop();
-        
+
         versement_static.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(javafx.scene.input.KeyEvent event) {
@@ -127,14 +122,14 @@ public class FinOperationVenteController implements Initializable {
     }
 
     public static void calculeMontantFinal() {
-        
+
         DecimalFormat f = new DecimalFormat("##.00");
         Double montant_val = Double.parseDouble(montant_static.getText());
         Double montantFinal_val = montant_val + (montant_val * selectedTVA / 100);
-        
-        montantFinal_static.setText(Methode.DoubleFormat(montantFinal_val)+"");
-        versement_static.setText(Methode.DoubleFormat(montantFinal_val)+"");
-        reste_static.setText(Methode.DoubleFormat(0)+"");
+
+        montantFinal_static.setText(Methode.DoubleFormat(montantFinal_val) + "");
+        versement_static.setText(Methode.DoubleFormat(montantFinal_val) + "");
+        reste_static.setText(Methode.DoubleFormat(0) + "");
     }
 
     public static void calculeReste() {
@@ -142,12 +137,11 @@ public class FinOperationVenteController implements Initializable {
         Float versement_val = Float.parseFloat(versement_static.getText());
         Float rest_val = montantFinal_val - versement_val;
         if (rest_val < 0) {
-            reste_static.setText(Methode.DoubleFormat(0)+"");
+            reste_static.setText(Methode.DoubleFormat(0) + "");
         } else {
-            reste_static.setText(Methode.DoubleFormat(rest_val)+"");
+            reste_static.setText(Methode.DoubleFormat(rest_val) + "");
         }
     }
-
 
     @FXML
     private void sauvgader(ActionEvent event) throws IOException {
@@ -155,6 +149,7 @@ public class FinOperationVenteController implements Initializable {
                 || this.montantFinal.getText().isEmpty()
                 || this.versement.getText().isEmpty()
                 || dateOperation.getValue().toString().isEmpty()) {
+            //|| dateOperation.getValue().toString().isEmpty()
             Notification.champVideNotification();
         } else {
             //back
@@ -178,8 +173,6 @@ public class FinOperationVenteController implements Initializable {
     private void quitter(ActionEvent event) throws IOException {
         new ShowPane().showVenteListe();
     }
-
-   
 
     @FXML
     private void clientOUT(MouseEvent event) {
@@ -242,12 +235,12 @@ public class FinOperationVenteController implements Initializable {
     }
 
     public void addFacture(ActionEvent event) {
-        
+
         //back
         Date date = java.sql.Date.valueOf(dateOperation.getValue());
         double montant = Double.parseDouble(montantFinal_static.getText());
         double versment = Double.parseDouble(versement_static.getText());
-        Facture f = new Facture(date, montant, selectedTVA, 0);
+        Facture f = new Facture(new Date(), montant, selectedTVA, 0);
         java.util.List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
             Produit p = OperationVenteController.produitselected.get(i).getProduit();
@@ -260,9 +253,10 @@ public class FinOperationVenteController implements Initializable {
         }
         f.setQtes(fpsList);
         f.setAnnee(AnneeQueries.getSelected());
+        //hhdsfhf
         Payment payment = new Payment("", versment, date);
-        payment.setClient(OperationVenteController.client);            
-        
+        payment.setClient(OperationVenteController.client);
+
         java.util.List<Payment> PaymentsList = new ArrayList<Payment>();
         PaymentsList.add(payment);
         f.setClient(OperationVenteController.client);

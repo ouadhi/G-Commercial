@@ -16,9 +16,8 @@ import net.sf.jasperreports.engine.JRException;
  */
 public class GenerateBonChargementReport {
 
-    public void generateReport(String nom, String code, String address,
-            String date, String numFacture, List<String> designationsVente,
-             List<String> qtesVente) throws IOException, JRException {
+    public void generateReport(String num, String date, String nomEtPrenom, String code
+            , String address, List<String> designationsVente, List<String> qtesVente) throws IOException, JRException {
         OperationBonChargementReport operationBonChargementReport = new OperationBonChargementReport();
         for (int i = 0; i < designationsVente.size(); i++) {
             String designation = designationsVente.get(i);
@@ -27,7 +26,7 @@ public class GenerateBonChargementReport {
             String qte = qtesVente.get(i);
             List<String> qtes = new ArrayList<>();
             qtes.add(qte);
-            operationBonChargementReport.putReportInfo(nom, date, numFacture, code, address, designations, qtes);
+            operationBonChargementReport.putReportInfo(num, date, nomEtPrenom, code, address, designations, qtes);
 
         }
         operationBonChargementReport.printReport();
