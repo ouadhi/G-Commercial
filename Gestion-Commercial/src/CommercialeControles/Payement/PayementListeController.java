@@ -80,7 +80,7 @@ public class PayementListeController implements Initializable {
 //    }
 
     private void AfficheListePayement() {
-        List<Payment> listDB = queries.listByFacture(numero_facture);
+        List<Payment> listDB = queries.list(numero_facture);
         System.err.println(numero_facture + "---------------");
 
         List<PayementCell> list = new ArrayList<>();

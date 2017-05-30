@@ -14,6 +14,7 @@ import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Payment;
 import com.gestionCommerciale.Models.AnneeQueries;
 import com.gestionCommerciale.Models.FactureQueries;
+import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -240,7 +241,8 @@ public class FinOperationVenteController implements Initializable {
         Date date = java.sql.Date.valueOf(dateOperation.getValue());
         double montant = Double.parseDouble(montantFinal_static.getText());
         double versment = Double.parseDouble(versement_static.getText());
-        Facture f = new Facture(new Date(), montant, selectedTVA, 0);
+
+        Facture f = new Facture(date, montant, selectedTVA);
         java.util.List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
             Produit p = OperationVenteController.produitselected.get(i).getProduit();
@@ -251,6 +253,7 @@ public class FinOperationVenteController implements Initializable {
             fp.setFacture(f);
             fpsList.add(fp);
         }
+        //back
         f.setQtes(fpsList);
         f.setAnnee(AnneeQueries.getSelected());
         //hhdsfhf
@@ -259,11 +262,19 @@ public class FinOperationVenteController implements Initializable {
 
         java.util.List<Payment> PaymentsList = new ArrayList<Payment>();
         PaymentsList.add(payment);
+        payment.setAnnee(AnneeQueries.getSelected());
+        payment.setClient(OperationVenteController.client);
+
+        PaymentQueries.SaveOrUpdate(payment);
+
+        //payment.setClient(OperationVenteController.client);            
+//        java.util.List<Payment> PaymentsList = new ArrayList<Payment>();
+//        PaymentsList.add(payment);
         f.setClient(OperationVenteController.client);
         f.setChauffeur(OperationVenteController.chauffeur);
         f.setCamion(OperationVenteController.camion);
-        FactureQueries fq = new FactureQueries();
-        fq.SaveOrUpdate(f);
+        f.setAnnee(AnneeQueries.getSelected());
+        FactureQueries.SaveOrUpdate(f);
         imprimer(f, event);
 
     }

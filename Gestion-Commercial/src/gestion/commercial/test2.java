@@ -91,9 +91,9 @@ public class test2 {
     public static void testFacture() {
         FactureQueries queries = new FactureQueries();
         Date d = new Date();
-        Facture o1 = new Facture(d, 111.00, 111.00, 111.00);
+        Facture o1 = new Facture(d, 111.00, 111.00);
         queries.SaveOrUpdate(o1);
-        Facture o2 = new Facture(d, 222.00, 222.00, 222.00);
+        Facture o2 = new Facture(d, 222.00, 222.00);
         queries.SaveOrUpdate(o2);
         for (int i = 0; i < queries.list().size(); i++) {
             System.out.println(queries.list().get(i).getTimbre() + ","
