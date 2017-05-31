@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.UIManager;
 import net.sf.jasperreports.engine.DefaultJasperReportsContext;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRPropertiesUtil;
@@ -35,13 +36,13 @@ public class OperationEtatRecetteDepense {
 
     }
 
-    public void putReportInfo(String date, String montantTotal, String depenseTotal, String banque
-            , String reste, List<String> nums, List<String> clients, List<String> montants
-            , List<String> depenses, List<String> soldes) {
+    public void putReportInfo(String date, String montantTotal, String depenseTotal, String banque,
+             String reste, List<String> nums, List<String> clients, List<String> montants,
+             List<String> depenses, List<String> soldes) {
 
-        EtatRecetteDepenseBean beanInfo = new EtatRecetteDepenseBean( date,  montantTotal,  depenseTotal,  banque
-            ,  reste, nums,  clients,  montants
-            ,  depenses,  soldes);
+        EtatRecetteDepenseBean beanInfo = new EtatRecetteDepenseBean(date, montantTotal, depenseTotal, banque,
+                 reste, nums, clients, montants,
+                 depenses, soldes);
         collBean.add(beanInfo);
     }
 
@@ -55,8 +56,9 @@ public class OperationEtatRecetteDepense {
             InputStream stream = getClass().getResourceAsStream("EtatRecetteDepense.jasper");
             JasperReport report = (JasperReport) JRLoader.loadObject(stream);
             JasperPrint jasperPrint = JasperFillManager.fillReport(report,
-                     params, getData());
-            JasperViewer.viewReport(jasperPrint);
+                    params, getData());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            JasperViewer.viewReport(jasperPrint, false);
             //this.collBean.clear();
         } catch (Exception e) {
             e.printStackTrace();

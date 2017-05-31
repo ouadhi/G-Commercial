@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.UIManager;
 import net.sf.jasperreports.engine.DefaultJasperReportsContext;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRPropertiesUtil;
@@ -37,11 +38,11 @@ public class OperationBonLivraisonReport {
     }
 
     public void putReportInfo(String nom, String code, String address,
-             String rc, String fiscal, String date, String numFacture,
-             String article, String chauffeur,
-             String matricule, List<String> designations, List<String> qtes) {
+            String rc, String fiscal, String date, String numFacture,
+            String article, String chauffeur,
+            String matricule, List<String> designations, List<String> qtes) {
         BonLivraisonBean beanInfo = new BonLivraisonBean(id, nom, code, address, rc, fiscal, date, numFacture,
-                 article, chauffeur, matricule, designations, qtes);
+                article, chauffeur, matricule, designations, qtes);
         collBean.add(beanInfo);
         id++;
     }
@@ -56,8 +57,9 @@ public class OperationBonLivraisonReport {
             InputStream stream = getClass().getResourceAsStream("BonLivraison.jasper");
             JasperReport report = (JasperReport) JRLoader.loadObject(stream);
             JasperPrint jasperPrint = JasperFillManager.fillReport(report,
-                     params, getData());
-            JasperViewer.viewReport(jasperPrint);
+                    params, getData());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            JasperViewer.viewReport(jasperPrint, false);
             //this.collBean.clear();
         } catch (Exception e) {
             e.printStackTrace();

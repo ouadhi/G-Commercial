@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.UIManager;
 import net.sf.jasperreports.engine.DefaultJasperReportsContext;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRPropertiesUtil;
@@ -36,15 +37,15 @@ public class OperationFactureRemboursementReport {
     }
 
     public void putReportInfo(String doit, String numFacture, String dateDebut, String dateFin,
-             String qteTotal, String montantTotal, String montantLettre,
-             List<String> references, List<String> qtes, List<String> designations,
-             List<String> prixs, List<String> montants) {
+            String qteTotal, String montantTotal, String montantLettre,
+            List<String> references, List<String> qtes, List<String> designations,
+            List<String> prixs, List<String> montants) {
         //patient info is the first to be written
 
         FactureRemboursementBean beanInfo = new FactureRemboursementBean(doit, numFacture, dateDebut, dateFin,
-                 qteTotal, montantTotal, montantLettre,
-                 references, qtes, designations,
-                 prixs, montants);
+                qteTotal, montantTotal, montantLettre,
+                references, qtes, designations,
+                prixs, montants);
         collBean.add(beanInfo);
     }
 
@@ -58,8 +59,9 @@ public class OperationFactureRemboursementReport {
             InputStream stream = getClass().getResourceAsStream("FactureRemboursementBle.jasper");
             JasperReport report = (JasperReport) JRLoader.loadObject(stream);
             JasperPrint jasperPrint = JasperFillManager.fillReport(report,
-                     params, getData());
-            JasperViewer.viewReport(jasperPrint);
+                    params, getData());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            JasperViewer.viewReport(jasperPrint, false);
             //this.collBean.clear();
         } catch (Exception e) {
             e.printStackTrace();
