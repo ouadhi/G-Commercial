@@ -56,7 +56,7 @@ public class OperationEtatRemboursementReport {
             JasperReport report = (JasperReport) JRLoader.loadObject(stream);
             JasperPrint jasperPrint = JasperFillManager.fillReport(report,
                      params, getData());
-            JasperViewer.viewReport(jasperPrint);
+            JasperViewer.viewReport(jasperPrint,false);
             //this.collBean.clear();
         } catch (Exception e) {
             e.printStackTrace();

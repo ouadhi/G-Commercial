@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.UIManager;
 import net.sf.jasperreports.engine.DefaultJasperReportsContext;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRPropertiesUtil;
@@ -37,16 +38,16 @@ public class OperationEtatReceptionReport {
     }
 
     public void putReportInfo(String dateDebut, String dateFin, String date,
-             String totalFour, String totalMoulin, String totalDif,
-             String montantTotal, String montantLettre, List<String> nums,
-             List<String> qteFours, List<String> qteMoulins, List<String> qteDifs) {
+            String totalFour, String totalMoulin, String totalDif,
+            String montantTotal, String montantLettre, List<String> nums,
+            List<String> qteFours, List<String> qteMoulins, List<String> qteDifs) {
         // add date field here for each line
 
         EtatReceptionBean beanInfo = new EtatReceptionBean(dateDebut, dateFin, date //change date here
                 ,
                  totalFour, totalMoulin, totalDif,
-                 montantTotal, montantLettre, nums,
-                 qteFours, qteMoulins, qteDifs);
+                montantTotal, montantLettre, nums,
+                qteFours, qteMoulins, qteDifs);
         collBean.add(beanInfo);
     }
 
@@ -60,8 +61,9 @@ public class OperationEtatReceptionReport {
             InputStream stream = getClass().getResourceAsStream("EtatReception.jasper");
             JasperReport report = (JasperReport) JRLoader.loadObject(stream);
             JasperPrint jasperPrint = JasperFillManager.fillReport(report,
-                     params, getData());
-            JasperViewer.viewReport(jasperPrint);
+                    params, getData());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            JasperViewer.viewReport(jasperPrint, false);
             //this.collBean.clear();
         } catch (Exception e) {
             e.printStackTrace();
