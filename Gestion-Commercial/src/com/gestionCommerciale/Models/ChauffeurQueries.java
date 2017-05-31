@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.gestionCommerciale.Models;
 
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
@@ -124,6 +120,19 @@ public class ChauffeurQueries {
         }
         return d;
     }
+    
+      public static List<Chauffeur> listRecherche(String key) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Chauffeur> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Chauffeur where( nomChauffeur Like'%" + key + "%' OR prenomChauffeur Like '%" + key + "%'  )and deleted='" + false + "' ").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
 
     /*
     //method insertion/modification

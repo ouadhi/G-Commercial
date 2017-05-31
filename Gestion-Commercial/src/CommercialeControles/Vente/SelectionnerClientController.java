@@ -14,9 +14,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.Models.ClientQueries;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -26,6 +28,8 @@ public class SelectionnerClientController implements Initializable {
     @FXML
     private JFXListView<ClienCell> ClientListe;
      private ClientQueries clientQueries = new ClientQueries();
+    @FXML
+    private JFXTextField rechreche;
 
     
     @Override
@@ -49,6 +53,18 @@ public class SelectionnerClientController implements Initializable {
     @FXML
     private void select(MouseEvent event) {
         OperationVenteController.client = ClientListe.getSelectionModel().getSelectedItem().getClient()  ; 
+    }
+
+    @FXML
+    private void rechrecher(KeyEvent event) {
+         ClientListe.getItems().clear();
+         List<Client> listClientsDB = clientQueries.listRechereche(rechreche.getText()) ; 
+        List<ClienCell> list = new ArrayList<>();
+        for (int i = 0; i < listClientsDB.size(); i++) {
+            list.add(new ClienCell(listClientsDB.get(i) ));            
+        }
+        ObservableList<ClienCell> myObservableList = FXCollections.observableList(list);
+        ClientListe.setItems(myObservableList);
     }
 
     

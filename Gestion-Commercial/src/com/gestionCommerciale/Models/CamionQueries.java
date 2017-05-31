@@ -1,14 +1,13 @@
 package com.gestionCommerciale.Models;
+
 import com.gestionCommerciale.HibernateSchema.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
-/**
- *
- * @author CHERABRAB
- */
+
 public class CamionQueries {
-        public static boolean SaveOrUpdate(Camion camion) {
+
+    public static boolean SaveOrUpdate(Camion camion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -22,6 +21,7 @@ public class CamionQueries {
             return true;
         }
     }
+
     public static boolean archive(Camion camion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -37,6 +37,7 @@ public class CamionQueries {
         }
         return true;
     }
+
     public static boolean delete(Camion camion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -51,6 +52,7 @@ public class CamionQueries {
         }
         return true;
     }
+
     public static List<Camion> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -62,6 +64,7 @@ public class CamionQueries {
         }
         return list;
     }
+
     public static List<Camion> listArchived() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -73,6 +76,7 @@ public class CamionQueries {
         }
         return list;
     }
+
     public static List<Camion> listAll() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -84,6 +88,7 @@ public class CamionQueries {
         }
         return list;
     }
+
     public static Camion getCamionById(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -95,6 +100,7 @@ public class CamionQueries {
         }
         return d;
     }
+
     public static Camion getCamionByCode(String codeCamion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -106,6 +112,7 @@ public class CamionQueries {
         }
         return d;
     }
+
     public static Camion getCamionByMatricule(String matricule) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -118,8 +125,19 @@ public class CamionQueries {
         return d;
     }
     
-    
-/*
+    public static List<Camion> listRechreche(String key) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Camion> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Camion where (codeCamion like '"+key+"%'OR  matricule like '"+key+"%'  OR marque like '"+key+"%' ) and deleted='" + false + "'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
+    /*
     public void SaveOrUpdate(Camion camion) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -159,5 +177,5 @@ public class CamionQueries {
         }
         return camion;
     }
-*/
+     */
 }

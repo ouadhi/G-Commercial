@@ -60,7 +60,7 @@ public class BanqueListeController implements Initializable {
         
         setTotale();
         
-        possibleMot();
+      
     }    
 
     @FXML
@@ -81,7 +81,19 @@ public class BanqueListeController implements Initializable {
 
     @FXML
     private void recherche(KeyEvent event) {
-        System.out.println(rechreche.getText());
+       listebanque.getItems().clear();
+         List<Banque> listbanque  =    querie.listRechreche(rechreche.getText()) ; 
+       List<BanqueCell> list = new ArrayList<>();
+        
+        for (int i = 0; i < listbanque.size() ; i++) {
+            list.add(new BanqueCell(listbanque.get(i))) ; 
+            
+        }
+        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+        listebanque.setItems(myObservableList);
+        listebanque.setExpanded(true);
+        
+        setTotale();
     }
     
      public void possibleMot() {

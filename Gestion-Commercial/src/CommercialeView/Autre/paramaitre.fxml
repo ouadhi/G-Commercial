@@ -25,6 +25,11 @@
                   <Font size="25.0" />
                </font>
             </Text>
+            <Text fx:id="anneeselected" fill="#2c537a" layoutX="315.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="70.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <JFXComboBox fx:id="Annee" layoutX="226.0" layoutY="78.0" onAction="#select" prefHeight="45.0" prefWidth="180.0" styleClass="champtxt" />
@@ -33,14 +38,25 @@
       <Label fx:id="tva" layoutX="226.0" layoutY="143.0" prefHeight="45.0" prefWidth="180.0" styleClass="champtxt" />
       <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="419.0" layoutY="83.0" onAction="#addAnnee" prefHeight="40.0" prefWidth="31.0" style="-fx-background-radius: 60;" styleClass="add_plus" textFill="#02b128">
          <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="/icons/ajouter.png" />
+               </image></ImageView>
          </graphic>
       </JFXButton>
       <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="479.0" layoutY="83.0" onAction="#modiferAnnee" prefHeight="39.0" prefWidth="39.0" style="-fx-background-radius: 60;" styleClass="add_plus" text="Button" textFill="#02b128">
          <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="/icons/modifier.png" />
+               </image></ImageView>
          </graphic>
       </JFXButton>
       <Separator layoutY="49.0" prefHeight="3.0" prefWidth="700.0" style="-fx-background-color: #48afea;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <JFXButton layoutX="316.0" layoutY="212.0" onAction="#selectAnnee" prefHeight="56.0" prefWidth="180.0" style="-fx-background-color: #74c080;" text="Selectionner" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

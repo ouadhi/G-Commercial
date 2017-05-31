@@ -89,6 +89,7 @@ public class DockQueries {
         }
         return list;
     }
+    
     public static Dock getDockById(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -100,6 +101,7 @@ public class DockQueries {
         }
         return d;
     }
+    
     public static Dock getDockByNameAndWilaya(String name, String wilaya) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -111,5 +113,19 @@ public class DockQueries {
         }
         return d;
     }
+    
+    
+    public static List<Dock> listrechreche(String key) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Dock> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Dock where( nom like '"+key+"%' OR wilaya like'"+key+"%' )and deleted='" + false + "' ").list() ;
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+    
 
 }

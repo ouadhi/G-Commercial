@@ -5,6 +5,7 @@ import CommercialeControles.Ble.BelCell;
 import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.Models.BleQueries;
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 
@@ -23,6 +25,8 @@ public class SelectionnerBleController implements Initializable {
     private JFXListView<BleListeH> listeBle;
     private BleListeH  bleselected ;
     private BleQueries dockQueries = new BleQueries();
+    @FXML
+    private JFXTextField rechreche;
 
    
     @Override
@@ -50,6 +54,24 @@ public class SelectionnerBleController implements Initializable {
         
         bleselected =  (BleListeH) listeBle.getSelectionModel().getSelectedItem(); 
         FinOperationController.ble = bleselected  ; 
+    }
+
+    @FXML
+    private void recherche(KeyEvent event) {
+        listeBle.getItems().clear();
+        
+        List<Ble> listBlesDB = dockQueries.listRecherche(rechreche.getText()) ; 
+        List<BleListeH> list = new ArrayList<>();
+        
+        for (int i = 0; i < listBlesDB.size(); i++) {
+           list.add(new BleListeH(listBlesDB.get(i), listBlesDB.get(i).getQte())) ; 
+
+        }
+        
+        BleListeH ch  = new BleListeH(listeBle) ; 
+        list.add(ch) ; 
+        ObservableList<BleListeH> myObservableList = FXCollections.observableList(list);
+        listeBle.setItems(myObservableList);
     }
     
 }

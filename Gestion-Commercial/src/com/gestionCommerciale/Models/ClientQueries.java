@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.gestionCommerciale.Models;
 import com.gestionCommerciale.HibernateSchema.Client;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
-/**
- *
- * @author Hicham
- */
+
 public class ClientQueries {
         public static boolean SaveOrUpdate(Client client) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
@@ -112,6 +105,18 @@ public class ClientQueries {
             session.close();
         }
         return d;
+    }
+    
+     public static List<Client> listRechereche(String Key) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Client> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Client where (name like '%"+Key+"%' OR  prenom like '%"+Key+"%' ) AND deleted='"+false+"'").list();
+        } finally {
+            session.close();
+        }
+        return list;
     }
 
 

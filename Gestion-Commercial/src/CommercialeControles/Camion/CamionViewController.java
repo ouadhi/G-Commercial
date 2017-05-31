@@ -68,7 +68,7 @@ public class CamionViewController implements Initializable {
 
         setTotal();
 
-        possibleMot();
+
 
     }
 
@@ -154,7 +154,19 @@ public class CamionViewController implements Initializable {
 
     @FXML
     private void rechrecher(KeyEvent event) {
-        System.out.println(rechreche1.getText());
+         listeView.getItems().clear();
+        
+        List<Camion> listCamionsDB = camionQueries.listRechreche(rechreche1.getText()) ; 
+        List<CamionCell> list = new ArrayList<>();
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionCell(listCamionsDB.get(i)));
+
+        }
+
+        ObservableList<CamionCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+
+        setTotal();
     }
 
 }
