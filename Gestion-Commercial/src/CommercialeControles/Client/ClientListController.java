@@ -70,7 +70,7 @@ public class ClientListController implements Initializable {
 
         setTotal();
 
-        possibleMot();
+        
     }
 
     @FXML
@@ -154,7 +154,19 @@ public class ClientListController implements Initializable {
 
     @FXML
     private void rechreche(KeyEvent event) {
-        System.out.println(rechreche.getText());
+        clientLsit.getItems().clear(); 
+        List<Client> listClientsDB = ClientQueries.listRechereche(rechreche.getText()) ; 
+
+        List<ClienCell> list = new ArrayList<>();
+        for (int i = 0; i < listClientsDB.size(); i++) {
+            list.add(new ClienCell(listClientsDB.get(i)));
+        }
+
+        ObservableList<ClienCell> myObservableList = FXCollections.observableList(list);
+        clientLsit.setItems(myObservableList);
+        clientLsit.setExpanded(true);
+
+        setTotal();
     }
 
     public void possibleMot() {

@@ -69,7 +69,7 @@ public class ChauffeurController implements Initializable {
         
         setTotal();
         
-        possibleMot();
+       
 
     }
 
@@ -154,6 +154,18 @@ public class ChauffeurController implements Initializable {
 
     @FXML
     private void recherche(KeyEvent event) {
+        listeView.getItems().clear();
+        List<Chauffeur> listChauffeursDB= ChauffeurQueries.listRecherche(recherchetxt.getText()) ; 
+        List<ChauffeurCell> list = new ArrayList<>();
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+            
+        }
+
+        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+        
+        setTotal();
     }
     
     public void possibleMot() {

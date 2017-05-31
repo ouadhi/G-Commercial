@@ -68,7 +68,7 @@ public class DockLisController implements Initializable {
         
         setTotale();
         
-        possibleMot(); 
+    
 
     }
 
@@ -172,7 +172,19 @@ public class DockLisController implements Initializable {
 
     @FXML
     private void rechrecher(KeyEvent event) {
-        System.out.println(recherchetxt.getText());
+        listedock.getItems().clear();
+        List<Dock> listDocksDB = DockQueries.listrechreche(recherchetxt.getText());
+
+        List<DockCell> list = new ArrayList<>();
+        for (int i = 0; i < listDocksDB.size(); i++) {
+            list.add(new DockCell(listDocksDB.get(i)));
+        }
+        
+        ObservableList<DockCell> myObservableList = FXCollections.observableList(list);
+        listedock.setItems(myObservableList);
+        listedock.setExpanded(true);
+        
+        setTotale();
     }
     
     public void possibleMot() {
