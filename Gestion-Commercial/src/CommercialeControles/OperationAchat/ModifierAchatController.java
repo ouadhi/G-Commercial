@@ -3,10 +3,13 @@ package CommercialeControles.OperationAchat;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Achat;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.util.converter.LocalDateTimeStringConverter;
 import org.controlsfx.control.PopOver;
 
 public class ModifierAchatController implements Initializable {
@@ -39,6 +43,8 @@ public class ModifierAchatController implements Initializable {
     private ImageView chauffeuricon;
 
     PopOver pop = new PopOver();
+    
+    Achat achat ; 
 
     ChauffeurListH ch;
     CamionListeH camionH;
@@ -89,11 +95,15 @@ public class ModifierAchatController implements Initializable {
         Methode.getStage(event).close();
     }
 
-    public void setData(int numeroAquict) {
-        numero.setText(Integer.toString(numeroAquict));
+    public void setData(Achat  achat) {
+        this.achat = achat  ; 
+        numero.setText(achat.getNumAcqt()) ;
+        Q_Acquit.setText(this.achat.getQuantiteAcqt()+"");
+        Q_fournie.setText(this.achat.getQuantiteFour()+"");
+       // date.setValue(new LocalDateTimeStringConverter);
 
-        //ch = new ChauffeurListH("OUADHI", "Mohammed", "1234567");
-        //camionH = new CamionListeH("JMC", "1234567");
+        ch = new ChauffeurListH(this.achat.getChauffeur()) ; 
+        camionH = new CamionListeH(this.achat.getCamion()) ; 
 
         pop.setCornerRadius(4);
         pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);

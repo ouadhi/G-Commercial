@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import sun.plugin.javascript.navig.Anchor;
@@ -106,12 +107,23 @@ public class ListeAchatController implements Initializable {
 
     }
 
-    @FXML
-    private void rechrecher(ActionEvent event) {
-    }
 
     private void setTotale() {
         total.setText(Integer.toString(listeAchats.getItems().size()));
+    }
+
+    @FXML
+    private void rechrecher(KeyEvent event) {
+        List<Achat> achatList = AchatQueries.listRecherche(rechreche.getText())   ; 
+
+        List<AchatCell> list = new ArrayList<>();
+        for (int i = 0; i < achatList.size(); i++) {
+            list.add(new AchatCell(achatList.get(i)));
+        }
+        ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
+        listeAchats.setItems(myObservableList);
+        listeAchats.setExpanded(true);
+        setTotale();
     }
 
 }

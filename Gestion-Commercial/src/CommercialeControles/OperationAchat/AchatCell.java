@@ -166,7 +166,7 @@ public class AchatCell extends GridPane {
 
                 ModifierAchatController controler = loader.getController();
                 //edited 
-                controler.setData(Integer.parseInt(this.achat.getNumAcqt()));
+                controler.setData(this.achat);
 
                 AnchorPane root = loader.getRoot();
 

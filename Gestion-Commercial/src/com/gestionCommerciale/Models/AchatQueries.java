@@ -12,6 +12,7 @@ import org.hibernate.Session;
  * @author CHERABRAB
  */
 public class AchatQueries {
+
     public static boolean SaveOrUpdate(Achat achat) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -26,6 +27,7 @@ public class AchatQueries {
             return true;
         }
     }
+
     public static boolean archive(Achat achat) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -63,24 +65,26 @@ public class AchatQueries {
         List<Achat> list = new ArrayList<>();
         try {
             //list = session.createQuery("from Achat where deleted='"+false+"' AND id_annee='2017'").list();
-            System.out.println(AnneeQueries.getSelected().getIdAnnee()+"-----------");
-            list = session.createQuery("from Achat where deleted='"+false+"' AND id_annee='"+AnneeQueries.getSelected().getIdAnnee()+"'").list();
+            System.out.println(AnneeQueries.getSelected().getIdAnnee() + "-----------");
+            list = session.createQuery("from Achat where deleted='" + false + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
         } finally {
             session.close();
         }
         return list;
     }
+
     public static List<Achat> listArchived() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Achat> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Achat where deleted='"+true+"'").list();
+            list = session.createQuery("from Achat where deleted='" + true + "'").list();
         } finally {
             session.close();
         }
         return list;
     }
+
     public static List<Achat> listAll() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -92,6 +96,7 @@ public class AchatQueries {
         }
         return list;
     }
+
     public static Achat getAchatById(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -103,20 +108,40 @@ public class AchatQueries {
         }
         return d;
     }
+
     public static Achat getAchatByCode(String code) {
+        
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
+        
         Achat d;
+        
         try {
-            d = (Achat) session.createQuery("from Achat where code_achat='" +code+"'").uniqueResult();
+            d = (Achat) session.createQuery("from Achat where code_achat='" + code + "'").uniqueResult();
         } finally {
             session.close();
         }
+        
         return d;
     }
 
+    public static List<Achat> listRecherche(String key) {
+        
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        
+        List<Achat> list = new ArrayList<>();
+        
+        try {
+            list = session.createQuery("from Achat where chauffeur.nomChauffeur Like '" + key + "%' and deleted='" + false + "'").list();
+        } finally {
+            session.close();
+        }
+        
+        return list;
+        
+    }
 
-    
     /*
     public void SaveOrUpdate(Achat achat) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
@@ -162,5 +187,5 @@ public class AchatQueries {
         list= session.createQuery("from Achat where id_annee='"+AnneeQueries.getSelected().getIdAnnee()+"'").list();       
         return list;
     }
-    */
+     */
 }

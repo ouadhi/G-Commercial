@@ -86,7 +86,7 @@ public class AchatSlidController implements Initializable {
 
             ModifierAchatController modification = loader.getController();
             //edited
-            modification.setData(Integer.parseInt(achatC.achat.getNumAcqt()));
+            modification.setData(achatC.achat);
 
             AnchorPane pane = loader.getRoot();
 
