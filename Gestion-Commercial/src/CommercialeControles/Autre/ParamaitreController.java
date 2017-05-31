@@ -1,6 +1,7 @@
 package CommercialeControles.Autre;
 
 import UIControle.Methode;
+import UIControle.Notification;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Annee;
@@ -18,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 public class ParamaitreController implements Initializable {
 
@@ -25,6 +27,9 @@ public class ParamaitreController implements Initializable {
     private JFXComboBox<String> Annee;
     @FXML
     private Label tva;
+    @FXML
+    private Text anneeselected;
+    Annee annee  = null ; 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,6 +54,18 @@ public class ParamaitreController implements Initializable {
 
     @FXML
     private void modiferAnnee(ActionEvent event) {
+        try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.ModifierAnnee));
+                loader.load();
+                ModifierAnneeController Modifier = loader.getController();
+                Modifier.setData(annee);
+                AnchorPane root = loader.getRoot();
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root);
+                dialog.show();
+            } catch (IOException ex) {
+                Notification.errorNotification("Selectionner une année SVP !!");
+            }
     }
 
     @FXML
@@ -57,7 +74,7 @@ public class ParamaitreController implements Initializable {
     }
     
     public void getTVASelected () {
-     Annee annee    = AnneeQueries.getAnneeById(Integer.parseInt(Annee.getSelectionModel().getSelectedItem())) ; 
+       annee = AnneeQueries.getAnneeById(Integer.parseInt(Annee.getSelectionModel().getSelectedItem())) ; 
      tva.setText(annee.getTva()+"");
         
     }
@@ -65,6 +82,15 @@ public class ParamaitreController implements Initializable {
     @FXML
     private void select(ActionEvent event) {
         getTVASelected();
+    }
+
+    @FXML
+    private void selectAnnee(ActionEvent event) {
+        if (annee == null) {
+            Notification.errorNotification("Selectionner une année SVP !!");
+        } else {
+            anneeselected.setText(annee.getIdAnnee()+"");
+        }
     }
 
 }

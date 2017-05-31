@@ -5,6 +5,7 @@ import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Produit;
 import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -32,6 +34,8 @@ public class SelectionnerProduitController implements Initializable {
     @FXML
     private Label nbselected;
     static Label staticNbselected ; 
+    @FXML
+    private JFXTextField rechreche;
 
     
     @Override
@@ -60,6 +64,20 @@ public class SelectionnerProduitController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(SelectionnerProduitController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void rechrecher(KeyEvent event) {
+           listeProduit.getItems().clear();
+         List<Produit> listBlesDB = queries.listRechreche(rechreche.getText()) ; 
+        List<PorduitH> list = new ArrayList<>();
+        
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new PorduitH( listBlesDB.get(i) )); 
+        }
+        list.add(new PorduitH()) ;
+        ObservableList<PorduitH> myObservableList = FXCollections.observableList(list);
+        listeProduit.setItems(myObservableList);
     }
     
 }

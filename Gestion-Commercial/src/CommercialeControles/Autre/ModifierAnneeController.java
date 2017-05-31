@@ -3,6 +3,7 @@ package CommercialeControles.Autre;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import com.gestionCommerciale.HibernateSchema.Annee;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.Optional;
@@ -18,6 +19,8 @@ public class ModifierAnneeController implements Initializable {
 
     @FXML
     private JFXTextField tva;
+    
+    Annee annee  ; 
 
     
     @Override
@@ -49,6 +52,11 @@ public class ModifierAnneeController implements Initializable {
     @FXML
     private void quitter(ActionEvent event) {
         Methode.getStage(event).close();
+    }
+    
+    public void setData (Annee annee ) {
+        this.annee = annee ; 
+        tva.setText(this.annee.getTva()+"");
     }
     
 }
