@@ -152,10 +152,20 @@ public class BleListeController implements Initializable {
 
     @FXML
     private void rechrecheKeyReleased(KeyEvent event) {
-        System.out.println(rechreche.getText());
+            listeBle.getItems().clear();
+        
+        List<Ble> listBlesDB = BleQueries.listRecherche(rechreche.getText()) ; 
+        List<BelCell> list = new ArrayList<>();
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new BelCell(listBlesDB.get(i)));
+        }
+        ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
+        listeBle.setItems(myObservableList);
+        listeBle.setExpanded(true);
+        setTotale();
     }
 
     private void rechrecheKeyTyped(KeyEvent event) {
-        System.out.println(rechreche.getText());
+       
     }
 }

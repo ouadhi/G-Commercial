@@ -80,16 +80,16 @@ public class PayementListeController implements Initializable {
 //    }
 
     private void AfficheListePayement() {
-        List<Payment> listDB = queries.list(numero_facture);
-        System.err.println(numero_facture + "---------------");
-
-        List<PayementCell> list = new ArrayList<>();
-        for (int i = 0; i < listDB.size(); i++) {
-            list.add(new PayementCell(listDB.get(i)));
-        }
-        ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
-        listepayement.setItems(myObservableList);
-        listepayement.setExpanded(true);
+//        List<Payment> listDB = queries.list(numero_facture);
+//        System.err.println(numero_facture + "---------------");
+//
+//        List<PayementCell> list = new ArrayList<>();
+//        for (int i = 0; i < listDB.size(); i++) {
+//            list.add(new PayementCell(listDB.get(i)));
+//        }
+//        ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
+//        listepayement.setItems(myObservableList);
+//        listepayement.setExpanded(true);
 
     }
 

@@ -110,6 +110,18 @@ public class BleQueries {
         }
         return d;
     }
+    
+     public static List<Ble> listRecherche( String key ) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Ble> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Ble where  code_ble like '" +key+"%' and deleted='"+false+"'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
 
 
 }

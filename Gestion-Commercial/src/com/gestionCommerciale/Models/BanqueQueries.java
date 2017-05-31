@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.gestionCommerciale.Models;
 
 import com.gestionCommerciale.HibernateSchema.Banque;
@@ -10,10 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
-/**
- *
- * @author Hicham
- */
+
 public class BanqueQueries {
 
     public void SaveOrUpdate(Banque banque) {
@@ -57,6 +50,24 @@ public class BanqueQueries {
 
         return banqueList;
     }
+    
+    
+    public List<Banque> listRechreche( String key) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Banque> banqueList = null;
+        try {
+            banqueList = new ArrayList<>();
+            banqueList = session.createQuery("from Banque where (nom like '"+key+"%' OR compte Like '"+key+"%' ) ").list();
+        } finally {
+            session.close();
+        }
+
+        return banqueList;
+    }
+    
+    
+    
 
     
 

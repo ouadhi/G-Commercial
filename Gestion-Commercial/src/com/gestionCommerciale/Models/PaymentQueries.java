@@ -10,7 +10,8 @@ import org.hibernate.Session;
  * @author CHERABRAB
  */
 public class PaymentQueries {
-public static boolean SaveOrUpdate(Payment payment) {
+
+    public static boolean SaveOrUpdate(Payment payment) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -24,6 +25,7 @@ public static boolean SaveOrUpdate(Payment payment) {
             return true;
         }
     }
+
     public static boolean archive(Payment payment) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -61,35 +63,38 @@ public static boolean SaveOrUpdate(Payment payment) {
         List<Payment> list = new ArrayList<>();
         try {
             //list = session.createQuery("from Payment where deleted='"+false+"' AND id_annee='2017'").list();
-            System.out.println(AnneeQueries.getSelected().getIdAnnee()+"-----------");
-            list = session.createQuery("from Payment where deleted='"+false+"' AND id_annee='"+AnneeQueries.getSelected().getIdAnnee()+"'").list();
+            System.out.println(AnneeQueries.getSelected().getIdAnnee() + "-----------");
+            list = session.createQuery("from Payment where deleted='" + false + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
         } finally {
             session.close();
         }
         return list;
     }
+
     public static List<Payment> listArchived() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Payment> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Payment where deleted='"+true+"'"+"' AND id_annee='"+AnneeQueries.getSelected().getIdAnnee()+"'").list();
+            list = session.createQuery("from Payment where deleted='" + true + "'" + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
         } finally {
             session.close();
         }
         return list;
     }
+
     public static List<Payment> listAll() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Payment> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Payment"+"' AND id_annee='"+AnneeQueries.getSelected().getIdAnnee()+"'").list();
+            list = session.createQuery("from Payment" + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
         } finally {
             session.close();
         }
         return list;
     }
+
     public static Payment getPaymentById(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -102,7 +107,6 @@ public static boolean SaveOrUpdate(Payment payment) {
         return d;
     }
 
-    
     /*
     public void SaveOrUpdate(Payment payment) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
@@ -149,5 +153,5 @@ public static boolean SaveOrUpdate(Payment payment) {
 
         return paymentsList;
     }
-*/
+     */
 }
