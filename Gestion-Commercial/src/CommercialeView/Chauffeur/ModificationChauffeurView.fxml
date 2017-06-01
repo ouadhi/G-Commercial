@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +11,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Chauffeur.ModificationChauffeurController">
@@ -22,7 +19,7 @@
          <children>
             <Pane prefHeight="67.0" prefWidth="614.0" style="-fx-background-color: #f6f7fb;">
                <children>
-                  <Text fill="#7d6dfb" layoutX="34.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ajouter_chaufeur" text="Modifier" />
+                  <Text fill="#7d6dfb" layoutX="34.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ajouter_chaufeur" text="Modifier Chaffeur" />
                   <ImageView fx:id="close" fitHeight="28.0" fitWidth="28.0" layoutX="577.0" layoutY="20.0" onMouseClicked="#closewindow" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/close.png" />
@@ -52,31 +49,13 @@
                   <Label styleClass="label_info" text="Code Chauffeur" GridPane.rowIndex="2" />
                   <Label styleClass="label_info" text="Telephone Chaufeur :" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label styleClass="label_info" text="Type  Chaufeur :" GridPane.rowIndex="4" />
-                  <Label fx:id="camion" styleClass="label_info" text="Camion" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <JFXTextField fx:id="codechauffeur" focusColor="#405aa800" prefHeight="41.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="3" />
                   <JFXTextField fx:id="telchauffeur" focusColor="#405aa800" prefHeight="41.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <JFXTextField fx:id="typechauffeur" focusColor="#405aa800" prefHeight="41.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="5" />
-                  <JFXComboBox fx:id="camionbox" prefHeight="41.0" prefWidth="194.0" styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <JFXButton onAction="#deletecamion" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: red; -fx-background-radius: 50;" text="-" textFill="#f8f8f8" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <font>
-                        <Font size="5.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="235.0" />
-                     </GridPane.margin>
-                  </JFXButton>
-                  <JFXButton onAction="#addmaion" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: green; -fx-background-radius: 50;" text="+" textFill="#f8f8f8" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <font>
-                        <Font size="5.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="200.0" />
-                     </GridPane.margin>
-                  </JFXButton>
                </children>
             </GridPane>
             <JFXButton fx:id="savebttn" layoutX="460.0" layoutY="418.0" onAction="#sauvegarder" prefHeight="49.0" prefWidth="133.0" styleClass="button_save" text="Enregistrer" />
-            <JFXButton fx:id="anullerbttn" layoutX="319.0" layoutY="418.0" onAction="#annuler" prefHeight="49.0" prefWidth="126.0" styleClass="button_annuler" text="Annuler" />
+            <JFXButton fx:id="anullerbttn" layoutX="312.0" layoutY="418.0" onAction="#annuler" prefHeight="49.0" prefWidth="133.0" styleClass="button_annuler" text="Annuler" />
             <Label fx:id="savelabel" layoutX="74.0" layoutY="433.0" text="Enregistré" textFill="#36d484" visible="false" />
          </children>
       </AnchorPane>

@@ -50,12 +50,11 @@
          </font>
       </Text>
       <JFXListView fx:id="listeView" layoutX="51.0" layoutY="205.0" onMouseClicked="#showChaffeur" prefHeight="460.0" prefWidth="1117.0" stylesheets="@ChauffeurCSS.css" />
-      <GridPane hgap="3.0" layoutX="51.0" layoutY="148.0" prefHeight="51.0" prefWidth="1117.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel">
+      <GridPane hgap="3.0" layoutX="51.0" layoutY="148.0" prefHeight="50.0" prefWidth="1117.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel">
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="36.0" prefWidth="112.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="254.0" minWidth="100.0" prefWidth="247.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="126.0" prefWidth="234.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="102.0" prefWidth="102.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="36.0" prefWidth="151.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="293.0" minWidth="100.0" prefWidth="277.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="126.0" prefWidth="228.0" />
             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="554.0" minWidth="77.0" prefWidth="406.0" />
          </columnConstraints>
          <rowConstraints>
@@ -73,11 +72,6 @@
                </font>
             </Label>
             <Label text="Telephone" GridPane.columnIndex="2">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label layoutX="333.0" layoutY="35.0" text="Voyages" GridPane.columnIndex="3">
                <font>
                   <Font size="17.0" />
                </font>

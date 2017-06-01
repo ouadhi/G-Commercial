@@ -25,16 +25,15 @@ import javafx.stage.Stage;
 public class ChauffeurCell extends GridPane {
 
     Chauffeur chauffeur;
+    
     protected final ColumnConstraints columnConstraints;
     protected final ColumnConstraints columnConstraints0;
     protected final ColumnConstraints columnConstraints1;
     protected final ColumnConstraints columnConstraints2;
-    protected final ColumnConstraints columnConstraints3;
     protected final RowConstraints rowConstraints;
     protected final Label label;
     protected final Label label0;
     protected final Label label1;
-    protected final Label label2;
 
     public JFXPopup popup;
     JFXButton bttn;
@@ -42,15 +41,16 @@ public class ChauffeurCell extends GridPane {
     public ChauffeurCell(Chauffeur chauffeur) {
         this.chauffeur = chauffeur;
         this.popup = new JFXPopup();
-        //back
-        Label nomLabl = new Label(this.chauffeur.getNomChauffeur());
-        nomLabl.setAlignment(Pos.CENTER_LEFT);
-        Image img = new Image(getClass().getResourceAsStream("/icons/man.png"));
-        ImageView icon = new ImageView(img);
-        icon.prefHeight(10);
-        icon.prefWidth(10);
-        nomLabl.setGraphic(icon);
-
+        
+        columnConstraints = new ColumnConstraints();
+        columnConstraints0 = new ColumnConstraints();
+        columnConstraints1 = new ColumnConstraints();
+        columnConstraints2 = new ColumnConstraints();
+        rowConstraints = new RowConstraints();
+        label = new Label();
+        label0 = new Label();
+        label1 = new Label();
+        
         bttn = new JFXButton();
         Image imgbtn = new Image(getClass().getResourceAsStream("/icons/more3.png"));
         ImageView imgviewbtn = new ImageView(imgbtn);
@@ -59,51 +59,35 @@ public class ChauffeurCell extends GridPane {
         bttn.prefHeight(50);
         bttn.prefWidth(50);
         bttn.setGraphic(imgviewbtn);
-
-        columnConstraints = new ColumnConstraints();
-        columnConstraints0 = new ColumnConstraints();
-        columnConstraints1 = new ColumnConstraints();
-        columnConstraints2 = new ColumnConstraints();
-        columnConstraints3 = new ColumnConstraints();
-        rowConstraints = new RowConstraints();
-        label = new Label();
-        label0 = new Label();
-        label1 = new Label();
-        label2 = new Label();
-
+        
         setHgap(3.0);
         setPrefHeight(50.0);
-        setPrefWidth(1100.0);
+        setPrefWidth(1117.0);
+        
 
         columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
         columnConstraints.setMaxWidth(186.0);
         columnConstraints.setMinWidth(36.0);
-        columnConstraints.setPrefWidth(112.0);
+        columnConstraints.setPrefWidth(151.0);
 
         columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-        columnConstraints0.setMaxWidth(254.0);
+        columnConstraints0.setMaxWidth(293.0);
         columnConstraints0.setMinWidth(100.0);
-        columnConstraints0.setPrefWidth(247.0);
+        columnConstraints0.setPrefWidth(277.0);
 
         columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
         columnConstraints1.setMaxWidth(492.0);
         columnConstraints1.setMinWidth(126.0);
-        columnConstraints1.setPrefWidth(234.0);
+        columnConstraints1.setPrefWidth(228.0);
 
-        columnConstraints2.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints2.setHalignment(javafx.geometry.HPos.RIGHT);
         columnConstraints2.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-        columnConstraints2.setMaxWidth(492.0);
-        columnConstraints2.setMinWidth(102.0);
-        columnConstraints2.setPrefWidth(102.0);
-
-        columnConstraints3.setHalignment(javafx.geometry.HPos.RIGHT);
-        columnConstraints3.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-        columnConstraints3.setMaxWidth(554.0);
-        columnConstraints3.setMinWidth(77.0);
-        columnConstraints3.setPrefWidth(406.0);
+        columnConstraints2.setMaxWidth(554.0);
+        columnConstraints2.setMinWidth(77.0);
+        columnConstraints2.setPrefWidth(406.0);
 
         rowConstraints.setMinHeight(10.0);
         rowConstraints.setPrefHeight(30.0);
@@ -111,35 +95,33 @@ public class ChauffeurCell extends GridPane {
 
         label.setPrefHeight(22.0);
         label.setPrefWidth(46.0);
-        label.setText("1");
+        label.setText(this.chauffeur.getId()+"");
         label.setFont(new Font(17.0));
 
-        GridPane.setColumnIndex(nomLabl, 1);
-        nomLabl.setFont(new Font(17.0));
+        GridPane.setColumnIndex(label0, 1);
+        label0.setText(this.chauffeur.getNomChauffeur()+" "+this.chauffeur.getNomChauffeur());
+        label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(this.chauffeur.getTelephone());
+        label1.setText(this.chauffeur.getPrenomChauffeur());
         label1.setFont(new Font(17.0));
-        //back voyage
-        GridPane.setColumnIndex(label2, 3);
-        label2.setLayoutX(333.0);
-        label2.setLayoutY(35.0);
-        label2.setText("0");
-        label2.setFont(new Font(17.0));
 
-        GridPane.setColumnIndex(bttn, 4);
+        GridPane.setColumnIndex(bttn, 3);
+        GridPane.setMargin(bttn, new Insets(0.0, 50.0, 0.0, 0.0));
 
         getColumnConstraints().add(columnConstraints);
         getColumnConstraints().add(columnConstraints0);
         getColumnConstraints().add(columnConstraints1);
         getColumnConstraints().add(columnConstraints2);
-        getColumnConstraints().add(columnConstraints3);
         getRowConstraints().add(rowConstraints);
-        getChildren().add(nomLabl);
+        getChildren().add(label);
         getChildren().add(label0);
         getChildren().add(label1);
-        getChildren().add(label2);
         getChildren().add(bttn);
+
+        
+
+        
 
         intpopup();
 

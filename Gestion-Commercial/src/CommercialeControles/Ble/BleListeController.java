@@ -62,7 +62,7 @@ public class BleListeController implements Initializable {
         listeBle.setItems(myObservableList);
         listeBle.setExpanded(true);
         setTotale();
-        possibleMot();
+        
     }
 
     @FXML

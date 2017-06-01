@@ -37,8 +37,6 @@ public class ModificationChauffeurController implements Initializable {
     @FXML
     private JFXTextField prenomchauffeur;
     @FXML
-    private Label camion;
-    @FXML
     private JFXTextField codechauffeur;
     @FXML
     private JFXTextField telchauffeur;
@@ -52,16 +50,17 @@ public class ModificationChauffeurController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
-    
-    public ArrayList<Camion> camions_Chauffeur   = new ArrayList<>()  ; 
-    @FXML
+
+    public ArrayList<Camion> camions_Chauffeur = new ArrayList<>();
     private JFXComboBox<String> camionbox;
     private Chauffeur chauffeur;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-         Methode.SetUpper(codechauffeur);
+
+        Methode.SetUpper(codechauffeur);
         Methode.SetUpper(nomchauffeur);
+        Methode.setOnlyNumbre(telchauffeur);
 
     }
 
@@ -105,49 +104,21 @@ public class ModificationChauffeurController implements Initializable {
     public void setData(Chauffeur chauffeur) {
         Methode.SetUpper(codechauffeur);
         Methode.SetUpper(nomchauffeur);
-        
+        Methode.setOnlyNumbre(telchauffeur);
+
         nomchauffeur.setText(chauffeur.getNomChauffeur());
         prenomchauffeur.setText(chauffeur.getPrenomChauffeur());
-        codechauffeur.setText(chauffeur.getId()+"");
+        codechauffeur.setText(chauffeur.getId() + "");
         telchauffeur.setText(chauffeur.getTelephone());
         typechauffeur.setText(chauffeur.getType());
-        this.chauffeur=chauffeur;
+        this.chauffeur = chauffeur;
     }
 
     @FXML
     private void closewindow(MouseEvent event) {
-           Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
         g.close();
 
-        
     }
 
-    @FXML
-    private void deletecamion(ActionEvent event) {
-        int com  = camionbox.getSelectionModel().getSelectedIndex() ;
-        if (com >=0) {
-            camionbox.getItems().remove(com) ; 
-            camions_Chauffeur.remove(com) ; 
-        }
-    }
-
-    @FXML
-    private void addmaion(ActionEvent event) {
-        try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(ViewUrl.SelectCamionchauffeur));
-                loader.load();
-                
-                selectionnerCamionController Modifier =  loader.getController() ;
-                Modifier.setData(camions_Chauffeur, camionbox);
-                
-                AnchorPane root = loader.getRoot();
-                
-                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
-                dialog.show();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(AjouterChauffeurViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

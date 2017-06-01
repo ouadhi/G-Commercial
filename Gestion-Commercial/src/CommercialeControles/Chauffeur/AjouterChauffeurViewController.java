@@ -36,8 +36,6 @@ public class AjouterChauffeurViewController implements Initializable {
     @FXML
     private JFXTextField prenomchauffeur;
     @FXML
-    private Label camion;
-    @FXML
     private JFXTextField codechauffeur;
     @FXML
     private JFXTextField telchauffeur;
@@ -55,7 +53,6 @@ public class AjouterChauffeurViewController implements Initializable {
     
     public ArrayList<Camion> camions_Chauffeur   = new ArrayList<>()  ; 
    
-    @FXML
     private JFXComboBox<String> camionbox;
    
 
@@ -63,6 +60,7 @@ public class AjouterChauffeurViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Methode.SetUpper(codechauffeur);
         Methode.SetUpper(nomchauffeur);
+        Methode.setOnlyNumbre(telchauffeur);
       
 
     }
@@ -115,7 +113,6 @@ public class AjouterChauffeurViewController implements Initializable {
 
     }
 
-    @FXML
     private void deletecamion(ActionEvent event) {
         int com  = camionbox.getSelectionModel().getSelectedIndex() ;
         if (com >=0) {
@@ -124,7 +121,6 @@ public class AjouterChauffeurViewController implements Initializable {
         }
     }
 
-    @FXML
     private void addmaion(ActionEvent event) {
         try {
                 FXMLLoader loader = new FXMLLoader();

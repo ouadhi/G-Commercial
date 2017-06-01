@@ -66,6 +66,7 @@ public class ChauffeurController implements Initializable {
 
         ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
         listeView.setItems(myObservableList);
+        listeView.setExpanded(true);
         
         setTotal();
         
