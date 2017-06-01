@@ -65,6 +65,10 @@ public class CamionCell extends GridPane {
         label1 = new Label();
         label2 = new Label();
         label3 = new Label();
+        
+        setHgap(3.0);
+        setPrefHeight(50.0);
+        setPrefWidth(1117.0);   
 
         columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
@@ -113,11 +117,11 @@ public class CamionCell extends GridPane {
         label2.setLayoutX(333.0);
         label2.setLayoutY(35.0);
         //back
-        label2.setText("chauffeur!");
+        label2.setText(camion.getPoid()+"");
         label2.setFont(new Font(17.0));
         GridPane.setColumnIndex(label3, 4);
         //back
-        label3.setText(camion.getPoid()+"");
+        label3.setText("");
         label3.setFont(new Font(17.0));
         GridPane.setColumnIndex(bttn, 5);
         getColumnConstraints().add(columnConstraints);

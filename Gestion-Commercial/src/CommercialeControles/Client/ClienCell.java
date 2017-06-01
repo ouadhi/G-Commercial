@@ -127,7 +127,7 @@ public class ClienCell extends GridPane {
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);
-        label0.setText(this.client.getName());
+        label0.setText(this.client.getName()+" "+this.client.getPrenom());
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);

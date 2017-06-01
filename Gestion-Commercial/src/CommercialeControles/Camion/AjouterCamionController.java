@@ -71,8 +71,10 @@ public class AjouterCamionController implements Initializable {
                 camionQueries.SaveOrUpdate(camion);
                 new ShowPane().showCamion();
                 Notification.Addnotification();
-                savelabel.setVisible(true);
-                annuler(event);
+               
+               Methode.getStage(event).close();  ; 
+               
+                
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

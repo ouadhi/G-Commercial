@@ -77,8 +77,7 @@ public class ProduitListController implements Initializable {
         
         setTotale();
         
-        possibleMot();
-
+      
     }
 
     @FXML

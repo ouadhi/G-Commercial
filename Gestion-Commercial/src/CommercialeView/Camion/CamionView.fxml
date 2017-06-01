@@ -66,12 +66,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label layoutX="333.0" layoutY="35.0" text="Chauffeur" GridPane.columnIndex="3">
+            <Label layoutX="333.0" layoutY="35.0" text="Taille" GridPane.columnIndex="3">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Taille" GridPane.columnIndex="4">
+            <Label GridPane.columnIndex="4">
                <font>
                   <Font size="17.0" />
                </font>

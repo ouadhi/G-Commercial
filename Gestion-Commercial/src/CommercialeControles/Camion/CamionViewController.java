@@ -75,10 +75,16 @@ public class CamionViewController implements Initializable {
     @FXML
     private void AjouterMethode(ActionEvent event) {
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        AjouterCamionDialog dialog = new AjouterCamionDialog(stage);
-        dialog.show();
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/CommercialeView/Camion/AjouterCamionView.fxml"));
+             
+            StageDialog  dialog = new StageDialog(stage, pane) ;
+            dialog.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(CamionViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

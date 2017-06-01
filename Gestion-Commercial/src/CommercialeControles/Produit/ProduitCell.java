@@ -137,7 +137,7 @@ public class ProduitCell extends GridPane {
         rowConstraints.setPrefHeight(30.0);
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        label.setText(Integer.toString(produit.getIdProduit()));
+        label.setText(produit.getCodeProduit());
         GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
         label.setFont(new Font(17.0));
 
