@@ -179,11 +179,12 @@ public class PayementCell extends GridPane {
                 StageDialog dialog = new StageDialog(Methode.getStage(event), root);
                 dialog.show();
                 
-                popup.close();
+               
             } catch (IOException ex) {
                 Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
+             popup.close();
         });
 
         supprimer.setOnAction(event -> {
@@ -193,6 +194,8 @@ public class PayementCell extends GridPane {
                 Notification.Deletenotification();
                 
             }
+            
+             popup.close();
         });
 
     }

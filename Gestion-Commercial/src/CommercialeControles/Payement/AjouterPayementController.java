@@ -1,4 +1,3 @@
-
 package CommercialeControles.Payement;
 
 import UIControle.Methode;
@@ -22,7 +21,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-
 public class AjouterPayementController implements Initializable {
 
     @FXML
@@ -33,19 +31,15 @@ public class AjouterPayementController implements Initializable {
     private JFXComboBox<String> type;
     @FXML
     private JFXTextField montont;
-    ArrayList<String> Types = new ArrayList<>()  ; 
-    
-    private int Numero_facture  ; 
-    private JFXListView<PayementCell> listepayement ; 
-    
+    ArrayList<String> Types = new ArrayList<>();
+
+    private int Numero_facture;
+    private JFXListView<PayementCell> listepayement;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         
-    }   
 
-   
-    
-
+    }
 
     @FXML
     private void close(ActionEvent event) {
@@ -58,44 +52,42 @@ public class AjouterPayementController implements Initializable {
         AfficheListePayement();
         close(event);
     }
-    
-    public void setdata (int facutre , JFXListView<PayementCell> listepayement) {
-        this.Numero_facture  = facutre ; 
-        this.listepayement  =  listepayement ; 
-        
+
+    public void setdata(int facutre, JFXListView<PayementCell> listepayement) {
+        this.Numero_facture = facutre;
+        this.listepayement = listepayement;
+
         Nfacture.setText(Integer.toString(facutre));
-        
-        Types.add("Cache") ; 
-        Types.add("Espace") ;
+
+        Types.add("Especes");
+        Types.add("Cheque");
         ObservableList<String> liste = FXCollections.observableList(Types);
         type.setItems(liste);
-        
+
         datepayment.setTime(LocalTime.now());
-        
+
         Methode.setOnlyDouble(montont, 8);
     }
-    
+
     private void AfficheListePayement() {
-        listepayement.getItems().clear(); 
+        listepayement.getItems().clear();
         List<PayementCell> list = new ArrayList<>();
-       
+
         for (int i = 0; i < 5; i++) {
-            
-            Payment  payement  =  new Payment("Cache", 4000, new Date()) ;
-            PayementCell cell  = new PayementCell(payement) ;
-            list.add(cell) ;      
-            
+
+            Payment payement = new Payment("Cheque", 4000, new Date());
+            PayementCell cell = new PayementCell(payement);
+            list.add(cell);
+
         }
-        
+
         ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
         listepayement.setItems(myObservableList);
-    }    
-
-    
+    }
 
     @FXML
     private void quitter(MouseEvent event) {
-         Methode.getStageMouses(event).close();
+        Methode.getStageMouses(event).close();
     }
-    
+
 }

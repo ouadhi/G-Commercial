@@ -131,7 +131,7 @@ public class ClienCell extends GridPane {
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(this.client.getAddressClient());
+        label1.setText(this.client.getTypeActivity());
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
@@ -226,7 +226,7 @@ public class ClienCell extends GridPane {
                 loader.load();
                 
                 PayementListeController pay  = loader.getController(); 
-                pay.setDate(this.client.getId());
+                pay.setDate(this.client);
                 
                 AnchorPane root = loader.getRoot();
                 

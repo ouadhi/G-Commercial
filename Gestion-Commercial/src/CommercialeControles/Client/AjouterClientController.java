@@ -17,9 +17,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.Models.ClientQueries;
+import com.jfoenix.controls.JFXComboBox;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tray.notification.NotificationType;
 
 public class AjouterClientController implements Initializable {
@@ -48,6 +54,8 @@ public class AjouterClientController implements Initializable {
     private ImageView close;
     @FXML
     private JFXTextField Solde;
+    @FXML
+    private JFXComboBox<String > activiteBox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -58,6 +66,7 @@ public class AjouterClientController implements Initializable {
         Methode.setOnlyNumbre(NCarteF);
         
         Methode.SetUpper(nomtxt);
+        setActivty();
     }
 
     @FXML
@@ -68,7 +77,8 @@ public class AjouterClientController implements Initializable {
         String NR = NRtxt.getText();
         String NA = NAtxt.getText();
         String adresse = adressetxt.getText();
-        String activite = activitetxt.getText();
+        //String activite = activitetxt.getText();
+        String activite = activiteBox.getSelectionModel().getSelectedItem()   ; 
         String Ncarte = NCarteF.getText();
         
         if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
@@ -106,5 +116,18 @@ public class AjouterClientController implements Initializable {
     private void close(MouseEvent event) {
         Stage currentSatge = Methode.getStageMouses(event);
         currentSatge.close();
+    }
+    
+    public void  setActivty  ()  {
+         List<String> listeActivty  =  new  ArrayList<>()  ;  
+         listeActivty.add("Boulangerie") ; 
+         listeActivty.add("Agriculteur") ;
+         listeActivty.add("Autre") ; 
+         
+         ObservableList<String >  list  = FXCollections.observableList(listeActivty) ; 
+         
+         activiteBox.setItems(list);
+         
+         
     }
 }

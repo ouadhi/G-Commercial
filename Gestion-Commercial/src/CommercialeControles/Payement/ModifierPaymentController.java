@@ -73,12 +73,12 @@ public class ModifierPaymentController implements Initializable {
         this.payment = payement;
         this.listepayement = listepayement;
 
-        // ajoute le numero de  la facture 
-        //  Nfacture.setText(Integer.toString(this.num_facture));
+        
         Npayement.setText(Integer.toString(this.payment.getIdPayment()));
 
-        Types.add("Cache");
-        Types.add("Espace");
+        Types.add("Especes");
+        Types.add("Cheque");
+        
         ObservableList<String> liste = FXCollections.observableList(Types);
         type.setItems(liste);
 
@@ -93,7 +93,7 @@ public class ModifierPaymentController implements Initializable {
 
         for (int i = 0; i < 5; i++) {
 
-            Payment payement = new Payment("Cache", 4000, new Date());
+            Payment payement = new Payment("Cheque", 4000, new Date());
             PayementCell cell = new PayementCell(payement);
             list.add(cell);
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
@@ -132,6 +133,7 @@
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
+            <JFXComboBox fx:id="activiteBox" prefHeight="39.0" prefWidth="264.0" promptText="Selectionner " styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <JFXButton layoutX="422.0" layoutY="498.0" onAction="#Sauvgarder" prefHeight="54.0" prefWidth="161.0" styleClass="button_save" text="Enregistrer" />
