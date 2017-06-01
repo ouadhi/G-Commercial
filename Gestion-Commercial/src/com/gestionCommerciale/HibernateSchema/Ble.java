@@ -16,10 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/**
- *
- * @author Hicham
- */
+
 @Entity
 @Table(name = "Ble")
 public class Ble {

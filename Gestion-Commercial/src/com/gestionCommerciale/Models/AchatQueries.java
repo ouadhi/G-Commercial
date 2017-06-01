@@ -133,7 +133,7 @@ public class AchatQueries {
         List<Achat> list = new ArrayList<>();
         
         try {
-            list = session.createQuery("from Achat where chauffeur.nomChauffeur Like '" + key + "%' and deleted='" + false + "'").list();
+            list = session.createQuery("from Achat where dock.nom Like '" + key + "%' and deleted='" + false + "'").list();
         } finally {
             session.close();
         }

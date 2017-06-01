@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class VenteListController implements Initializable {
@@ -49,7 +50,7 @@ public class VenteListController implements Initializable {
         List<Facture> factureList = FactureQueries.list();
         List<VenteCell> list = new ArrayList<>();
         for (int i = 0; i < factureList.size(); i++) {
-            list.add(new VenteCell(factureList.get(i)));            
+            list.add(new VenteCell(factureList.get(i)));
         }
 
         ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
@@ -84,10 +85,6 @@ public class VenteListController implements Initializable {
     }
 
     @FXML
-    private void rechrecher(ActionEvent event) {
-    }
-
-    @FXML
     private void showAddStage(ActionEvent event) {
         new ShowPane().showAjouterVente();
     }
@@ -97,6 +94,24 @@ public class VenteListController implements Initializable {
     }
 
     public void setTotale() {
+
+    }
+
+    @FXML
+    private void rechrecher(KeyEvent event) {
+        listevente.getItems().clear();
+
+        List<Facture> factureList = FactureQueries.listrechreche(rechreche.getText());
+        List<VenteCell> list = new ArrayList<>();
+        
+        for (int i = 0; i < factureList.size(); i++) {
+            list.add(new VenteCell(factureList.get(i)));
+        }
+
+        ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
+        listevente.setItems(myObservableList);
+       
+        setTotale();
 
     }
 
