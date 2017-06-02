@@ -8,8 +8,12 @@ package Report.EtatExpeditionReport;
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,36 +44,79 @@ public class GenerateEtatExpeditionReport {
 
             list = new ArrayList<>();
             list = session.createQuery("from Facture").list();
+            Calendar cal = Calendar.getInstance();
+            Date yearStart = new GregorianCalendar(cal.get(Calendar.YEAR), 0, 1).getTime();
+            List<Date> dates = getDaysBetweenDates(increment_decrementDays(false, yearStart, 1),
+                     increment_decrementDays(true, jour, 1));
+            List<Facture> listFactures = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getDate().equals(jour)) {
-                    map.put(list.get(i), list.get(i).getClient().getName());
-                }
-            }
-            // Total 
-            for (int i = 0; i < list.size(); i++) {
-                for (int j = 0; j < list.get(i).getQtes().size(); j++) {
-                    if (list.get(i).getQtes().get(i).getProduit().toString().equals("FARINE 50")) {
-                        farineTotal = farineTotal + list.get(i).getQtes().get(j).getQte_fact();
-                    } else {
-                        sonTotal = sonTotal + list.get(i).getQtes().get(j).getQte_fact();
+                for (int j = 0; j < dates.size(); j++) {
+                    if (dates.get(j).equals(list.get(i).getDate())) {
+                        listFactures.add(list.get(i));
                     }
                 }
-                for (int j = 0; j < list.get(i).getClient().getPayments().size(); j++) {
-                    versementTotal = versementTotal + list.get(i).getClient().getPayments().get(j).getMontant();
-                }
-                montantTotal = montantTotal + list.get(i).getMontant();
-                
             }
-            differenceTotal=versementTotal-montantTotal;
+
+            for (int i = 0; i < listFactures.size(); i++) {
+                if (listFactures.get(i).getDate().equals(jour)) {
+                    map.put(listFactures.get(i), listFactures.get(i).getClient().getName());
+                }
+            }
+
+            // Total  a ce jour  
+            for (int i = 0; i < listFactures.size(); i++) {
+                for (int j = 0; j < listFactures.get(i).getQtes().size(); j++) {
+                    if (listFactures.get(i).getQtes().get(j).getProduit().getNom().equals("FARINE 50")) {
+                        farineTotal = farineTotal + listFactures.get(i).getQtes().get(j).getQte_fact();
+                    } else {
+                        sonTotal = sonTotal + listFactures.get(i).getQtes().get(j).getQte_fact();
+                    }
+                }
+                for (int j = 0; j < listFactures.get(i).getClient().getPayments().size(); j++) {
+                    versementTotal = versementTotal + listFactures.get(i).getClient().getPayments().get(j).getMontant();
+                }
+                montantTotal = montantTotal + listFactures.get(i).getMontant();
+
+            }
+            differenceTotal = versementTotal - montantTotal;
         } finally {
             session.close();
         }
         this.map = map;
+        System.out.println("---------------map: " + map);
     }
 
     public Map<Facture, String> getFacture_ClientParJour() {
         return map;
 
+    }
+
+    public static Date increment_decrementDays(boolean increment, Date date, int days) {
+        Date newdDate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        if (increment) {
+            cal.add(Calendar.DATE, days); //minus number would decrement the days
+            newdDate = cal.getTime();
+        } else {
+            cal.add(Calendar.DATE, -days);
+            newdDate = cal.getTime();
+        }
+
+        return newdDate;
+    }
+
+    public static List<Date> getDaysBetweenDates(Date startdate, Date enddate) {
+        List<Date> dates = new ArrayList<Date>();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(startdate);
+
+        while (calendar.getTime().before(enddate)) {
+            Date result = calendar.getTime();
+            dates.add(result);
+            calendar.add(Calendar.DATE, 1);
+        }
+        return dates;
     }
 
     //somme qte farine et son
@@ -106,7 +153,7 @@ public class GenerateEtatExpeditionReport {
     }
 
     public List<Double> sommes() {
-        List<Double> listSommes = null;
+        List<Double> listSommes = new ArrayList<>();
         //Map<Facture, Client> map = getFacture_ClientParJour();
         try {
             //somme farine
@@ -134,6 +181,7 @@ public class GenerateEtatExpeditionReport {
     public List<List<String>> getExpedition() {
         List<List<String>> expeditions = new ArrayList<>();
         for (Facture facture : map.keySet()) {
+            System.out.println("--------------le client :" + facture.getClient().getName());
             List<String> expedition = new ArrayList<>();
             for (int i = 0; i < facture.getQtes().size(); i++) {
                 expedition.add(facture.getClient().getName());
@@ -151,7 +199,8 @@ public class GenerateEtatExpeditionReport {
                 observations.add("");
 
             }
-
+            System.out.println("list expidition ------------------" + expedition);
+            expeditions.add(expedition);
         }
 
         return expeditions;
@@ -197,6 +246,16 @@ public class GenerateEtatExpeditionReport {
         return getList(expeditions, 7);
     }
 
+    public static double round(double value, int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
     public void generateReport(Date jour) throws IOException, JRException {
 
         OperationEtatExpedition operationEtatExpedition = new OperationEtatExpedition();
@@ -211,17 +270,27 @@ public class GenerateEtatExpeditionReport {
         List<String> montants = getMontant(expeditions);
         List<String> versements = getVersement(expeditions);
         List<Double> sommes = sommes();
-        double totalFarine = sommes.get(0);
-        double totalSon = sommes.get(1);
-        double totalMontant = sommes.get(2);
-        double totalVersement = sommes.get(3);
-        double totalVersemntMoinMontant = sommes.get(4);
-        double totalQuantite = sommes.get(5);
-        operationEtatExpedition.putReportInfo(jour.toString(), String.valueOf(totalFarine), String.valueOf(totalSon)
-                , String.valueOf(totalMontant), String.valueOf(totalVersement),
-                String.valueOf(totalVersemntMoinMontant), String.valueOf(totalQuantite), String.valueOf(farineTotal)
-                , String.valueOf(sonTotal),String.valueOf(montantTotal),String.valueOf(versementTotal), 
-                String.valueOf(differenceTotal), clients, nums,
+        /*
+        System.out.println(clients);
+        System.out.println(nums);
+        System.out.println(produits);
+        System.out.println(qteFarins);
+        System.out.println(qteSons);
+        System.out.println(prixs);
+        System.out.println(montants);
+        System.out.println(versements);
+        System.out.println(sommes);*/
+        double totalFarine = round(sommes.get(0), 2);
+        double totalSon = round(sommes.get(1), 2);
+        double totalMontant = round(sommes.get(2), 2);
+        double totalVersement = round(sommes.get(3), 2);
+        double totalVersemntMoinMontant = round(sommes.get(4), 2);
+        double totalQuantite = round(sommes.get(5), 2);
+        operationEtatExpedition.putReportInfo(jour.toString(), String.valueOf(totalFarine), String.valueOf(totalSon),
+                String.valueOf(totalMontant), String.valueOf(totalVersement),
+                String.valueOf(totalVersemntMoinMontant), String.valueOf(totalQuantite), String.valueOf(round(farineTotal, 2)),
+                String.valueOf(round(sonTotal, 2)), String.valueOf(round(montantTotal, 2)), String.valueOf(round(versementTotal, 2)),
+                String.valueOf(round(differenceTotal, 2)), clients, nums,
                 produits, qteFarins, qteSons, prixs, montants, versements, observations);
         operationEtatExpedition.printReport();
 

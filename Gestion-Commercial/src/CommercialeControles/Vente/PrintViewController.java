@@ -9,7 +9,6 @@ import com.ibm.icu.text.RuleBasedNumberFormat;
 import com.jfoenix.controls.JFXCheckBox;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
