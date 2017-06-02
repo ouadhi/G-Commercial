@@ -3,6 +3,7 @@ package CommercialeControles.Payement;
 import UIControle.Methode;
 import UIControle.Notification;
 import com.gestionCommerciale.HibernateSchema.Payment;
+import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXListView;
@@ -89,18 +90,19 @@ public class ModifierPaymentController implements Initializable {
     }
 
     private void AfficheListePayement() {
+    
+        PayementListeController.listepay.getItems().clear();
+        List<Payment> listDB = PaymentQueries.list();
+
         List<PayementCell> list = new ArrayList<>();
-
-        for (int i = 0; i < 5; i++) {
-
-            Payment payement = new Payment("Cheque", 4000, new Date());
-            PayementCell cell = new PayementCell(payement);
-            list.add(cell);
-
+        for (int i = 0; i < listDB.size(); i++) {
+            list.add(new PayementCell(listDB.get(i)));
         }
-
         ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
-        listepayement.setItems(myObservableList);
+        PayementListeController.listepay.setItems(myObservableList);
+        PayementListeController.listepay.setExpanded(true);
+        
+
     }
 
 }
