@@ -2,13 +2,20 @@ package CommercialeControles.Payement;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import com.gestionCommerciale.HibernateSchema.Annee;
+import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Payment;
+import com.gestionCommerciale.Models.AnneeQueries;
+import com.gestionCommerciale.Models.ClientQueries;
+import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +27,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import tray.notification.NotificationType;
 
 public class AjouterPayementController implements Initializable {
 
@@ -33,11 +41,18 @@ public class AjouterPayementController implements Initializable {
     private JFXTextField montont;
     ArrayList<String> Types = new ArrayList<>();
 
-    private int Numero_facture;
+    private Client client;
     private JFXListView<PayementCell> listepayement;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        datepayment.setValue(LocalDate.now());
+        Types.add("Especes");
+        Types.add("Cheque");
+        ObservableList<String> liste = FXCollections.observableList(Types);
+        type.setItems(liste);
+        type.getSelectionModel().select(0);
+                Methode.setOnlyDouble(montont, 8);
 
     }
 
@@ -48,41 +63,42 @@ public class AjouterPayementController implements Initializable {
 
     @FXML
     private void save(ActionEvent event) {
-        Notification.Addnotification();
-        AfficheListePayement();
-        close(event);
+
+        String typeValue = type.getValue();
+        double montant = Double.parseDouble(montont.getText());
+        Date dateValue = Date.from(datepayment.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        if (typeValue.isEmpty() || montant == 0 || dateValue == null) {
+            Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
+        } else {
+
+            Payment p = new Payment(typeValue, montant, dateValue);
+            p.setClient(client);
+            p.setAnnee(AnneeQueries.getSelected());
+            PaymentQueries.SaveOrUpdate(p);
+            Notification.Addnotification();
+            AfficheListePayement();
+            close(event);
+        }
     }
 
-    public void setdata(int facutre, JFXListView<PayementCell> listepayement) {
-        this.Numero_facture = facutre;
+    public void setdata(Client client, JFXListView<PayementCell> listepayement) {
+        this.client = client;
         this.listepayement = listepayement;
-
-        Nfacture.setText(Integer.toString(facutre));
-
-        Types.add("Especes");
-        Types.add("Cheque");
-        ObservableList<String> liste = FXCollections.observableList(Types);
-        type.setItems(liste);
-
-        datepayment.setTime(LocalTime.now());
-
-        Methode.setOnlyDouble(montont, 8);
+        Nfacture.setText(client.getPrenom()+" "+client.getName());
     }
 
     private void AfficheListePayement() {
         listepayement.getItems().clear();
+        List<Payment> listDB = PaymentQueries.list();
+
         List<PayementCell> list = new ArrayList<>();
-
-        for (int i = 0; i < 5; i++) {
-
-            Payment payement = new Payment("Cheque", 4000, new Date());
-            PayementCell cell = new PayementCell(payement);
-            list.add(cell);
-
+        for (int i = 0; i < listDB.size(); i++) {
+            list.add(new PayementCell(listDB.get(i)));
         }
-
         ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
         listepayement.setItems(myObservableList);
+        listepayement.setExpanded(true);
+        
     }
 
     @FXML

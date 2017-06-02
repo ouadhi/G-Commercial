@@ -6,6 +6,7 @@ import UIControle.Notification;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Payment;
+import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.io.IOException;
@@ -178,24 +179,22 @@ public class PayementCell extends GridPane {
 
                 StageDialog dialog = new StageDialog(Methode.getStage(event), root);
                 dialog.show();
-                
-               
+
             } catch (IOException ex) {
                 Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-             popup.close();
+
+            popup.close();
         });
 
         supprimer.setOnAction(event -> {
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
-                
+                PaymentQueries.archive(payment);
                 Notification.Deletenotification();
-                
             }
-            
-             popup.close();
+
+            popup.close();
         });
 
     }

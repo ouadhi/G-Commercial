@@ -55,45 +55,45 @@ public class AjouterClientController implements Initializable {
     @FXML
     private JFXTextField Solde;
     @FXML
-    private JFXComboBox<String > activiteBox;
+    private JFXComboBox<String> activiteBox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         datedept.setValue(LocalDate.now());
-         Methode.setOnlyNumbre(Solde);
+        Methode.setOnlyNumbre(Solde);
         Methode.setOnlyNumbre(NRtxt);
         Methode.setOnlyNumbre(NAtxt);
         Methode.setOnlyNumbre(NCarteF);
-        
+
         Methode.SetUpper(nomtxt);
         setActivty();
     }
 
     @FXML
     private void Sauvgarder(ActionEvent event) {
-        
+
         String nom = nomtxt.getText();
         String prenom = prenomtxt.getText();
         String NR = NRtxt.getText();
         String NA = NAtxt.getText();
         String adresse = adressetxt.getText();
         //String activite = activitetxt.getText();
-        String activite = activiteBox.getSelectionModel().getSelectedItem()   ; 
+        String activite = activiteBox.getSelectionModel().getSelectedItem();
         String Ncarte = NCarteF.getText();
-        
+
         if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
-            Notification.notif(NotificationType.ERROR,"Vérification", "Vérifier que tout les champs sont remplis!");
+            Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
-            
+
             Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-            
+
             if (ClientQueries.getClientByRegistre(NR) != null) {
                 //notification for already exists
                 Notification.error("Ce client est exite déja!");
             } else {
                 // add to database
                 try {
-                    Client client = new Client(nom, prenom, NR, NA, adresse, activite, dateDepotDossier,Ncarte);
+                    Client client = new Client(nom, prenom, NR, NA, adresse, activite, dateDepotDossier, Ncarte);
                     ClientQueries.SaveOrUpdate(client);
                     Notification.Addnotification();
                     new ShowPane().showClient();
@@ -117,17 +117,16 @@ public class AjouterClientController implements Initializable {
         Stage currentSatge = Methode.getStageMouses(event);
         currentSatge.close();
     }
-    
-    public void  setActivty  ()  {
-         List<String> listeActivty  =  new  ArrayList<>()  ;  
-         listeActivty.add("Boulangerie") ; 
-         listeActivty.add("Agriculteur") ;
-         listeActivty.add("Autre") ; 
-         
-         ObservableList<String >  list  = FXCollections.observableList(listeActivty) ; 
-         
-         activiteBox.setItems(list);
-         
-         
+
+    public void setActivty() {
+        List<String> listeActivty = new ArrayList<>();
+        listeActivty.add("Boulangerie");
+        listeActivty.add("Agriculteur");
+        listeActivty.add("Autre");
+
+        ObservableList<String> list = FXCollections.observableList(listeActivty);
+
+        activiteBox.setItems(list);
+
     }
 }

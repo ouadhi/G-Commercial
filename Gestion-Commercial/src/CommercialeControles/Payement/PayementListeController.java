@@ -46,8 +46,6 @@ public class PayementListeController implements Initializable {
     private JFXTextField reste;
 
     private Client client  ; 
-    private PaymentQueries queries = new PaymentQueries();
-    private FactureQueries fQueries = new FactureQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -81,7 +79,7 @@ public class PayementListeController implements Initializable {
 //    }
 
     private void AfficheListePayement() {
-        List<Payment> listDB = queries.list();
+        List<Payment> listDB = PaymentQueries.list();
 
         List<PayementCell> list = new ArrayList<>();
         for (int i = 0; i < listDB.size(); i++) {
@@ -101,7 +99,7 @@ public class PayementListeController implements Initializable {
             loader.load();
 
             AjouterPayementController pay = loader.getController();
-          //  pay.setdata(numero_facture, listepayement);
+            pay.setdata(client, listepayement);
 
             AnchorPane root = loader.getRoot();
 
