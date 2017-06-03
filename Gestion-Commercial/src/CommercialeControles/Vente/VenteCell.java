@@ -3,6 +3,7 @@ package CommercialeControles.Vente;
 import CommercialeControles.Client.ClienCell;
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Facture;
@@ -204,7 +205,9 @@ public class VenteCell extends GridPane {
 
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
-
+                FactureQueries.archive(facture);
+                Notification.Deletenotification();
+                new ShowPane().showVenteListe();
             }
 
             popup.close();

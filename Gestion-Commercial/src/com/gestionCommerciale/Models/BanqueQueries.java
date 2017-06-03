@@ -37,18 +37,22 @@ public class BanqueQueries {
         }
     }
 
-    public List<Banque> list() {
+    public List<String> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Banque> banqueList = null;
+        List<String> banqueNom= new ArrayList<>();
         try {
             banqueList = new ArrayList<>();
             banqueList = session.createQuery("from Banque").list();
+            for(int i=0; i<banqueList.size();i++){
+                banqueNom.add(banqueList.get(i).getNom());
+            }
         } finally {
             session.close();
         }
 
-        return banqueList;
+        return banqueNom;
     }
     
     

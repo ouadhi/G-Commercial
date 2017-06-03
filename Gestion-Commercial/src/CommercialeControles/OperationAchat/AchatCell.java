@@ -3,9 +3,11 @@ package CommercialeControles.OperationAchat;
 import CommercialeControles.Dock.ModifierDockController;
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Achat;
+import com.gestionCommerciale.Models.AchatQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.io.IOException;
@@ -182,7 +184,9 @@ public class AchatCell extends GridPane {
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
 
+                AchatQueries.archive(achat);
                 Notification.Deletenotification();
+                new ShowPane().showListAchat();
 
             }
 

@@ -62,8 +62,8 @@ public class Achat {
 
     }
 
-    public Achat(String numTiquet,String numAcqt, int quantiteAcqt, int quantiteFour,
-             int quantiteDiff, Date dateAcqt, String numBon,Annee annee) {
+    public Achat(String numTiquet,String numAcqt, double quantiteAcqt, double quantiteFour,
+             double quantiteDiff, Date dateAcqt, String numBon,Annee annee) {
         this.numAcqt = numAcqt;
         this.numTiquet = numTiquet;
         this.quantiteAcqt = quantiteAcqt;
