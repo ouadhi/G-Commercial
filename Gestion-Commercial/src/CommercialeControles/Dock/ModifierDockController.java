@@ -13,7 +13,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -103,7 +102,7 @@ public class ModifierDockController implements Initializable {
         this.dock = dock;
         this.nom.setText(dock.getNom());
         this.wilaya.setText(dock.getWilaya());
-        this.distance.setText(dock.getDistance()+"");
-        this.prix.setText(dock.getPrixUnitTrans()+"");
+        this.distance.setText(Methode.DoubleFormat(dock.getDistance())+"");
+        this.prix.setText(Methode.DoubleFormat(dock.getPrixUnitTrans())+"");
     }
 }
