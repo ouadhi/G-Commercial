@@ -207,7 +207,6 @@ public class VenteCell extends GridPane {
                 FactureQueries.archive(facture);
                 Notification.Deletenotification();
                 new ShowPane().showVenteListe();
-
             }
 
             popup.close();
