@@ -106,6 +106,17 @@ public class PaymentQueries {
         }
         return d;
     }
+    public static List<Payment> getPaymentsListByClientId(int id) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Payment> list = new ArrayList<>();
+        try {
+            list= session.createQuery("from Payment where id_client='" + id + "' AND deleted='"+false+"'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
 
     /*
     public void SaveOrUpdate(Payment payment) {

@@ -35,7 +35,10 @@ public class FactureQueries {
         try {
             session.beginTransaction();
             session.saveOrUpdate(facture);
-            session.saveOrUpdate(payment);
+            if (payment.getMontant() != 0) 
+            {
+                session.saveOrUpdate(payment);
+            }
             for (Facture_Produit fp : fpsList) {
 
                 Produit p = fp.getProduit();
@@ -131,6 +134,19 @@ public class FactureQueries {
             session.close();
         }
         return d;
+    }
+
+    //back
+    public static List<Facture> getFacturesListByClientId(int id) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Facture> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Facture where id_client='" + id + "' AND deleted='" + false + "'").list();
+        } finally {
+            session.close();
+        }
+        return list;
     }
 
     public static List<Facture> listrechreche(String text) {

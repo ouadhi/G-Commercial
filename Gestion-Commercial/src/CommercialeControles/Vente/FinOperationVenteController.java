@@ -1,5 +1,4 @@
 package CommercialeControles.Vente;
-
 import CommercialeControles.Client.ClienCell;
 import CommercialeControles.OperationAchat.CamionListeH;
 import CommercialeControles.OperationAchat.ChauffeurListH;
@@ -39,9 +38,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.PopOver;
-
 public class FinOperationVenteController implements Initializable {
-
     @FXML
     private JFXTextField montant;
     public static JFXTextField montant_static = new JFXTextField();
@@ -71,7 +68,6 @@ public class FinOperationVenteController implements Initializable {
     private static JFXTextField solde_static = new JFXTextField();
     @FXML
     private JFXTextField solde;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         montantFinal.setEditable(false);
@@ -91,7 +87,6 @@ public class FinOperationVenteController implements Initializable {
         intpop();
     }
 
-
     @FXML
     private void sauvgader(ActionEvent event) throws IOException {
         if (this.montant.getText().isEmpty()
@@ -106,29 +101,24 @@ public class FinOperationVenteController implements Initializable {
             quitter(event);
         }
     }
-
     @FXML
     private void quitter(ActionEvent event) throws IOException {
         new ShowPane().showVenteListe();
     }
-
     @FXML
     private void clientOUT(MouseEvent event) {
         clienticon.setImage(view);
     }
-
     @FXML
     private void clientIN(MouseEvent event) {
         clienticon.setImage(viewHover);
         popup.setContentNode(montant);
     }
-
     @FXML
     private void chauffeurOUT(MouseEvent event) {
         popup.hide();
         chauffeuricon.setImage(view);
     }
-
     @FXML
     private void chauffeurIN(MouseEvent event) {
         chauffeuricon.setImage(viewHover);
@@ -136,13 +126,11 @@ public class FinOperationVenteController implements Initializable {
         popup.setContentNode(ch);
         popup.show(chauffeuricon);
     }
-
     @FXML
     private void camionOUT(MouseEvent event) {
         popup.hide();
         camionIcon.setImage(view);
     }
-
     @FXML
     private void camionIN(MouseEvent event) {
         camionIcon.setImage(viewHover);
@@ -150,26 +138,22 @@ public class FinOperationVenteController implements Initializable {
         popup.setContentNode(ch);
         popup.show(camionIcon);
     }
-
     @FXML
     private void produitOUT(MouseEvent event) {
         popup.hide();
         produitIcon.setImage(view);
     }
-
     @FXML
     private void produitIN(MouseEvent event) {
         produitIcon.setImage(viewHover);
         popup.setContentNode(OperationVenteController.produitselected.get(0));
         popup.show(produitIcon);
     }
-
     private void intpop() {
         popup = new PopOver();
         popup.setCornerRadius(4);
         popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
     }
-
     public void addFacture(ActionEvent event) {
         Date date = java.sql.Date.valueOf(dateOperation.getValue());
         double montantVal = Double.parseDouble(montantFinal_static.getText());
@@ -200,20 +184,19 @@ public class FinOperationVenteController implements Initializable {
         FactureQueries.insert(f, payment, fpsList);
         imprimer(f, event);
     }
-
     public static double getsSolde() {
-        List<Payment> payments = OperationVenteController.client.getPayments();
+        List<Payment> payments = PaymentQueries.getPaymentsListByClientId(OperationVenteController.client.getId());
         double solde = 0;
         for (Payment p : payments) {
             solde += p.getMontant();
         }
-        List<Facture> factures = OperationVenteController.client.getFactures();
+        
+        List<Facture> factures = FactureQueries.getFacturesListByClientId(OperationVenteController.client.getId());
         for (Facture f : factures) {
             solde -= f.getMontantFinal();
         }
         return solde;
     }
-
     static double getMontantFinale() {
         double mf = 0;
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
@@ -239,6 +222,5 @@ public class FinOperationVenteController implements Initializable {
             Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
 }
