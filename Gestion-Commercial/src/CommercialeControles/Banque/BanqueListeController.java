@@ -51,7 +51,7 @@ public class BanqueListeController implements Initializable {
         List<BanqueCell> list = new ArrayList<>();
         
         for (int i = 0; i < querie.list().size() ; i++) {
-            list.add(new BanqueCell( querie.list().get(i))) ; 
+            //list.add(new BanqueCell( querie.list().get(i))) ; 
             
         }
         ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);

@@ -93,44 +93,15 @@ public class FinOperationController implements Initializable {
         Methode.setOnlyInteger(numero, 10);
         Methode.setOnlyInteger(numeroBon, 10);
         Methode.setOnlyInteger(numerotickit, 10);
-        Methode.setOnlyDouble(diff, 10);
         Methode.setOnlyDouble(Q_Acquit, 10);
         Methode.setOnlyDouble(Q_fournie, 10);
+        Methode.setSelectedMouseClick(numero);
+        Methode.setSelectedMouseClick(numeroBon);
+        Methode.setSelectedMouseClick(numerotickit);
+        Methode.setSelectedMouseClick(Q_Acquit);
+        Methode.setSelectedMouseClick(Q_fournie);
         date.setValue(LocalDate.now());
         diff.setEditable(false);
-        
-        numero.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                numero.selectAll();
-            }
-        });
-         numeroBon.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                numeroBon.selectAll();
-            }
-        });
-          numerotickit.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                numerotickit.selectAll();
-            }
-        });
-        Q_Acquit.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                Q_Acquit.selectAll();
-            }
-        });
-        Q_fournie.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                Q_fournie.selectAll();
-            }
-        });
-        
-        
 
         popup = new PopOver();
         PopOver popup = new PopOver();
@@ -223,15 +194,15 @@ public class FinOperationController implements Initializable {
     @FXML
     private void FournirReleased(KeyEvent event) {
 
-        float qun_acquit = Float.parseFloat(Q_Acquit.getText());
-        float qun_founier = Float.parseFloat(Q_fournie.getText());
-        float d = qun_acquit - qun_founier;
-        diff.setText(Float.toString(d));
-        if (d == 0) {
-            diffIcon.setImage(new Image(imgOk));
-        } else {
-            diffIcon.setImage(new Image(imgfaux));
-        }
+        double qun_acquit = Double.parseDouble(Q_Acquit.getText());
+        double qun_founier = Double.parseDouble(Q_fournie.getText());
+        double d = qun_founier-qun_acquit;
+        diff.setText(Methode.DoubleFormat(d)+"");
+//        if (d == 0) {
+//            diffIcon.setImage(new Image(imgOk));
+//        } else {
+//            diffIcon.setImage(new Image(imgfaux));
+//        }
     }
 
     @FXML
@@ -239,10 +210,10 @@ public class FinOperationController implements Initializable {
         String num = numero.getText();
         String Q_acquit = Q_Acquit.getText();
         String Q_four = this.Q_fournie.getText();
-        String  bon  =  numeroBon.getText()  ; 
-        String tickit  =  numerotickit.getText()  ;
+        String bon = numeroBon.getText();
+        String tickit = numerotickit.getText();
 
-        if (num.isEmpty() || Q_acquit.isEmpty() || Q_four.isEmpty() ||bon.isEmpty() || tickit.isEmpty() ) {
+        if (num.isEmpty() || Q_acquit.isEmpty() || Q_four.isEmpty() || bon.isEmpty() || tickit.isEmpty()) {
             Notification.champVideNotification();
         } else {
             addAchat();
@@ -284,17 +255,20 @@ public class FinOperationController implements Initializable {
     }
 
     public void addAchat() {
-        Annee annee= new Annee();
-        Achat achat = new Achat("numTiquet874345",numero.getText(), Integer.parseInt(Q_Acquit.getText()),
-                 Integer.parseInt(Q_fournie.getText()), 0, new Date(), "NumBon24445",annee);
+        String numTiquetVal = numerotickit.getText();
+        String numAcqtVal = numero.getText();
+        double qActVal = Double.parseDouble(Q_Acquit.getText());
+        double qFourVal = Double.parseDouble(Q_fournie.getText());
+        double diffVal = Double.parseDouble(diff.getText());
+        Date date = java.sql.Date.valueOf(this.date.getValue());
+        
+        String numBonVal = numeroBon.getText();
+        Achat achat = new Achat(numTiquetVal, numAcqtVal, qActVal,
+                qFourVal, diffVal, date, numBonVal, AnneeQueries.getSelected());
         achat.setCamion(camion.getCamion());
         achat.setChauffeur(chauffeur.getChauffeur());
         achat.setDock(dock.getDock());
         achat.setBle(ble.getBle());
-        achat.setAnnee(AnneeQueries.getSelected());
-        Date dd = java.sql.Date.valueOf(this.date.getValue());
-        achat.setDateAcqt(dd);
-        AchatQueries bq = new AchatQueries();
-        bq.SaveOrUpdate(achat);
+        AchatQueries.SaveOrUpdate(achat);
     }
 }
