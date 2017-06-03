@@ -23,33 +23,26 @@ public class Camion {
     String codeCamion;
     @Column(name = "matricule", nullable = false, unique = true)
     String matricule;
-    @Column(name = "type", nullable = false)
-    String type;
-    @Column(name = "marque", nullable = true)
+    @Column(name = "marque")
     String marque;
     @Column(name = "poid", nullable = true)
     double poid;
     @OneToMany(targetEntity=Facture.class, mappedBy="camion"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Facture> factures;
-    @OneToMany(targetEntity=Achat.class, mappedBy=""
+    @OneToMany(targetEntity=Achat.class, mappedBy="camion"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Achat> achats;
-    //
-    /*@ManyToOne
-    @JoinColumn(name="id_chauffeur")
-    private Chauffeur chauffeur;*/
     @Column(name = "deleted", nullable = false)
     boolean deleted;
 
     public Camion() {
     }
 
-    public Camion(String codeCamion,String matricule, String type, double poid) {
+    public Camion(String codeCamion,String matricule, String marque, double poid) {
         this.codeCamion = codeCamion;
         this.matricule= matricule;
-        this.type = type;
-        this.marque = type;
+        this.marque = marque;
         this.poid= poid;
     }
 
@@ -83,14 +76,6 @@ public class Camion {
 
     public void setMatricule(String matricule) {
         this.matricule = matricule;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getMarque() {

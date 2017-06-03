@@ -1,4 +1,3 @@
-
 package CommercialeControles.Camion;
 
 import UIControle.Methode;
@@ -20,7 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-
 public class AjouterCamionController implements Initializable {
 
     @FXML
@@ -36,63 +34,69 @@ public class AjouterCamionController implements Initializable {
     private JFXTextField matricule;
     @FXML
     private JFXTextField typecamion;
-    
-    CamionQueries camionQueries= new CamionQueries();
+    @FXML
+    private JFXTextField marque;
     @FXML
     private JFXTextField poisCamion;
     @FXML
     private Label labelsave;
 
-
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyDouble(poisCamion, 5);
         Methode.SetUpper(codecamion);
         Methode.SetUpper(matricule);
-        
-    }    
+        Methode.setSelectedMouseClick(poisCamion);
+        Methode.setSelectedMouseClick(codecamion);
+        Methode.setSelectedMouseClick(matricule);
+        Methode.setSelectedMouseClick(typecamion);
+        Methode.setZeroRemoved(poisCamion);
+
+        poisCamion.setText("0.00");
+
+    }
 
     @FXML
     private void sauvegarder(ActionEvent event) {
-        String code  = codecamion.getText()  ; 
-        String matricule  = this.matricule.getText() ; 
-        String type  = typecamion.getText()  ;  
-        Double poid= Double.parseDouble(poisCamion.getText());
+        String code = codecamion.getText();
+        String matricule = this.matricule.getText();
+        String marque = typecamion.getText();
+        Double poid = Double.parseDouble(poisCamion.getText());
 
-        if (code.isEmpty()|| matricule.isEmpty()|| type.isEmpty()|| poid.equals(0)) {
-            Notification.champVideNotification();   
+        if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty() || poid == 0) {
+            Notification.champVideNotification();
         } else {
-            if(camionQueries.getCamionByMatricule(matricule)!=null){              
-                 Notification.error("Ce camion exist deja");
-            }else{
-            try {
-                Camion camion = new Camion(code, matricule, type,poid);
-                camionQueries.SaveOrUpdate(camion);
-                new ShowPane().showCamion();
-                Notification.Addnotification();
-               
-               Methode.getStage(event).close();  ; 
-               
-                
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            if (CamionQueries.getCamionByMatricule(matricule) != null) {
+                Notification.error("Cette matricule exist deja!");
+            } else if (CamionQueries.getCamionByCode(code) != null) {
+                Notification.error("Ce code exist deja!");
+            } else {
+                try {
+                    Camion camion = new Camion(code, matricule, marque, poid);
+                    camion.setDeleted(false);
+                    CamionQueries.SaveOrUpdate(camion);
+                    new ShowPane().showCamion();
+                    Notification.Addnotification();
+                    Methode.getStage(event).close();;
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
-        }
         }
     }
 
     @FXML
     private void annuler(ActionEvent event) {
-        
-       Stage stage = (Stage) ((Node)(event.getSource())).getScene().getWindow() ; 
-       stage.close();
+
+        Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     private void closewindow(MouseEvent event) {
-        Stage stage = (Stage) ((Node)(event.getSource())).getScene().getWindow() ; 
-       stage.close();
+        Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+        stage.close();
     }
-    
+
 }
