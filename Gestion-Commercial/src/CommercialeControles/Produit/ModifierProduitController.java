@@ -4,6 +4,7 @@ import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Produit;
+import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
@@ -41,12 +42,13 @@ public class ModifierProduitController implements Initializable {
     @FXML
     private JFXToggleButton TVA;
     Produit produit;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyNumbre(quantite);
         Methode.setOnlyNumbre(prix);
-        
-         Methode.SetUpper(nom);
+
+        Methode.SetUpper(nom);
 
     }
 
@@ -61,6 +63,7 @@ public class ModifierProduitController implements Initializable {
         String categorieVal = categorie.getText();
         String quantiteVal = quantite.getText();
         String prixVal = prix.getText();
+        String code = this.code.getText();
 
         if (nomVal.isEmpty() || categorieVal.isEmpty() || quantiteVal.isEmpty() || prixVal.isEmpty()) {
 
@@ -70,8 +73,16 @@ public class ModifierProduitController implements Initializable {
 
             Optional<ButtonType> result = Notification.updateAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
-                
-                
+                //back
+                produit.setCodeProduit(code);
+                produit.setNom(nomVal);
+                produit.setCategory(categorieVal);
+                produit.setQuantite(Integer.parseInt(quantiteVal));
+                produit.setPrix(Double.parseDouble(prixVal));
+                produit.setHaveTva(TVA.isSelected());
+
+                ProduitQueries.SaveOrUpdate(produit);
+
                 Notification.Updatenotification();
                 savelabel.setVisible(true);
                 new ShowPane().showProduit();
@@ -87,20 +98,19 @@ public class ModifierProduitController implements Initializable {
     }
 
     public void setData(Produit produit) {
-          Methode.SetUpper(nom);
-        
-        this.produit= produit;
+        Methode.SetUpper(nom);
+
+        this.produit = produit;
         this.nom.setText(produit.getNom());
         this.categorie.setText(produit.getCategory());
         this.quantite.setText(Integer.toString(produit.getQuantite()));
         this.prix.setText(Double.toString(produit.getPrix()));
         this.code.setText(this.produit.getCodeProduit());
         if (this.produit.isHaveTva()) {
-             TVA.setSelected(true);
+            TVA.setSelected(true);
         } else {
-             TVA.setSelected(false);
+            TVA.setSelected(false);
         }
-       
 
     }
 

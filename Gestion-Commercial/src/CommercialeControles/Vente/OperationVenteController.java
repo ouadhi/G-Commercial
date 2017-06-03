@@ -148,7 +148,7 @@ public class OperationVenteController implements Initializable {
             prix = (OperationVenteController.produitselected.get(i).getProduit().getPrix() * OperationVenteController.produitselected.get(i).getQuantite()) + prix;
         }
         FinOperationVenteController.montant_static.setText(Double.toString(prix));
-        FinOperationVenteController.calculeMontantFinal();
+        FinOperationVenteController.calcule();
     }
 
 }

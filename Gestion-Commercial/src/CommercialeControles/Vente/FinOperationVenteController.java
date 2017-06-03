@@ -24,6 +24,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,16 +45,12 @@ public class FinOperationVenteController implements Initializable {
     @FXML
     private JFXTextField montant;
     public static JFXTextField montant_static = new JFXTextField();
-
     @FXML
     private JFXDatePicker dateOperation;
     @FXML
     private JFXTextField montantFinal;
-
     @FXML
     private JFXTextField versement;
-    private JFXTextField reste = new JFXTextField();
-
     @FXML
     private JFXButton save;
     @FXML
@@ -66,83 +63,34 @@ public class FinOperationVenteController implements Initializable {
     private ImageView camionIcon;
     @FXML
     private ImageView produitIcon;
-
     PopOver popup;
     private Image view = new Image(getClass().getResourceAsStream("/icons/preview.png"));
     private Image viewHover = new Image(getClass().getResourceAsStream("/icons/previewGreen.png"));
-
-    private static JFXTextField montantFinal_static = new JFXTextField();
+    static JFXTextField montantFinal_static = new JFXTextField();
     private static JFXTextField versement_static = new JFXTextField();
-    private static JFXTextField reste_static = new JFXTextField();
+    private static JFXTextField solde_static = new JFXTextField();
     @FXML
     private JFXTextField solde;
-    static double selectedTVA;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        Methode.setOnlyDouble(montant, 10);
-        Methode.setOnlyDouble(montantFinal, 10);
-        Methode.setOnlyDouble(solde, 10);
-        Methode.setOnlyDouble(versement, 10);
-        Methode.setOnlyDouble(reste, 10);
-
+        montantFinal.setEditable(false);
+        montant.setEditable(false);
+        solde.setEditable(false);
+        montant_static = montant;
+        montantFinal_static = montantFinal;
+        versement_static = versement;
+        solde_static = solde;
+        Methode.setSelectedMouseClick(versement);
+        Methode.setZeroRemoved(versement);
         versement.setText("0.00");
         dateOperation.setValue(LocalDate.now());
-
-        montant_static = this.montant;
-
-        selectedTVA = AnneeQueries.getSelected().getTva();
-
-        montantFinal_static = montantFinal;
-        reste_static = reste;
-        versement_static = versement;
-
-        reste_static.setEditable(false);
         montantFinal_static.setEditable(false);
         montant.setEditable(false);
-
+        solde.setEditable(false);
         intpop();
-
-        versement_static.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(javafx.scene.input.KeyEvent event) {
-                if (versement.getText().isEmpty()) {
-                    versement.setText("0.00");
-                    versement.selectAll();
-                }
-                calculeReste();
-            }
-        });
-        versement_static.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                versement.selectAll();
-            }
-        });
     }
 
-    public static void calculeMontantFinal() {
-
-        DecimalFormat f = new DecimalFormat("##.00");
-        Double montant_val = Double.parseDouble(montant_static.getText());
-        Double montantFinal_val = montant_val + (montant_val * selectedTVA / 100);
-
-        montantFinal_static.setText(Methode.DoubleFormat(montantFinal_val) + "");
-        versement_static.setText(Methode.DoubleFormat(montantFinal_val) + "");
-        reste_static.setText(Methode.DoubleFormat(0) + "");
-    }
-
-    public static void calculeReste() {
-        Float montantFinal_val = Float.parseFloat(montantFinal_static.getText());
-        Float versement_val = Float.parseFloat(versement_static.getText());
-        Float rest_val = montantFinal_val - versement_val;
-        if (rest_val < 0) {
-            reste_static.setText(Methode.DoubleFormat(0) + "");
-        } else {
-            reste_static.setText(Methode.DoubleFormat(rest_val) + "");
-        }
-    }
 
     @FXML
     private void sauvgader(ActionEvent event) throws IOException {
@@ -153,20 +101,9 @@ public class FinOperationVenteController implements Initializable {
             //|| dateOperation.getValue().toString().isEmpty()
             Notification.champVideNotification();
         } else {
-            //back
-            //float montant_val = Float.parseFloat(this.montant.getText());
-            float montantFinal_val = Float.parseFloat(this.montantFinal.getText());
-            float versement_val = Float.parseFloat(this.versement_static.getText());
-            //float reste_val = Float.parseFloat(this.reste.getText());
-            //float tva_val = Float.parseFloat(this.tva.getText());
-            System.err.println(montantFinal_val + "," + versement_val);
-            if (versement_val > montantFinal_val) {
-                Notification.error("Le versement est supérieur au montant final");
-            } else {
-                addFacture(event);
-                Notification.Addnotification();
-                quitter(event);
-            }
+            addFacture(event);
+            Notification.Addnotification();
+            quitter(event);
         }
     }
 
@@ -188,10 +125,8 @@ public class FinOperationVenteController implements Initializable {
 
     @FXML
     private void chauffeurOUT(MouseEvent event) {
-
         popup.hide();
         chauffeuricon.setImage(view);
-
     }
 
     @FXML
@@ -236,64 +171,74 @@ public class FinOperationVenteController implements Initializable {
     }
 
     public void addFacture(ActionEvent event) {
-
-        //back
         Date date = java.sql.Date.valueOf(dateOperation.getValue());
-        double montant = Double.parseDouble(montantFinal_static.getText());
-        double versment = Double.parseDouble(versement_static.getText());
-
-        Facture f = new Facture(date, montant, selectedTVA);
-        java.util.List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
+        double montantVal = Double.parseDouble(montantFinal_static.getText());
+        double versmentVal = Double.parseDouble(versement_static.getText());
+        Facture f = new Facture(date, montantVal, AnneeQueries.getSelected().getTva());
+        List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
             Produit p = OperationVenteController.produitselected.get(i).getProduit();
             int qt = OperationVenteController.produitselected.get(i).getQuantite();
             double prix = OperationVenteController.produitselected.get(i).getProduit().getPrix();
-            Facture_Produit fp = new Facture_Produit(qt, selectedTVA, prix);
+            Facture_Produit fp = new Facture_Produit(qt, prix);
             fp.setProduit(p);
             fp.setFacture(f);
             fpsList.add(fp);
         }
-        //back
         f.setQtes(fpsList);
         f.setAnnee(AnneeQueries.getSelected());
-        //hhdsfhf
-        Payment payment = new Payment("", versment, date);
+        //back
+        Payment payment = new Payment("", versmentVal, date);
         payment.setClient(OperationVenteController.client);
-
-        java.util.List<Payment> PaymentsList = new ArrayList<Payment>();
-        PaymentsList.add(payment);
         payment.setAnnee(AnneeQueries.getSelected());
         payment.setClient(OperationVenteController.client);
-
-        PaymentQueries.SaveOrUpdate(payment);
-
-        //payment.setClient(OperationVenteController.client);            
-//        java.util.List<Payment> PaymentsList = new ArrayList<Payment>();
-//        PaymentsList.add(payment);
+//        PaymentQueries.SaveOrUpdate(payment);
         f.setClient(OperationVenteController.client);
         f.setChauffeur(OperationVenteController.chauffeur);
         f.setCamion(OperationVenteController.camion);
-        f.setAnnee(AnneeQueries.getSelected());
-        FactureQueries.SaveOrUpdate(f);
+        f.setMontantFinal(Double.parseDouble(montantFinal_static.getText()));
+        FactureQueries.insert(f, payment, fpsList);
         imprimer(f, event);
-
     }
 
+    public static double getsSolde() {
+        List<Payment> payments = OperationVenteController.client.getPayments();
+        double solde = 0;
+        for (Payment p : payments) {
+            solde += p.getMontant();
+        }
+        List<Facture> factures = OperationVenteController.client.getFactures();
+        for (Facture f : factures) {
+            solde -= f.getMontantFinal();
+        }
+        return solde;
+    }
+
+    static double getMontantFinale() {
+        double mf = 0;
+        for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
+            mf = (OperationVenteController.produitselected.get(i).getProduit().getTTC() * OperationVenteController.produitselected.get(i).getQuantite()) + mf;
+        }
+        return mf;
+    }
+        public static void calcule() {
+        montantFinal_static.setText(Methode.DoubleFormat(getMontantFinale()) + "");
+        solde_static.setText(Methode.DoubleFormat(getsSolde()) + "");
+    }
     public void imprimer(Facture f, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.printvent));
             loader.load();
-
             PrintViewController print = loader.getController();
             print.setData(f);
-
             AnchorPane root = loader.getRoot();
-
             StageDialog dialog = new StageDialog(Methode.getStage(event), root);
             dialog.show();
         } catch (IOException ex) {
             Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+
 }

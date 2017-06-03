@@ -6,7 +6,9 @@ import java.math.RoundingMode;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.text.AbstractDocument;
@@ -84,5 +86,30 @@ public class Methode {
         });
 
     }
+    
+        public static void setSelectedMouseClick(JFXTextField field) {
+
+        field.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent event) {
+                field.selectAll();
+            }
+        });
+
+    }
+        public static void setZeroRemoved(JFXTextField field) {
+        field.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(javafx.scene.input.KeyEvent event) {
+                if (field.getText().isEmpty()) {
+                    field.setText("0.00");
+                    field.selectAll();
+                }
+            }
+        });
+
+    }
+
+    
 
 }

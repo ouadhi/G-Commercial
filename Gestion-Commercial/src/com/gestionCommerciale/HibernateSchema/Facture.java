@@ -36,6 +36,8 @@ public class Facture {
     Date date;
     @Column(name = "montant", nullable = false)
     double montant;
+    @Column(name = "montant_final", nullable = false)
+    double montantFinal;
     @Column(name = "tva", nullable = false)
     double tva;
     @Column(name = "timbre", nullable = false)
@@ -156,6 +158,14 @@ public class Facture {
 
     public void setAnnee(Annee annee) {
         this.annee = annee;
+    }
+
+    public double getMontantFinal() {
+        return montantFinal;
+    }
+
+    public void setMontantFinal(double montantFinal) {
+        this.montantFinal = montantFinal;
     }
 
 }

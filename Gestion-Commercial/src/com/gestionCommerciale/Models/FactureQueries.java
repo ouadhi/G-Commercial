@@ -1,6 +1,9 @@
 package com.gestionCommerciale.Models;
 
 import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.HibernateSchema.Facture_Produit;
+import com.gestionCommerciale.HibernateSchema.Payment;
+import com.gestionCommerciale.HibernateSchema.Produit;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -17,6 +20,29 @@ public class FactureQueries {
         try {
             session.beginTransaction();
             session.saveOrUpdate(facture);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            return false;
+        } finally {
+            session.close();
+            return true;
+        }
+    }
+
+    public static boolean insert(Facture facture, Payment payment, List<Facture_Produit> fpsList) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.saveOrUpdate(facture);
+            session.saveOrUpdate(payment);
+            for (Facture_Produit fp : fpsList) {
+
+                Produit p = fp.getProduit();
+                p.setQuantite(p.getQuantite() - fp.getQte_fact());
+                session.saveOrUpdate(p);
+
+            }
             session.getTransaction().commit();
         } catch (Exception e) {
             return false;
@@ -116,7 +142,7 @@ public class FactureQueries {
             //list = session.createQuery("from Facture where deleted='"+false+"' AND id_annee='2017'").list();
             System.out.println(AnneeQueries.getSelected().getIdAnnee() + "-----------");
             //      list = session.createQuery("from Facture where deleted='"+false+"' AND id_annee='"+AnneeQueries.getSelected().getIdAnnee()+"'").list();
-            list = session.createQuery("from Facture where deleted='" + false + "' AND (client.name Like '"+text+"%' OR client.prenom Like '"+text+"%'  )").list();
+            list = session.createQuery("from Facture where deleted='" + false + "' AND (client.name Like '" + text + "%' OR client.prenom Like '" + text + "%'  )").list();
 
         } finally {
             session.close();

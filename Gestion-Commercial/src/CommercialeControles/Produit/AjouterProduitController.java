@@ -36,7 +36,6 @@ public class AjouterProduitController implements Initializable {
     private JFXButton cancelbttn;
     @FXML
     private Label savelabel;
-    ProduitQueries queries = new ProduitQueries();
     @FXML
     private JFXTextField code;
     @FXML
@@ -71,7 +70,7 @@ public class AjouterProduitController implements Initializable {
             
             try {
                 Produit ob = new Produit(code,nomVal,categorieVal, Integer.parseInt(quantiteVal), Double.parseDouble(prixVal),haveTVA.isSelected());
-                queries.SaveOrUpdate(ob);
+                ProduitQueries.SaveOrUpdate(ob);
                 
                 Notification.Addnotification();
                 savelabel.setVisible(true);

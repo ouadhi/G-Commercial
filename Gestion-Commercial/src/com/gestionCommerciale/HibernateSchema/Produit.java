@@ -1,5 +1,6 @@
 package com.gestionCommerciale.HibernateSchema;
 
+import com.gestionCommerciale.Models.AnneeQueries;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,7 +27,7 @@ public class Produit {
     int idProduit;
     @Column(name = "nom", nullable = false)
     String nom;
-    @Column(name = "code_produit", nullable = false,unique = true)
+    @Column(name = "code_produit", nullable = false, unique = true)
     String codeProduit;
     @Column(name = "Category", nullable = false)
     String category;
@@ -36,18 +37,18 @@ public class Produit {
     boolean haveTva;
     @Column(name = "prix", nullable = false)
     double prix;
-        @Column(name = "deleted", nullable = false)
+    @Column(name = "deleted", nullable = false)
     boolean deleted;
 
-    @OneToMany(targetEntity=Facture_Produit.class, mappedBy="produit"
-    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
+    @OneToMany(targetEntity = Facture_Produit.class, mappedBy = "produit",
+            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Facture_Produit> qtes;
 
     public Produit() {
 
     }
 
-    public Produit(String codeProduit, String nom,String category, int quantite, double prix,boolean haveTva) {
+    public Produit(String codeProduit, String nom, String category, int quantite, double prix, boolean haveTva) {
         this.codeProduit = codeProduit;
         this.nom = nom;
         this.quantite = quantite;
@@ -74,6 +75,14 @@ public class Produit {
 
     public double getPrix() {
         return prix;
+    }
+
+    public double getTTC() {
+        if (haveTva) {
+            return prix+prix*(AnneeQueries.getSelected().getTva()/100);
+        } else {
+            return  prix;
+        }
     }
 
     public void setNom(String nom) {
@@ -103,8 +112,8 @@ public class Produit {
     public void setCategory(String category) {
         this.category = category;
     }
-    
-       public boolean isDeleted() {
+
+    public boolean isDeleted() {
         return deleted;
     }
 
@@ -127,7 +136,5 @@ public class Produit {
     public void setCodeProduit(String codeProduit) {
         this.codeProduit = codeProduit;
     }
-    
-    
 
 }

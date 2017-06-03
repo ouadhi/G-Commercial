@@ -40,7 +40,7 @@ public class Facture_Produit {
     @Column(name = "deleted", nullable = false)
     boolean deleted;
 
-    public Facture_Produit(int qte_fact, double tva_fact, double prix_fact) {
+    public Facture_Produit(int qte_fact, double prix_fact) {
         this.qte_fact = qte_fact;
         this.prix_fact = prix_fact;
     }
