@@ -77,12 +77,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Montant" GridPane.columnIndex="3">
+            <Label text="Montant Final" GridPane.columnIndex="3">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Reste" GridPane.columnIndex="4">
+            <Label text="Produits" GridPane.columnIndex="4">
                <font>
                   <Font size="17.0" />
                </font>

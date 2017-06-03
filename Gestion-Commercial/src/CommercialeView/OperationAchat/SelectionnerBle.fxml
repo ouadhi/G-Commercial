@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
@@ -14,10 +13,7 @@
 <AnchorPane prefHeight="468.0" prefWidth="1050.0" style="-fx-background-color: white;" stylesheets="@AchatCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.OperationAchat.SelectionnerBleController">
    <children>
       <Label contentDisplay="CENTER" layoutX="463.0" layoutY="14.0" styleClass="titre" text="Selectionner Ble" textAlignment="CENTER" />
-      <JFXButton layoutX="-29.0" layoutY="227.0" prefHeight="55.0" prefWidth="59.0" styleClass="nextbutton" />
       <JFXListView fx:id="listeBle" layoutX="63.0" layoutY="107.0" onMouseClicked="#select" orientation="HORIZONTAL" prefHeight="312.0" prefWidth="949.0" showTooltip="true" />
-      <Pane layoutX="1097.0" layoutY="-6.0" prefHeight="474.0" prefWidth="59.0" style="-fx-background-color: #f4f8f9;" />
-      <JFXButton layoutX="1067.0" layoutY="224.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="59.0" styleClass="nextbutton" />
       <Label alignment="CENTER" layoutX="401.0" layoutY="58.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="569.0" layoutY="57.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="3" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="484.0" layoutY="59.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="2" textAlignment="CENTER" />

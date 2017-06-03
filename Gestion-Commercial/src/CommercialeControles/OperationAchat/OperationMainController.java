@@ -3,7 +3,6 @@ package CommercialeControles.OperationAchat;
 import UIControle.Notification;
 import UIControle.ViewUrl;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,13 +12,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class OperationMainController implements Initializable {
 
-    @FXML
-    private JFXTextField recherchetxt;
     @FXML
     private AnchorPane space;
     @FXML
@@ -41,6 +37,8 @@ public class OperationMainController implements Initializable {
             Ble = FXMLLoader.load(getClass().getResource(ViewUrl.selectBle));
             information = FXMLLoader.load(getClass().getResource(ViewUrl.informationAcaht));
             etape = 1;
+            
+            precedent.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(OperationMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -52,9 +50,6 @@ public class OperationMainController implements Initializable {
 
     }
 
-    @FXML
-    private void rechercher(KeyEvent event) {
-    }
 
     @FXML
     private void methodesuivant(ActionEvent event) {
@@ -85,6 +80,7 @@ public class OperationMainController implements Initializable {
         switch (etape) {
             case 1:
                 showEtape(dock);
+                precedent.setVisible(false);
                 break;
                 
             case 2:
@@ -93,6 +89,8 @@ public class OperationMainController implements Initializable {
                     --this.etape;
                 } else {
                     showEtape(chauffeur);
+                     precedent.setVisible(true);
+                   
                 }
 
                 break;
@@ -120,9 +118,11 @@ public class OperationMainController implements Initializable {
                  if (FinOperationController.ble == null) {
                      Notification.champVideNotification();
                     --this.etape;
+                    suivant.setVisible(true);
                  } else {
                      showEtape(information);
-                  FinOperationController.stateicon();   
+                     FinOperationController.stateicon();  
+                     suivant.setVisible(false);
                  }
                
                 break;

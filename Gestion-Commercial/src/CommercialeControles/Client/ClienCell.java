@@ -15,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -23,7 +22,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -39,11 +37,14 @@ public class ClienCell extends GridPane {
     protected final ColumnConstraints columnConstraints1;
     protected final ColumnConstraints columnConstraints2;
     protected final ColumnConstraints columnConstraints3;
+     protected final ColumnConstraints columnConstraints4;
     protected final RowConstraints rowConstraints;
     protected final Label label;
     protected final Label label0;
     protected final Label label1;
     protected final Label label2;
+      protected final Label label3;
+    
     private JFXPopup popup;
     private JFXButton bttn;
 
@@ -70,52 +71,62 @@ public class ClienCell extends GridPane {
         bttn.prefHeight(50);
         bttn.prefWidth(50);
         bttn.setGraphic(imgviewbtn);
-
-       columnConstraints = new ColumnConstraints();
+        
+        
+        columnConstraints = new ColumnConstraints();
         columnConstraints0 = new ColumnConstraints();
         columnConstraints1 = new ColumnConstraints();
         columnConstraints2 = new ColumnConstraints();
         columnConstraints3 = new ColumnConstraints();
+        columnConstraints4 = new ColumnConstraints();
         rowConstraints = new RowConstraints();
         label = new Label();
         label0 = new Label();
         label1 = new Label();
         label2 = new Label();
-      
+        label3 = new Label();
+        
 
         setHgap(3.0);
-        setPrefHeight(55.0);
-        setPrefWidth(1100.0);
+        setPrefHeight(50.0);
+        setPrefWidth(1117.0);
+        setStyle("-fx-background-color: withe;");
 
         columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
         columnConstraints.setMaxWidth(186.0);
         columnConstraints.setMinWidth(36.0);
-        columnConstraints.setPrefWidth(112.0);
+        columnConstraints.setPrefWidth(124.0);
 
         columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
         columnConstraints0.setMaxWidth(254.0);
         columnConstraints0.setMinWidth(100.0);
-        columnConstraints0.setPrefWidth(247.0);
+        columnConstraints0.setPrefWidth(230.0);
 
         columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
         columnConstraints1.setMaxWidth(492.0);
         columnConstraints1.setMinWidth(126.0);
-        columnConstraints1.setPrefWidth(220.0);
+        columnConstraints1.setPrefWidth(190.0);
 
         columnConstraints2.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints2.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
         columnConstraints2.setMaxWidth(492.0);
         columnConstraints2.setMinWidth(102.0);
-        columnConstraints2.setPrefWidth(198.0);
+        columnConstraints2.setPrefWidth(177.0);
 
-        columnConstraints3.setHalignment(javafx.geometry.HPos.RIGHT);
+        columnConstraints3.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints3.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-        columnConstraints3.setMaxWidth(550.0);
-        columnConstraints3.setMinWidth(73.0);
-        columnConstraints3.setPrefWidth(322.0);
+        columnConstraints3.setMaxWidth(492.0);
+        columnConstraints3.setMinWidth(102.0);
+        columnConstraints3.setPrefWidth(161.0);
+
+        columnConstraints4.setHalignment(javafx.geometry.HPos.RIGHT);
+        columnConstraints4.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints4.setMaxWidth(554.0);
+        columnConstraints4.setMinWidth(77.0);
+        columnConstraints4.setPrefWidth(246.0);
 
         rowConstraints.setMinHeight(10.0);
         rowConstraints.setPrefHeight(30.0);
@@ -123,7 +134,7 @@ public class ClienCell extends GridPane {
 
         label.setPrefHeight(22.0);
         label.setPrefWidth(46.0);
-        label.setText(Integer.toString(this.client.getId()));
+        label.setText(this.client.getId()+"");
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);
@@ -140,21 +151,28 @@ public class ClienCell extends GridPane {
         label2.setText(this.client.getNumRegCom());
         label2.setFont(new Font(17.0));
 
-        GridPane.setColumnIndex(bttn, 4);
-        GridPane.setMargin(bttn, new Insets(0.0, 35.0, 0.0, 0.0));
+        GridPane.setColumnIndex(label3, 4);
+        label3.setText(getTotalFacture());
+        label3.setFont(new Font(17.0));
+
+        GridPane.setColumnIndex(bttn, 5);
+        GridPane.setMargin(bttn, new Insets(0.0, 34.0, 0.0, 0.0));
 
         getColumnConstraints().add(columnConstraints);
         getColumnConstraints().add(columnConstraints0);
         getColumnConstraints().add(columnConstraints1);
         getColumnConstraints().add(columnConstraints2);
         getColumnConstraints().add(columnConstraints3);
+        getColumnConstraints().add(columnConstraints4);
         getRowConstraints().add(rowConstraints);
         getChildren().add(label);
         getChildren().add(label0);
         getChildren().add(label1);
         getChildren().add(label2);
-        getChildren().add(bttn );
-        
+        getChildren().add(label3);
+        getChildren().add(bttn);
+
+       
         intpopup();
 
         bttn.setOnMouseClicked((event) -> {
@@ -166,9 +184,6 @@ public class ClienCell extends GridPane {
     }
 
    
-
-    
-    
      public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
         JFXButton supprimer = new JFXButton("Archiver");
@@ -239,4 +254,15 @@ public class ClienCell extends GridPane {
         } );
         
     }
+     
+     
+     private   String getTotalFacture()  {
+         double  somme  =   0  ; 
+         
+         for (int i = 0; i < this.client.getFactures().size(); i++) {
+             somme  += this.client.getFactures().get(i).getMontantFinal(); 
+         }
+         
+         return  Double.toString(somme) ; 
+     }
 }

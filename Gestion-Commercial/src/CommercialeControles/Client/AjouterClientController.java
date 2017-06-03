@@ -52,7 +52,6 @@ public class AjouterClientController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
-    @FXML
     private JFXTextField Solde;
     @FXML
     private JFXComboBox<String> activiteBox;

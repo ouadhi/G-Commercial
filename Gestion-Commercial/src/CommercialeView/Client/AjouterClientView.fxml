@@ -123,17 +123,7 @@
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </DatePicker>
-            <Label styleClass="title_panel" text="Solde" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets top="-40.0" />
-               </GridPane.margin>
-            </Label>
-            <JFXTextField fx:id="Solde" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets bottom="-25.0" />
-               </GridPane.margin>
-            </JFXTextField>
-            <JFXComboBox fx:id="activiteBox" prefHeight="39.0" prefWidth="264.0" promptText="Selectionner " styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXComboBox fx:id="activiteBox" prefHeight="39.0" prefWidth="264.0" promptText="Selectionner " styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <JFXButton layoutX="422.0" layoutY="498.0" onAction="#Sauvgarder" prefHeight="54.0" prefWidth="161.0" styleClass="button_save" text="Enregistrer" />
