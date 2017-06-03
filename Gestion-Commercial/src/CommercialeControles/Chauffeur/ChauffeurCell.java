@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.util.Optional;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -16,7 +15,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -99,11 +97,11 @@ public class ChauffeurCell extends GridPane {
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);
-        label0.setText(this.chauffeur.getNomChauffeur()+" "+this.chauffeur.getNomChauffeur());
+        label0.setText(this.chauffeur.getNom()+" "+this.chauffeur.getPrenom());
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(this.chauffeur.getPrenomChauffeur());
+        label1.setText(this.chauffeur.getTelephone());
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(bttn, 3);

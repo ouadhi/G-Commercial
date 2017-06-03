@@ -91,7 +91,7 @@ public class ChauffeurListH extends GridPane {
         GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label.setText(this.chauffeur.getNomChauffeur() + " " + this.chauffeur.getPrenomChauffeur());
+        label.setText(this.chauffeur.getNom() + " " + this.chauffeur.getPrenom());
         label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));
