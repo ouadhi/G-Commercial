@@ -118,10 +118,9 @@ public class PayementListeController implements Initializable {
 
     public void setDate(Client  client ) {
         this.client = client;
-       // Nfacture.setText(this.client.getName()+" "+this.client.getPrenom());
         AfficheListePayement();
         listepayement.setExpanded(true);
-        this.listepayement = listepay;
+       listepay = this.listepayement  ;  
 
     }
 

@@ -1,14 +1,20 @@
 
 package CommercialeControles.Rapport.Vente;
 
+import Report.EtatExpeditionReport.GenerateEtatExpeditionReport;
 import UIControle.Methode;
 import com.jfoenix.controls.JFXDatePicker;
+import java.io.IOException;
 import java.net.URL;
+import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.localDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import net.sf.jasperreports.engine.JRException;
 
 
 public class ExpeditionController implements Initializable {
@@ -28,7 +34,13 @@ public class ExpeditionController implements Initializable {
     }
 
     @FXML
-    private void print(ActionEvent event) {
+    private void print(ActionEvent event) throws IOException,JRException {
+        // code
+        GenerateEtatExpeditionReport generateEtatExpeditionReport= new GenerateEtatExpeditionReport();
+        System.out.println(date.getValue());
+        Date dateOb = Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        generateEtatExpeditionReport.generateReport(dateOb);
+               
     }
 
     @FXML
