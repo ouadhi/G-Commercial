@@ -37,7 +37,6 @@ public class ExpeditionController implements Initializable {
     private void print(ActionEvent event) throws IOException,JRException {
         // code
         GenerateEtatExpeditionReport generateEtatExpeditionReport= new GenerateEtatExpeditionReport();
-        System.out.println(date.getValue());
         Date dateOb = Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         generateEtatExpeditionReport.generateReport(dateOb);
                

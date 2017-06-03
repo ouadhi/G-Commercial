@@ -47,7 +47,7 @@ public class GenerateEtatExpeditionReport {
             Calendar cal = Calendar.getInstance();
             Date yearStart = new GregorianCalendar(cal.get(Calendar.YEAR), 0, 1).getTime();
             List<Date> dates = getDaysBetweenDates(increment_decrementDays(false, yearStart, 1),
-                     increment_decrementDays(true, jour, 1));
+                    increment_decrementDays(true, jour, 1));
             List<Facture> listFactures = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 for (int j = 0; j < dates.size(); j++) {
@@ -124,7 +124,7 @@ public class GenerateEtatExpeditionReport {
         double total = 0;
         for (Facture facture : map.keySet()) {
             for (int i = 0; i < facture.getQtes().size(); i++) {
-                if (facture.getQtes().get(i).getProduit().equals(designationProduit)) {
+                if (facture.getQtes().get(i).getProduit().getNom().equals(designationProduit)) {
                     total = total + facture.getQtes().get(i).getQte_fact();
                 }
             }
@@ -181,13 +181,12 @@ public class GenerateEtatExpeditionReport {
     public List<List<String>> getExpedition() {
         List<List<String>> expeditions = new ArrayList<>();
         for (Facture facture : map.keySet()) {
-            System.out.println("--------------le client :" + facture.getClient().getName());
             List<String> expedition = new ArrayList<>();
             for (int i = 0; i < facture.getQtes().size(); i++) {
                 expedition.add(facture.getClient().getName());
                 expedition.add(String.valueOf(facture.getIdFacture()));
-                expedition.add(facture.getQtes().get(i).getProduit().toString());
-                if (facture.getQtes().get(i).getProduit().toString().equals("FARINE 50")) {
+                expedition.add(facture.getQtes().get(i).getProduit().getNom().toString());
+                if (facture.getQtes().get(i).getProduit().getNom().equals("FARINE 50")) {
                     expedition.add(String.valueOf(facture.getQtes().get(i).getQte_fact()));
                     expedition.add("0");
                 } else {
@@ -195,6 +194,20 @@ public class GenerateEtatExpeditionReport {
                     expedition.add(String.valueOf(facture.getQtes().get(i).getQte_fact()));
                 }
                 expedition.add(String.valueOf(facture.getQtes().get(i).getProduit().getPrix()));
+                //check if empty 
+                if (facture.getClient().getPayments().isEmpty()) {
+                    expedition.add(String.valueOf(0));
+                } else {
+                    //iterate over payement checking date
+                    double totalVersement = 0;
+                    for (int k = 0; k < facture.getClient().getPayments().size(); k++) {
+                        if (facture.getDate().equals(facture.getClient().getPayments().get(i).getDate())) {
+                            totalVersement = totalVersement + facture.getClient().getPayments().get(i).getMontant();
+                        }
+                    }
+                    expedition.add(String.valueOf(totalVersement));
+
+                }
                 expedition.add(String.valueOf(facture.getMontant()));
                 observations.add("");
 

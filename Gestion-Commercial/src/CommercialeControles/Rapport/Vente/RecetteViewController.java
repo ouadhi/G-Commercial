@@ -1,12 +1,14 @@
 
 package CommercialeControles.Rapport.Vente;
 
+import Report.EtatRecetteDepenseReport.GenerateEtatRecetteDepense;
 import UIControle.Methode;
 import com.gestionCommerciale.Models.BanqueQueries;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,9 +30,9 @@ public class RecetteViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         BanqueQueries querie  = new  BanqueQueries() ; 
-        
-        for (int i = 0; i < 10; i++) {
-            banque.getItems().add("Banque"+i) ; 
+        List<String>listDB= querie.list();
+        for (int i = 0; i < listDB.size(); i++) {
+            banque.getItems().add(listDB.get(i)) ; 
         }
         
         Methode.setOnlyDouble(versement, 10);
@@ -44,6 +46,8 @@ public class RecetteViewController implements Initializable {
 
     @FXML
     private void print(ActionEvent event) {
+        GenerateEtatRecetteDepense generateEtatRecetteDepense= new GenerateEtatRecetteDepense();
+        
         
     }
 
