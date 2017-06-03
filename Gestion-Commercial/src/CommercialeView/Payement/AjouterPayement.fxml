@@ -32,12 +32,7 @@
             </Text>
          </children>
       </Pane>
-      <Text fill="#fd9252" layoutX="222.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facture" wrappingWidth="71.21875">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text fx:id="Nfacture" fill="#fd9252" layoutX="299.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" wrappingWidth="55.21875">
+      <Text fx:id="Nfacture" fill="#fd9252" layoutX="137.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="237.21875">
          <font>
             <Font size="19.0" />
          </font>

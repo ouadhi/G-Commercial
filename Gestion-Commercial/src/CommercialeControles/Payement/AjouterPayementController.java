@@ -88,7 +88,7 @@ public class AjouterPayementController implements Initializable {
     }
 
     private void AfficheListePayement() {
-        listepayement.getItems().clear();
+        PayementListeController.listepay.getItems().clear();
         List<Payment> listDB = PaymentQueries.list();
 
         List<PayementCell> list = new ArrayList<>();
@@ -96,8 +96,8 @@ public class AjouterPayementController implements Initializable {
             list.add(new PayementCell(listDB.get(i)));
         }
         ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
-        listepayement.setItems(myObservableList);
-        listepayement.setExpanded(true);
+        PayementListeController.listepay.setItems(myObservableList);
+        PayementListeController.listepay.setExpanded(true);
         
     }
 

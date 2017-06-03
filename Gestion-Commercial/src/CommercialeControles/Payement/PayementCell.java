@@ -10,9 +10,13 @@ import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.ButtonType;
@@ -159,7 +163,7 @@ public class PayementCell extends GridPane {
         modifier.setPadding(new Insets(10));
         supprimer.setPadding(new Insets(10));
 
-        VBox box = new VBox(modifier, supprimer);
+        VBox box = new VBox( supprimer);
         box.setStyle("-fx-background-color: #ffffff");
 
         popup.setContent(box);
@@ -192,10 +196,27 @@ public class PayementCell extends GridPane {
             if (result.get() == ButtonType.OK) {
                 PaymentQueries.archive(payment);
                 Notification.Deletenotification();
+                AfficheListePayement();
             }
 
             popup.close();
         });
+
+    }
+    
+      private void AfficheListePayement() {
+    
+        PayementListeController.listepay.getItems().clear();
+        List<Payment> listDB = PaymentQueries.list();
+
+        List<PayementCell> list = new ArrayList<>();
+        for (int i = 0; i < listDB.size(); i++) {
+            list.add(new PayementCell(listDB.get(i)));
+        }
+        ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
+        PayementListeController.listepay.setItems(myObservableList);
+        PayementListeController.listepay.setExpanded(true);
+        
 
     }
 
