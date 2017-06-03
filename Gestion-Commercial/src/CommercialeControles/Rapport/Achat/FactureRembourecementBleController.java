@@ -1,9 +1,12 @@
 
 package CommercialeControles.Rapport.Achat;
 
+import Report.FactureRemboursementBleReport.GenerateFactureRemboursementReport;
 import UIControle.Methode;
 import com.jfoenix.controls.JFXDatePicker;
 import java.net.URL;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +42,10 @@ public class FactureRembourecementBleController implements Initializable {
 
     @FXML
     private void print(ActionEvent event) {
+        GenerateFactureRemboursementReport generateFactureRemboursementReport= new GenerateFactureRemboursementReport();
+        Date dateDebutOb = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date dateFinOb = Date.from(dateFin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        generateFactureRemboursementReport.generateReport(dateFinOb, dateFinOb, "", "");
     }
     
 }

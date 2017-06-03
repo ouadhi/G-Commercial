@@ -55,7 +55,7 @@ public class EtatBleBean {
     public void setJour(String jour) {
         this.jour = jour;
     }
-
+    
     public int getNum() {
         return num;
     }

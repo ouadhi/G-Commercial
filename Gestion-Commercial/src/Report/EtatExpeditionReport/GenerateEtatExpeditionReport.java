@@ -10,6 +10,7 @@ import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -299,7 +300,8 @@ public class GenerateEtatExpeditionReport {
         double totalVersement = round(sommes.get(3), 2);
         double totalVersemntMoinMontant = round(sommes.get(4), 2);
         double totalQuantite = round(sommes.get(5), 2);
-        operationEtatExpedition.putReportInfo(jour.toString(), String.valueOf(totalFarine), String.valueOf(totalSon),
+        String newDate = new SimpleDateFormat("dd-MM-yyyy").format(jour);
+        operationEtatExpedition.putReportInfo(newDate, String.valueOf(totalFarine), String.valueOf(totalSon),
                 String.valueOf(totalMontant), String.valueOf(totalVersement),
                 String.valueOf(totalVersemntMoinMontant), String.valueOf(totalQuantite), String.valueOf(round(farineTotal, 2)),
                 String.valueOf(round(sonTotal, 2)), String.valueOf(round(montantTotal, 2)), String.valueOf(round(versementTotal, 2)),
