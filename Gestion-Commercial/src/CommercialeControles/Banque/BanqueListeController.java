@@ -1,4 +1,3 @@
-
 package CommercialeControles.Banque;
 
 import CommercialeControles.Ble.BelCell;
@@ -28,7 +27,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.textfield.TextFields;
 
-
 public class BanqueListeController implements Initializable {
 
     @FXML
@@ -39,36 +37,31 @@ public class BanqueListeController implements Initializable {
     private JFXButton ajouter;
     @FXML
     private JFXListView<BanqueCell> listebanque;
-    
-    private  BanqueQueries querie  = new  BanqueQueries()  ; 
-    
-    
 
-    
+    private BanqueQueries querie = new BanqueQueries();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         List<BanqueCell> list = new ArrayList<>();
-        
-        for (int i = 0; i < querie.list().size() ; i++) {
-            //list.add(new BanqueCell( querie.list().get(i))) ; 
-            
+
+        for (int i = 0; i < querie.list().size(); i++) {
+            list.add(new BanqueCell(querie.list().get(i)));
         }
         ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
         listebanque.setItems(myObservableList);
         listebanque.setExpanded(true);
-        
+
         setTotale();
-        
-      
-    }    
+
+    }
 
     @FXML
     private void showAddStage(ActionEvent event) {
-        
+
         try {
-            AnchorPane pane  =  FXMLLoader.load(getClass().getResource(ViewUrl.AjouterBanque)) ;
-            StageDialog dialog  =  new StageDialog(Methode.getStage(event), pane) ;  
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterBanque));
+            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
             dialog.show();
         } catch (IOException ex) {
             Logger.getLogger(AjouterBanqueController.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,28 +69,28 @@ public class BanqueListeController implements Initializable {
     }
 
     private void setTotale() {
-       total.setText(""+listebanque.getItems().size());
+        total.setText("" + listebanque.getItems().size());
     }
 
     @FXML
     private void recherche(KeyEvent event) {
-       listebanque.getItems().clear();
-         List<Banque> listbanque  =    querie.listRechreche(rechreche.getText()) ; 
-       List<BanqueCell> list = new ArrayList<>();
-        
-        for (int i = 0; i < listbanque.size() ; i++) {
-            list.add(new BanqueCell(listbanque.get(i))) ; 
-            
+        listebanque.getItems().clear();
+        List<Banque> listbanque = querie.listRechreche(rechreche.getText());
+        List<BanqueCell> list = new ArrayList<>();
+
+        for (int i = 0; i < listbanque.size(); i++) {
+            list.add(new BanqueCell(listbanque.get(i)));
+
         }
         ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
         listebanque.setItems(myObservableList);
         listebanque.setExpanded(true);
-        
+
         setTotale();
     }
-    
-     public void possibleMot() {
-      
+
+    public void possibleMot() {
+
         ArrayList<String> list = new ArrayList<>();
         list.add("karim");
         list.add("hichem1");
@@ -109,5 +102,4 @@ public class BanqueListeController implements Initializable {
 
     }
 
-    
 }
