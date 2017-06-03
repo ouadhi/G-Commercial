@@ -41,6 +41,7 @@ public class Chauffeur {
         this.prenom = prenom;
         this.telephone = telephone;
         this.type = type;
+        this.deleted=false;
     }
 
     public Chauffeur() {

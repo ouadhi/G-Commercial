@@ -48,8 +48,8 @@ public class AjouterBleController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyDouble(quntite, 16);
         Methode.setOnlyDouble(prix, 16);
-        
         Methode.SetUpper(code);
+        quntite.setEditable(false);
     }
 
     @FXML
@@ -61,9 +61,11 @@ public class AjouterBleController implements Initializable {
     @FXML
     private void saveble(ActionEvent event) {
         String codeval = this.code.getText();
-        String quantiteval = this.quntite.getText();
+        String quantiteval = 0+"";
+                //this.quntite.getText();
         String prixval = this.prix.getText();
-        if (codeval.isEmpty() || quantiteval.isEmpty() || prixval.isEmpty()) {
+        if (codeval.isEmpty() || quantiteval.isEmpty() || 
+                prixval.isEmpty()) {
             Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
             if (BleQueries.getBleByCode(codeval) != null) {

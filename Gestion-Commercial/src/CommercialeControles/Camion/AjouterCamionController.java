@@ -6,7 +6,6 @@ import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Camion;
 import com.gestionCommerciale.Models.CamionQueries;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +24,7 @@ public class AjouterCamionController implements Initializable {
     private JFXButton savebttn;
     @FXML
     private JFXButton anullerbttn;
+    @FXML    
     private Label savelabel;
     @FXML
     private ImageView close;

@@ -24,7 +24,7 @@ public class Ble {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_Ble", nullable = false)
     int idBle;
-    @Column(name = "quantite", nullable = false)
+    @Column(name = "quantite", nullable = true)
     double qte;
     @Column(name = "prix", nullable = false)
     double prix;

@@ -23,7 +23,7 @@ public class Camion {
     String codeCamion;
     @Column(name = "matricule", nullable = false, unique = true)
     String matricule;
-    @Column(name = "marque")
+    @Column(name = "marque", nullable = false)
     String marque;
     @Column(name = "poid", nullable = true)
     double poid;
@@ -44,6 +44,7 @@ public class Camion {
         this.matricule= matricule;
         this.marque = marque;
         this.poid= poid;
+        this.deleted=false;
     }
 
     public double getPoid() {

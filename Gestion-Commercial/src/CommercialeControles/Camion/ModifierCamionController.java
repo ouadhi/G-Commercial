@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 
 public class ModifierCamionController implements Initializable {
 
+    @FXML
     private JFXTextField nomchauffeur;
     @FXML
     private JFXButton savebttn;
@@ -37,7 +38,6 @@ public class ModifierCamionController implements Initializable {
     private JFXTextField matricule;
     @FXML
     private JFXTextField taillecamion;
-
     @FXML
     private JFXTextField PoisCamion;
     Camion camion;
@@ -59,10 +59,10 @@ public class ModifierCamionController implements Initializable {
         String code = codecamion.getText();
         String matricule = this.matricule.getText();
         double poid = Double.parseDouble(PoisCamion.getText());
-        String marque =camion.getMarque();
+        String marque = camion.getMarque();
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
-            if (code.isEmpty() || matricule.isEmpty()|| marque.isEmpty() || poid==0) {
+            if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty() || poid == 0) {
                 Notification.champVideNotification();
             } else {
                 Camion camion = ShowdDetailCamionController.getCamion();
@@ -77,12 +77,13 @@ public class ModifierCamionController implements Initializable {
                 } else if (c2 != null && c2.getId() != camion.getId()) {
                     Notification.error("Cette matriquelle existe déja!");
                 } else if (CamionQueries.SaveOrUpdate(camion)) {
-                CamionQueries.SaveOrUpdate(camion);
-                Notification.Updatenotification();
-                new ShowPane().showCamion();
-                savelabel.setVisible(true);
-                annuler(event);
-            }}
+                    CamionQueries.SaveOrUpdate(camion);
+                    Notification.Updatenotification();
+                    new ShowPane().showCamion();
+                    savelabel.setVisible(true);
+                    annuler(event);
+                }
+            }
         }
     }
 
