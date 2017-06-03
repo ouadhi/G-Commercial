@@ -47,6 +47,14 @@ public class MoreMenuController implements Initializable {
 
     @FXML
     private void showinfo(ActionEvent event) {
+         
+        try {
+            AnchorPane pane  = FXMLLoader.load(getClass().getResource(ViewUrl.infoEntreprise))  ;
+            StageDialog dialog  =  new StageDialog(stage, pane) ;
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MoreMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

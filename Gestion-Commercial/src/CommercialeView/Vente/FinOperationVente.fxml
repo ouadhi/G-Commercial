@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -84,6 +85,16 @@
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin></JFXTextField>
+            <Label styleClass="label_txt" text="Type de versement :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="40.0" />
+               </GridPane.margin>
+            </Label>
+            <JFXComboBox fx:id="versemetCombo" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="-20.0" />
+               </GridPane.margin>
+            </JFXComboBox>
          </children>
       </GridPane>
       <JFXButton fx:id="save" layoutX="902.0" layoutY="453.0" onAction="#sauvgader" prefHeight="48.0" prefWidth="183.0" styleClass="button_save" text="Sauvgarder" />

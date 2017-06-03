@@ -71,7 +71,6 @@ public class FinOperationController implements Initializable {
     private JFXButton save;
     @FXML
     private JFXButton annuler;
-    @FXML
     private ImageView diffIcon;
     @FXML
     private ImageView infodock;
@@ -82,6 +81,8 @@ public class FinOperationController implements Initializable {
     private JFXTextField numerotickit;
     @FXML
     private JFXTextField numeroBon;
+    @FXML
+    private JFXTextField poidTotal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -100,6 +101,7 @@ public class FinOperationController implements Initializable {
         Methode.setSelectedMouseClick(numerotickit);
         Methode.setSelectedMouseClick(Q_Acquit);
         Methode.setSelectedMouseClick(Q_fournie);
+        Methode.setOnlyDouble(poidTotal, 10);
         date.setValue(LocalDate.now());
         diff.setEditable(false);
 
@@ -178,7 +180,6 @@ public class FinOperationController implements Initializable {
         popup.hide();
     }
 
-    @FXML
     private void founiePressed(KeyEvent event) {
         float qun_acquit = Float.parseFloat(Q_Acquit.getText());
         float qun_founier = Float.parseFloat(Q_fournie.getText());
@@ -191,13 +192,12 @@ public class FinOperationController implements Initializable {
         }
     }
 
-    @FXML
     private void FournirReleased(KeyEvent event) {
 
         double qun_acquit = Double.parseDouble(Q_Acquit.getText());
         double qun_founier = Double.parseDouble(Q_fournie.getText());
-        double d = qun_founier-qun_acquit;
-        diff.setText(Methode.DoubleFormat(d)+"");
+        double d = qun_founier - qun_acquit;
+        diff.setText(Methode.DoubleFormat(d) + "");
 //        if (d == 0) {
 //            diffIcon.setImage(new Image(imgOk));
 //        } else {
@@ -261,7 +261,7 @@ public class FinOperationController implements Initializable {
         double qFourVal = Double.parseDouble(Q_fournie.getText());
         double diffVal = Double.parseDouble(diff.getText());
         Date date = java.sql.Date.valueOf(this.date.getValue());
-        
+
         String numBonVal = numeroBon.getText();
         Achat achat = new Achat(numTiquetVal, numAcqtVal, qActVal,
                 qFourVal, diffVal, date, numBonVal, AnneeQueries.getSelected());
@@ -271,4 +271,19 @@ public class FinOperationController implements Initializable {
         achat.setBle(ble.getBle());
         AchatQueries.SaveOrUpdate(achat);
     }
+
+    public static void ClearVar() {
+        dock = null;
+        camion = null;
+        chauffeur = null;
+        ble = null;
+    }
+
+    @FXML
+    private void poidtotalkey(KeyEvent event) {
+       double  quan = Double.parseDouble(poidTotal.getText() )  ; 
+       double dif  =  camion.getCamion().getPoid() - quan   ; 
+       Q_fournie.setText(""+dif);
+    }
+
 }
