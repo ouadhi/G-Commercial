@@ -1,8 +1,8 @@
-
 package CommercialeControles.Vente;
 
 import CommercialeControles.Produit.ProduitListController;
 import UIControle.Methode;
+import UIControle.Notification;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Produit;
@@ -11,6 +11,8 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -22,13 +24,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 
+public class PorduitH extends GridPane {
 
-public class PorduitH extends GridPane{
-    
-   private  Produit  produit   ; 
-   private boolean  selected ; 
-   private JFXTextField quantite ; 
-   
+    private Produit produit;
+    private boolean selected;
+    private JFXTextField quantite;
 
     public Produit getProduit() {
         return produit;
@@ -41,23 +41,20 @@ public class PorduitH extends GridPane{
     public int getQuantite() {
         return Integer.parseInt(quantite.getText());
     }
-    
-    
-    
+
+    ColumnConstraints columnConstraints;
+    RowConstraints rowConstraints;
+    RowConstraints rowConstraints0;
+    RowConstraints rowConstraints1;
+    RowConstraints rowConstraints2;
+    ImageView imageView;
+    Label qantitproduit;
+    Label nomproduit;
+    JFXButton Ajouterbttn;
+    Label prix;
 
     public PorduitH(Produit produit) {
         this.produit = produit;
-        
-        ColumnConstraints columnConstraints;
-        RowConstraints rowConstraints;
-        RowConstraints rowConstraints0;
-        RowConstraints rowConstraints1;
-        RowConstraints rowConstraints2;
-        ImageView imageView;
-        Label label;
-        Label label0;
-       
-        JFXButton Ajouterbttn ;
 
         columnConstraints = new ColumnConstraints();
         rowConstraints = new RowConstraints();
@@ -65,16 +62,16 @@ public class PorduitH extends GridPane{
         rowConstraints1 = new RowConstraints();
         rowConstraints2 = new RowConstraints();
         imageView = new ImageView();
-        label = new Label();
-        label0 = new Label();
-        quantite = new JFXTextField(); 
+        qantitproduit = new Label();
+        nomproduit = new Label();
         Ajouterbttn = new JFXButton();
+        quantite = new JFXTextField();
+        prix = new Label();
 
         setPrefHeight(275.0);
         setPrefWidth(218.0);
-        setStyle("-fx-background-radius: 15;");
+       
 
-        columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
         columnConstraints.setMinWidth(10.0);
@@ -104,28 +101,32 @@ public class PorduitH extends GridPane{
         rowConstraints2.setValignment(javafx.geometry.VPos.CENTER);
         rowConstraints2.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        imageView.setFitHeight(92.0);
-        imageView.setFitWidth(134.0);
+        imageView.setFitHeight(90.0);
+        imageView.setFitWidth(150.0);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
         imageView.setImage(new Image(getClass().getResourceAsStream("/icons/ProduitGreen.png")));
 
-        GridPane.setRowIndex(label, 1);
-        label.setAlignment(javafx.geometry.Pos.CENTER);
-        label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label.setText(produit.getNom());
-        label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        label.setFont(new Font("System Bold", 18.0));
-        GridPane.setMargin(label, new Insets(0.0, 0.0, -28.0, 0.0));
+        GridPane.setRowIndex(qantitproduit, 1);
+        qantitproduit.setAlignment(javafx.geometry.Pos.CENTER);
+        qantitproduit.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        qantitproduit.setPrefHeight(17.0);
+        qantitproduit.setPrefWidth(106.0);
+        qantitproduit.setText(this.produit.getQuantite() + "");
+        qantitproduit.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        GridPane.setMargin(qantitproduit, new Insets(0.0, 0.0, -41.0, 0.0));
 
-        GridPane.setRowIndex(label0, 1);
-        label0.setAlignment(javafx.geometry.Pos.CENTER);
-        label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label0.setText(Double.toString(this.produit.getPrix()));
-        label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        label0.setFont(new Font(15.0));
-        GridPane.setMargin(label0, new Insets(0.0, 0.0, 31.0, 0.0));
-        
+        GridPane.setRowIndex(nomproduit, 1);
+        nomproduit.setText(this.produit.getNom());
+        GridPane.setMargin(nomproduit, new Insets(0.0, 0.0, 49.0, 0.0));
+
+        GridPane.setRowIndex(Ajouterbttn, 4);
+        Ajouterbttn.setText("Selectionner");
+        Ajouterbttn.prefHeight(40);
+        Ajouterbttn.prefWidth(40);
+        Ajouterbttn.setStyle("-fx-background-color: #74c080; -fx-background-radius: 30; -fx-text-fill: white;");
+        Ajouterbttn.setFont(new Font(16.0));
+
         GridPane.setRowIndex(quantite, 2);
         quantite.setMaxSize(75, 40);
         quantite.setPrefSize(75, 40);
@@ -134,15 +135,18 @@ public class PorduitH extends GridPane{
         quantite.setAlignment(javafx.geometry.Pos.CENTER);
         quantite.setFont(new Font(14.0));
         quantite.setPromptText("Quantité");
-        
 
-        GridPane.setRowIndex(Ajouterbttn, 3);
-        Ajouterbttn.setText("Selectionner");
-        Ajouterbttn.prefHeight(40) ; 
-        Ajouterbttn.prefWidth(40) ; 
-        Ajouterbttn.setStyle("-fx-background-color: #74c080; -fx-background-radius: 30; -fx-text-fill: white;");
-        Ajouterbttn.setFont(new Font(16.0));
-        
+
+        GridPane.setRowIndex(prix, 1);
+        prix.setAlignment(javafx.geometry.Pos.CENTER);
+        prix.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        prix.setLayoutX(96.0);
+        prix.setLayoutY(149.0);
+        prix.setPrefHeight(17.0);
+        prix.setPrefWidth(97.0);
+        prix.setText(this.produit.getPrix() + "");
+        prix.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        GridPane.setMargin(prix, new Insets(0.0, 0.0, 4.0, 0.0));
 
         getColumnConstraints().add(columnConstraints);
         getRowConstraints().add(rowConstraints);
@@ -150,40 +154,53 @@ public class PorduitH extends GridPane{
         getRowConstraints().add(rowConstraints1);
         getRowConstraints().add(rowConstraints2);
         getChildren().add(imageView);
-        getChildren().add(label);
-        getChildren().add(label0);
-        getChildren().add(quantite);
+        getChildren().add(qantitproduit);
+        getChildren().add(nomproduit);
         getChildren().add(Ajouterbttn);
-        
-        
+        getChildren().add(quantite);
+        getChildren().add(prix);
+
         Methode.setOnlyInteger(quantite, 5);
-        
-        
-        Ajouterbttn.setOnAction(event ->{
+        quantite.setVisible(false);
+
+        Ajouterbttn.setOnAction(event -> {
             if (!selected) {
-                 Ajouterbttn.setStyle("-fx-background-color: #d64242;-fx-background-radius: 30; -fx-text-fill: white;");
-                 quantite.setVisible(true);
-                 selected = true ; 
-                 OperationVenteController.produitselected.add(this);
-                 SelectionnerProduitController.staticNbselected.setText(Integer.toString(  OperationVenteController.produitselected.size()));
-            }else{
+                Ajouterbttn.setStyle("-fx-background-color: #d64242;-fx-background-radius: 30; -fx-text-fill: white;");
+                quantite.setVisible(true);
+                selected = true;
+                OperationVenteController.produitselected.add(this);
+                SelectionnerProduitController.staticNbselected.setText(Integer.toString(OperationVenteController.produitselected.size()));
+            } else {
                 Ajouterbttn.setStyle("-fx-background-color: #74c080;-fx-background-radius: 30; -fx-text-fill: white;");
                 quantite.setVisible(false);
-                 selected = false ; 
-                  OperationVenteController.produitselected.remove(this) ;
-                  SelectionnerProduitController.staticNbselected.setText(Integer.toString(  OperationVenteController.produitselected.size()));
+                selected = false;
+                OperationVenteController.produitselected.remove(this);
+                SelectionnerProduitController.staticNbselected.setText(Integer.toString(OperationVenteController.produitselected.size()));
             }
-            
+
         });
         
+       quantite.textProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                int  quan  =  Integer.parseInt(newValue) ; 
+                if (quan>produit.getQuantite()) {
+                    quantite.setText(oldValue);
+                    Notification.errorNotification("Vous dépasser quantité disponible au stocke");
+                }
+
+            }
+        });
         
+
     }
 
     public PorduitH() {
-          ColumnConstraints columnConstraints;
-     RowConstraints rowConstraints;
-     RowConstraints rowConstraints0;
-     JFXButton jFXButton;
+        ColumnConstraints columnConstraints;
+        RowConstraints rowConstraints;
+        RowConstraints rowConstraints0;
+        JFXButton jFXButton;
 
         columnConstraints = new ColumnConstraints();
         rowConstraints = new RowConstraints();
@@ -219,23 +236,18 @@ public class PorduitH extends GridPane{
         getRowConstraints().add(rowConstraints);
         getRowConstraints().add(rowConstraints0);
         getChildren().add(jFXButton);
-        
-        jFXButton.setOnAction(event->{
-             try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterProduit));
-            StageDialog stage = new StageDialog(Methode.getStage(event), pane);
 
-            stage.showAndWait();
-        } catch (IOException ex) {
-            Logger.getLogger(ProduitListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
+        jFXButton.setOnAction(event -> {
+            try {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterProduit));
+                StageDialog stage = new StageDialog(Methode.getStage(event), pane);
+
+                stage.showAndWait();
+            } catch (IOException ex) {
+                Logger.getLogger(ProduitListController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         });
     }
-    
-    
-   
-   
-    
-    
+
 }
