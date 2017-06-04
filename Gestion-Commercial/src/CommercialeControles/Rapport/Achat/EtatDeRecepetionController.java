@@ -39,7 +39,7 @@ public class EtatDeRecepetionController implements Initializable {
         GenerateEtatReceptionReport generateEtatReceptionReport= new GenerateEtatReceptionReport();
         Date dateDebutOb = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date dateFinOb = Date.from(dateFin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());        
-        generateEtatReceptionReport.generateReport(dateDebutOb ,dateFinOb , 0);
+        generateEtatReceptionReport.generateReport(dateDebutOb ,dateFinOb);
     }
 
     @FXML
