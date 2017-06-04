@@ -86,6 +86,7 @@ public class VenteListController implements Initializable {
 
     @FXML
     private void showAddStage(ActionEvent event) {
+        OperationVenteController.ClearVar();
         new ShowPane().showAjouterVente();
     }
 

@@ -89,6 +89,7 @@ public class ViewUrl {
     
     // **************************************************** 
     public static String parametreView  = "/CommercialeView/Autre/paramaitre.fxml"  ; 
+     public static String infoEntreprise  = "/CommercialeView/Autre/InfoEntreprise.fxml"  ; 
     public static String addAnneeEtTva = "/CommercialeView/Autre/AddAnnee.fxml" ; 
      public static String ModifierAnnee = "/CommercialeView/Autre/ModifierAnnee.fxml" ; 
 }

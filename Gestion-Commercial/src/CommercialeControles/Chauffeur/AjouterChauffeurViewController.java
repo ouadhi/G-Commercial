@@ -1,6 +1,5 @@
 package CommercialeControles.Chauffeur;
 
-import CommercialeControles.Ble.ModifierBleController;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
@@ -60,9 +59,7 @@ public class AjouterChauffeurViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Methode.SetUpper(codechauffeur);
         Methode.SetUpper(nomchauffeur);
-        Methode.setOnlyNumbre(telchauffeur);
-      
-
+        Methode.setOnlyInteger(telchauffeur,10);
     }
 
     @FXML
@@ -70,7 +67,6 @@ public class AjouterChauffeurViewController implements Initializable {
 
         String nom = nomchauffeur.getText();
         String prenom = prenomchauffeur.getText();
-        //String codech = codechauffeur.getText(); //autoIncrement
         String tel = telchauffeur.getText();
         String type = typechauffeur.getText();
 

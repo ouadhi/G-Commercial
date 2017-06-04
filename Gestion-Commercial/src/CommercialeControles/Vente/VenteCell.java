@@ -1,8 +1,6 @@
 package CommercialeControles.Vente;
 
 import CommercialeControles.Client.ClienCell;
-import CommercialeControles.Client.ModifierClientController;
-import CommercialeControles.Payement.PayementListeController;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
@@ -134,15 +132,18 @@ public class VenteCell extends GridPane {
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
-        label2.setText("" + this.facture.getMontant());
+        label2.setText("" + this.facture.getMontantFinal());
         label2.setFont(new Font(17.0));
+        
+        JFXButton produitdefacture = new JFXButton("Porduit")  ; 
+        produitdefacture.setStyle("-fx-background-color :Green ;  -fx-text-fill : white ; ");
         double versment = 0;
         for (int i = 0; i < this.facture.getClient().getPayments().size(); i++) {
                     System.err.println(versment);
 
             versment += this.facture.getClient().getPayments().get(i).getMontant();
         }
-        GridPane.setColumnIndex(label3, 4);
+        GridPane.setColumnIndex(produitdefacture, 4);
         label3.setText(Double.toString(this.facture.getMontant()-versment));
         label3.setFont(new Font(17.0));
 
@@ -166,7 +167,7 @@ public class VenteCell extends GridPane {
         getChildren().add(label0);
         getChildren().add(label1);
         getChildren().add(label2);
-        getChildren().add(label3);
+        getChildren().add(produitdefacture);
         getChildren().add(bttn);
 
         intpopup();

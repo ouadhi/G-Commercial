@@ -3,9 +3,7 @@ package CommercialeControles.Rapport.Achat;
 import Report.EtatBleReport.GenerateEtatBleReport;
 import UIControle.Methode;
 import com.jfoenix.controls.JFXDatePicker;
-import java.io.IOException;
 import java.net.URL;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.MenuButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import net.sf.jasperreports.engine.JRException;
 
 public class EtatBleController implements Initializable {
 
@@ -28,6 +25,8 @@ public class EtatBleController implements Initializable {
     @FXML
     private MenuButton menu;
 
+   
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -65,4 +64,6 @@ public class EtatBleController implements Initializable {
         menu.setText("intervale");
     }
 
+  
+    
 }

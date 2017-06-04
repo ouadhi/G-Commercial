@@ -11,8 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.DocumentFilter;
 
 public class Methode {
 

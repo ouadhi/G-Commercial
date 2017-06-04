@@ -55,6 +55,7 @@ public class OperationVenteController implements Initializable {
             space.getChildren().setAll(etapeClient);
             etape = 1;
             precedent.setVisible(false);
+            
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -150,5 +151,13 @@ public class OperationVenteController implements Initializable {
         FinOperationVenteController.montant_static.setText(Double.toString(prix));
         FinOperationVenteController.calcule();
     }
+     
+     
+     public  static  void ClearVar  ()  {
+         client =  null  ;  
+         chauffeur =  null ; 
+         camion  =  null  ;  
+         produitselected.clear();
+     }
 
 }

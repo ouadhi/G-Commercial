@@ -4,6 +4,7 @@ package CommercialeControles.Rapport.Achat;
 import Report.EtatReceptionReport.GenerateEtatReceptionReport;
 import UIControle.Methode;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.time.ZoneId;
 import java.util.Date;
@@ -20,6 +21,8 @@ public class EtatDeRecepetionController implements Initializable {
     private JFXDatePicker datedebut;
     @FXML
     private JFXDatePicker dateFin;
+    @FXML
+    private JFXTextField val;
 
     
     @Override

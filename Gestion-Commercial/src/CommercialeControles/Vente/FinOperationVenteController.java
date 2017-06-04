@@ -1,4 +1,5 @@
 package CommercialeControles.Vente;
+
 import CommercialeControles.Client.ClienCell;
 import CommercialeControles.OperationAchat.CamionListeH;
 import CommercialeControles.OperationAchat.ChauffeurListH;
@@ -15,6 +16,7 @@ import com.gestionCommerciale.Models.AnneeQueries;
 import com.gestionCommerciale.Models.FactureQueries;
 import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
@@ -38,7 +40,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.PopOver;
+
 public class FinOperationVenteController implements Initializable {
+
     @FXML
     private JFXTextField montant;
     public static JFXTextField montant_static = new JFXTextField();
@@ -68,12 +72,16 @@ public class FinOperationVenteController implements Initializable {
     private static JFXTextField solde_static = new JFXTextField();
     @FXML
     private JFXTextField solde;
+    @FXML
+    private JFXComboBox<String> versemetCombo;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         montantFinal.setEditable(false);
         montant.setEditable(false);
         solde.setEditable(false);
         montant_static = montant;
+        setVersement();
         montantFinal_static = montantFinal;
         versement_static = versement;
         solde_static = solde;
@@ -101,24 +109,29 @@ public class FinOperationVenteController implements Initializable {
             quitter(event);
         }
     }
+
     @FXML
     private void quitter(ActionEvent event) throws IOException {
         new ShowPane().showVenteListe();
     }
+
     @FXML
     private void clientOUT(MouseEvent event) {
         clienticon.setImage(view);
     }
+
     @FXML
     private void clientIN(MouseEvent event) {
         clienticon.setImage(viewHover);
         popup.setContentNode(montant);
     }
+
     @FXML
     private void chauffeurOUT(MouseEvent event) {
         popup.hide();
         chauffeuricon.setImage(view);
     }
+
     @FXML
     private void chauffeurIN(MouseEvent event) {
         chauffeuricon.setImage(viewHover);
@@ -126,11 +139,13 @@ public class FinOperationVenteController implements Initializable {
         popup.setContentNode(ch);
         popup.show(chauffeuricon);
     }
+
     @FXML
     private void camionOUT(MouseEvent event) {
         popup.hide();
         camionIcon.setImage(view);
     }
+
     @FXML
     private void camionIN(MouseEvent event) {
         camionIcon.setImage(viewHover);
@@ -138,22 +153,26 @@ public class FinOperationVenteController implements Initializable {
         popup.setContentNode(ch);
         popup.show(camionIcon);
     }
+
     @FXML
     private void produitOUT(MouseEvent event) {
         popup.hide();
         produitIcon.setImage(view);
     }
+
     @FXML
     private void produitIN(MouseEvent event) {
         produitIcon.setImage(viewHover);
         popup.setContentNode(OperationVenteController.produitselected.get(0));
         popup.show(produitIcon);
     }
+
     private void intpop() {
         popup = new PopOver();
         popup.setCornerRadius(4);
         popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
     }
+
     public void addFacture(ActionEvent event) {
         Date date = java.sql.Date.valueOf(dateOperation.getValue());
         double montantVal = Double.parseDouble(montantFinal_static.getText());
@@ -184,19 +203,21 @@ public class FinOperationVenteController implements Initializable {
         FactureQueries.insert(f, payment, fpsList);
         imprimer(f, event);
     }
+
     public static double getsSolde() {
         List<Payment> payments = PaymentQueries.getPaymentsListByClientId(OperationVenteController.client.getId());
         double solde = 0;
         for (Payment p : payments) {
             solde += p.getMontant();
         }
-        
+
         List<Facture> factures = FactureQueries.getFacturesListByClientId(OperationVenteController.client.getId());
         for (Facture f : factures) {
             solde -= f.getMontantFinal();
         }
         return solde;
     }
+
     static double getMontantFinale() {
         double mf = 0;
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
@@ -204,10 +225,12 @@ public class FinOperationVenteController implements Initializable {
         }
         return mf;
     }
-        public static void calcule() {
+
+    public static void calcule() {
         montantFinal_static.setText(Methode.DoubleFormat(getMontantFinale()) + "");
         solde_static.setText(Methode.DoubleFormat(getsSolde()) + "");
     }
+
     public void imprimer(Facture f, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -221,6 +244,11 @@ public class FinOperationVenteController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void setVersement() {
+        versemetCombo.getItems().add("Cache");
+        versemetCombo.getItems().add("Especes");
     }
 
 }

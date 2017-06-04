@@ -73,7 +73,7 @@ public class PrintViewController implements Initializable {
                         factureimp.getClient().getnCarteFiscale(), factureimp.getDate().toString(),
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(), String.valueOf(montantTotal),
                         String.valueOf(factureimp.getTva()), "0.00", new Double(ttc).toString(), montantlettre,
-                        factureimp.getChauffeur().getNomChauffeur() + factureimp.getChauffeur().getPrenomChauffeur(),
+                        factureimp.getChauffeur().getNom() + factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente,
                         qtesVente, prixsVente, montantsVente);
             } catch (Exception ex) {
@@ -120,7 +120,7 @@ public class PrintViewController implements Initializable {
                         factureimp.getClient().getNumRegCom(),
                         factureimp.getClient().getnCarteFiscale(), factureimp.getDate().toString(),
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(),
-                        factureimp.getChauffeur().getNomChauffeur() + " " + factureimp.getChauffeur().getPrenomChauffeur(),
+                        factureimp.getChauffeur().getNom() + " " + factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente,
                         qtesVente);
             } catch (Exception ex) {

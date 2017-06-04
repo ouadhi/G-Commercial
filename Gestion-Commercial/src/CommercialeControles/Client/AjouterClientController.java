@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.Models.ClientQueries;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -52,15 +53,15 @@ public class AjouterClientController implements Initializable {
     private Label savelabel;
     @FXML
     private ImageView close;
-    @FXML
     private JFXTextField Solde;
     @FXML
     private JFXComboBox<String> activiteBox;
+    @FXML
+    private JFXCheckBox fermer;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         datedept.setValue(LocalDate.now());
-        Methode.setOnlyNumbre(Solde);
         Methode.setOnlyNumbre(NRtxt);
         Methode.setOnlyNumbre(NAtxt);
         Methode.setOnlyNumbre(NCarteF);
@@ -97,8 +98,12 @@ public class AjouterClientController implements Initializable {
                     ClientQueries.SaveOrUpdate(client);
                     Notification.Addnotification();
                     new ShowPane().showClient();
-                    savelabel.setVisible(true);
-                    quitter(event);
+                    if (fermer.isSelected()) {
+                        quitter(event);
+                    } else {
+                        clear();
+                    }
+                    
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -128,5 +133,14 @@ public class AjouterClientController implements Initializable {
 
         activiteBox.setItems(list);
 
+    }
+    
+    private  void clear () {
+        nomtxt.setText(null);
+        prenomtxt.setText(null);
+        NRtxt.setText(null);
+        NAtxt.setText(null);
+       adressetxt.setText(null);
+        NCarteF.setText(null);
     }
 }

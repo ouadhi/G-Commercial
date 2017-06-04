@@ -17,11 +17,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="672.0" prefWidth="683.0" style="-fx-background-color: white;" stylesheets="@payementCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Payement.PayementListeController">
    <children>
-      <Text fill="#fd9252" layoutX="13.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versement" wrappingWidth="177.21875">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
       <JFXButton layoutX="514.0" layoutY="65.0" onAction="#addpayment" prefHeight="45.0" prefWidth="159.0" styleClass="button_save" text="Ajouter" />
       <GridPane layoutX="14.0" layoutY="138.0" prefHeight="51.0" prefWidth="657.0">
         <columnConstraints>
@@ -33,28 +28,28 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label styleClass="label_txt" text="Total Facture:">
+            <Label styleClass="label_txt" text="Total Facturé:">
                <GridPane.margin>
                   <Insets left="-4.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label_txt" text="Total payé :" GridPane.columnIndex="1">
+            <Label styleClass="label_txt" text="Total Versé:" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="-3.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label_txt" text="Reste :" GridPane.columnIndex="2" />
-            <JFXTextField fx:id="totalefacture" focusColor="#405aa84e" maxWidth="117.0" minWidth="75.0" prefHeight="33.0" prefWidth="117.0" styleClass="champtxt" unFocusColor="#ffffff00">
+            <Label styleClass="label_txt" text="Solde :" GridPane.columnIndex="2" />
+            <JFXTextField fx:id="totalefacture" editable="false" focusColor="#405aa84e" maxWidth="117.0" minWidth="75.0" prefHeight="33.0" prefWidth="117.0" styleClass="champtxt" unFocusColor="#ffffff00">
                <GridPane.margin>
                   <Insets left="103.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="totlepaye" focusColor="#405aa84e" maxWidth="125.0" minWidth="75.0" prefHeight="33.0" prefWidth="125.0" styleClass="champtxt" unFocusColor="#ffffff00" GridPane.columnIndex="1">
+            <JFXTextField fx:id="totlepaye" editable="false" focusColor="#405aa84e" maxWidth="125.0" minWidth="75.0" prefHeight="33.0" prefWidth="125.0" styleClass="champtxt" unFocusColor="#ffffff00" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="92.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="reste" focusColor="#405aa84e" maxWidth="117.0" minWidth="75.0" prefHeight="33.0" prefWidth="117.0" styleClass="champtxt" unFocusColor="#ffffff00" GridPane.columnIndex="2">
+            <JFXTextField fx:id="reste" editable="false" focusColor="#405aa84e" maxWidth="117.0" minWidth="75.0" prefHeight="33.0" prefWidth="117.0" styleClass="champtxt" unFocusColor="#ffffff00" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="57.0" />
                </GridPane.margin>
@@ -97,6 +92,11 @@
                   <Image url="/icons/close.png" />
                </image>
             </ImageView>
+            <Text fill="#fd9252" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versement" wrappingWidth="177.21875">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>
