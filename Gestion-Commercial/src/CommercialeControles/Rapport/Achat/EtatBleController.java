@@ -18,14 +18,8 @@ public class EtatBleController implements Initializable {
 
     @FXML
     private JFXDatePicker datedebut;
-    @FXML
-    private JFXDatePicker datefin;
    
-    @FXML
-    private HBox Hbox;
-    @FXML
-    private MenuButton menu;
-
+   
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -48,16 +42,6 @@ public class EtatBleController implements Initializable {
         Methode.getStage(event).close();
     }
 
-    @FXML
-    private void todaye(ActionEvent event) {
-        Hbox.setVisible(false);
-        menu.setText("Aujourd'huit");
-    }
-
-    @FXML
-    private void intervale(ActionEvent event) {
-          Hbox.setVisible(true);
-          menu.setText("intervale");
-    }
+  
     
 }

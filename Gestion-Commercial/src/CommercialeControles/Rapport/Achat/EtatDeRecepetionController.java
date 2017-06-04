@@ -3,6 +3,7 @@ package CommercialeControles.Rapport.Achat;
 
 import UIControle.Methode;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,6 +18,8 @@ public class EtatDeRecepetionController implements Initializable {
     private JFXDatePicker datedebut;
     @FXML
     private JFXDatePicker dateFin;
+    @FXML
+    private JFXTextField val;
 
     
     @Override

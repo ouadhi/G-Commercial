@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -133,5 +134,10 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <JFXCheckBox fx:id="fermer" layoutX="34.0" layoutY="508.0" prefHeight="35.0" prefWidth="119.0" text="Fermer" unCheckedColor="#1830b5">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXCheckBox>
    </children>
 </AnchorPane>
