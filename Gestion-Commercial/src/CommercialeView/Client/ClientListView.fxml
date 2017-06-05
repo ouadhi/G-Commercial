@@ -22,13 +22,12 @@
       <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Client" wrappingWidth="85.51513671875" />
       <Label fx:id="total" layoutX="153.0" layoutY="40.0" styleClass="label_txt" text="100" />
       <Label layoutX="181.0" layoutY="40.0" styleClass="label_txt" text="Total" />
-      <Label layoutX="261.0" layoutY="40.0" styleClass="label_txt" text="Trie par : " />
-      <MenuButton fx:id="Order" layoutX="334.0" layoutY="26.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code Client">
+      <Label layoutX="261.0" layoutY="40.0" styleClass="label_txt" text="Afficher : " />
+      <MenuButton fx:id="Order" layoutX="334.0" layoutY="26.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
         <items>
-            <MenuItem fx:id="bycode" mnemonicParsing="false" onAction="#oderByCodeClient" text="Code client" />
-          <MenuItem fx:id="byname" mnemonicParsing="false" onAction="#orederByName" text="Nom et  prenom" />
-          <MenuItem fx:id="byActivite" mnemonicParsing="false" onAction="#OrderByActivity" text="Activité" />
-            <MenuItem fx:id="byregistre" mnemonicParsing="false" onAction="#oderByRegistre" text="N°registre" />
+            <MenuItem mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
+            <MenuItem mnemonicParsing="false" onAction="#Archive" text="Archivé" />
+          <MenuItem mnemonicParsing="false" onAction="#tout" text="Tout" />
         </items>
       </MenuButton>
       <JFXButton fx:id="ajouter" layoutX="1001.0" layoutY="26.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter" />

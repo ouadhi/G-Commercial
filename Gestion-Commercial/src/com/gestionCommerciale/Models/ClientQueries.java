@@ -67,7 +67,7 @@ public class ClientQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Client> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Client where deleted='"+true+"'").list();
+            list = session.createQuery("from Client where deleted = true ").list();
         } finally {
             session.close();
         }

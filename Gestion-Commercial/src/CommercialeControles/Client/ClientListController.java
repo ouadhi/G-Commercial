@@ -44,14 +44,6 @@ public class ClientListController implements Initializable {
     private JFXListView<ClienCell> clientLsit;
     @FXML
     private JFXTextField rechreche;
-    @FXML
-    private MenuItem bycode;
-    @FXML
-    private MenuItem byname;
-    @FXML
-    private MenuItem byActivite;
-    @FXML
-    private MenuItem byregistre;
 
 
     @Override
@@ -93,41 +85,7 @@ public class ClientListController implements Initializable {
         total.setText(Integer.toString(clientLsit.getItems().size()));
     }
 
-    @FXML
-    private void oderByCodeClient(ActionEvent event) {
-        Order.setText("CodeClient");
-    }
-
-    @FXML
-    private void orederByName(ActionEvent event) {
-        Order.setText("Nom");
-    }
-
-    @FXML
-    private void OrderByActivity(ActionEvent event) {
-        Order.setText("Activité");
-    }
-
-    @FXML
-    private void oderByRegistre(ActionEvent event) {
-        Order.setText("Registre");
-    }
-
-    private void show20(ActionEvent event) {
-        NbShow.setText("20");
-    }
-
-    private void shwo50(ActionEvent event) {
-        NbShow.setText("50");
-    }
-
-    private void show100(ActionEvent event) {
-        NbShow.setText("100");
-    }
-
-    private void showtout(ActionEvent event) {
-        NbShow.setText("Tout");
-    }
+   
 
     @FXML
     private void showClient(MouseEvent event) {
@@ -180,5 +138,56 @@ public class ClientListController implements Initializable {
 
         TextFields.bindAutoCompletion(rechreche, list);
 
+    }
+
+    @FXML
+    private void NonArchive(ActionEvent event) {
+           Order.setText("Non Archivé");
+         List<Client> listClientsDB = ClientQueries.list();
+
+        List<ClienCell> list = new ArrayList<>();
+        for (int i = 0; i < listClientsDB.size(); i++) {
+            list.add(new ClienCell(listClientsDB.get(i)));
+        }
+
+        ObservableList<ClienCell> myObservableList = FXCollections.observableList(list);
+        clientLsit.setItems(myObservableList);
+        clientLsit.setExpanded(true);
+
+        setTotal();
+    }
+
+    @FXML
+    private void Archive(ActionEvent event) {
+        Order.setText("Archivé");
+         List<Client> listClientsDB = ClientQueries.listArchived() ; 
+
+        List<ClienCell> list = new ArrayList<>();
+        for (int i = 0; i < listClientsDB.size(); i++) {
+            list.add(new ClienCell(listClientsDB.get(i)));
+        }
+
+        ObservableList<ClienCell> myObservableList = FXCollections.observableList(list);
+        clientLsit.setItems(myObservableList);
+        clientLsit.setExpanded(true);
+
+        setTotal();
+    }
+
+    @FXML
+    private void tout(ActionEvent event) {
+           Order.setText("Tout");
+         List<Client> listClientsDB = ClientQueries.listAll() ; 
+
+        List<ClienCell> list = new ArrayList<>();
+        for (int i = 0; i < listClientsDB.size(); i++) {
+            list.add(new ClienCell(listClientsDB.get(i)));
+        }
+
+        ObservableList<ClienCell> myObservableList = FXCollections.observableList(list);
+        clientLsit.setItems(myObservableList);
+        clientLsit.setExpanded(true);
+
+        setTotal();
     }
 }
