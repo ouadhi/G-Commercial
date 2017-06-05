@@ -22,7 +22,7 @@
    <children>
       <Label fx:id="total" layoutX="210.0" layoutY="37.0" styleClass="text" text="100" />
       <Label layoutX="238.0" layoutY="37.0" styleClass="text" text="Total" />
-      <Label layoutX="306.0" layoutY="37.0" styleClass="text" text="Trie par:" />
+      <Label layoutX="306.0" layoutY="37.0" styleClass="text" text="Afficher :" />
       <Pane layoutX="571.0" layoutY="25.0" prefHeight="44.0" prefWidth="412.0" styleClass="rechereche">
          <children>
             <JFXTextField fx:id="recherchetxt" focusColor="#405aa80e" layoutX="41.0" layoutY="4.0" maxWidth="352.0" minWidth="226.0" onKeyReleased="#recherche" prefHeight="38.0" prefWidth="352.0" promptText="Recherche" unFocusColor="#4d4d4d00">
@@ -37,11 +37,11 @@
          </children>
       </Pane>
       <JFXButton fx:id="Ajoute" layoutX="1016.0" layoutY="25.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Chauffeur" />
-      <MenuButton fx:id="orderby" layoutX="390.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="160.0" style="-fx-background-color: #f4f8f9;" text="Date">
+      <MenuButton fx:id="orderby" layoutX="390.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="160.0" style="-fx-background-color: #f4f8f9;">
         <items>
-          <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#orderDate" text="Date" />
-            <MenuItem fx:id="VoyageMenuItem" mnemonicParsing="false" onAction="#oredrbyVoyage" text="Voyage" />
-          <MenuItem fx:id="NomMenuItem" mnemonicParsing="false" onAction="#orderByNom" text="Nom et prenom" />
+          <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#orderDate" text="Archivé" />
+            <MenuItem fx:id="VoyageMenuItem" mnemonicParsing="false" onAction="#oredrbyVoyage" text="Non Archivé" />
+          <MenuItem fx:id="NomMenuItem" mnemonicParsing="false" onAction="#orderByNom" text="Tout" />
         </items>
       </MenuButton>
       <Text fill="#7d6dfb" layoutX="55.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Chaufeur">
