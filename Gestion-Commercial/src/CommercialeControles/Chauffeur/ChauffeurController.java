@@ -91,35 +91,54 @@ public class ChauffeurController implements Initializable {
 
     @FXML
     private void orderDate(ActionEvent event) {
-        orderby.setText("Date");
+        List<Chauffeur> listChauffeursDB= ChauffeurQueries.listArchived() ; 
+        List<ChauffeurCell> list = new ArrayList<>();
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+            
+        }
+
+        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+        listeView.setExpanded(true);
+        
+        setTotal();
+        
     }
 
     @FXML
     private void oredrbyVoyage(ActionEvent event) {
-        orderby.setText("Voyage");
+         List<Chauffeur> listChauffeursDB= ChauffeurQueries.list();
+        List<ChauffeurCell> list = new ArrayList<>();
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+            
+        }
+
+        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+        listeView.setExpanded(true);
+        
+        setTotal();
     }
 
     @FXML
     private void orderByNom(ActionEvent event) {
-        orderby.setText("Nom et prenom");
-    }
+         List<Chauffeur> listChauffeursDB= ChauffeurQueries.listAll() ; 
+        List<ChauffeurCell> list = new ArrayList<>();
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+            
+        }
 
-    private void show20(ActionEvent event) {
+        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+        listeView.setExpanded(true);
         
-        nbvisibel.setText("20");
+        setTotal();
     }
 
-    private void show50(ActionEvent event) {
-         nbvisibel.setText("50");
-    }
-
-    private void show100(ActionEvent event) {
-         nbvisibel.setText("100");
-    }
-
-    private void showAll(ActionEvent event) {
-         nbvisibel.setText("All");
-    }
+  
 
 
     @FXML
