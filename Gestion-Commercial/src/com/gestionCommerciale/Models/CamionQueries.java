@@ -70,7 +70,7 @@ public class CamionQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Camion> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Camion where deleted='" + true + "'").list();
+            list = session.createQuery("from Camion where deleted = true ").list();
         } finally {
             session.close();
         }

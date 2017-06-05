@@ -24,11 +24,11 @@
       <Label layoutX="212.0" layoutY="37.0" styleClass="text" text="Total" />
       <Label layoutX="273.0" layoutY="35.0" styleClass="text" text="Trie par :" />
       <JFXButton fx:id="Ajoute" layoutX="1007.0" layoutY="25.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Camion" />
-      <MenuButton fx:id="orderby" layoutX="350.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" style="-fx-background-color: #f4f8f9;" text="Date">
+      <MenuButton fx:id="orderby" layoutX="350.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" style="-fx-background-color: #f4f8f9;" text="Non Archivé">
          <items>
-            <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#orderDate" text="Date" />
-            <MenuItem fx:id="VoyageMenuItem" mnemonicParsing="false" onAction="#oredrbyVoyage" text="Voyage" />
-            <MenuItem fx:id="NomMenuItem" mnemonicParsing="false" onAction="#orderByNom" text="Nom et prenom" />
+            <MenuItem mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
+            <MenuItem mnemonicParsing="false" onAction="#Archive" text="Archivé" />
+            <MenuItem mnemonicParsing="false" onAction="#tout" text="Tout" />
          </items>
       </MenuButton>
       <Text fill="#7d6dfb" layoutX="55.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Camion">

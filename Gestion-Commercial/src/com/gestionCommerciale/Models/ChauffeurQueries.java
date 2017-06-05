@@ -66,7 +66,7 @@ public class ChauffeurQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Chauffeur> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Chauffeur where deleted='" + false + "'").list();
+            list = session.createQuery("from Chauffeur where deleted='" + false+ "'").list();
         } finally {
             session.close();
         }
@@ -78,7 +78,8 @@ public class ChauffeurQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Chauffeur> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Chauffeur where deleted='" + true + "'").list();
+            list = session.createQuery("from Chauffeur where deleted = true ").list();
+           
         } finally {
             session.close();
         }

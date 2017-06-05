@@ -40,12 +40,6 @@ public class CamionViewController implements Initializable {
     @FXML
     private MenuButton orderby;
     @FXML
-    private MenuItem DateMenuItem;
-    @FXML
-    private MenuItem VoyageMenuItem;
-    @FXML
-    private MenuItem NomMenuItem;
-    @FXML
     private JFXListView<CamionCell> listeView;
 
     private MenuButton nbvisibel;
@@ -68,8 +62,6 @@ public class CamionViewController implements Initializable {
 
         setTotal();
 
-
-
     }
 
     @FXML
@@ -78,50 +70,18 @@ public class CamionViewController implements Initializable {
         try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/CommercialeView/Camion/AjouterCamionView.fxml"));
-             
-            StageDialog  dialog = new StageDialog(stage, pane) ;
+
+            StageDialog dialog = new StageDialog(stage, pane);
             dialog.show();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(CamionViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @FXML
-    private void orderDate(ActionEvent event) {
-        orderby.setText("Date");
-    }
-
-    @FXML
-    private void oredrbyVoyage(ActionEvent event) {
-        orderby.setText("Voyage");
-    }
-
-    @FXML
-    private void orderByNom(ActionEvent event) {
-        orderby.setText("Nom");
-    }
-
     public void setTotal() {
         String total = Integer.toString(listeView.getItems().size());
         this.total.setText(total);
-    }
-
-    private void show20(ActionEvent event) {
-
-        nbvisibel.setText("20");
-    }
-
-    private void show50(ActionEvent event) {
-        nbvisibel.setText("50");
-    }
-
-    private void show100(ActionEvent event) {
-        nbvisibel.setText("100");
-    }
-
-    private void showAll(ActionEvent event) {
-        nbvisibel.setText("All");
     }
 
     @FXML
@@ -160,9 +120,62 @@ public class CamionViewController implements Initializable {
 
     @FXML
     private void rechrecher(KeyEvent event) {
-         listeView.getItems().clear();
-        
-        List<Camion> listCamionsDB = camionQueries.listRechreche(rechreche1.getText()) ; 
+        listeView.getItems().clear();
+
+        List<Camion> listCamionsDB = camionQueries.listRechreche(rechreche1.getText());
+        List<CamionCell> list = new ArrayList<>();
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionCell(listCamionsDB.get(i)));
+
+        }
+
+        ObservableList<CamionCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+
+        setTotal();
+    }
+
+    @FXML
+    private void NonArchive(ActionEvent event) {
+        orderby.setText("Non Archivé");
+
+        List<Camion> listCamionsDB = camionQueries.list();
+        List<CamionCell> list = new ArrayList<>();
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionCell(listCamionsDB.get(i)));
+
+        }
+
+        ObservableList<CamionCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+
+        setTotal();
+
+    }
+
+    @FXML
+    private void Archive(ActionEvent event) {
+        orderby.setText("Archivé");
+
+        List<Camion> listCamionsDB = camionQueries.listArchived();
+        List<CamionCell> list = new ArrayList<>();
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionCell(listCamionsDB.get(i)));
+
+        }
+
+        ObservableList<CamionCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+
+        setTotal();
+
+    }
+
+    @FXML
+    private void tout(ActionEvent event) {
+        orderby.setText("Tout");
+
+        List<Camion> listCamionsDB = camionQueries.listAll() ; 
         List<CamionCell> list = new ArrayList<>();
         for (int i = 0; i < listCamionsDB.size(); i++) {
             list.add(new CamionCell(listCamionsDB.get(i)));

@@ -37,11 +37,11 @@
          </children>
       </Pane>
       <JFXButton fx:id="Ajoute" layoutX="1016.0" layoutY="25.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Chauffeur" />
-      <MenuButton fx:id="orderby" layoutX="390.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="160.0" style="-fx-background-color: #f4f8f9;">
+      <MenuButton fx:id="orderby" layoutX="390.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="160.0" style="-fx-background-color: #f4f8f9;" text="Non Archivé">
         <items>
-          <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#orderDate" text="Archivé" />
-            <MenuItem fx:id="VoyageMenuItem" mnemonicParsing="false" onAction="#oredrbyVoyage" text="Non Archivé" />
-          <MenuItem fx:id="NomMenuItem" mnemonicParsing="false" onAction="#orderByNom" text="Tout" />
+          <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#archive" text="Archivé" />
+            <MenuItem fx:id="VoyageMenuItem" mnemonicParsing="false" onAction="#nonArchive" text="Non Archivé" />
+          <MenuItem fx:id="NomMenuItem" mnemonicParsing="false" onAction="#tout" text="Tout" />
         </items>
       </MenuButton>
       <Text fill="#7d6dfb" layoutX="55.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Chaufeur">
