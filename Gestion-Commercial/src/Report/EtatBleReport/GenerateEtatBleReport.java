@@ -28,7 +28,7 @@ public class GenerateEtatBleReport {
 
     public void getAchatDuJour(Date jour) {
 
-        List<Achat> list = null;
+        List<Achat> list = new ArrayList<>();
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -59,7 +59,7 @@ public class GenerateEtatBleReport {
     public void generateReport(Date jour) throws IOException, JRException {
         OperationEtatBleReport operationEtatBleReport = new OperationEtatBleReport();
         getAchatDuJour(jour);
-
+        System.out.println(achatDuJour.get(0).getQuantiteAcqt());
         for (int i = 0; i < achatDuJour.size(); i++) {
             List<String> poidTiquets = new ArrayList<>();
             totalPoid = totalPoid + achatDuJour.get(i).getQuantiteFour();

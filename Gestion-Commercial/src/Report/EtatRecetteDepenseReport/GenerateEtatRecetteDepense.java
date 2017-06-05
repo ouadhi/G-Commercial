@@ -8,6 +8,7 @@ package Report.EtatRecetteDepenseReport;
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Payment;
 import com.gestionCommerciale.Models.SessionsGenerator;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +33,7 @@ public class GenerateEtatRecetteDepense {
             double solde = 0;
             for (int i = 0; i < list.size(); i++) {
                 if (jour.equals(list.get(i).getDate())) {
+                    System.out.println("solde----------:" + solde);
                     solde = solde + list.get(i).getMontant();
                     listPayement.add(list.get(i).getMontant());
                     listClients.add(list.get(i).getClient());
@@ -47,10 +49,11 @@ public class GenerateEtatRecetteDepense {
     public void generateReport(Date jour, String nomBanque, double versementBanque) {
         OperationEtatRecetteDepense operationEtatRecetteDepense = new OperationEtatRecetteDepense();
         getVersementParJour(jour);
-        String reste = String.valueOf(listSoldes.get(listSoldes.size() - 1) - versementBanque);
+        String reste = String.valueOf(listSoldes.get(listSoldes.size()-1) - versementBanque);
+        int counter=1;
         for (int i = 0; i < listClients.size(); i++) {
             List<String> clients = new ArrayList<>();
-            clients.add(String.valueOf(listClients.get(i)));
+            clients.add(String.valueOf(listClients.get(i).getName()));
             List<String> montants = new ArrayList<>();
             montants.add(String.valueOf(listPayement.get(i)));
             List<String> soldes = new ArrayList<>();
@@ -58,11 +61,12 @@ public class GenerateEtatRecetteDepense {
             List<String> depenses = new ArrayList<>();
             depenses.add("");
             List<String> nums = new ArrayList<>();
-            nums.add("");
-
+            nums.add(String.valueOf(counter));
+            String newDate= new SimpleDateFormat("dd-MM-yyyy").format(jour);
             operationEtatRecetteDepense.putReportInfo(
-                    jour.toString(), String.valueOf(listSoldes.get(listSoldes.size() - 1)),
+                    newDate, String.valueOf(listSoldes.get(listSoldes.size() - 1)),
                     "", nomBanque, reste, nums, clients, montants, depenses, soldes);
+            counter ++;
 
         }
         operationEtatRecetteDepense.printReport();

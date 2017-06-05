@@ -1,4 +1,3 @@
-
 package CommercialeControles.Rapport.Vente;
 
 import Report.EtatRecetteDepenseReport.GenerateEtatRecetteDepense;
@@ -8,13 +7,14 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
-
 
 public class RecetteViewController implements Initializable {
 
@@ -25,35 +25,36 @@ public class RecetteViewController implements Initializable {
     @FXML
     private JFXTextField versement;
 
-   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        BanqueQueries querie  = new  BanqueQueries() ; 
-        List<String>listDB= querie.list();
+
+        BanqueQueries querie = new BanqueQueries();
+        List<String> listDB = querie.listNomBanque();
         for (int i = 0; i < listDB.size(); i++) {
-            banque.getItems().add(listDB.get(i)) ; 
+            banque.getItems().add(listDB.get(i));
         }
-        
+
         Methode.setOnlyDouble(versement, 10);
-        
-    }    
+
+    }
 
     @FXML
     private void quitter(MouseEvent event) {
-        Methode.getStageMouses(event).close();  
+        Methode.getStageMouses(event).close();
     }
 
     @FXML
     private void print(ActionEvent event) {
-        GenerateEtatRecetteDepense generateEtatRecetteDepense= new GenerateEtatRecetteDepense();
-        
-        
+        GenerateEtatRecetteDepense generateEtatRecetteDepense = new GenerateEtatRecetteDepense();
+        Date dateOb = Date.from(debut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        generateEtatRecetteDepense.generateReport(dateOb, banque.getSelectionModel().getSelectedItem()
+                , Double.parseDouble(versement.getText()));
+
     }
 
     @FXML
     private void close(ActionEvent event) {
         Methode.getStage(event).close();
     }
-    
+
 }

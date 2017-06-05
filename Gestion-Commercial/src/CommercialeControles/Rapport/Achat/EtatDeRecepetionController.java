@@ -1,10 +1,13 @@
 
 package CommercialeControles.Rapport.Achat;
 
+import Report.EtatReceptionReport.GenerateEtatReceptionReport;
 import UIControle.Methode;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,10 +33,13 @@ public class EtatDeRecepetionController implements Initializable {
     @FXML
     private void quitter(MouseEvent event) {
         Methode.getStageMouses(event).close();
-    }
-
+    }    
     @FXML
     private void print(ActionEvent event) {
+        GenerateEtatReceptionReport generateEtatReceptionReport= new GenerateEtatReceptionReport();
+        Date dateDebutOb = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date dateFinOb = Date.from(dateFin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());        
+        generateEtatReceptionReport.generateReport(dateDebutOb ,dateFinOb);
     }
 
     @FXML

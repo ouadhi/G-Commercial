@@ -1,15 +1,12 @@
 
 package CommercialeControles.Banque;
 
-import CommercialeControles.Ble.ModifierBleController;
 import CommercialeControles.Client.ClienCell;
 import UIControle.Methode;
 import UIControle.Notification;
-import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Banque;
-import com.gestionCommerciale.Models.BleQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import java.io.IOException;

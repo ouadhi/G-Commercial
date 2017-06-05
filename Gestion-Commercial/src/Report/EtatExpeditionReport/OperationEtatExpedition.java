@@ -42,7 +42,6 @@ public class OperationEtatExpedition {
             String versementTotal, String differenceTotal, List<String> clients,
             List<String> nums, List<String> produits, List<String> qteFarins, List<String> qteSons,
             List<String> prixs, List<String> montants, List<String> versements, List<String> observations) {
-        //patient info is the first to be written
 
         EtatExpeditionBean beanInfo = new EtatExpeditionBean(date, totalFarine, totalSon,
                 totalMontant, totalVersement, totalVersemntMoinMontant,

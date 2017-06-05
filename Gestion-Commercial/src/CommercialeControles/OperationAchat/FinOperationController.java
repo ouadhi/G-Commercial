@@ -259,7 +259,7 @@ public class FinOperationController implements Initializable {
         String numAcqtVal = numero.getText();
         double qActVal = Double.parseDouble(Q_Acquit.getText());
         double qFourVal = Double.parseDouble(Q_fournie.getText());
-        double diffVal = Double.parseDouble(diff.getText());
+        double diffVal = Double.parseDouble("0");//modification
         Date date = java.sql.Date.valueOf(this.date.getValue());
 
         String numBonVal = numeroBon.getText();
