@@ -5,6 +5,7 @@ import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Banque;
+import com.gestionCommerciale.HibernateSchema.Camion;
 import com.gestionCommerciale.Models.BanqueQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -23,6 +24,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.textfield.TextFields;
@@ -39,6 +42,10 @@ public class BanqueListeController implements Initializable {
     private JFXListView<BanqueCell> listebanque;
 
     private BanqueQueries querie = new BanqueQueries();
+    @FXML
+    private MenuButton Order;
+    @FXML
+    private MenuItem byquantite;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -100,6 +107,59 @@ public class BanqueListeController implements Initializable {
 
         TextFields.bindAutoCompletion(rechreche, list);
 
+    }
+
+    @FXML
+    private void NonArchiv(ActionEvent event) {
+        Order.setText("Non Archivé");
+        List<Banque> listBanque = querie.list();
+        List<BanqueCell> list = new ArrayList<>();
+
+        for (int i = 0; i < listBanque.size(); i++) {
+            list.add(new BanqueCell(listBanque.get(i)));
+        }
+        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+        listebanque.setItems(myObservableList);
+        listebanque.setExpanded(true);
+
+        setTotale();
+    }
+
+    @FXML
+    private void Archive(ActionEvent event) {
+//        Order.setText("Archivé");
+//        List<Banque> listBanque = querie.
+//        List<BanqueCell> list = new ArrayList<>();
+//
+//        for (int i = 0; i < listBanque.size(); i++) {
+//            list.add(new BanqueCell(listBanque.get(i)));
+//        }
+//        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+//        listebanque.setItems(myObservableList);
+//        listebanque.setExpanded(true);
+//
+//        setTotale();
+    }
+
+    @FXML
+    private void Tout(ActionEvent event) {
+//        Order.setText("Archivé");
+//        List<Banque> listBanque = querie.
+//        List<BanqueCell> list = new ArrayList<>();
+//
+//        for (int i = 0; i < listBanque.size(); i++) {
+//            list.add(new BanqueCell(listBanque.get(i)));
+//        }
+//        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+//        listebanque.setItems(myObservableList);
+//        listebanque.setExpanded(true);
+//
+//        setTotale();
+        
+    }
+
+    @FXML
+    private void setOrder(ActionEvent event) {
     }
 
 }

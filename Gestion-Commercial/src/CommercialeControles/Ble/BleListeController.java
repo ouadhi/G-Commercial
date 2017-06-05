@@ -38,11 +38,7 @@ public class BleListeController implements Initializable {
     @FXML
     private MenuButton Order;
     @FXML
-    private MenuItem bycode;
-    @FXML
     private MenuItem byquantite;
-    @FXML
-    private MenuItem byprix;
     private MenuButton NbShow;
     @FXML
     private JFXButton ajouter;
@@ -65,40 +61,12 @@ public class BleListeController implements Initializable {
         
     }
 
-    @FXML
-    private void oderByCode(ActionEvent event) {
-        Order.setText("Code");
-    }
-
-    @FXML
-    private void orederByquantite(ActionEvent event) {
-        Order.setText("Quantité");
-    }
-
-    @FXML
-    private void OrderByprix(ActionEvent event) {
-        Order.setText("Prix");
-    }
+    
 
     @FXML
     private void setOrder(ActionEvent event) {
     }
 
-    private void show20(ActionEvent event) {
-        NbShow.setText("20");
-    }
-
-    private void shwo50(ActionEvent event) {
-        NbShow.setText("50");
-    }
-
-    private void show100(ActionEvent event) {
-        NbShow.setText("100");
-    }
-
-    private void showtout(ActionEvent event) {
-        NbShow.setText("Tout");
-    }
 
     @FXML
     private void showAddStage(ActionEvent event) {
@@ -165,7 +133,46 @@ public class BleListeController implements Initializable {
         setTotale();
     }
 
-    private void rechrecheKeyTyped(KeyEvent event) {
-       
+
+    @FXML
+    private void NonArchiv(ActionEvent event) {
+        Order.setText("Non Archivé");
+        List<Ble> listBlesDB = BleQueries.list();
+        List<BelCell> list = new ArrayList<>();
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new BelCell(listBlesDB.get(i)));
+        }
+        ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
+        listeBle.setItems(myObservableList);
+        listeBle.setExpanded(true);
+        setTotale();
+    }
+
+    @FXML
+    private void Archive(ActionEvent event) {
+         Order.setText("Archivé");
+        List<Ble> listBlesDB = BleQueries.listArchived() ; 
+        List<BelCell> list = new ArrayList<>();
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new BelCell(listBlesDB.get(i)));
+        }
+        ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
+        listeBle.setItems(myObservableList);
+        listeBle.setExpanded(true);
+        setTotale();
+    }
+
+    @FXML
+    private void Tout(ActionEvent event) {
+        Order.setText("Tout");
+        List<Ble> listBlesDB = BleQueries.listAll() ; 
+        List<BelCell> list = new ArrayList<>();
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new BelCell(listBlesDB.get(i)));
+        }
+        ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
+        listeBle.setItems(myObservableList);
+        listeBle.setExpanded(true);
+        setTotale();
     }
 }

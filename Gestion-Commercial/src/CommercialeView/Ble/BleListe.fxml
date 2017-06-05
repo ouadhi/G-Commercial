@@ -24,11 +24,11 @@
       <Label fx:id="total" layoutX="159.0" layoutY="37.0" styleClass="label_txt" text="100" />
       <Label layoutX="195.0" layoutY="37.0" styleClass="label_txt" text="Total" />
       <Label layoutX="270.0" layoutY="37.0" styleClass="label_txt" text="Trie par : " />
-      <MenuButton fx:id="Order" layoutX="351.0" layoutY="23.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code">
+      <MenuButton fx:id="Order" layoutX="351.0" layoutY="23.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
          <items>
-            <MenuItem fx:id="bycode" mnemonicParsing="false" onAction="#oderByCode" text="Code" />
-            <MenuItem fx:id="byquantite" mnemonicParsing="false" onAction="#orederByquantite" text="Quantité" />
-            <MenuItem fx:id="byprix" mnemonicParsing="false" onAction="#OrderByprix" text="Prix" />
+            <MenuItem mnemonicParsing="false" onAction="#NonArchiv" text="Non Archivé" />
+            <MenuItem mnemonicParsing="false" onAction="#Archive" text="Archivé" />
+            <MenuItem fx:id="byquantite" mnemonicParsing="false" onAction="#Tout" text="Tout" />
          </items>
       </MenuButton>
       <JFXButton fx:id="ajouter" layoutX="1005.0" layoutY="24.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter" />

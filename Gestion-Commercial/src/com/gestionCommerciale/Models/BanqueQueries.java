@@ -51,6 +51,7 @@ public class BanqueQueries {
 
         return banqueList;
     }
+    
      public List<String> listNomBanque() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();

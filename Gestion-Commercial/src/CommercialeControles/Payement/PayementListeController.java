@@ -5,9 +5,7 @@ import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Client;
-import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Payment;
-import com.gestionCommerciale.Models.FactureQueries;
 import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -15,7 +13,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -26,14 +23,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 
 public class PayementListeController implements Initializable {
 
-    @FXML
-    private Text Nfacture;
     @FXML
     private JFXListView<PayementCell> listepayement;
     public static JFXListView<PayementCell> listepay;
@@ -46,6 +42,10 @@ public class PayementListeController implements Initializable {
     private JFXTextField reste;
 
     private Client client  ; 
+    @FXML
+    private MenuButton Order;
+    @FXML
+    private MenuItem byquantite;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -122,6 +122,52 @@ public class PayementListeController implements Initializable {
         listepayement.setExpanded(true);
        listepay = this.listepayement  ;  
 
+    }
+
+    @FXML
+    private void NonArchiv(ActionEvent event) {
+        Order.setText("Non Archivé");
+        List<Payment> listDB = PaymentQueries.list();
+
+        List<PayementCell> list = new ArrayList<>();
+        for (int i = 0; i < listDB.size(); i++) {
+            list.add(new PayementCell(listDB.get(i)));
+        }
+        ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
+        listepayement.setItems(myObservableList);
+        listepayement.setExpanded(true);
+    }
+
+    @FXML
+    private void Archive(ActionEvent event) {
+        Order.setText("Archivé");
+        List<Payment> listDB = PaymentQueries.listArchived()  ; 
+
+        List<PayementCell> list = new ArrayList<>();
+        for (int i = 0; i < listDB.size(); i++) {
+            list.add(new PayementCell(listDB.get(i)));
+        }
+        ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
+        listepayement.setItems(myObservableList);
+        listepayement.setExpanded(true);
+    }
+
+    @FXML
+    private void Tout(ActionEvent event) {
+        Order.setText("Tout");
+        List<Payment> listDB = PaymentQueries.listAll() ; 
+
+        List<PayementCell> list = new ArrayList<>();
+        for (int i = 0; i < listDB.size(); i++) {
+            list.add(new PayementCell(listDB.get(i)));
+        }
+        ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
+        listepayement.setItems(myObservableList);
+        listepayement.setExpanded(true);
+    }
+
+    @FXML
+    private void setOrder(ActionEvent event) {
     }
 
 }

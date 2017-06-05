@@ -76,7 +76,7 @@ public class PaymentQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Payment> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Payment where deleted='" + true + "'" + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
+            list = session.createQuery("from Payment where deleted= true AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
         } finally {
             session.close();
         }
