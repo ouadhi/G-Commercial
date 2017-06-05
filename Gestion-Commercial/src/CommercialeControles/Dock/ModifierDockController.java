@@ -42,8 +42,8 @@ public class ModifierDockController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyDouble(prix,16);
-        Methode.setOnlyDouble(distance,16);
+        Methode.setOnlyDouble(prix,10);
+        Methode.setOnlyDouble(distance,10);
         
         Methode.SetUpper(nom);
     }
