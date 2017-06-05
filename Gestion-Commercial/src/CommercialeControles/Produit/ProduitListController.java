@@ -1,14 +1,9 @@
 package CommercialeControles.Produit;
 
-import CommercialeControles.Ble.BelCell;
-import CommercialeControles.Dock.DockCell;
-import CommercialeControles.Dock.ModifierDockController;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
-import com.gestionCommerciale.HibernateSchema.Ble;
 import com.gestionCommerciale.HibernateSchema.Produit;
-import com.gestionCommerciale.Models.BleQueries;
 import com.gestionCommerciale.Models.ProduitQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -28,11 +23,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 
 public class ProduitListController implements Initializable {
@@ -41,16 +34,6 @@ public class ProduitListController implements Initializable {
     private Label total;
     @FXML
     private MenuButton Order;
-    @FXML
-    private MenuItem bycode;
-    @FXML
-    private MenuItem byname;
-    @FXML
-    private MenuItem bycategorie;
-    @FXML
-    private MenuItem byquantite;
-    @FXML
-    private MenuItem Byprix;
     private MenuButton NbShow;
     @FXML
     private JFXButton ajouter;
@@ -80,50 +63,13 @@ public class ProduitListController implements Initializable {
       
     }
 
-    @FXML
-    private void oderByCode(ActionEvent event) {
-        Order.setText("Code");
-    }
-
-    @FXML
-    private void orederByName(ActionEvent event) {
-        Order.setText("Nom");
-    }
-
-    @FXML
-    private void OrderBycaregorie(ActionEvent event) {
-        Order.setText("Categrorie");
-    }
-
-    @FXML
-    private void oderByQantite(ActionEvent event) {
-        Order.setText("Quantite");
-    }
-
-    @FXML
-    private void OderByprix(ActionEvent event) {
-        Order.setText("Prix");
-    }
+   
 
     @FXML
     private void setOrder(ActionEvent event) {
     }
 
-    private void show20(ActionEvent event) {
-        NbShow.setText("20");
-    }
-
-    private void shwo50(ActionEvent event) {
-        NbShow.setText("50");
-    }
-
-    private void show100(ActionEvent event) {
-        NbShow.setText("100");
-    }
-
-    private void showtout(ActionEvent event) {
-        NbShow.setText("Tout");
-    }
+    
 
     @FXML
     private void showAddStage(ActionEvent event) {
@@ -195,6 +141,57 @@ public class ProduitListController implements Initializable {
         list.add("mohammed cherberabe");
 
         TextFields.bindAutoCompletion(rechreche, list);
+    }
+
+    @FXML
+    private void NonArchive(ActionEvent event) {
+        Order.setText("Non Archivé");
+         List<Produit> listBlesDB = queries.list();
+        List<ProduitCell> list = new ArrayList<>();
+        
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new ProduitCell(listBlesDB.get(i)));
+        }
+        
+        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+        listeproduit.setItems(myObservableList);
+        listeproduit.setExpanded(true);
+        
+        setTotale();
+    }
+
+    @FXML
+    private void Archive(ActionEvent event) {
+        Order.setText("Archivé");
+         List<Produit> listBlesDB = queries.listArchived() ; 
+        List<ProduitCell> list = new ArrayList<>();
+        
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new ProduitCell(listBlesDB.get(i)));
+        }
+        
+        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+        listeproduit.setItems(myObservableList);
+        listeproduit.setExpanded(true);
+        
+        setTotale();
+    }
+
+    @FXML
+    private void tout(ActionEvent event) {
+        Order.setText("Tout");
+         List<Produit> listBlesDB = queries.listAll()  ; 
+        List<ProduitCell> list = new ArrayList<>();
+        
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new ProduitCell(listBlesDB.get(i)));
+        }
+        
+        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+        listeproduit.setItems(myObservableList);
+        listeproduit.setExpanded(true);
+        
+        setTotale();
     }
     
     

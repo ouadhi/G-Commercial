@@ -78,7 +78,7 @@ public class AchatQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Achat> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Achat where deleted='" + true + "'").list();
+            list = session.createQuery("from Achat where deleted= true  ").list();
         } finally {
             session.close();
         }

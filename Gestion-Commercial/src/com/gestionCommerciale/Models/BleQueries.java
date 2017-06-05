@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
-/**
- *
- * @author CHERABRAB
- */
 public class BleQueries {
     public static boolean SaveOrUpdate(Ble ble) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
@@ -71,7 +67,7 @@ public class BleQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Ble> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Ble where deleted='"+true+"'").list();
+            list = session.createQuery("from Ble where deleted= true").list();
         } finally {
             session.close();
         }

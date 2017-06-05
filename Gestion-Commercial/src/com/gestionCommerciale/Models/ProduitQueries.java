@@ -67,13 +67,13 @@ public class ProduitQueries {
         }
         return list;
     }
-
+    
     public static List<Produit> listArchived() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Produit> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Produit where deleted='" + true + "'").list();
+            list = session.createQuery("from Produit where deleted= true").list();
         } finally {
             session.close();
         }

@@ -36,14 +36,6 @@ public class DockLisController implements Initializable {
     private Label total;
     @FXML
     private MenuButton Order;
-    @FXML
-    private MenuItem bycode;
-    @FXML
-    private MenuItem byname;
-    @FXML
-    private MenuItem byActivite;
-    @FXML
-    private MenuItem byregistre;
     private MenuButton NbShow;
     @FXML
     private JFXButton ajouter;
@@ -67,35 +59,15 @@ public class DockLisController implements Initializable {
         listedock.setExpanded(true);
         
         setTotale();
-        
+
+    }
+
     
-
-    }
-
-    @FXML
-    private void orederByName(ActionEvent event) {
-        Order.setText("Nom");
-    }
 
     @FXML
     private void setOrder(ActionEvent event) {
     }
 
-    private void show20(ActionEvent event) {
-        NbShow.setText("20");
-    }
-
-    private void shwo50(ActionEvent event) {
-        NbShow.setText("50");
-    }
-
-    private void show100(ActionEvent event) {
-        NbShow.setText("100");
-    }
-
-    private void showtout(ActionEvent event) {
-        NbShow.setText("Tout");
-    }
 
     @FXML
     private void showAddStage(ActionEvent event) {
@@ -123,26 +95,6 @@ public class DockLisController implements Initializable {
 
     private void setTotale() {
         total.setText(Integer.toString(listedock.getItems().size()));
-    }
-
-    @FXML
-    private void oderByCode(ActionEvent event) {
-        Order.setText("Code");
-    }
-
-    @FXML
-    private void OrderByWilaya(ActionEvent event) {
-        Order.setText("Wilaya");
-    }
-
-    @FXML
-    private void oderByDistance(ActionEvent event) {
-        Order.setText("Distance");
-    }
-
-    @FXML
-    private void OderByTarif(ActionEvent event) {
-        Order.setText("Tarif");
     }
 
     @FXML
@@ -198,6 +150,57 @@ public class DockLisController implements Initializable {
 
         TextFields.bindAutoCompletion(recherchetxt, list);
 
+    }
+
+    @FXML
+    private void nonArchive(ActionEvent event) {
+        Order.setText("Non Archivé");
+        List<Dock> listDocksDB = DockQueries.list();
+
+        List<DockCell> list = new ArrayList<>();
+        for (int i = 0; i < listDocksDB.size(); i++) {
+            list.add(new DockCell(listDocksDB.get(i)));
+        }
+        
+        ObservableList<DockCell> myObservableList = FXCollections.observableList(list);
+        listedock.setItems(myObservableList);
+        listedock.setExpanded(true);
+        
+        setTotale();
+    }
+
+    @FXML
+    private void Archive(ActionEvent event) {
+         Order.setText("Archivé");
+        List<Dock> listDocksDB = DockQueries.listArchived() ; 
+
+        List<DockCell> list = new ArrayList<>();
+        for (int i = 0; i < listDocksDB.size(); i++) {
+            list.add(new DockCell(listDocksDB.get(i)));
+        }
+        
+        ObservableList<DockCell> myObservableList = FXCollections.observableList(list);
+        listedock.setItems(myObservableList);
+        listedock.setExpanded(true);
+        
+        setTotale();
+    }
+
+    @FXML
+    private void tout(ActionEvent event) {
+         Order.setText("Tout");
+        List<Dock> listDocksDB = DockQueries.listAll()  ; 
+
+        List<DockCell> list = new ArrayList<>();
+        for (int i = 0; i < listDocksDB.size(); i++) {
+            list.add(new DockCell(listDocksDB.get(i)));
+        }
+        
+        ObservableList<DockCell> myObservableList = FXCollections.observableList(list);
+        listedock.setItems(myObservableList);
+        listedock.setExpanded(true);
+        
+        setTotale();
     }
 
 }

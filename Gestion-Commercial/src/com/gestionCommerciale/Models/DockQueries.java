@@ -72,7 +72,7 @@ public class DockQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Dock> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Dock where deleted='"+true+"'").list();
+            list = session.createQuery("from Dock where deleted= true ").list();
         } finally {
             session.close();
         }
