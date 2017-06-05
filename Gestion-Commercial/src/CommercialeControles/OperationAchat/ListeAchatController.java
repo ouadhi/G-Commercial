@@ -44,10 +44,12 @@ public class ListeAchatController implements Initializable {
     private JFXListView<AchatCell> listeAchats;
     @FXML
     private JFXTextField rechreche;
+    @FXML
+    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        Methode.showMenuItem(Order , label);
         List<Achat> achatList = AchatQueries.list();
 
         List<AchatCell> list = new ArrayList<>();

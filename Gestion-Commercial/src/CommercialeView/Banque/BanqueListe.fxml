@@ -79,7 +79,7 @@
             </Label>
          </children>
       </GridPane>
-      <Label layoutX="305.0" layoutY="46.0" styleClass="label_txt" text="Afficher :" />
+      <Label fx:id="label" layoutX="305.0" layoutY="46.0" styleClass="label_txt" text="Afficher :" />
       <MenuButton fx:id="Order" layoutX="386.0" layoutY="32.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#NonArchiv" text="Non Archivé" />

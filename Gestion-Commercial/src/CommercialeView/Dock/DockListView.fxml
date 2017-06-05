@@ -22,7 +22,7 @@
       <Text fill="#36d484" fontSmoothingType="LCD" layoutX="45.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Docks" wrappingWidth="94.51513671875" />
       <Label fx:id="total" layoutX="177.0" layoutY="38.0" styleClass="label_txt" text="100" />
       <Label layoutX="205.0" layoutY="38.0" styleClass="label_txt" text="Total" />
-      <Label layoutX="268.0" layoutY="38.0" styleClass="label_txt" text="Trie par : " />
+      <Label fx:id="label" layoutX="268.0" layoutY="38.0" styleClass="label_txt" text="Afficher :" />
       <MenuButton fx:id="Order" layoutX="341.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#nonArchive" text="Non Archivé" />

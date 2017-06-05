@@ -101,8 +101,8 @@
             </Text>
          </children>
       </Pane>
-      <Label layoutX="63.0" layoutY="78.0" styleClass="label_txt" text="Afficher :" />
-      <MenuButton fx:id="Order" layoutX="144.0" layoutY="64.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
+      <Label fx:id="label" layoutX="14.0" layoutY="78.0" styleClass="label_txt" text="Afficher :" />
+      <MenuButton fx:id="Order" layoutX="95.0" layoutY="64.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#NonArchiv" text="Non Archivé" />
             <MenuItem mnemonicParsing="false" onAction="#Archive" text="Archivé" />

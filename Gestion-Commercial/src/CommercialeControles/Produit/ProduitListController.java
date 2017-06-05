@@ -43,10 +43,12 @@ public class ProduitListController implements Initializable {
     private ProduitQueries queries = new ProduitQueries();
     @FXML
     private JFXListView<ProduitCell> listeproduit;
+    @FXML
+    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        Methode.showMenuItem(Order , label);
         List<Produit> listBlesDB = queries.list();
         List<ProduitCell> list = new ArrayList<>();
         

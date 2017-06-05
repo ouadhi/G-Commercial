@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.gestionCommerciale.HibernateSchema;
 
 import javax.persistence.Column;
@@ -12,10 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author Hicham
- */
+
 @Entity
 @Table(name = "User")
 public class User {
@@ -36,6 +29,8 @@ public class User {
     String photoLien;
     @Column(name = "deleted", nullable = false)
     boolean deleted;
+    
+    public  static User userConnected  = new User("admin", "admin", "agent", "") ;  ; 
 
     public User() {
     }
@@ -95,4 +90,18 @@ public class User {
         this.deleted = deleted;
     }
 
+    public static User getUserConnected() {
+        return userConnected;
+    }
+
+    
+
+    public static void setUserConnected(User userConnected) {
+        User.userConnected = userConnected;
+    }
+    
+    public static boolean  isAdministrateur() {
+        return userConnected.getType().equals("administrateur");
+    }
+   
 }

@@ -22,14 +22,12 @@
       <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Ventes" wrappingWidth="122.51513671875" />
       <Label fx:id="total" layoutX="188.0" layoutY="37.0" styleClass="label_txt" text="100" />
       <Label layoutX="216.0" layoutY="38.0" styleClass="label_txt" text="Total" />
-      <Label layoutX="292.0" layoutY="39.0" styleClass="label_txt" text="Trie par : " />
-      <MenuButton fx:id="Order" layoutX="365.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Code">
+      <Label fx:id="label" layoutX="292.0" layoutY="39.0" styleClass="label_txt" text="Afficher :" />
+      <MenuButton fx:id="Order" layoutX="365.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
          <items>
-            <MenuItem fx:id="bycode" mnemonicParsing="false" onAction="#oderByCode" text="Code" />
-            <MenuItem fx:id="byname" mnemonicParsing="false" onAction="#orederByName" text="Nom" />
-            <MenuItem fx:id="bycategorie" mnemonicParsing="false" onAction="#OrderBycaregorie" text="Categorie" />
-            <MenuItem fx:id="byquantite" mnemonicParsing="false" onAction="#oderByQantite" text="Quantite" />
-            <MenuItem fx:id="Byprix" mnemonicParsing="false" onAction="#OderByprix" text="prix" />
+            <MenuItem mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
+            <MenuItem mnemonicParsing="false" onAction="#Archive" text=" Archivé" />
+            <MenuItem mnemonicParsing="false" onAction="#tout" text="Tout" />
          </items>
       </MenuButton>
       <Pane layoutX="574.0" layoutY="24.0" prefHeight="45.0" prefWidth="411.0" styleClass="rechereche">

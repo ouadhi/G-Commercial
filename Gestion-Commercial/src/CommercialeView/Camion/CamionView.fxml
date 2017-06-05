@@ -22,9 +22,9 @@
    <children>
       <Label fx:id="total" layoutX="177.0" layoutY="37.0" styleClass="text" text="100" />
       <Label layoutX="212.0" layoutY="37.0" styleClass="text" text="Total" />
-      <Label layoutX="273.0" layoutY="35.0" styleClass="text" text="Trie par :" />
+      <Label fx:id="label" layoutX="271.0" layoutY="36.0" styleClass="text" text="Afficher :" />
       <JFXButton fx:id="Ajoute" layoutX="1007.0" layoutY="25.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Camion" />
-      <MenuButton fx:id="orderby" layoutX="350.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" style="-fx-background-color: #f4f8f9;" text="Non Archivé">
+      <MenuButton fx:id="orderby" layoutX="348.0" layoutY="26.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" style="-fx-background-color: #f4f8f9;" text="Non Archivé">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
             <MenuItem mnemonicParsing="false" onAction="#Archive" text="Archivé" />

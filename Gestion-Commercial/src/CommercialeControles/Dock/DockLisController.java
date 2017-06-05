@@ -43,10 +43,12 @@ public class DockLisController implements Initializable {
     private JFXListView<DockCell> listedock;
     @FXML
     private JFXTextField recherchetxt;
+    @FXML
+    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        Methode.showMenuItem(Order , label);
         List<Dock> listDocksDB = DockQueries.list();
 
         List<DockCell> list = new ArrayList<>();

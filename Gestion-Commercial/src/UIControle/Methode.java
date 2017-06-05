@@ -1,5 +1,6 @@
 package UIControle;
 
+import com.gestionCommerciale.HibernateSchema.User;
 import com.jfoenix.controls.JFXTextField;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -8,6 +9,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -84,8 +87,8 @@ public class Methode {
         });
 
     }
-    
-        public static void setSelectedMouseClick(JFXTextField field) {
+
+    public static void setSelectedMouseClick(JFXTextField field) {
 
         field.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -95,7 +98,8 @@ public class Methode {
         });
 
     }
-        public static void setZeroRemoved(JFXTextField field) {
+
+    public static void setZeroRemoved(JFXTextField field) {
         field.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(javafx.scene.input.KeyEvent event) {
@@ -107,7 +111,15 @@ public class Methode {
         });
 
     }
-
     
+    public static void showMenuItem(MenuButton menu , Label label) {
+        if (User.isAdministrateur()) {
+           menu.setVisible(true);
+           label.setVisible(true);
+        } else {
+           menu.setVisible(false);
+           label.setVisible(false);
+        }
+    }
 
 }

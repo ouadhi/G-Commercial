@@ -46,9 +46,13 @@ public class BleListeController implements Initializable {
     private JFXTextField rechreche;
     @FXML
     private JFXListView<BelCell> listeBle;
+    @FXML
+    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Methode.showMenuItem(Order , label);
+        
         List<Ble> listBlesDB = BleQueries.list();
         List<BelCell> list = new ArrayList<>();
         for (int i = 0; i < listBlesDB.size(); i++) {

@@ -1,5 +1,6 @@
 package CommercialeControles.Chauffeur;
 
+import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
@@ -49,10 +50,12 @@ public class ChauffeurController implements Initializable {
     private MenuItem NomMenuItem;
     @FXML
     private JFXTextField recherchetxt;
+    @FXML
+    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        Methode.showMenuItem(orderby , label);
         List<Chauffeur> listChauffeursDB = ChauffeurQueries.list() ; 
         List<ChauffeurCell> list = new ArrayList<>();
         for (int i = 0; i < listChauffeursDB.size(); i++) {

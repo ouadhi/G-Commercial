@@ -1,6 +1,7 @@
 package CommercialeControles.Camion;
 
 import CommercialeControles.Chauffeur.ChauffeurController;
+import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Camion;
@@ -46,10 +47,12 @@ public class CamionViewController implements Initializable {
     CamionQueries camionQueries = new CamionQueries();
     @FXML
     private JFXTextField rechreche1;
+    @FXML
+    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        Methode.showMenuItem(orderby , label);
         List<Camion> listCamionsDB = camionQueries.list();
         List<CamionCell> list = new ArrayList<>();
         for (int i = 0; i < listCamionsDB.size(); i++) {

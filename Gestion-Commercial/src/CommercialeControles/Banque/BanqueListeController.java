@@ -46,10 +46,12 @@ public class BanqueListeController implements Initializable {
     private MenuButton Order;
     @FXML
     private MenuItem byquantite;
+    @FXML
+    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        Methode.showMenuItem(Order , label);
         List<BanqueCell> list = new ArrayList<>();
 
         for (int i = 0; i < querie.list().size(); i++) {

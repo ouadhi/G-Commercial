@@ -44,11 +44,14 @@ public class ClientListController implements Initializable {
     private JFXListView<ClienCell> clientLsit;
     @FXML
     private JFXTextField rechreche;
+    @FXML
+    private Label lable;
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        Methode.showMenuItem(Order , lable);
+        
         List<Client> listClientsDB = ClientQueries.list();
 
         List<ClienCell> list = new ArrayList<>();

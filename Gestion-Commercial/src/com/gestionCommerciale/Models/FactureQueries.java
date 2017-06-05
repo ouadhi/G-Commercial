@@ -105,7 +105,7 @@ public class FactureQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Facture> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Facture where deleted='" + true + "'" + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
+            list = session.createQuery("from Facture where deleted= true AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
         } finally {
             session.close();
         }
