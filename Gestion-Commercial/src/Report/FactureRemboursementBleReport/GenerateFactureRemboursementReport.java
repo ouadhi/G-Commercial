@@ -9,6 +9,9 @@ import com.gestionCommerciale.HibernateSchema.Achat;
 import com.gestionCommerciale.HibernateSchema.Dock;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import com.ibm.icu.text.RuleBasedNumberFormat;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -63,6 +66,9 @@ public class GenerateFactureRemboursementReport {
         } finally {
             session.close();
         }
+        System.out.println("dock name list -----------" + dockNomList);
+        System.out.println("--------------list achat" + listAchats);
+
     }
 
     public List<String> getQteParDock() {
@@ -86,17 +92,17 @@ public class GenerateFactureRemboursementReport {
             Session session = FactoryObject.getFactory().openSession();
             Dock dock;
             try {
-                //Requete HQL pour selectioné tout les client:
                 dock = (Dock) session.createQuery("from Dock where nom='" + dockNomList.get(i) + "'").uniqueResult();
             } finally {
                 session.close();
             }
             double prix = dock.getPrixUnitTrans();
             this.prixUnitair.add(new Double(prix).toString());
+            double montantqtePrix = 0;
             for (int j = 0; j < listTotalQte.size(); j++) {
-                double montantqtePrix = Double.parseDouble(listTotalQte.get(j)) * prix;
-                listMontant.add(new Double(montantqtePrix).toString());
+                montantqtePrix = round(montantqtePrix + (Double.parseDouble(listTotalQte.get(j)) * prix),2);
             }
+            listMontant.add(new Double(montantqtePrix).toString());
         }
         return listMontant;
     }
@@ -114,20 +120,48 @@ public class GenerateFactureRemboursementReport {
         return dates;
     }
 
+    public static Date increment_decrementDays(boolean increment, Date date, int days) {
+        Date newdDate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        if (increment) {
+            cal.add(Calendar.DATE, days); //minus number would decrement the days
+            newdDate = cal.getTime();
+        } else {
+            cal.add(Calendar.DATE, -days);
+            newdDate = cal.getTime();
+        }
+
+        return newdDate;
+    }
+    public static double round(double value, int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
     public void generateReport(Date startDate, Date endDate, String doit, String num) {
+        Date newStartDate = increment_decrementDays(false, startDate, 1);
+        Date newFinDate = increment_decrementDays(true, endDate, 1);
+        String start = new SimpleDateFormat("dd-MM-yyyy").format(startDate);
+        String end = new SimpleDateFormat("dd-MM-yyyy").format(endDate);
+
         OperationFactureRemboursementReport operation = new OperationFactureRemboursementReport();
-        achatParJour(startDate, endDate);
-        String date = "De: " + startDate + " a" + endDate;
+        achatParJour(newStartDate, newFinDate);
         List<String> qtes = getQteParDock();
         List<String> montants = getMontantParDock(qtes);
 
         RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
                 RuleBasedNumberFormat.SPELLOUT);
         String montantlettre = ruleBasedNumberFormat.format(new Double(montantTotal)) + " Dinars Algérien";
-        
-        operation.putReportInfo(doit, num, startDate.toString(), endDate.toString(), String.valueOf(totalQte),
-                 String.valueOf(montantTotal), montantlettre, references, qtes, dockNomList
-                , prixUnitair, montants);
+
+        operation.putReportInfo(doit, num, start, end, String.valueOf(totalQte),
+                String.valueOf(round(montantTotal,2)), montantlettre, references, qtes, dockNomList,
+                prixUnitair, montants);
         operation.printReport();
 
     }

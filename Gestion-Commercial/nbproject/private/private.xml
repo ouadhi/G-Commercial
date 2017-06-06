@@ -3,19 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/CommercialeControles/Rapport/Achat/FactureRembourecementBleController.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatReceptionReport/OperationEtatReceptionReport.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/CommercialeControles/Rapport/Achat/EtatDeRecepetionController.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatReceptionReport/GenerateEtatReceptionReport.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatReceptionReport/EtatReceptionBean.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/CommercialeControles/Rapport/Achat/EtatRembourcementTransportBleController.java</file>
-=======
-            <file>file:/C:/Users/mcher/Documents/NetBeansProjects/system-gestionnew10/service_comercial/Gestion-Commercial/src/CommercialeControles/Camion/AjouterCamionController.java</file>
-            <file>file:/C:/Users/mcher/Documents/NetBeansProjects/system-gestionnew10/service_comercial/Gestion-Commercial/src/CommercialeControles/Camion/ModifierCamionController.java</file>
-            <file>file:/C:/Users/mcher/Documents/NetBeansProjects/system-gestionnew10/service_comercial/Gestion-Commercial/src/com/gestionCommerciale/HibernateSchema/Camion.java</file>
-            <file>file:/C:/Users/mcher/Documents/NetBeansProjects/system-gestionnew10/service_comercial/Gestion-Commercial/src/CommercialeControles/Chauffeur/ModificationChauffeurController.java</file>
->>>>>>> 53652bc976ec45a9fafae1b3965681a3c69edad7
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatBleReport/GenerateEtatBleReport.java</file>
         </group>
     </open-files>
 </project-private>

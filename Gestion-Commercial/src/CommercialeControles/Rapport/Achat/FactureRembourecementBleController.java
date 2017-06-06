@@ -45,7 +45,8 @@ public class FactureRembourecementBleController implements Initializable {
         GenerateFactureRemboursementReport generateFactureRemboursementReport= new GenerateFactureRemboursementReport();
         Date dateDebutOb = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date dateFinOb = Date.from(dateFin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        generateFactureRemboursementReport.generateReport(dateFinOb, dateFinOb, "", "");
+        generateFactureRemboursementReport.generateReport(dateDebutOb, dateFinOb, "", "");
+        close(event);
     }
     
 }
