@@ -153,7 +153,6 @@ public class GenerateFactureRemboursementReport {
         Date newFinDate = increment_decrementDays(true, endDate, 1);
         String start = new SimpleDateFormat("dd-MM-yyyy").format(startDate);
         String end = new SimpleDateFormat("dd-MM-yyyy").format(endDate);
-
         OperationFactureRemboursementReport operation = new OperationFactureRemboursementReport();
         achatParJour(startDate, newFinDate);
         List<String> qtes = getQteParDock();
