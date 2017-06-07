@@ -6,7 +6,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,26 +16,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="531.0" prefWidth="597.0" style="-fx-background-color: #ffffff;" stylesheets="@clientCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Client.ModifierClientController">
+<AnchorPane id="AnchorPane" prefHeight="454.0" prefWidth="597.0" style="-fx-background-color: #ffffff;" stylesheets="@clientCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Client.ModifierClientController">
    <children>
-      <Pane prefHeight="66.0" prefWidth="597.0" style="-fx-background-color: #f6f7fb;">
+      <Pane prefHeight="54.0" prefWidth="597.0" style="-fx-background-color: #f6f7fb;">
          <children>
-            <Separator layoutX="-4.0" layoutY="67.0" prefHeight="2.0" prefWidth="603.0" style="-fx-background-color: #fd9252;" />
-            <ImageView fx:id="close" fitHeight="28.0" fitWidth="28.0" layoutX="560.0" layoutY="19.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="close" fitHeight="16.0" fitWidth="16.0" layoutX="560.0" layoutY="19.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="icons/close.png" />
                </image>
             </ImageView>
+            <Text fill="#fd9252" layoutX="21.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Modifier Client" />
          </children>
       </Pane>
-      <Text fill="#fd9252" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Modifier Client" />
-      <GridPane hgap="13.0" layoutX="23.0" layoutY="88.0" prefHeight="330.0" prefWidth="551.0">
+      <GridPane hgap="13.0" layoutX="23.0" layoutY="88.0" prefHeight="296.0" prefWidth="551.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="303.0" minWidth="10.0" prefWidth="281.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="270.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -68,12 +65,7 @@
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Type d'Activité" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets top="-40.0" />
-               </GridPane.margin>
-            </Label>
-            <Label styleClass="title_panel" text="Date depot Dossier" GridPane.rowIndex="4">
+            <Label styleClass="title_panel" text="Date depot Dossier" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
@@ -108,30 +100,27 @@
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="activitetxt" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="-25.0" />
-               </GridPane.margin>
-            </JFXTextField>
             <JFXTextField fx:id="NCarteF" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <DatePicker fx:id="datedept" prefHeight="40.0" prefWidth="275.0" showWeekNumbers="true" styleClass="champtxt" GridPane.rowIndex="4">
+            <DatePicker fx:id="datedept" prefHeight="40.0" prefWidth="275.0" showWeekNumbers="true" styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </DatePicker>
-            <JFXComboBox fx:id="activiteBox" prefHeight="39.0" prefWidth="264.0" promptText="Selectionner " styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <JFXComboBox fx:id="activiteBox" prefHeight="39.0" prefWidth="264.0" promptText="Selectionner " styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <JFXButton layoutX="413.0" layoutY="447.0" onAction="#Sauvgarder" prefHeight="54.0" prefWidth="161.0" styleClass="button_save" text="Enregistrer" />
-      <JFXButton fx:id="annuler" layoutX="247.0" layoutY="447.0" onAction="#quitter" prefHeight="54.0" prefWidth="154.0" styleClass="button_annuler" text="Anuuler" />
-      <Label fx:id="savelabel" layoutX="67.0" layoutY="447.0" prefHeight="35.0" prefWidth="86.0" text="Enregistré " textFill="#36d484" visible="false">
+      <JFXButton layoutX="417.0" layoutY="402.0" onAction="#Sauvgarder" styleClass="button_save" text="Enregistrer" />
+      <JFXButton fx:id="annuler" layoutX="291.0" layoutY="402.0" onAction="#quitter" styleClass="button_annuler" text="Anuuler" />
+      <Label fx:id="savelabel" layoutX="72.0" layoutY="397.0" prefHeight="35.0" prefWidth="86.0" text="Enregistré " textFill="#36d484" visible="false">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
+      <Label layoutX="54.0" layoutY="397.0" prefHeight="17.0" prefWidth="37.0" styleClass="title_panel" visible="false" />
+      <JFXTextField fx:id="activitetxt" focusColor="#405aa800" layoutX="97.0" layoutY="412.0" maxWidth="78.0" minWidth="9.0" prefHeight="40.0" prefWidth="9.0" styleClass="champtxt" unFocusColor="#4d4d4d00" visible="false" />
    </children>
 </AnchorPane>

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,8 +19,8 @@
 <AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="back" stylesheets="@clientCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Client.ClientListController">
    <children>
       <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Client" wrappingWidth="85.51513671875" />
-      <Label fx:id="total" layoutX="153.0" layoutY="40.0" styleClass="label_txt" text="100" />
-      <Label layoutX="181.0" layoutY="40.0" styleClass="label_txt" text="Total" />
+      <Label fx:id="total" layoutX="211.0" layoutY="40.0" styleClass="label_txt" text="100" />
+      <Label layoutX="161.0" layoutY="40.0" styleClass="label_txt" text="Total :" />
       <Label fx:id="lable" layoutX="261.0" layoutY="40.0" styleClass="label_txt" text="Afficher : " />
       <MenuButton fx:id="Order" layoutX="334.0" layoutY="26.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
         <items>
@@ -30,9 +29,8 @@
           <MenuItem mnemonicParsing="false" onAction="#tout" text="Tout" />
         </items>
       </MenuButton>
-      <JFXButton fx:id="ajouter" layoutX="1001.0" layoutY="26.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter" />
+      <JFXButton fx:id="ajouter" layoutX="1014.0" layoutY="31.0" onAction="#showAddStage" styleClass="Ajouter_button" text="Ajouter Client" />
       <JFXListView fx:id="clientLsit" layoutX="51.0" layoutY="205.0" onMouseClicked="#showClient" prefHeight="461.0" prefWidth="1117.0" />
-      <Separator layoutX="51.0" layoutY="200.0" prefHeight="5.0" prefWidth="1117.0" style="-fx-background-color: #fd9252;" />
       <GridPane hgap="3.0" layoutX="51.0" layoutY="145.0" prefHeight="55.0" prefWidth="1117.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="36.0" prefWidth="124.0" />

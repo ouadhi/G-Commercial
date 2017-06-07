@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,10 +19,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" style="-fx-background-color: #f4f8f9;" stylesheets="@../Chauffeur/ChauffeurCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Camion.CamionViewController">
    <children>
-      <Label fx:id="total" layoutX="177.0" layoutY="37.0" styleClass="text" text="100" />
-      <Label layoutX="212.0" layoutY="37.0" styleClass="text" text="Total" />
-      <Label fx:id="label" layoutX="271.0" layoutY="36.0" styleClass="text" text="Afficher :" />
-      <JFXButton fx:id="Ajoute" layoutX="1007.0" layoutY="25.0" onAction="#AjouterMethode" prefHeight="44.0" prefWidth="160.0" styleClass="button_ajouter" text="Ajouter Camion" />
+      <Label fx:id="total" layoutX="228.0" layoutY="37.0" styleClass="text" text="100" />
+      <Label layoutX="177.0" layoutY="37.0" styleClass="text" text="Total :" />
+      <Label fx:id="label" layoutX="271.0" layoutY="37.0" styleClass="text" text="Afficher :" />
+      <JFXButton fx:id="Ajoute" layoutX="1018.0" layoutY="25.0" onAction="#AjouterMethode" styleClass="button_ajouter" text="Ajouter Camion">
+         <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+         </padding></JFXButton>
       <MenuButton fx:id="orderby" layoutX="348.0" layoutY="26.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" style="-fx-background-color: #f4f8f9;" text="Non Archivé">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
@@ -36,9 +38,8 @@
             <Font size="63.0" />
          </font>
       </Text>
-      <JFXListView fx:id="listeView" layoutX="51.0" layoutY="177.0" onMouseClicked="#showCamions" prefHeight="438.0" prefWidth="1116.0" stylesheets="@../Chauffeur/ChauffeurCSS.css" />
-      <Separator layoutX="51.0" layoutY="174.0" prefHeight="6.0" prefWidth="1116.0" styleClass="separateur" />
-      <GridPane hgap="3.0" layoutX="51.0" layoutY="126.0" prefHeight="51.0" prefWidth="1116.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel">
+      <JFXListView fx:id="listeView" layoutX="51.0" layoutY="164.0" onMouseClicked="#showCamions" prefHeight="438.0" prefWidth="1116.0" stylesheets="@../Chauffeur/ChauffeurCSS.css" />
+      <GridPane hgap="3.0" layoutX="51.0" layoutY="111.0" prefHeight="51.0" prefWidth="1116.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="87.0" minWidth="67.0" prefWidth="76.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="253.0" minWidth="137.0" prefWidth="208.0" />

@@ -66,7 +66,7 @@ public class CamionCell extends GridPane {
         
         setHgap(3.0);
         setPrefHeight(50.0);
-        setPrefWidth(1117.0);   
+        setPrefWidth(1027.0);   
 
         columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);

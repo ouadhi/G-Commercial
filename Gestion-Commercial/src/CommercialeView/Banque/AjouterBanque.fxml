@@ -14,14 +14,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="655.0" style="-fx-background-color: white;" stylesheets="@BanqueCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Banque.AjouterBanqueController">
+<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="655.0" style="-fx-background-color: white;" stylesheets="@BanqueCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Banque.AjouterBanqueController">
    <children>
       <Pane prefHeight="50.0" prefWidth="655.0" style="-fx-background-color: #0083c5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="604.0" layoutY="3.0" onMouseClicked="#quitter" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="604.0" layoutY="17.0" onMouseClicked="#quitter" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="/icons/close.png" />
+                  <Image url="icons/close.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" layoutX="33.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Banque">
@@ -67,7 +66,7 @@
             </JFXTextField>
          </children>
       </GridPane>
-      <JFXButton layoutX="417.0" layoutY="248.0" onAction="#save" prefHeight="60.0" prefWidth="180.0" styleClass="button_save" text="Sauvegarder" />
-      <JFXButton layoutX="217.0" layoutY="248.0" onAction="#close" prefHeight="60.0" prefWidth="180.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton layoutX="465.0" layoutY="256.0" onAction="#save" styleClass="button_save" text="Sauvegarder" />
+      <JFXButton layoutX="328.0" layoutY="256.0" onAction="#close" styleClass="button_annuler" text="Annuler" />
    </children>
 </AnchorPane>

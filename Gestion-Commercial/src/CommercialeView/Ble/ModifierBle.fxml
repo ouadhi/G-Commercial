@@ -27,8 +27,8 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton fx:id="addbttn" layoutX="339.0" layoutY="387.0" onAction="#saveble" prefHeight="55.0" prefWidth="169.0" styleClass="button_save" text="Enregistrer" />
-      <JFXButton fx:id="cancelbttn" layoutX="159.0" layoutY="387.0" onAction="#closestage" prefHeight="55.0" prefWidth="161.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton fx:id="addbttn" layoutX="294.0" layoutY="392.0" onAction="#saveble" styleClass="button_save" text="Enregistrer" />
+      <JFXButton fx:id="cancelbttn" layoutX="166.0" layoutY="392.0" onAction="#closestage" styleClass="button_annuler" text="Annuler" />
       <GridPane layoutX="90.0" layoutY="89.0" prefHeight="268.0" prefWidth="361.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -39,34 +39,34 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label styleClass="title_panel" text="Code DE Ble :">
+            <Label styleClass="label_txt" text="Code DE Ble :">
                <GridPane.margin>
                   <Insets bottom="30.0" left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Quantite :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Quantite :" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="30.0" left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Prix :" GridPane.rowIndex="2">
+            <JFXTextField fx:id="code" focusColor="#405aa800" maxWidth="380.0" minWidth="321.0" prefHeight="40.0" prefWidth="321.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
                <GridPane.margin>
-                  <Insets bottom="30.0" left="10.0" />
-               </GridPane.margin>
-            </Label>
-            <JFXTextField fx:id="code" maxWidth="380.0" minWidth="321.0" prefHeight="40.0" prefWidth="321.0" styleClass="champtxt">
-               <GridPane.margin>
-                  <Insets left="10.0" top="40.0" />
+                  <Insets left="10.0" top="32.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="quntite" maxWidth="379.0" minWidth="341.0" prefHeight="40.0" prefWidth="341.0" styleClass="champtxt" GridPane.rowIndex="1">
+            <JFXTextField fx:id="quntite" focusColor="#405aa800" maxWidth="379.0" minWidth="341.0" prefHeight="40.0" prefWidth="341.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="10.0" top="40.0" />
+                  <Insets left="10.0" top="32.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="prix" maxWidth="378.0" minWidth="327.0" prefHeight="40.0" prefWidth="327.0" styleClass="champtxt" GridPane.rowIndex="2">
+            <Label styleClass="label_txt" text="Prix :" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="10.0" top="40.0" />
+                  <Insets bottom="32.0" left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <JFXTextField fx:id="prix" focusColor="#405aa800" maxWidth="378.0" minWidth="327.0" prefHeight="40.0" prefWidth="327.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" top="32.0" />
                </GridPane.margin>
             </JFXTextField>
          </children>
