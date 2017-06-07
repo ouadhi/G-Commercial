@@ -74,19 +74,26 @@ public class ModifierProduitController implements Initializable {
             Optional<ButtonType> result = Notification.updateAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
                 //back
-                produit.setCodeProduit(code);
-                produit.setNom(nomVal);
-                produit.setCategory(categorieVal);
-                produit.setQuantite(Integer.parseInt(quantiteVal));
-                produit.setPrix(Double.parseDouble(prixVal));
-                produit.setHaveTva(TVA.isSelected());
+                Produit p = ProduitQueries.getProduitByCode(code);
+                if (p!=null && p.getIdProduit() != produit.getIdProduit() ) {
+                    //notification for already exists
+                    Notification.error("Ce produit exite déja!");
+                } else {
+                    produit.setCodeProduit(code);
+                    produit.setNom(nomVal);
+                    produit.setCategory(categorieVal);
+                    produit.setQuantite(Integer.parseInt(quantiteVal));
+                    produit.setPrix(Double.parseDouble(prixVal));
+                    produit.setHaveTva(TVA.isSelected());
 
-                ProduitQueries.SaveOrUpdate(produit);
+                    
+                    ProduitQueries.SaveOrUpdate(produit);
 
-                Notification.Updatenotification();
-                savelabel.setVisible(true);
-                new ShowPane().showProduit();
-                quitter(event);
+                    Notification.Updatenotification();
+                    savelabel.setVisible(true);
+                    new ShowPane().showProduit();
+                    quitter(event);
+                }
             }
         }
 

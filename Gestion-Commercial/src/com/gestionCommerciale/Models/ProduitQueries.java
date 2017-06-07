@@ -115,6 +115,17 @@ public class ProduitQueries {
         }
         return d;
     }
+    public static Produit getProduitByCode(String code) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        Produit d;
+        try {
+            d = (Produit) session.createQuery("from Produit where code_produit='" + code + "'").uniqueResult();
+        } finally {
+            session.close();
+        }
+        return d;
+    }
 
     
     /*
