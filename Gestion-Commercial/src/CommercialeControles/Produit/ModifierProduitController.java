@@ -86,6 +86,7 @@ public class ModifierProduitController implements Initializable {
                     produit.setPrix(Double.parseDouble(prixVal));
                     produit.setHaveTva(TVA.isSelected());
 
+                    
                     ProduitQueries.SaveOrUpdate(produit);
 
                     Notification.Updatenotification();
