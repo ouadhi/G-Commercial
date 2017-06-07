@@ -27,7 +27,7 @@ public class Banque {
     String telephone;
 
     public Banque() {
-
+        
     }
 
     public Banque(String nom, String compte, String address , String telephone) {
