@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="459.0" prefWidth="544.0" style="-fx-background-color: #ffffff;" stylesheets="@BleCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Ble.ModifierBleController">
    <children>
-      <Pane prefHeight="70.0" prefWidth="543.0" styleClass="Toppanel">
+      <Pane prefHeight="65.0" prefWidth="543.0" styleClass="Toppanel">
          <children>
             <Text fill="#36d484" layoutX="37.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Modifier Ble" />
             <ImageView fx:id="close" fitHeight="17.0" fitWidth="15.0" layoutX="505.0" layoutY="20.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
@@ -27,9 +26,9 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton fx:id="addbttn" layoutX="294.0" layoutY="392.0" onAction="#saveble" styleClass="button_save" text="Enregistrer" />
-      <JFXButton fx:id="cancelbttn" layoutX="166.0" layoutY="392.0" onAction="#closestage" styleClass="button_annuler" text="Annuler" />
-      <GridPane layoutX="90.0" layoutY="89.0" prefHeight="268.0" prefWidth="361.0">
+      <JFXButton fx:id="addbttn" layoutX="295.0" layoutY="351.0" onAction="#saveble" styleClass="button_save" text="Enregistrer" />
+      <JFXButton fx:id="cancelbttn" layoutX="167.0" layoutY="351.0" onAction="#closestage" styleClass="button_annuler" text="Annuler" />
+      <GridPane layoutX="91.0" layoutY="65.0" prefHeight="268.0" prefWidth="361.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
@@ -76,6 +75,5 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Separator layoutY="68.0" prefHeight="1.0" prefWidth="543.0" styleClass="separateur" />
    </children>
 </AnchorPane>

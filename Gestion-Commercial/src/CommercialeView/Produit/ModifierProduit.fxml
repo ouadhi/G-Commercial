@@ -5,7 +5,6 @@
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="517.0" prefWidth="669.0" style="-fx-background-color: #FFFFFF;" stylesheets="@ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Produit.ModifierProduitController">
+<AnchorPane id="AnchorPane" prefHeight="498.0" prefWidth="669.0" style="-fx-background-color: #FFFFFF;" stylesheets="@ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Produit.ModifierProduitController">
    <children>
       <Pane prefHeight="70.0" prefWidth="669.0" style="-fx-background-color: #f6f7fb;">
          <children>
@@ -28,8 +27,8 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton fx:id="savebttn" layoutX="481.0" layoutY="456.0" onAction="#sauvgarder" prefHeight="53.0" prefWidth="160.0" styleClass="button_save" text="Enregistre" />
-      <JFXButton fx:id="cancelbttn" layoutX="299.0" layoutY="456.0" onAction="#quitter" prefHeight="53.0" prefWidth="160.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton fx:id="savebttn" layoutX="491.0" layoutY="424.0" onAction="#sauvgarder" styleClass="button_save" text="Enregistre" />
+      <JFXButton fx:id="cancelbttn" layoutX="357.0" layoutY="424.0" onAction="#quitter" styleClass="button_annuler" text="Annuler" />
       <Label fx:id="savelabel" layoutX="59.0" layoutY="469.0" text="Enregistré" textFill="#36d484" visible="false">
          <font>
             <Font size="21.0" />
@@ -46,7 +45,7 @@
             <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label styleClass="title_panel" text="Designation Produit :">
+            <Label styleClass="label_txt" text="Designation Produit :">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -86,7 +85,7 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <Label styleClass="title_panel" text="Categorie Produit" GridPane.columnIndex="1">
+            <Label styleClass="label_txt" text="Categorie Produit" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -94,7 +93,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label styleClass="title_panel" text="Prix Unit :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Prix Unit :" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -102,7 +101,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label styleClass="title_panel" text="Code Produit :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Code Produit :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -118,7 +117,7 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <Label layoutX="20.0" layoutY="149.0" styleClass="title_panel" text="Quantité Produit :" GridPane.rowIndex="2">
+            <Label layoutX="20.0" layoutY="149.0" styleClass="label_txt" text="Quantité Produit :" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -126,7 +125,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="309.0" layoutY="149.0" styleClass="title_panel" text="TVA : " GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label layoutX="309.0" layoutY="149.0" styleClass="label_txt" text="TVA : " GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="-0.0" left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -147,6 +146,5 @@
             <Insets />
          </opaqueInsets>
       </GridPane>
-      <Separator layoutY="69.0" prefHeight="5.0" prefWidth="669.0" style="-fx-background-color: #fd9252;" />
    </children>
 </AnchorPane>

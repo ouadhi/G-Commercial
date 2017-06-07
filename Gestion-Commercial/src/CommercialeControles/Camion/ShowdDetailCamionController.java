@@ -70,10 +70,11 @@ public class ShowdDetailCamionController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.modifierCamion));
             loader.load();
-            CamionCell camionCell = liste.getItems().get(i);
+            
+            CamionCell camionCell = liste.getItems().get(id);
             ModifierCamionController modification = loader.getController();
             //modification.setData(camion.id, camion.marque, camion.matricule, camion.taille);
-            modification.setData(camion);
+            modification.setData(camionCell.getCamion());
             AnchorPane pane = loader.getRoot();
 
             return pane;

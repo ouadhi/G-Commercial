@@ -11,6 +11,9 @@
     -fx-letter-spacing: normal;
     -fx-text-align: left;
     -fx-text-fill: #7d899f;
+    -fx-padding: 8 16 8 16 ; 
+    -fx-background-radius : 50px ; 
+    
 }
 
 .rechereche {
@@ -130,7 +133,8 @@
     -fx-text-align: left;
    -fx-text-fill:#ffffff ;
    -fx-background-color :  #48afea; 
-   -fx-background-raduis : 4px ; 
+   -fx-background-raduis : 4px ;
+   -fx-padding: 8 16 8 16 ; 
 }
 .button_save:hover {
     -fx-background-color :  #0083c5; 
@@ -151,6 +155,7 @@
    -fx-text-fill:#ffffff ;
    -fx-background-color :  #fa9f47; 
    -fx-background-raduis : 4px ; 
+   -fx-padding: 8 16 8 16 ; 
 }
     
 
@@ -172,6 +177,9 @@ button_annuler:pressed {
     -fx-letter-spacing: normal;
     -fx-text-align: left;
     -fx-text-fill: #f6f7fb;
+     -fx-background-radius : 50px ; 
+     -fx-padding: 8 16 8 16 ; 
+     
 }
 
 .menuButton {
@@ -198,7 +206,8 @@ button_annuler:pressed {
     -fx-text-align: left;
     -fx-text-fill:#ffffff ;
     -fx-background-color :  #d64242; 
-    -fx-background-raduis : 4px ; 
+    -fx-background-raduis : 4px ;
+    -fx-padding: 8 16 8 16 ; 
 }
 
 .lastButton{
@@ -212,4 +221,5 @@ button_annuler:pressed {
     -fx-text-fill:#ffffff ;
     -fx-background-color :   #fa9f47; 
     -fx-background-raduis : 4px ; 
+    -fx-padding: 8 16 8 16 ; 
 }

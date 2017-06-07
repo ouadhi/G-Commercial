@@ -115,7 +115,7 @@
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin></JFXComboBox>
-            <Label styleClass="title_panel" text="Adresse" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label styleClass="title_panel" text="Type d'Activité" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
