@@ -111,6 +111,7 @@ public class OperationMainController implements Initializable {
                     --this.etape;
                 } else {
                     showEtape(Ble);
+                    suivant.setVisible(true);
                 }
                 break;
                 

@@ -59,7 +59,8 @@ public class ModifierCamionController implements Initializable {
         String code = codecamion.getText();
         String matricule = this.matricule.getText();
         double poid = Double.parseDouble(PoisCamion.getText());
-        String marque = camion.getMarque();
+        //String marque = camion.getMarque();
+        String marque = taillecamion.getText();
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
             if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty() || poid == 0) {
