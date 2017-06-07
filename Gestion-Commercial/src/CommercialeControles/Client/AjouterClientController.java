@@ -62,9 +62,9 @@ public class AjouterClientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         datedept.setValue(LocalDate.now());
-        Methode.setOnlyNumbre(NRtxt);
-        Methode.setOnlyNumbre(NAtxt);
-        Methode.setOnlyNumbre(NCarteF);
+        Methode.SetUpper(NRtxt);
+        Methode.SetUpper(NAtxt);
+        Methode.SetUpper(NCarteF);
 
         Methode.SetUpper(nomtxt);
         setActivty();
@@ -98,7 +98,7 @@ public class AjouterClientController implements Initializable {
                     ClientQueries.SaveOrUpdate(client);
                     Notification.Addnotification();
                     new ShowPane().showClient();
-                    if (fermer.isSelected()) {
+                    if (!fermer.isSelected()) {
                         quitter(event);
                     } else {
                         clear();
@@ -136,11 +136,11 @@ public class AjouterClientController implements Initializable {
     }
     
     private  void clear () {
-        nomtxt.setText(null);
-        prenomtxt.setText(null);
-        NRtxt.setText(null);
-        NAtxt.setText(null);
-       adressetxt.setText(null);
-        NCarteF.setText(null);
+        nomtxt.setText("");
+        prenomtxt.setText("");
+        NRtxt.setText("");
+        NAtxt.setText("");
+       adressetxt.setText("");
+        NCarteF.setText("");
     }
 }
