@@ -103,9 +103,6 @@ public class GenerateFactureRemboursementReport {
             double prix = dock.getPrixUnitTrans();
             this.prixUnitair.add(new Double(prix).toString());
             double montantqtePrix = 0;
-            //for (int j = 0; j < listTotalQte.size(); j++) {
-               // montantqtePrix = round(montantqtePrix + (Double.parseDouble(listTotalQte.get(j)) * prix), 2);
-            //}
             montantqtePrix = round((Double.parseDouble(listTotalQte.get(i)) * prix), 2);
             montantTotal = montantTotal + montantqtePrix;
             listMontant.add(new Double(montantqtePrix).toString());
