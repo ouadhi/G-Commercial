@@ -36,7 +36,7 @@ public class Client {
     String name;
     @Column(name = "Prenom", nullable = false)
     String prenom;
-    @Column(name = "numRegCom", nullable = false)
+    @Column(name = "numRegCom", nullable = false, unique = true)
     String numRegCom;
     @Column(name = "numArticle", nullable = false)            
     String numArticle;

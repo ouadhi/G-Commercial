@@ -85,7 +85,8 @@ public class ModifierClientController implements Initializable {
             if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
                 Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
             } else {
-                if (ClientQueries.getClientByRegistre(NR) != null) {
+                Client c = ClientQueries.getClientByRegistre(NR);
+                if (c != null && c.getId() !=client.getId() ) {
                     //notification for already exists
                     Notification.error("Ce client est exite déja!");
                 } else {

@@ -67,7 +67,10 @@ public class AjouterProduitController implements Initializable {
             Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
             
         } else {
-            
+            if (ProduitQueries.getProduitByCode(code) != null) {
+                //notification for already exists
+                Notification.error("Ce produit exite déja!");
+            } else {
             try {
                 Produit ob = new Produit(code,nomVal,categorieVal, Integer.parseInt(quantiteVal), Double.parseDouble(prixVal),haveTVA.isSelected());
                 ProduitQueries.SaveOrUpdate(ob);
@@ -81,6 +84,7 @@ public class AjouterProduitController implements Initializable {
                 ex.printStackTrace();
             }
             
+        }
         }
     }
 
