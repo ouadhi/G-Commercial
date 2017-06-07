@@ -22,7 +22,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -62,10 +61,10 @@ public class ModifierClientController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-        Methode.setOnlyNumbre(NRtxt);
-        Methode.setOnlyNumbre(NAtxt);
-        Methode.setOnlyNumbre(NCarteF);
+
+        Methode.SetUpper(NRtxt);
+        Methode.SetUpper(NAtxt);
+        Methode.SetUpper(NCarteF);
 
     }
 
@@ -86,21 +85,26 @@ public class ModifierClientController implements Initializable {
             if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
                 Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
             } else {
-                Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-                client.setName(nom);
-                client.setPrenom(prenom);
-                client.setNumArticle(NA);
-                client.setAddressClient(adresse);
-                client.setNumRegCom(NR);
-                client.setTypeActivity(activite);
-                client.setnCarteFiscale(Ncarte);
-                client.setDateDepotDossier(dateDepotDossier);
-                ClientQueries.SaveOrUpdate(client);
+                if (ClientQueries.getClientByRegistre(NR) != null) {
+                    //notification for already exists
+                    Notification.error("Ce client est exite déja!");
+                } else {
+                    Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+                    client.setName(nom);
+                    client.setPrenom(prenom);
+                    client.setNumArticle(NA);
+                    client.setAddressClient(adresse);
+                    client.setNumRegCom(NR);
+                    client.setTypeActivity(activite);
+                    client.setnCarteFiscale(Ncarte);
+                    client.setDateDepotDossier(dateDepotDossier);
+                    ClientQueries.SaveOrUpdate(client);
 
-                Notification.Updatenotification();
-                new ShowPane().showClient();
-                savelabel.setVisible(true);
-                quitter(event);
+                    Notification.Updatenotification();
+                    new ShowPane().showClient();
+                    savelabel.setVisible(true);
+                    quitter(event);
+                }
             }
         }
 
@@ -123,12 +127,11 @@ public class ModifierClientController implements Initializable {
     }
 
     public void SetData(Client client) {
-        
+
         Methode.SetUpper(nomtxt);
         setActivty();
-       
 
-        this.client=client;
+        this.client = client;
         nomtxt.setText(client.getName());
         prenomtxt.setText(client.getPrenom());
         activitetxt.setText(client.getTypeActivity());
@@ -138,11 +141,11 @@ public class ModifierClientController implements Initializable {
         NRtxt.setText(client.getNumRegCom());
         NCarteF.setText(client.getnCarteFiscale());
         datedept.setValue(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(client.getDateDepotDossier())));
-       activiteBox.setValue(client.getTypeActivity());
+        activiteBox.setValue(client.getTypeActivity());
 
     }
-    
-     public void setActivty() {
+
+    public void setActivty() {
         List<String> listeActivty = new ArrayList<>();
         listeActivty.add("Boulangerie");
         listeActivty.add("Agriculteur");
