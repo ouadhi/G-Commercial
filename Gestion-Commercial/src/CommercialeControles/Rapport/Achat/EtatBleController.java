@@ -4,6 +4,7 @@ import Report.EtatBleReport.GenerateEtatBleReport;
 import UIControle.Methode;
 import com.jfoenix.controls.JFXDatePicker;
 import java.net.URL;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,8 +26,6 @@ public class EtatBleController implements Initializable {
     @FXML
     private MenuButton menu;
 
-   
-   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -41,7 +40,8 @@ public class EtatBleController implements Initializable {
     private void print(ActionEvent event) {
         try {
             GenerateEtatBleReport generateEtatBleReport = new GenerateEtatBleReport();
-            generateEtatBleReport.generateReport(new Date());
+            Date dateOb = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            generateEtatBleReport.generateReport(dateOb);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -64,6 +64,4 @@ public class EtatBleController implements Initializable {
         menu.setText("intervale");
     }
 
-  
-    
 }

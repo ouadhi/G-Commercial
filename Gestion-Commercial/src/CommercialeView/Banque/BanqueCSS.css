@@ -128,6 +128,7 @@
    -fx-text-fill:#ffffff ;
    -fx-background-color :  #48afea; 
    -fx-background-raduis : 4px ; 
+    -fx-padding: 8px 16px  8px 16px; 
 }
 .button_save:hover {
     -fx-background-color :  #0083c5; 
@@ -148,6 +149,7 @@
    -fx-text-fill:#ffffff ;
    -fx-background-color :  #fa9f47; 
    -fx-background-raduis : 4px ; 
+    -fx-padding: 8px 16px  8px 16px; 
 }
     
 

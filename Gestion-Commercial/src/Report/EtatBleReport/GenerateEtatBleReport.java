@@ -8,6 +8,9 @@ package Report.EtatBleReport;
 import com.gestionCommerciale.HibernateSchema.Achat;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +43,6 @@ public class GenerateEtatBleReport {
                     achatDuJour.add(list.get(i));
                 }
             }
-
         } finally {
             session.close();
         }
@@ -56,36 +58,47 @@ public class GenerateEtatBleReport {
         return poidTiquet;
     }
 
+    public static double round(double value, int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
     public void generateReport(Date jour) throws IOException, JRException {
         OperationEtatBleReport operationEtatBleReport = new OperationEtatBleReport();
         getAchatDuJour(jour);
-        System.out.println(achatDuJour.get(0).getQuantiteAcqt());
+        String jourOB = new SimpleDateFormat("dd-MM-yyyy").format(jour);
         for (int i = 0; i < achatDuJour.size(); i++) {
             List<String> poidTiquets = new ArrayList<>();
             totalPoid = totalPoid + achatDuJour.get(i).getQuantiteFour();
             String poidTiquet = String.valueOf(achatDuJour.get(i).getQuantiteFour());
             poidTiquets.add(poidTiquet);
             List<String> chauffeurs = new ArrayList<>();
-            String chauffeur = String.valueOf(achatDuJour.get(i).getChauffeur());
+            String chauffeur = String.valueOf(achatDuJour.get(i).getChauffeur().getNom() + " "
+                    + achatDuJour.get(i).getChauffeur().getPrenom());
             chauffeurs.add(chauffeur);
             List<String> matricules = new ArrayList<>();
             String matricule = achatDuJour.get(i).getCamion().getMatricule();
             matricules.add(matricule);
             List<String> ptcs = new ArrayList<>();
-            String ptc = String.valueOf(achatDuJour.get(i).getQuantiteAcqt() 
-                    + achatDuJour.get(i).getCamion().getPoid());
+            String ptc = String.valueOf(round(achatDuJour.get(i).getQuantiteAcqt()
+                    + achatDuJour.get(i).getCamion().getPoid(), 2));
             ptcs.add(ptc);
             List<String> tares = new ArrayList<>();
-            String tare = String.valueOf(achatDuJour.get(i).getCamion().getPoid());
+            String tare = String.valueOf(round(achatDuJour.get(i).getCamion().getPoid(), 2));
             tares.add(tare);
             List<String> nets = new ArrayList<>();
             totalNet = totalNet + achatDuJour.get(i).getQuantiteAcqt();
-            String net = String.valueOf(achatDuJour.get(i).getQuantiteAcqt());
+            String net = String.valueOf(round(achatDuJour.get(i).getQuantiteAcqt(), 2));
             nets.add(net);
             List<String> ecarts = new ArrayList<>();
             double ecrt = achatDuJour.get(i).getQuantiteAcqt() - achatDuJour.get(i).getQuantiteFour();
             totalEcart = totalEcart + ecrt;
-            String ecart = String.valueOf(ecrt);
+            String ecart = String.valueOf(round(ecrt, 2));
             ecarts.add(ecart);
             List<String> numTiquets = new ArrayList<>();
             String numTiquet = String.valueOf(achatDuJour.get(i).getNumTiquet());
@@ -93,12 +106,12 @@ public class GenerateEtatBleReport {
             List<String> numBls = new ArrayList<>();
             String numBl = String.valueOf(achatDuJour.get(i).getNumBon());
             numBls.add(numTiquet);
-            operationEtatBleReport.putReportInfo(jour.toString(), String.valueOf(totalPoid),
-                     String.valueOf(totalNet), String.valueOf(totalEcart), numBls,
+            operationEtatBleReport.putReportInfo(jourOB, String.valueOf(totalPoid),
+                    String.valueOf(totalNet), String.valueOf(totalEcart), numBls,
                     numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares, nets, ecarts);
         }
         operationEtatBleReport.printReport();
-     
+
     }
 
 }

@@ -14,12 +14,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="655.0" style="-fx-background-color: white;" stylesheets="@BanqueCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Banque.ModfierBanqueController">
+<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="655.0" style="-fx-background-color: white;" stylesheets="@BanqueCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Banque.ModfierBanqueController">
    <children>
       <Pane layoutX="-10.0" prefHeight="50.0" prefWidth="669.0" style="-fx-background-color: #0083c5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="604.0" layoutY="3.0" onMouseClicked="#quitter" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="627.0" layoutY="17.0" onMouseClicked="#quitter" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="/icons/close.png" />
                </image>
@@ -67,7 +66,13 @@
             </JFXTextField>
          </children>
       </GridPane>
-      <JFXButton layoutX="427.0" layoutY="258.0" onAction="#save" prefHeight="60.0" prefWidth="180.0" styleClass="button_save" text="Sauvegarder" />
-      <JFXButton layoutX="227.0" layoutY="258.0" onAction="#close" prefHeight="60.0" prefWidth="180.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton layoutX="464.0" layoutY="274.0" onAction="#save" styleClass="button_save" text="Sauvegarder">
+         <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+         </padding></JFXButton>
+      <JFXButton layoutX="327.0" layoutY="274.0" onAction="#close" styleClass="button_annuler" text="Annuler">
+         <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+         </padding></JFXButton>
    </children>
 </AnchorPane>

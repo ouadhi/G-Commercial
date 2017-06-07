@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -37,9 +37,8 @@
          </children>
       </Pane>
       <JFXButton fx:id="ajouter" layoutX="1019.0" layoutY="34.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter Produit" />
-      <JFXListView fx:id="listebanque" layoutX="62.0" layoutY="203.0" minHeight="461.0" minWidth="1114.0" showTooltip="true" />
-      <Separator layoutX="61.0" layoutY="203.0" prefHeight="5.0" prefWidth="1114.0" style="-fx-background-color: #48afea;" />
-      <GridPane hgap="3.0" layoutX="62.0" layoutY="157.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1036.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;">
+      <JFXListView fx:id="listebanque" layoutX="62.0" layoutY="171.0" minHeight="461.0" minWidth="1114.0" showTooltip="true" />
+      <GridPane hgap="3.0" layoutX="62.0" layoutY="118.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1036.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="83.0" minWidth="70.0" prefWidth="83.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="185.0" minWidth="170.0" prefWidth="177.0" />
@@ -78,6 +77,9 @@
                </font>
             </Label>
          </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="3.02" radius="0.9525000000000001" spread="0.48" width="2.79" />
+         </effect>
       </GridPane>
       <Label fx:id="label" layoutX="305.0" layoutY="46.0" styleClass="label_txt" text="Afficher :" />
       <MenuButton fx:id="Order" layoutX="386.0" layoutY="32.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
