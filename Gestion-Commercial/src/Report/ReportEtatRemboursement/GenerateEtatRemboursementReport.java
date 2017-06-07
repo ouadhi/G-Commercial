@@ -52,7 +52,10 @@ public class GenerateEtatRemboursementReport {
                         //fait rien
                     }
                 }
-                listAchats.add(achatParJour);
+                if (!achatParJour.isEmpty()) {
+                    listAchats.add(achatParJour);
+                }
+
             }
 
         } finally {
@@ -93,6 +96,7 @@ public class GenerateEtatRemboursementReport {
             String distance = String.valueOf(listAchats.get(n).get(i).getDock().getDistance());
             distances.add(distance);
         }
+
         return distances;
     }
 
@@ -102,6 +106,7 @@ public class GenerateEtatRemboursementReport {
             String num = listAchats.get(n).get(i).getNumAcqt();
             nums.add(num);
         }
+
         return nums;
     }
 
