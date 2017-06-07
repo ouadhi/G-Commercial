@@ -1,9 +1,9 @@
-
 package CommercialeControles;
 
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.User;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
@@ -18,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
 public class MoreMenuController implements Initializable {
 
     @FXML
@@ -30,27 +29,31 @@ public class MoreMenuController implements Initializable {
     @FXML
     private JFXButton exite;
 
-    
-    Stage stage  ; 
+    Stage stage;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void showgestion(ActionEvent event) throws IOException {
-        AnchorPane pane  = FXMLLoader.load(getClass().getResource(ViewUrl.GestionUtilisateur)) ; 
-        Scene scene  = new Scene(pane) ; 
-        
-        this.stage.setScene(scene);
+        if (User.isAdministrateur()) {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.Login2));
+            StageDialog dialog = new StageDialog(stage, pane);
+            dialog.show();
+        } else {
+            System.out.println("ffff");
+        }
+
     }
 
     @FXML
     private void showinfo(ActionEvent event) {
-         
+
         try {
-            AnchorPane pane  = FXMLLoader.load(getClass().getResource(ViewUrl.infoEntreprise))  ;
-            StageDialog dialog  =  new StageDialog(stage, pane) ;
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.infoEntreprise));
+            StageDialog dialog = new StageDialog(stage, pane);
             dialog.show();
         } catch (IOException ex) {
             Logger.getLogger(MoreMenuController.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,32 +62,30 @@ public class MoreMenuController implements Initializable {
 
     @FXML
     private void showLoginform(ActionEvent event) throws IOException {
-        AnchorPane pane  = FXMLLoader.load(getClass().getResource(ViewUrl.Login)) ; 
-        Scene scene  = new Scene(pane) ; 
-        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.Login));
+        Scene scene = new Scene(pane);
+
         this.stage.setScene(scene);
-      
-        
+
     }
 
     @FXML
     private void quitter(ActionEvent event) {
         System.exit(0);
     }
-    
-    
-    public void setStage  (Stage curent)  {
-        
-        this.stage = curent ; 
-        
+
+    public void setStage(Stage curent) {
+
+        this.stage = curent;
+
     }
 
     @FXML
     private void showparametre(ActionEvent event) {
-        
+
         try {
-            AnchorPane pane  = FXMLLoader.load(getClass().getResource(ViewUrl.parametreView))  ;
-            StageDialog dialog  =  new StageDialog(stage, pane) ;
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.parametreView));
+            StageDialog dialog = new StageDialog(stage, pane);
             dialog.show();
         } catch (IOException ex) {
             Logger.getLogger(MoreMenuController.class.getName()).log(Level.SEVERE, null, ex);

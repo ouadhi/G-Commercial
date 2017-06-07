@@ -77,19 +77,19 @@ public class ViewUrl {
     public static String etatBle = "/CommercialeView/Rapport/Achat/EtatBle.fxml";
     public static String etatRecpetion = "/CommercialeView/Rapport/Achat/EtatDeRecepetion.fxml";
     public static String etatRembourcementBle = "/CommercialeView/Rapport/Achat/FactureRembourecementBle.fxml";
-    public static String etatRembourecementTransport  = "/CommercialeView/Rapport/Achat/EtatRembourcementTransportBle.fxml" ; 
+    public static String etatRembourecementTransport = "/CommercialeView/Rapport/Achat/EtatRembourcementTransportBle.fxml";
     public static String etatExpedition = "/CommercialeView/Rapport/Vente/Expedition.fxml";
 
-    
     // *******************************************
-    public static String BanqueListe  =  "/CommercialeView/Banque/BanqueListe.fxml";
-    public static String AjouterBanque  =  "/CommercialeView/Banque/AjouterBanque.fxml";
-    public static  String  modfierBanque  =  "/CommercialeView/Banque/ModfierBanque.fxml";
-    
-    
+    public static String BanqueListe = "/CommercialeView/Banque/BanqueListe.fxml";
+    public static String AjouterBanque = "/CommercialeView/Banque/AjouterBanque.fxml";
+    public static String modfierBanque = "/CommercialeView/Banque/ModfierBanque.fxml";
+
     // **************************************************** 
-    public static String parametreView  = "/CommercialeView/Autre/paramaitre.fxml"  ; 
-     public static String infoEntreprise  = "/CommercialeView/Autre/InfoEntreprise.fxml"  ; 
-    public static String addAnneeEtTva = "/CommercialeView/Autre/AddAnnee.fxml" ; 
-     public static String ModifierAnnee = "/CommercialeView/Autre/ModifierAnnee.fxml" ; 
+    public static String parametreView = "/CommercialeView/Autre/paramaitre.fxml";
+    public static String infoEntreprise = "/CommercialeView/Autre/InfoEntreprise.fxml";
+    public static String addAnneeEtTva = "/CommercialeView/Autre/AddAnnee.fxml";
+    public static String ModifierAnnee = "/CommercialeView/Autre/ModifierAnnee.fxml";
+    public static String Login2 = "/CommercialeView/Autre/Password.fxml";
+
 }
