@@ -1,4 +1,3 @@
-
 package CommercialeControles.Banque;
 
 import UIControle.Methode;
@@ -21,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-
 public class AjouterBanqueController implements Initializable {
 
     @FXML
@@ -32,37 +30,34 @@ public class AjouterBanqueController implements Initializable {
     private JFXTextField NumCompte;
     @FXML
     private JFXTextField telephone;
-    
-    private  BanqueQueries querie  =  new BanqueQueries() ; 
 
-   
+    private BanqueQueries querie = new BanqueQueries();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyInteger(NumCompte, 30);
-        Methode.setOnlyInteger(NumCompte, 12);
-        
-         Methode.SetUpper(nombanque);
-      
-    }    
+        Methode.setOnlyInteger(telephone, 10);
+        Methode.SetUpper(nombanque);
+        Methode.SetUpper(NumCompte);
+
+    }
 
     @FXML
     private void quitter(MouseEvent event) {
-        Methode.getStageMouses(event).close(); 
+        Methode.getStageMouses(event).close();
     }
 
     @FXML
     private void save(ActionEvent event) {
-        String nom = nombanque.getText()  ;  
-        String adresse  =  this.adresse.getText()  ;  
-        String  compte  =  NumCompte.getText()  ; 
-        String tele =  telephone.getText()  ; 
-        
-        if (nom.isEmpty()|| adresse.isEmpty()||compte.isEmpty()|| tele.isEmpty()) {
-             Notification.champVideNotification(); 
+        String nom = nombanque.getText();
+        String adresse = this.adresse.getText();
+        String compte = NumCompte.getText();
+        String tele = telephone.getText();
+
+        if (nom.isEmpty() || adresse.isEmpty() || compte.isEmpty() || tele.isEmpty()) {
+            Notification.champVideNotification();
         } else {
             querie.SaveOrUpdate(makeBanque());
-            Notification.Addnotification(); 
-            
+            Notification.Addnotification();
             new ShowPane().showBanque();
             close(event);
         }
@@ -72,12 +67,12 @@ public class AjouterBanqueController implements Initializable {
     private void close(ActionEvent event) {
         Methode.getStage(event).close();
     }
-    
-    private  Banque  makeBanque ()  {
-        Banque banque  = new Banque(nombanque.getText(), this.NumCompte.getText(), adresse.getText() , telephone.getText()) ; 
-        
-        return  banque ;
-      
+
+    private Banque makeBanque() {
+        Banque banque = new Banque(nombanque.getText(), this.NumCompte.getText(), adresse.getText(), telephone.getText());
+
+        return banque;
+
     }
-    
+
 }

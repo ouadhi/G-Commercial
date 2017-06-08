@@ -42,7 +42,6 @@ public class Annee {
         this.idAnnee = idAnnee;
         this.tva = tva;
         this.deleted = false;
-        this.selected = true;
     }
 
     public int getIdAnnee() {

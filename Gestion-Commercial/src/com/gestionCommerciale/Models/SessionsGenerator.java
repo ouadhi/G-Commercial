@@ -39,7 +39,8 @@ public class SessionsGenerator {
                     .addAnnotatedClass(User.class)
                     .addAnnotatedClass(Role.class)
                     .addAnnotatedClass(Banque.class)
-                    .addAnnotatedClass(Annee.class);
+                    .addAnnotatedClass(Annee.class)
+                    .addAnnotatedClass(Company.class);
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties());
             factory = configuration.buildSessionFactory(builder.build());

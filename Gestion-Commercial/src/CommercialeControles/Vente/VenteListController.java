@@ -39,7 +39,7 @@ public class VenteListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.showMenuItem(Order , label);
+        Methode.showMenuItem(Order, label);
         List<Facture> factureList = FactureQueries.list();
         List<VenteCell> list = new ArrayList<>();
         for (int i = 0; i < factureList.size(); i++) {
@@ -52,7 +52,6 @@ public class VenteListController implements Initializable {
         setTotale();
 
     }
-
 
     @FXML
     private void setOrder(ActionEvent event) {
@@ -69,7 +68,7 @@ public class VenteListController implements Initializable {
     }
 
     public void setTotale() {
-    total.setText(listevente.getItems().size()+"");
+        total.setText(listevente.getItems().size() + "");
     }
 
     @FXML
@@ -78,14 +77,14 @@ public class VenteListController implements Initializable {
 
         List<Facture> factureList = FactureQueries.listrechreche(rechreche.getText());
         List<VenteCell> list = new ArrayList<>();
-        
+
         for (int i = 0; i < factureList.size(); i++) {
             list.add(new VenteCell(factureList.get(i)));
         }
 
         ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
         listevente.setItems(myObservableList);
-       
+
         setTotale();
 
     }
@@ -107,8 +106,8 @@ public class VenteListController implements Initializable {
 
     @FXML
     private void Archive(ActionEvent event) {
-           Order.setText("Archivé");
-        List<Facture> factureList = FactureQueries.listArchived() ;
+        Order.setText("Archivé");
+        List<Facture> factureList = FactureQueries.listArchived();
         List<VenteCell> list = new ArrayList<>();
         for (int i = 0; i < factureList.size(); i++) {
             list.add(new VenteCell(factureList.get(i)));
@@ -122,8 +121,8 @@ public class VenteListController implements Initializable {
 
     @FXML
     private void tout(ActionEvent event) {
-           Order.setText("Tout");
-        List<Facture> factureList = FactureQueries.listAll() ; 
+        Order.setText("Tout");
+        List<Facture> factureList = FactureQueries.listAll();
         List<VenteCell> list = new ArrayList<>();
         for (int i = 0; i < factureList.size(); i++) {
             list.add(new VenteCell(factureList.get(i)));

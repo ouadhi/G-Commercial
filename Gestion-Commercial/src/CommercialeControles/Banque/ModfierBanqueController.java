@@ -30,10 +30,10 @@ public class ModfierBanqueController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyInteger(NumCompte, 30);
-        Methode.setOnlyInteger(NumCompte, 12);
         
+        Methode.setOnlyInteger(telephone, 10);
         Methode.SetUpper(nombanque);
+        Methode.SetUpper(NumCompte);
         
     }    
     

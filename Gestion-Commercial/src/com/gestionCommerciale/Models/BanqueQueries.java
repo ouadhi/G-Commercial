@@ -43,6 +43,34 @@ public class BanqueQueries {
         List<Banque> banqueList = null;
         try {
             banqueList = new ArrayList<>();
+            banqueList = session.createQuery("from Banque where deleted='"+false+"'").list();
+           
+        } finally {
+            session.close();
+        }
+
+        return banqueList;
+    }
+    public List<Banque> listArchived() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Banque> banqueList = null;
+        try {
+            banqueList = new ArrayList<>();
+            banqueList = session.createQuery("from Banque Ble where deleted= true").list();
+           
+        } finally {
+            session.close();
+        }
+
+        return banqueList;
+    }
+    public List<Banque> listAll() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Banque> banqueList = null;
+        try {
+            banqueList = new ArrayList<>();
             banqueList = session.createQuery("from Banque").list();
            
         } finally {

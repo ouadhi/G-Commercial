@@ -26,24 +26,25 @@ public class AnneeQueries {
         }
     }
 
-    public static boolean archive(Annee annee) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        try {
-            annee.setDeleted(true);
-            session.beginTransaction();
-            session.update(annee);
-            if (annee.isSelected()) {
-                select(maxId());
-            }
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            return false;
-        } finally {
-            session.close();
-        }
-        return true;
-    }
+//    public static boolean archive(Annee annee) {
+//        SessionsGenerator FactoryObject = new SessionsGenerator();
+//        Session session = FactoryObject.getFactory().openSession();
+//        try {
+//            annee.setDeleted(true);
+//            session.beginTransaction();
+//            session.update(annee);
+//            if (annee.isSelected()) {
+//                Annee a = getAnneeById(maxId());
+//                select(maxId());
+//            }
+//            session.getTransaction().commit();
+//        } catch (Exception e) {
+//            return false;
+//        } finally {
+//            session.close();
+//        }
+//        return true;
+//    }
 
     public static boolean delete(Annee annee) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
@@ -108,21 +109,21 @@ public class AnneeQueries {
         return d;
     }
 
-    public static boolean select(int idAnnee) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        try {
-            session.beginTransaction();
-            session.createQuery("update Annee set selected='" + false + "'");
-            session.createQuery("update Annee set selected='" + true + "'where id_annee='" + idAnnee + "' ");
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            return false;
-        } finally {
-            session.close();
-        }
-        return true;
-    }
+//    public static boolean select(int idAnnee) {
+//        SessionsGenerator FactoryObject = new SessionsGenerator();
+//        Session session = FactoryObject.getFactory().openSession();
+//        try {
+//            session.beginTransaction();
+//            session.createQuery("update Annee set selected='"+false+"'");
+//     //       session.createQuery("update Annee set selected='" + true + "'where id_annee='" + idAnnee + "' ");
+//            session.getTransaction().commit();
+//        } catch (Exception e) {
+//            return false;
+//        } finally {
+//            session.close();
+//        }
+//        return true;
+//    }
 
     public static Annee getSelected() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
