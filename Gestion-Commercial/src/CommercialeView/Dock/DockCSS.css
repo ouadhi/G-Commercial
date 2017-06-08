@@ -41,7 +41,7 @@
 
 
 .Ajouter_button {
-    -fx-background-radius: 4px;
+    -fx-background-radius: 50px;
     -fx-background-color: #48afea;
     -fx-font-family: Roboto;
     -fx-font-size: 16px;
@@ -51,6 +51,7 @@
     -fx-letter-spacing: normal;
     -fx-text-align: left;
     -fx-text-fill: #f6f7fb;
+    -fx-padding: 8 16 8 16 ; 
 }
 
 .listviewTitleLabel {
@@ -128,6 +129,7 @@
    -fx-text-fill:#ffffff ;
    -fx-background-color :  #48afea; 
    -fx-background-raduis : 4px ; 
+   -fx-padding: 8 16 8 16 ; 
 }
 .button_save:hover {
     -fx-background-color :  #0083c5; 
@@ -148,6 +150,7 @@
    -fx-text-fill:#ffffff ;
    -fx-background-color :  #fa9f47; 
    -fx-background-raduis : 4px ; 
+   -fx-padding: 8 16 8 16 ; 
 }
     
 

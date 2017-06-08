@@ -85,7 +85,7 @@ public class HomeFXMLController implements Initializable {
             Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
             stage.setScene(scene);
             
-            new  ShowPane().showDock();
+            new  ShowPane().showListAchat();
 
         } catch (IOException ex) {
             Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);

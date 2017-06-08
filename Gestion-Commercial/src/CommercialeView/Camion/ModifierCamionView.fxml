@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Camion.ModifierCamionController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="401.0" prefWidth="614.0" style="-fx-background-color: #ffffff;" stylesheets="@../Chauffeur/ChauffeurCSS.css">
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="614.0" style="-fx-background-color: #ffffff;" stylesheets="@../Chauffeur/ChauffeurCSS.css">
          <children>
             <Pane prefHeight="56.0" prefWidth="614.0" style="-fx-background-color: #f6f7fb;">
                <children>

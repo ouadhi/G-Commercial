@@ -93,7 +93,7 @@ public class CamionViewController implements Initializable {
             Stage courrentStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
             int selectitem = listeView.getSelectionModel().getSelectedIndex();
 
-            System.out.println(selectitem);
+//            System.out.println("_________________________"+selectitem);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(ViewUrl.detailcamion));
             loader.load();

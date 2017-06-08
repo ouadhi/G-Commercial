@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="551.0" style="-fx-background-color: #ffffff;" stylesheets="@DockCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Dock.ModifierDockController">
+<AnchorPane id="AnchorPane" prefHeight="345.0" prefWidth="553.0" style="-fx-background-color: #ffffff;" stylesheets="@DockCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Dock.ModifierDockController">
    <children>
       <Pane layoutX="-2.0" prefHeight="66.0" prefWidth="553.0" style="-fx-background-color: #f6f7fb;">
          <children>
@@ -27,8 +26,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Separator layoutY="66.0" prefHeight="0.0" prefWidth="551.0" style="-fx-background-color: #36d484;" />
-      <GridPane hgap="8.0" layoutX="24.0" layoutY="86.0" prefHeight="225.0" prefWidth="497.0">
+      <GridPane hgap="8.0" layoutX="24.0" layoutY="86.0" prefHeight="169.0" prefWidth="497.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,7 +36,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label styleClass="title_panel" text="Nom de Dock:">
+            <Label styleClass="label_txt" text="Nom de Dock:">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -63,17 +61,17 @@
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label styleClass="title_panel" text="Wilaya :" GridPane.columnIndex="1">
+            <Label styleClass="label_txt" text="Wilaya :" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Distance :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Distance :" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Prix :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Prix :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -83,9 +81,9 @@
             <Insets />
          </opaqueInsets>
       </GridPane>
-      <JFXButton fx:id="savebttn" layoutX="361.0" layoutY="339.0" onAction="#sauvgarder" prefHeight="53.0" prefWidth="160.0" styleClass="button_save" text="Enregistre" />
-      <JFXButton fx:id="cancelbttn" layoutX="179.0" layoutY="339.0" onAction="#quitter" prefHeight="53.0" prefWidth="160.0" styleClass="button_annuler" text="Annuler" />
-      <Label fx:id="savelabel" layoutX="32.0" layoutY="352.0" text="Enregistré" textFill="#36d484" visible="false">
+      <JFXButton fx:id="savebttn" layoutX="373.0" layoutY="271.0" onAction="#sauvgarder" styleClass="button_save" text="Enregistre" />
+      <JFXButton fx:id="cancelbttn" layoutX="243.0" layoutY="271.0" onAction="#quitter" styleClass="button_annuler" text="Annuler" />
+      <Label fx:id="savelabel" layoutX="35.0" layoutY="284.0" text="Enregistré" textFill="#36d484" visible="false">
          <font>
             <Font size="21.0" />
          </font>

@@ -47,8 +47,8 @@ public class GenerateEtatExpeditionReport {
             list = session.createQuery("from Facture").list();
             Calendar cal = Calendar.getInstance();
             Date yearStart = new GregorianCalendar(cal.get(Calendar.YEAR), 0, 1).getTime();
-            List<Date> dates = getDaysBetweenDates(increment_decrementDays(false, yearStart, 1),
-                    increment_decrementDays(true, jour, 1));
+            List<Date> dates = getDaysBetweenDates(yearStart,
+                    increment_decrementDays(true,jour,1));
             List<Facture> listFactures = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 for (int j = 0; j < dates.size(); j++) {
@@ -129,7 +129,6 @@ public class GenerateEtatExpeditionReport {
                     total = total + facture.getQtes().get(i).getQte_fact();
                 }
             }
-
             facture.getQtes();
         }
         return total;
@@ -195,6 +194,7 @@ public class GenerateEtatExpeditionReport {
                     expedition.add(String.valueOf(facture.getQtes().get(i).getQte_fact()));
                 }
                 expedition.add(String.valueOf(facture.getQtes().get(i).getProduit().getPrix()));
+                expedition.add(String.valueOf(facture.getMontant()));
                 //check if empty 
                 if (facture.getClient().getPayments().isEmpty()) {
                     expedition.add(String.valueOf(0));
@@ -202,18 +202,17 @@ public class GenerateEtatExpeditionReport {
                     //iterate over payement checking date
                     double totalVersement = 0;
                     for (int k = 0; k < facture.getClient().getPayments().size(); k++) {
-                        if (facture.getDate().equals(facture.getClient().getPayments().get(i).getDate())) {
-                            totalVersement = totalVersement + facture.getClient().getPayments().get(i).getMontant();
+                        if (facture.getDate().equals(facture.getClient().getPayments().get(k).getDate())) {
+                            totalVersement = totalVersement + facture.getClient().getPayments().get(k).getMontant();
                         }
                     }
                     expedition.add(String.valueOf(totalVersement));
 
                 }
-                expedition.add(String.valueOf(facture.getMontant()));
                 observations.add("");
 
             }
-            System.out.println("list expidition ------------------" + expedition);
+            //System.out.println("list expidition ------------------" + expedition);
             expeditions.add(expedition);
         }
 
@@ -303,7 +302,7 @@ public class GenerateEtatExpeditionReport {
         String newDate = new SimpleDateFormat("dd-MM-yyyy").format(jour);
         operationEtatExpedition.putReportInfo(newDate, String.valueOf(totalFarine), String.valueOf(totalSon),
                 String.valueOf(totalMontant), String.valueOf(totalVersement),
-                String.valueOf(totalVersemntMoinMontant), String.valueOf(totalQuantite), String.valueOf(round(farineTotal, 2)),
+                String.valueOf(totalQuantite),String.valueOf(totalVersemntMoinMontant), String.valueOf(round(farineTotal, 2)),
                 String.valueOf(round(sonTotal, 2)), String.valueOf(round(montantTotal, 2)), String.valueOf(round(versementTotal, 2)),
                 String.valueOf(round(differenceTotal, 2)), clients, nums,
                 produits, qteFarins, qteSons, prixs, montants, versements, observations);

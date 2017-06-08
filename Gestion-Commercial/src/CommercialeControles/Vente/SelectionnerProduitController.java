@@ -1,4 +1,3 @@
-
 package CommercialeControles.Vente;
 
 import UIControle.ViewUrl;
@@ -24,34 +23,32 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-
 public class SelectionnerProduitController implements Initializable {
 
     @FXML
     private JFXListView<PorduitH> listeProduit;
-     private ProduitQueries queries = new ProduitQueries();
-    
+    private ProduitQueries queries = new ProduitQueries();
+
     @FXML
     private Label nbselected;
-    static Label staticNbselected ; 
+    static Label staticNbselected;
     @FXML
     private JFXTextField rechreche;
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        staticNbselected = nbselected ; 
+        staticNbselected = nbselected;
         List<Produit> listBlesDB = queries.list();
         List<PorduitH> list = new ArrayList<>();
-        
+
         for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new PorduitH( listBlesDB.get(i) )); 
+            list.add(new PorduitH(listBlesDB.get(i)));
         }
-        list.add(new PorduitH()) ;
+        // list.add(new PorduitH()) ;
         ObservableList<PorduitH> myObservableList = FXCollections.observableList(list);
         listeProduit.setItems(myObservableList);
-        
-    }    
+
+    }
 
     @FXML
     private void select(MouseEvent event) {
@@ -59,8 +56,8 @@ public class SelectionnerProduitController implements Initializable {
 
     private void nextEtape(ActionEvent event) {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.infotmationVente)); 
-            OperationVenteController.staticpane.getChildren().setAll(pane) ;
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.infotmationVente));
+            OperationVenteController.staticpane.getChildren().setAll(pane);
         } catch (IOException ex) {
             Logger.getLogger(SelectionnerProduitController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -68,16 +65,16 @@ public class SelectionnerProduitController implements Initializable {
 
     @FXML
     private void rechrecher(KeyEvent event) {
-           listeProduit.getItems().clear();
-         List<Produit> listBlesDB = queries.listRechreche(rechreche.getText()) ; 
+        listeProduit.getItems().clear();
+        List<Produit> listBlesDB = queries.listRechreche(rechreche.getText());
         List<PorduitH> list = new ArrayList<>();
-        
+
         for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new PorduitH( listBlesDB.get(i) )); 
+            list.add(new PorduitH(listBlesDB.get(i)));
         }
-        list.add(new PorduitH()) ;
+        //  list.add(new PorduitH()) ;
         ObservableList<PorduitH> myObservableList = FXCollections.observableList(list);
         listeProduit.setItems(myObservableList);
     }
-    
+
 }

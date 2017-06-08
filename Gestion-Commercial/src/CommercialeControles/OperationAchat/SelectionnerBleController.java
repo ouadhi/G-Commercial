@@ -42,7 +42,7 @@ public class SelectionnerBleController implements Initializable {
         }
         
         BleListeH ch  = new BleListeH(listeBle) ; 
-        list.add(ch) ; 
+       // list.add(ch) ; 
         ObservableList<BleListeH> myObservableList = FXCollections.observableList(list);
         listeBle.setItems(myObservableList);
         listeBle.setOrientation(Orientation.HORIZONTAL);
@@ -69,7 +69,7 @@ public class SelectionnerBleController implements Initializable {
         }
         
         BleListeH ch  = new BleListeH(listeBle) ; 
-        list.add(ch) ; 
+        //list.add(ch) ; 
         ObservableList<BleListeH> myObservableList = FXCollections.observableList(list);
         listeBle.setItems(myObservableList);
     }
