@@ -30,7 +30,6 @@ public class AddUserFXMLController implements Initializable {
 
     String listeItemsRoles[] = {"Administrateur", "Agent"};
 
-    UserQueries userQueries = new UserQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,15 +50,15 @@ public class AddUserFXMLController implements Initializable {
 
             Notification.errorNotification();
         } else {
-            if ((userQueries.getUser(username_txt)!=null) ) {
+            if ((UserQueries.getUserByName(username_txt)!=null) ) {
                 //notification for user already exists
 
                 Notification.errorNotificationUserExists();
             } else {
                 // add user to database
                 try {
-                    User user = new User(username_txt, password_txt, role_txt, "");
-                    userQueries.SaveOrUpdate(user);
+                    User user = new User(username_txt, password_txt, role_txt);
+                    UserQueries.SaveOrUpdate(user);
                     Notification.Addnotification();
                     new ShowPane().showUserList();
                 } catch (Exception ex) {

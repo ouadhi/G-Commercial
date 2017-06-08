@@ -13,7 +13,7 @@ import org.hibernate.Session;
  */
 public class UserQueries {
 
-    public void SaveOrUpdate(User user) {
+    public static void SaveOrUpdate(User user) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -27,7 +27,8 @@ public class UserQueries {
         }
     }
 
-    public void delete(User user) {
+
+    public static void delete(User user) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -41,7 +42,7 @@ public class UserQueries {
         }
     }
 
-    public List<User> list() {
+    public static List<User> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<User> list = new ArrayList<>();
@@ -49,25 +50,39 @@ public class UserQueries {
 
         return list;
     }
-    public User getUser(String nom){
-        User user=null;
-        List<User> listOfUsers=list();
 
-        for (int i = 0; i < listOfUsers.size(); i++) {
-            if (nom.equals(listOfUsers.get(i).getNom())) {
-                user=listOfUsers.get(i);
-            }
+    public static User getUserByName(String nom) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        User d;
+        try {
+            d = (User) session.createQuery("from User where nom='" + nom + "'").uniqueResult();
+        } finally {
+            session.close();
         }
-        return user;
+        return d;
+
     }
-    
-    public Map<Integer,String> getUsersId(){
-        List<User> listOfUsers=list();
-        Map<Integer,String> usersIds= new HashMap <>();
-        for (int i = 0; i < listOfUsers.size(); i++) {
-            usersIds.put(listOfUsers.get(i).getIdUser(), listOfUsers.get(i).getNom());    
+
+    public static User getUserByNameAndPassword(String nom,String password) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        User d;
+        try {
+            d = (User) session.createQuery("from User where nom='" + nom + "' AND password='"+password+"'").uniqueResult();
+        } finally {
+            session.close();
         }
-        return usersIds ;
+        return d;
+    }
+
+    public static Map<Integer, String> getUsersId() {
+        List<User> listOfUsers = list();
+        Map<Integer, String> usersIds = new HashMap<>();
+        for (int i = 0; i < listOfUsers.size(); i++) {
+            usersIds.put(listOfUsers.get(i).getIdUser(), listOfUsers.get(i).getNom());
+        }
+        return usersIds;
     }
 
 }

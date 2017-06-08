@@ -43,7 +43,6 @@ public class EditUserController implements Initializable {
         
     String listeItems [] = {"Administrateur" , "Agent" } ; 
 
-    private UserQueries userQueries= new UserQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,8 +70,8 @@ public class EditUserController implements Initializable {
         String user  =  fullname.getText() ; 
 
         if (result.get() == ButtonType.OK) {
-            User deletedUser=userQueries.getUser(user);
-            userQueries.delete(deletedUser);
+            User deletedUser=UserQueries.getUserByName(user);
+            UserQueries.delete(deletedUser);
             Notification.Deletenotification();
              new ShowPane().showUserList();
         } 

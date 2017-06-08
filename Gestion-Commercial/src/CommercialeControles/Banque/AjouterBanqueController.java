@@ -58,7 +58,6 @@ public class AjouterBanqueController implements Initializable {
         } else {
             querie.SaveOrUpdate(makeBanque());
             Notification.Addnotification();
-
             new ShowPane().showBanque();
             close(event);
         }

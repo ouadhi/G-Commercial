@@ -1,5 +1,6 @@
 package com.gestionCommerciale.Controllers.UserController.Login;
 
+import UIControle.ViewUrl;
 import com.gestionCommerciale.Views.UserViews.loginform.Erreurmsg;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -51,7 +52,6 @@ public class FXMLDocumentController implements Initializable {
 
     String txt_password;
     String txt_username;
-    
 
     @FXML
     void connecter(ActionEvent event) {
@@ -63,9 +63,10 @@ public class FXMLDocumentController implements Initializable {
             erreurlabel.setText(Erreurmsg.getChamps_vide());
         } else {
             if (txt_password.equals("admin") && txt_username.equals("admin")) {
-                
+
                 try {
-                    AnchorPane root = FXMLLoader.load(getClass().getResource("Splash.fxml"));
+                    //AnchorPane root = FXMLLoader.load(getClass().getResource("Splash.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
 
                     rootpane.getChildren().setAll(root);
 
@@ -80,7 +81,7 @@ public class FXMLDocumentController implements Initializable {
                     fadeOut.setCycleCount(1);
 
                     fadeIn.play();
-                    
+
                     fadeIn.setOnFinished((e) -> {
                         fadeOut.play();
 
@@ -114,8 +115,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        possible_utilisateur();
-
+        //possible_utilisateur();
     }
 
     private void possible_utilisateur() {

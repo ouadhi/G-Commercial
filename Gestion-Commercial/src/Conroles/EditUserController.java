@@ -56,7 +56,7 @@ public class EditUserController implements Initializable {
         username.setText(password);
         this.role.getSelectionModel().select(role);
         //set user to selected user
-        user = userQueries.getUser(username_t);
+        user = userQueries.getUserByName(username_t);
         
         role_txt_title.setText(role);
         roletxt.setText(role);
