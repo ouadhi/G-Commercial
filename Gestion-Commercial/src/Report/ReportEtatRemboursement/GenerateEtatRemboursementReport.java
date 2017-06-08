@@ -8,6 +8,9 @@ package Report.ReportEtatRemboursement;
 import com.gestionCommerciale.HibernateSchema.Achat;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import com.ibm.icu.text.RuleBasedNumberFormat;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -139,13 +142,43 @@ public class GenerateEtatRemboursementReport {
         return montants;
     }
 
+    public static Date increment_decrementDays(boolean increment, Date date, int days) {
+        Date newdDate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        if (increment) {
+            cal.add(Calendar.DATE, days); //minus number would decrement the days
+            newdDate = cal.getTime();
+        } else {
+            cal.add(Calendar.DATE, -days);
+            newdDate = cal.getTime();
+        }
+
+        return newdDate;
+    }
+
+    public static double round(double value, int places) {
+
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
     public void generateReport(Date startDate, Date endDate, String doit) {
         OperationEtatRemboursementReport operationEtatRemboursementReport = new OperationEtatRemboursementReport();
-        achatParJour(startDate, endDate);
-        String date = "De: " + startDate + " a" + endDate;
+
+        achatParJour(startDate, increment_decrementDays(true, endDate, 1));
+        String end = new SimpleDateFormat("dd-MM-yyyy").format(endDate);
+        String start = new SimpleDateFormat("dd-MM-yyyy").format(startDate);
+
+        String date = "De: " + start + " a " + end;
         RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
                 RuleBasedNumberFormat.SPELLOUT);
-        String montantlettre = ruleBasedNumberFormat.format(new Double(montantTotal)) + " Dinars Algérien";
+        String montantlettre = ruleBasedNumberFormat.format(new Double(round(montantTotal, 2))) + " Dinars Algérien";
 
         for (int i = 0; i < jour.size(); i++) {
             List<String> parcours = getParcourList(i);
@@ -154,8 +187,10 @@ public class GenerateEtatRemboursementReport {
             List<String> qtes = getQteList(i);
             List<String> prixs = getPrixList(i);
             List<String> montants = getMontantsList(i);
-            operationEtatRemboursementReport.putReportInfo(doit, date, jour.get(i).toString(),
-                    new Double(montantTotal).toString(), montantlettre,
+            String jourDate = new SimpleDateFormat("dd-MM-yyyy").format(jour.get(i));
+
+            operationEtatRemboursementReport.putReportInfo(doit, date, jourDate,
+                    new Double(round(montantTotal, 2)).toString(), montantlettre,
                     parcours, distances, nums, qtes, prixs, montants);
         }
         operationEtatRemboursementReport.printReport();
