@@ -123,7 +123,7 @@ public class BanqueCell extends GridPane {
         rowConstraints.setPrefHeight(30.0);
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        label.setText(""+this.banque.getIdDock());
+        label.setText(""+this.banque.getIdBanque());
         label.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label0, 1);

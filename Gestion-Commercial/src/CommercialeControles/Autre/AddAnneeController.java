@@ -41,6 +41,7 @@ public class AddAnneeController implements Initializable {
             if (AnneeQueries.getAnneeById(intAnnee) == null) {
                 if (AnneeQueries.SaveOrUpdate(a)) {
                     Notification.Addnotification();
+                    ParamaitreController.AnneeStatic.getItems().add(a.getIdAnnee()+"");
                 } else {
                     Notification.check("Erreur!");
                 }

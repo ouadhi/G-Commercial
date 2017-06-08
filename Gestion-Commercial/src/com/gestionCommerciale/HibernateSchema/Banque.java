@@ -13,8 +13,8 @@ public class Banque {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_dock", nullable = false)
-    int idDock;
+    @Column(name = "id_banque", nullable = false)
+    int idBanque;
     @Column(name = "nom", nullable = false)
     String nom;
     @Column(name = "compte", nullable = false)
@@ -37,12 +37,12 @@ public class Banque {
         this.telephone = telephone ; 
     }
 
-    public int getIdDock() {
-        return idDock;
+    public int getIdBanque() {
+        return idBanque;
     }
 
-    public void setIdDock(int idDock) {
-        this.idDock = idDock;
+    public void setIdBanque(int idBanque) {
+        this.idBanque = idBanque;
     }
 
     public String getNom() {
