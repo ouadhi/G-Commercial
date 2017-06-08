@@ -50,6 +50,16 @@ public class VenteCell extends GridPane {
     protected final JFXButton bttn;
     private JFXPopup popup;
 
+    public Facture getFacture() {
+        return facture;
+    }
+
+    public void setFacture(Facture facture) {
+        this.facture = facture;
+    }
+    
+    
+
     public VenteCell(Facture facture) {
         this.facture = facture;
 

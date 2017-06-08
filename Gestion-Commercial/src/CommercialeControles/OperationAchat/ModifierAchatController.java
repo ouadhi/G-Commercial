@@ -34,10 +34,6 @@ public class ModifierAchatController implements Initializable {
     @FXML
     private JFXTextField Q_fournie;
     @FXML
-    private JFXButton save;
-    @FXML
-    private JFXButton annuler;
-    @FXML
     private ImageView camionicon;
     @FXML
     private ImageView chauffeuricon;
@@ -48,12 +44,18 @@ public class ModifierAchatController implements Initializable {
 
     ChauffeurListH ch;
     CamionListeH camionH;
+    BleListeH bleH  ; 
 
     String camiongreen = "/icons/CamioGreen.png";
     String camionGry = "/icons/CamionGry.png";
     
     String ChafffeurGreen = "/icons/ChaffeurGreen.png" ;
-            String ChafffeurGry= "/icons/ChauffeurGry.png" ; 
+    String ChafffeurGry= "/icons/ChauffeurGry.png" ; 
+    
+     String BleGreen = "/icons/Blegreen.png" ;
+    String BleGry= "/icons/BleGry.png" ; 
+    @FXML
+    private ImageView bleicon;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,27 +75,9 @@ public class ModifierAchatController implements Initializable {
     private void FournirReleased(KeyEvent event) {
     }
 
-    @FXML
-    private void sauvgarder(ActionEvent event) {
-        String num = numero.getText();
-        String Q_acquit = Q_Acquit.getText();
-        String Q_four = this.Q_fournie.getText();
+    
 
-        if (num.isEmpty() || Q_acquit.isEmpty() || Q_four.isEmpty()) {
-            Notification.champVideNotification();
-        } else {
-
-            Notification.Updatenotification();
-            new ShowPane().showListAchat();
-           
-
-        }
-    }
-
-    @FXML
-    private void quitter(ActionEvent event) {
-        Methode.getStage(event).close();
-    }
+   
 
     public void setData(Achat  achat) {
         this.achat = achat  ; 
@@ -104,6 +88,7 @@ public class ModifierAchatController implements Initializable {
 
         ch = new ChauffeurListH(this.achat.getChauffeur()) ; 
         camionH = new CamionListeH(this.achat.getCamion()) ; 
+        bleH = new BleListeH(this.achat.getBle(), 0) ; 
 
         pop.setCornerRadius(4);
         pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
@@ -136,6 +121,19 @@ public class ModifierAchatController implements Initializable {
         chauffeuricon.setImage(new Image(getClass().getResourceAsStream(ChafffeurGreen)));
         pop.setContentNode(ch);
         pop.show(chauffeuricon);
+    }
+
+    @FXML
+    private void bleOUT(MouseEvent event) {
+        pop.hide();
+        bleicon.setImage(new Image(getClass().getResourceAsStream(BleGry)));
+    }
+
+    @FXML
+    private void bleIN(MouseEvent event) {
+        bleicon.setImage(new Image(getClass().getResourceAsStream(BleGreen)));
+        pop.setContentNode(bleH);
+        pop.show(bleicon);
     }
 
 }
