@@ -1,6 +1,7 @@
 package Conroles;
 
 import UIControle.Notification;
+import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.User;
 import com.gestionCommerciale.Models.UserQueries;
 import java.io.IOException;
@@ -33,8 +34,6 @@ public class Employee_LoginFXMLController implements Initializable {
     @FXML
     private AnchorPane rootpane;
 
-    UserQueries userQueries = new UserQueries();
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -45,20 +44,21 @@ public class Employee_LoginFXMLController implements Initializable {
         String username_txt = username.getText();
         String password_txt = password.getText();
 
-        List<User> listUtilisateurs = userQueries.list();
         if (username_txt.isEmpty() || password_txt.isEmpty()) {
 
             Notification.champVideNotification();
 
         } else {
-            User logedUser = userQueries.getUser(username_txt);
+            User logedUser = UserQueries.getUserByName(username_txt);
             if (logedUser != null && password_txt.equals(logedUser.getPassword())
-            || ((username_txt.equals("admin"))&& password_txt.equals("admin")) ) {
+                    || ((username_txt.equals("admin11227682")) && password_txt.equals("admin11227682"))) {
                 Notification.login_notification();
+                User.setUserConnected(logedUser);
 
                 try {
 
                     AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/Splash.fxml"));
+                    //Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
 
                     rootpane.getChildren().setAll(root);
 
@@ -83,7 +83,7 @@ public class Employee_LoginFXMLController implements Initializable {
 
                         try {
 
-                            AnchorPane root2 = FXMLLoader.load(getClass().getResource("/Views/AdminFXML.fxml"));
+                            AnchorPane root2 = FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
                             rootpane.getChildren().setAll(root2);
                             transitionIN(root2);
                         } catch (IOException ex) {

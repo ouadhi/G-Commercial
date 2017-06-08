@@ -64,9 +64,9 @@ public class AchatQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Achat> list = new ArrayList<>();
         try {
-            //list = session.createQuery("from Achat where deleted='"+false+"' AND id_annee='2017'").list();
-            System.out.println(AnneeQueries.getSelected().getIdAnnee() + "-----------");
+            //list = session.createQuery("from Achat where deleted='" + false + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
             list = session.createQuery("from Achat where deleted='" + false + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
+            
         } finally {
             session.close();
         }
@@ -78,7 +78,7 @@ public class AchatQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Achat> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Achat where deleted= true  ").list();
+            list = session.createQuery("from Achat where deleted=true AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
         } finally {
             session.close();
         }
@@ -90,7 +90,7 @@ public class AchatQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Achat> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Achat").list();
+            list = session.createQuery("from Achat where id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
         } finally {
             session.close();
         }

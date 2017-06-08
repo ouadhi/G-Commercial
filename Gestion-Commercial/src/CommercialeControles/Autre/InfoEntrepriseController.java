@@ -1,8 +1,9 @@
-
 package CommercialeControles.Autre;
 
 import UIControle.Methode;
 import UIControle.Notification;
+import com.gestionCommerciale.HibernateSchema.Company;
+import com.gestionCommerciale.Models.CompanyQueries;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,7 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
-
+import tray.notification.NotificationType;
 
 public class InfoEntrepriseController implements Initializable {
 
@@ -31,34 +32,66 @@ public class InfoEntrepriseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyNumbre(fax);
-        Methode.setOnlyNumbre(telephone);
-        
-    }    
+        Company c = CompanyQueries.getCompany();
+        if (c != null) {
+            Methode.setOnlyNumbre(fax);
+            Methode.setOnlyNumbre(telephone);
+            Nregistre.setText(c.getRegistre());
+            IdFiscal.setText(c.getFiscale());
+            article.setText(c.getArticle());
+            telephone.setText(c.getTelephone());
+            this.fax.setText(c.getFax());
+            email.setText(c.getEmail());
+            this.nom.setText(c.getNom());
+        }
+
+    }
 
     @FXML
     private void close(MouseEvent event) {
-         Methode.getStageMouses(event).close();  
+        Methode.getStageMouses(event).close();
     }
 
     @FXML
     private void save(ActionEvent event) {
-        
-        String registre  =  Nregistre.getText()  ; 
-        String fiscale  = IdFiscal.getText()  ; 
-        String articl   =  article.getText()  ; 
-        String tel  =  telephone.getText()   ;  
-        String fax =  this.fax.getText()   ; 
-        String mail   =  email.getText()   ; 
-        String nom  =  this.nom.getText()   ;  
-        
-        Notification.Addnotification();   
-        
+        String registreVal = Nregistre.getText();
+        String fiscaleVal = IdFiscal.getText();
+        String articlVal = article.getText();
+        String telVal = telephone.getText();
+        String faxVal = this.fax.getText();
+        String emailVal = email.getText();
+        String nomVal = this.nom.getText();
+
+        Company com = CompanyQueries.getCompany();
+        if (!(registreVal.isEmpty() || fiscaleVal.isEmpty() || articlVal.isEmpty() || telVal.isEmpty()
+                || faxVal.isEmpty() || emailVal.isEmpty() || nomVal.isEmpty())) {
+            if (com == null) {
+                Company company = new Company(nomVal, registreVal, fiscaleVal, articlVal, emailVal, telVal, faxVal);
+                CompanyQueries.SaveOrUpdate(company);
+
+            } else {
+                com.setNom(nomVal);
+                com.setRegistre(registreVal);
+                com.setFiscale(fiscaleVal);
+                com.setArticle(articlVal);
+                com.setEmail(emailVal);
+                com.setTelephone(telVal);
+                com.setFax(faxVal);
+                CompanyQueries.SaveOrUpdate(com);
+
+            }
+
+            Notification.Addnotification();
+        } else {
+                        Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
+
+        }
+
     }
 
     @FXML
     private void quitter(ActionEvent event) {
-        Methode.getStage(event).close();  
+        Methode.getStage(event).close();
     }
-    
+
 }

@@ -30,16 +30,17 @@ public class User {
     @Column(name = "deleted", nullable = false)
     boolean deleted;
     
-    public  static User userConnected  = new User("admin", "admin", "administrateur", "") ;  
+    public  static User userConnected   = new User("admin", "admin", "Administrateur") ;
 
     public User() {
     }
 
-    public User(String nom, String password, String type, String photoLien) {
+    public User(String nom, String password, String type) {
         this.nom = nom;
         this.password = password;
         this.type = type;
-        this.photoLien= photoLien;
+        this.deleted=false;
+        //this.photoLien= photoLien;
     }
 
     public int getIdUser() {
@@ -101,7 +102,7 @@ public class User {
     }
     
     public static boolean  isAdministrateur() {
-        return userConnected.getType().equals("administrateur");
+        return userConnected.getType().equals("Administrateur");
     }
    
 }

@@ -25,19 +25,23 @@ public class ParamaitreController implements Initializable {
 
     @FXML
     private JFXComboBox<String> Annee;
+    static JFXComboBox<String> AnneeStatic;
     @FXML
     private Label tva;
     @FXML
     private Text anneeselected;
-    Annee annee  = null ; 
+    Annee annee = null;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Annee selected = AnneeQueries.getSelected();
+        AnneeStatic=Annee;
         for (Annee annee : AnneeQueries.list()) {
-            Annee.getItems().add(Integer.toString(annee.getIdAnnee())) ; 
+            Annee.getItems().add(Integer.toString(annee.getIdAnnee()));
         }
-        
-
+        Annee.getSelectionModel().select(selected.getIdAnnee()+"");
+        tva.setText(selected.getTva()+"");
+        anneeselected.setText(selected.getIdAnnee()+"");
         
     }
 
@@ -55,28 +59,28 @@ public class ParamaitreController implements Initializable {
     @FXML
     private void modiferAnnee(ActionEvent event) {
         try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(ViewUrl.ModifierAnnee));
-                loader.load();
-                ModifierAnneeController Modifier = loader.getController();
-                Modifier.setData(annee);
-                AnchorPane root = loader.getRoot();
-                StageDialog dialog = new StageDialog(Methode.getStage(event), root);
-                dialog.show();
-            } catch (IOException ex) {
-                Notification.errorNotification("Selectionner une année SVP !!");
-            }
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(ViewUrl.ModifierAnnee));
+            loader.load();
+            ModifierAnneeController Modifier = loader.getController();
+            Modifier.setData(annee);
+            AnchorPane root = loader.getRoot();
+            StageDialog dialog = new StageDialog(Methode.getStage(event), root);
+            dialog.show();
+        } catch (IOException ex) {
+            Notification.errorNotification("Selectionner une année SVP !!");
+        }
     }
 
     @FXML
     private void close(MouseEvent event) {
         Methode.getStageMouses(event).close();
     }
-    
-    public void getTVASelected () {
-       annee = AnneeQueries.getAnneeById(Integer.parseInt(Annee.getSelectionModel().getSelectedItem())) ; 
-     tva.setText(annee.getTva()+"");
-        
+
+    public void getTVASelected() {
+        annee = AnneeQueries.getAnneeById(Integer.parseInt(Annee.getSelectionModel().getSelectedItem()));
+        tva.setText(annee.getTva() + "");
+
     }
 
     @FXML
@@ -86,10 +90,22 @@ public class ParamaitreController implements Initializable {
 
     @FXML
     private void selectAnnee(ActionEvent event) {
+
         if (annee == null) {
             Notification.errorNotification("Selectionner une année SVP !!");
         } else {
-            anneeselected.setText(annee.getIdAnnee()+"");
+            anneeselected.setText(annee.getIdAnnee() + "");
+            Annee aa = AnneeQueries.getSelected();
+            aa.setSelected(false);
+            AnneeQueries.SaveOrUpdate(aa);
+            annee.setSelected(true);
+            AnneeQueries.SaveOrUpdate(annee);
+            
+            //AnneeQueries.select(annee.getIdAnnee());
+            
+            Notification.errorNotification("bbb");
+            
+
         }
     }
 

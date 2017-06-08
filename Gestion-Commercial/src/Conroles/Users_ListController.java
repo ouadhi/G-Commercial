@@ -45,12 +45,11 @@ public class Users_ListController implements Initializable {
     public static EditableFileRow row;
     public ObservableList<EditableFileRow> data;
 
-    UserQueries userQueries = new UserQueries();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         data = FXCollections.observableArrayList();
-        List<User> listOfDbUsers = userQueries.list();
+        List<User> listOfDbUsers = UserQueries.list();
 
         for (int i = 0; i < listOfDbUsers.size(); i++) {
             data.add(new EditableFileRow(listOfDbUsers.get(i).getPhotoLien(),
