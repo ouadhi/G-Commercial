@@ -54,14 +54,13 @@ public class Facture {
     @OneToMany(targetEntity = Facture_Produit.class, mappedBy = "facture",
             cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Facture_Produit> qtes;
-        @Column(name = "deleted", nullable = false)
+    @Column(name = "deleted", nullable = false)
     boolean deleted;
     @ManyToOne
-    @JoinColumn(name="id_annee")
+    @JoinColumn(name = "id_annee")
     private Annee annee;
 
     //
-
     public Facture() {
     }
 

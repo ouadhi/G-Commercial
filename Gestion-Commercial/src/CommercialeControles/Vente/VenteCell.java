@@ -1,5 +1,6 @@
 package CommercialeControles.Vente;
 
+import CommercialeControles.Ble.ModifierBleController;
 import CommercialeControles.Client.ClienCell;
 import UIControle.Methode;
 import UIControle.Notification;
@@ -176,6 +177,28 @@ public class VenteCell extends GridPane {
 
             popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
         });
+        
+        produitdefacture.setOnAction(e->{
+            try {
+                
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.produitfacture));
+                loader.load();
+                
+                ListeProduitVenteController Modifier = loader.getController();
+                Modifier.setData(this.facture);
+                
+                AnchorPane root = loader.getRoot();
+                
+                StageDialog dialog = new StageDialog(Methode.getStage(e), root);
+                dialog.show();
+                
+                
+            } catch (IOException ex) {
+                Logger.getLogger(VenteCell.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
 
     }
 

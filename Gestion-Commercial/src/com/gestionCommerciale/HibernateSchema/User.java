@@ -30,7 +30,7 @@ public class User {
     @Column(name = "deleted", nullable = false)
     boolean deleted;
     
-    public  static User userConnected  = new User("admin", "admin", "administrateur", "") ;  ; 
+    public  static User userConnected  = new User("admin", "admin", "administrateur", "") ;  
 
     public User() {
     }

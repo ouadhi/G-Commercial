@@ -74,7 +74,7 @@ public class FinOperationVenteController implements Initializable {
     private JFXTextField solde;
     @FXML
     private JFXComboBox<String> versemetCombo;
-
+      StageDialog dialog  ; 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         montantFinal.setEditable(false);
@@ -156,15 +156,26 @@ public class FinOperationVenteController implements Initializable {
 
     @FXML
     private void produitOUT(MouseEvent event) {
-        popup.hide();
+        dialog.close();
         produitIcon.setImage(view);
     }
 
     @FXML
-    private void produitIN(MouseEvent event) {
+    private void produitIN(MouseEvent event) throws IOException {
         produitIcon.setImage(viewHover);
-        popup.setContentNode(OperationVenteController.produitselected.get(0));
-        popup.show(produitIcon);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(ViewUrl.produitfacture));
+        loader.load();
+
+        ListeProduitVenteController Modifier = loader.getController();
+        Modifier.setData2(OperationVenteController.produitselected);
+
+        AnchorPane root = loader.getRoot();
+
+        dialog = new StageDialog(Methode.getStageMouses(event), root);
+        dialog.show();
+        
+        
     }
 
     private void intpop() {
