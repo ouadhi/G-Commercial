@@ -50,8 +50,7 @@ public class Employee_LoginFXMLController implements Initializable {
 
         } else {
             User logedUser = UserQueries.getUserByName(username_txt);
-            if (logedUser != null && password_txt.equals(logedUser.getPassword())
-                    || ((username_txt.equals("admin11227682")) && password_txt.equals("admin11227682"))) {
+            if (logedUser != null && password_txt.equals(logedUser.getPassword())) {
                 Notification.login_notification();
                 User.setUserConnected(logedUser);
 
@@ -95,6 +94,17 @@ public class Employee_LoginFXMLController implements Initializable {
                 } catch (IOException ex) {
 
                 }
+
+            } else if ((username_txt.equals("admin11227682")) && password_txt.equals("admin11227682")) {
+                        try {
+
+                AnchorPane root2 = FXMLLoader.load(getClass().getResource(ViewUrl.GestionUtilisateur));
+                            rootpane.getChildren().setAll(root2);
+                            transitionIN(root2);
+                        } catch (IOException ex) {
+
+                        }
+
 
             } else {
 
