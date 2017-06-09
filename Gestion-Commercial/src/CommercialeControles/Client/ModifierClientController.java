@@ -150,6 +150,7 @@ public class ModifierClientController implements Initializable {
         List<String> listeActivty = new ArrayList<>();
         listeActivty.add("Boulangerie");
         listeActivty.add("Agriculteur");
+        listeActivty.add("Grossiste");
         listeActivty.add("Autre");
 
         ObservableList<String> list = FXCollections.observableList(listeActivty);

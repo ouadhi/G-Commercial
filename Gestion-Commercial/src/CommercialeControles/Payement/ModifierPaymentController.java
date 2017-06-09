@@ -79,6 +79,7 @@ public class ModifierPaymentController implements Initializable {
 
         Types.add("Especes");
         Types.add("Cheque");
+        Types.add("A terme"); 
         
         ObservableList<String> liste = FXCollections.observableList(Types);
         type.setItems(liste);

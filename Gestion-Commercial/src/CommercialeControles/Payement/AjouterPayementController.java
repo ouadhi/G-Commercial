@@ -49,6 +49,7 @@ public class AjouterPayementController implements Initializable {
         datepayment.setValue(LocalDate.now());
         Types.add("Especes");
         Types.add("Cheque");
+        Types.add("A terme"); 
         ObservableList<String> liste = FXCollections.observableList(Types);
         type.setItems(liste);
         type.getSelectionModel().select(0);
