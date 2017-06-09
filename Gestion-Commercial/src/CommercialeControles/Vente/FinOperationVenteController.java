@@ -258,7 +258,7 @@ public class FinOperationVenteController implements Initializable {
     }
 
     public void setVersement() {
-        versemetCombo.getItems().add("Cache");
+        versemetCombo.getItems().add("Cheque");
         versemetCombo.getItems().add("Especes");
     }
 

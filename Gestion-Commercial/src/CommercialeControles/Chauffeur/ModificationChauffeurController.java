@@ -7,6 +7,7 @@ import com.gestionCommerciale.HibernateSchema.Camion;
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
 import com.gestionCommerciale.Models.ChauffeurQueries;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,26 +29,26 @@ public class ModificationChauffeurController implements Initializable {
     private JFXTextField nomchauffeur;
     @FXML
     private JFXTextField prenomchauffeur;
-    @FXML
-    private JFXTextField codechauffeur;
+   
     @FXML
     private JFXTextField telchauffeur;
-    @FXML
-    private JFXTextField typechauffeur;
+    
     @FXML
     private JFXButton savebttn;
     @FXML
     private JFXButton anullerbttn;
-    @FXML
-    private Label savelabel;
+   
     @FXML
     private ImageView close;
+    
     public ArrayList<Camion> camions_Chauffeur = new ArrayList<>();
     private Chauffeur chauffeur;
+    @FXML
+    private JFXComboBox<String> typechauffeur;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.SetUpper(codechauffeur);
+      
         Methode.SetUpper(nomchauffeur);
         Methode.setOnlyInteger(telchauffeur, 10);
     }
@@ -57,7 +58,7 @@ public class ModificationChauffeurController implements Initializable {
         String nom = nomchauffeur.getText();
         String prenom = prenomchauffeur.getText();
         String tel = telchauffeur.getText();
-        String type = typechauffeur.getText();
+        String type = typechauffeur.getSelectionModel().getSelectedItem() ; 
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
             if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty() || type.isEmpty()) {
@@ -75,7 +76,7 @@ public class ModificationChauffeurController implements Initializable {
                     ChauffeurQueries.SaveOrUpdate(chauffeur);
                     Notification.Updatenotification();
                     new ShowPane().showChauffeur();
-                    savelabel.setVisible(true);
+                    
                     annuler(event);
                 }
             }
@@ -91,11 +92,11 @@ public class ModificationChauffeurController implements Initializable {
 
     public void setData(Chauffeur chauffeur) {
         this.chauffeur = chauffeur;
+        setType();
         nomchauffeur.setText(chauffeur.getNom());
         prenomchauffeur.setText(chauffeur.getPrenom());
-        codechauffeur.setText(chauffeur.getId() + "");
         telchauffeur.setText(chauffeur.getTelephone());
-        typechauffeur.setText(chauffeur.getType());
+        typechauffeur.setValue(chauffeur.getType());
     }
 
     @FXML
@@ -103,4 +104,10 @@ public class ModificationChauffeurController implements Initializable {
         Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
         g.close();
     }
+    
+     public void setType() {
+      typechauffeur.getItems().add("INTERNE") ; 
+      typechauffeur.getItems().add("EXTERNE") ; 
+  }
+    
 }

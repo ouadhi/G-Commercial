@@ -34,12 +34,11 @@ public class AjouterChauffeurViewController implements Initializable {
     private JFXTextField nomchauffeur;
     @FXML
     private JFXTextField prenomchauffeur;
-    @FXML
-    private JFXTextField codechauffeur;
+ 
     @FXML
     private JFXTextField telchauffeur;
     @FXML
-    private JFXTextField typechauffeur;
+    private JFXComboBox<String> typechauffeur;
     @FXML
     private JFXButton savebttn;
     @FXML
@@ -57,9 +56,9 @@ public class AjouterChauffeurViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.SetUpper(codechauffeur);
         Methode.SetUpper(nomchauffeur);
         Methode.setOnlyInteger(telchauffeur,10);
+        setType();
     }
 
     @FXML
@@ -68,7 +67,7 @@ public class AjouterChauffeurViewController implements Initializable {
         String nom = nomchauffeur.getText();
         String prenom = prenomchauffeur.getText();
         String tel = telchauffeur.getText();
-        String type = typechauffeur.getText();
+        String type = typechauffeur.getSelectionModel().getSelectedItem();
 
         if (nom.isEmpty() || prenom.isEmpty()  || tel.isEmpty() || type.isEmpty()) {
 
@@ -136,6 +135,9 @@ public class AjouterChauffeurViewController implements Initializable {
         }
     }
     
-
+  public void setType() {
+      typechauffeur.getItems().add("INTERNE") ; 
+      typechauffeur.getItems().add("EXTERNE") ; 
+  }
 
 }

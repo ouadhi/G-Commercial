@@ -42,7 +42,7 @@
                   <JFXTextField fx:id="codecamion" focusColor="#405aa801" maxWidth="270.0" minWidth="270.0" prefHeight="42.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1" />
                   <JFXTextField fx:id="matricule" focusColor="#405aa801" maxWidth="268.0" minWidth="268.0" prefHeight="45.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label styleClass="label_info" text="Matricule Camion" GridPane.columnIndex="1" />
-                  <Label styleClass="label_info" text="Type Camion :" GridPane.rowIndex="2" />
+                  <Label styleClass="label_info" text="Marque :" GridPane.rowIndex="2" />
                   <JFXTextField fx:id="typecamion" focusColor="#405aa801" prefHeight="42.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="3" />
                   <Label styleClass="label_info" text="Pois Camion :" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <JFXTextField fx:id="poisCamion" focusColor="#405aa801" prefHeight="42.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
