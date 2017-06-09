@@ -77,10 +77,11 @@ public class FinOperationController implements Initializable {
     static ImageView statDock;
     @FXML
     private JFXTextField numerotickit;
-    @FXML
     private JFXTextField numeroBon;
     @FXML
     private JFXTextField poidTotal;
+    @FXML
+    private JFXTextField poidcamion;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -98,11 +99,11 @@ public class FinOperationController implements Initializable {
             poidtotalkey(e);
         });
         Methode.setOnlyInteger(numero, 10);
-        Methode.setOnlyInteger(numeroBon, 10);
+        Methode.setOnlyInteger(poidcamion, 10);
         Methode.setOnlyInteger(numerotickit, 10);
         Methode.setOnlyDouble(Q_Acquit, 10);
         Methode.setSelectedMouseClick(numero);
-        Methode.setSelectedMouseClick(numeroBon);
+        Methode.setSelectedMouseClick(poidcamion);
         Methode.setSelectedMouseClick(numerotickit);
         Methode.setSelectedMouseClick(Q_Acquit);
         
