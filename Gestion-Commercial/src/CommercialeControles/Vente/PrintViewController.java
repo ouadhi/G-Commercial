@@ -97,8 +97,8 @@ public class PrintViewController implements Initializable {
                 }
                 generateBonChargementReport.generateReport(String.valueOf(factureimp.getClient().getId()),
                         factureimp.getDate().toString(), factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
-                        factureimp.getClient().getTypeActivity(), factureimp.getClient().getAddressClient(),factureimp.getClient().getNumRegCom(),
-                        factureimp.getClient().getnCarteFiscale(),factureimp.getClient().getNumArticle(),
+                        factureimp.getClient().getTypeActivity(), factureimp.getClient().getAddressClient(), factureimp.getClient().getNumRegCom(),
+                        factureimp.getClient().getnCarteFiscale(), factureimp.getClient().getNumArticle(),
                         designationsVente, qtesVente);
 
             } catch (Exception ex) {
@@ -114,9 +114,12 @@ public class PrintViewController implements Initializable {
                 //get list produits, qte 
                 List<String> designationsVente = new ArrayList<>();
                 List<String> qtesVente = new ArrayList<>();
+                List<String> typesVente = new ArrayList<>();
+
                 for (int i = 0; i < factureimp.getQtes().size(); i++) {
                     designationsVente.add(factureimp.getQtes().get(i).getProduit().getNom());
                     qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
+                    typesVente.add(factureimp.getQtes().get(i).getProduit().getCategory());
                 }
                 generateBonLivraisonReport.generateReport(
                         factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
@@ -126,7 +129,7 @@ public class PrintViewController implements Initializable {
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(),
                         factureimp.getChauffeur().getNom() + " " + factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente,
-                        qtesVente);
+                        qtesVente,typesVente);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

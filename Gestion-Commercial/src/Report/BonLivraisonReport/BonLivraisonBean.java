@@ -26,11 +26,12 @@ public class BonLivraisonBean {
     String matricule;
     public List<String> designations;
     public List<String> qtes;
+    public List<String> types;
 
     public BonLivraisonBean(int id, String nom, String code, String address,
             String rc, String fiscal, String date, String numFacture,
             String article, String chauffeur,
-            String matricule, List<String> designations, List<String> qtes) {
+            String matricule, List<String> designations, List<String> qtes,List<String> types) {
         this.id = id;
         this.nom = nom;
         this.code = code;
@@ -44,6 +45,15 @@ public class BonLivraisonBean {
         this.matricule = matricule;
         this.designations = designations;
         this.qtes = qtes;
+        this.types= types;
+    }
+
+    public List<String> getTypes() {
+        return types;
+    }
+
+    public void setTypes(List<String> types) {
+        this.types = types;
     }
 
     public int getId() {

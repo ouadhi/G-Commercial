@@ -19,7 +19,7 @@ public class GenerateBonLivraisonReport {
     public void generateReport(String nom, String code, String address,
             String rc, String fiscal, String date, String numFacture,
             String article, String chauffeur,
-            String matricule, List<String> designationsVente, List<String> qtesVente) throws IOException, JRException {
+            String matricule, List<String> designationsVente, List<String> qtesVente,List<String> typesVente) throws IOException, JRException {
         OperationBonLivraisonReport operationBonLivraisonReport = new OperationBonLivraisonReport();
         for (int i = 0; i < designationsVente.size(); i++) {
             String designation = designationsVente.get(i);
@@ -28,8 +28,11 @@ public class GenerateBonLivraisonReport {
             String qte = qtesVente.get(i);
             List<String> qtes = new ArrayList<>();
             qtes.add(qte);
+            String type = typesVente.get(i);
+            List<String> types = new ArrayList<>();
+            types.add(type);
             operationBonLivraisonReport.putReportInfo(nom, code, address, rc, fiscal, date,
-                    numFacture, article, chauffeur, matricule, designations, qtes);
+                    numFacture, article, chauffeur, matricule, designations, qtes,types);
 
         }
         operationBonLivraisonReport.printReport();

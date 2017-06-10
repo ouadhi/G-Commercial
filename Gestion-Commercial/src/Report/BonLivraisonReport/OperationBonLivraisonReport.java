@@ -40,9 +40,9 @@ public class OperationBonLivraisonReport {
     public void putReportInfo(String nom, String code, String address,
             String rc, String fiscal, String date, String numFacture,
             String article, String chauffeur,
-            String matricule, List<String> designations, List<String> qtes) {
+            String matricule, List<String> designations, List<String> qtes,List<String> types) {
         BonLivraisonBean beanInfo = new BonLivraisonBean(id, nom, code, address, rc, fiscal, date, numFacture,
-                article, chauffeur, matricule, designations, qtes);
+                article, chauffeur, matricule, designations, qtes, types);
         collBean.add(beanInfo);
         id++;
     }
