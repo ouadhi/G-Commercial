@@ -17,11 +17,14 @@ public class BonChargementBean {
     String nomEtPrenom;
     String code;
     String address;
+    public String rc;
+    public String fiscal;
+    public String article;
     public List<String>designations;
     public List<String>qtes;
 
     public BonChargementBean(String num, String date, String nomEtPrenom, String code
-            , String address, List<String> designations, List<String> qtes) {
+            , String address,String rc,String fiscal,String article, List<String> designations, List<String> qtes) {
         this.num = num;
         this.date = date;
         this.nomEtPrenom = nomEtPrenom;
@@ -29,6 +32,9 @@ public class BonChargementBean {
         this.address = address;
         this.designations = designations;
         this.qtes = qtes;
+        this.rc= rc;
+        this.fiscal= fiscal;
+        this.article= article;
     }
 
     public String getNum() {
@@ -85,6 +91,30 @@ public class BonChargementBean {
 
     public void setQtes(List<String> qtes) {
         this.qtes = qtes;
+    }
+
+    public String getRc() {
+        return rc;
+    }
+
+    public void setRc(String rc) {
+        this.rc = rc;
+    }
+
+    public String getFiscal() {
+        return fiscal;
+    }
+
+    public void setFiscal(String fiscal) {
+        this.fiscal = fiscal;
+    }
+
+    public String getArticle() {
+        return article;
+    }
+
+    public void setArticle(String article) {
+        this.article = article;
     }
     
 

@@ -37,11 +37,11 @@ public class OperationBonChargementReport {
     }
 
     public void putReportInfo(String num, String date, String nomEtPrenom, String code,
-            String address, List<String> designations, List<String> qtes) {
+            String address,String rc,String fiscal,String article, List<String> designations, List<String> qtes) {
         //patient info is the first to be written
 
         BonChargementBean beanInfo = new BonChargementBean(num, date, nomEtPrenom, code,
-                address, designations, qtes);
+                address, rc, fiscal, article, designations, qtes);
         collBean.add(beanInfo);
     }
 

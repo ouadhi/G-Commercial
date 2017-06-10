@@ -97,7 +97,8 @@ public class PrintViewController implements Initializable {
                 }
                 generateBonChargementReport.generateReport(String.valueOf(factureimp.getClient().getId()),
                         factureimp.getDate().toString(), factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
-                        String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient(),
+                        factureimp.getClient().getTypeActivity(), factureimp.getClient().getAddressClient(),factureimp.getClient().getNumRegCom(),
+                        factureimp.getClient().getnCarteFiscale(),factureimp.getClient().getNumArticle(),
                         designationsVente, qtesVente);
 
             } catch (Exception ex) {
