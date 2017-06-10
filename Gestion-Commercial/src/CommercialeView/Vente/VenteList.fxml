@@ -24,9 +24,10 @@
       <Label fx:id="label" layoutX="292.0" layoutY="39.0" styleClass="label_txt" text="Afficher :" />
       <MenuButton fx:id="Order" layoutX="365.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
          <items>
-            <MenuItem mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
-            <MenuItem mnemonicParsing="false" onAction="#Archive" text=" Archivé" />
-            <MenuItem mnemonicParsing="false" onAction="#tout" text="Tout" />
+            <MenuItem fx:id="nonArchive" mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
+            <MenuItem fx:id="archive" mnemonicParsing="false" onAction="#Archive" text=" Archivé" />
+            <MenuItem fx:id="toutb" mnemonicParsing="false" onAction="#tout" text="Tout" />
+            <MenuItem fx:id="pardate" mnemonicParsing="false" onAction="#pardate" text="Date" />
          </items>
       </MenuButton>
       <Pane layoutX="574.0" layoutY="24.0" prefHeight="45.0" prefWidth="411.0" styleClass="rechereche">
