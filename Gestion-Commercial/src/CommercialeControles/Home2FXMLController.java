@@ -138,6 +138,7 @@ public class Home2FXMLController implements Initializable {
     public void setMenu(AnchorPane Menu) {
         menu.getChildren().setAll(Menu);
         smalShow = true;
+        menup = menu;
         changeMenutoSmall();
     }
 
