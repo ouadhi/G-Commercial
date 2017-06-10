@@ -1,12 +1,13 @@
-
 package com.gestionCommerciale.Models;
+
 import com.gestionCommerciale.HibernateSchema.Client;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
 public class ClientQueries {
-        public static boolean SaveOrUpdate(Client client) {
+    
+    public static boolean SaveOrUpdate(Client client) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -20,6 +21,7 @@ public class ClientQueries {
             return true;
         }
     }
+    
     public static boolean archive(Client client) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -35,7 +37,7 @@ public class ClientQueries {
         }
         return true;
     }
-
+    
     public static boolean delete(Client client) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -50,18 +52,19 @@ public class ClientQueries {
         }
         return true;
     }
-
+    
     public static List<Client> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Client> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Client where deleted='"+false+"'").list();
+            list = session.createQuery("from Client where deleted='" + false + "'").list();
         } finally {
             session.close();
         }
         return list;
     }
+    
     public static List<Client> listArchived() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -73,6 +76,7 @@ public class ClientQueries {
         }
         return list;
     }
+    
     public static List<Client> listAll() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -84,6 +88,7 @@ public class ClientQueries {
         }
         return list;
     }
+    
     public static Client getClientById(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -95,33 +100,50 @@ public class ClientQueries {
         }
         return d;
     }
+    
     public static Client getClientByRegistre(String num) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         Client d;
         try {
-            d = (Client) session.createQuery("from Client where numRegCom='" +num+"'").uniqueResult();
+            d = (Client) session.createQuery("from Client where numRegCom='" + num + "'").uniqueResult();
         } finally {
             session.close();
         }
         return d;
     }
     
-     public static List<Client> listRechereche(String Key) {
+    public static Client getClientByNom(String nomPrenom) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        Client c= new Client();
+        List<Client> listClients = new ArrayList<>();
+        try {
+            listClients = session.createQuery("from Client").list();
+            
+            for (int i = 0; i < listClients.size(); i++) {
+                if ((listClients.get(i).getName() + " " + listClients.get(i).getPrenom()).equals(nomPrenom)) {
+                    c= listClients.get(i);
+                }
+            }
+        } finally {
+            session.close();
+        }
+        return c;
+    }
+    
+    public static List<Client> listRechereche(String Key) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Client> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Client where (name like '%"+Key+"%' OR  prenom like '%"+Key+"%' ) AND deleted='"+false+"'").list();
+            list = session.createQuery("from Client where (name like '%" + Key + "%' OR  prenom like '%" + Key + "%' ) AND deleted='" + false + "'").list();
         } finally {
             session.close();
         }
         return list;
     }
 
-
-    
-    
     /*
     //method insertion/modification
     public void SaveOrUpdate(Client client) {
@@ -185,5 +207,5 @@ public class ClientQueries {
         }
         return c;
     }
-*/
+     */
 }

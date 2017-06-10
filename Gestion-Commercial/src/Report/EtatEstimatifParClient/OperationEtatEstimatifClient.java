@@ -5,7 +5,6 @@
  */
 package Report.EtatEstimatifParClient;
 
-import Report.BonChargementReport.BonChargementBean;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
