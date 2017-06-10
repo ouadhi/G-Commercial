@@ -35,14 +35,20 @@ public class ParamaitreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Annee selected = AnneeQueries.getSelected();
-        AnneeStatic=Annee;
+        AnneeStatic = Annee;
         for (Annee annee : AnneeQueries.list()) {
             Annee.getItems().add(Integer.toString(annee.getIdAnnee()));
         }
-        Annee.getSelectionModel().select(selected.getIdAnnee()+"");
-        tva.setText(selected.getTva()+"");
-        anneeselected.setText(selected.getIdAnnee()+"");
-        
+        try {
+            if (selected != null) {
+                Annee.getSelectionModel().select(selected.getIdAnnee() + "");
+                tva.setText(selected.getTva() + "");
+                anneeselected.setText(selected.getIdAnnee() + "");
+            }
+        } catch (Exception e) {
+
+        }
+
     }
 
     @FXML
@@ -96,15 +102,15 @@ public class ParamaitreController implements Initializable {
         } else {
             anneeselected.setText(annee.getIdAnnee() + "");
             Annee aa = AnneeQueries.getSelected();
-            aa.setSelected(false);
-            AnneeQueries.SaveOrUpdate(aa);
+            if (aa != null) {
+                aa.setSelected(false);
+                AnneeQueries.SaveOrUpdate(aa);
+            }
             annee.setSelected(true);
             AnneeQueries.SaveOrUpdate(annee);
-            
+
             //AnneeQueries.select(annee.getIdAnnee());
-            
             Notification.errorNotification("bbb");
-            
 
         }
     }

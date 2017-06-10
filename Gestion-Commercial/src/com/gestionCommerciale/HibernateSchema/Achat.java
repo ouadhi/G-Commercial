@@ -37,8 +37,10 @@ public class Achat {
     double quantiteFour;
     @Column(name = "quantite_diff", nullable = false)
     double quantiteDiff;
-    @Column(name = "num_Bon", nullable = false)
-    String numBon;
+    @Column(name = "poid_camion", nullable = false)
+    double poidCamion;
+//    @Column(name = "num_Bon", nullable = false)
+//    String numBon;
     @ManyToOne
     @JoinColumn(name = "id_chauffeur")
     private Chauffeur chauffeur;
@@ -63,15 +65,16 @@ public class Achat {
     }
 
     public Achat(String numTiquet,String numAcqt, double quantiteAcqt, double quantiteFour,
-             double quantiteDiff, Date dateAcqt, String numBon,Annee annee) {
+             double quantiteDiff, Date dateAcqt, double poidCamion,Annee annee) {
         this.numAcqt = numAcqt;
         this.numTiquet = numTiquet;
         this.quantiteAcqt = quantiteAcqt;
         this.quantiteFour = quantiteFour;
         this.quantiteDiff = quantiteDiff;
-        this.numBon = numBon;
+//        this.numBon = numBon;
         this.dateAcqt = dateAcqt;
         this.annee = annee;
+        this.poidCamion = poidCamion;
     }
 
     public String getNumTiquet() {
@@ -87,13 +90,13 @@ public class Achat {
         return idAchat;
     }
 
-    public String getNumBon() {
-        return numBon;
-    }
-
-    public void setNumBon(String numBon) {
-        this.numBon = numBon;
-    }
+//    public String getNumBon() {
+//        return numBon;
+//    }
+//
+//    public void setNumBon(String numBon) {
+//        this.numBon = numBon;
+//    }
 
     public void setIdAchat(int idExpedition) {
         this.idAchat = idExpedition;
