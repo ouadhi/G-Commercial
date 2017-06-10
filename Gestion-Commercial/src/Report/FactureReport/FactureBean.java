@@ -33,11 +33,13 @@ public class FactureBean {
     public List<String> qtes;
     public List<String> prixs;
     public List<String> montants;
+    public List<String> types;
+
 
     public FactureBean(int id, String nom, String code, String address, String rc, String fiscal, String date,
             String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
             String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
-            List<String> prixs, List<String> montants) {
+            List<String> prixs, List<String> montants,List<String> types) {
         super();
         this.id = id;
         this.nom = nom;
@@ -59,6 +61,7 @@ public class FactureBean {
         this.qtes = qtes;
         this.prixs = prixs;
         this.montants = montants;
+        this.types= types;
     }
 
     public int getId() {
@@ -220,4 +223,13 @@ public class FactureBean {
     public void setMontants(List<String> montants) {
         this.montants = montants;
     }
+
+    public List<String> getTypes() {
+        return types;
+    }
+
+    public void setTypes(List<String> types) {
+        this.types = types;
+    }
+    
 }

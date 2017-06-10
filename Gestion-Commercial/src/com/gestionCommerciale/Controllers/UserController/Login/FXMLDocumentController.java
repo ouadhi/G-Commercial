@@ -119,6 +119,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void possible_utilisateur() {
+        
         String[] possiblewords = {"karim", "hichem1", "hichem2", "mohammed ouadhi", "mohammed cherberabe"};
 
         TextFields.bindAutoCompletion(username, possiblewords);

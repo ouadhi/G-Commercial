@@ -30,7 +30,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class OperationFactuReport {
 
-    Collection<FactureReportBean> collBean = new ArrayList<FactureReportBean>();
+    Collection<FactureBean> collBean = new ArrayList<FactureBean>();
     int id = 1;
 
     public JRDataSource getData() {
@@ -41,12 +41,12 @@ public class OperationFactuReport {
     public void putReportInfo(String nom, String code, String address, String rc, String fiscal, String date,
             String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
             String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
-            List<String> prixs, List<String> montants) {
+            List<String> prixs, List<String> montants,List<String> types) {
         //patient info is the first to be written
 
-        FactureReportBean beanInfo = new FactureReportBean(id, nom, code, address, rc, fiscal, date,
+        FactureBean beanInfo = new FactureBean(id, nom, code, address, rc, fiscal, date,
                 numFacture, article, montantHT, tva, timbre, ttc,
-                montantlettre, chauffeur, matricule, designations, qtes, prixs, montants);
+                montantlettre, chauffeur, matricule, designations, qtes, prixs, montants,types);
         collBean.add(beanInfo);
         id++;
     }

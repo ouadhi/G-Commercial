@@ -48,7 +48,7 @@ public class GenerateEtatExpeditionReport {
             Calendar cal = Calendar.getInstance();
             Date yearStart = new GregorianCalendar(cal.get(Calendar.YEAR), 0, 1).getTime();
             List<Date> dates = getDaysBetweenDates(yearStart,
-                    increment_decrementDays(true,jour,1));
+                    increment_decrementDays(true, jour, 1));
             List<Facture> listFactures = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 for (int j = 0; j < dates.size(); j++) {
@@ -302,7 +302,7 @@ public class GenerateEtatExpeditionReport {
         String newDate = new SimpleDateFormat("dd-MM-yyyy").format(jour);
         operationEtatExpedition.putReportInfo(newDate, String.valueOf(totalFarine), String.valueOf(totalSon),
                 String.valueOf(totalMontant), String.valueOf(totalVersement),
-                String.valueOf(totalQuantite),String.valueOf(totalVersemntMoinMontant), String.valueOf(round(farineTotal, 2)),
+                String.valueOf(totalQuantite), String.valueOf(totalVersemntMoinMontant), String.valueOf(round(farineTotal, 2)),
                 String.valueOf(round(sonTotal, 2)), String.valueOf(round(montantTotal, 2)), String.valueOf(round(versementTotal, 2)),
                 String.valueOf(round(differenceTotal, 2)), clients, nums,
                 produits, qteFarins, qteSons, prixs, montants, versements, observations);

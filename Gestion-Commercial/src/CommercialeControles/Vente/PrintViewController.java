@@ -53,10 +53,13 @@ public class PrintViewController implements Initializable {
                 List<String> qtesVente = new ArrayList<>();
                 List<String> prixsVente = new ArrayList<>();
                 List<String> montantsVente = new ArrayList<>();
+                List<String> typesVente = new ArrayList<>();
+
                 for (int i = 0; i < factureimp.getQtes().size(); i++) {
                     designationsVente.add(factureimp.getQtes().get(i).getProduit().getNom());
                     qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
                     prixsVente.add(String.valueOf(factureimp.getQtes().get(i).getProduit().getPrix()));
+                    typesVente.add(String.valueOf(factureimp.getQtes().get(i).getProduit().getCategory()));
                     montantsVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()
                             * factureimp.getQtes().get(i).getProduit().getPrix()));
                     montantTotal = montantTotal + (factureimp.getQtes().get(i).getQte_fact()
@@ -69,13 +72,13 @@ public class PrintViewController implements Initializable {
                 String montantlettre = ruleBasedNumberFormat.format(new Double(ttc)) + " Dinars Algérien";
 
                 generateFactureReport.generateReport(factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
-                        String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient(), factureimp.getClient().getNumRegCom(),
+                        String.valueOf(factureimp.getClient().getTypeActivity()), factureimp.getClient().getAddressClient(), factureimp.getClient().getNumRegCom(),
                         factureimp.getClient().getnCarteFiscale(), factureimp.getDate().toString(),
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(), String.valueOf(montantTotal),
                         String.valueOf(factureimp.getTva()), "0.00", new Double(ttc).toString(), montantlettre,
                         factureimp.getChauffeur().getNom() + factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente,
-                        qtesVente, prixsVente, montantsVente);
+                        qtesVente, prixsVente, montantsVente, typesVente);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
