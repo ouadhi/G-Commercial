@@ -75,8 +75,11 @@ public class FinOperationVenteController implements Initializable {
     @FXML
     private JFXComboBox<String> versemetCombo;
       StageDialog dialog  ; 
+    @FXML
+    private JFXTextField timbre;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Methode.setOnlyDouble(solde, 2);
         montantFinal.setEditable(false);
         montant.setEditable(false);
         solde.setEditable(false);
@@ -88,6 +91,7 @@ public class FinOperationVenteController implements Initializable {
         Methode.setSelectedMouseClick(versement);
         Methode.setZeroRemoved(versement);
         versement.setText("0.00");
+        timbre.setText("0.00");
         dateOperation.setValue(LocalDate.now());
         montantFinal_static.setEditable(false);
         montant.setEditable(false);
@@ -260,6 +264,7 @@ public class FinOperationVenteController implements Initializable {
     public void setVersement() {
         versemetCombo.getItems().add("Cheque");
         versemetCombo.getItems().add("Especes");
+        versemetCombo.getItems().add("A terme");
     }
 
 }
