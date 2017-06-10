@@ -123,13 +123,13 @@ public class PrintViewController implements Initializable {
                 }
                 generateBonLivraisonReport.generateReport(
                         factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
-                        String.valueOf(factureimp.getClient().getId()), factureimp.getClient().getAddressClient(),
+                        factureimp.getClient().getTypeActivity(), factureimp.getClient().getAddressClient(),
                         factureimp.getClient().getNumRegCom(),
                         factureimp.getClient().getnCarteFiscale(), factureimp.getDate().toString(),
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(),
                         factureimp.getChauffeur().getNom() + " " + factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente,
-                        qtesVente,typesVente);
+                        qtesVente, typesVente);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
