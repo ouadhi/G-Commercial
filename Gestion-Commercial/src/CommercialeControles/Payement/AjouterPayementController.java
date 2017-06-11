@@ -43,6 +43,8 @@ public class AjouterPayementController implements Initializable {
 
     private Client client;
     private JFXListView<PayementCell> listepayement;
+    @FXML
+    private JFXTextField timbre;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

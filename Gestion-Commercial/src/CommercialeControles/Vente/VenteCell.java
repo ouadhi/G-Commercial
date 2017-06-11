@@ -85,7 +85,7 @@ public class VenteCell extends GridPane {
         setMinWidth(1114.0);
         setPrefHeight(51.0);
         setPrefWidth(1114.0);
-        setStyle(" -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;");
+        
 
         columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);

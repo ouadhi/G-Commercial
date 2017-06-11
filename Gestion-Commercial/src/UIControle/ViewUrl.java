@@ -65,6 +65,7 @@ public class ViewUrl {
     public static String printvent = "/CommercialeView/Vente/PrintView.fxml";
     public static String produitfacture = "/CommercialeView/Vente/ListeProduitVente.fxml";
      public static String showvente = "/CommercialeView/Vente/ModifierVente.fxml";
+     public static String rechrecheparDate = "/CommercialeView/Vente/RecherecheParDate.fxml";
 
     // *****************************************
     public static String payement = "/CommercialeView/Payement/PayementListe.fxml";
@@ -81,6 +82,7 @@ public class ViewUrl {
     public static String etatRembourcementBle = "/CommercialeView/Rapport/Achat/FactureRembourecementBle.fxml";
     public static String etatRembourecementTransport = "/CommercialeView/Rapport/Achat/EtatRembourcementTransportBle.fxml";
     public static String etatExpedition = "/CommercialeView/Rapport/Vente/Expedition.fxml";
+     public static String clientRapport = "/CommercialeView/Rapport/Vente/ClienntRapport.fxml";
 
     // *******************************************
     public static String BanqueListe = "/CommercialeView/Banque/BanqueListe.fxml";
