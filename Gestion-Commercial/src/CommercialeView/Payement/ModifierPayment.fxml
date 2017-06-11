@@ -18,16 +18,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="369.0" prefWidth="512.0" style="-fx-background-color: white;" stylesheets="@payementCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Payement.ModifierPaymentController">
    <children>
-      <Text fill="#fd9252" layoutX="138.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facture" wrappingWidth="71.21875">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text fx:id="Nfacture" fill="#fd9252" layoutX="215.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" wrappingWidth="55.21875">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
       <JFXButton layoutX="322.0" layoutY="308.0" onAction="#save" prefHeight="50.0" prefWidth="177.0" styleClass="button_save" text="Sauvegader" />
       <JFXButton layoutX="121.0" layoutY="308.0" onAction="#close" prefHeight="50.0" prefWidth="177.0" styleClass="button_annuler" text="Annuler" />
       <GridPane layoutX="11.0" layoutY="90.0" prefHeight="204.0" prefWidth="491.0">
@@ -58,6 +48,12 @@
                   <Insets left="73.0" />
                </GridPane.margin>
             </JFXTextField>
+            <Label styleClass="label_txt" text="Timbre:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="Timbre" focusColor="#405aa800" maxWidth="170.0" minWidth="170.0" prefHeight="40.0" prefWidth="170.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="73.0" />
+               </GridPane.margin>
+            </JFXTextField>
          </children>
       </GridPane>
       <Pane prefHeight="50.0" prefWidth="512.0" style="-fx-background-color: #48afea;">
@@ -74,15 +70,5 @@
             </Text>
          </children>
       </Pane>
-      <Text fill="#fd9252" layoutX="256.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versement" wrappingWidth="118.21875">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text fx:id="Npayement" fill="#fd9252" layoutX="372.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" wrappingWidth="55.21875">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>
