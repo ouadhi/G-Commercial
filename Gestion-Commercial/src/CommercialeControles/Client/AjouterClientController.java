@@ -58,6 +58,8 @@ public class AjouterClientController implements Initializable {
     private JFXComboBox<String> activiteBox;
     @FXML
     private JFXCheckBox fermer;
+    @FXML
+    private JFXTextField solde;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

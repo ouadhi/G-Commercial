@@ -58,6 +58,8 @@ public class ModifierClientController implements Initializable {
     private JFXTextField Solde;
     @FXML
     private JFXComboBox<String> activiteBox;
+    @FXML
+    private JFXTextField NCarteF1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
