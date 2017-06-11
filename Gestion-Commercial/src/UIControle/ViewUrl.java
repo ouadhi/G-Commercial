@@ -83,6 +83,7 @@ public class ViewUrl {
     public static String etatRembourecementTransport = "/CommercialeView/Rapport/Achat/EtatRembourcementTransportBle.fxml";
     public static String etatExpedition = "/CommercialeView/Rapport/Vente/Expedition.fxml";
      public static String clientRapport = "/CommercialeView/Rapport/Vente/ClienntRapport.fxml";
+     
 
     // *******************************************
     public static String BanqueListe = "/CommercialeView/Banque/BanqueListe.fxml";
@@ -95,5 +96,8 @@ public class ViewUrl {
     public static String addAnneeEtTva = "/CommercialeView/Autre/AddAnnee.fxml";
     public static String ModifierAnnee = "/CommercialeView/Autre/ModifierAnnee.fxml";
     public static String Login2 = "/CommercialeView/Autre/Password.fxml";
+    
+    //*********************************$
+     public static String statistique = "/CommercialeView/Statistique/MenuViewStatisitque.fxml";
 
 }
