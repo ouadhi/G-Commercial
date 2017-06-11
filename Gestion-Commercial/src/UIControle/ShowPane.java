@@ -117,6 +117,10 @@ public class ShowPane {
     public void showBanque() {
         show(ViewUrl.BanqueListe, Home2FXMLController.workespacepane);
     }
+    
+    public void showStatistique() {
+        show(ViewUrl.statistique, Home2FXMLController.workespacepane);
+    }
 
     public void showRecette(ActionEvent event) {
         try {

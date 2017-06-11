@@ -37,7 +37,7 @@
          <children>
             <JFXButton onAction="#recetteprint" prefHeight="70.0" prefWidth="271.0" styleClass="ventebttnrapport" text="Recette" />
             <JFXButton onAction="#showExpedition" prefHeight="70.0" prefWidth="272.0" styleClass="ventebttnrapport" text="Expedition" />
-            <JFXButton prefHeight="70.0" prefWidth="274.0" styleClass="ventebttnrapport" />
+            <JFXButton onAction="#ClientRapports" prefHeight="70.0" prefWidth="274.0" styleClass="ventebttnrapport" text="Client" />
          </children>
       </VBox>
    </children>

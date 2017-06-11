@@ -86,7 +86,7 @@ public class BleListeH extends GridPane {
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
         GridPane.setMargin(imageView, new Insets(0.0, 0.0, 0.0, 39.0));
-        Image img = new Image(getClass().getResourceAsStream("/icons/BleGry.png"));
+        Image img = new Image(getClass().getResourceAsStream("/icons/Blegreen.png"));
         imageView.setImage(img);
 
         GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
@@ -94,7 +94,7 @@ public class BleListeH extends GridPane {
         GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label.setText(Integer.toString(this.code_ble));
+        label.setText(this.ble.getCodeBle());
         label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));

@@ -44,6 +44,8 @@ public class ModifierVenteController implements Initializable {
      Facture  facture  ; 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        montantFinal.setEditable(false);
+        montant1.setEditable(false);
         
     }    
 

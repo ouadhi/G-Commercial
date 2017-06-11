@@ -4,14 +4,14 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="back" stylesheets="@../Banque/BanqueCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Statistique.MenuViewStatisitqueController">
+<AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="back" stylesheets="@../Banque/BanqueCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Statistique.MenuViewStatisitqueController">
    <children>
-      <AnchorPane layoutX="79.0" layoutY="33.0" prefHeight="603.0" prefWidth="1089.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0">
+      <AnchorPane layoutX="79.0" layoutY="33.0" prefHeight="603.0" prefWidth="1089.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0">
          <children>
-            <BarChart fx:id="chartbar" layoutX="16.0" layoutY="9.0" prefHeight="576.0" prefWidth="1087.0">
+            <BarChart fx:id="chartbar" alternativeColumnFillVisible="true" layoutX="16.0" layoutY="68.0" prefHeight="517.0" prefWidth="1087.0" title="Vente Statistique">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -19,6 +19,10 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </BarChart>
+            <Label layoutX="64.0" layoutY="29.0" styleClass="label_txt" text="Nb Clients : " />
+            <Label fx:id="nbclient" layoutX="162.0" layoutY="29.0" prefHeight="17.0" prefWidth="60.0" styleClass="label_txt" />
+            <Label layoutX="288.0" layoutY="29.0" styleClass="label_txt" text="Somme des factures:" />
+            <Label fx:id="sommefactures" layoutX="456.0" layoutY="29.0" prefHeight="17.0" prefWidth="51.0" styleClass="label_txt" />
          </children>
       </AnchorPane>
       <JFXButton layoutX="451.0" layoutY="661.0" onAction="#client" prefHeight="51.0" prefWidth="176.0" styleClass="button_save" text="Client" />

@@ -43,12 +43,15 @@ public class AjouterPayementController implements Initializable {
 
     private Client client;
     private JFXListView<PayementCell> listepayement;
+    @FXML
+    private JFXTextField timbre;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         datepayment.setValue(LocalDate.now());
         Types.add("Especes");
         Types.add("Cheque");
+        Types.add("A terme"); 
         ObservableList<String> liste = FXCollections.observableList(Types);
         type.setItems(liste);
         type.getSelectionModel().select(0);

@@ -6,6 +6,7 @@ import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Camion;
 import com.gestionCommerciale.Models.CamionQueries;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,8 +25,6 @@ public class AjouterCamionController implements Initializable {
     private JFXButton savebttn;
     @FXML
     private JFXButton anullerbttn;
-    @FXML    
-    private Label savelabel;
     @FXML
     private ImageView close;
     @FXML
@@ -35,14 +34,13 @@ public class AjouterCamionController implements Initializable {
     @FXML
     private JFXTextField typecamion;
     @FXML
-    private JFXTextField marque;
-    @FXML
     private JFXTextField poisCamion;
     @FXML
     private Label labelsave;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         Methode.setOnlyDouble(poisCamion, 5);
         Methode.SetUpper(codecamion);
         Methode.SetUpper(matricule);
@@ -60,7 +58,7 @@ public class AjouterCamionController implements Initializable {
     private void sauvegarder(ActionEvent event) {
         String code = codecamion.getText();
         String matricule = this.matricule.getText();
-        String marque = typecamion.getText();
+        String marque = typecamion.getText() ; 
         Double poid = Double.parseDouble(poisCamion.getText());
 
         if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty() || poid == 0) {
@@ -98,5 +96,6 @@ public class AjouterCamionController implements Initializable {
         Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
         stage.close();
     }
+     
 
 }

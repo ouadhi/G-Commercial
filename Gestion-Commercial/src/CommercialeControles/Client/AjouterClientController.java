@@ -58,6 +58,8 @@ public class AjouterClientController implements Initializable {
     private JFXComboBox<String> activiteBox;
     @FXML
     private JFXCheckBox fermer;
+    @FXML
+    private JFXTextField solde;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -103,7 +105,7 @@ public class AjouterClientController implements Initializable {
                     } else {
                         clear();
                     }
-                    
+
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -127,6 +129,7 @@ public class AjouterClientController implements Initializable {
         List<String> listeActivty = new ArrayList<>();
         listeActivty.add("Boulangerie");
         listeActivty.add("Agriculteur");
+        listeActivty.add("Grossiste");
         listeActivty.add("Autre");
 
         ObservableList<String> list = FXCollections.observableList(listeActivty);
@@ -134,13 +137,13 @@ public class AjouterClientController implements Initializable {
         activiteBox.setItems(list);
 
     }
-    
-    private  void clear () {
+
+    private void clear() {
         nomtxt.setText("");
         prenomtxt.setText("");
         NRtxt.setText("");
         NAtxt.setText("");
-       adressetxt.setText("");
+        adressetxt.setText("");
         NCarteF.setText("");
     }
 }

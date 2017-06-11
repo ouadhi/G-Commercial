@@ -1,5 +1,6 @@
 package CommercialeControles;
 //
+
 import UIControle.Methode;
 import UIControle.ShowPane;
 import UIControle.ViewUrl;
@@ -73,7 +74,7 @@ public class Home2FXMLController implements Initializable {
             new ShowPane().showChauffeur();
 
         } catch (IOException ex) {
-            System.out.println("e"+ex);
+            System.out.println("e" + ex);
         }
     }
 
@@ -136,7 +137,8 @@ public class Home2FXMLController implements Initializable {
 
     public void setMenu(AnchorPane Menu) {
         menu.getChildren().setAll(Menu);
-        smalShow = true ; 
+        smalShow = true;
+        menup = menu;
         changeMenutoSmall();
     }
 
@@ -194,6 +196,15 @@ public class Home2FXMLController implements Initializable {
         popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
         popup.show(iconMore);
 
+    }
+
+    @FXML
+    private void closemenu(MouseEvent event) {
+        if (!smalShow) {
+            transitionout(panel_menu).play();
+            changeMenutoSmall();
+            smalShow = true;
+        }
     }
 
 }

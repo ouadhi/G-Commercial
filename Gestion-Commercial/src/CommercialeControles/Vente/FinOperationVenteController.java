@@ -70,13 +70,18 @@ public class FinOperationVenteController implements Initializable {
     static JFXTextField montantFinal_static = new JFXTextField();
     private static JFXTextField versement_static = new JFXTextField();
     private static JFXTextField solde_static = new JFXTextField();
+    private static JFXTextField timbre_static = new JFXTextField();
     @FXML
     private JFXTextField solde;
     @FXML
     private JFXComboBox<String> versemetCombo;
-      StageDialog dialog  ; 
+    StageDialog dialog;
+    @FXML
+    private JFXTextField timbre;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Methode.setOnlyDouble(timbre, 4);
         montantFinal.setEditable(false);
         montant.setEditable(false);
         solde.setEditable(false);
@@ -85,14 +90,34 @@ public class FinOperationVenteController implements Initializable {
         montantFinal_static = montantFinal;
         versement_static = versement;
         solde_static = solde;
+        timbre_static = timbre;
         Methode.setSelectedMouseClick(versement);
         Methode.setZeroRemoved(versement);
+        Methode.setSelectedMouseClick(timbre);
+        Methode.setZeroRemoved(timbre);
+        calculeOnChange(timbre);
         versement.setText("0.00");
+        timbre.setText("0.00");
         dateOperation.setValue(LocalDate.now());
         montantFinal_static.setEditable(false);
         montant.setEditable(false);
         solde.setEditable(false);
         intpop();
+    }
+
+    public static void calculeOnChange(JFXTextField field) {
+        field.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(javafx.scene.input.KeyEvent event) {
+                if (field.getText().isEmpty()) {
+                    field.setText("0.00");
+                    field.selectAll();
+                }
+
+                calcule();
+            }
+        });
+
     }
 
     @FXML
@@ -174,8 +199,7 @@ public class FinOperationVenteController implements Initializable {
 
         dialog = new StageDialog(Methode.getStageMouses(event), root);
         dialog.show();
-        
-        
+
     }
 
     private void intpop() {
@@ -211,6 +235,7 @@ public class FinOperationVenteController implements Initializable {
         f.setChauffeur(OperationVenteController.chauffeur);
         f.setCamion(OperationVenteController.camion);
         f.setMontantFinal(Double.parseDouble(montantFinal_static.getText()));
+        f.setTimbre(Double.parseDouble(timbre_static.getText()));
         FactureQueries.insert(f, payment, fpsList);
         imprimer(f, event);
     }
@@ -234,6 +259,8 @@ public class FinOperationVenteController implements Initializable {
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
             mf = (OperationVenteController.produitselected.get(i).getProduit().getTTC() * OperationVenteController.produitselected.get(i).getQuantite()) + mf;
         }
+        mf += Double.parseDouble(timbre_static.getText());
+
         return mf;
     }
 
@@ -258,8 +285,9 @@ public class FinOperationVenteController implements Initializable {
     }
 
     public void setVersement() {
-        versemetCombo.getItems().add("Cache");
+        versemetCombo.getItems().add("Cheque");
         versemetCombo.getItems().add("Especes");
+        versemetCombo.getItems().add("A terme");
     }
 
 }

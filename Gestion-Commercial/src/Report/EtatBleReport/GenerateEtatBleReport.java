@@ -104,7 +104,7 @@ public class GenerateEtatBleReport {
             String numTiquet = String.valueOf(achatDuJour.get(i).getNumTiquet());
             numTiquets.add(numTiquet);
             List<String> numBls = new ArrayList<>();
-            String numBl = String.valueOf(achatDuJour.get(i).getNumBon());
+            String numBl = String.valueOf(achatDuJour.get(i).getNumAcqt());
             numBls.add(numTiquet);
             operationEtatBleReport.putReportInfo(jourOB, String.valueOf(totalPoid),
                     String.valueOf(totalNet), String.valueOf(totalEcart), numBls,

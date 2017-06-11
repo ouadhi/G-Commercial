@@ -3,6 +3,7 @@ package CommercialeControles;
 
 import UIControle.ShowPane;
 import UIControle.ViewUrl;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,10 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -56,7 +60,7 @@ public class HomeFXMLController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
             stage.setScene(scene);
-            
+             changeMenutoSmall();
             new  ShowPane().showChauffeur();
 
         } catch (IOException ex) {
@@ -84,7 +88,7 @@ public class HomeFXMLController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
             stage.setScene(scene);
-            
+             changeMenutoSmall();
             new  ShowPane().showListAchat();
 
         } catch (IOException ex) {
@@ -112,7 +116,7 @@ public class HomeFXMLController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
             stage.setScene(scene);
-            
+             changeMenutoSmall();
             new  ShowPane().showClient();
 
         } catch (IOException ex) {
@@ -138,11 +142,24 @@ public class HomeFXMLController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
             stage.setScene(scene);
-            
+            changeMenutoSmall();
             new  ShowPane().showRapport();
 
         } catch (IOException ex) {
             Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+     private void changeMenutoSmall() {
+        AnchorPane pane = (AnchorPane) Home2FXMLController.menup.getChildren().get(0);
+        VBox box = (VBox) pane.getChildren().get(0);
+
+        for (Node node : box.getChildren()) {
+            if (node instanceof JFXButton) {
+                ((JFXButton) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                ((JFXButton) node).setAlignment(Pos.CENTER_RIGHT);
+            }
+        }
+     }
 }

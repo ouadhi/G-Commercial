@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
@@ -84,7 +85,7 @@ public class ModifierAchatController implements Initializable {
         numero.setText(achat.getNumAcqt()) ;
         Q_Acquit.setText(this.achat.getQuantiteAcqt()+"");
         Q_fournie.setText(this.achat.getQuantiteFour()+"");
-       // date.setValue(new LocalDateTimeStringConverter);
+        date.setValue(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.achat.getDateAcqt())));
 
         ch = new ChauffeurListH(this.achat.getChauffeur()) ; 
         camionH = new CamionListeH(this.achat.getCamion()) ; 

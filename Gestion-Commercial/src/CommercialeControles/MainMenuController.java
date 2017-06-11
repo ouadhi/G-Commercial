@@ -12,9 +12,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class MainMenuController implements Initializable {
 
@@ -46,8 +50,10 @@ public class MainMenuController implements Initializable {
         Home2FXMLController.bttn_menu.setGraphic(icon);
         
         AnchorPane  menu   = FXMLLoader.load(getClass().getResource(ViewUrl.AchatMenu)) ; 
-        Home2FXMLController.menup.getChildren().setAll(menu) ; 
-        new ShowPane().showBle();
+        Home2FXMLController.menup.getChildren().setAll(menu) ;
+          changeMenutoSmall();
+      
+        new ShowPane().showListAchat();
         
     }
 
@@ -62,6 +68,7 @@ public class MainMenuController implements Initializable {
         
         AnchorPane  menu   = FXMLLoader.load(getClass().getResource(ViewUrl.VenteMenu)) ; 
         Home2FXMLController.menup.getChildren().setAll(menu) ; 
+          changeMenutoSmall();
         new ShowPane().showClient();
         
     }
@@ -78,6 +85,7 @@ public class MainMenuController implements Initializable {
             AnchorPane  menu   = FXMLLoader.load(getClass().getResource(ViewUrl.TransportMenu)) ;
             Home2FXMLController.menup.getChildren().setAll(menu) ; 
             new ShowPane().showCamion();
+              changeMenutoSmall();
         } catch (IOException ex) {
             Logger.getLogger(MainMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -97,10 +105,23 @@ public class MainMenuController implements Initializable {
             AnchorPane  menu   = FXMLLoader.load(getClass().getResource(ViewUrl.rapportMenu)) ;
             Home2FXMLController.menup.getChildren().setAll(menu) ;
             new ShowPane().showUIRapport(event);
+            changeMenutoSmall();
         } catch (IOException ex) {
             Logger.getLogger(MainMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
        
     }
+    
+    private void changeMenutoSmall() {
+        AnchorPane pane = (AnchorPane) Home2FXMLController.menup.getChildren().get(0);
+        VBox box = (VBox) pane.getChildren().get(0);
+
+        for (Node node : box.getChildren()) {
+            if (node instanceof JFXButton) {
+                ((JFXButton) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                ((JFXButton) node).setAlignment(Pos.CENTER_RIGHT);
+            }
+        }
+     }
 
 }

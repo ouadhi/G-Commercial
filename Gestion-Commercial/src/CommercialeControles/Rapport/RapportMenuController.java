@@ -77,6 +77,7 @@ public class RapportMenuController implements Initializable {
 
     @FXML
     private void showStatistique(ActionEvent event) {
+        new ShowPane().showStatistique();
     }
     
 }

@@ -28,18 +28,17 @@ import net.sf.jasperreports.engine.analytics.data.Measure;
 public class ModifierPaymentController implements Initializable {
 
     @FXML
-    private Text Nfacture;
-    @FXML
     private JFXDatePicker datepayment;
     @FXML
     private JFXComboBox<String> type;
     @FXML
     private JFXTextField montont;
-    @FXML
     private Text Npayement;
 
     private Payment payment;
     private JFXListView<PayementCell> listepayement;
+    @FXML
+    private JFXTextField Timbre;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -79,6 +78,7 @@ public class ModifierPaymentController implements Initializable {
 
         Types.add("Especes");
         Types.add("Cheque");
+        Types.add("A terme"); 
         
         ObservableList<String> liste = FXCollections.observableList(Types);
         type.setItems(liste);
