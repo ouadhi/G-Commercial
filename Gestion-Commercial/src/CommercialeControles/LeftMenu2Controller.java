@@ -30,12 +30,9 @@ public class LeftMenu2Controller implements Initializable {
     @FXML
     private JFXButton camion;
     @FXML
-    private JFXButton rapport;
-    @FXML
     private ImageView iconHome;
     @FXML
     private ImageView iconCamion;
-    @FXML
     private ImageView iconRapport;
     @FXML
     private ImageView iconChauffeur;
@@ -61,7 +58,6 @@ public class LeftMenu2Controller implements Initializable {
           new ShowPane().showCamion();
     }
 
-    @FXML
     private void showrapport(ActionEvent event) {
       new ShowPane().showUIRapport(event);
     }
@@ -102,13 +98,11 @@ public class LeftMenu2Controller implements Initializable {
         iconCamion.setImage(img);
     }
 
-    @FXML
     private void OutRapport(MouseEvent event) {
         Image img = new Image(getClass().getResourceAsStream("/icons/RapportGry.png"));
         iconRapport.setImage(img);
     }
 
-    @FXML
     private void InRapport(MouseEvent event) {
         Image img = new Image(getClass().getResourceAsStream("/icons/RapportMagent.png"));
         iconRapport.setImage(img);

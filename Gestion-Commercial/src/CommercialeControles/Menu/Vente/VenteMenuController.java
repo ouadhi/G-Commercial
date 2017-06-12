@@ -44,14 +44,7 @@ public class VenteMenuController implements Initializable {
     private ImageView iconProduit;
     @FXML
     private ImageView facturicon;
-    @FXML
     private ImageView facturicon1;
-    @FXML
-    private JFXButton Rapport;
-    @FXML
-    private JFXButton Rapport1;
-    @FXML
-    private ImageView autreicon;
 
     
     @Override
@@ -93,10 +86,14 @@ public class VenteMenuController implements Initializable {
 
     @FXML
     private void InFacture(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/tax1.png"));
+        facturicon.setImage(img);
     }
 
     @FXML
     private void OutFacture(MouseEvent event) {
+        Image img = new Image(getClass().getResourceAsStream("/icons/tax.png"));
+        facturicon.setImage(img);
     }
 
     @FXML
@@ -124,28 +121,21 @@ public class VenteMenuController implements Initializable {
         iconclien.setImage(img);
     }
 
-    @FXML
     private void OutRapport(MouseEvent event) {
-        Image img = new Image(getClass().getResourceAsStream("/icons/RapportGry.png"));
-        facturicon1.setImage(img);
+        
     }
 
-    @FXML
     private void InRapport(MouseEvent event) {
-        Image img = new Image(getClass().getResourceAsStream("/icons/RapportOrange.png"));
+        Image img = new Image(getClass().getResourceAsStream("/icons/tax.png"));
         facturicon1.setImage(img);
     }
 
-    @FXML
     private void showRapport(ActionEvent event) {
         showUIRapport(event); 
     }
 
     
 
-    @FXML
-    private void showautre(ActionEvent event) {
-    }
     
     private void showUIRapport(ActionEvent event) {
         try{
