@@ -30,7 +30,7 @@
       <Label layoutX="103.0" layoutY="128.0" styleClass="label_txt" text="TVA  : " />
       <JFXTextField fx:id="annee" focusColor="#405aa800" layoutX="153.0" layoutY="78.0" maxWidth="213.0" minWidth="213.0" prefHeight="33.0" prefWidth="213.0" styleClass="champtxt" unFocusColor="#4d4d4d00" />
       <JFXTextField fx:id="tva" focusColor="#405aa800" layoutX="153.0" layoutY="121.0" maxWidth="213.0" minWidth="213.0" prefHeight="33.0" prefWidth="213.0" styleClass="champtxt" unFocusColor="#4d4d4d00" />
-      <JFXButton layoutX="266.0" layoutY="201.0" onAction="#save" prefHeight="50.0" prefWidth="133.0" styleClass="button_save" text="Sauvegarder" />
+      <JFXButton layoutX="266.0" layoutY="201.0" onAction="#save" prefHeight="50.0" prefWidth="133.0" styleClass="button_save" text="Enregistrer" />
       <JFXButton layoutX="120.0" layoutY="201.0" onAction="#quitter" prefHeight="50.0" prefWidth="133.0" styleClass="button_annuler" text="Annuler" />
    </children>
 </AnchorPane>

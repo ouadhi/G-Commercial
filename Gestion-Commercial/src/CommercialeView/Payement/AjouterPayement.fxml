@@ -37,7 +37,7 @@
             <Font size="19.0" />
          </font>
       </Text>
-      <JFXButton layoutX="312.0" layoutY="298.0" onAction="#save" prefHeight="50.0" prefWidth="177.0" styleClass="button_save" text="Sauvegader" />
+      <JFXButton layoutX="312.0" layoutY="298.0" onAction="#save" prefHeight="50.0" prefWidth="177.0" styleClass="button_save" text="Enregistrer" />
       <JFXButton layoutX="111.0" layoutY="298.0" onAction="#close" prefHeight="50.0" prefWidth="177.0" styleClass="button_annuler" text="Annuler" />
       <GridPane layoutX="11.0" layoutY="82.0" prefHeight="204.0" prefWidth="491.0">
         <columnConstraints>

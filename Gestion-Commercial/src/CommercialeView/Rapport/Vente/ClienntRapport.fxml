@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="304.0" prefWidth="512.0" style="-fx-background-color: white;" stylesheets="@../CssRapport.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Rapport.Vente.ClienntRapportController">
+<AnchorPane id="AnchorPane" prefHeight="304.0" prefWidth="512.0" style="-fx-background-color: white;" stylesheets="@../CssRapport.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Rapport.Vente.ClienntRapportController">
    <children>
       <Pane prefHeight="50.0" prefWidth="512.0" style="-fx-background-color: #0083c5;">
          <children>
@@ -21,6 +21,11 @@
                   <Image url="/icons/close.png" />
                </image>
             </ImageView>
+            <Text fill="WHITE" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etat Estimatif Par Client">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <JFXDatePicker fx:id="datedebut" layoutX="43.0" layoutY="82.0" />
@@ -35,12 +40,12 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <JFXButton layoutX="114.0" layoutY="227.0" onAction="#rapport1" styleClass="button_save" text="Rapport2" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="261.0">
+      <JFXButton layoutX="114.0" layoutY="227.0" onAction="#rapport1" styleClass="button_save" text="Géneral" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="261.0">
          <padding>
             <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
          </padding>
       </JFXButton>
-      <JFXButton fx:id="rapport2" layoutX="261.0" layoutY="227.0" styleClass="button_save" text="Rapport1" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="114.0">
+      <JFXButton fx:id="rapport2" layoutX="261.0" layoutY="227.0" styleClass="button_save" text="Détaillé" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="114.0">
          <padding>
             <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
          </padding>

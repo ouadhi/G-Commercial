@@ -5,7 +5,9 @@ import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Payment;
 import com.gestionCommerciale.HibernateSchema.Produit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import org.apache.commons.beanutils.converters.SqlDateConverter;
 import org.hibernate.Session;
 
 /**
@@ -141,6 +143,23 @@ public class FactureQueries {
         List<Facture> list = new ArrayList<>();
         try {
             list = session.createQuery("from Facture where id_client='" + id + "' AND deleted='" + false + "'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+    public static List<Facture> getFacturesListByClientIdDates(Date from, Date to) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Facture> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Facture where deleted='" + false + "' and date BETWEEN '"
+                    
+                    +from.getYear()+"-"+from.getMonth()+"-"+from.getDay()
+                    
+                    +"' AND '"
+                    +to.getYear()+"-"+to.getMonth()+"-"+to.getDay()
+                    +"'  ").list();
         } finally {
             session.close();
         }
