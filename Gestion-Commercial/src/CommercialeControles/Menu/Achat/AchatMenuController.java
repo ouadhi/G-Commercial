@@ -33,21 +33,16 @@ public class AchatMenuController implements Initializable {
     @FXML
     private JFXButton Ble;
     @FXML
-    private JFXButton Rapport;
-    @FXML
     private ImageView homeimage;
     @FXML
     private ImageView dockicon;
     @FXML
     private ImageView bleicon;
-    @FXML
     private ImageView rapporticon;
     @FXML
     private JFXButton achat;
     @FXML
     private ImageView achaticon;
-    @FXML
-    private ImageView Autreicon;
 
     
     @Override
@@ -73,7 +68,6 @@ public class AchatMenuController implements Initializable {
         new  ShowPane().showBle();
     }
 
-    @FXML
     private void showRapport(ActionEvent event) {
         showUIRapport(event);
     }
@@ -116,14 +110,14 @@ public class AchatMenuController implements Initializable {
 
     @FXML
     private void rapportOut(MouseEvent event) {
-         Image img = new Image(getClass().getResourceAsStream("/icons/RapportGry.png"));
-        rapporticon.setImage(img);
+         Image img = new Image(getClass().getResourceAsStream("/icons/achat1.png"));
+         achaticon.setImage(img);
     }
 
     @FXML
     private void rapportIN(MouseEvent event) {
-         Image img = new Image(getClass().getResourceAsStream("/icons/statgreen.png"));
-        rapporticon.setImage(img);
+         Image img = new Image(getClass().getResourceAsStream("/icons/achat2.png"));
+        achaticon.setImage(img);
     }
 
     @FXML
@@ -131,9 +125,6 @@ public class AchatMenuController implements Initializable {
          new ShowPane().showListAchat();
     }
 
-    @FXML
-    private void showAutre(ActionEvent event) {
-    }
     
     
     private void showUIRapport(ActionEvent event) {

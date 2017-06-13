@@ -33,7 +33,7 @@ public class MainMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image(getClass().getResourceAsStream("/icons/select1.png"));
+        Image img = new Image(getClass().getResourceAsStream("/icons/select2.png"));
         ImageView icon = new ImageView(img);
         icon.prefHeight(35);
         icon.prefWidth(50);
@@ -42,7 +42,7 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void show_achat(ActionEvent event) throws IOException {
-        Image img = new Image(getClass().getResourceAsStream("/icons/select1.png"));
+        Image img = new Image(getClass().getResourceAsStream("/icons/select2.png"));
         ImageView icon = new ImageView(img);
         icon.prefHeight(35);
         icon.prefWidth(50);
@@ -59,7 +59,7 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void show_vente(ActionEvent event) throws IOException {
-        Image img = new Image(getClass().getResourceAsStream("/icons/select2.png"));
+        Image img = new Image(getClass().getResourceAsStream("/icons/select4.png"));
         ImageView icon = new ImageView(img);
         icon.prefHeight(35);
         icon.prefWidth(50);
@@ -69,14 +69,14 @@ public class MainMenuController implements Initializable {
         AnchorPane  menu   = FXMLLoader.load(getClass().getResource(ViewUrl.VenteMenu)) ; 
         Home2FXMLController.menup.getChildren().setAll(menu) ; 
           changeMenutoSmall();
-        new ShowPane().showClient();
+        new ShowPane().showVenteListe();
         
     }
 
     @FXML
     private void show_import(ActionEvent event) {
          try {
-            Image img = new Image(getClass().getResourceAsStream("/icons/select4.png"));
+            Image img = new Image(getClass().getResourceAsStream("/icons/select1.png"));
             ImageView icon = new ImageView(img);
             icon.prefHeight(35);
             icon.prefWidth(50);

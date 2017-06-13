@@ -38,12 +38,12 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label styleClass="label_txt" text="Code DE Ble :">
+            <Label styleClass="label_txt" text="Code Ble ">
                <GridPane.margin>
                   <Insets bottom="30.0" left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label_txt" text="Quantite :" GridPane.rowIndex="2">
+            <Label styleClass="label_txt" text="Quantite " GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="30.0" left="10.0" />
                </GridPane.margin>
@@ -58,7 +58,7 @@
                   <Insets left="10.0" top="32.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label styleClass="label_txt" text="Prix :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Prix " GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="32.0" left="10.0" />
                </GridPane.margin>

@@ -57,11 +57,14 @@ public class Home2FXMLController implements Initializable {
     public static AnchorPane workespacepane;
     @FXML
     private ImageView iconMore;
-
+    
+     HamburgerBackArrowBasicTransition transition ; 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
+            transition = new HamburgerBackArrowBasicTransition(hamburguerbutton);
+
             workespacepane = workespace;
             menup = menu;
             bttn_menu = menu_button;
@@ -79,7 +82,7 @@ public class Home2FXMLController implements Initializable {
     }
 
     public void hummberguer_transaction() {
-        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburguerbutton);
+       
         transition.setRate(-1);
         hamburguerbutton.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
             transition.setRate(transition.getRate() * -1);
@@ -204,6 +207,12 @@ public class Home2FXMLController implements Initializable {
             transitionout(panel_menu).play();
             changeMenutoSmall();
             smalShow = true;
+            transition.setRate(transition.getRate() * -1);
+            transition.play();
+        }
+        
+        if(main_menu.isShown()){
+            main_menu.close();
         }
     }
 

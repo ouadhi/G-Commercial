@@ -36,9 +36,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label styleClass="title_panel" text="Nom de Dock:">
+            <Label styleClass="label_txt" text="Nom de Dock">
                <GridPane.margin>
-                  <Insets left="10.0" top="-45.0" />
+                  <Insets top="-45.0" />
                </GridPane.margin>
             </Label>
             <JFXTextField fx:id="nom" focusColor="#405aa800" maxWidth="249.0" minWidth="240.0" prefHeight="45.0" prefWidth="240.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
@@ -61,19 +61,19 @@
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label styleClass="title_panel" text="Wilaya :" GridPane.columnIndex="1">
+            <Label styleClass="label_txt" text="Wilaya " GridPane.columnIndex="1">
                <GridPane.margin>
-                  <Insets left="10.0" top="-45.0" />
+                  <Insets top="-45.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Distance :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Distance " GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="10.0" top="-45.0" />
+                  <Insets top="-45.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Prix :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Prix " GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="10.0" top="-45.0" />
+                  <Insets top="-45.0" />
                </GridPane.margin>
             </Label>
          </children>

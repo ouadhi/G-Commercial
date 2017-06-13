@@ -23,25 +23,25 @@
                <graphic>
                   <ImageView fx:id="rapporticon" fitHeight="28.0" fitWidth="28.0" onMouseExited="#InFacture" onMouseMoved="#OutFacture" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="icons/RapportGry.png" />
+                        <Image url="icons/rapport2.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="Facture" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="61.0" onAction="#showStatistique" onMouseExited="#InFacture" onMouseMoved="#OutFacture" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Statistique">
+            <JFXButton fx:id="Facture" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="61.0" onAction="#showStatistique" onMouseEntered="#Instati" onMouseExited="#Outstati" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Statistique">
                <graphic>
                   <ImageView fx:id="staticon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="icons/state.png" />
+                        <Image url="icons/stati2.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#showbanque" onMouseExited="#InFacture" onMouseMoved="#OutFacture" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Banque">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#showbanque" onMouseEntered="#Inbanque" onMouseExited="#outbanque" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Banque">
                <graphic>
                   <ImageView fx:id="banqueicon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="icons/state.png" />
+                        <Image url="icons/banque2.png" />
                      </image>
                   </ImageView>
                </graphic>

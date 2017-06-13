@@ -45,7 +45,7 @@
             <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label styleClass="label_txt" text="Designation Produit :">
+            <Label styleClass="label_txt" text="Designation Produit ">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -93,7 +93,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label styleClass="label_txt" text="Prix Unit :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Prix Unit " GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -101,7 +101,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label styleClass="label_txt" text="Code Produit :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Code Produit " GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -117,7 +117,7 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <Label layoutX="20.0" layoutY="149.0" styleClass="label_txt" text="Quantité Produit :" GridPane.rowIndex="2">
+            <Label layoutX="20.0" layoutY="149.0" styleClass="label_txt" text="Quantité Produit " GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" top="-45.0" />
                </GridPane.margin>
@@ -125,7 +125,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="309.0" layoutY="149.0" styleClass="label_txt" text="TVA : " GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label layoutX="309.0" layoutY="149.0" styleClass="label_txt" text="TVA " GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="-0.0" left="10.0" top="-45.0" />
                </GridPane.margin>

@@ -41,25 +41,7 @@
                <graphic>
                   <ImageView fx:id="facturicon" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="icons/state.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="Rapport" alignment="BASELINE_LEFT" graphicTextGap="7.0" layoutX="10.0" layoutY="163.0" onAction="#showRapport" onMouseEntered="#InRapport" onMouseExited="#OutRapport" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Rapport">
-               <graphic>
-                  <ImageView fx:id="facturicon1" fitHeight="28.0" fitWidth="28.0" onMouseExited="#InFacture" onMouseMoved="#OutFacture" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="icons/RapportGry.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="Rapport1" alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#showautre" onMouseEntered="#InRapport" onMouseExited="#OutRapport" prefHeight="51.0" prefWidth="127.0" styleClass="button-menu" text="Autre">
-               <graphic>
-                  <ImageView fx:id="autreicon" fitHeight="28.0" fitWidth="28.0" onMouseExited="#InFacture" onMouseMoved="#OutFacture" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="icons/RapportGry.png" />
+                        <Image url="icons/tax1.png" />
                      </image>
                   </ImageView>
                </graphic>

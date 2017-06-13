@@ -4,8 +4,12 @@ import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Payment;
 import com.gestionCommerciale.HibernateSchema.Produit;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import org.apache.commons.beanutils.converters.SqlDateConverter;
 import org.hibernate.Session;
 
 /**
@@ -35,8 +39,7 @@ public class FactureQueries {
         try {
             session.beginTransaction();
             session.saveOrUpdate(facture);
-            if (payment.getMontant() != 0) 
-            {
+            if (payment.getMontant() != 0) {
                 session.saveOrUpdate(payment);
             }
             for (Facture_Produit fp : fpsList) {
@@ -134,6 +137,24 @@ public class FactureQueries {
         return d;
     }
 
+    public static List<Facture> getFactureByDates(Date start, Date end) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String startString = df.format(start);
+        String endString = df.format(end);
+
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Facture> list = new ArrayList<>();
+        try {
+            System.err.println(startString+"**"+endString);
+            list = session.createQuery("from Facture where date BETWEEN '"+startString+"' AND '"+endString+"'")
+                    .list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
     //back
     public static List<Facture> getFacturesListByClientId(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
@@ -141,6 +162,23 @@ public class FactureQueries {
         List<Facture> list = new ArrayList<>();
         try {
             list = session.createQuery("from Facture where id_client='" + id + "' AND deleted='" + false + "'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+    public static List<Facture> getFacturesListByClientIdDates(Date from, Date to) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Facture> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Facture where deleted='" + false + "' and date BETWEEN '"
+                    
+                    +from.getYear()+"-"+from.getMonth()+"-"+from.getDay()
+                    
+                    +"' AND '"
+                    +to.getYear()+"-"+to.getMonth()+"-"+to.getDay()
+                    +"'  ").list();
         } finally {
             session.close();
         }
