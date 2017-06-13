@@ -50,6 +50,7 @@ public class ModificationChauffeurController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
       
         Methode.SetUpper(nomchauffeur ,30);
+        Methode.setsizeString(prenomchauffeur, 30);
         Methode.setOnlyInteger(telchauffeur, 10);
     }
 

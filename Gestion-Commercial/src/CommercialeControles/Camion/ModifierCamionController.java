@@ -52,6 +52,7 @@ public class ModifierCamionController implements Initializable {
         Methode.setSelectedMouseClick(matricule);
         //Methode.setSelectedMouseClick(type);
         Methode.setZeroRemoved(PoisCamion);
+        Methode.setsizeString(taillecamion, 32);
     }
 
     @FXML

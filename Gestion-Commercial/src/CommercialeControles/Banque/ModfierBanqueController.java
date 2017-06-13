@@ -34,6 +34,7 @@ public class ModfierBanqueController implements Initializable {
         Methode.setOnlyInteger(telephone, 10);
         Methode.SetUpper(nombanque,32);
         Methode.SetUpper(NumCompte,32);
+        Methode.setsizeString(adresse, 32);
         
     }    
     

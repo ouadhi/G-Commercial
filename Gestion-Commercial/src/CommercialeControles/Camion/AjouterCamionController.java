@@ -51,6 +51,7 @@ public class AjouterCamionController implements Initializable {
         Methode.setZeroRemoved(poisCamion);
 
         poisCamion.setText("0.00");
+        Methode.setsizeString(typecamion, 32);
 
     }
 

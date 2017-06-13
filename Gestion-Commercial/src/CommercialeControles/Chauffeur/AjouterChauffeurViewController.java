@@ -58,6 +58,7 @@ public class AjouterChauffeurViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Methode.SetUpper(nomchauffeur ,30);
         Methode.setOnlyInteger(telchauffeur,10);
+           Methode.setsizeString(prenomchauffeur, 30);
         setType();
     }
 

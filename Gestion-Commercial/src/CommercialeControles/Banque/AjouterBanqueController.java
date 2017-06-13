@@ -38,7 +38,9 @@ public class AjouterBanqueController implements Initializable {
         Methode.setOnlyInteger(telephone, 10);
         Methode.SetUpper(nombanque , 30);
         Methode.SetUpper(NumCompte, 30);
-        Methode.setsizeString(nombanque, 5);
+       Methode.setsizeString(adresse, 32);
+        
+        
 
     }
 
