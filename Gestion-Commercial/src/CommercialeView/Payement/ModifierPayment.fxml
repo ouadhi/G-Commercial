@@ -18,7 +18,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="369.0" prefWidth="512.0" style="-fx-background-color: white;" stylesheets="@payementCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Payement.ModifierPaymentController">
    <children>
-      <JFXButton layoutX="322.0" layoutY="308.0" onAction="#save" prefHeight="50.0" prefWidth="177.0" styleClass="button_save" text="Sauvegader" />
+      <JFXButton layoutX="322.0" layoutY="308.0" onAction="#save" prefHeight="50.0" prefWidth="177.0" styleClass="button_save" text="Enregistrer" />
       <JFXButton layoutX="121.0" layoutY="308.0" onAction="#close" prefHeight="50.0" prefWidth="177.0" styleClass="button_annuler" text="Annuler" />
       <GridPane layoutX="11.0" layoutY="90.0" prefHeight="204.0" prefWidth="491.0">
          <columnConstraints>

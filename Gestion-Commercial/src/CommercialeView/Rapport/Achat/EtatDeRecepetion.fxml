@@ -26,8 +26,8 @@
             </Text>
          </children>
       </Pane>
-      <JFXButton layoutX="334.0" layoutY="230.0" onAction="#print" prefHeight="60.0" prefWidth="180.0" styleClass="button_save" text="Imprimer" />
-      <JFXButton layoutX="124.0" layoutY="230.0" onAction="#close" prefHeight="60.0" prefWidth="180.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton layoutX="325.0" layoutY="231.0" onAction="#print" prefHeight="50.0" prefWidth="158.0" styleClass="button_save" text="Imprimer" />
+      <JFXButton layoutX="154.0" layoutY="233.0" onAction="#close" prefHeight="50.0" prefWidth="158.0" styleClass="button_annuler" text="Annuler" />
       <JFXDatePicker fx:id="datedebut" layoutX="82.0" layoutY="87.0" prefHeight="45.0" prefWidth="230.0" promptText="Date debut" />
       <JFXDatePicker fx:id="dateFin" layoutX="334.0" layoutY="87.0" prefHeight="45.0" prefWidth="230.0" promptText="Date Fin" />
       <JFXTextField fx:id="val" focusColor="#405aa800" layoutX="197.0" layoutY="148.0" maxWidth="230.0" minWidth="192.0" prefHeight="50.0" prefWidth="230.0" styleClass="champtxt" unFocusColor="#4d4d4d00" />

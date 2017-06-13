@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -20,12 +21,15 @@ public class Loginform extends Application {
                 SessionsGenerator FactoryObject = new SessionsGenerator();
             }
         }.start();
-
+         Image icon = new Image(getClass().getResourceAsStream("/icons/ok.png"));
+         stage.getIcons().add(icon) ; 
         //Parent root = FXMLLoader.load(getClass().getResource("/Views/Employee_LoginFXML.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
         //Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.DockList));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+       
+       
         stage.show();
 
         transitionIN(root);

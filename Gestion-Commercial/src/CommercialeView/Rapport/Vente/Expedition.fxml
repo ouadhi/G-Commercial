@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="264.0" prefWidth="601.0" style="-fx-background-color: white;" stylesheets="@../CssRapport.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Rapport.Vente.ExpeditionController">
+<AnchorPane id="AnchorPane" prefHeight="206.0" prefWidth="604.0" style="-fx-background-color: white;" stylesheets="@../CssRapport.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Rapport.Vente.ExpeditionController">
    <children>
       <Pane layoutX="-3.0" prefHeight="50.0" prefWidth="607.0" style="-fx-background-color: #0083c5;">
          <children>
@@ -26,8 +25,8 @@
             </Text>
          </children>
       </Pane>
-      <JFXButton layoutX="330.0" layoutY="163.0" onAction="#print" prefHeight="60.0" prefWidth="180.0" styleClass="button_save" text="Imprimer" />
-      <JFXButton layoutX="130.0" layoutY="163.0" onAction="#close" prefHeight="60.0" prefWidth="180.0" styleClass="button_annuler" text="Annuler" />
-      <JFXDatePicker fx:id="date" layoutX="192.0" layoutY="79.0" prefHeight="45.0" prefWidth="230.0" promptText="Date" />
+      <JFXButton layoutX="310.0" layoutY="133.0" onAction="#print" prefHeight="50.0" prefWidth="158.0" styleClass="button_save" text="Imprimer" />
+      <JFXButton layoutX="146.0" layoutY="133.0" onAction="#close" prefHeight="50.0" prefWidth="158.0" styleClass="button_annuler" text="Annuler" />
+      <JFXDatePicker fx:id="date" layoutX="189.0" layoutY="72.0" prefHeight="45.0" prefWidth="230.0" promptText="Date" />
    </children>
 </AnchorPane>

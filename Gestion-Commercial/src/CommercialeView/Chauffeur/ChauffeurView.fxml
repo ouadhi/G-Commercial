@@ -35,7 +35,7 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton fx:id="Ajoute" layoutX="1016.0" layoutY="25.0" onAction="#AjouterMethode" styleClass="button_ajouter" text="Ajouter Chauffeur" />
+      <JFXButton fx:id="Ajoute" layoutX="1038.0" layoutY="29.0" onAction="#AjouterMethode" prefHeight="32.0" prefWidth="128.0" styleClass="button_ajouter" text="Ajouter" />
       <MenuButton fx:id="orderby" layoutX="390.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="160.0" style="-fx-background-color: #f4f8f9;" text="Non Archivé">
         <items>
           <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#archive" text="Archivé" />

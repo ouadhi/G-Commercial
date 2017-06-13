@@ -69,7 +69,7 @@ public class MainMenuController implements Initializable {
         AnchorPane  menu   = FXMLLoader.load(getClass().getResource(ViewUrl.VenteMenu)) ; 
         Home2FXMLController.menup.getChildren().setAll(menu) ; 
           changeMenutoSmall();
-        new ShowPane().showClient();
+        new ShowPane().showVenteListe();
         
     }
 

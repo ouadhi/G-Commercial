@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="655.0" style="-fx-background-color: white;" stylesheets="@BanqueCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Banque.AjouterBanqueController">
+<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="664.0" style="-fx-background-color: white;" stylesheets="@BanqueCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Banque.AjouterBanqueController">
    <children>
       <Pane prefHeight="50.0" prefWidth="655.0" style="-fx-background-color: #0083c5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -66,7 +66,7 @@
             </JFXTextField>
          </children>
       </GridPane>
-      <JFXButton layoutX="465.0" layoutY="256.0" onAction="#save" styleClass="button_save" text="Sauvegarder" />
-      <JFXButton layoutX="328.0" layoutY="256.0" onAction="#close" styleClass="button_annuler" text="Annuler" />
+      <JFXButton layoutX="491.0" layoutY="256.0" onAction="#save" styleClass="button_save" text="Enregistrer" />
+      <JFXButton layoutX="360.0" layoutY="256.0" onAction="#close" styleClass="button_annuler" text="Annuler" />
    </children>
 </AnchorPane>

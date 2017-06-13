@@ -18,7 +18,7 @@
          <children>
             <Pane prefHeight="56.0" prefWidth="614.0" style="-fx-background-color: #f6f7fb;">
                <children>
-                  <Text fill="#7d6dfb" layoutX="34.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ajouter_chaufeur" text="Modifier Camion :" />
+                  <Text fill="#7d6dfb" layoutX="34.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ajouter_chaufeur" text="Modifier Camion " />
                   <ImageView fx:id="close" fitHeight="16.0" fitWidth="16.0" layoutX="576.0" layoutY="20.0" onMouseClicked="#closewindow" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="icons/close.png" />
@@ -42,10 +42,10 @@
                   <JFXTextField fx:id="codecamion" focusColor="#405aa800" maxWidth="270.0" minWidth="270.0" prefHeight="42.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1" />
                   <JFXTextField fx:id="matricule" focusColor="#405aa800" maxWidth="268.0" minWidth="268.0" prefHeight="45.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label styleClass="label_info" text="Matricule Camion" GridPane.columnIndex="1" />
-                  <Label styleClass="label_info" text="Marque :" GridPane.rowIndex="2" />
+                  <Label styleClass="label_info" text="Marque " GridPane.rowIndex="2" />
                   <JFXTextField fx:id="taillecamion" focusColor="#405aa800" prefHeight="42.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="3" />
                   <JFXTextField fx:id="PoisCamion" focusColor="#405aa800" prefHeight="42.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label styleClass="label_info" text="Poid Camion :" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label styleClass="label_info" text="Poid Camion " GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <JFXButton fx:id="savebttn" layoutX="471.0" layoutY="335.0" onAction="#sauvegarder" styleClass="button_save" text="Enregistrer" />

@@ -42,37 +42,37 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label styleClass="title_panel" text="Nom :">
+            <Label styleClass="label_txt" text="Nom ">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Penom :" GridPane.columnIndex="1">
+            <Label styleClass="label_txt" text="Penom " GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="N° Registre :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="N° Registre " GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="N° Article : " GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="N° Article " GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Adresse" GridPane.rowIndex="2">
+            <Label styleClass="label_txt" text="Adresse" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Date depot Dossier" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label styleClass="label_txt" text="Date depot Dossier" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="N° carte Fiscalle" GridPane.rowIndex="3">
+            <Label styleClass="label_txt" text="N° carte Fiscalle" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
@@ -121,7 +121,7 @@
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Solde:" GridPane.rowIndex="4">
+            <Label styleClass="label_txt" text="Solde" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
@@ -140,7 +140,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <JFXCheckBox fx:id="fermer" layoutX="51.0" layoutY="454.0" prefHeight="35.0" prefWidth="119.0" text="Fermer" unCheckedColor="#1830b5">
+      <JFXCheckBox fx:id="fermer" layoutX="51.0" layoutY="454.0" prefHeight="35.0" prefWidth="185.0" styleClass="label_txt" text="Garder la fenêtre" unCheckedColor="#1830b5">
          <font>
             <Font size="15.0" />
          </font>

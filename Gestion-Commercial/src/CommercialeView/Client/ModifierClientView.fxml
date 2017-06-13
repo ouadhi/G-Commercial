@@ -41,37 +41,37 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label styleClass="title_panel" text="Nom :">
+            <Label styleClass="label_txt" text="Nom ">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Penom :" GridPane.columnIndex="1">
+            <Label styleClass="label_txt" text="Penom " GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="N° Registre :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="N° Registre " GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="N° Article : " GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="N° Article " GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Adresse" GridPane.rowIndex="2">
+            <Label styleClass="label_txt" text="Adresse" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="Date depot Dossier" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label styleClass="label_txt" text="Date depot Dossier" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="title_panel" text="N° carte Fiscalle" GridPane.rowIndex="3">
+            <Label styleClass="label_txt" text="N° carte Fiscalle" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
@@ -111,8 +111,11 @@
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </DatePicker>
-            <JFXComboBox fx:id="activiteBox" prefHeight="39.0" prefWidth="264.0" promptText="Selectionner " styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label styleClass="title_panel" text="Solde :" GridPane.rowIndex="4">
+            <JFXComboBox fx:id="activiteBox" prefHeight="39.0" prefWidth="264.0" promptText="Selectionner " styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="-25.0" />
+               </GridPane.margin></JFXComboBox>
+            <Label styleClass="label_txt" text="Solde " GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
@@ -122,6 +125,11 @@
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
+            <Label styleClass="label_txt" text="Type d'Activité" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets top="-40.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
       <JFXButton layoutX="425.0" layoutY="446.0" onAction="#Sauvgarder" styleClass="button_save" text="Enregistrer" />

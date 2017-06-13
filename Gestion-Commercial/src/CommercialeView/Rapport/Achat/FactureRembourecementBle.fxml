@@ -28,8 +28,8 @@
             </Text>
          </children>
       </Pane>
-      <JFXButton layoutX="117.0" layoutY="174.0" onAction="#close" prefHeight="60.0" prefWidth="180.0" styleClass="button_annuler" text="Annuler" />
-      <JFXButton layoutX="328.0" layoutY="174.0" onAction="#print" prefHeight="60.0" prefWidth="180.0" styleClass="button_save" text="Imprimer" />
+      <JFXButton layoutX="146.0" layoutY="174.0" onAction="#close" prefHeight="50.0" prefWidth="158.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton layoutX="310.0" layoutY="174.0" onAction="#print" prefHeight="50.0" prefWidth="158.0" styleClass="button_save" text="Imprimer" />
       <HBox fx:id="Hbox" layoutX="34.0" layoutY="92.0" prefHeight="60.0" prefWidth="551.0" spacing="5.0">
          <children>
             <Label styleClass="label_txt" text="De : ">
