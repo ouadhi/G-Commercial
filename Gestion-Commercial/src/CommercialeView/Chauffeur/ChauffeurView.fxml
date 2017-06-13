@@ -43,7 +43,7 @@
           <MenuItem fx:id="NomMenuItem" mnemonicParsing="false" onAction="#tout" text="Tout" />
         </items>
       </MenuButton>
-      <Text fill="#7d6dfb" layoutX="51.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Chaufeur">
+      <Text fill="#7d6dfb" layoutX="51.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Chauffeur">
          <font>
             <Font size="63.0" />
          </font>
