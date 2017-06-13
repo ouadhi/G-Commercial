@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="764.0" prefWidth="1366.0" styleClass="Background-main" stylesheets="@HomeCss.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.HomeFXMLController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="870.0" prefWidth="1277.0" styleClass="Background-main" stylesheets="@HomeCss.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.HomeFXMLController">
    <children>
-      <HBox layoutX="287.0" layoutY="296.0" prefHeight="192.0" prefWidth="792.0" spacing="9.0">
+      <HBox layoutX="243.0" layoutY="339.0" prefHeight="192.0" prefWidth="792.0" spacing="9.0">
          <children>
             <Button id="button" fx:id="achat" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#showAchat" opacity="0.7" prefHeight="192.0" prefWidth="192.0" styleClass="buttonx" text="Achat">
                <graphic>

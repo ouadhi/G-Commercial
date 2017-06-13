@@ -19,7 +19,7 @@
                </image></ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Roles_button" contentDisplay="TOP" layoutX="204.0" layoutY="10.0" onAction="#show_role_liste" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Role" textAlignment="CENTER" textOverrun="CLIP">
+      <JFXButton fx:id="Roles_button" contentDisplay="TOP" disable="true" layoutX="204.0" layoutY="10.0" onAction="#show_role_liste" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Role" textAlignment="CENTER" textOverrun="CLIP">
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="73.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" x="194.0" y="116.0">
                <image>
@@ -27,7 +27,7 @@
                </image></ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="notificaton__button" contentDisplay="TOP" layoutX="404.0" layoutY="10.0" onAction="#show_notifcation_list" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Notification" textAlignment="CENTER" textOverrun="CLIP">
+      <JFXButton fx:id="notificaton__button" contentDisplay="TOP" disable="true" layoutX="404.0" layoutY="10.0" onAction="#show_notifcation_list" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Notification" textAlignment="CENTER" textOverrun="CLIP">
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="73.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" x="194.0" y="116.0">
                <image>
@@ -35,7 +35,7 @@
                </image></ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="profiles__button" contentDisplay="TOP" layoutX="604.0" layoutY="10.0" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Profiles" textAlignment="CENTER" textOverrun="CLIP">
+      <JFXButton fx:id="profiles__button" contentDisplay="TOP" disable="true" layoutX="604.0" layoutY="10.0" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Profiles" textAlignment="CENTER" textOverrun="CLIP">
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="73.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" x="194.0" y="116.0">
                <image>
@@ -43,7 +43,7 @@
                </image></ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="settings_button" contentDisplay="TOP" layoutX="604.0" layoutY="10.0" onAction="#show_setting" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Parametre" textAlignment="CENTER" textOverrun="CLIP">
+      <JFXButton fx:id="settings_button" contentDisplay="TOP" disable="true" layoutX="604.0" layoutY="10.0" onAction="#show_setting" prefHeight="128.0" prefWidth="200.0" styleClass="txt-menu_button" stylesheets="@Maincss.css" text="Parametre" textAlignment="CENTER" textOverrun="CLIP">
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="73.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" x="194.0" y="116.0">
                <image>

@@ -45,8 +45,8 @@
          </children>
       </Pane>
       <JFXButton fx:id="ajouter" layoutX="1020.0" layoutY="30.0" onAction="#showAddStage" styleClass="Ajouter_button" text="Nouvelle vente" />
-      <JFXListView fx:id="listevente" layoutX="51.0" layoutY="177.0" minHeight="461.0" minWidth="1114.0" onMouseClicked="#showDockSlide" showTooltip="true" />
-      <GridPane hgap="3.0" layoutX="51.0" layoutY="122.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1114.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;">
+      <JFXListView fx:id="listevente" layoutX="51.0" layoutY="177.0" minHeight="410.0" minWidth="1114.0" onMouseClicked="#showDockSlide" showTooltip="true" AnchorPane.topAnchor="160.0" />
+      <GridPane hgap="3.0" layoutX="51.0" layoutY="122.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="55.0" prefWidth="1114.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;" AnchorPane.topAnchor="100.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="134.0" minWidth="70.0" prefWidth="134.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="170.0" minWidth="106.0" prefWidth="106.0" />
