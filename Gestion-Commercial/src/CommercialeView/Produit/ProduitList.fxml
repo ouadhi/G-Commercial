@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="1000.0" maxWidth="2000.0" prefHeight="737.0" prefWidth="1218.0" snapToPixel="false" styleClass="back" stylesheets="@ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Produit.ProduitListController">
+<AnchorPane id="AnchorPane" maxHeight="1000.0" maxWidth="2000.0" prefHeight="690.0" prefWidth="1218.0" snapToPixel="false" styleClass="back" stylesheets="@ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Produit.ProduitListController">
    <children>
       <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Produits" wrappingWidth="122.51513671875" />
       <Label fx:id="total" layoutX="247.0" layoutY="37.0" styleClass="label_txt" text="100" />
@@ -43,8 +43,8 @@
          </children>
       </Pane>
       <JFXButton fx:id="ajouter" layoutX="1009.0" layoutY="24.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter" />
-      <JFXListView fx:id="listeproduit" layoutX="52.0" layoutY="169.0" minHeight="461.0" minWidth="1114.0" onMouseClicked="#showDockSlide" showTooltip="true" />
-      <GridPane hgap="3.0" layoutX="51.0" layoutY="118.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1114.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;">
+      <JFXListView fx:id="listeproduit" layoutX="52.0" layoutY="169.0" minHeight="410.0" minWidth="1114.0" onMouseClicked="#showDockSlide" showTooltip="true" AnchorPane.topAnchor="160.0" />
+      <GridPane hgap="3.0" layoutX="51.0" layoutY="118.0" maxHeight="51.0" maxWidth="1141.0" minHeight="55.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1114.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;" AnchorPane.topAnchor="100.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" />

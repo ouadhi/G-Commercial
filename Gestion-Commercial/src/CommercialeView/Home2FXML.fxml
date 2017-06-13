@@ -8,15 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="922.0" prefWidth="1277.0" stylesheets="@HomeCss.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Home2FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="870.0" prefWidth="1277.0" stylesheets="@HomeCss.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Home2FXMLController">
    <children>
       <Pane layoutX="-4.0" onMouseClicked="#closemenu" prefHeight="64.0" prefWidth="1285.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="1164.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="icons/man.png" />
-               </image>
-            </ImageView>
+            <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="1164.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
             <JFXButton fx:id="menu_button" layoutX="679.0" layoutY="5.0" onAction="#showmenu" prefHeight="54.0" prefWidth="81.0" text=" ">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -32,11 +28,11 @@
             </ImageView>
          </children>
       </Pane>
-      <AnchorPane fx:id="workespace" layoutX="64.0" layoutY="66.0" onMouseClicked="#closemenu" prefHeight="858.0" prefWidth="1214.0" />
-      <AnchorPane fx:id="panel_menu" layoutX="-64.0" prefHeight="924.0" prefWidth="128.0" styleClass="Menu-left" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="workespace" layoutX="64.0" layoutY="66.0" onMouseClicked="#closemenu" prefHeight="805.0" prefWidth="1214.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0" />
+      <AnchorPane fx:id="panel_menu" layoutX="-64.0" prefHeight="870.0" prefWidth="128.0" styleClass="Menu-left" AnchorPane.topAnchor="0.0">
          <children>
             <JFXHamburger fx:id="hamburguerbutton" layoutX="81.0" layoutY="23.0" />
-            <AnchorPane fx:id="menu" layoutY="64.0" prefHeight="858.0" prefWidth="128.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="66.0" />
+            <AnchorPane fx:id="menu" layoutY="64.0" prefHeight="808.0" prefWidth="128.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="66.0" />
          </children>
       </AnchorPane>
       <JFXDrawer fx:id="main_menu" defaultDrawerSize="250.0" direction="TOP" layoutX="594.0" layoutY="64.0" overLayVisible="false" prefHeight="204.0" prefWidth="256.0" />

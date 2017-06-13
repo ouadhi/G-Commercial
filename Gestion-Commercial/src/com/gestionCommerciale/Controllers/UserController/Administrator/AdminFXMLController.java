@@ -72,7 +72,11 @@ public class AdminFXMLController implements Initializable {
         try {
             HBox box = FXMLLoader.load(getClass().getResource("MeunFXML.fxml"));
             drawer.setSidePane(box);
+            if (drawer.isHidden()) {
+                drawer.open();  
+            }
             hummberguer_transaction();
+            
 
         } catch (IOException ex) {
             System.out.println(ex);

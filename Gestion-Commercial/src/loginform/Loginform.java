@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Loginform extends Application {
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -21,15 +24,14 @@ public class Loginform extends Application {
                 SessionsGenerator FactoryObject = new SessionsGenerator();
             }
         }.start();
-         Image icon = new Image(getClass().getResourceAsStream("/icons/ok.png"));
-         stage.getIcons().add(icon) ; 
-        //Parent root = FXMLLoader.load(getClass().getResource("/Views/Employee_LoginFXML.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
+        Image icon = new Image(getClass().getResourceAsStream("/icons/ok.png"));
+        stage.getIcons().add(icon);
+        Parent root = FXMLLoader.load(getClass().getResource("/Views/Employee_LoginFXML.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
         //Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.DockList));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-       
-       
+
         stage.show();
 
         transitionIN(root);
@@ -54,8 +56,5 @@ public class Loginform extends Application {
         fadeIn.play();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
 }
