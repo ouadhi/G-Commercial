@@ -36,7 +36,7 @@ public class ClienntRapportController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        possibleMot();
         
     }    
 
