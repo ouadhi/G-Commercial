@@ -40,10 +40,10 @@ public class ModifierBleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyDouble(quntite, 16);
-        Methode.setOnlyDouble(prix, 16);
+        Methode.setOnlyDouble(quntite,10);
+        Methode.setOnlyDouble(prix, 10);
 
-        Methode.SetUpper(code);
+        Methode.SetUpper(code,8);
     }
 
     @FXML
@@ -93,7 +93,10 @@ public class ModifierBleController implements Initializable {
 
     public void setData(Ble ble) {
 
-        Methode.SetUpper(code);
+         Methode.setOnlyDouble(quntite,10);
+        Methode.setOnlyDouble(prix, 10);
+
+        Methode.SetUpper(code,8);
         this.ble = ble;
         this.code.setText(ble.getCodeBle());
         this.prix.setText(Double.toString(ble.getPrix()));

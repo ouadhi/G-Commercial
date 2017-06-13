@@ -45,13 +45,14 @@ public class ModifierCamionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyDouble(PoisCamion, 5);
-        Methode.SetUpper(codecamion);
-        Methode.SetUpper(matricule);
+        Methode.SetUpper(codecamion,10);
+        Methode.SetUpper(matricule,12);
         Methode.setSelectedMouseClick(PoisCamion);
         Methode.setSelectedMouseClick(codecamion);
         Methode.setSelectedMouseClick(matricule);
         //Methode.setSelectedMouseClick(type);
         Methode.setZeroRemoved(PoisCamion);
+        Methode.setsizeString(taillecamion, 32);
     }
 
     @FXML

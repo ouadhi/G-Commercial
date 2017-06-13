@@ -81,9 +81,15 @@ public class Methode {
         return bd.doubleValue();
     }
 
-    public static void SetUpper(JFXTextField field) {
+    public static void SetUpper(JFXTextField field , int max) {
         field.textProperty().addListener((ov, oldValue, newValue) -> {
-            field.setText(newValue.toUpperCase());
+            if (newValue.length()>max) {
+                field.setText(oldValue);
+            }else{
+                field.setText(newValue.toUpperCase());
+            }
+                    
+            
         });
 
     }
@@ -120,6 +126,20 @@ public class Methode {
            menu.setVisible(false);
            label.setVisible(false);
         }
+    }
+    
+    
+    public static void  setsizeString(JFXTextField text , int  maxtaille ) {
+         text.textProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (newValue.length()>maxtaille) {
+                    text.setText(oldValue);
+                }
+
+            }
+        });
     }
 
 }

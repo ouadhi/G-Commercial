@@ -56,6 +56,7 @@ public class AjouterPayementController implements Initializable {
         type.setItems(liste);
         type.getSelectionModel().select(0);
                 Methode.setOnlyDouble(montont, 8);
+                Methode.setOnlyDouble(timbre, 3);
 
     }
 

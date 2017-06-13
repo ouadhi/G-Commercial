@@ -147,7 +147,7 @@ public class VenteCell extends GridPane {
         label2.setFont(new Font(17.0));
         
         JFXButton produitdefacture = new JFXButton("Porduit")  ; 
-        produitdefacture.setStyle("-fx-background-color :Green ;  -fx-text-fill : white ; ");
+        produitdefacture.setStyle("-fx-background-color :#96d496 ;  -fx-text-fill : white ; -fx-background-radius :50 ; ");
         double versment = 0;
         for (int i = 0; i < this.facture.getClient().getPayments().size(); i++) {
                     System.err.println(versment);

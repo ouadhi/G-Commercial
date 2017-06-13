@@ -64,9 +64,12 @@ public class ModifierClientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        Methode.SetUpper(NRtxt);
-        Methode.SetUpper(NAtxt);
-        Methode.SetUpper(NCarteF);
+        Methode.SetUpper(nomtxt, 30);
+        Methode.setsizeString(prenomtxt, 30);
+        Methode.setsizeString(prenomtxt, 30);
+        Methode.SetUpper(NRtxt, 30);
+        Methode.SetUpper(NAtxt, 20);
+        Methode.SetUpper(NCarteF, 20);
 
     }
 
@@ -88,7 +91,7 @@ public class ModifierClientController implements Initializable {
                 Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
             } else {
                 Client c = ClientQueries.getClientByRegistre(NR);
-                if (c != null && c.getId() !=client.getId() ) {
+                if (c != null && c.getId() != client.getId()) {
                     //notification for already exists
                     Notification.error("Ce client est exite déja!");
                 } else {
@@ -131,7 +134,13 @@ public class ModifierClientController implements Initializable {
 
     public void SetData(Client client) {
 
-        Methode.SetUpper(nomtxt);
+        Methode.SetUpper(nomtxt, 30);
+        Methode.setsizeString(prenomtxt, 30);
+        Methode.setsizeString(prenomtxt, 30);
+        Methode.SetUpper(NRtxt, 30);
+        Methode.SetUpper(NAtxt, 20);
+        Methode.SetUpper(NCarteF, 20);
+
         setActivty();
 
         this.client = client;

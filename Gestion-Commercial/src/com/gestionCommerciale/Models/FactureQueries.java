@@ -94,7 +94,7 @@ public class FactureQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Facture> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Facture where deleted='" + false + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
+            list = session.createQuery("from Facture where deleted='" + false + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'  ORDER BY id_facture DESC").list();
         } finally {
             session.close();
         }
@@ -106,7 +106,7 @@ public class FactureQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Facture> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Facture where deleted=true AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
+            list = session.createQuery("from Facture where deleted=true AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "' ORDER BY id_facture DESC").list();
         } finally {
             session.close();
         }
@@ -118,7 +118,7 @@ public class FactureQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Facture> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Facture where id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
+            list = session.createQuery("from Facture where id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "' ORDER BY id_facture DESC").list();
         } finally {
             session.close();
         }
@@ -146,8 +146,8 @@ public class FactureQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Facture> list = new ArrayList<>();
         try {
-            System.err.println(startString+"**"+endString);
-            list = session.createQuery("from Facture where date BETWEEN '"+startString+"' AND '"+endString+"'")
+            System.err.println(startString + "**" + endString);
+            list = session.createQuery("from Facture where date BETWEEN '" + startString + "' AND '" + endString + "' ORDER BY id_facture DESC")
                     .list();
         } finally {
             session.close();
@@ -161,24 +161,23 @@ public class FactureQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Facture> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Facture where id_client='" + id + "' AND deleted='" + false + "'").list();
+            list = session.createQuery("from Facture where id_client='" + id + "' AND deleted='" + false + "' ORDER BY id_facture DESC").list();
         } finally {
             session.close();
         }
         return list;
     }
-    public static List<Facture> getFacturesListByClientIdDates(Date from, Date to) {
+
+    public static List<Facture> getFacturesListByClientIdDates(Date start, Date end) {
+        DateFormat df = new SimpleDateFormat("yyyt-MM-dd");
+        String startString = df.format(df);
+        String endString = df.format(df);
+
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Facture> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Facture where deleted='" + false + "' and date BETWEEN '"
-                    
-                    +from.getYear()+"-"+from.getMonth()+"-"+from.getDay()
-                    
-                    +"' AND '"
-                    +to.getYear()+"-"+to.getMonth()+"-"+to.getDay()
-                    +"'  ").list();
+            list = session.createQuery("from Facture where deleted='" + false + "' and date BETWEEN '"+startString+"' AND '"+endString+"' ORDER BY id_facture DESC").list();
         } finally {
             session.close();
         }
@@ -194,7 +193,7 @@ public class FactureQueries {
             //list = session.createQuery("from Facture where deleted='"+false+"' AND id_annee='2017'").list();
             System.out.println(AnneeQueries.getSelected().getIdAnnee() + "-----------");
             //      list = session.createQuery("from Facture where deleted='"+false+"' AND id_annee='"+AnneeQueries.getSelected().getIdAnnee()+"'").list();
-            list = session.createQuery("from Facture where deleted='" + false + "' AND (client.name Like '" + text + "%' OR client.prenom Like '" + text + "%'  )").list();
+            list = session.createQuery("from Facture where deleted='" + false + "' AND (client.name Like '" + text + "%' OR client.prenom Like '" + text + "%'  ) ORDER BY id_facture DESC").list();
 
         } finally {
             session.close();

@@ -9,7 +9,9 @@ import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Produit;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.hibernate.Session;
 
@@ -51,11 +53,24 @@ public class Facture_ProduitQueries {
         }
     }
      //get info du Facture( les produits dans la factures + les qtes des produits)
-     public Map<Facture_Produit,Produit> getFactureInfo(Facture facture){
-         Map<Facture_Produit,Produit> produitEtQte= new HashMap<>();
-         for (int i = 0; i < facture.getQtes().size(); i++) {
-             produitEtQte.put(facture.getQtes().get(i), facture.getQtes().get(i).getProduit());
-         }
-          return produitEtQte;
-     }
+//     public Map<Facture_Produit,Produit> getFactureInfo2(Facture facture){
+//         Map<Facture_Produit,Produit> produitEtQte= new HashMap<>();
+//         for (int i = 0; i < facture.getQtes().size(); i++) {
+//             produitEtQte.put(facture.getQtes().get(i), facture.getQtes().get(i).getProduit());
+//         }
+//          return produitEtQte;
+//     }
+     
+         public static List<Facture_Produit> list(Facture f) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = FactoryObject.getFactory().openSession();
+        List<Facture_Produit> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Facture_Produit where id_fact='" + f.getIdFacture()+ "'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
 }

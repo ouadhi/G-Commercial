@@ -5,6 +5,8 @@ import Report.BonLivraisonReport.GenerateBonLivraisonReport;
 import Report.FactureReport.GenerateFactureReport;
 import UIControle.Methode;
 import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.HibernateSchema.Facture_Produit;
+import com.gestionCommerciale.Models.Facture_ProduitQueries;
 import com.ibm.icu.text.RuleBasedNumberFormat;
 import com.jfoenix.controls.JFXCheckBox;
 import java.net.URL;
@@ -54,16 +56,17 @@ public class PrintViewController implements Initializable {
                 List<String> prixsVente = new ArrayList<>();
                 List<String> montantsVente = new ArrayList<>();
                 List<String> typesVente = new ArrayList<>();
+        List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
 
-                for (int i = 0; i < factureimp.getQtes().size(); i++) {
-                    designationsVente.add(factureimp.getQtes().get(i).getProduit().getNom());
-                    qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
-                    prixsVente.add(String.valueOf(factureimp.getQtes().get(i).getProduit().getPrix()));
-                    typesVente.add(String.valueOf(factureimp.getQtes().get(i).getProduit().getCategory()));
-                    montantsVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()
-                            * factureimp.getQtes().get(i).getProduit().getPrix()));
-                    montantTotal = montantTotal + (factureimp.getQtes().get(i).getQte_fact()
-                            * factureimp.getQtes().get(i).getProduit().getPrix());
+                for (int i = 0; i < fpList.size(); i++) {
+                    designationsVente.add(fpList.get(i).getProduit().getNom());
+                    qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
+                    prixsVente.add(String.valueOf(fpList.get(i).getProduit().getPrix()));
+                    typesVente.add(String.valueOf(fpList.get(i).getProduit().getCategory()));
+                    montantsVente.add(String.valueOf(fpList.get(i).getQte_fact()
+                            * fpList.get(i).getProduit().getPrix()));
+                    montantTotal = montantTotal + (fpList.get(i).getQte_fact()
+                            * fpList.get(i).getProduit().getPrix());
                 }
                 //double ttc = factureimp.getMontant() * ((factureimp.getTva() / 100) + factureimp.getMontant());
                 double ttc = (montantTotal * (factureimp.getTva() / 100)) + montantTotal;
@@ -91,9 +94,11 @@ public class PrintViewController implements Initializable {
                 //get list produits, qte 
                 List<String> designationsVente = new ArrayList<>();
                 List<String> qtesVente = new ArrayList<>();
-                for (int i = 0; i < factureimp.getQtes().size(); i++) {
-                    designationsVente.add(factureimp.getQtes().get(i).getProduit().getNom());
-                    qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
+        List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
+                
+                for (int i = 0; i < fpList.size(); i++) {
+                    designationsVente.add(fpList.get(i).getProduit().getNom());
+                    qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
                 }
                 generateBonChargementReport.generateReport(String.valueOf(factureimp.getClient().getId()),
                         factureimp.getDate().toString(), factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
@@ -115,11 +120,12 @@ public class PrintViewController implements Initializable {
                 List<String> designationsVente = new ArrayList<>();
                 List<String> qtesVente = new ArrayList<>();
                 List<String> typesVente = new ArrayList<>();
+        List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
 
-                for (int i = 0; i < factureimp.getQtes().size(); i++) {
-                    designationsVente.add(factureimp.getQtes().get(i).getProduit().getNom());
-                    qtesVente.add(String.valueOf(factureimp.getQtes().get(i).getQte_fact()));
-                    typesVente.add(factureimp.getQtes().get(i).getProduit().getCategory());
+                for (int i = 0; i < fpList.size(); i++) {
+                    designationsVente.add(fpList.get(i).getProduit().getNom());
+                    qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
+                    typesVente.add(fpList.get(i).getProduit().getCategory());
                 }
                 generateBonLivraisonReport.generateReport(
                         factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),

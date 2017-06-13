@@ -46,7 +46,9 @@ public class AjouterProduitController implements Initializable {
         Methode.setOnlyDouble(quantite, 9);
         Methode.setOnlyDouble(prix, 16);
         
-         Methode.SetUpper(nom);
+         Methode.SetUpper(nom , 30);
+         Methode.setsizeString(categorie, 30);
+          Methode.setOnlyDouble(nom, 3);
     }
 
     @FXML

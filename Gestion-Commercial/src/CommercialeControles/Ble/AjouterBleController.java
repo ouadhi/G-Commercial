@@ -46,9 +46,9 @@ public class AjouterBleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyDouble(quntite, 16);
-        Methode.setOnlyDouble(prix, 16);
-        Methode.SetUpper(code);
+        Methode.setOnlyDouble(quntite,10);
+        Methode.setOnlyDouble(prix, 10);
+        Methode.SetUpper(code,8);
         quntite.setEditable(false);
     }
 

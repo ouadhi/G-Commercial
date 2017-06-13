@@ -45,10 +45,12 @@ public class ModifierProduitController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyNumbre(quantite);
-        Methode.setOnlyNumbre(prix);
-
-        Methode.SetUpper(nom);
+         Methode.setOnlyDouble(quantite, 9);
+        Methode.setOnlyDouble(prix, 16);
+        
+         Methode.SetUpper(nom , 30);
+         Methode.setsizeString(categorie, 30);
+          Methode.setOnlyDouble(nom, 3);
 
     }
 
@@ -105,7 +107,12 @@ public class ModifierProduitController implements Initializable {
     }
 
     public void setData(Produit produit) {
-        Methode.SetUpper(nom);
+        Methode.setOnlyDouble(quantite, 9);
+        Methode.setOnlyDouble(prix, 16);
+        
+         Methode.SetUpper(nom , 30);
+         Methode.setsizeString(categorie, 30);
+          Methode.setOnlyDouble(nom, 3);
 
         this.produit = produit;
         this.nom.setText(produit.getNom());

@@ -44,8 +44,8 @@ public class ModifierDockController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyDouble(prix,10);
         Methode.setOnlyDouble(distance,10);
-        
-        Methode.SetUpper(nom);
+        Methode.setsizeString(wilaya, 22);
+        Methode.SetUpper(nom ,30);
     }
 
     @FXML
@@ -98,7 +98,10 @@ public class ModifierDockController implements Initializable {
     }
 
     public void setData(Dock dock) {
-         Methode.SetUpper(nom);
+         Methode.setOnlyDouble(prix,10);
+        Methode.setOnlyDouble(distance,10);
+        Methode.setsizeString(wilaya, 22);
+        Methode.SetUpper(nom ,30);
         this.dock = dock;
         this.nom.setText(dock.getNom());
         this.wilaya.setText(dock.getWilaya());

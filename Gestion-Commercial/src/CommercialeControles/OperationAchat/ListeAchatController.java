@@ -56,6 +56,7 @@ public class ListeAchatController implements Initializable {
         for (int i = 0; i < achatList.size(); i++) {
             list.add(new AchatCell(achatList.get(i)));
         }
+        
         ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
         listeAchats.setItems(myObservableList);
         listeAchats.setExpanded(true);

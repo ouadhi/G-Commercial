@@ -42,8 +42,8 @@ public class AjouterCamionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         Methode.setOnlyDouble(poisCamion, 5);
-        Methode.SetUpper(codecamion);
-        Methode.SetUpper(matricule);
+        Methode.SetUpper(codecamion,10);
+        Methode.SetUpper(matricule,12);
         Methode.setSelectedMouseClick(poisCamion);
         Methode.setSelectedMouseClick(codecamion);
         Methode.setSelectedMouseClick(matricule);
@@ -51,6 +51,7 @@ public class AjouterCamionController implements Initializable {
         Methode.setZeroRemoved(poisCamion);
 
         poisCamion.setText("0.00");
+        Methode.setsizeString(typecamion, 32);
 
     }
 

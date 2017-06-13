@@ -72,6 +72,8 @@ public class ModifierPaymentController implements Initializable {
     public void setData(Payment payement, JFXListView<PayementCell> listepayement) {
         this.payment = payement;
         this.listepayement = listepayement;
+        Methode.setOnlyDouble(montont, 8);
+                Methode.setOnlyDouble(Timbre, 3);
 
         
         Npayement.setText(Integer.toString(this.payment.getIdPayment()));
