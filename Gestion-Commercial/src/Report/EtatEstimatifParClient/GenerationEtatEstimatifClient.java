@@ -110,5 +110,4 @@ public class GenerationEtatEstimatifClient {
                 dates, this.nums, this.produits, this.montants, this.tvas, this.ttcs);
         operationEtatEstimatifClient.printReport();
     }
-
 }

@@ -41,17 +41,17 @@ public class OperationFactuReport {
     public void putReportInfo(String nom, String code, String address, String rc, String fiscal, String date,
             String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
             String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
-            List<String> prixs, List<String> montants,List<String> types) {
+            List<String> prixs, List<String> montants, List<String> types) {
         //patient info is the first to be written
 
         FactureBean beanInfo = new FactureBean(id, nom, code, address, rc, fiscal, date,
                 numFacture, article, montantHT, tva, timbre, ttc,
-                montantlettre, chauffeur, matricule, designations, qtes, prixs, montants,types);
+                montantlettre, chauffeur, matricule, designations, qtes, prixs, montants, types);
         collBean.add(beanInfo);
         id++;
     }
 
-    public JasperPrint printReport() {
+    public void printReport() {
         JasperPrint jasperPrint = null;
         try {
             Map<String, Object> params = new HashMap<String, Object>();
@@ -74,6 +74,28 @@ public class OperationFactuReport {
             e.printStackTrace();
         }
 
+    }
+
+    public JasperPrint getJasperPrint() {
+        JasperPrint jasperPrint = null;
+        try {
+            Map<String, Object> params = new HashMap<String, Object>();
+            JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
+            JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
+            jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
+            //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
+            InputStream stream = getClass().getResourceAsStream("ReportFacture.jasper");
+
+            JasperReport report = (JasperReport) JRLoader.loadObject(stream);
+            jasperPrint = JasperFillManager.fillReport(report,
+                    params, getData());
+            this.id = 1;
+            this.collBean.clear();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return jasperPrint;
+
     }
 }
