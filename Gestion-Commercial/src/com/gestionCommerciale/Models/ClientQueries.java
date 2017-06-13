@@ -58,7 +58,7 @@ public class ClientQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Client> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Client where deleted='" + false + "'").list();
+            list = session.createQuery("from Client where deleted='" + false + "'  ORDER BY id_client DESC").list();
         } finally {
             session.close();
         }
@@ -70,7 +70,7 @@ public class ClientQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Client> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Client where deleted = true ").list();
+            list = session.createQuery("from Client where deleted = true  ORDER BY id_client DESC").list();
         } finally {
             session.close();
         }
@@ -82,7 +82,7 @@ public class ClientQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Client> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Client").list();
+            list = session.createQuery("from Client  ORDER BY id_client DESC").list();
         } finally {
             session.close();
         }
@@ -137,7 +137,7 @@ public class ClientQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Client> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Client where (name like '%" + Key + "%' OR  prenom like '%" + Key + "%' ) AND deleted='" + false + "'").list();
+            list = session.createQuery("from Client where (name like '%" + Key + "%' OR  prenom like '%" + Key + "%' ) AND deleted='" + false + "'  ORDER BY id_client DESC").list();
         } finally {
             session.close();
         }
