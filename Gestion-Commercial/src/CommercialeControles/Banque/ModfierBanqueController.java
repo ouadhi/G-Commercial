@@ -32,8 +32,8 @@ public class ModfierBanqueController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         Methode.setOnlyInteger(telephone, 10);
-        Methode.SetUpper(nombanque);
-        Methode.SetUpper(NumCompte);
+        Methode.SetUpper(nombanque,32);
+        Methode.SetUpper(NumCompte,32);
         
     }    
     
@@ -72,7 +72,7 @@ public class ModfierBanqueController implements Initializable {
     
     public void setData(Banque banque) {
         this.banque = banque;    
-         Methode.SetUpper(nombanque);
+         Methode.SetUpper(nombanque,32);
         this.NumCompte.setText(banque.getCompte());
         this.adresse.setText(this.banque.getAddress());
         this.nombanque.setText(this.banque.getNom());

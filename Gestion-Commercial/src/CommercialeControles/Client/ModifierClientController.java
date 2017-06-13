@@ -64,9 +64,9 @@ public class ModifierClientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        Methode.SetUpper(NRtxt);
-        Methode.SetUpper(NAtxt);
-        Methode.SetUpper(NCarteF);
+        Methode.SetUpper(NRtxt, 30);
+        Methode.SetUpper(NAtxt ,20 );
+        Methode.SetUpper(NCarteF,20);
 
     }
 
@@ -131,7 +131,7 @@ public class ModifierClientController implements Initializable {
 
     public void SetData(Client client) {
 
-        Methode.SetUpper(nomtxt);
+        Methode.SetUpper(nomtxt ,30);
         setActivty();
 
         this.client = client;

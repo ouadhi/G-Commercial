@@ -36,8 +36,9 @@ public class AjouterBanqueController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyInteger(telephone, 10);
-        Methode.SetUpper(nombanque);
-        Methode.SetUpper(NumCompte);
+        Methode.SetUpper(nombanque , 30);
+        Methode.SetUpper(NumCompte, 30);
+        Methode.setsizeString(nombanque, 5);
 
     }
 

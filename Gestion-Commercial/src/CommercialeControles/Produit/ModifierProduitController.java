@@ -48,7 +48,7 @@ public class ModifierProduitController implements Initializable {
         Methode.setOnlyNumbre(quantite);
         Methode.setOnlyNumbre(prix);
 
-        Methode.SetUpper(nom);
+        Methode.SetUpper(nom , 30);
 
     }
 
@@ -105,7 +105,7 @@ public class ModifierProduitController implements Initializable {
     }
 
     public void setData(Produit produit) {
-        Methode.SetUpper(nom);
+        Methode.SetUpper(nom, 30);
 
         this.produit = produit;
         this.nom.setText(produit.getNom());

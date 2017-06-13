@@ -36,7 +36,7 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton fx:id="ajouter" layoutX="1019.0" layoutY="34.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter Produit" />
+      <JFXButton fx:id="ajouter" layoutX="1019.0" layoutY="34.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" style="-fx-background-radius: 50;" styleClass="Ajouter_button" text="Ajouter " />
       <JFXListView fx:id="listebanque" layoutX="62.0" layoutY="171.0" minHeight="461.0" minWidth="1114.0" showTooltip="true" />
       <GridPane hgap="3.0" layoutX="62.0" layoutY="118.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1036.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;">
          <columnConstraints>

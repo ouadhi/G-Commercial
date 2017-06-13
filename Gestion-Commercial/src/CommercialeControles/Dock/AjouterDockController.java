@@ -50,7 +50,7 @@ public class AjouterDockController implements Initializable {
         Methode.setOnlyDouble(prix, 10);
         Methode.setOnlyDouble(distance, 10);
         
-         Methode.SetUpper(nom);
+         Methode.SetUpper(nom ,30);
     }
 
     @FXML

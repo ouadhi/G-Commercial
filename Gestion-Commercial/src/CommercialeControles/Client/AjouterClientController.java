@@ -64,11 +64,11 @@ public class AjouterClientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         datedept.setValue(LocalDate.now());
-        Methode.SetUpper(NRtxt);
-        Methode.SetUpper(NAtxt);
-        Methode.SetUpper(NCarteF);
+        Methode.SetUpper(NRtxt , 25);
+        Methode.SetUpper(NAtxt,25);
+        Methode.SetUpper(NCarteF,25);
 
-        Methode.SetUpper(nomtxt);
+        Methode.SetUpper(nomtxt,30);
         setActivty();
     }
 
