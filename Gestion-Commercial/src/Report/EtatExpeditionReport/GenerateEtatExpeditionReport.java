@@ -6,6 +6,8 @@
 package Report.EtatExpeditionReport;
 
 import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.HibernateSchema.Facture_Produit;
+import com.gestionCommerciale.Models.Facture_ProduitQueries;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -182,18 +184,19 @@ public class GenerateEtatExpeditionReport {
         List<List<String>> expeditions = new ArrayList<>();
         for (Facture facture : map.keySet()) {
             List<String> expedition = new ArrayList<>();
-            for (int i = 0; i < facture.getQtes().size(); i++) {
+            List<Facture_Produit> getQtes= Facture_ProduitQueries.list(facture);
+            for (int i = 0; i < getQtes.size(); i++) {
                 expedition.add(facture.getClient().getName());
                 expedition.add(String.valueOf(facture.getIdFacture()));
-                expedition.add(facture.getQtes().get(i).getProduit().getNom().toString());
-                if (facture.getQtes().get(i).getProduit().getNom().equals("FARINE 50")) {
-                    expedition.add(String.valueOf(facture.getQtes().get(i).getQte_fact()));
+                expedition.add(getQtes.get(i).getProduit().getNom().toString());
+                if (getQtes.get(i).getProduit().getNom().equals("FARINE 50")) {
+                    expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
                     expedition.add("0");
                 } else {
                     expedition.add("0");
-                    expedition.add(String.valueOf(facture.getQtes().get(i).getQte_fact()));
+                    expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
                 }
-                expedition.add(String.valueOf(facture.getQtes().get(i).getProduit().getPrix()));
+                expedition.add(String.valueOf(getQtes.get(i).getProduit().getPrix()));
                 expedition.add(String.valueOf(facture.getMontant()));
                 //check if empty 
                 if (facture.getClient().getPayments().isEmpty()) {

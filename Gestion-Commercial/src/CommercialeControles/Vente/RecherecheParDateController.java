@@ -59,7 +59,6 @@ public class RecherecheParDateController implements Initializable {
         for (int i = 0; i < factureList.size(); i++) {
             list.add(new VenteCell(factureList.get(i)));
         }
-
         ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
         listevente.setItems(myObservableList);
         listevente.setExpanded(true);
@@ -69,14 +68,11 @@ public class RecherecheParDateController implements Initializable {
     @FXML
     private void print(ActionEvent event) {
         try {
-            System.out.println("facture part executes");
-            List<Facture> factures = FactureQueries.list();
+            //List<Facture> factures = FactureQueries.list();
 
             List<JasperPrint> jasperPrints = new ArrayList<JasperPrint>();
-            for (int i = 0; i < factures.size(); i++) {
-                jasperPrints.add(ToutFacture.ItererJaspoerPrint(factures.get(i)));
-                System.out.println("------------- facture: " + factures.get(i).getClient().getPrenom());
-
+            for (int i = 0; i < factureList.size(); i++) {
+                jasperPrints.add(ToutFacture.ItererJaspoerPrint(factureList.get(i)));
             }
             JRPdfExporter exporter = new JRPdfExporter();
             exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrints)); //Set as export input my list with JasperPrint s

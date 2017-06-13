@@ -20,10 +20,11 @@ import org.hibernate.Session;
  * @author Hicham
  */
 public class Facture_ProduitQueries {
+
     //inserer/Update/Delete
     // when you create the object of the relation you set the corresponding objects
     //of Facture and Produit in the assiciatibe table
-    public void insertOrUpdate(Facture_Produit facture_Produit, Facture facture, Produit produit){
+    public void insertOrUpdate(Facture_Produit facture_Produit, Facture facture, Produit produit) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -39,7 +40,8 @@ public class Facture_ProduitQueries {
             session.close();
         }
     }
-     public void delete(Facture_Produit facture_Produit) {
+
+    public void delete(Facture_Produit facture_Produit) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         try {
@@ -52,7 +54,7 @@ public class Facture_ProduitQueries {
             session.close();
         }
     }
-     //get info du Facture( les produits dans la factures + les qtes des produits)
+    //get info du Facture( les produits dans la factures + les qtes des produits)
 //     public Map<Facture_Produit,Produit> getFactureInfo2(Facture facture){
 //         Map<Facture_Produit,Produit> produitEtQte= new HashMap<>();
 //         for (int i = 0; i < facture.getQtes().size(); i++) {
@@ -60,13 +62,13 @@ public class Facture_ProduitQueries {
 //         }
 //          return produitEtQte;
 //     }
-     
-         public static List<Facture_Produit> list(Facture f) {
+
+    public static List<Facture_Produit> list(Facture f) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
         List<Facture_Produit> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Facture_Produit where id_fact='" + f.getIdFacture()+ "'").list();
+            list = session.createQuery("from Facture_Produit where id_fact='" + f.getIdFacture() + "'").list();
         } finally {
             session.close();
         }

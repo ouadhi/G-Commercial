@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatEstimatifParClient/EtatEstimatifClientBean.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatEstimatifParClient/OperationEtatEstimatifClient.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatBleReport/GenerateEtatBleReport.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/com/gestionCommerciale/Models/ClientQueries.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/FactureRemboursementBleReport/GenerateFactureRemboursementReport.java</file>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatEstimatifParClient/GenerationEtatEstimatifClient.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/CommercialeControles/Vente/PrintViewController.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/FactureReport/ToutFacture.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/com/gestionCommerciale/Models/Facture_ProduitQueries.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/FactureReport/OperationFactuReport.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/CommercialeControles/Vente/OperationVenteController.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatExpeditionReport/GenerateEtatExpeditionReport.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/CommercialeControles/Vente/RecherecheParDateController.java</file>
         </group>
     </open-files>
 </project-private>
