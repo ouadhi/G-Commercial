@@ -50,7 +50,7 @@ public class ListeProduitVenteController implements Initializable {
         this.facture  = facture  ; 
         
          List<cellProduit> list = new ArrayList<>();
-        
+        System.out.println("size of qte_facture");
         for (int i = 0; i < this.facture.getQtes().size(); i++) {
             Facture_Produit pro  =  this.facture.getQtes().get(i) ; 
             list.add(new cellProduit(pro.getProduit().getNom() , pro.getProduit().getPrix()+"" , pro.getQte_fact()+""));
