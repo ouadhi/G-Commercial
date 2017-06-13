@@ -53,13 +53,13 @@ public class Facture_ProduitQueries {
         }
     }
      //get info du Facture( les produits dans la factures + les qtes des produits)
-     public Map<Facture_Produit,Produit> getFactureInfo(Facture facture){
-         Map<Facture_Produit,Produit> produitEtQte= new HashMap<>();
-         for (int i = 0; i < facture.getQtes().size(); i++) {
-             produitEtQte.put(facture.getQtes().get(i), facture.getQtes().get(i).getProduit());
-         }
-          return produitEtQte;
-     }
+//     public Map<Facture_Produit,Produit> getFactureInfo2(Facture facture){
+//         Map<Facture_Produit,Produit> produitEtQte= new HashMap<>();
+//         for (int i = 0; i < facture.getQtes().size(); i++) {
+//             produitEtQte.put(facture.getQtes().get(i), facture.getQtes().get(i).getProduit());
+//         }
+//          return produitEtQte;
+//     }
      
          public static List<Facture_Produit> list(Facture f) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
