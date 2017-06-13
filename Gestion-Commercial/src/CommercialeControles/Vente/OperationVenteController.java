@@ -1,6 +1,4 @@
 package CommercialeControles.Vente;
-
-import CommercialeControles.OperationAchat.FinOperationController;
 import UIControle.Notification;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Camion;

@@ -1,4 +1,3 @@
-
 package CommercialeControles.Rapport.Vente;
 
 import Report.EtatEstimatifParClient.GenerationEtatEstimatifClient;
@@ -17,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 
-
 public class ClienntRapportController implements Initializable {
 
     @FXML
@@ -29,15 +27,23 @@ public class ClienntRapportController implements Initializable {
     @FXML
     private JFXComboBox<String> client;
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         for (Client c : ClientQueries.list()) {
-            this.client.getItems().add(c.getName()+" "+c.getPrenom()) ; 
-            
+            this.client.getItems().add(c.getName() + " " + c.getPrenom());
+
         }
-        
-    }    
+
+        rapport2.setOnAction(event -> {
+            GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
+            Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            String nomEtPrenomClient = client.getSelectionModel().getSelectedItem();
+            generationEtatEstimatifClient.generateReportGeneral(dateObDebut, dateObFin, nomEtPrenomClient);
+
+        });
+
+    }
 
     @FXML
     private void close(MouseEvent event) {
@@ -46,12 +52,12 @@ public class ClienntRapportController implements Initializable {
 
     @FXML
     private void rapport1(ActionEvent event) {
-        
+
         GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
         Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        String nomEtPrenomClient= client.getSelectionModel().getSelectedItem();
+        String nomEtPrenomClient = client.getSelectionModel().getSelectedItem();
         generationEtatEstimatifClient.generateReport(dateObDebut, dateObFin, nomEtPrenomClient);
     }
-    
+
 }

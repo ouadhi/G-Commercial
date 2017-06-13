@@ -5,6 +5,7 @@
  */
 package Report.EtatEstimatifParClient;
 
+import Report.EtatEstimatifGlobal.OperationEtatEstimatifGlobal;
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
@@ -38,7 +39,7 @@ public class GenerationEtatEstimatifClient {
     public void getFactureParClient(Date debut, Date fin, String nomprenom) {
         List<Date> intervalDate = getDaysBetweenDates(debut, increment_decrementDays(true, fin, 1));
         client = ClientQueries.getClientByNom(nomprenom);
-        System.out.println("client name-----------"+client.getName());
+        System.out.println("client name-----------" + client.getName());
         List<Facture> factures = client.getFactures();
         for (int i = 0; i < intervalDate.size(); i++) {
             for (int j = 0; j < factures.size(); j++) {
@@ -117,4 +118,17 @@ public class GenerationEtatEstimatifClient {
                 dates, this.nums, this.produits, this.montants, this.tvas, this.ttcs);
         operationEtatEstimatifClient.printReport();
     }
+
+    public void generateReportGeneral(Date dateDebut, Date dateFin, String clientNomPrenom) {
+        //add true false
+        getFactureParClient(dateDebut, dateFin, clientNomPrenom);
+        String start = new SimpleDateFormat("dd-MM-yyyy").format(dateDebut);
+        String end = new SimpleDateFormat("dd-MM-yyyy").format(dateFin);
+        OperationEtatEstimatifGlobal operationEtatEstimatifGlobal = new OperationEtatEstimatifGlobal();
+        operationEtatEstimatifGlobal.putReportInfo(clientNomPrenom, client.getTypeActivity(),
+                client.getAddressClient(), client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(),
+                start, end, String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal));
+        operationEtatEstimatifGlobal.printReport();
+    }
+
 }
