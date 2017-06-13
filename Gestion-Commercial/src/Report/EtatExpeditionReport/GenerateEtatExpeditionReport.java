@@ -92,7 +92,7 @@ public class GenerateEtatExpeditionReport {
             double total = 0;
             for (int i = 0; i < listPay.size(); i++) {
                 for (int j = 0; j < dates.size(); j++) {
-                    if (dates.equals(listPay.get(i))) {
+                    if (dates.get(j).equals(listPay.get(i).getDate())) {
                         versementTotal = versementTotal + listPay.get(i).getMontant();
                     }
                 }
@@ -176,11 +176,10 @@ public class GenerateEtatExpeditionReport {
         List<Payment> listPayment = PaymentQueries.list();
         double total = 0;
         for (int i = 0; i < listPayment.size(); i++) {
-            for (int j = 0; j < dates.size(); j++) {
-                if (jour.equals(listPayment.get(i))) {
+                if (jour.equals(listPayment.get(i).getDate())) {
                     total = total + listPayment.get(i).getMontant();
                 }
-            }
+            
         }
         return total;
     }
@@ -228,7 +227,6 @@ public class GenerateEtatExpeditionReport {
                     expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
                 }
                 expedition.add(String.valueOf(getQtes.get(i).getProduit().getPrix()));
-
                 expedition.add(String.valueOf(facture.getMontant()));
                 //check if empty 
                 if (facture.getClient().getPayments().isEmpty()) {
