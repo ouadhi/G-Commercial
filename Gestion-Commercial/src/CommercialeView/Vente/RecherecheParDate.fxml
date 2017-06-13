@@ -57,8 +57,8 @@
             </Label>
          </children>
       </GridPane>
-      <JFXDatePicker layoutX="243.0" layoutY="25.0" />
-      <JFXDatePicker layoutX="482.0" layoutY="25.0" />
+      <JFXDatePicker fx:id="dtpStart" layoutX="243.0" layoutY="25.0" />
+      <JFXDatePicker fx:id="dtpEnd" layoutX="482.0" layoutY="25.0" />
       <Label layoutX="218.0" layoutY="33.0" text="De">
          <font>
             <Font size="18.0" />
