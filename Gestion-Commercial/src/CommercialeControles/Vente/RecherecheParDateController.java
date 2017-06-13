@@ -70,12 +70,12 @@ public class RecherecheParDateController implements Initializable {
     private void print(ActionEvent event) {
         try {
             System.out.println("facture part executes");
-            List<Facture> factures = FactureQueries.list();
+            //List<Facture> factures = FactureQueries.list();
 
             List<JasperPrint> jasperPrints = new ArrayList<JasperPrint>();
-            for (int i = 0; i < factures.size(); i++) {
-                jasperPrints.add(ToutFacture.ItererJaspoerPrint(factures.get(i)));
-                System.out.println("------------- facture: " + factures.get(i).getClient().getPrenom());
+            for (int i = 0; i < factureList.size(); i++) {
+                jasperPrints.add(ToutFacture.ItererJaspoerPrint(factureList.get(i)));
+                System.out.println("------------- facture: " + factureList.get(i).getClient().getPrenom());
 
             }
             JRPdfExporter exporter = new JRPdfExporter();

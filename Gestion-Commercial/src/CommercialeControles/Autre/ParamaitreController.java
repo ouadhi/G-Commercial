@@ -108,9 +108,7 @@ public class ParamaitreController implements Initializable {
             }
             annee.setSelected(true);
             AnneeQueries.SaveOrUpdate(annee);
-
-            //AnneeQueries.select(annee.getIdAnnee());
-            Notification.errorNotification("bbb");
+            Notification.Addnotification();
 
         }
     }

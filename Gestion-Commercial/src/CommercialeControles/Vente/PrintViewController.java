@@ -56,7 +56,7 @@ public class PrintViewController implements Initializable {
                 List<String> prixsVente = new ArrayList<>();
                 List<String> montantsVente = new ArrayList<>();
                 List<String> typesVente = new ArrayList<>();
-        List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
+                List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
 
                 for (int i = 0; i < fpList.size(); i++) {
                     designationsVente.add(fpList.get(i).getProduit().getNom());
@@ -94,8 +94,8 @@ public class PrintViewController implements Initializable {
                 //get list produits, qte 
                 List<String> designationsVente = new ArrayList<>();
                 List<String> qtesVente = new ArrayList<>();
-        List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
-                
+                List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
+
                 for (int i = 0; i < fpList.size(); i++) {
                     designationsVente.add(fpList.get(i).getProduit().getNom());
                     qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
@@ -120,7 +120,7 @@ public class PrintViewController implements Initializable {
                 List<String> designationsVente = new ArrayList<>();
                 List<String> qtesVente = new ArrayList<>();
                 List<String> typesVente = new ArrayList<>();
-        List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
+                List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
 
                 for (int i = 0; i < fpList.size(); i++) {
                     designationsVente.add(fpList.get(i).getProduit().getNom());

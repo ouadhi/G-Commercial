@@ -1,4 +1,3 @@
-
 package CommercialeControles.Autre;
 
 import UIControle.Methode;
@@ -14,19 +13,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 
-
 public class ModifierAnneeController implements Initializable {
 
     @FXML
     private JFXTextField tva;
-    
-    Annee annee  ; 
 
-    
+    Annee annee;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-    }    
+        Methode.setOnlyInteger(tva, 2);
+
+    }
 
     @FXML
     private void close(MouseEvent event) {
@@ -35,28 +33,28 @@ public class ModifierAnneeController implements Initializable {
 
     @FXML
     private void save(ActionEvent event) {
-        
-       Optional<ButtonType> result = Notification.updateAlert().showAndWait();
+
+        Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
             if (tva.getText().isEmpty()) {
                 Notification.champVideNotification();
-            }else{
-                
+            } else {
+
                 Notification.Updatenotification();
                 quitter(event);
             }
         }
-        
+
     }
 
     @FXML
     private void quitter(ActionEvent event) {
         Methode.getStage(event).close();
     }
-    
-    public void setData (Annee annee ) {
-        this.annee = annee ; 
-        tva.setText(this.annee.getTva()+"");
+
+    public void setData(Annee annee) {
+        this.annee = annee;
+        tva.setText(this.annee.getTva() + "");
     }
-    
+
 }
