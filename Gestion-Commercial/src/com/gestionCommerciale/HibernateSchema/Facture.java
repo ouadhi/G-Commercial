@@ -135,7 +135,7 @@ public class Facture {
         this.chauffeur = chauffeur;
     }
 
-    public List<Facture_Produit> getQtes() {
+    public List<Facture_Produit> getQtes2() {
         return qtes;
     }
 

@@ -68,11 +68,13 @@ public class GenerateEtatExpeditionReport {
 
             // Total  a ce jour  
             for (int i = 0; i < listFactures.size(); i++) {
-                for (int j = 0; j < listFactures.get(i).getQtes().size(); j++) {
-                    if (listFactures.get(i).getQtes().get(j).getProduit().getNom().equals("FARINE 50")) {
-                        farineTotal = farineTotal + listFactures.get(i).getQtes().get(j).getQte_fact();
+                List<Facture_Produit> fpList = Facture_ProduitQueries.list(listFactures.get(i));
+
+                for (int j = 0; j < fpList.size(); j++) {
+                    if (fpList.get(j).getProduit().getNom().equals("FARINE 50")) {
+                        farineTotal = farineTotal + fpList.get(j).getQte_fact();
                     } else {
-                        sonTotal = sonTotal + listFactures.get(i).getQtes().get(j).getQte_fact();
+                        sonTotal = sonTotal + fpList.get(j).getQte_fact();
                     }
                 }
                 for (int j = 0; j < listFactures.get(i).getClient().getPayments().size(); j++) {
@@ -126,12 +128,14 @@ public class GenerateEtatExpeditionReport {
     public double sommeFarineSon(String designationProduit) {
         double total = 0;
         for (Facture facture : map.keySet()) {
-            for (int i = 0; i < facture.getQtes().size(); i++) {
-                if (facture.getQtes().get(i).getProduit().getNom().equals(designationProduit)) {
-                    total = total + facture.getQtes().get(i).getQte_fact();
+            List<Facture_Produit> fpList = Facture_ProduitQueries.list(facture);
+
+            for (int i = 0; i < fpList.size(); i++) {
+                if (fpList.get(i).getProduit().getNom().equals(designationProduit)) {
+                    total = total + fpList.get(i).getQte_fact();
                 }
             }
-            facture.getQtes();
+            //facture.getQtes();
         }
         return total;
     }
@@ -184,7 +188,7 @@ public class GenerateEtatExpeditionReport {
         List<List<String>> expeditions = new ArrayList<>();
         for (Facture facture : map.keySet()) {
             List<String> expedition = new ArrayList<>();
-            List<Facture_Produit> getQtes= Facture_ProduitQueries.list(facture);
+            List<Facture_Produit> getQtes = Facture_ProduitQueries.list(facture);
             for (int i = 0; i < getQtes.size(); i++) {
                 expedition.add(facture.getClient().getName());
                 expedition.add(String.valueOf(facture.getIdFacture()));
@@ -197,6 +201,7 @@ public class GenerateEtatExpeditionReport {
                     expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
                 }
                 expedition.add(String.valueOf(getQtes.get(i).getProduit().getPrix()));
+
                 expedition.add(String.valueOf(facture.getMontant()));
                 //check if empty 
                 if (facture.getClient().getPayments().isEmpty()) {
