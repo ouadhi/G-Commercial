@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -50,6 +50,6 @@
             <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
          </padding>
       </JFXButton>
-      <JFXComboBox fx:id="client" layoutX="130.0" layoutY="144.0" prefHeight="45.0" prefWidth="253.0" />
+      <JFXTextField fx:id="client" focusColor="#405aa800" layoutX="107.0" layoutY="152.0" maxWidth="289.0" minWidth="191.0" prefHeight="45.0" prefWidth="289.0" styleClass="champtxt" unFocusColor="#4d4d4d00" />
    </children>
 </AnchorPane>

@@ -8,14 +8,18 @@ import com.gestionCommerciale.Models.ClientQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.net.URL;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import org.controlsfx.control.textfield.TextFields;
 
 
 public class ClienntRapportController implements Initializable {
@@ -27,15 +31,12 @@ public class ClienntRapportController implements Initializable {
     @FXML
     private JFXButton rapport2;
     @FXML
-    private JFXComboBox<String> client;
+    private JFXTextField client;
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        for (Client c : ClientQueries.list()) {
-            this.client.getItems().add(c.getName()+" "+c.getPrenom()) ; 
-            
-        }
+        
         
     }    
 
@@ -49,8 +50,17 @@ public class ClienntRapportController implements Initializable {
         GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
         Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        String nomEtPrenomClient= client.getSelectionModel().getSelectedItem();
+        String nomEtPrenomClient= client.getText() ; 
         generationEtatEstimatifClient.generateReport(dateObDebut, dateObFin, nomEtPrenomClient);
     }
     
+    
+     public void possibleMot() {
+         ArrayList<String>  liste  =  new ArrayList<>()   ; 
+         for (Client client1 : ClientQueries.list()) {
+             liste.add(client1.getName()+" "+client1.getPrenom()) ; 
+         }
+      
+        TextFields.bindAutoCompletion(client, liste);
+    }
 }
