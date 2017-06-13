@@ -7,7 +7,9 @@ package Report.EtatExpeditionReport;
 
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
+import com.gestionCommerciale.HibernateSchema.Payment;
 import com.gestionCommerciale.Models.Facture_ProduitQueries;
+import com.gestionCommerciale.Models.PaymentQueries;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -24,13 +26,13 @@ import net.sf.jasperreports.engine.JRException;
 import org.hibernate.Session;
 
 /**
- *
  * @author Hicham
  */
 public class GenerateEtatExpeditionReport {
 
     Map<Facture, String> map = new HashMap<>();
     List<String> observations = new ArrayList<>();
+    List<Date> dates = new ArrayList<>();
 
     double farineTotal = 0;
     double sonTotal = 0;
@@ -46,10 +48,10 @@ public class GenerateEtatExpeditionReport {
         try {
 
             list = new ArrayList<>();
-            list = session.createQuery("from Facture").list();
+            list = session.createQuery("from Facture where deleted='" + false + "'").list();
             Calendar cal = Calendar.getInstance();
             Date yearStart = new GregorianCalendar(cal.get(Calendar.YEAR), 0, 1).getTime();
-            List<Date> dates = getDaysBetweenDates(yearStart,
+            dates = getDaysBetweenDates(yearStart,
                     increment_decrementDays(true, jour, 1));
             List<Facture> listFactures = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
@@ -68,20 +70,32 @@ public class GenerateEtatExpeditionReport {
 
             // Total  a ce jour  
             for (int i = 0; i < listFactures.size(); i++) {
+
                 List<Facture_Produit> fpList = Facture_ProduitQueries.list(listFactures.get(i));
 
                 for (int j = 0; j < fpList.size(); j++) {
+
                     if (fpList.get(j).getProduit().getNom().equals("FARINE 50")) {
                         farineTotal = farineTotal + fpList.get(j).getQte_fact();
                     } else {
                         sonTotal = sonTotal + fpList.get(j).getQte_fact();
                     }
                 }
-                for (int j = 0; j < listFactures.get(i).getClient().getPayments().size(); j++) {
-                    versementTotal = versementTotal + listFactures.get(i).getClient().getPayments().get(j).getMontant();
-                }
+
+//                for (int j = 0; j < listFactures.get(i).getClient().getPayments().size(); j++) {
+//                    versementTotal = versementTotal + listFactures.get(i).getClient().getPayments().get(j).getMontant();
+//                }
                 montantTotal = montantTotal + listFactures.get(i).getMontant();
 
+            }
+            List<Payment> listPay = PaymentQueries.list();
+            double total = 0;
+            for (int i = 0; i < listPay.size(); i++) {
+                for (int j = 0; j < dates.size(); j++) {
+                    if (dates.equals(listPay.get(i))) {
+                        versementTotal = versementTotal + listPay.get(i).getMontant();
+                    }
+                }
             }
             differenceTotal = versementTotal - montantTotal;
         } finally {
@@ -148,17 +162,30 @@ public class GenerateEtatExpeditionReport {
         return total;
     }
 
-    public double sommeVersement() {
+//    public double sommeVersement() {
+//        double total = 0;
+//        for (Facture facture : map.keySet()) {
+//            for (int i = 0; i < facture.getClient().getPayments().size(); i++) {
+//                total = total + facture.getClient().getPayments().get(i).getMontant();
+//                
+//            }
+//        }
+//        return total;
+//    }
+    public double sommeVersement(Date jour) {
+        List<Payment> listPayment = PaymentQueries.list();
         double total = 0;
-        for (Facture facture : map.keySet()) {
-            for (int i = 0; i < facture.getClient().getPayments().size(); i++) {
-                total = total + facture.getClient().getPayments().get(i).getMontant();
+        for (int i = 0; i < listPayment.size(); i++) {
+            for (int j = 0; j < dates.size(); j++) {
+                if (jour.equals(listPayment.get(i))) {
+                    total = total + listPayment.get(i).getMontant();
+                }
             }
         }
         return total;
     }
 
-    public List<Double> sommes() {
+    public List<Double> sommes(Date jour) {
         List<Double> listSommes = new ArrayList<>();
         //Map<Facture, Client> map = getFacture_ClientParJour();
         try {
@@ -171,9 +198,9 @@ public class GenerateEtatExpeditionReport {
             //somme montant
             listSommes.add(sommeMontant());
             //somme versement
-            listSommes.add(sommeVersement());
+            listSommes.add(sommeVersement(jour));
             //difference : versement - montant
-            double difference = sommeVersement() - sommeMontant();
+            double difference = sommeVersement(jour) - sommeMontant();
             //somme qte son + qte Farine
             double someQte = sommeFarine + sommeSon;
             listSommes.add(someQte);
@@ -290,7 +317,7 @@ public class GenerateEtatExpeditionReport {
         List<String> prixs = getPrix(expeditions);
         List<String> montants = getMontant(expeditions);
         List<String> versements = getVersement(expeditions);
-        List<Double> sommes = sommes();
+        List<Double> sommes = sommes(jour);
         /*
         System.out.println(clients);
         System.out.println(nums);
