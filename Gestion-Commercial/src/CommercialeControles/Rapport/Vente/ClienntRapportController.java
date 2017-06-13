@@ -46,6 +46,7 @@ public class ClienntRapportController implements Initializable {
 
     @FXML
     private void rapport1(ActionEvent event) {
+        
         GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
         Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());

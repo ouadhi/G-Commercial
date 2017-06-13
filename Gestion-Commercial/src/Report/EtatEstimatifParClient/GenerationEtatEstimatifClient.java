@@ -38,6 +38,7 @@ public class GenerationEtatEstimatifClient {
     public void getFactureParClient(Date debut, Date fin, String nomprenom) {
         List<Date> intervalDate = getDaysBetweenDates(debut, increment_decrementDays(true, fin, 1));
         client = ClientQueries.getClientByNom(nomprenom);
+        System.out.println("client name-----------"+client.getName());
         List<Facture> factures = client.getFactures();
         for (int i = 0; i < intervalDate.size(); i++) {
             for (int j = 0; j < factures.size(); j++) {
@@ -105,6 +106,7 @@ public class GenerationEtatEstimatifClient {
     }
 
     public void generateReport(Date dateDebut, Date dateFin, String clientNomPrenom) {
+        getFactureParClient(dateDebut, dateFin, clientNomPrenom);
         String start = new SimpleDateFormat("dd-MM-yyyy").format(dateDebut);
         String end = new SimpleDateFormat("dd-MM-yyyy").format(dateFin);
         OperationEtatEstimatifClient operationEtatEstimatifClient = new OperationEtatEstimatifClient();

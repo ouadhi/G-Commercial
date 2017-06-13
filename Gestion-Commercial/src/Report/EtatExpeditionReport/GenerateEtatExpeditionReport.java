@@ -245,7 +245,7 @@ public class GenerateEtatExpeditionReport {
                 observations.add("");
 
             }
-            //System.out.println("list expidition ------------------" + expedition);
+            System.out.println("list expidition ------------------" + expedition);
             expeditions.add(expedition);
         }
 

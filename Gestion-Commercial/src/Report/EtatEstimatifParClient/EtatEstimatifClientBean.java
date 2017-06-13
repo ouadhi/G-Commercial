@@ -8,7 +8,6 @@ package Report.EtatEstimatifParClient;
 import java.util.List;
 
 /**
- *
  * @author Hicham
  */
 public class EtatEstimatifClientBean {
