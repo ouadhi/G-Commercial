@@ -6,6 +6,8 @@
 package Report.FactureReport;
 
 import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.HibernateSchema.Facture_Produit;
+import com.gestionCommerciale.Models.Facture_ProduitQueries;
 import com.ibm.icu.text.RuleBasedNumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,16 +29,17 @@ public class ToutFacture {
         List<String> prixsVente = new ArrayList<>();
         List<String> montantsVente = new ArrayList<>();
         List<String> typesVente = new ArrayList<>();
+        List<Facture_Produit> fpList = Facture_ProduitQueries.list(facture);
 
-        for (int i = 0; i < facture.getQtes().size(); i++) {
-            designationsVente.add(facture.getQtes().get(i).getProduit().getNom());
-            qtesVente.add(String.valueOf(facture.getQtes().get(i).getQte_fact()));
-            prixsVente.add(String.valueOf(facture.getQtes().get(i).getProduit().getPrix()));
-            typesVente.add(String.valueOf(facture.getQtes().get(i).getProduit().getCategory()));
-            montantsVente.add(String.valueOf(facture.getQtes().get(i).getQte_fact()
-                    * facture.getQtes().get(i).getProduit().getPrix()));
-            montantTotal = montantTotal + (facture.getQtes().get(i).getQte_fact()
-                    * facture.getQtes().get(i).getProduit().getPrix());
+        for (int i = 0; i < fpList.size(); i++) {
+            designationsVente.add(fpList.get(i).getProduit().getNom());
+            qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
+            prixsVente.add(String.valueOf(fpList.get(i).getProduit().getPrix()));
+            typesVente.add(String.valueOf(fpList.get(i).getProduit().getCategory()));
+            montantsVente.add(String.valueOf(fpList.get(i).getQte_fact()
+                    * fpList.get(i).getProduit().getPrix()));
+            montantTotal = montantTotal + (fpList.get(i).getQte_fact()
+                    * fpList.get(i).getProduit().getPrix());
         }
         //double ttc = factureimp.getMontant() * ((factureimp.getTva() / 100) + factureimp.getMontant());
         double ttc = (montantTotal * (facture.getTva() / 100)) + montantTotal;
