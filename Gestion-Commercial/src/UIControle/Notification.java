@@ -10,7 +10,7 @@ import tray.notification.TrayNotification;
 public class Notification {
     
     public static void Addnotification () {
-        String title = "Ajoute";
+        String title = "Succès";
         String message = "l'operation est terminé avec succès ";
         NotificationType type  = NotificationType.SUCCESS ; 
         TrayNotification tray = new TrayNotification();

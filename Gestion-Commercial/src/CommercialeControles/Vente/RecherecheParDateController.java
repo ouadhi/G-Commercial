@@ -68,11 +68,13 @@ public class RecherecheParDateController implements Initializable {
     @FXML
     private void print(ActionEvent event) {
         try {
-            //List<Facture> factures = FactureQueries.list();
+
 
             List<JasperPrint> jasperPrints = new ArrayList<JasperPrint>();
             for (int i = 0; i < factureList.size(); i++) {
                 jasperPrints.add(ToutFacture.ItererJaspoerPrint(factureList.get(i)));
+                System.out.println("------------- facture: " + factureList.get(i).getClient().getPrenom());
+
             }
             JRPdfExporter exporter = new JRPdfExporter();
             exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrints)); //Set as export input my list with JasperPrint s

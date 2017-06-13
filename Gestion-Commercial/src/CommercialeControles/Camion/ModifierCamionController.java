@@ -78,7 +78,7 @@ public class ModifierCamionController implements Initializable {
                     Notification.error("Ce Code existe déja!");
                 } else if (c2 != null && c2.getId() != camion.getId()) {
                     Notification.error("Cette matriquelle existe déja!");
-                } else if (CamionQueries.SaveOrUpdate(camion)) {
+                } else {
                     CamionQueries.SaveOrUpdate(camion);
                     Notification.Updatenotification();
                     new ShowPane().showCamion();

@@ -16,26 +16,26 @@
         <JFXDrawer fx:id="drawer" direction="TOP" layoutY="80.0" opacity="0.85" overLayVisible="false" prefHeight="100.0" prefWidth="1366.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
         <Pane prefHeight="80.0" prefWidth="1677.0" styleClass="topbar" stylesheets="@Maincss.css" AnchorPane.leftAnchor="0.0">
             <children>
-                <Label fx:id="ntifcount" alignment="CENTER" contentDisplay="CENTER" layoutX="1062.0" layoutY="28.0" minHeight="12.0" minWidth="12.0" styleClass="layer" text="0" />
-                <Label fx:id="msgcount" alignment="CENTER" layoutX="1099.0" layoutY="28.0" minHeight="12.0" minWidth="12.0" styleClass="layer" text="0" />
-                <Label fx:id="pseudo" layoutX="1189.0" layoutY="33.0" prefHeight="13.0" prefWidth="63.0" styleClass="Admin" text="PSEUDO" />
-                <JFXButton fx:id="showprofile" layoutX="1258.0" layoutY="35.0" text="&lt;" textAlignment="CENTER" textFill="WHITE">
+                <Label fx:id="ntifcount" alignment="CENTER" contentDisplay="CENTER" layoutX="1062.0" layoutY="28.0" minHeight="12.0" minWidth="12.0" styleClass="layer" text="0" visible="false" />
+                <Label fx:id="msgcount" alignment="CENTER" layoutX="1099.0" layoutY="28.0" minHeight="12.0" minWidth="12.0" styleClass="layer" text="0" visible="false" />
+                <Label fx:id="pseudo" layoutX="1189.0" layoutY="33.0" prefHeight="13.0" prefWidth="63.0" styleClass="Admin" text="PSEUDO" visible="false" />
+                <JFXButton fx:id="showprofile" layoutX="1258.0" layoutY="35.0" text="&lt;" textAlignment="CENTER" textFill="WHITE" visible="false">
                     <font>
                         <Font size="10.0" />
                     </font>
                 </JFXButton>
-                <ImageView fx:id="profileimg" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" styleClass="Search" x="1133.0" y="16.0">
+                <ImageView fx:id="profileimg" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" styleClass="Search" visible="false" x="1133.0" y="16.0">
                      <image>
                         <Image url="icons/man.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="notificationicon" fitHeight="19.0" fitWidth="19.0" layoutX="-0.0" layoutY="-0.0" pickOnBounds="true" preserveRatio="true" x="1041.0" y="32.0">
+                <ImageView fx:id="notificationicon" fitHeight="19.0" fitWidth="19.0" layoutX="-0.0" layoutY="-0.0" pickOnBounds="true" preserveRatio="true" visible="false" x="1041.0" y="32.0">
                     
                     <image>
                         <Image url="icons/notification.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="msgicon" fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" x="1078.0" y="32.0">
+                <ImageView fx:id="msgicon" fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" visible="false" x="1078.0" y="32.0">
                     
                         <image>
                            <Image url="icons/mail.png" />

@@ -21,8 +21,8 @@ public class AddAnneeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyNumbre(annee);
-        Methode.setOnlyNumbre(tva);
+        Methode.setOnlyInteger(annee,4);
+        Methode.setOnlyInteger(tva,2);
     }
 
     @FXML
@@ -50,6 +50,7 @@ public class AddAnneeController implements Initializable {
             }
 
         }
+        quitter(event);
     }
 
     @FXML
