@@ -23,6 +23,9 @@ import javafx.scene.input.MouseEvent;
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 
 public class RecherecheParDateController implements Initializable {
 
@@ -75,16 +78,13 @@ public class RecherecheParDateController implements Initializable {
                 System.out.println("------------- facture: " + factures.get(i).getClient().getPrenom());
 
             }
-// Your code to get Jasperreport objects
-
             JRPdfExporter exporter = new JRPdfExporter();
-//Create new FileOutputStream or you can use Http Servlet Response.getOutputStream() to get Servlet output stream
-// Or if you want bytes create ByteArrayOutputStream
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            exporter.setParameter(JRExporterParameter.JASPER_PRINT_LIST, jasperPrints);
-            exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, out);
+            exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrints)); //Set as export input my list with JasperPrint s
+            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(System.getProperty("user.home") + "/Desktop"+"/out.pdf" )); //or any other out streaam
+            SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
+            configuration.setCreatingBatchModeBookmarks(true); //add this so your bookmarks work, you may set other parameters
+            exporter.setConfiguration(configuration);
             exporter.exportReport();
-            //byte[] bytes = out.toByteArray();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

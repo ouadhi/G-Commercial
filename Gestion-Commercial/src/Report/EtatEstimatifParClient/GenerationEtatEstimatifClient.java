@@ -7,7 +7,9 @@ package Report.EtatEstimatifParClient;
 
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.Models.ClientQueries;
+import com.gestionCommerciale.Models.Facture_ProduitQueries;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -40,11 +42,14 @@ public class GenerationEtatEstimatifClient {
         for (int i = 0; i < intervalDate.size(); i++) {
             for (int j = 0; j < factures.size(); j++) {
                 if (intervalDate.get(i).equals(factures.get(j).getDate())) {
-                    for (int k = 0; k < factures.get(j).getQtes().size(); k++) {
+                    //edited
+                    List<Facture_Produit> fpList = Facture_ProduitQueries.list(factures.get(j));
+
+                    for (int k = 0; k < fpList.size(); k++) {
                         String date = new SimpleDateFormat("dd-MM-yyyy").format(intervalDate.get(i));
                         dates.add(date);
                         nums.add(String.valueOf(factures.get(j).getIdFacture()));
-                        produits.add(factures.get(j).getQtes().get(k).getProduit().getNom());
+                        produits.add(fpList.get(k).getProduit().getNom());
                         montants.add(String.valueOf(factures.get(j).getMontant()));
                         double tva = factures.get(j).getTva() * factures.get(j).getMontant();
                         tvas.add(String.valueOf(tva));
