@@ -73,7 +73,8 @@ public class ModificationChauffeurController implements Initializable {
                 Chauffeur c = ChauffeurQueries.getChauffeurByNomPrenom(nom, prenom);
                 if (c != null && c.getId() != chauffeur.getId()) {
                     Notification.error("Ce Nom existe déja, utilisé un autre");
-                } else if (ChauffeurQueries.SaveOrUpdate(chauffeur)) {
+                } else {
+                    
                     ChauffeurQueries.SaveOrUpdate(chauffeur);
                     Notification.Updatenotification();
                     new ShowPane().showChauffeur();

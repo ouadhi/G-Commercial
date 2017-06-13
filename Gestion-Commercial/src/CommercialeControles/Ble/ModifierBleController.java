@@ -40,10 +40,10 @@ public class ModifierBleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyDouble(quntite,10);
+        Methode.setOnlyDouble(quntite, 10);
         Methode.setOnlyDouble(prix, 10);
 
-        Methode.SetUpper(code,8);
+        Methode.SetUpper(code, 8);
     }
 
     @FXML
@@ -68,14 +68,13 @@ public class ModifierBleController implements Initializable {
                 Ble ble2 = BleQueries.getBleByCode(codeval);
                 if (ble2 != null && ble2.getIdBle() != ble.getIdBle()) {
                     Notification.error("Ce code existe déja, utilisé un autre");
-                } else if (BleQueries.SaveOrUpdate(ble)) {
+                } else {
+                    BleQueries.SaveOrUpdate(ble);
                     Notification.Updatenotification();
                     savelabel.setVisible(true);
                     annuler(event);
                     closestage(event);
                     new ShowPane().showBle();
-                } else {
-                    Notification.error("Erreur!");
                 }
             }
         }
@@ -93,10 +92,10 @@ public class ModifierBleController implements Initializable {
 
     public void setData(Ble ble) {
 
-         Methode.setOnlyDouble(quntite,10);
+        Methode.setOnlyDouble(quntite, 10);
         Methode.setOnlyDouble(prix, 10);
 
-        Methode.SetUpper(code,8);
+        Methode.SetUpper(code, 8);
         this.ble = ble;
         this.code.setText(ble.getCodeBle());
         this.prix.setText(Double.toString(ble.getPrix()));
