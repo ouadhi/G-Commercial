@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Report.EtatEstimatifParClient;
-
-import java.util.List;
+package Report.EtatEstimatifGlobal;
 
 /**
+ *
  * @author Hicham
  */
-public class EtatEstimatifClientBean {
+public class EtatEstimatifGlobalBean {
 
     String nomPrenom;
     String activity;
@@ -23,18 +22,10 @@ public class EtatEstimatifClientBean {
     String totalMontant;
     String totalTva;
     String totalTtc;
-    List<String> dates;
-    List<String> nums;
-    List<String> produits;
-    List<String> montants;
-    List<String> tvas;
-    List<String> ttcs;
 
-    public EtatEstimatifClientBean(String nomPrenom, String activity, String address,
-             String rc, String fiscal, String article, String dateDebut, String dateFin,
-             String totalMontant, String totalTva, String totalTtc, List<String> dates,
-             List<String> nums, List<String> produits,
-             List<String> montants, List<String> tvas, List<String> ttcs) {
+    public EtatEstimatifGlobalBean(String nomPrenom, String activity, String address
+            , String rc, String fiscal, String article, String dateDebut, String dateFin
+            , String totalMontant, String totalTva, String totalTtc) {
         this.nomPrenom = nomPrenom;
         this.activity = activity;
         this.address = address;
@@ -46,12 +37,6 @@ public class EtatEstimatifClientBean {
         this.totalMontant = totalMontant;
         this.totalTva = totalTva;
         this.totalTtc = totalTtc;
-        this.dates = dates;
-        this.nums = nums;
-        this.produits = produits;
-        this.montants = montants;
-        this.tvas = tvas;
-        this.ttcs = ttcs;
     }
 
     public String getNomPrenom() {
@@ -141,53 +126,6 @@ public class EtatEstimatifClientBean {
     public void setTotalTtc(String totalTtc) {
         this.totalTtc = totalTtc;
     }
-
-    public List<String> getDates() {
-        return dates;
-    }
-
-    public void setDates(List<String> dates) {
-        this.dates = dates;
-    }
-
-    public List<String> getNums() {
-        return nums;
-    }
-
-    public void setNums(List<String> nums) {
-        this.nums = nums;
-    }
-
-    public List<String> getProduits() {
-        return produits;
-    }
-
-    public void setProduits(List<String> produits) {
-        this.produits = produits;
-    }
-
-    public List<String> getMontants() {
-        return montants;
-    }
-
-    public void setMontants(List<String> montants) {
-        this.montants = montants;
-    }
-
-    public List<String> getTvas() {
-        return tvas;
-    }
-
-    public void setTvas(List<String> tvas) {
-        this.tvas = tvas;
-    }
-
-    public List<String> getTtcs() {
-        return ttcs;
-    }
-
-    public void setTtcs(List<String> ttcs) {
-        this.ttcs = ttcs;
-    }
-
+    
+    
 }

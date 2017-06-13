@@ -59,7 +59,6 @@ public class RecherecheParDateController implements Initializable {
         for (int i = 0; i < factureList.size(); i++) {
             list.add(new VenteCell(factureList.get(i)));
         }
-
         ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
         listevente.setItems(myObservableList);
         listevente.setExpanded(true);
@@ -69,8 +68,7 @@ public class RecherecheParDateController implements Initializable {
     @FXML
     private void print(ActionEvent event) {
         try {
-            System.out.println("facture part executes");
-            //List<Facture> factures = FactureQueries.list();
+
 
             List<JasperPrint> jasperPrints = new ArrayList<JasperPrint>();
             for (int i = 0; i < factureList.size(); i++) {
