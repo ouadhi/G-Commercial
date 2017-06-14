@@ -64,12 +64,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Qunatite de Ble" GridPane.columnIndex="1">
+            <Label text="Quantité de Ble" GridPane.columnIndex="1">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Prix Unitaire" GridPane.columnIndex="2">
+            <Label text="Prix unitaire" GridPane.columnIndex="2">
                <font>
                   <Font size="17.0" />
                </font>
