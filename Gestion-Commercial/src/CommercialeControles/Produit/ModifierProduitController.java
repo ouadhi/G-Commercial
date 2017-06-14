@@ -45,12 +45,11 @@ public class ModifierProduitController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         Methode.setOnlyDouble(quantite, 9);
+        Methode.setOnlyDouble(quantite, 9);
         Methode.setOnlyDouble(prix, 16);
-        
-         Methode.SetUpper(nom , 30);
-         Methode.setsizeString(categorie, 30);
-          Methode.setOnlyDouble(nom, 3);
+
+        Methode.setsizeString(categorie, 30);
+        Methode.setsizeString(nom, 30);
 
     }
 
@@ -77,7 +76,7 @@ public class ModifierProduitController implements Initializable {
             if (result.get() == ButtonType.OK) {
                 //back
                 Produit p = ProduitQueries.getProduitByCode(code);
-                if (p!=null && p.getIdProduit() != produit.getIdProduit() ) {
+                if (p != null && p.getIdProduit() != produit.getIdProduit()) {
                     //notification for already exists
                     Notification.error("Ce produit exite déja!");
                 } else {
@@ -88,7 +87,6 @@ public class ModifierProduitController implements Initializable {
                     produit.setPrix(Double.parseDouble(prixVal));
                     produit.setHaveTva(TVA.isSelected());
 
-                    
                     ProduitQueries.SaveOrUpdate(produit);
 
                     Notification.Updatenotification();
@@ -109,10 +107,8 @@ public class ModifierProduitController implements Initializable {
     public void setData(Produit produit) {
         Methode.setOnlyDouble(quantite, 9);
         Methode.setOnlyDouble(prix, 16);
-        
-         Methode.SetUpper(nom , 30);
-         Methode.setsizeString(categorie, 30);
-          Methode.setOnlyDouble(nom, 3);
+        Methode.setsizeString(categorie, 30);
+        Methode.setsizeString(nom, 30);
 
         this.produit = produit;
         this.nom.setText(produit.getNom());

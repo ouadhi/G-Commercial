@@ -38,10 +38,17 @@ public class PayementListeController implements Initializable {
 
     @FXML
     private JFXTextField totalefacture;
+    static  JFXTextField STtotalefacture;
+    
     @FXML
     private JFXTextField totlepaye;
+    static  JFXTextField STtotlepaye;
+    
     @FXML
     private JFXTextField reste;
+    static  JFXTextField STreste;
+    
+    
 
     private Client client;
     @FXML
@@ -50,9 +57,9 @@ public class PayementListeController implements Initializable {
     private MenuItem byquantite;
     @FXML
     private Label label;
-    double totalFactured;
-    double totalVersed;
-    double solde;
+     double totalFactured;
+     double totalVersed;
+     double solde;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,6 +67,9 @@ public class PayementListeController implements Initializable {
         AfficheListePayement();
         //printFactureDetails();
         listepayement.setExpanded(true);
+        STreste = reste;
+        STtotalefacture=totalefacture;
+        STtotlepaye=totlepaye;
 
     }
 
@@ -83,12 +93,7 @@ public class PayementListeController implements Initializable {
             totalefacture.setText(Methode.DoubleFormat(totalFactured) + "");
             totlepaye.setText(Methode.DoubleFormat(totalVersed) + "");
             reste.setText(Methode.DoubleFormat(solde) + "");
-
-        } catch (Exception e) {
-        }
-
-        List<Payment> listDB = PaymentQueries.list();
-
+        List<Payment> listDB = PaymentQueries.getPaymentsListByClientId(client.getId());
         List<PayementCell> list = new ArrayList<>();
         for (int i = 0; i < listDB.size(); i++) {
             list.add(new PayementCell(listDB.get(i)));
@@ -96,6 +101,11 @@ public class PayementListeController implements Initializable {
         ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
         listepayement.setItems(myObservableList);
         listepayement.setExpanded(true);
+
+        } catch (Exception e) {
+        }
+
+
 
     }
 

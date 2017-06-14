@@ -56,13 +56,9 @@ public class AjouterPayementController implements Initializable {
         type.setItems(liste);
         type.getSelectionModel().select(0);
         Methode.setOnlyDouble(montont, 8);
-        Methode.setOnlyDouble(timbre, 3);
         Methode.setZeroRemoved(montont);
-        Methode.setZeroRemoved(timbre);
         Methode.setSelectedMouseClick(montont);
-        Methode.setSelectedMouseClick(timbre);
         montont.setText("0.00");
-        timbre.setText("0.00");
         
 
     }
@@ -99,8 +95,15 @@ public class AjouterPayementController implements Initializable {
     }
 
     private void AfficheListePayement() {
+            double totalFactured = ClientQueries.totalFactured(client);
+            double totalVersed = ClientQueries.totalVersed(client);
+            double solde = ClientQueries.solde(client);
+            PayementListeController.STtotalefacture.setText(Methode.DoubleFormat(totalFactured) + "");
+            PayementListeController.STtotlepaye.setText(Methode.DoubleFormat(totalVersed) + "");
+            PayementListeController.STreste.setText(Methode.DoubleFormat(solde) + "");
+        
         PayementListeController.listepay.getItems().clear();
-        List<Payment> listDB = PaymentQueries.list();
+        List<Payment> listDB = PaymentQueries.getPaymentsListByClientId(client.getId());
 
         List<PayementCell> list = new ArrayList<>();
         for (int i = 0; i < listDB.size(); i++) {
