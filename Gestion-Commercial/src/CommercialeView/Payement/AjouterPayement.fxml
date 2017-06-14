@@ -32,7 +32,7 @@
             </Text>
          </children>
       </Pane>
-      <Text fx:id="Nfacture" fill="#fd9252" layoutX="137.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="237.21875">
+      <Text fx:id="Nfacture" fill="#fd9252" layoutX="137.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="237.21875" AnchorPane.leftAnchor="136.21875" AnchorPane.rightAnchor="137.78125">
          <font>
             <Font size="19.0" />
          </font>
@@ -49,9 +49,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label styleClass="label_txt" text="Date :" />
-            <Label styleClass="label_txt" text="Montont :" GridPane.columnIndex="1" />
-            <Label styleClass="label_txt" text="Type :" GridPane.rowIndex="1" />
+            <Label styleClass="label_txt" text="Date:" />
+            <Label styleClass="label_txt" text="Montant:" GridPane.columnIndex="1" />
+            <Label styleClass="label_txt" text="Type:" GridPane.rowIndex="1" />
             <JFXDatePicker fx:id="datepayment" prefHeight="40.0" prefWidth="188.0" styleClass="champtxt">
                <GridPane.margin>
                   <Insets left="50.0" />

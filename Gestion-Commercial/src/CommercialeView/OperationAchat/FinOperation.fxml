@@ -15,8 +15,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="1050.0" style="-fx-background-color: white;" stylesheets="@AchatCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.OperationAchat.FinOperationController">
    <children>
-      <Label layoutX="392.0" layoutY="94.0" styleClass="finOperation" text="Chaffeur" />
-      <Label layoutX="338.0" layoutY="14.0" styleClass="titre" text="Les informations D'Achat" />
+      <Label layoutX="382.0" layoutY="94.0" styleClass="finOperation" text="Chauffeur" />
+      <Label layoutX="338.0" layoutY="14.0" styleClass="titre" text="Les informations d'achat" />
       <Label layoutX="581.0" layoutY="94.0" styleClass="finOperation" text="Camion" />
       <Label alignment="CENTER" layoutX="337.0" layoutY="60.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="505.0" layoutY="59.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="3" textAlignment="CENTER" />
@@ -73,18 +73,18 @@
                   <Insets left="103.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label styleClass="label_txt" text="N° Acquit :">
+            <Label styleClass="label_txt" text="N°Acquit:">
                <GridPane.margin>
                   <Insets left="24.0" />
                </GridPane.margin>
             </Label>
-            <Label layoutX="10.0" layoutY="35.0" styleClass="label_txt" text="Date d'Acquit :" GridPane.columnIndex="1" />
+            <Label layoutX="10.0" layoutY="35.0" styleClass="label_txt" text="Date d'Acquit:" GridPane.columnIndex="1" />
             <JFXDatePicker fx:id="date" defaultColor="#008f81" showWeekNumbers="true" styleClass="champtxt" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="115.0" />
                </GridPane.margin>
             </JFXDatePicker>
-            <Label styleClass="label_txt" text="Qauntite Acquit :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Qauntite Acquit:" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="-16.0" />
                </GridPane.margin></Label>
@@ -93,7 +93,7 @@
                   <Insets left="102.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label layoutX="10.0" layoutY="100.0" prefHeight="20.0" prefWidth="65.0" styleClass="label_txt" text="Poid Net :" GridPane.rowIndex="2">
+            <Label layoutX="10.0" layoutY="100.0" prefHeight="20.0" prefWidth="65.0" styleClass="label_txt" text="Poid Net:" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="27.0" />
                </GridPane.margin></Label>
@@ -102,7 +102,7 @@
                   <Insets left="99.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label layoutX="299.0" layoutY="100.0" styleClass="label_txt" text="Difference :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label layoutX="299.0" layoutY="100.0" styleClass="label_txt" text="Différence:" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="17.0" />
                </GridPane.margin></Label>
@@ -116,12 +116,12 @@
                   <Insets left="86.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label styleClass="label_txt" text="N°tickit :" GridPane.columnIndex="2">
+            <Label styleClass="label_txt" text="N°tickit:" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="24.0" />
                </GridPane.margin>
             </Label>
-            <Label prefHeight="20.0" prefWidth="83.0" styleClass="label_txt" text="Poid total :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label prefHeight="20.0" prefWidth="83.0" styleClass="label_txt" text="Poid total:" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="26.0" />
                </GridPane.margin>
@@ -139,7 +139,7 @@
             </JFXTextField>
          </children>
       </GridPane>
-      <JFXButton fx:id="save" layoutX="815.0" layoutY="355.0" onAction="#sauvgarder" styleClass="button_save" text="Enregister" />
+      <JFXButton fx:id="save" layoutX="815.0" layoutY="355.0" onAction="#sauvgarder" styleClass="button_save" text="Enregistrer" />
       <JFXButton fx:id="annuler" layoutX="682.0" layoutY="355.0" onAction="#quitter" styleClass="button_annuler" text="Annuler" />
       <Label layoutX="220.0" layoutY="95.0" styleClass="finOperation" text="Dock" />
       <ImageView fx:id="infodock" fitHeight="23.0" fitWidth="31.0" layoutX="272.0" layoutY="93.0" onMouseEntered="#opneInfoDock" onMouseExited="#CloseInforDock" pickOnBounds="true" preserveRatio="true">

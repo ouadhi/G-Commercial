@@ -19,8 +19,8 @@
 <AnchorPane id="AnchorPane" maxHeight="1000.0" maxWidth="2000.0" prefHeight="690.0" prefWidth="1218.0" snapToPixel="false" styleClass="back" stylesheets="@ProduitCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Produit.ProduitListController">
    <children>
       <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Produits" wrappingWidth="122.51513671875" />
-      <Label fx:id="total" layoutX="247.0" layoutY="37.0" styleClass="label_txt" text="100" />
-      <Label layoutX="199.0" layoutY="37.0" styleClass="label_txt" text="Total:" />
+      <Label fx:id="total" layoutX="247.0" layoutY="39.0" styleClass="label_txt" text="100" />
+      <Label layoutX="199.0" layoutY="39.0" styleClass="label_txt" text="Total:" />
       <Label fx:id="label" layoutX="292.0" layoutY="39.0" styleClass="label_txt" text="Afficher : " />
       <MenuButton fx:id="Order" layoutX="365.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
          <items>
@@ -68,12 +68,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Categorie de produit" GridPane.columnIndex="2">
+            <Label text="Categorie " GridPane.columnIndex="2">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Qunatite Produit" GridPane.columnIndex="3">
+            <Label text="Quantité" GridPane.columnIndex="3">
                <font>
                   <Font size="17.0" />
                </font>

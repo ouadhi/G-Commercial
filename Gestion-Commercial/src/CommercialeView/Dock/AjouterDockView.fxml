@@ -81,7 +81,7 @@
             <Insets />
          </opaqueInsets>
       </GridPane>
-      <JFXButton fx:id="savebttn" layoutX="375.0" layoutY="266.0" onAction="#sauvgarder" styleClass="button_save" text="Enregistre" />
+      <JFXButton fx:id="savebttn" layoutX="375.0" layoutY="266.0" onAction="#sauvgarder" styleClass="button_save" text="Enregistrer" />
       <JFXButton fx:id="cancelbttn" layoutX="243.0" layoutY="266.0" onAction="#quitter" styleClass="button_annuler" text="Annuler" />
       <Label fx:id="savelabel" layoutX="37.0" layoutY="279.0" text="Enregistré" textFill="#36d484" visible="false">
          <font>

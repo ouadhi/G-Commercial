@@ -27,17 +27,17 @@
       </Text>
       <VBox layoutX="224.0" layoutY="253.0" prefHeight="347.0" prefWidth="269.0" spacing="5.0">
          <children>
-            <JFXButton onAction="#etatdeble" prefHeight="70.0" prefWidth="270.0" styleClass="acahtbttnrapport" text="Etat de Ble" textFill="#2c2c2c" />
+            <JFXButton onAction="#etatdeble" prefHeight="70.0" prefWidth="270.0" styleClass="acahtbttnrapport" text="Etat de Blé" textFill="#2c2c2c" />
             <JFXButton onAction="#etatReception" prefHeight="70.0" prefWidth="273.0" styleClass="acahtbttnrapport" text="Reception" textFill="#2c2c2c" />
-            <JFXButton onAction="#rembourecemebtBle" prefHeight="70.0" prefWidth="269.0" styleClass="acahtbttnrapport" text="Rembourcement Ble " textFill="#2c2c2c" />
-            <JFXButton onAction="#RembourecementTransport" prefHeight="70.0" prefWidth="273.0" styleClass="acahtbttnrapport" text="Rembourcement Transport" textFill="#2c2c2c" />
+            <JFXButton onAction="#rembourecemebtBle" prefHeight="70.0" prefWidth="269.0" styleClass="acahtbttnrapport" text="Remboursement Blé" textFill="#2c2c2c" />
+            <JFXButton onAction="#RembourecementTransport" prefHeight="70.0" prefWidth="273.0" styleClass="acahtbttnrapport" text="Remboursement Transport" textFill="#2c2c2c" />
          </children>
       </VBox>
       <VBox layoutX="713.0" layoutY="253.0" prefHeight="347.0" prefWidth="270.0" spacing="5.0">
          <children>
             <JFXButton onAction="#recetteprint" prefHeight="70.0" prefWidth="271.0" styleClass="ventebttnrapport" text="Recette" />
             <JFXButton onAction="#showExpedition" prefHeight="70.0" prefWidth="272.0" styleClass="ventebttnrapport" text="Expedition" />
-            <JFXButton onAction="#ClientRapports" prefHeight="70.0" prefWidth="274.0" styleClass="ventebttnrapport" text="Client" />
+            <JFXButton onAction="#ClientRapports" prefHeight="70.0" prefWidth="274.0" styleClass="ventebttnrapport" text="Rapport Client" />
          </children>
       </VBox>
    </children>

@@ -94,7 +94,7 @@
                   <Image url="/icons/close.png" />
                </image>
             </ImageView>
-            <Text fill="#fd9252" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versement" wrappingWidth="177.21875">
+            <Text fill="WHITE" layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versement" wrappingWidth="169.21875">
                <font>
                   <Font size="30.0" />
                </font>

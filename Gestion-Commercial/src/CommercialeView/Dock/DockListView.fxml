@@ -29,7 +29,7 @@
             <MenuItem mnemonicParsing="false" onAction="#tout" text="Tout" />
          </items>
       </MenuButton>
-      <JFXButton fx:id="ajouter" layoutX="1001.0" layoutY="24.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter Dock" />
+      <JFXButton fx:id="ajouter" layoutX="1001.0" layoutY="24.0" onAction="#showAddStage" prefHeight="48.0" prefWidth="160.0" styleClass="Ajouter_button" text="Ajouter" />
       <JFXListView fx:id="listedock" layoutX="51.0" layoutY="180.0" onMouseClicked="#showDockSlide" prefHeight="410.0" prefWidth="1117.0" AnchorPane.topAnchor="160.0" />
       <GridPane hgap="3.0" layoutX="50.0" layoutY="126.0" prefHeight="55.0" prefWidth="1117.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel" AnchorPane.topAnchor="100.0">
          <columnConstraints>
@@ -64,7 +64,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label layoutX="545.0" layoutY="27.0" text="Prix de taransport" GridPane.columnIndex="4">
+            <Label layoutX="545.0" layoutY="27.0" text="Prix de transport" GridPane.columnIndex="4">
                <font>
                   <Font size="17.0" />
                </font>

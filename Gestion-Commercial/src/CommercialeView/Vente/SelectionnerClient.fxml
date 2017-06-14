@@ -13,7 +13,7 @@
 <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1160.0" style="-fx-background-color: white;" stylesheets="@Vente.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Vente.SelectionnerClientController">
    <children>
       <JFXListView fx:id="ClientListe" layoutX="22.0" layoutY="98.0" onMouseClicked="#select" prefHeight="356.0" prefWidth="1117.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="23.0" styleClass="titre" text="Selectionner Un Client" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="535.0" layoutY="20.0" styleClass="titre" text=" Client" textAlignment="CENTER" AnchorPane.leftAnchor="535.0" AnchorPane.rightAnchor="534.0" />
       <Label alignment="CENTER" layoutX="421.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="500.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="2" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="652.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="4" textAlignment="CENTER" />

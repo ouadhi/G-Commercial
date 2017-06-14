@@ -21,7 +21,7 @@
                   <Image url="/icons/close.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etat Estimatif Par Client">
+            <Text fill="WHITE" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="État Estimatif Par Client">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
