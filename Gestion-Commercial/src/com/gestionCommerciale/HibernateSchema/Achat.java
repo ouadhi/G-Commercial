@@ -84,6 +84,14 @@ public class Achat {
     public void setNumTiquet(String numTiquet) {
         this.numTiquet = numTiquet;
     }
+
+    public double getPoidCamion() {
+        return poidCamion;
+    }
+
+    public void setPoidCamion(double poidCamion) {
+        this.poidCamion = poidCamion;
+    }
     
 
     public int getIdAchat() {

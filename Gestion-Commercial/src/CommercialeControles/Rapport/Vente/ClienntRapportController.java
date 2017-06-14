@@ -33,21 +33,20 @@ public class ClienntRapportController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-       possibleMot();
+
+        possibleMot();
 
         rapport2.setOnAction(event -> {
+            
             GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
             Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
             Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
             String nomEtPrenomClient = client.getText();
-            generationEtatEstimatifClient.generateReportGeneral(dateObDebut, dateObFin, nomEtPrenomClient);
+            generationEtatEstimatifClient.generateReport(dateObDebut, dateObFin, nomEtPrenomClient);
 
         });
 
     }
-        
-       
 
     @FXML
     private void close(MouseEvent event) {
@@ -56,22 +55,20 @@ public class ClienntRapportController implements Initializable {
 
     @FXML
     private void rapport1(ActionEvent event) {
-
         GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
         Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         String nomEtPrenomClient = client.getText();
-        generationEtatEstimatifClient.generateReport(dateObDebut, dateObFin, nomEtPrenomClient);
- 
+        generationEtatEstimatifClient.generateReportGeneral(dateObDebut, dateObFin, nomEtPrenomClient);
+
     }
-    
-    
-     public void possibleMot() {
-         ArrayList<String>  liste  =  new ArrayList<>()   ; 
-         for (Client client1 : ClientQueries.list()) {
-             liste.add(client1.getName()+" "+client1.getPrenom()) ; 
-         }
-      
+
+    public void possibleMot() {
+        ArrayList<String> liste = new ArrayList<>();
+        for (Client client1 : ClientQueries.list()) {
+            liste.add(client1.getName() + " " + client1.getPrenom());
+        }
+
         TextFields.bindAutoCompletion(client, liste);
     }
 }
