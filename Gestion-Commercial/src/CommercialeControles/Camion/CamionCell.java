@@ -156,6 +156,11 @@ public class CamionCell extends GridPane {
         box.setStyle("-fx-background-color: #ffffff");
         popup.setContent(box);
         popup.setSource(bttn);
+        
+        if (camion.isDeleted()) {
+            box.setDisable(true);
+        }
+        
         modifier.setOnAction(event -> {
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

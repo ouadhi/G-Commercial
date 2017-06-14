@@ -29,6 +29,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 public class PayementListeController implements Initializable {
 
@@ -49,8 +50,8 @@ public class PayementListeController implements Initializable {
     static  JFXTextField STreste;
     
     
-
-    private Client client;
+    Client client  ; 
+   
     @FXML
     private MenuButton Order;
     @FXML
@@ -60,6 +61,8 @@ public class PayementListeController implements Initializable {
      double totalFactured;
      double totalVersed;
      double solde;
+    @FXML
+    private Text nomclient;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -139,6 +142,7 @@ public class PayementListeController implements Initializable {
         AfficheListePayement();
         listepayement.setExpanded(true);
         listepay = this.listepayement;
+        nomclient.setText(client.getName()+" "+client.getPrenom());
 
     }
 
