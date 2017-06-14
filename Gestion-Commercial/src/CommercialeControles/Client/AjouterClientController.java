@@ -87,7 +87,7 @@ public class AjouterClientController implements Initializable {
         String activite = activiteBox.getSelectionModel().getSelectedItem();
         String Ncarte = NCarteF.getText();
 
-        if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty() || Ncarte.isEmpty() || datedept.getValue() == null) {
+        if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite!=null || Ncarte.isEmpty() || datedept.getValue() == null) {
             Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
         } else {
 

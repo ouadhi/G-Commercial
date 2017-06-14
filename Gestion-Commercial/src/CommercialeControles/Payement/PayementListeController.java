@@ -6,6 +6,7 @@ import UIControle.StageDialog;
 import UIControle.ViewUrl;
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Payment;
+import com.gestionCommerciale.Models.ClientQueries;
 import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -37,35 +38,39 @@ public class PayementListeController implements Initializable {
 
     @FXML
     private JFXTextField totalefacture;
+    static  JFXTextField STtotalefacture;
+    
     @FXML
     private JFXTextField totlepaye;
+    static  JFXTextField STtotlepaye;
+    
     @FXML
     private JFXTextField reste;
+    static  JFXTextField STreste;
+    
+    
 
-    private Client client  ; 
+    private Client client;
     @FXML
     private MenuButton Order;
     @FXML
     private MenuItem byquantite;
     @FXML
     private Label label;
+     double totalFactured;
+     double totalVersed;
+     double solde;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Methode.showMenuItem(Order , label);
+        Methode.showMenuItem(Order, label);
         AfficheListePayement();
         //printFactureDetails();
         listepayement.setExpanded(true);
+        STreste = reste;
+        STtotalefacture=totalefacture;
+        STtotlepaye=totlepaye;
 
-    }
-
-    public static String floatFormat(Double f) {
-        DecimalFormat df = new DecimalFormat("##.00");
-        String value = df.format(f);
-        if (value.startsWith(".")) {
-            value = "0" + value;
-        }
-        return value;
     }
 
 //    private void printFactureDetails() {
@@ -80,10 +85,15 @@ public class PayementListeController implements Initializable {
 //        totlepaye.setText(floatFormat(totalePaye));
 //        this.reste.setText(floatFormat(reste));
 //    }
-
     private void AfficheListePayement() {
-        List<Payment> listDB = PaymentQueries.list();
-
+        try {
+            totalFactured = ClientQueries.totalFactured(client);
+            totalVersed = ClientQueries.totalVersed(client);
+            solde = ClientQueries.solde(client);
+            totalefacture.setText(Methode.DoubleFormat(totalFactured) + "");
+            totlepaye.setText(Methode.DoubleFormat(totalVersed) + "");
+            reste.setText(Methode.DoubleFormat(solde) + "");
+        List<Payment> listDB = PaymentQueries.getPaymentsListByClientId(client.getId());
         List<PayementCell> list = new ArrayList<>();
         for (int i = 0; i < listDB.size(); i++) {
             list.add(new PayementCell(listDB.get(i)));
@@ -91,7 +101,12 @@ public class PayementListeController implements Initializable {
         ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
         listepayement.setItems(myObservableList);
         listepayement.setExpanded(true);
-        
+
+        } catch (Exception e) {
+        }
+
+
+
     }
 
     @FXML
@@ -119,11 +134,11 @@ public class PayementListeController implements Initializable {
         Methode.getStageMouses(event).close();
     }
 
-    public void setDate(Client  client ) {
+    public void setDate(Client client) {
         this.client = client;
         AfficheListePayement();
         listepayement.setExpanded(true);
-       listepay = this.listepayement  ;  
+        listepay = this.listepayement;
 
     }
 
@@ -144,7 +159,7 @@ public class PayementListeController implements Initializable {
     @FXML
     private void Archive(ActionEvent event) {
         Order.setText("Archivé");
-        List<Payment> listDB = PaymentQueries.listArchived()  ; 
+        List<Payment> listDB = PaymentQueries.listArchived();
 
         List<PayementCell> list = new ArrayList<>();
         for (int i = 0; i < listDB.size(); i++) {
@@ -158,7 +173,7 @@ public class PayementListeController implements Initializable {
     @FXML
     private void Tout(ActionEvent event) {
         Order.setText("Tout");
-        List<Payment> listDB = PaymentQueries.listAll() ; 
+        List<Payment> listDB = PaymentQueries.listAll();
 
         List<PayementCell> list = new ArrayList<>();
         for (int i = 0; i < listDB.size(); i++) {

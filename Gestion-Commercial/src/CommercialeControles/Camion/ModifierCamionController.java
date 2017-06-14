@@ -59,18 +59,18 @@ public class ModifierCamionController implements Initializable {
     private void sauvegarder(ActionEvent event) {
         String code = codecamion.getText();
         String matricule = this.matricule.getText();
-        double poid = Double.parseDouble(PoisCamion.getText());
+//        double poid = Double.parseDouble(PoisCamion.getText());
         //String marque = camion.getMarque();
         String marque = taillecamion.getText();
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
-            if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty() || poid == 0) {
+            if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty()) {
                 Notification.champVideNotification();
             } else {
                 Camion camion = ShowdDetailCamionController.getCamion();
                 camion.setCodeCamion(code);
                 camion.setMatricule(matricule);
-                camion.setPoid(poid);
+                //camion.setPoid(poid);
                 camion.setMarque(marque);
                 Camion c = CamionQueries.getCamionByCode(code);
                 Camion c2 = CamionQueries.getCamionByMatricule(matricule);
@@ -105,7 +105,7 @@ public class ModifierCamionController implements Initializable {
         this.camion = camion;
         codecamion.setText(camion.getCodeCamion());
         matricule.setText(camion.getMatricule());
-        PoisCamion.setText(Double.toString(camion.getPoid()));
+//        PoisCamion.setText(Double.toString(camion.getPoid()));
         taillecamion.setText(camion.getMarque());
     }
 }

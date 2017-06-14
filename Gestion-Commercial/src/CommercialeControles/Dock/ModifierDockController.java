@@ -63,23 +63,19 @@ public class ModifierDockController implements Initializable {
             Optional<ButtonType> result = Notification.updateAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
                 if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
-
                     Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
-
                 } else {
                     dock.setNom(nom);
                     dock.setWilaya(wilaya);
                     dock.setPrixUnitTrans(Double.parseDouble(prix));
                     dock.setDistance(Float.parseFloat(distance));
                     DockQueries.SaveOrUpdate(dock);
-
                     Notification.Updatenotification();
                     new ShowPane().showDock();
                     savelabel.setVisible(true);
                     quitter(event);
                 }
             }
-
         }
     }
 

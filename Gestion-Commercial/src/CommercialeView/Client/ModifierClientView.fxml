@@ -46,7 +46,7 @@
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label_txt" text="Penom " GridPane.columnIndex="1">
+            <Label styleClass="label_txt" text="Prénom" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
@@ -66,12 +66,12 @@
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label_txt" text="Date depot Dossier" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label styleClass="label_txt" text="Date dépôt dossier" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label_txt" text="N° carte Fiscalle" GridPane.rowIndex="3">
+            <Label styleClass="label_txt" text="N°carte Fiscale" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
@@ -115,25 +115,25 @@
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin></JFXComboBox>
-            <Label styleClass="label_txt" text="Solde " GridPane.rowIndex="4">
+            <Label styleClass="label_txt" text="Solde " visible="false" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <JFXTextField fx:id="NCarteF1" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="4">
+            <JFXTextField fx:id="NCarteF1" focusColor="#405aa800" prefHeight="40.0" prefWidth="275.0" styleClass="champtxt" unFocusColor="#4d4d4d00" visible="false" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label styleClass="label_txt" text="Type d'Activité" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label styleClass="label_txt" text="Activité" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
          </children>
       </GridPane>
-      <JFXButton layoutX="425.0" layoutY="446.0" onAction="#Sauvgarder" styleClass="button_save" text="Enregistrer" />
-      <JFXButton fx:id="annuler" layoutX="299.0" layoutY="446.0" onAction="#quitter" styleClass="button_annuler" text="Anuuler" />
+      <JFXButton layoutX="426.0" layoutY="410.0" onAction="#Sauvgarder" styleClass="button_save" text="Enregistrer" />
+      <JFXButton fx:id="annuler" layoutX="299.0" layoutY="410.0" onAction="#quitter" styleClass="button_annuler" text="Anuuler" />
       <Label fx:id="savelabel" layoutX="72.0" layoutY="397.0" prefHeight="35.0" prefWidth="86.0" text="Enregistré " textFill="#36d484" visible="false">
          <font>
             <Font size="16.0" />

@@ -91,6 +91,10 @@ public class FinOperationController implements Initializable {
         statDock = statedock;
         Methode.setOnlyDouble(poidTotal, 10);
         Methode.setSelectedMouseClick(poidTotal);
+        Methode.setOnlyDouble(Q_Acquit, 10);
+        Methode.setSelectedMouseClick(Q_Acquit);
+        Methode.setOnlyDouble(poidcamion, 10);
+        Methode.setSelectedMouseClick(poidcamion);
         Q_fournie.setEditable(false);
         Q_fournie.setText("0.00");
         poidTotal.setText("0.00");
@@ -104,9 +108,9 @@ public class FinOperationController implements Initializable {
             poidtotalkey(e);
         });
         Methode.setOnlyInteger(numero, 10);
-        Methode.setOnlyInteger(poidcamion, 10);
+        //Methode.setOnlyInteger(poidcamion, 10);
         Methode.setOnlyInteger(numerotickit, 10);
-        Methode.setOnlyDouble(Q_Acquit, 10);
+        //Methode.setOnlyDouble(Q_Acquit, 10);
         Methode.setSelectedMouseClick(numero);
         Methode.setSelectedMouseClick(poidcamion);
         Methode.setSelectedMouseClick(numerotickit);
@@ -302,6 +306,14 @@ public class FinOperationController implements Initializable {
         if (Q_fournie.getText().isEmpty()) {
             Q_fournie.setText("0.00");
             Q_fournie.selectAll();
+        }
+        if (poidcamion.getText().isEmpty()) {
+            poidcamion.setText("0.00");
+            poidcamion.selectAll();
+        }
+        if (Q_Acquit.getText().isEmpty()) {
+            Q_Acquit.setText("0.00");
+            Q_Acquit.selectAll();
         }
 
         double poidTotalVal = Double.parseDouble(poidTotal.getText());

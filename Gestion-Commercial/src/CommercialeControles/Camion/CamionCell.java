@@ -115,7 +115,8 @@ public class CamionCell extends GridPane {
         label2.setLayoutX(333.0);
         label2.setLayoutY(35.0);
         //back
-        label2.setText(camion.getPoid()+"");
+        //camion poid
+        label2.setText("");
         label2.setFont(new Font(17.0));
         GridPane.setColumnIndex(label3, 4);
         //back

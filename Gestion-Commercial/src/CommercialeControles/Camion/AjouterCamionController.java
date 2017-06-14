@@ -60,9 +60,9 @@ public class AjouterCamionController implements Initializable {
         String code = codecamion.getText();
         String matricule = this.matricule.getText();
         String marque = typecamion.getText() ; 
-        Double poid = Double.parseDouble(poisCamion.getText());
+        //Double poid = Double.parseDouble(poisCamion.getText());
 
-        if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty() || poid == 0) {
+        if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty() ) {
             Notification.champVideNotification();
         } else {
             if (CamionQueries.getCamionByMatricule(matricule) != null) {
@@ -71,7 +71,7 @@ public class AjouterCamionController implements Initializable {
                 Notification.error("Ce code exist deja!");
             } else {
                 try {
-                    Camion camion = new Camion(code, matricule, marque, poid);
+                    Camion camion = new Camion(code, matricule, marque);
                     camion.setDeleted(false);
                     CamionQueries.SaveOrUpdate(camion);
                     new ShowPane().showCamion();
