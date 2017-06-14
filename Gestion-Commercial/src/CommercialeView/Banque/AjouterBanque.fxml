@@ -40,10 +40,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label styleClass="label_txt" text="Banque :" />
-            <Label styleClass="label_txt" text="Adresse :" GridPane.rowIndex="1" />
-            <Label styleClass="label_txt" text="N° Compte :" GridPane.columnIndex="1" />
-            <Label styleClass="label_txt" text="N°Telephone :" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label styleClass="label_txt" text="Banque:" />
+            <Label styleClass="label_txt" text="Adresse:" GridPane.rowIndex="1" />
+            <Label styleClass="label_txt" text="N° Compte:" GridPane.columnIndex="1" />
+            <Label styleClass="label_txt" text="N° Téléphone:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <JFXTextField fx:id="nombanque" focusColor="#405aa800" maxHeight="-Infinity" maxWidth="223.0" minHeight="-Infinity" minWidth="165.0" prefHeight="33.0" prefWidth="223.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
                <GridPane.margin>
                   <Insets left="73.0" />

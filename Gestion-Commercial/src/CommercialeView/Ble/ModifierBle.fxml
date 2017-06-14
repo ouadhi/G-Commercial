@@ -18,7 +18,7 @@
    <children>
       <Pane prefHeight="65.0" prefWidth="543.0" styleClass="Toppanel">
          <children>
-            <Text fill="#36d484" layoutX="37.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Modifier Ble" />
+            <Text fill="#36d484" layoutX="37.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Modifier ble" />
             <ImageView fx:id="close" fitHeight="17.0" fitWidth="15.0" layoutX="505.0" layoutY="20.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="icons/close.png" />
@@ -38,12 +38,12 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label styleClass="label_txt" text="Code Ble ">
+            <Label styleClass="label_txt" text="Code ble ">
                <GridPane.margin>
                   <Insets bottom="30.0" left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label_txt" text="Quantite " GridPane.rowIndex="2">
+            <Label styleClass="label_txt" text="Quantité " GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="30.0" left="10.0" />
                </GridPane.margin>
