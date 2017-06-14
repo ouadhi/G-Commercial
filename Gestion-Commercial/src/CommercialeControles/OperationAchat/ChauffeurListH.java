@@ -83,7 +83,7 @@ public class ChauffeurListH extends GridPane {
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
         GridPane.setMargin(imageView, new Insets(0.0, 0.0, 0.0, 39.0));
-        Image img = new Image(getClass().getResourceAsStream("/imgs/avatar3.jpg"));
+        Image img = new Image(getClass().getResourceAsStream("/icons/ChauffeurMagent.png"));
         imageView.setImage(img);
 
         GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);

@@ -83,7 +83,7 @@ public class CamionListeH extends GridPane {
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
         GridPane.setMargin(imageView, new Insets(0.0, 0.0, 0.0, 35.0));
-        Image img = new Image(getClass().getResourceAsStream("/imgs/camion.jpg"));
+        Image img = new Image(getClass().getResourceAsStream("/icons/CamionMagent.png"));
         imageView.setImage(img);
 
         GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
