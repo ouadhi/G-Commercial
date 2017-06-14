@@ -13,6 +13,7 @@ import com.gestionCommerciale.HibernateSchema.Produit;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Payment;
 import com.gestionCommerciale.Models.AnneeQueries;
+import com.gestionCommerciale.Models.ClientQueries;
 import com.gestionCommerciale.Models.FactureQueries;
 import com.gestionCommerciale.Models.PaymentQueries;
 import com.jfoenix.controls.JFXButton;
@@ -82,6 +83,7 @@ public class FinOperationVenteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.setOnlyDouble(timbre, 4);
+        Methode.setOnlyDouble(versement, 7);
         montantFinal.setEditable(false);
         montant.setEditable(false);
         solde.setEditable(false);
@@ -226,7 +228,7 @@ public class FinOperationVenteController implements Initializable {
         f.setQtes(fpsList);
         f.setAnnee(AnneeQueries.getSelected());
         //back
-        Payment payment = new Payment("", versmentVal, date);
+        Payment payment = new Payment(versemetCombo.getSelectionModel().getSelectedItem(), versmentVal, date);
         payment.setClient(OperationVenteController.client);
         payment.setAnnee(AnneeQueries.getSelected());
         payment.setClient(OperationVenteController.client);
@@ -240,19 +242,19 @@ public class FinOperationVenteController implements Initializable {
         imprimer(f, event);
     }
 
-    public static double getsSolde() {
-        List<Payment> payments = PaymentQueries.getPaymentsListByClientId(OperationVenteController.client.getId());
-        double solde = 0;
-        for (Payment p : payments) {
-            solde += p.getMontant();
-        }
-
-        List<Facture> factures = FactureQueries.getFacturesListByClientId(OperationVenteController.client.getId());
-        for (Facture f : factures) {
-            solde -= f.getMontantFinal();
-        }
-        return solde;
-    }
+//    public static double getsSolde() {
+//        List<Payment> payments = PaymentQueries.getPaymentsListByClientId(OperationVenteController.client.getId());
+//        double solde = 0;
+//        for (Payment p : payments) {
+//            solde += p.getMontant();
+//        }
+//
+//        List<Facture> factures = FactureQueries.getFacturesListByClientId(OperationVenteController.client.getId());
+//        for (Facture f : factures) {
+//            solde -= f.getMontantFinal();
+//        }
+//        return solde;
+//    }
 
     static double getMontantFinale() {
         double mf = 0;
@@ -266,7 +268,7 @@ public class FinOperationVenteController implements Initializable {
 
     public static void calcule() {
         montantFinal_static.setText(Methode.DoubleFormat(getMontantFinale()) + "");
-        solde_static.setText(Methode.DoubleFormat(getsSolde()) + "");
+        solde_static.setText(Methode.DoubleFormat(ClientQueries.solde(OperationVenteController.client)) + "");
     }
 
     public void imprimer(Facture f, ActionEvent event) {
@@ -288,6 +290,8 @@ public class FinOperationVenteController implements Initializable {
         versemetCombo.getItems().add("Cheque");
         versemetCombo.getItems().add("Especes");
         versemetCombo.getItems().add("A terme");
+                versemetCombo.getSelectionModel().selectFirst();
+
     }
 
 }

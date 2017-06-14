@@ -25,8 +25,8 @@ public class Camion {
     String matricule;
     @Column(name = "marque", nullable = false)
     String marque;
-    @Column(name = "poid", nullable = true)
-    double poid;
+//    @Column(name = "poid", nullable = true)
+//    double poid;
     @OneToMany(targetEntity=Facture.class, mappedBy="camion"
     		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
     private List<Facture> factures;
@@ -39,22 +39,22 @@ public class Camion {
     public Camion() {
     }
 
-    public Camion(String codeCamion,String matricule, String marque, double poid) {
+    public Camion(String codeCamion,String matricule, String marque) {
         this.codeCamion = codeCamion;
         this.matricule= matricule;
         this.marque = marque;
-        this.poid= poid;
+        //this.poid= poid;
         this.deleted=false;
     }
 
-    public double getPoid() {
-        return poid;
-    }
-
-    public void setPoid(double poid) {
-        this.poid = poid;
-    }
-
+//    public double getPoid() {
+//        return poid;
+//    }
+//
+//    public void setPoid(double poid) {
+//        this.poid = poid;
+//    }
+//
     public List<Achat> getAchats() {
         return achats;
     }

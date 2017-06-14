@@ -95,15 +95,15 @@ public class AjouterPayementController implements Initializable {
     }
 
     private void AfficheListePayement() {
-            double totalFactured = ClientQueries.totalFactured(client);
-            double totalVersed = ClientQueries.totalVersed(client);
-            double solde = ClientQueries.solde(client);
-            PayementListeController.STtotalefacture.setText(Methode.DoubleFormat(totalFactured) + "");
-            PayementListeController.STtotlepaye.setText(Methode.DoubleFormat(totalVersed) + "");
-            PayementListeController.STreste.setText(Methode.DoubleFormat(solde) + "");
         
         PayementListeController.listepay.getItems().clear();
         List<Payment> listDB = PaymentQueries.getPaymentsListByClientId(client.getId());
+            double totalFactured = ClientQueries.totalFactured(client);
+            double totalVersed = ClientQueries.totalVersed(client);
+            double solde = totalVersed-totalFactured;
+            PayementListeController.STtotalefacture.setText(Methode.DoubleFormat(totalFactured) + "");
+            PayementListeController.STtotlepaye.setText(Methode.DoubleFormat(totalVersed) + "");
+            PayementListeController.STreste.setText(Methode.DoubleFormat(solde) + "");
 
         List<PayementCell> list = new ArrayList<>();
         for (int i = 0; i < listDB.size(); i++) {
