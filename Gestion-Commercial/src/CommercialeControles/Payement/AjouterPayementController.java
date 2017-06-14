@@ -51,12 +51,19 @@ public class AjouterPayementController implements Initializable {
         datepayment.setValue(LocalDate.now());
         Types.add("Especes");
         Types.add("Cheque");
-        Types.add("A terme"); 
+        Types.add("A terme");
         ObservableList<String> liste = FXCollections.observableList(Types);
         type.setItems(liste);
         type.getSelectionModel().select(0);
-                Methode.setOnlyDouble(montont, 8);
-                Methode.setOnlyDouble(timbre, 3);
+        Methode.setOnlyDouble(montont, 8);
+        Methode.setOnlyDouble(timbre, 3);
+        Methode.setZeroRemoved(montont);
+        Methode.setZeroRemoved(timbre);
+        Methode.setSelectedMouseClick(montont);
+        Methode.setSelectedMouseClick(timbre);
+        montont.setText("0.00");
+        timbre.setText("0.00");
+        
 
     }
 
@@ -88,7 +95,7 @@ public class AjouterPayementController implements Initializable {
     public void setdata(Client client, JFXListView<PayementCell> listepayement) {
         this.client = client;
         this.listepayement = listepayement;
-        Nfacture.setText(client.getPrenom()+" "+client.getName());
+        Nfacture.setText(client.getPrenom() + " " + client.getName());
     }
 
     private void AfficheListePayement() {
@@ -102,7 +109,7 @@ public class AjouterPayementController implements Initializable {
         ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
         PayementListeController.listepay.setItems(myObservableList);
         PayementListeController.listepay.setExpanded(true);
-        
+
     }
 
     @FXML

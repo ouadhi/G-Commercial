@@ -88,7 +88,7 @@ public class PaymentQueries {
         Session session = FactoryObject.getFactory().openSession();
         List<Payment> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Payment" + "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'").list();
+            list = session.createQuery("from Payment").list();
         } finally {
             session.close();
         }
