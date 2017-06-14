@@ -101,13 +101,15 @@ public class CamionCell extends GridPane {
         rowConstraints.setMinHeight(10.0);
         rowConstraints.setPrefHeight(30.0);
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
-        label.setPrefHeight(22.0);
-        label.setPrefWidth(30.0);
+        
+        
         label.setText(camion.getCodeCamion());
         label.setFont(new Font(17.0));
+        
         GridPane.setColumnIndex(label0, 1);
         label0.setText(camion.getMarque());
         label0.setFont(new Font(17.0));
+        
         GridPane.setColumnIndex(label1, 2);
         label1.setText(camion.getMarque());
         label1.setFont(new Font(17.0));
@@ -119,6 +121,7 @@ public class CamionCell extends GridPane {
         label2.setText("");
         label2.setFont(new Font(17.0));
         GridPane.setColumnIndex(label3, 4);
+        
         //back
         label3.setText("");
         label3.setFont(new Font(17.0));

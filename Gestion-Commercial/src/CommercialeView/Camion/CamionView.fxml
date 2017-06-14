@@ -67,7 +67,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label layoutX="333.0" layoutY="35.0" text="Poid" GridPane.columnIndex="3">
+            <Label layoutX="333.0" layoutY="35.0" GridPane.columnIndex="3">
                <font>
                   <Font size="17.0" />
                </font>
