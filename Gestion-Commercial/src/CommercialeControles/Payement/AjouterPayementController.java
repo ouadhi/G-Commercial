@@ -51,12 +51,15 @@ public class AjouterPayementController implements Initializable {
         datepayment.setValue(LocalDate.now());
         Types.add("Especes");
         Types.add("Cheque");
-        Types.add("A terme"); 
+        Types.add("A terme");
         ObservableList<String> liste = FXCollections.observableList(Types);
         type.setItems(liste);
         type.getSelectionModel().select(0);
-                Methode.setOnlyDouble(montont, 8);
-                Methode.setOnlyDouble(timbre, 3);
+        Methode.setOnlyDouble(montont, 8);
+        Methode.setZeroRemoved(montont);
+        Methode.setSelectedMouseClick(montont);
+        montont.setText("0.00");
+        
 
     }
 
@@ -88,12 +91,19 @@ public class AjouterPayementController implements Initializable {
     public void setdata(Client client, JFXListView<PayementCell> listepayement) {
         this.client = client;
         this.listepayement = listepayement;
-        Nfacture.setText(client.getPrenom()+" "+client.getName());
+        Nfacture.setText(client.getPrenom() + " " + client.getName());
     }
 
     private void AfficheListePayement() {
+        
         PayementListeController.listepay.getItems().clear();
-        List<Payment> listDB = PaymentQueries.list();
+        List<Payment> listDB = PaymentQueries.getPaymentsListByClientId(client.getId());
+            double totalFactured = ClientQueries.totalFactured(client);
+            double totalVersed = ClientQueries.totalVersed(client);
+            double solde = totalVersed-totalFactured;
+            PayementListeController.STtotalefacture.setText(Methode.DoubleFormat(totalFactured) + "");
+            PayementListeController.STtotlepaye.setText(Methode.DoubleFormat(totalVersed) + "");
+            PayementListeController.STreste.setText(Methode.DoubleFormat(solde) + "");
 
         List<PayementCell> list = new ArrayList<>();
         for (int i = 0; i < listDB.size(); i++) {
@@ -102,7 +112,7 @@ public class AjouterPayementController implements Initializable {
         ObservableList<PayementCell> myObservableList = FXCollections.observableList(list);
         PayementListeController.listepay.setItems(myObservableList);
         PayementListeController.listepay.setExpanded(true);
-        
+
     }
 
     @FXML

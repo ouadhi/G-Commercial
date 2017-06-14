@@ -1,12 +1,14 @@
 package com.gestionCommerciale.Models;
 
 import com.gestionCommerciale.HibernateSchema.Client;
+import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.HibernateSchema.Payment;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
 public class ClientQueries {
-    
+
     public static boolean SaveOrUpdate(Client client) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -21,7 +23,7 @@ public class ClientQueries {
             return true;
         }
     }
-    
+
     public static boolean archive(Client client) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -37,7 +39,7 @@ public class ClientQueries {
         }
         return true;
     }
-    
+
     public static boolean delete(Client client) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -52,7 +54,7 @@ public class ClientQueries {
         }
         return true;
     }
-    
+
     public static List<Client> list() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -64,7 +66,7 @@ public class ClientQueries {
         }
         return list;
     }
-    
+
     public static List<Client> listArchived() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -76,7 +78,7 @@ public class ClientQueries {
         }
         return list;
     }
-    
+
     public static List<Client> listAll() {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -88,7 +90,7 @@ public class ClientQueries {
         }
         return list;
     }
-    
+
     public static Client getClientById(int id) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -100,7 +102,7 @@ public class ClientQueries {
         }
         return d;
     }
-    
+
     public static Client getClientByRegistre(String num) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -112,18 +114,18 @@ public class ClientQueries {
         }
         return d;
     }
-    
+
     public static Client getClientByNom(String nomPrenom) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
-        Client c= new Client();
+        Client c = new Client();
         List<Client> listClients = new ArrayList<>();
         try {
             listClients = session.createQuery("from Client").list();
-            
+
             for (int i = 0; i < listClients.size(); i++) {
                 if ((listClients.get(i).getName() + " " + listClients.get(i).getPrenom()).equals(nomPrenom)) {
-                    c= listClients.get(i);
+                    c = listClients.get(i);
                 }
             }
         } finally {
@@ -131,7 +133,7 @@ public class ClientQueries {
         }
         return c;
     }
-    
+
     public static List<Client> listRechereche(String Key) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = FactoryObject.getFactory().openSession();
@@ -142,6 +144,29 @@ public class ClientQueries {
             session.close();
         }
         return list;
+    }
+
+    public static double totalFactured(Client client) {
+
+        List<Facture> list = FactureQueries.getFacturesListByClientId(client.getId());
+        double totalefacture = 0;
+        for (Facture facture : list) {
+            totalefacture += facture.getMontantFinal();
+        }
+        return totalefacture;
+    }
+    public static double totalVersed(Client client) {
+
+        List<Payment> list = PaymentQueries.getPaymentsListByClientId(client.getId());
+        double totaleVersed = 0;
+        for (Payment payment : list) {
+            totaleVersed += payment.getMontant();
+        }
+        return totaleVersed;
+    }
+    public static double solde(Client client) {
+
+        return totalVersed(client)-totalFactured(client);
     }
 
     /*
