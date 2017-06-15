@@ -91,7 +91,7 @@ public class CamionListeH extends GridPane {
         GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label.setText(this.camion.getMarque());
+        label.setText("Mat: "+this.camion.getMatricule());
         label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));
@@ -102,7 +102,7 @@ public class CamionListeH extends GridPane {
         GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
         label0.setAlignment(javafx.geometry.Pos.CENTER);
         label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label0.setText(this.camion.getMatricule());
+        label0.setText(this.camion.getMarque());
         label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));

@@ -9,8 +9,8 @@
       <JFXButton fx:id="utilisateurBttn" layoutY="1.0" onAction="#showgestion" prefHeight="44.0" prefWidth="167.0" text="Gestion d'utilisateur " />
       <JFXButton fx:id="infobuttn" layoutY="91.0" onAction="#showinfo" prefHeight="44.0" prefWidth="167.0" text="Information " />
       <Separator layoutY="91.0" prefHeight="3.0" prefWidth="167.0" />
-      <JFXButton fx:id="chagerButtn" layoutY="123.0" onAction="#showLoginform" prefHeight="44.0" prefWidth="167.0" text="Changer utilisateur" />
+      <JFXButton fx:id="chagerButtn" layoutY="123.0" onAction="#showLoginform" prefHeight="44.0" prefWidth="167.0" text="Changer l'utilisateur" />
       <JFXButton fx:id="exite" layoutY="167.0" onAction="#quitter" prefHeight="44.0" prefWidth="167.0" text="Déconnecter" />
-      <JFXButton layoutY="48.0" onAction="#showparametre" prefHeight="44.0" prefWidth="167.0" text="Parametre" />
+      <JFXButton layoutY="48.0" onAction="#showparametre" prefHeight="44.0" prefWidth="167.0" text="Paramètre" />
    </children>
 </AnchorPane>
