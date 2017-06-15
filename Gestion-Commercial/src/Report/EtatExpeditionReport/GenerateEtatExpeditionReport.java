@@ -91,9 +91,10 @@ public class GenerateEtatExpeditionReport {
             List<Payment> listPay = PaymentQueries.list();
             double total = 0;
             for (int i = 0; i < listPay.size(); i++) {
+                versementTotal = versementTotal + listPay.get(i).getMontant();
                 for (int j = 0; j < dates.size(); j++) {
                     if (dates.get(j).equals(listPay.get(i).getDate())) {
-                        versementTotal = versementTotal + listPay.get(i).getMontant();
+                        //versementTotal = versementTotal + listPay.get(i).getMontant();
                     }
                 }
             }
@@ -176,10 +177,10 @@ public class GenerateEtatExpeditionReport {
         List<Payment> listPayment = PaymentQueries.list();
         double total = 0;
         for (int i = 0; i < listPayment.size(); i++) {
-                if (jour.equals(listPayment.get(i).getDate())) {
-                    total = total + listPayment.get(i).getMontant();
-                }
-            
+            if (jour.equals(listPayment.get(i).getDate())) {
+                total = total + listPayment.get(i).getMontant();
+            }
+
         }
         return total;
     }
@@ -232,23 +233,54 @@ public class GenerateEtatExpeditionReport {
                 if (facture.getClient().getPayments().isEmpty()) {
                     expedition.add(String.valueOf(0));
                 } else {
+                    expedition.add(String.valueOf(0));
                     //iterate over payement checking date
-                    double totalVersement = 0;
-                    for (int k = 0; k < facture.getClient().getPayments().size(); k++) {
-                        if (facture.getDate().equals(facture.getClient().getPayments().get(k).getDate())) {
-                            totalVersement = totalVersement + facture.getClient().getPayments().get(k).getMontant();
-                        }
-                    }
-                    expedition.add(String.valueOf(totalVersement));
+//                    double totalVersement = 0;
+//                    for (int k = 0; k < facture.getClient().getPayments().size(); k++) {
+//                        if (facture.getDate().equals(facture.getClient().getPayments().get(k).getDate())) {
+//                            totalVersement = totalVersement + facture.getClient().getPayments().get(k).getMontant();
+//                        }
+//                    }
+//                    expedition.add(String.valueOf(totalVersement));
 
                 }
                 observations.add("");
 
             }
-            System.out.println("list expidition ------------------" + expedition);
+
+            //System.out.println("list expidition ------------------" + expedition);
             expeditions.add(expedition);
         }
-
+        //versement par un clien
+        List<Payment> listPay = PaymentQueries.list();
+        double total = 0;
+        for (int i = 0; i < listPay.size(); i++) {
+            for (int j = 0; j < dates.size(); j++) {
+                if (dates.get(j).equals(listPay.get(i).getDate())) {
+                    boolean found = false;
+                    for (Facture facture : map.keySet()) {
+                        if (facture.getClient().equals(listPay.get(i).getClient())) {
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        List<String> expedition = new ArrayList<>();
+                        expedition.add(listPay.get(i).getClient().getName()+" "+
+                                listPay.get(i).getClient().getPrenom());
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add(String.valueOf(listPay.get(i).getMontant()));
+                        observations.add("");
+                        expeditions.add(expedition);
+                        
+                    }
+                }
+            }
+        }
         return expeditions;
     }
 

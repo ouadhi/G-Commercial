@@ -49,7 +49,7 @@ public class PrintViewController implements Initializable {
             //print facture
             try {
                 GenerateFactureReport generateFactureReport = new GenerateFactureReport();
-                double montantTotal = 0;
+                double montantTotal = factureimp.getMontant();
                 //get list produits, qte 
                 List<String> designationsVente = new ArrayList<>();
                 List<String> qtesVente = new ArrayList<>();
@@ -65,20 +65,20 @@ public class PrintViewController implements Initializable {
                     typesVente.add(String.valueOf(fpList.get(i).getProduit().getCategory()));
                     montantsVente.add(String.valueOf(fpList.get(i).getQte_fact()
                             * fpList.get(i).getProduit().getPrix()));
-                    montantTotal = montantTotal + (fpList.get(i).getQte_fact()
-                            * fpList.get(i).getProduit().getPrix());
+//                    montantTotal = montantTotal + (fpList.get(i).getQte_fact()
+//                            * fpList.get(i).getProduit().getPrix());
                 }
                 //double ttc = factureimp.getMontant() * ((factureimp.getTva() / 100) + factureimp.getMontant());
-                double ttc = (montantTotal * (factureimp.getTva() / 100)) + montantTotal;
+                double ttc = factureimp.getMontantFinal();
+                double tva = ttc - montantTotal;
                 RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
                         RuleBasedNumberFormat.SPELLOUT);
                 String montantlettre = ruleBasedNumberFormat.format(new Double(ttc)) + " Dinars Algérien";
-
                 generateFactureReport.generateReport(factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
                         String.valueOf(factureimp.getClient().getTypeActivity()), factureimp.getClient().getAddressClient(), factureimp.getClient().getNumRegCom(),
                         factureimp.getClient().getnCarteFiscale(), factureimp.getDate().toString(),
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(), String.valueOf(montantTotal),
-                        String.valueOf(factureimp.getTva()), "0.00", new Double(ttc).toString(), montantlettre,
+                        String.valueOf(tva), String.valueOf(factureimp.getTimbre()), new Double(ttc).toString(), montantlettre,
                         factureimp.getChauffeur().getNom() + factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente,
                         qtesVente, prixsVente, montantsVente, typesVente);
@@ -100,7 +100,7 @@ public class PrintViewController implements Initializable {
                     designationsVente.add(fpList.get(i).getProduit().getNom());
                     qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
                 }
-                generateBonChargementReport.generateReport(String.valueOf(factureimp.getClient().getId()),
+                generateBonChargementReport.generateReport(String.valueOf(factureimp.getIdFacture()),
                         factureimp.getDate().toString(), factureimp.getClient().getPrenom() + " " + factureimp.getClient().getName(),
                         factureimp.getClient().getTypeActivity(), factureimp.getClient().getAddressClient(), factureimp.getClient().getNumRegCom(),
                         factureimp.getClient().getnCarteFiscale(), factureimp.getClient().getNumArticle(),
