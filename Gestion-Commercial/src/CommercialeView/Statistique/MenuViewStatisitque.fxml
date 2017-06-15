@@ -6,6 +6,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1218.0" styleClass="back" stylesheets="@../Banque/BanqueCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Statistique.MenuViewStatisitqueController">
    <children>
@@ -19,10 +20,22 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </BarChart>
-            <Label layoutX="64.0" layoutY="29.0" styleClass="label_txt" text="Nb Clients : " />
-            <Label fx:id="nbclient" layoutX="162.0" layoutY="29.0" prefHeight="17.0" prefWidth="60.0" styleClass="label_txt" />
-            <Label layoutX="288.0" layoutY="29.0" styleClass="label_txt" text="Somme des factures:" />
-            <Label fx:id="sommefactures" layoutX="456.0" layoutY="29.0" prefHeight="17.0" prefWidth="51.0" styleClass="label_txt" />
+            <Label layoutX="64.0" layoutY="29.0" text="Nb Clients : ">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label fx:id="nbclient" layoutX="187.0" layoutY="31.0">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label layoutX="288.0" layoutY="29.0" text="Somme des factures:">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label fx:id="sommefactures" layoutX="496.0" layoutY="31.0">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
          </children>
       </AnchorPane>
       <JFXButton layoutX="451.0" layoutY="661.0" onAction="#client" prefHeight="51.0" prefWidth="176.0" styleClass="button_save" text="Client" />
