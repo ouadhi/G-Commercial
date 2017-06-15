@@ -212,9 +212,11 @@ public class FinOperationVenteController implements Initializable {
 
     public void addFacture(ActionEvent event) {
         Date date = java.sql.Date.valueOf(dateOperation.getValue());
-        double montantVal = Double.parseDouble(montantFinal_static.getText());
+        double montantVal = Double.parseDouble(montant_static.getText());
+        double montantFinalVal = Double.parseDouble(montant_static.getText());
         double versmentVal = Double.parseDouble(versement_static.getText());
         Facture f = new Facture(date, montantVal, AnneeQueries.getSelected().getTva());
+        f.setMontantFinal(montantFinalVal);
         List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
         for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
             Produit p = OperationVenteController.produitselected.get(i).getProduit();
