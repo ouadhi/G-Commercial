@@ -105,7 +105,7 @@ public class BleListeH extends GridPane {
         GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
         label0.setAlignment(javafx.geometry.Pos.CENTER);
         label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label0.setText(Double.toString(this.quantite));
+        label0.setText(Double.toString(this.quantite)+" unité");
         label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
         GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));

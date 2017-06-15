@@ -213,7 +213,7 @@ public class VenteCell extends GridPane {
     }
 
     public void intpopup() {
-        JFXButton modifier = new JFXButton("Modifier");
+        JFXButton modifier = new JFXButton("Détail");
         JFXButton supprimer = new JFXButton("Archiver");
         JFXButton details = new JFXButton("imprimer");
        

@@ -21,11 +21,11 @@
       <Text fill="#fd9252" fontSmoothingType="LCD" layoutX="55.0" layoutY="58.0" lineSpacing="7.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Ventes" wrappingWidth="122.51513671875" />
       <Label fx:id="total" layoutX="233.0" layoutY="38.0" styleClass="label_txt" text="100" />
       <Label layoutX="178.0" layoutY="37.0" styleClass="label_txt" text="Total:" />
-      <Label fx:id="label" layoutX="292.0" layoutY="39.0" styleClass="label_txt" text="Afficher :" />
+      <Label fx:id="label" layoutX="292.0" layoutY="39.0" styleClass="label_txt" text="Afficher:" />
       <MenuButton fx:id="Order" layoutX="365.0" layoutY="24.0" mnemonicParsing="false" onAction="#setOrder" prefHeight="48.0" prefWidth="154.0" styleClass="menuButton" text="Non Archivé">
          <items>
             <MenuItem fx:id="nonArchive" mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
-            <MenuItem fx:id="archive" mnemonicParsing="false" onAction="#Archive" text=" Archivé" />
+            <MenuItem fx:id="archive" mnemonicParsing="false" onAction="#Archive" text="Archivé" />
             <MenuItem fx:id="toutb" mnemonicParsing="false" onAction="#tout" text="Tout" />
             <MenuItem fx:id="pardate" mnemonicParsing="false" onAction="#pardate" text="Date" />
          </items>
