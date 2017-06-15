@@ -43,12 +43,6 @@ public class Loginform extends Application {
          stage.getIcons().add(icon) ; 
          stage.setTitle("MoulinMax - Commerciale");
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Employee_LoginFXML.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
-        //Image icon = new Image(getClass().getResourceAsStream("/icons/ok.png"));
-        //stage.getIcons().add(icon);
-        /////Parent root = FXMLLoader.load(getClass().getResource("/Views/Employee_LoginFXML.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
-        //Parent root = FXMLLoader.load(getClass().getResource(ViewUrl.DockList));
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
