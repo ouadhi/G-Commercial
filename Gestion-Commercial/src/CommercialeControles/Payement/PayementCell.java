@@ -168,6 +168,10 @@ public class PayementCell extends GridPane {
 
         popup.setContent(box);
         popup.setSource(bttn);
+        
+        if (payment.isDeleted()) {
+            box.setDisable(true);
+        }
 
         modifier.setOnAction(event -> {
 

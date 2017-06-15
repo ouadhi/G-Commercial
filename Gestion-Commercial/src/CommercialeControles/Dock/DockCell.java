@@ -169,6 +169,11 @@ public class DockCell  extends GridPane{
         box.setStyle("-fx-background-color: #ffffff");
         popup.setContent(box);
         popup.setSource(bttn);
+        
+        if (dock.isDeleted()) {
+            box.setDisable(true);
+        }
+        
         modifier.setOnAction(event -> {
             
             try {

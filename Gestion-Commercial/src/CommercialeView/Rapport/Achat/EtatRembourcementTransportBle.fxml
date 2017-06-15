@@ -21,7 +21,7 @@
                   <Image url="/icons/close.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="33.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rembourcement Transport">
+            <Text fill="WHITE" layoutX="33.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remboursement Transport">
                <font>
                   <Font size="28.0" />
                </font>

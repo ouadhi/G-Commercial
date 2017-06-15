@@ -219,6 +219,10 @@ public class ProduitCell extends GridPane {
 
         popup.setContent(box);
         popup.setSource(bttn);
+        
+        if (this.produit.isDeleted()) {
+            box.setDisable(true);
+        }
 
         modifier.setOnAction(event -> {
 

@@ -23,18 +23,17 @@ import javafx.stage.Stage;
 public class CamionCell extends GridPane {
 
     Camion camion;
-    protected final ColumnConstraints columnConstraints;
+     protected final ColumnConstraints columnConstraints;
     protected final ColumnConstraints columnConstraints0;
     protected final ColumnConstraints columnConstraints1;
     protected final ColumnConstraints columnConstraints2;
-    protected final ColumnConstraints columnConstraints3;
-    protected final ColumnConstraints columnConstraints4;
     protected final RowConstraints rowConstraints;
     protected final Label label;
     protected final Label label0;
     protected final Label label1;
-    protected final Label label2;
-    protected final Label label3;
+    
+    
+    
     protected final JFXButton bttn;
     public JFXPopup popup;
 
@@ -55,86 +54,72 @@ public class CamionCell extends GridPane {
         columnConstraints0 = new ColumnConstraints();
         columnConstraints1 = new ColumnConstraints();
         columnConstraints2 = new ColumnConstraints();
-        columnConstraints3 = new ColumnConstraints();
-        columnConstraints4 = new ColumnConstraints();
         rowConstraints = new RowConstraints();
         label = new Label();
         label0 = new Label();
         label1 = new Label();
-        label2 = new Label();
-        label3 = new Label();
         
         setHgap(3.0);
-        setPrefHeight(50.0);
-        setPrefWidth(1027.0);   
+        setPrefHeight(55.0);
+        setPrefWidth(1116.0);
+       
 
         columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-        columnConstraints.setMaxWidth(87.0);
+        columnConstraints.setMaxWidth(191.0);
         columnConstraints.setMinWidth(67.0);
-        columnConstraints.setPrefWidth(76.0);
+        columnConstraints.setPrefWidth(191.0);
+
         columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-        columnConstraints0.setMaxWidth(253.0);
+        columnConstraints0.setMaxWidth(260.0);
         columnConstraints0.setMinWidth(137.0);
-        columnConstraints0.setPrefWidth(208.0);
+        columnConstraints0.setPrefWidth(252.0);
+
         columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
         columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
         columnConstraints1.setMaxWidth(492.0);
         columnConstraints1.setMinWidth(126.0);
-        columnConstraints1.setPrefWidth(208.0);
-        columnConstraints2.setHalignment(javafx.geometry.HPos.CENTER);
+        columnConstraints1.setPrefWidth(244.0);
+
+        columnConstraints2.setHalignment(javafx.geometry.HPos.RIGHT);
         columnConstraints2.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-        columnConstraints2.setMaxWidth(492.0);
-        columnConstraints2.setMinWidth(145.0);
-        columnConstraints2.setPrefWidth(226.0);
-        columnConstraints3.setHalignment(javafx.geometry.HPos.CENTER);
-        columnConstraints3.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-        columnConstraints3.setMaxWidth(492.0);
-        columnConstraints3.setMinWidth(108.0);
-        columnConstraints3.setPrefWidth(139.0);
-        columnConstraints4.setHalignment(javafx.geometry.HPos.RIGHT);
-        columnConstraints4.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-        columnConstraints4.setMaxWidth(554.0);
-        columnConstraints4.setMinWidth(77.0);
-        columnConstraints4.setPrefWidth(242.0);
+        columnConstraints2.setMaxWidth(554.0);
+        columnConstraints2.setMinWidth(77.0);
+        columnConstraints2.setPrefWidth(418.0);
+
         rowConstraints.setMinHeight(10.0);
         rowConstraints.setPrefHeight(30.0);
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
-        label.setPrefHeight(22.0);
-        label.setPrefWidth(30.0);
-        label.setText(camion.getCodeCamion());
+
+        GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
+        GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
+        label.setAlignment(javafx.geometry.Pos.CENTER);
+        label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        label.setText(""+this.camion.getCodeCamion());
+        label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label.setFont(new Font(17.0));
+        label.setPadding(new Insets(1.0));
+
         GridPane.setColumnIndex(label0, 1);
-        label0.setText(camion.getMarque());
+        label0.setText(this.camion.getMarque());
         label0.setFont(new Font(17.0));
+
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(camion.getMarque());
+        label1.setText(this.camion.getMatricule());
         label1.setFont(new Font(17.0));
-        GridPane.setColumnIndex(label2, 3);
-        label2.setLayoutX(333.0);
-        label2.setLayoutY(35.0);
-        //back
-        //camion poid
-        label2.setText("");
-        label2.setFont(new Font(17.0));
-        GridPane.setColumnIndex(label3, 4);
-        //back
-        label3.setText("");
-        label3.setFont(new Font(17.0));
-        GridPane.setColumnIndex(bttn, 5);
+
+        GridPane.setColumnIndex(bttn, 3);
+        GridPane.setMargin(bttn, new Insets(0.0, 60.0, 0.0, 0.0));
+
         getColumnConstraints().add(columnConstraints);
         getColumnConstraints().add(columnConstraints0);
         getColumnConstraints().add(columnConstraints1);
         getColumnConstraints().add(columnConstraints2);
-        getColumnConstraints().add(columnConstraints3);
-        getColumnConstraints().add(columnConstraints4);
         getRowConstraints().add(rowConstraints);
         getChildren().add(label);
         getChildren().add(label0);
         getChildren().add(label1);
-        getChildren().add(label2);
-        getChildren().add(label3);
         getChildren().add(bttn);
 
         intpopup();
@@ -153,6 +138,11 @@ public class CamionCell extends GridPane {
         box.setStyle("-fx-background-color: #ffffff");
         popup.setContent(box);
         popup.setSource(bttn);
+        
+        if (camion.isDeleted()) {
+            box.setDisable(true);
+        }
+        
         modifier.setOnAction(event -> {
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

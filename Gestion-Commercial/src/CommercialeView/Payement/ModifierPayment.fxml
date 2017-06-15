@@ -30,9 +30,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label styleClass="label_txt" text="Date :" />
-            <Label styleClass="label_txt" text="Montont :" GridPane.columnIndex="1" />
-            <Label styleClass="label_txt" text="Type :" GridPane.rowIndex="1" />
+            <Label styleClass="label_txt" text="Date:" />
+            <Label styleClass="label_txt" text="Montant:" GridPane.columnIndex="1" />
+            <Label styleClass="label_txt" text="Type:" GridPane.rowIndex="1" />
             <JFXDatePicker fx:id="datepayment" prefHeight="40.0" prefWidth="188.0" styleClass="champtxt">
                <GridPane.margin>
                   <Insets left="50.0" />
@@ -48,8 +48,8 @@
                   <Insets left="73.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label styleClass="label_txt" text="Timbre:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <JFXTextField fx:id="Timbre" focusColor="#405aa800" maxWidth="170.0" minWidth="170.0" prefHeight="40.0" prefWidth="170.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Timbre:" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="Timbre" focusColor="#405aa800" maxWidth="170.0" minWidth="170.0" prefHeight="40.0" prefWidth="170.0" styleClass="champtxt" unFocusColor="#4d4d4d00" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="73.0" />
                </GridPane.margin>

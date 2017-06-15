@@ -198,6 +198,10 @@ public class ClienCell extends GridPane {
 
         popup.setContent(box);
         popup.setSource(bttn);
+        
+        if (client.isDeleted()) {
+            box.setDisable(true);
+        }
 
         modifier.setOnAction(event -> {
             

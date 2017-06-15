@@ -18,7 +18,7 @@
                   <Image url="/icons/close.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="33.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etat de Ble">
+            <Text fill="WHITE" layoutX="33.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="État de Blé">
                <font>
                   <Font size="28.0" />
                </font>

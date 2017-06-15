@@ -89,9 +89,11 @@ public class BelCell extends GridPane {
         rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
         label.setText(ble.getCodeBle());
         label.setFont(new Font(17.0));
+        
         GridPane.setColumnIndex(label0, 1);
-        label0.setText(Double.toString(ble.getQte()));
+        label0.setText("-");
         label0.setFont(new Font(17.0));
+        
         GridPane.setColumnIndex(label1, 2);
         label1.setText(Double.toString(ble.getPrix()));
         label1.setFont(new Font(17.0));
@@ -125,6 +127,10 @@ public class BelCell extends GridPane {
         box.setStyle("-fx-background-color: #ffffff");
         popup.setContent(box);
         popup.setSource(bttn);
+        
+        if (ble.isDeleted()) {
+            box.setDisable(true);
+        }
         modifier.setOnAction(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader();

@@ -159,6 +159,10 @@ public class AchatCell extends GridPane {
 
         popup.setContent(box);
         popup.setSource(bttn);
+        
+        if (achat.isDeleted()) {
+            box.setDisable(true);
+        }
 
         modifier.setOnAction(event -> {
             try {

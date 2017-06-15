@@ -39,23 +39,24 @@
          </font>
       </Text>
       <JFXListView fx:id="listeView" layoutX="51.0" layoutY="164.0" onMouseClicked="#showCamions" prefHeight="410.0" prefWidth="1116.0" stylesheets="@../Chauffeur/ChauffeurCSS.css" AnchorPane.topAnchor="160.0" />
-      <GridPane hgap="3.0" layoutX="51.0" layoutY="111.0" prefHeight="55.0" prefWidth="1116.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel" AnchorPane.topAnchor="100.0">
+      <GridPane hgap="3.0" layoutX="51.0" layoutY="105.0" prefHeight="55.0" prefWidth="1116.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel" AnchorPane.topAnchor="105.0">
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="87.0" minWidth="67.0" prefWidth="76.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="253.0" minWidth="137.0" prefWidth="208.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="126.0" prefWidth="208.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="145.0" prefWidth="226.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="108.0" prefWidth="139.0" />
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="554.0" minWidth="77.0" prefWidth="242.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="191.0" minWidth="67.0" prefWidth="191.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="260.0" minWidth="137.0" prefWidth="252.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="126.0" prefWidth="244.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="554.0" minWidth="77.0" prefWidth="418.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="64.0" text="Code " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Code" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="17.0" />
                </font>
+               <padding>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </padding>
             </Label>
             <Label text="Marque" GridPane.columnIndex="1">
                <font>
@@ -63,16 +64,6 @@
                </font>
             </Label>
             <Label text="Matricule" GridPane.columnIndex="2">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label layoutX="333.0" layoutY="35.0" text="Poid" GridPane.columnIndex="3">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label GridPane.columnIndex="4">
                <font>
                   <Font size="17.0" />
                </font>

@@ -17,7 +17,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1160.0" style="-fx-background-color: white;" stylesheets="@Vente.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Vente.FinOperationVenteController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="448.0" layoutY="28.0" styleClass="titre" text="Informations De Vente" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="448.0" layoutY="28.0" styleClass="titre" text="Informations de vente" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="441.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="520.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: fd9252;" styleClass="etapenumero" text="2" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="672.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" styleClass="labelselecte" text="4" textAlignment="CENTER" />
@@ -37,12 +37,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label styleClass="label_txt" text="Date d'Operation :">
+            <Label styleClass="label_txt" text="Date d'Operation ">
                <GridPane.margin>
                   <Insets bottom="40.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label_txt" text="Montant :" GridPane.columnIndex="1">
+            <Label styleClass="label_txt" text="Montant " GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="40.0" />
                </GridPane.margin>
@@ -57,7 +57,7 @@
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXDatePicker>
-            <Label styleClass="label_txt" text="Montant Final :" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Montant Final " GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="40.0" />
                </GridPane.margin>
@@ -67,7 +67,7 @@
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <Label styleClass="label_txt" text="Solde Client :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label styleClass="label_txt" text="Solde Client " GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="40.0" />
                </GridPane.margin></Label>
@@ -77,7 +77,7 @@
                </GridPane.margin></JFXTextField>
          </children>
       </GridPane>
-      <JFXButton fx:id="save" layoutX="902.0" layoutY="453.0" onAction="#sauvgader" prefHeight="48.0" prefWidth="183.0" styleClass="button_save" text="Sauvgarder" />
+      <JFXButton fx:id="save" layoutX="902.0" layoutY="453.0" onAction="#sauvgader" prefHeight="48.0" prefWidth="183.0" styleClass="button_save" text="Enregistrer" />
       <JFXButton fx:id="annuler" layoutX="689.0" layoutY="453.0" onAction="#quitter" prefHeight="48.0" prefWidth="183.0" styleClass="button_annuler" text="Annuler" />
       <Label layoutX="384.0" layoutY="139.0" styleClass="label_txt" text="Client" />
       <Label layoutX="479.0" layoutY="139.0" styleClass="label_txt" text="Chauffeur" />
@@ -105,13 +105,13 @@
       </ImageView>
       <HBox layoutX="279.0" layoutY="341.0" prefHeight="78.0" prefWidth="653.0" spacing="16.0">
          <children>
-            <Label prefHeight="20.0" prefWidth="99.0" styleClass="label_txt" text="Versement :" />
+            <Label prefHeight="20.0" prefWidth="99.0" styleClass="label_txt" text="Versement " />
             <JFXTextField fx:id="versement" focusColor="#405aa800" maxWidth="163.0" minWidth="155.0" prefHeight="40.0" prefWidth="156.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
                <HBox.margin>
                   <Insets left="-113.0" top="20.0" />
                </HBox.margin>
             </JFXTextField>
-            <Label styleClass="label_txt" text="Type de versement :">
+            <Label styleClass="label_txt" text="Type de versement ">
                <HBox.margin>
                   <Insets left="35.0" />
                </HBox.margin>
@@ -121,7 +121,7 @@
                   <Insets left="-169.0" top="20.0" />
                </HBox.margin>
             </JFXComboBox>
-            <Label styleClass="label_txt" text="Timbre :">
+            <Label styleClass="label_txt" text="Timbre ">
                <HBox.margin>
                   <Insets left="38.0" />
                </HBox.margin>

@@ -142,6 +142,10 @@ public class ChauffeurCell extends GridPane {
 
         popup.setContent(box);
         popup.setSource(bttn);
+        
+        if (chauffeur.isDeleted()) {
+            box.setDisable(true);
+        }
 
         modifier.setOnAction(event -> {
             Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();

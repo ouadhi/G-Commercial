@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1160.0" stylesheets="@Vente.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Vente.SelectionnerProduitController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="454.0" layoutY="31.0" styleClass="titre" text="Selectionner Produit" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="517.0" layoutY="28.0" styleClass="titre" text=" Produits" textAlignment="CENTER" AnchorPane.leftAnchor="517.0" AnchorPane.rightAnchor="516.0" />
       <Label alignment="CENTER" layoutX="441.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="520.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: fd9252;" styleClass="etapenumero" text="2" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="672.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" styleClass="labelselecte" text="4" textAlignment="CENTER" />
