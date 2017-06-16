@@ -5,63 +5,65 @@
  */
 package com.gestionCommerciale.Models;
 
-import com.gestionCommerciale.HibernateSchema.Role;
-import com.gestionCommerciale.HibernateSchema.User;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Session;
+
+import com.gestionCommerciale.HibernateSchema.Role;
 
 /**
  *
  * @author Hicham
  */
 public class RoleQueries {
-    public void SaveOrUpdate(Role role) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        try {
+	public void delete(Role role) {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		try {
 
-            session.beginTransaction();
-            session.saveOrUpdate(role);
-            session.getTransaction().commit();
+			session.beginTransaction();
+			session.delete(role);
+			session.getTransaction().commit();
 
-        } finally {
-            session.close();
-        }
-    }
-    
-    public void delete(Role role) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        try {
+		} finally {
+			session.close();
+		}
+	}
 
-            session.beginTransaction();
-            session.delete(role);
-            session.getTransaction().commit();
+	public Role getRole(int idRole) {
+		Role role = null;
+		List<Role> listOfRoles = list();
 
-        } finally {
-            session.close();
-        }
-    }
-    public List<Role> list() {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        List<Role> list = new ArrayList<>();
-        list = session.createQuery("from Role").list();
+		for (int i = 0; i < listOfRoles.size(); i++) {
+			if (idRole == listOfRoles.get(i).getIdRole()) {
+				role = listOfRoles.get(i);
+			}
+		}
+		return role;
+	}
 
-        return list;
-    }
-    
-    public Role getRole(int  idRole){
-        Role role=null;
-        List<Role> listOfRoles=list();
+	public List<Role> list() {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Role> list = new ArrayList<>();
+		list = session.createQuery("from Role").list();
 
-        for (int i = 0; i < listOfRoles.size(); i++) {
-            if (idRole==listOfRoles.get(i).getIdRole()) {
-                role=listOfRoles.get(i);
-            }
-        }
-        return role;
-    }
-    
+		return list;
+	}
+
+	public void SaveOrUpdate(Role role) {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		try {
+
+			session.beginTransaction();
+			session.saveOrUpdate(role);
+			session.getTransaction().commit();
+
+		} finally {
+			session.close();
+		}
+	}
+
 }

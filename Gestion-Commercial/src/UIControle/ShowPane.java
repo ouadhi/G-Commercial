@@ -1,12 +1,13 @@
 package UIControle;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import CommercialeControles.Home2FXMLController;
 import CommercialeControles.HomeFXMLController;
 import Conroles.MeunFXMLController;
 import Conroles.Users_ListController;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -19,237 +20,237 @@ import javafx.util.Duration;
 
 public class ShowPane {
 
-    public void showHome(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/CommercialeView/HomeFXML.fxml"));
-            Scene scene = new Scene(pane);
-            Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+	public void EtatdeBle(ActionEvent event) {
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatBle));
+			StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+			dialog.show();
+		} catch (IOException ex) {
+			Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-            stage.setScene(scene);
+	public void EtatdeReception(ActionEvent event) {
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatRecpetion));
+			StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+			dialog.show();
+		} catch (IOException ex) {
+			Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-        } catch (IOException ex) {
-            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+	public void EtatExpedition(ActionEvent event) {
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatExpedition));
+			StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+			dialog.show();
+		} catch (IOException ex) {
+			Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-    public void showRole() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
+	public void EtatRembourcementBle(ActionEvent event) {
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatRembourcementBle));
+			StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+			dialog.show();
+		} catch (IOException ex) {
+			Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-            AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/RoleFXML.fxml"));
+	public void EtatRembourcementTransport(ActionEvent event) {
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatRembourecementTransport));
+			StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+			dialog.show();
+		} catch (IOException ex) {
+			Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-            Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
-        } catch (IOException ex) {
-            Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+	private void show(String fileIn, AnchorPane workspace) {
 
-    public void showUserList() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
+		TranslateTransition trans1 = transitionout(workspace);
+		trans1.play();
 
-            AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/Users_List.fxml"));
+		trans1.setOnFinished(e -> {
 
-            Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
-        } catch (IOException ex) {
-            Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+			try {
+				AnchorPane root = FXMLLoader.load(getClass().getResource(fileIn));
+				workspace.getChildren().setAll(root);
+				TranslateTransition tran2 = transitionIn(workspace);
+				tran2.play();
+			} catch (IOException ex) {
+				Logger.getLogger(MeunFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+			}
 
-    public void showChauffeur() {
+		});
 
-        String url = "/CommercialeView/Chauffeur/ChauffeurView.fxml";
+	}
 
-        show(url, Home2FXMLController.workespacepane);
+	public void showAjouterVente() {
+		show(ViewUrl.nouveauVente, Home2FXMLController.workespacepane);
+	}
 
-    }
+	public void showBanque() {
+		show(ViewUrl.BanqueListe, Home2FXMLController.workespacepane);
+	}
 
-    public void showCamion() {
+	public void showBle() {
 
-        String url = "/CommercialeView/Camion/CamionView.fxml";
+		show(ViewUrl.bleview, Home2FXMLController.workespacepane);
+	}
 
-        show(url, Home2FXMLController.workespacepane);
+	public void showCamion() {
 
-    }
+		String url = "/CommercialeView/Camion/CamionView.fxml";
 
-    public void showClient() {
+		show(url, Home2FXMLController.workespacepane);
 
-        String url = ViewUrl.ClientView;
+	}
 
-        show(url, Home2FXMLController.workespacepane);
-    }
+	public void showChauffeur() {
 
-    public void showProduit() {
+		String url = "/CommercialeView/Chauffeur/ChauffeurView.fxml";
 
-        show(ViewUrl.ProduitList, Home2FXMLController.workespacepane);
-    }
+		show(url, Home2FXMLController.workespacepane);
 
-    public void showBle() {
+	}
 
-        show(ViewUrl.bleview, Home2FXMLController.workespacepane);
-    }
+	public void showClient() {
 
-    public void showDock() {
+		String url = ViewUrl.ClientView;
 
-        show(ViewUrl.DockList, Home2FXMLController.workespacepane);
-    }
+		show(url, Home2FXMLController.workespacepane);
+	}
 
-    public void showOperationAchat() {
-        show(ViewUrl.operationAchat, Home2FXMLController.workespacepane);
-    }
+	public void showDock() {
 
-    public void showListAchat() {
-        show(ViewUrl.ListAchats, Home2FXMLController.workespacepane);
-    }
+		show(ViewUrl.DockList, Home2FXMLController.workespacepane);
+	}
 
-    public void showAjouterVente() {
-        show(ViewUrl.nouveauVente, Home2FXMLController.workespacepane);
-    }
+	public void showHome(ActionEvent event) {
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("/CommercialeView/HomeFXML.fxml"));
+			Scene scene = new Scene(pane);
+			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
 
-    public void showVenteListe() {
-        show(ViewUrl.ListeVentes, Home2FXMLController.workespacepane);
-    }
+			stage.setScene(scene);
 
-    public void showRapport() {
-        show(ViewUrl.rapportMain, Home2FXMLController.workespacepane);
-    }
+		} catch (IOException ex) {
+			Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-    public void showBanque() {
-        show(ViewUrl.BanqueListe, Home2FXMLController.workespacepane);
-    }
-    
-    public void showStatistique() {
-        show(ViewUrl.statistique, Home2FXMLController.workespacepane);
-    }
+	public void showListAchat() {
+		show(ViewUrl.ListAchats, Home2FXMLController.workespacepane);
+	}
 
-    public void showRecette(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.Recette));
-            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
-            dialog.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+	public void showOperationAchat() {
+		show(ViewUrl.operationAchat, Home2FXMLController.workespacepane);
+	}
 
-    public void EtatdeBle(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatBle));
-            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
-            dialog.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+	public void showProduit() {
 
-    public void EtatdeReception(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatRecpetion));
-            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
-            dialog.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+		show(ViewUrl.ProduitList, Home2FXMLController.workespacepane);
+	}
 
-    public void EtatRembourcementBle(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatRembourcementBle));
-            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
-            dialog.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+	public void showRapport() {
+		show(ViewUrl.rapportMain, Home2FXMLController.workespacepane);
+	}
 
-    public void EtatRembourcementTransport(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatRembourecementTransport));
-            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
-            dialog.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+	public void showRecette(ActionEvent event) {
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.Recette));
+			StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+			dialog.show();
+		} catch (IOException ex) {
+			Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-    public void EtatExpedition(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.etatExpedition));
-            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
-            dialog.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ShowPane.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+	public void showRole() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
 
-    private TranslateTransition transitionout(AnchorPane node) {
-        TranslateTransition transition = new TranslateTransition();
-        transition.setNode(node);
-        transition.setFromX(0);
-        transition.setToX(2000);
-        transition.setDuration(Duration.millis(100));
-        transition.setDelay(Duration.millis(100));
-        transition.setInterpolator(Interpolator.EASE_BOTH);
-        transition.setCycleCount(1);
-        return transition;
-    }
+			AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/RoleFXML.fxml"));
 
-    private TranslateTransition transitionIn(AnchorPane node) {
-        TranslateTransition transition = new TranslateTransition();
-        transition.setNode(node);
-        transition.setFromX(2000);
-        transition.setToX(0);
-        transition.setDuration(Duration.millis(100));
-        transition.setDelay(Duration.millis(100));
-        transition.setInterpolator(Interpolator.EASE_BOTH);
-        transition.setCycleCount(1);
+			Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
+		} catch (IOException ex) {
+			Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-        return transition;
+	public void showStatistique() {
+		show(ViewUrl.statistique, Home2FXMLController.workespacepane);
+	}
 
-    }
+	public void showUIRapport(ActionEvent event) {
+		try {
+			AnchorPane menu2 = FXMLLoader.load(getClass().getResource(ViewUrl.rapportMenu));
 
-    private void show(String fileIn, AnchorPane workspace) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/CommercialeView/Home2FXML.fxml"));
+			loader.load();
 
-        TranslateTransition trans1 = transitionout(workspace);
-        trans1.play();
+			Home2FXMLController control = loader.getController();
+			control.setMenu(menu2);
 
-        trans1.setOnFinished(e -> {
+			AnchorPane root = loader.getRoot();
 
-            try {
-                AnchorPane root = FXMLLoader.load(getClass().getResource(fileIn));
-                workspace.getChildren().setAll(root);
-                TranslateTransition tran2 = transitionIn(workspace);
-                tran2.play();
-            } catch (IOException ex) {
-                Logger.getLogger(MeunFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+			Scene scene = new Scene(root);
+			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+			stage.setScene(scene);
 
-        });
+			new ShowPane().showRapport();
 
-    }
-    
-    public void showUIRapport(ActionEvent event) {
-        try{
-            AnchorPane menu2 = FXMLLoader.load(getClass().getResource(ViewUrl.rapportMenu));
+		} catch (IOException ex) {
+			Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/CommercialeView/Home2FXML.fxml"));
-            loader.load();
+	public void showUserList() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
 
-            Home2FXMLController control = loader.getController();
-            control.setMenu(menu2);
+			AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/Users_List.fxml"));
 
-            AnchorPane root = loader.getRoot();
-            
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-            stage.setScene(scene);
-            
-            new  ShowPane().showRapport();
+			Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
+		} catch (IOException ex) {
+			Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-        } catch (IOException ex) {
-            Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+	public void showVenteListe() {
+		show(ViewUrl.ListeVentes, Home2FXMLController.workespacepane);
+	}
+
+	private TranslateTransition transitionIn(AnchorPane node) {
+		TranslateTransition transition = new TranslateTransition();
+		transition.setNode(node);
+		transition.setFromX(2000);
+		transition.setToX(0);
+		transition.setDuration(Duration.millis(100));
+		transition.setDelay(Duration.millis(100));
+		transition.setInterpolator(Interpolator.EASE_BOTH);
+		transition.setCycleCount(1);
+
+		return transition;
+
+	}
+
+	private TranslateTransition transitionout(AnchorPane node) {
+		TranslateTransition transition = new TranslateTransition();
+		transition.setNode(node);
+		transition.setFromX(0);
+		transition.setToX(2000);
+		transition.setDuration(Duration.millis(100));
+		transition.setDelay(Duration.millis(100));
+		transition.setInterpolator(Interpolator.EASE_BOTH);
+		transition.setCycleCount(1);
+		return transition;
+	}
 
 }

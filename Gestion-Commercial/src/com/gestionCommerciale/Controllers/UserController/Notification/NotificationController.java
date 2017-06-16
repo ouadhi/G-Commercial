@@ -1,8 +1,10 @@
 package com.gestionCommerciale.Controllers.UserController.Notification;
 
-import com.gestionCommerciale.Controllers.UserController.UIControle.Notification;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.gestionCommerciale.Controllers.UserController.UIControle.Notification;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -25,200 +26,193 @@ import javafx.scene.layout.HBox;
 
 public class NotificationController implements Initializable {
 
-    @FXML
-    private TableView<table_notification> table_notification;
+	public static class Box_button extends HBox {
 
-    @FXML
-    private TextField search_inpuut;
+		public Box_button() {
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        table_column();
+			SuppButton supp_btn = new SuppButton();
+			EditButton edit_bttn = new EditButton();
+			this.getChildren().setAll(supp_btn, edit_bttn);
+			this.setAlignment(Pos.CENTER);
+			this.setPadding(new Insets(5, 5, 5, 5));
 
-    }
+		}
 
-    private void table_column() {
+	}
 
-        // add clumn buttton
-        TableColumn editColumn = new TableColumn("Action");
-        editColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
-        editColumn.setPrefWidth(213.6);
+	public static class EditButton extends Button {
 
-        TableColumn picturecolumn = new TableColumn("Agent");
-        picturecolumn.setCellValueFactory(new PropertyValueFactory<>("utilisateur"));
-        picturecolumn.setPrefWidth(213.6);
+		public EditButton() {
 
-        TableColumn dateColumn = new TableColumn("Date");
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        dateColumn.setPrefWidth(213.6);
+			super("");
+			Image img = new Image(getClass().getResourceAsStream("ok.png"));
+			ImageView icon = new ImageView(img);
+			icon.prefHeight(20);
+			icon.prefWidth(20);
+			this.setGraphic(new ImageView(img));
+			getStyleClass().add("ok_button");
+			this.setPrefSize(20, 20);
+			setAlignment(Pos.CENTER);
+			setOnAction((event) -> {
 
-        TableColumn sujetColumn = new TableColumn("Sujet");
-        sujetColumn.setCellValueFactory(new PropertyValueFactory<>("sujet"));
-        sujetColumn.setPrefWidth(213.6);
+			});
+		}
+	}
 
-        TableColumn msgColumn = new TableColumn("Message");
-        msgColumn.setCellValueFactory(new PropertyValueFactory<>("message"));
-        msgColumn.setPrefWidth(213.6);
+	public static class Profile extends ImageView {
 
-        table_notification.getColumns().addAll(picturecolumn, dateColumn, sujetColumn, msgColumn, editColumn);
+		public Profile(String name) {
+			Image img = new Image("icons/man.png");
+			setImage(img);
+		}
 
-        // add  data to  tabel view 
-        ObservableList<table_notification> data = FXCollections.observableArrayList(
-                new table_notification("mohammed", "111", "panne", "bonjou")
-        );
-        table_notification.setItems(data);
+	}
 
-    }
+	public static class SuppButton extends Button {
 
-    // spicifier  les  columns 
-    public static class table_notification {
+		public SuppButton() {
 
-        private final SimpleObjectProperty<Profile> utilisateur;
-        private final SimpleStringProperty date;
-        private final SimpleStringProperty sujet;
-        private final SimpleStringProperty message;
-        private final SimpleObjectProperty<Box_button> action;
+			super("");
+			Image img = new Image(getClass().getResourceAsStream("delete.png"));
+			ImageView icon = new ImageView(img);
+			icon.prefHeight(20);
+			icon.prefWidth(20);
+			this.setGraphic(icon);
+			getStyleClass().add("supp_button");
+			this.setPrefSize(20, 20);
 
-        // remplacer le paramaitre 
-        public table_notification(String utilisateur, String date, String sujet, String message) {
-            this.utilisateur = new SimpleObjectProperty(new Profile(utilisateur));
-            this.date = new SimpleStringProperty(date);
-            this.sujet = new SimpleStringProperty(sujet);
-            this.message = new SimpleStringProperty(message);
-            this.action = new SimpleObjectProperty(new Box_button());
-        }
+			setAlignment(Pos.CENTER);
 
-        // picture geter and setter 
-        public Profile getUtilisateur() {
-            return utilisateur.get();
-        }
+			setOnAction((event) -> {
 
-        public void setUtilisateur(Profile pic) {
-            this.utilisateur.set(pic);
-        }
+				Notification.Deletenotification();
+			});
+		}
+	}
 
-        public ObjectProperty<Profile> getPicturePropery() {
-            return utilisateur;
-        }
+	// spicifier les columns
+	public static class table_notification {
 
-        public String getDate() {
-            return date.get();
-        }
+		private final SimpleObjectProperty<Profile> utilisateur;
+		private final SimpleStringProperty date;
+		private final SimpleStringProperty sujet;
+		private final SimpleStringProperty message;
+		private final SimpleObjectProperty<Box_button> action;
 
-        public void setDate(String full) {
-            this.date.set(full);
-        }
+		// remplacer le paramaitre
+		public table_notification(String utilisateur, String date, String sujet, String message) {
+			this.utilisateur = new SimpleObjectProperty(new Profile(utilisateur));
+			this.date = new SimpleStringProperty(date);
+			this.sujet = new SimpleStringProperty(sujet);
+			this.message = new SimpleStringProperty(message);
+			this.action = new SimpleObjectProperty(new Box_button());
+		}
 
-        public StringProperty getDatePropery() {
-            return date;
-        }
+		public SimpleObjectProperty<Box_button> editActionProperty() {
+			return action;
+		}
 
-        public String getSujet() {
-            return sujet.get();
-        }
+		// Edit buttun
+		public Box_button getAction() {
+			return action.get();
+		}
 
-        public void setSujet(String suj) {
-            this.sujet.set(suj);
-        }
+		public String getDate() {
+			return date.get();
+		}
 
-        public StringProperty getSujetPropery() {
-            return sujet;
-        }
+		public StringProperty getDatePropery() {
+			return date;
+		}
 
-        public String getMessage() {
-            return message.get();
-        }
+		public String getMessage() {
+			return message.get();
+		}
 
-        public void setMessage(String msg) {
-            this.message.set(msg);
-        }
+		public StringProperty getMessagePropery() {
+			return message;
+		}
 
-        public StringProperty getMessagePropery() {
-            return message;
-        }
+		public ObjectProperty<Profile> getPicturePropery() {
+			return utilisateur;
+		}
 
-        // Edit buttun
-        public Box_button getAction() {
-            return action.get();
-        }
+		public String getSujet() {
+			return sujet.get();
+		}
 
-        public void setAction(Box_button editButton) {
-            this.action.set(editButton);
-        }
+		public StringProperty getSujetPropery() {
+			return sujet;
+		}
 
-        public SimpleObjectProperty<Box_button> editActionProperty() {
-            return action;
-        }
-    }
+		// picture geter and setter
+		public Profile getUtilisateur() {
+			return utilisateur.get();
+		}
 
-    public static class EditButton extends Button {
+		public void setAction(Box_button editButton) {
+			this.action.set(editButton);
+		}
 
-        public EditButton() {
+		public void setDate(String full) {
+			this.date.set(full);
+		}
 
-            super("");
-            Image img = new Image(getClass().getResourceAsStream("ok.png"));
-            ImageView icon = new ImageView(img) ; 
-            icon.prefHeight(20) ; 
-            icon.prefWidth(20) ; 
-            this.setGraphic(new ImageView(img));
-            getStyleClass().add("ok_button");
-            this.setPrefSize(20, 20);
-            setAlignment(Pos.CENTER);
-            setOnAction((event) -> {
+		public void setMessage(String msg) {
+			this.message.set(msg);
+		}
 
-            });
-        }
-    }
+		public void setSujet(String suj) {
+			this.sujet.set(suj);
+		}
 
-    public static class SuppButton extends Button {
+		public void setUtilisateur(Profile pic) {
+			this.utilisateur.set(pic);
+		}
+	}
 
-        public SuppButton() {
+	@FXML
+	private TableView<table_notification> table_notification;
 
-            super("");
-            Image img = new Image(getClass().getResourceAsStream("delete.png"));
-            ImageView icon = new ImageView(img) ; 
-            icon.prefHeight(20) ; 
-            icon.prefWidth(20) ; 
-            this.setGraphic(icon);
-            getStyleClass().add("supp_button");
-            this.setPrefSize(20, 20);
-            
-            setAlignment(Pos.CENTER);
+	@FXML
+	private TextField search_inpuut;
 
-            setOnAction((event) -> {
-                
-                Notification.Deletenotification();
-            });
-        }
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		table_column();
 
-        private void setGraphic(Image img) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
+	}
 
-    public static class Box_button extends HBox {
+	private void table_column() {
 
-        public Box_button() {
-            
-            SuppButton supp_btn = new SuppButton();
-            EditButton edit_bttn = new EditButton();
-            this.getChildren().setAll(supp_btn, edit_bttn);
-            this.setAlignment(Pos.CENTER);
-            this.setPadding(new Insets(5, 5, 5, 5));
+		// add clumn buttton
+		TableColumn editColumn = new TableColumn("Action");
+		editColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
+		editColumn.setPrefWidth(213.6);
 
-        }
+		TableColumn picturecolumn = new TableColumn("Agent");
+		picturecolumn.setCellValueFactory(new PropertyValueFactory<>("utilisateur"));
+		picturecolumn.setPrefWidth(213.6);
 
-    }
+		TableColumn dateColumn = new TableColumn("Date");
+		dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+		dateColumn.setPrefWidth(213.6);
 
-    public static class Profile extends ImageView {
+		TableColumn sujetColumn = new TableColumn("Sujet");
+		sujetColumn.setCellValueFactory(new PropertyValueFactory<>("sujet"));
+		sujetColumn.setPrefWidth(213.6);
 
-        public Profile(String name) {
-            Image img = new Image("icons/man.png");
-            setImage(img);
+		TableColumn msgColumn = new TableColumn("Message");
+		msgColumn.setCellValueFactory(new PropertyValueFactory<>("message"));
+		msgColumn.setPrefWidth(213.6);
 
-            Label user_name = new Label(name);
-        }
+		table_notification.getColumns().addAll(picturecolumn, dateColumn, sujetColumn, msgColumn, editColumn);
 
-    }
+		// add data to tabel view
+		ObservableList<table_notification> data = FXCollections
+				.observableArrayList(new table_notification("mohammed", "111", "panne", "bonjou"));
+		table_notification.setItems(data);
+
+	}
 
 }

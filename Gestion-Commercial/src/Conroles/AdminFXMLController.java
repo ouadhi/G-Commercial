@@ -1,13 +1,15 @@
 package Conroles;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,87 +22,75 @@ import javafx.scene.layout.HBox;
 
 public class AdminFXMLController implements Initializable {
 
+	public static AnchorPane rootp, panemain;
 
+	@FXML
+	private JFXDrawer drawer;
 
-    @FXML
-    private JFXDrawer drawer;
+	@FXML
+	private JFXHamburger humberguerbttn;
 
-    @FXML
-    private JFXHamburger humberguerbttn;
+	@FXML
+	private Label ntifcount;
 
-    @FXML
-    private Label ntifcount;
+	@FXML
+	private Label msgcount;
 
-    @FXML
-    private Label msgcount;
+	@FXML
+	private Label pseudo;
 
-    @FXML
-    private Label pseudo;
+	@FXML
+	private JFXButton showprofile;
+	@FXML
+	private ImageView profileimg;
+	@FXML
+	private ImageView notificationicon;
+	@FXML
+	private ImageView msgicon;
+	@FXML
+	private ImageView searchicon;
+	@FXML
+	private JFXTextField search;
 
+	@FXML
+	private AnchorPane root;
 
-    @FXML
-    private JFXButton showprofile;
+	@FXML
+	private AnchorPane maipane;
 
-    @FXML
-    private ImageView profileimg;
-    @FXML
-    private ImageView notificationicon;
-    @FXML
-    private ImageView msgicon;
-    @FXML
-    private ImageView searchicon;
-    @FXML
-    private JFXTextField search;
-    @FXML
-    private AnchorPane root;
-    
-    @FXML
-    private AnchorPane maipane;
+	public void hummberguer_transaction() {
+		HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(humberguerbttn);
+		transition.setRate(-1);
+		humberguerbttn.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+			transition.setRate(transition.getRate() * -1);
+			transition.play();
 
-    
-    public static AnchorPane rootp , panemain; 
+			if (drawer.isShown()) {
+				drawer.close();
+			} else {
+				drawer.open();
+			}
+		});
+	}
 
-    
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		rootp = root;
+		panemain = maipane;
 
-    
+		try {
+			HBox box = FXMLLoader.load(getClass().getResource("/Views/MeunFXML.fxml"));
+			drawer.setSidePane(box);
+			hummberguer_transaction();
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-              rootp = root ; 
-              panemain = maipane ; 
-              
-        try {
-            HBox box = FXMLLoader.load(getClass().getResource("/Views/MeunFXML.fxml"));
-            drawer.setSidePane(box);
-            hummberguer_transaction();
+		} catch (IOException ex) {
+			System.out.println(ex);
+		}
 
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
+	}
 
-    }
-
-   
-
-   
-
-    public void hummberguer_transaction() {
-        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(humberguerbttn);
-        transition.setRate(-1);
-        humberguerbttn.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
-            transition.setRate(transition.getRate() * -1);
-            transition.play();
-
-            if (drawer.isShown()) {
-                drawer.close();
-            } else {
-                drawer.open();
-            }
-        });
-    }
-
-    @FXML
-    private void showdrawe(ActionEvent event) {
-    }
+	@FXML
+	private void showdrawe(ActionEvent event) {
+	}
 
 }

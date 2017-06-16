@@ -1,17 +1,16 @@
 package CommercialeControles.Vente;
 
-import CommercialeControles.Ble.BelCell;
-import UIControle.Methode;
-import com.gestionCommerciale.HibernateSchema.Ble;
-import com.gestionCommerciale.HibernateSchema.Facture;
-import com.gestionCommerciale.HibernateSchema.Facture_Produit;
-import com.gestionCommerciale.Models.BleQueries;
-import com.gestionCommerciale.Models.Facture_ProduitQueries;
-import com.jfoenix.controls.JFXListView;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import com.gestionCommerciale.HibernateSchema.Facture;
+import com.gestionCommerciale.HibernateSchema.Facture_Produit;
+import com.gestionCommerciale.Models.Facture_ProduitQueries;
+import com.jfoenix.controls.JFXListView;
+
+import UIControle.Methode;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,175 +24,178 @@ import javafx.scene.text.Font;
 
 public class ListeProduitVenteController implements Initializable {
 
-    @FXML
-    private Label compte;
-    @FXML
-    private JFXListView<cellProduit> liste;
+	class cellProduit extends GridPane {
 
-    private Facture facture;
+		ColumnConstraints columnConstraints;
+		ColumnConstraints columnConstraints0;
+		ColumnConstraints columnConstraints1;
+		RowConstraints rowConstraints;
+		Label produit;
+		Label prix;
+		Label qantite;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+		String produittxt;
+		String prixtxt;
+		String qunt;
 
-    }
+		public cellProduit(String produittxt, String prixtxt, String qunt) {
+			this.produittxt = produittxt;
+			this.prixtxt = prixtxt;
+			this.qunt = qunt;
 
-    @FXML
-    private void close(MouseEvent event) {
-        Methode.getStageMouses(event).close();
-    }
+			columnConstraints = new ColumnConstraints();
+			columnConstraints0 = new ColumnConstraints();
+			columnConstraints1 = new ColumnConstraints();
+			rowConstraints = new RowConstraints();
+			produit = new Label();
+			prix = new Label();
+			qantite = new Label();
 
-    private void setTotale() {
-        compte.setText(liste.getItems().size() + "");
-    }
+			setPrefHeight(45.0);
+			setPrefWidth(460.0);
 
-    public void setData(Facture facture) {
-        this.facture = facture;
+			columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
+			columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+			columnConstraints.setMinWidth(10.0);
+			columnConstraints.setPrefWidth(100.0);
 
-        List<cellProduit> list = new ArrayList<>();
-        List<Facture_Produit> fpList = Facture_ProduitQueries.list(facture);
+			columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
+			columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+			columnConstraints0.setMinWidth(10.0);
+			columnConstraints0.setPrefWidth(100.0);
 
-        for (int i = 0; i < fpList.size(); i++) {
-            System.err.println(fpList.size());
-            Facture_Produit pro = fpList.get(i);
-            list.add(new cellProduit(pro.getProduit().getNom(), pro.getProduit().getPrix() + "", pro.getQte_fact() + ""));
-        }
+			columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
+			columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+			columnConstraints1.setMinWidth(10.0);
+			columnConstraints1.setPrefWidth(100.0);
 
-//        for (int i = 0; i < this.facture.getQtes().size(); i++) {
-//            System.err.println(this.facture.getQtes().size());
-//            Facture_Produit pro = this.facture.getQtes().get(i);
-//            list.add(new cellProduit(pro.getProduit().getNom(), pro.getProduit().getPrix() + "", pro.getQte_fact() + ""));
-//        }
+			rowConstraints.setMinHeight(10.0);
+			rowConstraints.setPrefHeight(30.0);
+			rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-        ObservableList<cellProduit> myObservableList = FXCollections.observableList(list);
+			GridPane.setHalignment(produit, javafx.geometry.HPos.CENTER);
+			GridPane.setValignment(produit, javafx.geometry.VPos.CENTER);
+			produit.getStyleClass().add("label_txt");
+			produit.setText(produittxt);
+			produit.setFont(new Font(16.0));
 
-        liste.setItems(myObservableList);
-        liste.setExpanded(true);
+			GridPane.setColumnIndex(prix, 1);
+			GridPane.setHalignment(prix, javafx.geometry.HPos.CENTER);
+			GridPane.setValignment(prix, javafx.geometry.VPos.CENTER);
+			prix.getStyleClass().add("label_txt");
+			prix.setText(prixtxt);
+			prix.setFont(new Font(16.0));
 
-        setTotale();
+			GridPane.setColumnIndex(qantite, 2);
+			GridPane.setHalignment(qantite, javafx.geometry.HPos.CENTER);
+			GridPane.setValignment(qantite, javafx.geometry.VPos.CENTER);
+			qantite.getStyleClass().add("label_txt");
+			qantite.setText(qunt);
+			qantite.setFont(new Font(16.0));
 
-    }
+			getColumnConstraints().add(columnConstraints);
+			getColumnConstraints().add(columnConstraints0);
+			getColumnConstraints().add(columnConstraints1);
+			getRowConstraints().add(rowConstraints);
+			getChildren().add(produit);
+			getChildren().add(prix);
+			getChildren().add(qantite);
 
-    public void setData2(ArrayList<PorduitH> listep) {
+		}
 
-        List<cellProduit> list = new ArrayList<>();
+		public String getPrixtxt() {
+			return prixtxt;
+		}
 
-        for (int i = 0; i < listep.size(); i++) {
-            PorduitH pro = listep.get(i);
-            list.add(new cellProduit(pro.getProduit().getNom(), pro.getProduit().getPrix() + "", pro.getQuantite() + ""));
-        }
+		public String getProduittxt() {
+			return produittxt;
+		}
 
-        ObservableList<cellProduit> myObservableList = FXCollections.observableList(list);
+		public String getQunt() {
+			return qunt;
+		}
 
-        liste.setItems(myObservableList);
-        liste.setExpanded(true);
+		public void setPrixtxt(String prixtxt) {
+			this.prixtxt = prixtxt;
+		}
 
-        setTotale();
+		public void setProduittxt(String produittxt) {
+			this.produittxt = produittxt;
+		}
 
-    }
+		public void setQunt(String qunt) {
+			this.qunt = qunt;
+		}
 
-    class cellProduit extends GridPane {
+	}
+	@FXML
+	private Label compte;
 
-        ColumnConstraints columnConstraints;
-        ColumnConstraints columnConstraints0;
-        ColumnConstraints columnConstraints1;
-        RowConstraints rowConstraints;
-        Label produit;
-        Label prix;
-        Label qantite;
+	@FXML
+	private JFXListView<cellProduit> liste;
 
-        String produittxt;
-        String prixtxt;
-        String qunt;
+	private Facture facture;
 
-        public String getProduittxt() {
-            return produittxt;
-        }
+	@FXML
+	private void close(MouseEvent event) {
+		Methode.getStageMouses(event).close();
+	}
 
-        public void setProduittxt(String produittxt) {
-            this.produittxt = produittxt;
-        }
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
 
-        public String getPrixtxt() {
-            return prixtxt;
-        }
+	}
 
-        public void setPrixtxt(String prixtxt) {
-            this.prixtxt = prixtxt;
-        }
+	public void setData(Facture facture) {
+		this.facture = facture;
 
-        public String getQunt() {
-            return qunt;
-        }
+		List<cellProduit> list = new ArrayList<>();
+		List<Facture_Produit> fpList = Facture_ProduitQueries.list(facture);
 
-        public void setQunt(String qunt) {
-            this.qunt = qunt;
-        }
+		for (int i = 0; i < fpList.size(); i++) {
+			System.err.println(fpList.size());
+			Facture_Produit pro = fpList.get(i);
+			list.add(new cellProduit(pro.getProduit().getNom(), pro.getProduit().getPrix() + "",
+					pro.getQte_fact() + ""));
+		}
 
-        public cellProduit(String produittxt, String prixtxt, String qunt) {
-            this.produittxt = produittxt;
-            this.prixtxt = prixtxt;
-            this.qunt = qunt;
+		// for (int i = 0; i < this.facture.getQtes().size(); i++) {
+		// System.err.println(this.facture.getQtes().size());
+		// Facture_Produit pro = this.facture.getQtes().get(i);
+		// list.add(new cellProduit(pro.getProduit().getNom(),
+		// pro.getProduit().getPrix() + "", pro.getQte_fact() + ""));
+		// }
 
-            columnConstraints = new ColumnConstraints();
-            columnConstraints0 = new ColumnConstraints();
-            columnConstraints1 = new ColumnConstraints();
-            rowConstraints = new RowConstraints();
-            produit = new Label();
-            prix = new Label();
-            qantite = new Label();
+		ObservableList<cellProduit> myObservableList = FXCollections.observableList(list);
 
-            setPrefHeight(45.0);
-            setPrefWidth(460.0);
+		liste.setItems(myObservableList);
+		liste.setExpanded(true);
 
-            columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
-            columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-            columnConstraints.setMinWidth(10.0);
-            columnConstraints.setPrefWidth(100.0);
+		setTotale();
 
-            columnConstraints0.setHalignment(javafx.geometry.HPos.CENTER);
-            columnConstraints0.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-            columnConstraints0.setMinWidth(10.0);
-            columnConstraints0.setPrefWidth(100.0);
+	}
 
-            columnConstraints1.setHalignment(javafx.geometry.HPos.CENTER);
-            columnConstraints1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-            columnConstraints1.setMinWidth(10.0);
-            columnConstraints1.setPrefWidth(100.0);
+	public void setData2(ArrayList<PorduitH> listep) {
 
-            rowConstraints.setMinHeight(10.0);
-            rowConstraints.setPrefHeight(30.0);
-            rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+		List<cellProduit> list = new ArrayList<>();
 
-            GridPane.setHalignment(produit, javafx.geometry.HPos.CENTER);
-            GridPane.setValignment(produit, javafx.geometry.VPos.CENTER);
-            produit.getStyleClass().add("label_txt");
-            produit.setText(produittxt);
-            produit.setFont(new Font(16.0));
+		for (int i = 0; i < listep.size(); i++) {
+			PorduitH pro = listep.get(i);
+			list.add(new cellProduit(pro.getProduit().getNom(), pro.getProduit().getPrix() + "",
+					pro.getQuantite() + ""));
+		}
 
-            GridPane.setColumnIndex(prix, 1);
-            GridPane.setHalignment(prix, javafx.geometry.HPos.CENTER);
-            GridPane.setValignment(prix, javafx.geometry.VPos.CENTER);
-            prix.getStyleClass().add("label_txt");
-            prix.setText(prixtxt);
-            prix.setFont(new Font(16.0));
+		ObservableList<cellProduit> myObservableList = FXCollections.observableList(list);
 
-            GridPane.setColumnIndex(qantite, 2);
-            GridPane.setHalignment(qantite, javafx.geometry.HPos.CENTER);
-            GridPane.setValignment(qantite, javafx.geometry.VPos.CENTER);
-            qantite.getStyleClass().add("label_txt");
-            qantite.setText(qunt);
-            qantite.setFont(new Font(16.0));
+		liste.setItems(myObservableList);
+		liste.setExpanded(true);
 
-            getColumnConstraints().add(columnConstraints);
-            getColumnConstraints().add(columnConstraints0);
-            getColumnConstraints().add(columnConstraints1);
-            getRowConstraints().add(rowConstraints);
-            getChildren().add(produit);
-            getChildren().add(prix);
-            getChildren().add(qantite);
+		setTotale();
 
-        }
+	}
 
-    }
+	private void setTotale() {
+		compte.setText(liste.getItems().size() + "");
+	}
 
 }

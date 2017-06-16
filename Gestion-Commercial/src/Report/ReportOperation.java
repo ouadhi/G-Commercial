@@ -26,121 +26,120 @@ import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 
 public class ReportOperation {
 
-    Collection<FactureReportBean> collBean = new ArrayList<FactureReportBean>();
-    int id = 1;
+	public static void main(String[] args) {
+		systemLookFeel();
+		ArrayList<String> listdes = new ArrayList<>();
+		ArrayList<String> listdes1 = new ArrayList<>();
+		ArrayList<String> listdes2 = new ArrayList<>();
+		ArrayList<String> listqte = new ArrayList<>();
+		ArrayList<String> listqte1 = new ArrayList<>();
+		ArrayList<String> listqte2 = new ArrayList<>();
+		ArrayList<String> listprix = new ArrayList<>();
+		ArrayList<String> listprix1 = new ArrayList<>();
+		ArrayList<String> listprix2 = new ArrayList<>();
+		ArrayList<String> listmont = new ArrayList<>();
+		ArrayList<String> listmont1 = new ArrayList<>();
+		ArrayList<String> listmont2 = new ArrayList<>();
 
-    public JRDataSource getData() {
-        return new JRBeanCollectionDataSource(collBean, false);
+		String nom = "hdghgf";
+		String code = "fdfdf";
+		String address = "dfdff";
+		String rc = "fdfdf";
+		String fiscal = "fdfdf";
+		String date = "dfff";
+		String numFacture = "fdf";
+		String article = "23244355456";
+		String montantHT = "2324355";
+		String tva = "17";
+		String timbre = "34";
+		String ttc = "2343546";
+		String montantlettre = "cinq cent dinar";
+		String chauffeur = "Ahmed";
+		String matricule = "23243544546";
 
-    }
+		listdes.add("drogo");
+		listdes.add("ghdhffg");
+		listdes.add("hjhjff");
+		listqte.add("khal");
+		listdes1.add("robert");
+		listqte1.add("baratheon");
+		listdes2.add("rheagar");
+		listqte2.add("targaryan");
+		listprix.add("dothraki");
+		listprix1.add("rebels");
+		listprix2.add("Dragons");
+		listmont.add("essos");
+		listmont1.add("westeros");
+		listmont2.add("valyria");
 
-    public void putReportInfo(String nom, String code, String address, String rc, String fiscal, String date,
-            String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
-            String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
-            List<String> prixs, List<String> montants) {
-        //patient info is the first to be written
+		ReportOperation tableExecute = new ReportOperation();
+		tableExecute.putReportInfo(nom, code, address, rc, fiscal, date, numFacture, article, montantHT, tva, timbre,
+				ttc, montantlettre, chauffeur, matricule, listdes, listqte, listprix, listmont);
+		tableExecute.printReport("dffdghh");
+	}
+	public static void systemLookFeel() {
+		try {
 
-        FactureReportBean beanInfo = new FactureReportBean(id, nom, code, address, rc, fiscal, date,
-                numFacture, article, montantHT, tva, timbre, ttc,
-                montantlettre, chauffeur, matricule, designations, qtes, prixs, montants);
-        collBean.add(beanInfo);
-        id++;
-    }
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-    public JasperPrint printReport(String fileName) {
-        JasperPrint jasperPrint = null;
-        try {
-            Map<String, Object> params = new HashMap<String, Object>();
-            JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
-            JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
-            jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
-            //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-            InputStream stream = getClass().getResourceAsStream("ReportFacture.jasper");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-            JasperReport report = (JasperReport) JRLoader.loadObject(stream);
-            jasperPrint = JasperFillManager.fillReport(report,
-                     params, getData());
-            //JasperViewer.viewReport(jasperPrint);
+	}
 
-            //
-            Exporter exporter = new JRPdfExporter();
-            exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+	Collection<FactureReportBean> collBean = new ArrayList<FactureReportBean>();
 
-            File exportReportFile = new File("C:\\Users\\Hicham\\Desktop\\factures\\" + fileName + ".pdf");
+	int id = 1;
 
-            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(exportReportFile));
-            exporter.exportReport();
-            this.id = 1;
-            this.collBean.clear();
+	public JRDataSource getData() {
+		return new JRBeanCollectionDataSource(collBean, false);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+	}
 
-        return jasperPrint;
-    }
+	public JasperPrint printReport(String fileName) {
+		JasperPrint jasperPrint = null;
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
+			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
+			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
+			// InputStream stream=
+			// this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
+			InputStream stream = getClass().getResourceAsStream("ReportFacture.jasper");
 
-    public static void systemLookFeel() {
-        try {
+			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
+			jasperPrint = JasperFillManager.fillReport(report, params, getData());
+			// JasperViewer.viewReport(jasperPrint);
 
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			//
+			Exporter exporter = new JRPdfExporter();
+			exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+			File exportReportFile = new File("C:\\Users\\Hicham\\Desktop\\factures\\" + fileName + ".pdf");
 
-    }
+			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(exportReportFile));
+			exporter.exportReport();
+			this.id = 1;
+			this.collBean.clear();
 
-    public static void main(String[] args) {
-        systemLookFeel();
-        ArrayList<String> listdes = new ArrayList<>();
-        ArrayList<String> listdes1 = new ArrayList<>();
-        ArrayList<String> listdes2 = new ArrayList<>();
-        ArrayList<String> listqte = new ArrayList<>();
-        ArrayList<String> listqte1 = new ArrayList<>();
-        ArrayList<String> listqte2 = new ArrayList<>();
-        ArrayList<String> listprix = new ArrayList<>();
-        ArrayList<String> listprix1 = new ArrayList<>();
-        ArrayList<String> listprix2 = new ArrayList<>();
-        ArrayList<String> listmont = new ArrayList<>();
-        ArrayList<String> listmont1 = new ArrayList<>();
-        ArrayList<String> listmont2 = new ArrayList<>();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-        String nom = "hdghgf";
-        String code = "fdfdf";
-        String address = "dfdff";
-        String rc = "fdfdf";
-        String fiscal = "fdfdf";
-        String date = "dfff";
-        String numFacture = "fdf";
-        String article = "23244355456";
-        String montantHT = "2324355";
-        String tva = "17";
-        String timbre = "34";
-        String ttc = "2343546";
-        String montantlettre = "cinq cent dinar";
-        String chauffeur = "Ahmed";
-        String matricule = "23243544546";
+		return jasperPrint;
+	}
 
-        listdes.add("drogo");
-        listdes.add("ghdhffg");
-        listdes.add("hjhjff");
-        listqte.add("khal");
-        listdes1.add("robert");
-        listqte1.add("baratheon");
-        listdes2.add("rheagar");
-        listqte2.add("targaryan");
-        listprix.add("dothraki");
-        listprix1.add("rebels");
-        listprix2.add("Dragons");
-        listmont.add("essos");
-        listmont1.add("westeros");
-        listmont2.add("valyria");
+	public void putReportInfo(String nom, String code, String address, String rc, String fiscal, String date,
+			String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
+			String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
+			List<String> prixs, List<String> montants) {
+		// patient info is the first to be written
 
-        ReportOperation tableExecute = new ReportOperation();
-        tableExecute.putReportInfo(nom, code, address, rc, fiscal, date,
-                numFacture, article, montantHT, tva, timbre, ttc,
-                montantlettre, chauffeur, matricule, listdes, listqte, listprix, listmont);
-        tableExecute.printReport("dffdghh");
-    }
+		FactureReportBean beanInfo = new FactureReportBean(id, nom, code, address, rc, fiscal, date, numFacture,
+				article, montantHT, tva, timbre, ttc, montantlettre, chauffeur, matricule, designations, qtes, prixs,
+				montants);
+		collBean.add(beanInfo);
+		id++;
+	}
 }

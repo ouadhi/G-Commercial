@@ -10,94 +10,94 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Company")
 public class Company {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_company", nullable = false)
-    int idCompany;
-    @Column(name = "nom", nullable = false)
-    String nom;
-    @Column(name = "registre", nullable = false)
-    String registre;
-    @Column(name = "fiscale", nullable = false)
-    String fiscale;
-    @Column(name = "article", nullable = false)
-    String article;
-    @Column(name = "email", nullable = false)
-    String email;
-    @Column(name = "telephone", nullable = false)
-    String telephone;
-    @Column(name = "fax", nullable = false)
-    String fax;   
-    public Company() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_company", nullable = false)
+	int idCompany;
+	@Column(name = "nom", nullable = false)
+	String nom;
+	@Column(name = "registre", nullable = false)
+	String registre;
+	@Column(name = "fiscale", nullable = false)
+	String fiscale;
+	@Column(name = "article", nullable = false)
+	String article;
+	@Column(name = "email", nullable = false)
+	String email;
+	@Column(name = "telephone", nullable = false)
+	String telephone;
+	@Column(name = "fax", nullable = false)
+	String fax;
 
-    }
+	public Company() {
 
-    public Company(String nom, String registre, String fiscale, String article, String email, String telephone, String fax) {
-        this.nom = nom;
-        this.registre = registre;
-        this.fiscale = fiscale;
-        this.article = article;
-        this.email = email;
-        this.telephone = telephone;
-        this.fax = fax;
-    }
+	}
 
+	public Company(String nom, String registre, String fiscale, String article, String email, String telephone,
+			String fax) {
+		this.nom = nom;
+		this.registre = registre;
+		this.fiscale = fiscale;
+		this.article = article;
+		this.email = email;
+		this.telephone = telephone;
+		this.fax = fax;
+	}
 
-    public String getNom() {
-        return nom;
-    }
+	public String getArticle() {
+		return article;
+	}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getRegistre() {
-        return registre;
-    }
+	public String getFax() {
+		return fax;
+	}
 
-    public void setRegistre(String registre) {
-        this.registre = registre;
-    }
+	public String getFiscale() {
+		return fiscale;
+	}
 
-    public String getFiscale() {
-        return fiscale;
-    }
+	public String getNom() {
+		return nom;
+	}
 
-    public void setFiscale(String fiscale) {
-        this.fiscale = fiscale;
-    }
+	public String getRegistre() {
+		return registre;
+	}
 
-    public String getArticle() {
-        return article;
-    }
+	public String getTelephone() {
+		return telephone;
+	}
 
-    public void setArticle(String article) {
-        this.article = article;
-    }
+	public void setArticle(String article) {
+		this.article = article;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
 
-    public String getTelephone() {
-        return telephone;
-    }
+	public void setFiscale(String fiscale) {
+		this.fiscale = fiscale;
+	}
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    public String getFax() {
-        return fax;
-    }
+	public void setRegistre(String registre) {
+		this.registre = registre;
+	}
 
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
 
-   
 }
