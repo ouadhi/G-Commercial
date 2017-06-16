@@ -11,80 +11,78 @@ import javax.persistence.Table;
 @Table(name = "Banque")
 public class Banque {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_banque", nullable = false)
-    int idBanque;
-    @Column(name = "nom", nullable = false)
-    String nom;
-    @Column(name = "compte", nullable = false)
-    String compte;
-    @Column(name = "address", nullable = false)
-    String address;
-    @Column(name = "deleted", nullable = false)
-    boolean deleted;
-    @Column(name = "telephone", nullable = false)
-    String telephone;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_banque", nullable = false)
+	int idBanque;
+	@Column(name = "nom", nullable = false)
+	String nom;
+	@Column(name = "compte", nullable = false)
+	String compte;
+	@Column(name = "address", nullable = false)
+	String address;
+	@Column(name = "deleted", nullable = false)
+	boolean deleted;
+	@Column(name = "telephone", nullable = false)
+	String telephone;
 
-    public Banque() {
-        
-    }
+	public Banque() {
 
-    public Banque(String nom, String compte, String address , String telephone) {
-        this.nom = nom;
-        this.compte = compte;
-        this.address = address;
-        this.telephone = telephone ; 
-    }
+	}
 
-    public int getIdBanque() {
-        return idBanque;
-    }
+	public Banque(String nom, String compte, String address, String telephone) {
+		this.nom = nom;
+		this.compte = compte;
+		this.address = address;
+		this.telephone = telephone;
+	}
 
-    public void setIdBanque(int idBanque) {
-        this.idBanque = idBanque;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public String getNom() {
-        return nom;
-    }
+	public String getCompte() {
+		return compte;
+	}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	public int getIdBanque() {
+		return idBanque;
+	}
 
-    public String getCompte() {
-        return compte;
-    }
+	public String getNom() {
+		return nom;
+	}
 
-    public void setCompte(String compte) {
-        this.compte = compte;
-    }
+	public String getTelephone() {
+		return telephone;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public boolean isDeleted() {
+		return deleted;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-       public boolean isDeleted() {
-        return deleted;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+	public void setCompte(String compte) {
+		this.compte = compte;
+	}
 
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 
-    public String getTelephone() {
-        return telephone;
-    }
+	public void setIdBanque(int idBanque) {
+		this.idBanque = idBanque;
+	}
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-    
-    
-   
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
 }

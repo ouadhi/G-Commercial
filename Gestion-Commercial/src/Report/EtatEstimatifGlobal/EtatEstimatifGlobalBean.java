@@ -11,121 +11,119 @@ package Report.EtatEstimatifGlobal;
  */
 public class EtatEstimatifGlobalBean {
 
-    String nomPrenom;
-    String activity;
-    String address;
-    String rc;
-    String fiscal;
-    String article;
-    String dateDebut;
-    String dateFin;
-    String totalMontant;
-    String totalTva;
-    String totalTtc;
+	String nomPrenom;
+	String activity;
+	String address;
+	String rc;
+	String fiscal;
+	String article;
+	String dateDebut;
+	String dateFin;
+	String totalMontant;
+	String totalTva;
+	String totalTtc;
 
-    public EtatEstimatifGlobalBean(String nomPrenom, String activity, String address
-            , String rc, String fiscal, String article, String dateDebut, String dateFin
-            , String totalMontant, String totalTva, String totalTtc) {
-        this.nomPrenom = nomPrenom;
-        this.activity = activity;
-        this.address = address;
-        this.rc = rc;
-        this.fiscal = fiscal;
-        this.article = article;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.totalMontant = totalMontant;
-        this.totalTva = totalTva;
-        this.totalTtc = totalTtc;
-    }
+	public EtatEstimatifGlobalBean(String nomPrenom, String activity, String address, String rc, String fiscal,
+			String article, String dateDebut, String dateFin, String totalMontant, String totalTva, String totalTtc) {
+		this.nomPrenom = nomPrenom;
+		this.activity = activity;
+		this.address = address;
+		this.rc = rc;
+		this.fiscal = fiscal;
+		this.article = article;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.totalMontant = totalMontant;
+		this.totalTva = totalTva;
+		this.totalTtc = totalTtc;
+	}
 
-    public String getNomPrenom() {
-        return nomPrenom;
-    }
+	public String getActivity() {
+		return activity;
+	}
 
-    public void setNomPrenom(String nomPrenom) {
-        this.nomPrenom = nomPrenom;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public String getActivity() {
-        return activity;
-    }
+	public String getArticle() {
+		return article;
+	}
 
-    public void setActivity(String activity) {
-        this.activity = activity;
-    }
+	public String getDateDebut() {
+		return dateDebut;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public String getDateFin() {
+		return dateFin;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public String getFiscal() {
+		return fiscal;
+	}
 
-    public String getRc() {
-        return rc;
-    }
+	public String getNomPrenom() {
+		return nomPrenom;
+	}
 
-    public void setRc(String rc) {
-        this.rc = rc;
-    }
+	public String getRc() {
+		return rc;
+	}
 
-    public String getFiscal() {
-        return fiscal;
-    }
+	public String getTotalMontant() {
+		return totalMontant;
+	}
 
-    public void setFiscal(String fiscal) {
-        this.fiscal = fiscal;
-    }
+	public String getTotalTtc() {
+		return totalTtc;
+	}
 
-    public String getArticle() {
-        return article;
-    }
+	public String getTotalTva() {
+		return totalTva;
+	}
 
-    public void setArticle(String article) {
-        this.article = article;
-    }
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
 
-    public String getDateDebut() {
-        return dateDebut;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setDateDebut(String dateDebut) {
-        this.dateDebut = dateDebut;
-    }
+	public void setArticle(String article) {
+		this.article = article;
+	}
 
-    public String getDateFin() {
-        return dateFin;
-    }
+	public void setDateDebut(String dateDebut) {
+		this.dateDebut = dateDebut;
+	}
 
-    public void setDateFin(String dateFin) {
-        this.dateFin = dateFin;
-    }
+	public void setDateFin(String dateFin) {
+		this.dateFin = dateFin;
+	}
 
-    public String getTotalMontant() {
-        return totalMontant;
-    }
+	public void setFiscal(String fiscal) {
+		this.fiscal = fiscal;
+	}
 
-    public void setTotalMontant(String totalMontant) {
-        this.totalMontant = totalMontant;
-    }
+	public void setNomPrenom(String nomPrenom) {
+		this.nomPrenom = nomPrenom;
+	}
 
-    public String getTotalTva() {
-        return totalTva;
-    }
+	public void setRc(String rc) {
+		this.rc = rc;
+	}
 
-    public void setTotalTva(String totalTva) {
-        this.totalTva = totalTva;
-    }
+	public void setTotalMontant(String totalMontant) {
+		this.totalMontant = totalMontant;
+	}
 
-    public String getTotalTtc() {
-        return totalTtc;
-    }
+	public void setTotalTtc(String totalTtc) {
+		this.totalTtc = totalTtc;
+	}
 
-    public void setTotalTtc(String totalTtc) {
-        this.totalTtc = totalTtc;
-    }
-    
-    
+	public void setTotalTva(String totalTva) {
+		this.totalTva = totalTva;
+	}
+
 }

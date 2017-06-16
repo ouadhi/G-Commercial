@@ -5,14 +5,14 @@
  */
 package Report.EtatEstimatifGlobal;
 
-import Report.EtatEstimatifParClient.EtatEstimatifClientBean;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
 import javax.swing.UIManager;
+
 import net.sf.jasperreports.engine.DefaultJasperReportsContext;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRPropertiesUtil;
@@ -30,41 +30,39 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class OperationEtatEstimatifGlobal {
 
-    Collection<EtatEstimatifGlobalBean> collBean = new ArrayList<EtatEstimatifGlobalBean>();
+	Collection<EtatEstimatifGlobalBean> collBean = new ArrayList<EtatEstimatifGlobalBean>();
 
-    public JRDataSource getData() {
-        return new JRBeanCollectionDataSource(collBean, false);
+	public JRDataSource getData() {
+		return new JRBeanCollectionDataSource(collBean, false);
 
-    }
+	}
 
-    public void putReportInfo(String nomPrenom, String activity, String address,
-             String rc, String fiscal, String article, String dateDebut, String dateFin,
-             String totalMontant, String totalTva, String totalTtc) {
-        //patient info is the first to be written
+	public void printReport() {
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
+			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
+			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
+			// InputStream stream=
+			// this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
+			InputStream stream = getClass().getResourceAsStream("EtatEstimatifGlobal.jasper");
+			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, getData());
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			JasperViewer.viewReport(jasperPrint, false);
+			// this.collBean.clear();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        EtatEstimatifGlobalBean beanInfo = new EtatEstimatifGlobalBean(nomPrenom, activity, address
-                , rc, fiscal, article, dateDebut
-                , dateFin, totalMontant, totalTva, totalTtc);
-        collBean.add(beanInfo);
-    }
+	public void putReportInfo(String nomPrenom, String activity, String address, String rc, String fiscal,
+			String article, String dateDebut, String dateFin, String totalMontant, String totalTva, String totalTtc) {
+		// patient info is the first to be written
 
-    public void printReport() {
-        try {
-            Map<String, Object> params = new HashMap<String, Object>();
-            JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
-            JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
-            jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
-            //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-            InputStream stream = getClass().getResourceAsStream("EtatEstimatifGlobal.jasper");
-            JasperReport report = (JasperReport) JRLoader.loadObject(stream);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(report,
-                    params, getData());
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            JasperViewer.viewReport(jasperPrint, false);
-            //this.collBean.clear();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+		EtatEstimatifGlobalBean beanInfo = new EtatEstimatifGlobalBean(nomPrenom, activity, address, rc, fiscal,
+				article, dateDebut, dateFin, totalMontant, totalTva, totalTtc);
+		collBean.add(beanInfo);
+	}
 
 }

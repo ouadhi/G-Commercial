@@ -7,6 +7,7 @@ package com.gestionCommerciale.HibernateSchema;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.
-        Temporal;
+import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
@@ -28,163 +28,164 @@ import javax.persistence.TemporalType;
 @Table(name = "Client")
 public class Client {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_client", nullable = false)
-    int id;
-    @Column(name = "nom", nullable = false)
-    String name;
-    @Column(name = "Prenom", nullable = false)
-    String prenom;
-    @Column(name = "numRegCom", nullable = false, unique = true)
-    String numRegCom;
-    @Column(name = "numArticle", nullable = false)            
-    String numArticle;
-    @Column(name = "addressClient", nullable = false)
-    String addressClient;
-    @Column(name = "typeActivity", nullable = false)
-    String typeActivity;
-    @Column(name = "nCarteFiscale", nullable = false)
-    String nCarteFiscale;
-    @Column(name = "dateDepotDossier", nullable = false)
-    @Temporal(value=TemporalType.DATE)
-    Date dateDepotDossier;   
-    @OneToMany(targetEntity=Facture.class, mappedBy="client"
-    		,cascade=CascadeType.ALL,fetch= FetchType.EAGER)
-    private List<Facture> factures ;
-        @Column(name = "deleted", nullable = false)
-    boolean deleted;
-    @OneToMany(targetEntity = Payment.class, mappedBy = "client",
-            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Payment> payments;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_client", nullable = false)
+	int id;
+	@Column(name = "nom", nullable = false)
+	String name;
+	@Column(name = "Prenom", nullable = false)
+	String prenom;
+	@Column(name = "numRegCom", nullable = false, unique = true)
+	String numRegCom;
+	@Column(name = "numArticle", nullable = false)
+	String numArticle;
+	@Column(name = "addressClient", nullable = false)
+	String addressClient;
+	@Column(name = "typeActivity", nullable = false)
+	String typeActivity;
+	@Column(name = "nCarteFiscale", nullable = false)
+	String nCarteFiscale;
+	@Column(name = "dateDepotDossier", nullable = false)
+	@Temporal(value = TemporalType.DATE)
+	Date dateDepotDossier;
+	@OneToMany(targetEntity = Facture.class, mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Facture> factures;
+	@Column(name = "deleted", nullable = false)
+	boolean deleted;
+	@OneToMany(targetEntity = Payment.class, mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Payment> payments;
 
-    //
-    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Chauffeur.class)
-    @JoinTable(name = "Chauffeur_client", joinColumns = {
-    @JoinColumn(name = "Id", nullable = false, updatable = false) }
-    ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable = false, updatable = false) })
-    List<Chauffeur> chauffeurs= new ArrayList<Chauffeur>();*/
-    
-    public Client( String nom, String prenom, String numRegCom, String numArticle
-                   , String addressClient, String typeActivity, Date dateDepotDossier,String nCarteFiscale) {
-        this.name = nom;
-        this.prenom = prenom;
-        //this.codeClient= codeClient;
-        this.numRegCom=numRegCom;
-        this.numArticle=numArticle;
-        this.addressClient= addressClient;
-        this.typeActivity= typeActivity;
-        this.dateDepotDossier= dateDepotDossier;
-        this.nCarteFiscale= nCarteFiscale;
-    }
+	//
+	/*
+	 * @ManyToMany(fetch = FetchType.LAZY, cascade =
+	 * CascadeType.ALL,targetEntity = Chauffeur.class)
+	 * 
+	 * @JoinTable(name = "Chauffeur_client", joinColumns = {
+	 * 
+	 * @JoinColumn(name = "Id", nullable = false, updatable = false) }
+	 * ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable =
+	 * false, updatable = false) }) List<Chauffeur> chauffeurs= new
+	 * ArrayList<Chauffeur>();
+	 */
 
-    public Client() {
+	public Client() {
 
-    }
+	}
 
-    public int getId() {
-        return id;
-    }
+	public Client(String nom, String prenom, String numRegCom, String numArticle, String addressClient,
+			String typeActivity, Date dateDepotDossier, String nCarteFiscale) {
+		this.name = nom;
+		this.prenom = prenom;
+		// this.codeClient= codeClient;
+		this.numRegCom = numRegCom;
+		this.numArticle = numArticle;
+		this.addressClient = addressClient;
+		this.typeActivity = typeActivity;
+		this.dateDepotDossier = dateDepotDossier;
+		this.nCarteFiscale = nCarteFiscale;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public String getAddressClient() {
+		return addressClient;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Date getDateDepotDossier() {
+		return dateDepotDossier;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public List<Facture> getFactures() {
+		return factures;
+	}
 
-    public String getPrenom() {
-        return prenom;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setnCarteFiscale(String nCarteFiscale) {
-        this.nCarteFiscale = nCarteFiscale;
-    }
-/*
-    public String getCodeClient() {
-        return codeClient;
-    }
+	public String getnCarteFiscale() {
+		return nCarteFiscale;
+	}
 
-    public void setCodeClient(String codeClient) {
-        this.codeClient = codeClient;
-    }
-*/
-    public String getNumRegCom() {
-        return numRegCom;
-    }
+	public String getNumArticle() {
+		return numArticle;
+	}
 
-    public void setNumRegCom(String numRegCom) {
-        this.numRegCom = numRegCom;
-    }
+	/*
+	 * public String getCodeClient() { return codeClient; }
+	 * 
+	 * public void setCodeClient(String codeClient) { this.codeClient =
+	 * codeClient; }
+	 */
+	public String getNumRegCom() {
+		return numRegCom;
+	}
 
-    public String getNumArticle() {
-        return numArticle;
-    }
+	public List<Payment> getPayments() {
+		return payments;
+	}
 
-    public void setNumArticle(String numArticle) {
-        this.numArticle = numArticle;
-    }
+	public String getPrenom() {
+		return prenom;
+	}
 
-    public String getAddressClient() {
-        return addressClient;
-    }
+	public String getTypeActivity() {
+		return typeActivity;
+	}
 
-    public void setAddressClient(String addressClient) {
-        this.addressClient = addressClient;
-    }
+	public boolean isDeleted() {
+		return deleted;
+	}
 
-    public String getTypeActivity() {
-        return typeActivity;
-    }
+	public void setAddressClient(String addressClient) {
+		this.addressClient = addressClient;
+	}
 
-    public void setTypeActivity(String typeActivity) {
-        this.typeActivity = typeActivity;
-    }
+	public void setDateDepotDossier(Date dateDepotDossier) {
+		this.dateDepotDossier = dateDepotDossier;
+	}
 
-    public Date getDateDepotDossier() {
-        return dateDepotDossier;
-    }
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 
-    public void setDateDepotDossier(Date dateDepotDossier) {
-        this.dateDepotDossier = dateDepotDossier;
-    }
+	public void setFactures(List<Facture> factures) {
+		this.factures = factures;
+	}
 
-    public String getnCarteFiscale() {
-        return nCarteFiscale;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public List<Facture> getFactures() {
-        return factures;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setFactures(List<Facture> factures) {
-        this.factures = factures;
-    }
-        public boolean isDeleted() {
-        return deleted;
-    }
+	public void setnCarteFiscale(String nCarteFiscale) {
+		this.nCarteFiscale = nCarteFiscale;
+	}
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+	public void setNumArticle(String numArticle) {
+		this.numArticle = numArticle;
+	}
 
-    public List<Payment> getPayments() {
-        return payments;
-    }
+	public void setNumRegCom(String numRegCom) {
+		this.numRegCom = numRegCom;
+	}
 
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
-    }
-    
+	public void setPayments(List<Payment> payments) {
+		this.payments = payments;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public void setTypeActivity(String typeActivity) {
+		this.typeActivity = typeActivity;
+	}
 
 }
- 

@@ -19,56 +19,55 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Role")
 public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_Role", nullable = false)
-    int idRole;
-    @Column(name = "role", nullable = false)
-    String role;
-    @Column(name = "description", nullable = false)
-    String description;
-        @Column(name = "deleted", nullable = false)
-    boolean deleted;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_Role", nullable = false)
+	int idRole;
+	@Column(name = "role", nullable = false)
+	String role;
+	@Column(name = "description", nullable = false)
+	String description;
+	@Column(name = "deleted", nullable = false)
+	boolean deleted;
 
-    public Role(String role, String description) {
-        this.role = role;
-        this.description = description;
-    }
+	public Role() {
+	}
 
-    public Role() {
-    }
+	public Role(String role, String description) {
+		this.role = role;
+		this.description = description;
+	}
 
-    public int getIdRole() {
-        return idRole;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
-    }
+	public int getIdRole() {
+		return idRole;
+	}
 
-    public String getRole() {
-        return role;
-    }
+	public String getRole() {
+		return role;
+	}
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+	public boolean isDeleted() {
+		return deleted;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-    
-        public boolean isDeleted() {
-        return deleted;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+	public void setIdRole(int idRole) {
+		this.idRole = idRole;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 }

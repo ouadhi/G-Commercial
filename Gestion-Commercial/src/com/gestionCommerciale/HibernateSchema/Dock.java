@@ -1,6 +1,7 @@
 package com.gestionCommerciale.HibernateSchema;
 
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,88 +20,87 @@ import javax.persistence.Table;
 @Table(name = "Dock")
 public class Dock {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_dock", nullable = false)
-    int idDock;
-    @Column(name = "nom", nullable = false)
-    String nom;
-    @Column(name = "wilaya", nullable = false)
-    String wilaya;
-    @Column(name = "distance", nullable = false)
-    double distance;
-    @Column(name = "prixUnitTrans", nullable = false)
-    double prixUnitTrans;
-    @OneToMany(targetEntity = Achat.class, mappedBy = "dock",
-             cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Achat> achats;
-    @Column(name = "deleted", nullable = false)
-    boolean deleted;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_dock", nullable = false)
+	int idDock;
+	@Column(name = "nom", nullable = false)
+	String nom;
+	@Column(name = "wilaya", nullable = false)
+	String wilaya;
+	@Column(name = "distance", nullable = false)
+	double distance;
+	@Column(name = "prixUnitTrans", nullable = false)
+	double prixUnitTrans;
+	@OneToMany(targetEntity = Achat.class, mappedBy = "dock", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Achat> achats;
+	@Column(name = "deleted", nullable = false)
+	boolean deleted;
 
-    public Dock() {
-    }
+	public Dock() {
+	}
 
-    public Dock(String nom, String wilaya, double distance, double prixUnitTrans) {
-        this.nom = nom;
-        this.wilaya = wilaya;
-        this.distance = distance;
-        this.prixUnitTrans = prixUnitTrans;
-        deleted=false;
-    }
+	public Dock(String nom, String wilaya, double distance, double prixUnitTrans) {
+		this.nom = nom;
+		this.wilaya = wilaya;
+		this.distance = distance;
+		this.prixUnitTrans = prixUnitTrans;
+		deleted = false;
+	}
 
-    public int getIdDock() {
-        return idDock;
-    }
+	public List<Achat> getAchats() {
+		return achats;
+	}
 
-    public String getNom() {
-        return nom;
-    }
+	public double getDistance() {
+		return distance;
+	}
 
-    public String getWilaya() {
-        return wilaya;
-    }
+	public int getIdDock() {
+		return idDock;
+	}
 
-    public double getDistance() {
-        return distance;
-    }
+	public String getNom() {
+		return nom;
+	}
 
-    public double getPrixUnitTrans() {
-        return prixUnitTrans;
-    }
+	public double getPrixUnitTrans() {
+		return prixUnitTrans;
+	}
 
-    public void setIdDock(int idDock) {
-        this.idDock = idDock;
-    }
+	public String getWilaya() {
+		return wilaya;
+	}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	public boolean isDeleted() {
+		return deleted;
+	}
 
-    public void setWilaya(String wilaya) {
-        this.wilaya = wilaya;
-    }
+	public void setAchats(List<Achat> achats) {
+		this.achats = achats;
+	}
 
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 
-    public void setPrixUnitTrans(double prixUnitTrans) {
-        this.prixUnitTrans = prixUnitTrans;
-    }
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
 
-    public List<Achat> getAchats() {
-        return achats;
-    }
+	public void setIdDock(int idDock) {
+		this.idDock = idDock;
+	}
 
-    public void setAchats(List<Achat> achats) {
-        this.achats = achats;
-    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    public boolean isDeleted() {
-        return deleted;
-    }
+	public void setPrixUnitTrans(double prixUnitTrans) {
+		this.prixUnitTrans = prixUnitTrans;
+	}
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+	public void setWilaya(String wilaya) {
+		this.wilaya = wilaya;
+	}
 }

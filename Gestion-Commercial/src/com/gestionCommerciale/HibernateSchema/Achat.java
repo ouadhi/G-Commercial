@@ -1,6 +1,7 @@
 package com.gestionCommerciale.HibernateSchema;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,182 +21,181 @@ import javax.persistence.TemporalType;
 @Table(name = "Achat")
 public class Achat {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_achat", nullable = false)
-    int idAchat;
-    @Column(name = "num_acqt", nullable = false)
-    String numAcqt;
-    @Column(name = "num_Tiquet", nullable = false)
-    String numTiquet;
-    @Column(name = "date_acqt", nullable = false)
-    @Temporal(value = TemporalType.DATE)
-    Date dateAcqt;
-    @Column(name = "quantite_acqt", nullable = false)
-    double quantiteAcqt;
-    @Column(name = "quantite_four", nullable = false)
-    double quantiteFour;
-    @Column(name = "quantite_diff", nullable = false)
-    double quantiteDiff;
-    @Column(name = "poid_camion", nullable = false)
-    double poidCamion;
-//    @Column(name = "num_Bon", nullable = false)
-//    String numBon;
-    @ManyToOne
-    @JoinColumn(name = "id_chauffeur")
-    private Chauffeur chauffeur;
-    @ManyToOne
-    @JoinColumn(name = "id_camion")
-    private Camion camion;
-    @ManyToOne
-    @JoinColumn(name = "id_ble")
-    private Ble ble;
-    @ManyToOne
-    @JoinColumn(name = "id_dock")
-    private Dock dock;
-    @Column(name = "deleted", nullable = false)
-    boolean deleted;
-    @ManyToOne
-    @JoinColumn(name="id_annee")
-    private Annee annee;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_achat", nullable = false)
+	int idAchat;
+	@Column(name = "num_acqt", nullable = false)
+	String numAcqt;
+	@Column(name = "num_Tiquet", nullable = false)
+	String numTiquet;
+	@Column(name = "date_acqt", nullable = false)
+	@Temporal(value = TemporalType.DATE)
+	Date dateAcqt;
+	@Column(name = "quantite_acqt", nullable = false)
+	double quantiteAcqt;
+	@Column(name = "quantite_four", nullable = false)
+	double quantiteFour;
+	@Column(name = "quantite_diff", nullable = false)
+	double quantiteDiff;
+	@Column(name = "poid_camion", nullable = false)
+	double poidCamion;
+	// @Column(name = "num_Bon", nullable = false)
+	// String numBon;
+	@ManyToOne
+	@JoinColumn(name = "id_chauffeur")
+	private Chauffeur chauffeur;
+	@ManyToOne
+	@JoinColumn(name = "id_camion")
+	private Camion camion;
+	@ManyToOne
+	@JoinColumn(name = "id_ble")
+	private Ble ble;
+	@ManyToOne
+	@JoinColumn(name = "id_dock")
+	private Dock dock;
+	@Column(name = "deleted", nullable = false)
+	boolean deleted;
+	@ManyToOne
+	@JoinColumn(name = "id_annee")
+	private Annee annee;
 
-    //
-    public Achat() {
+	//
+	public Achat() {
 
-    }
+	}
 
-    public Achat(String numTiquet,String numAcqt, double quantiteAcqt, double quantiteFour,
-             double quantiteDiff, Date dateAcqt, double poidCamion,Annee annee) {
-        this.numAcqt = numAcqt;
-        this.numTiquet = numTiquet;
-        this.quantiteAcqt = quantiteAcqt;
-        this.quantiteFour = quantiteFour;
-        this.quantiteDiff = quantiteDiff;
-//        this.numBon = numBon;
-        this.dateAcqt = dateAcqt;
-        this.annee = annee;
-        this.poidCamion = poidCamion;
-    }
+	public Achat(String numTiquet, String numAcqt, double quantiteAcqt, double quantiteFour, double quantiteDiff,
+			Date dateAcqt, double poidCamion, Annee annee) {
+		this.numAcqt = numAcqt;
+		this.numTiquet = numTiquet;
+		this.quantiteAcqt = quantiteAcqt;
+		this.quantiteFour = quantiteFour;
+		this.quantiteDiff = quantiteDiff;
+		// this.numBon = numBon;
+		this.dateAcqt = dateAcqt;
+		this.annee = annee;
+		this.poidCamion = poidCamion;
+	}
 
-    public String getNumTiquet() {
-        return numTiquet;
-    }
+	public Annee getAnnee() {
+		return annee;
+	}
 
-    public void setNumTiquet(String numTiquet) {
-        this.numTiquet = numTiquet;
-    }
+	public Ble getBle() {
+		return ble;
+	}
 
-    public double getPoidCamion() {
-        return poidCamion;
-    }
+	public Camion getCamion() {
+		return camion;
+	}
 
-    public void setPoidCamion(double poidCamion) {
-        this.poidCamion = poidCamion;
-    }
-    
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
 
-    public int getIdAchat() {
-        return idAchat;
-    }
+	public Date getDateAcqt() {
+		return dateAcqt;
+	}
 
-//    public String getNumBon() {
-//        return numBon;
-//    }
-//
-//    public void setNumBon(String numBon) {
-//        this.numBon = numBon;
-//    }
+	// public String getNumBon() {
+	// return numBon;
+	// }
+	//
+	// public void setNumBon(String numBon) {
+	// this.numBon = numBon;
+	// }
 
-    public void setIdAchat(int idExpedition) {
-        this.idAchat = idExpedition;
-    }
+	public Dock getDock() {
+		return dock;
+	}
 
-    public String getNumAcqt() {
-        return numAcqt;
-    }
+	public int getIdAchat() {
+		return idAchat;
+	}
 
-    public void setNumAcqt(String numAcqt) {
-        this.numAcqt = numAcqt;
-    }
+	public String getNumAcqt() {
+		return numAcqt;
+	}
 
-    public Date getDateAcqt() {
-        return dateAcqt;
-    }
+	public String getNumTiquet() {
+		return numTiquet;
+	}
 
-    public void setDateAcqt(Date dateAcqt) {
-        this.dateAcqt = dateAcqt;
-    }
+	public double getPoidCamion() {
+		return poidCamion;
+	}
 
-    public double getQuantiteAcqt() {
-        return quantiteAcqt;
-    }
+	public double getQuantiteAcqt() {
+		return quantiteAcqt;
+	}
 
-    public void setQuantiteAcqt(double quantiteAcqt) {
-        this.quantiteAcqt = quantiteAcqt;
-    }
+	public double getQuantiteDiff() {
+		return quantiteDiff;
+	}
 
-    public double getQuantiteFour() {
-        return quantiteFour;
-    }
+	public double getQuantiteFour() {
+		return quantiteFour;
+	}
 
-    public void setQuantiteFour(int quantiteFour) {
-        this.quantiteFour = quantiteFour;
-    }
+	public boolean isDeleted() {
+		return deleted;
+	}
 
-    public double getQuantiteDiff() {
-        return quantiteDiff;
-    }
+	public void setAnnee(Annee annee) {
+		this.annee = annee;
+	}
 
-    public void setQuantiteDiff(int quantiteDiff) {
-        this.quantiteDiff = quantiteDiff;
-    }
+	public void setBle(Ble ble) {
+		this.ble = ble;
+	}
 
-    public Chauffeur getChauffeur() {
-        return chauffeur;
-    }
+	public void setCamion(Camion camion) {
+		this.camion = camion;
+	}
 
-    public void setChauffeur(Chauffeur chauffeur) {
-        this.chauffeur = chauffeur;
-    }
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
+	}
 
-    public Ble getBle() {
-        return ble;
-    }
+	public void setDateAcqt(Date dateAcqt) {
+		this.dateAcqt = dateAcqt;
+	}
 
-    public void setBle(Ble ble) {
-        this.ble = ble;
-    }
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 
-    public Camion getCamion() {
-        return camion;
-    }
+	public void setDock(Dock dock) {
+		this.dock = dock;
+	}
 
-    public void setCamion(Camion camion) {
-        this.camion = camion;
-    }
+	public void setIdAchat(int idExpedition) {
+		this.idAchat = idExpedition;
+	}
 
-    public Dock getDock() {
-        return dock;
-    }
+	public void setNumAcqt(String numAcqt) {
+		this.numAcqt = numAcqt;
+	}
 
-    public void setDock(Dock dock) {
-        this.dock = dock;
-    }
+	public void setNumTiquet(String numTiquet) {
+		this.numTiquet = numTiquet;
+	}
 
-    public boolean isDeleted() {
-        return deleted;
-    }
+	public void setPoidCamion(double poidCamion) {
+		this.poidCamion = poidCamion;
+	}
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+	public void setQuantiteAcqt(double quantiteAcqt) {
+		this.quantiteAcqt = quantiteAcqt;
+	}
 
-    public Annee getAnnee() {
-        return annee;
-    }
+	public void setQuantiteDiff(int quantiteDiff) {
+		this.quantiteDiff = quantiteDiff;
+	}
 
-    public void setAnnee(Annee annee) {
-        this.annee = annee;
-    }
-    
+	public void setQuantiteFour(int quantiteFour) {
+		this.quantiteFour = quantiteFour;
+	}
+
 }

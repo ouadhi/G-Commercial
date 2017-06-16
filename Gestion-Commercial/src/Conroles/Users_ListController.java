@@ -5,15 +5,17 @@
  */
 package Conroles;
 
-import com.gestionCommerciale.HibernateSchema.User;
-import com.gestionCommerciale.Models.UserQueries;
-import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.gestionCommerciale.HibernateSchema.User;
+import com.gestionCommerciale.Models.UserQueries;
+import com.jfoenix.controls.JFXButton;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -37,206 +39,203 @@ import javafx.scene.layout.AnchorPane;
 
 public class Users_ListController implements Initializable {
 
-    @FXML
-    private TableView<EditableFileRow> table;
-    @FXML
-    private JFXButton Add_user_button;
+	public static class EditableFileRow {
 
-    public static EditableFileRow row;
-    public ObservableList<EditableFileRow> data;
+		private final SimpleObjectProperty<ProfilePicture> picture;
+		private final SimpleStringProperty fullname;
+		private final SimpleStringProperty username;
+		private final SimpleStringProperty role;
+		private final SimpleObjectProperty<EditButton> editButton;
 
+		public EditableFileRow(String picture, String fullname, String username, String role) {
+			this.picture = new SimpleObjectProperty(new ProfilePicture(picture));
+			this.fullname = new SimpleStringProperty(fullname);
+			this.username = new SimpleStringProperty(username);
+			this.role = new SimpleStringProperty(role);
+			this.editButton = new SimpleObjectProperty(new EditButton("update", fullname));
+		}
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        data = FXCollections.observableArrayList();
-        List<User> listOfDbUsers = UserQueries.list();
+		public ObjectProperty<EditButton> editButtonProperty() {
+			return editButton;
+		}
 
-        for (int i = 0; i < listOfDbUsers.size(); i++) {
-            data.add(new EditableFileRow(listOfDbUsers.get(i).getPhotoLien(),
-                    listOfDbUsers.get(i).getNom(),
-                    listOfDbUsers.get(i).getNom(),
-                    listOfDbUsers.get(i).getType()));
-        }
+		// Edit buttun
+		public EditButton getEditButton() {
+			return editButton.get();
+		}
 
-        table_column();
-        addrows(data);
-        table.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                row = table.getSelectionModel().getSelectedItem();
+		// fulle name
+		public String getFullname() {
+			return fullname.get();
+		}
 
-            }
-        });
-    }
+		public StringProperty getFullPropery() {
+			return fullname;
+		}
 
-    private void table_column() {
+		// picture geter and setter
+		public ProfilePicture getPicture() {
+			return picture.get();
+		}
 
-        // add clumn buttton
-        TableColumn editColumn = new TableColumn("Action");
-        editColumn.setCellValueFactory(new PropertyValueFactory<>("editButton"));
-        editColumn.setPrefWidth(213.6);
+		public ObjectProperty<ProfilePicture> getPicturePropery() {
+			return picture;
+		}
 
-        // add picture 
-        TableColumn picturecolumn = new TableColumn("PICTURE");
-        picturecolumn.setCellValueFactory(new PropertyValueFactory<>("picture"));
-        picturecolumn.setPrefWidth(213.6);
-        // add fullname
-        TableColumn fullnameColumn = new TableColumn("FULLNAME");
-        fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("fullname"));
-        fullnameColumn.setPrefWidth(213.6);
-        // add  user name 
-        TableColumn usernameColumn = new TableColumn("USER NAME");
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-        usernameColumn.setPrefWidth(213.6);
-        // add role 
-        TableColumn roleColumn = new TableColumn("ROLE");
-        roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
-        roleColumn.setPrefWidth(213.6);
-        // TableView table = new TableView();
-        table.getColumns().addAll(picturecolumn, fullnameColumn, usernameColumn, roleColumn, editColumn);
+		// role
+		public String getRole() {
+			return role.get();
+		}
 
-    }
+		public StringProperty getRolePropery() {
+			return role;
+		}
 
-    @FXML
-    private void show_add_user_form(ActionEvent event) {
+		// user name
+		public String getUsername() {
+			return username.get();
+		}
 
-        try {
-            FXMLLoader loader = new FXMLLoader();
+		public StringProperty getUsernamePropery() {
+			return username;
+		}
 
-            AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/AddUserFXML.fxml"));
+		public void setEditButton(EditButton editButton) {
+			this.editButton.set(editButton);
+		}
 
-            Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
-        } catch (IOException ex) {
-            Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+		public void setFullname(String full) {
+			this.fullname.set(full);
+		}
 
-    }
+		public void setPicture(ProfilePicture pic) {
+			this.picture.set(pic);
+		}
 
-    public static class EditableFileRow {
+		public void setrole(String role) {
+			this.role.set(role);
+		}
 
-        private final SimpleObjectProperty<ProfilePicture> picture;
-        private final SimpleStringProperty fullname;
-        private final SimpleStringProperty username;
-        private final SimpleStringProperty role;
-        private final SimpleObjectProperty<EditButton> editButton;
+		public void setUsername(String user) {
+			this.username.set(user);
+		}
+	}
+	public static class EditButton extends Button {
 
-        public EditableFileRow(String picture, String fullname, String username, String role) {
-            this.picture = new SimpleObjectProperty(new ProfilePicture(picture));
-            this.fullname = new SimpleStringProperty(fullname);
-            this.username = new SimpleStringProperty(username);
-            this.role = new SimpleStringProperty(role);
-            this.editButton = new SimpleObjectProperty(new EditButton("update", fullname));
-        }
+		public EditButton(String fileName, String fullname) {
 
-        // picture geter and setter 
-        public ProfilePicture getPicture() {
-            return picture.get();
-        }
+			super("Edit");
+			getStyleClass().add("add_button");
+			setPrefWidth(128);
+			setAlignment(Pos.CENTER);
+			setOnAction((event) -> {
 
-        public void setPicture(ProfilePicture pic) {
-            this.picture.set(pic);
-        }
+				try {
+					FXMLLoader loader = new FXMLLoader();
+					loader.setLocation(getClass().getResource("/Views/EditUserFXML.fxml"));
+					loader.load();
 
-        public ObjectProperty<ProfilePicture> getPicturePropery() {
-            return picture;
-        }
+					EditUserController usercoltroler = loader.getController();
+					usercoltroler.set_data(row.getFullname(), row.getUsername(), row.getRole());
 
-        // fulle name
-        public String getFullname() {
-            return fullname.get();
-        }
+					AnchorPane root = loader.getRoot();
+					Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
 
-        public void setFullname(String full) {
-            this.fullname.set(full);
-        }
+				} catch (Exception e) {
+					System.out.println(e);
+				}
 
-        public StringProperty getFullPropery() {
-            return fullname;
-        }
+			});
+		}
+	}
 
-        // user name 
-        public String getUsername() {
-            return username.get();
-        }
+	public static class ProfilePicture extends ImageView {
 
-        public void setUsername(String user) {
-            this.username.set(user);
-        }
+		public ProfilePicture(String url) {
+			Image img = new Image("icons/man.png");
+			setImage(img);
+		}
 
-        public StringProperty getUsernamePropery() {
-            return username;
-        }
+	}
+	public static EditableFileRow row;
 
-        // role
-        public String getRole() {
-            return role.get();
-        }
+	@FXML
+	private TableView<EditableFileRow> table;
 
-        public void setrole(String role) {
-            this.role.set(role);
-        }
+	@FXML
+	private JFXButton Add_user_button;
 
-        public StringProperty getRolePropery() {
-            return role;
-        }
+	public ObservableList<EditableFileRow> data;
 
-        // Edit buttun
-        public EditButton getEditButton() {
-            return editButton.get();
-        }
+	public void addrows(ObservableList<EditableFileRow> data) {
 
-        public void setEditButton(EditButton editButton) {
-            this.editButton.set(editButton);
-        }
+		table.getItems().clear();
 
-        public ObjectProperty<EditButton> editButtonProperty() {
-            return editButton;
-        }
-    }
+		table.setItems(data);
+	}
 
-    public static class EditButton extends Button {
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		data = FXCollections.observableArrayList();
+		List<User> listOfDbUsers = UserQueries.list();
 
-        public EditButton(String fileName, String fullname) {
+		for (int i = 0; i < listOfDbUsers.size(); i++) {
+			data.add(new EditableFileRow(listOfDbUsers.get(i).getPhotoLien(), listOfDbUsers.get(i).getNom(),
+					listOfDbUsers.get(i).getNom(), listOfDbUsers.get(i).getType()));
+		}
 
-            super("Edit");
-            getStyleClass().add("add_button");
-            setPrefWidth(128);
-            setAlignment(Pos.CENTER);
-            setOnAction((event) -> {
+		table_column();
+		addrows(data);
+		table.setOnMousePressed(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				row = table.getSelectionModel().getSelectedItem();
 
-                try {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/Views/EditUserFXML.fxml"));
-                    loader.load();
+			}
+		});
+	}
 
-                    EditUserController usercoltroler = loader.getController();
-                    usercoltroler.set_data(row.getFullname(), row.getUsername(), row.getRole());
+	@FXML
+	private void show_add_user_form(ActionEvent event) {
 
-                    AnchorPane root = loader.getRoot();
-                    Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
+		try {
+			FXMLLoader loader = new FXMLLoader();
 
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
+			AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/AddUserFXML.fxml"));
 
-            });
-        }
-    }
+			Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
+		} catch (IOException ex) {
+			Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
+		}
 
-    public static class ProfilePicture extends ImageView {
+	}
 
-        public ProfilePicture(String url) {
-            Image img = new Image("icons/man.png");
-            setImage(img);
-        }
+	private void table_column() {
 
-    }
+		// add clumn buttton
+		TableColumn editColumn = new TableColumn("Action");
+		editColumn.setCellValueFactory(new PropertyValueFactory<>("editButton"));
+		editColumn.setPrefWidth(213.6);
 
-    public void addrows(ObservableList<EditableFileRow> data) {
+		// add picture
+		TableColumn picturecolumn = new TableColumn("PICTURE");
+		picturecolumn.setCellValueFactory(new PropertyValueFactory<>("picture"));
+		picturecolumn.setPrefWidth(213.6);
+		// add fullname
+		TableColumn fullnameColumn = new TableColumn("FULLNAME");
+		fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("fullname"));
+		fullnameColumn.setPrefWidth(213.6);
+		// add user name
+		TableColumn usernameColumn = new TableColumn("USER NAME");
+		usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+		usernameColumn.setPrefWidth(213.6);
+		// add role
+		TableColumn roleColumn = new TableColumn("ROLE");
+		roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
+		roleColumn.setPrefWidth(213.6);
+		// TableView table = new TableView();
+		table.getColumns().addAll(picturecolumn, fullnameColumn, usernameColumn, roleColumn, editColumn);
 
-        table.getItems().clear();
-
-        table.setItems(data);
-    }
+	}
 
 }

@@ -1,13 +1,5 @@
 package CommercialeControles.Produit;
 
-import UIControle.Methode;
-import UIControle.StageDialog;
-import UIControle.ViewUrl;
-import com.gestionCommerciale.HibernateSchema.Produit;
-import com.gestionCommerciale.Models.ProduitQueries;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,6 +7,18 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.controlsfx.control.textfield.TextFields;
+
+import com.gestionCommerciale.HibernateSchema.Produit;
+import com.gestionCommerciale.Models.ProduitQueries;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextField;
+
+import UIControle.Methode;
+import UIControle.StageDialog;
+import UIControle.ViewUrl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,175 +30,167 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import org.controlsfx.control.textfield.TextFields;
 
 public class ProduitListController implements Initializable {
 
-    @FXML
-    private Label total;
-    @FXML
-    private MenuButton Order;
-    private MenuButton NbShow;
-    @FXML
-    private JFXButton ajouter;
-    @FXML
-    private JFXTextField rechreche;
-   
-    private ProduitQueries queries = new ProduitQueries();
-    @FXML
-    private JFXListView<ProduitCell> listeproduit;
-    @FXML
-    private Label label;
+	@FXML
+	private Label total;
+	@FXML
+	private MenuButton Order;
+	private MenuButton NbShow;
+	@FXML
+	private JFXButton ajouter;
+	@FXML
+	private JFXTextField rechreche;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Methode.showMenuItem(Order , label);
-        List<Produit> listBlesDB = queries.list();
-        List<ProduitCell> list = new ArrayList<>();
-        
-        for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new ProduitCell(listBlesDB.get(i)));
-        }
-        
-        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
-        listeproduit.setItems(myObservableList);
-        listeproduit.setExpanded(true);
-        
-        setTotale();
-        
-      
-    }
+	private ProduitQueries queries = new ProduitQueries();
+	@FXML
+	private JFXListView<ProduitCell> listeproduit;
+	@FXML
+	private Label label;
 
-   
+	@FXML
+	private void Archive(ActionEvent event) {
+		Order.setText("Archivé");
+		List<Produit> listBlesDB = ProduitQueries.listArchived();
+		List<ProduitCell> list = new ArrayList<>();
 
-    @FXML
-    private void setOrder(ActionEvent event) {
-    }
+		for (int i = 0; i < listBlesDB.size(); i++) {
+			list.add(new ProduitCell(listBlesDB.get(i)));
+		}
 
-    
+		ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+		listeproduit.setItems(myObservableList);
+		listeproduit.setExpanded(true);
 
-    @FXML
-    private void showAddStage(ActionEvent event) {
+		setTotale();
+	}
 
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterProduit));
-            StageDialog stage = new StageDialog(Methode.getStage(event), pane);
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		Methode.showMenuItem(Order, label);
+		List<Produit> listBlesDB = ProduitQueries.list();
+		List<ProduitCell> list = new ArrayList<>();
 
-            stage.showAndWait();
-        } catch (IOException ex) {
-            Logger.getLogger(ProduitListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+		for (int i = 0; i < listBlesDB.size(); i++) {
+			list.add(new ProduitCell(listBlesDB.get(i)));
+		}
 
+		ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+		listeproduit.setItems(myObservableList);
+		listeproduit.setExpanded(true);
 
-    @FXML
-    private void showDockSlide(MouseEvent event) {
-        try {
-            int selectedcell = listeproduit.getSelectionModel().getSelectedIndex();
+		setTotale();
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(ViewUrl.SlideProduit));
-            loader.load();
+	}
 
-            SlidProduitController slidProduit = loader.getController();
-            slidProduit.setData(listeproduit, selectedcell);
+	@FXML
+	private void NonArchive(ActionEvent event) {
+		Order.setText("Non Archivé");
+		List<Produit> listBlesDB = ProduitQueries.list();
+		List<ProduitCell> list = new ArrayList<>();
 
-            AnchorPane pane = loader.getRoot();
+		for (int i = 0; i < listBlesDB.size(); i++) {
+			list.add(new ProduitCell(listBlesDB.get(i)));
+		}
 
-            StageDialog stage = new StageDialog(Methode.getStageMouses(event), pane);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ProduitListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+		ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+		listeproduit.setItems(myObservableList);
+		listeproduit.setExpanded(true);
 
-    }
+		setTotale();
+	}
 
-    public void setTotale() {
+	public void possibleMot() {
 
-        total.setText(Integer.toString(listeproduit.getItems().size()));
+		ArrayList<String> list = new ArrayList<>();
+		list.add("karim");
+		list.add("hichem1");
+		list.add("hichem2");
+		list.add("mohammed ouadhi");
+		list.add("mohammed cherberabe");
 
-    }
+		TextFields.bindAutoCompletion(rechreche, list);
+	}
 
-    @FXML
-    private void rechrecher(KeyEvent event) {
-        
-         listeproduit.getItems().clear();
-        List<Produit> listBlesDB = queries.listRechreche(rechreche.getText()) ; 
-        List<ProduitCell> list = new ArrayList<>();
-        
-        for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new ProduitCell(listBlesDB.get(i)));
-        }
-        
-        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
-        listeproduit.setItems(myObservableList);
-        
-        setTotale();
-      
-    }
-    
-    public void possibleMot() {
-      
-        ArrayList<String> list = new ArrayList<>();
-        list.add("karim");
-        list.add("hichem1");
-        list.add("hichem2");
-        list.add("mohammed ouadhi");
-        list.add("mohammed cherberabe");
+	@FXML
+	private void rechrecher(KeyEvent event) {
 
-        TextFields.bindAutoCompletion(rechreche, list);
-    }
+		listeproduit.getItems().clear();
+		List<Produit> listBlesDB = ProduitQueries.listRechreche(rechreche.getText());
+		List<ProduitCell> list = new ArrayList<>();
 
-    @FXML
-    private void NonArchive(ActionEvent event) {
-        Order.setText("Non Archivé");
-         List<Produit> listBlesDB = queries.list();
-        List<ProduitCell> list = new ArrayList<>();
-        
-        for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new ProduitCell(listBlesDB.get(i)));
-        }
-        
-        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
-        listeproduit.setItems(myObservableList);
-        listeproduit.setExpanded(true);
-        
-        setTotale();
-    }
+		for (int i = 0; i < listBlesDB.size(); i++) {
+			list.add(new ProduitCell(listBlesDB.get(i)));
+		}
 
-    @FXML
-    private void Archive(ActionEvent event) {
-        Order.setText("Archivé");
-         List<Produit> listBlesDB = queries.listArchived() ; 
-        List<ProduitCell> list = new ArrayList<>();
-        
-        for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new ProduitCell(listBlesDB.get(i)));
-        }
-        
-        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
-        listeproduit.setItems(myObservableList);
-        listeproduit.setExpanded(true);
-        
-        setTotale();
-    }
+		ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+		listeproduit.setItems(myObservableList);
 
-    @FXML
-    private void tout(ActionEvent event) {
-        Order.setText("Tout");
-         List<Produit> listBlesDB = queries.listAll()  ; 
-        List<ProduitCell> list = new ArrayList<>();
-        
-        for (int i = 0; i < listBlesDB.size(); i++) {
-            list.add(new ProduitCell(listBlesDB.get(i)));
-        }
-        
-        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
-        listeproduit.setItems(myObservableList);
-        listeproduit.setExpanded(true);
-        
-        setTotale();
-    }
-    
-    
+		setTotale();
+
+	}
+
+	@FXML
+	private void setOrder(ActionEvent event) {
+	}
+
+	public void setTotale() {
+
+		total.setText(Integer.toString(listeproduit.getItems().size()));
+
+	}
+
+	@FXML
+	private void showAddStage(ActionEvent event) {
+
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterProduit));
+			StageDialog stage = new StageDialog(Methode.getStage(event), pane);
+
+			stage.showAndWait();
+		} catch (IOException ex) {
+			Logger.getLogger(ProduitListController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	@FXML
+	private void showDockSlide(MouseEvent event) {
+		try {
+			int selectedcell = listeproduit.getSelectionModel().getSelectedIndex();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.SlideProduit));
+			loader.load();
+
+			SlidProduitController slidProduit = loader.getController();
+			slidProduit.setData(listeproduit, selectedcell);
+
+			AnchorPane pane = loader.getRoot();
+
+			StageDialog stage = new StageDialog(Methode.getStageMouses(event), pane);
+			stage.show();
+		} catch (IOException ex) {
+			Logger.getLogger(ProduitListController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+	}
+
+	@FXML
+	private void tout(ActionEvent event) {
+		Order.setText("Tout");
+		List<Produit> listBlesDB = ProduitQueries.listAll();
+		List<ProduitCell> list = new ArrayList<>();
+
+		for (int i = 0; i < listBlesDB.size(); i++) {
+			list.add(new ProduitCell(listBlesDB.get(i)));
+		}
+
+		ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+		listeproduit.setItems(myObservableList);
+		listeproduit.setExpanded(true);
+
+		setTotale();
+	}
+
 }

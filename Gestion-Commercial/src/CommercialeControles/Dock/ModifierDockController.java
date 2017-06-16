@@ -1,15 +1,17 @@
 package CommercialeControles.Dock;
 
-import UIControle.Methode;
-import UIControle.Notification;
-import UIControle.ShowPane;
+import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
+
 import com.gestionCommerciale.HibernateSchema.Dock;
 import com.gestionCommerciale.Models.DockQueries;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.net.URL;
-import java.util.Optional;
-import java.util.ResourceBundle;
+
+import UIControle.Methode;
+import UIControle.Notification;
+import UIControle.ShowPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,86 +24,87 @@ import tray.notification.NotificationType;
 
 public class ModifierDockController implements Initializable {
 
-    @FXML
-    private ImageView close;
-    @FXML
-    private JFXTextField nom;
-    @FXML
-    private JFXTextField wilaya;
-    @FXML
-    private JFXTextField distance;
-    @FXML
-    private JFXTextField prix;
-    @FXML
-    private JFXButton savebttn;
-    @FXML
-    private JFXButton cancelbttn;
-    @FXML
-    private Label savelabel;
-    private Dock dock;
+	@FXML
+	private ImageView close;
+	@FXML
+	private JFXTextField nom;
+	@FXML
+	private JFXTextField wilaya;
+	@FXML
+	private JFXTextField distance;
+	@FXML
+	private JFXTextField prix;
+	@FXML
+	private JFXButton savebttn;
+	@FXML
+	private JFXButton cancelbttn;
+	@FXML
+	private Label savelabel;
+	private Dock dock;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Methode.setOnlyDouble(prix,10);
-        Methode.setOnlyDouble(distance,10);
-        Methode.setsizeString(wilaya, 22);
-        Methode.SetUpper(nom ,30);
-    }
+	@FXML
+	private void close(MouseEvent event) {
+		Stage currentStage = Methode.getStageMouses(event);
+		currentStage.close();
+	}
 
-    @FXML
-    private void sauvgarder(ActionEvent event) {
-        String nom = this.nom.getText();
-        String wilaya = this.wilaya.getText();
-        String distance = this.distance.getText();
-        String prix = this.prix.getText();
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		Methode.setOnlyDouble(prix, 10);
+		Methode.setOnlyDouble(distance, 10);
+		Methode.setsizeString(wilaya, 22);
+		Methode.SetUpper(nom, 30);
+	}
 
-        if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
+	@FXML
+	private void quitter(ActionEvent event) {
 
-            Notification.champVideNotification();
+		Stage currentStage = Methode.getStage(event);
+		currentStage.close();
 
-        } else {
-            Optional<ButtonType> result = Notification.updateAlert().showAndWait();
-            if (result.get() == ButtonType.OK) {
-                if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
-                    Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
-                } else {
-                    dock.setNom(nom);
-                    dock.setWilaya(wilaya);
-                    dock.setPrixUnitTrans(Double.parseDouble(prix));
-                    dock.setDistance(Float.parseFloat(distance));
-                    DockQueries.SaveOrUpdate(dock);
-                    Notification.Updatenotification();
-                    new ShowPane().showDock();
-                    savelabel.setVisible(true);
-                    quitter(event);
-                }
-            }
-        }
-    }
+	}
 
-    @FXML
-    private void quitter(ActionEvent event) {
+	@FXML
+	private void sauvgarder(ActionEvent event) {
+		String nom = this.nom.getText();
+		String wilaya = this.wilaya.getText();
+		String distance = this.distance.getText();
+		String prix = this.prix.getText();
 
-        Stage currentStage = Methode.getStage(event);
-        currentStage.close();
+		if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
 
-    }
+			Notification.champVideNotification();
 
-    @FXML
-    private void close(MouseEvent event) {
-        Stage currentStage = Methode.getStageMouses(event);
-        currentStage.close();
-    }
+		} else {
+			Optional<ButtonType> result = Notification.updateAlert().showAndWait();
+			if (result.get() == ButtonType.OK) {
+				if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
+					Notification.notif(NotificationType.ERROR, "Vérification",
+							"Vérifier que tout les champs sont remplis!");
+				} else {
+					dock.setNom(nom);
+					dock.setWilaya(wilaya);
+					dock.setPrixUnitTrans(Double.parseDouble(prix));
+					dock.setDistance(Float.parseFloat(distance));
+					DockQueries.SaveOrUpdate(dock);
+					Notification.Updatenotification();
+					new ShowPane().showDock();
+					savelabel.setVisible(true);
+					quitter(event);
+				}
+			}
+		}
+	}
 
-    public void setData(Dock dock) {
-         Methode.setOnlyDouble(prix,10);
-        Methode.setOnlyDouble(distance,10);
-        Methode.setsizeString(wilaya, 22);
-        Methode.SetUpper(nom ,30);
-        this.dock = dock;
-        this.nom.setText(dock.getNom());
-        this.wilaya.setText(dock.getWilaya());
-        this.distance.setText(Methode.DoubleFormat(dock.getDistance())+"");
-        this.prix.setText(Methode.DoubleFormat(dock.getPrixUnitTrans())+"");
-    }
+	public void setData(Dock dock) {
+		Methode.setOnlyDouble(prix, 10);
+		Methode.setOnlyDouble(distance, 10);
+		Methode.setsizeString(wilaya, 22);
+		Methode.SetUpper(nom, 30);
+		this.dock = dock;
+		this.nom.setText(dock.getNom());
+		this.wilaya.setText(dock.getWilaya());
+		this.distance.setText(Methode.DoubleFormat(dock.getDistance()) + "");
+		this.prix.setText(Methode.DoubleFormat(dock.getPrixUnitTrans()) + "");
+	}
 }

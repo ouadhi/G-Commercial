@@ -22,71 +22,71 @@ import javax.persistence.Table;
 @Table(name = "Facture_Produit")
 public class Facture_Produit {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_facture_produit", nullable = false)
-    int id_facture_produit;
-    @Column(name = "qte_fact", nullable = false)
-    int qte_fact;
-    @Column(name = "prix_fact", nullable = false)
-    double prix_fact;
-    @ManyToOne
-    @JoinColumn(name = "id_fact")
-    private Facture facture;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_facture_produit", nullable = false)
+	int id_facture_produit;
+	@Column(name = "qte_fact", nullable = false)
+	int qte_fact;
+	@Column(name = "prix_fact", nullable = false)
+	double prix_fact;
+	@ManyToOne
+	@JoinColumn(name = "id_fact")
+	private Facture facture;
 
-    @ManyToOne
-    @JoinColumn(name = "id_produit")
-    private Produit produit;
-    @Column(name = "deleted", nullable = false)
-    boolean deleted;
+	@ManyToOne
+	@JoinColumn(name = "id_produit")
+	private Produit produit;
+	@Column(name = "deleted", nullable = false)
+	boolean deleted;
 
-    public Facture_Produit(int qte_fact, double prix_fact) {
-        this.qte_fact = qte_fact;
-        this.prix_fact = prix_fact;
-    }
+	public Facture_Produit() {
 
-    public Facture_Produit() {
+	}
 
-    }
+	public Facture_Produit(int qte_fact, double prix_fact) {
+		this.qte_fact = qte_fact;
+		this.prix_fact = prix_fact;
+	}
 
-    public int getId_facture_produit() {
-        return id_facture_produit;
-    }
+	public Facture getFacture() {
+		return facture;
+	}
 
-    public void setId_facture_produit(int id_facture_produit) {
-        this.id_facture_produit = id_facture_produit;
-    }
+	public int getId_facture_produit() {
+		return id_facture_produit;
+	}
 
-    public int getQte_fact() {
-        return qte_fact;
-    }
+	public double getPrix_fact() {
+		return prix_fact;
+	}
 
-    public void setQte_fact(int qte_fact) {
-        this.qte_fact = qte_fact;
-    }
+	public Produit getProduit() {
+		return produit;
+	}
 
-    public Facture getFacture() {
-        return facture;
-    }
+	public int getQte_fact() {
+		return qte_fact;
+	}
 
-    public void setFacture(Facture facture) {
-        this.facture = facture;
-    }
+	public void setFacture(Facture facture) {
+		this.facture = facture;
+	}
 
-    public Produit getProduit() {
-        return produit;
-    }
+	public void setId_facture_produit(int id_facture_produit) {
+		this.id_facture_produit = id_facture_produit;
+	}
 
-    public void setProduit(Produit produit) {
-        this.produit = produit;
-    }
+	public void setPrix_fact(double prix_fact) {
+		this.prix_fact = prix_fact;
+	}
 
-    public double getPrix_fact() {
-        return prix_fact;
-    }
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
 
-    public void setPrix_fact(double prix_fact) {
-        this.prix_fact = prix_fact;
-    }
+	public void setQte_fact(int qte_fact) {
+		this.qte_fact = qte_fact;
+	}
 
 }

@@ -1,22 +1,24 @@
 package CommercialeControles.Chauffeur;
 
-import UIControle.Methode;
-import UIControle.Notification;
-import UIControle.ShowPane;
-import UIControle.StageDialog;
-import UIControle.ViewUrl;
-import com.gestionCommerciale.HibernateSchema.Camion;
-import com.gestionCommerciale.HibernateSchema.Chauffeur;
-import com.gestionCommerciale.Models.ChauffeurQueries;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.gestionCommerciale.HibernateSchema.Camion;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.Models.ChauffeurQueries;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
+
+import UIControle.Methode;
+import UIControle.Notification;
+import UIControle.ShowPane;
+import UIControle.StageDialog;
+import UIControle.ViewUrl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,115 +32,113 @@ import javafx.stage.Stage;
 
 public class AjouterChauffeurViewController implements Initializable {
 
-    @FXML
-    private JFXTextField nomchauffeur;
-    @FXML
-    private JFXTextField prenomchauffeur;
- 
-    @FXML
-    private JFXTextField telchauffeur;
-    @FXML
-    private JFXComboBox<String> typechauffeur;
-    @FXML
-    private JFXButton savebttn;
-    @FXML
-    private JFXButton anullerbttn;
-    @FXML
-    private Label savelabel;
-    @FXML
-    private ImageView close;
-    
-    
-    public ArrayList<Camion> camions_Chauffeur   = new ArrayList<>()  ; 
-   
-    private JFXComboBox<String> camionbox;
-   
+	@FXML
+	private JFXTextField nomchauffeur;
+	@FXML
+	private JFXTextField prenomchauffeur;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Methode.SetUpper(nomchauffeur ,30);
-        Methode.setOnlyInteger(telchauffeur,10);
-           Methode.setsizeString(prenomchauffeur, 30);
-        setType();
-    }
+	@FXML
+	private JFXTextField telchauffeur;
+	@FXML
+	private JFXComboBox<String> typechauffeur;
+	@FXML
+	private JFXButton savebttn;
+	@FXML
+	private JFXButton anullerbttn;
+	@FXML
+	private Label savelabel;
+	@FXML
+	private ImageView close;
 
-    @FXML
-    private void sauvegarder(ActionEvent event) {
+	public ArrayList<Camion> camions_Chauffeur = new ArrayList<>();
 
-        String nom = nomchauffeur.getText();
-        String prenom = prenomchauffeur.getText();
-        String tel = telchauffeur.getText();
-        String type = typechauffeur.getSelectionModel().getSelectedItem();
+	private JFXComboBox<String> camionbox;
 
-        if (nom.isEmpty() || prenom.isEmpty()  || tel.isEmpty() || type.isEmpty()) {
+	private void addmaion(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.SelectCamionchauffeur));
+			loader.load();
 
-            Notification.champVideNotification();
-        } else {
-            if(ChauffeurQueries.getChauffeurByNomPrenom(nom,prenom)!=null){
-                
-                 Notification.error("Ce chauffeur exist deja");
-            }else{
-            
-            try{
-                Chauffeur chauffeur = new Chauffeur(nom, prenom, tel, type);
-                ChauffeurQueries.SaveOrUpdate(chauffeur);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            new ShowPane().showChauffeur();
-            Notification.Addnotification();
-            savelabel.setVisible(true);
-            annuler(event);
-        }
-        
-    }
+			selectionnerCamionController Modifier = loader.getController();
+			Modifier.setData(camions_Chauffeur, camionbox);
 
-    }
+			AnchorPane root = loader.getRoot();
 
-    @FXML
-    private void annuler(ActionEvent event) {
-        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        g.close();
-    }
+			StageDialog dialog = new StageDialog(Methode.getStage(event), root);
+			dialog.show();
 
-    @FXML
-    private void closewindow(MouseEvent event) {
+		} catch (IOException ex) {
+			Logger.getLogger(AjouterChauffeurViewController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        g.close();
+	@FXML
+	private void annuler(ActionEvent event) {
+		Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		g.close();
+	}
 
-    }
+	@FXML
+	private void closewindow(MouseEvent event) {
 
-    private void deletecamion(ActionEvent event) {
-        int com  = camionbox.getSelectionModel().getSelectedIndex() ;
-        if (com >=0) {
-            camionbox.getItems().remove(com) ; 
-            camions_Chauffeur.remove(com) ; 
-        }
-    }
+		Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		g.close();
 
-    private void addmaion(ActionEvent event) {
-        try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource(ViewUrl.SelectCamionchauffeur));
-                loader.load();
-                
-                selectionnerCamionController Modifier =  loader.getController() ;
-                Modifier.setData(camions_Chauffeur, camionbox);
-                
-                AnchorPane root = loader.getRoot();
-                
-                StageDialog dialog = new StageDialog(Methode.getStage(event), root) ;
-                dialog.show();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(AjouterChauffeurViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-  public void setType() {
-      typechauffeur.getItems().add("INTERNE") ; 
-      typechauffeur.getItems().add("EXTERNE") ; 
-  }
+	}
+
+	private void deletecamion(ActionEvent event) {
+		int com = camionbox.getSelectionModel().getSelectedIndex();
+		if (com >= 0) {
+			camionbox.getItems().remove(com);
+			camions_Chauffeur.remove(com);
+		}
+	}
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		Methode.SetUpper(nomchauffeur, 30);
+		Methode.setOnlyInteger(telchauffeur, 10);
+		Methode.setsizeString(prenomchauffeur, 30);
+		setType();
+	}
+
+	@FXML
+	private void sauvegarder(ActionEvent event) {
+
+		String nom = nomchauffeur.getText();
+		String prenom = prenomchauffeur.getText();
+		String tel = telchauffeur.getText();
+		String type = typechauffeur.getSelectionModel().getSelectedItem();
+
+		if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty() || type.isEmpty()) {
+
+			Notification.champVideNotification();
+		} else {
+			if (ChauffeurQueries.getChauffeurByNomPrenom(nom, prenom) != null) {
+
+				Notification.error("Ce chauffeur exist deja");
+			} else {
+
+				try {
+					Chauffeur chauffeur = new Chauffeur(nom, prenom, tel, type);
+					ChauffeurQueries.SaveOrUpdate(chauffeur);
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+				new ShowPane().showChauffeur();
+				Notification.Addnotification();
+				savelabel.setVisible(true);
+				annuler(event);
+			}
+
+		}
+
+	}
+
+	public void setType() {
+		typechauffeur.getItems().add("INTERNE");
+		typechauffeur.getItems().add("EXTERNE");
+	}
 
 }

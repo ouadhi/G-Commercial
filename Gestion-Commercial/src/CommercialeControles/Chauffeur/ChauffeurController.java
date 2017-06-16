@@ -1,13 +1,5 @@
 package CommercialeControles.Chauffeur;
 
-import UIControle.Methode;
-import UIControle.StageDialog;
-import UIControle.ViewUrl;
-import com.gestionCommerciale.HibernateSchema.Chauffeur;
-import com.gestionCommerciale.Models.ChauffeurQueries;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,6 +7,18 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.controlsfx.control.textfield.TextFields;
+
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.gestionCommerciale.Models.ChauffeurQueries;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextField;
+
+import UIControle.Methode;
+import UIControle.StageDialog;
+import UIControle.ViewUrl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,173 +33,171 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.controlsfx.control.textfield.TextFields;
 
 public class ChauffeurController implements Initializable {
 
-    @FXML
-    private JFXListView<ChauffeurCell> listeView;
+	@FXML
+	private JFXListView<ChauffeurCell> listeView;
 
-    @FXML
-    private JFXButton Ajoute;
-    @FXML
-    private Label total;
-    @FXML
-    private MenuButton orderby;
-    @FXML
-    private MenuItem DateMenuItem;
-    @FXML
-    private MenuItem VoyageMenuItem;
-    @FXML
-    private MenuItem NomMenuItem;
-    @FXML
-    private JFXTextField recherchetxt;
-    @FXML
-    private Label label;
+	@FXML
+	private JFXButton Ajoute;
+	@FXML
+	private Label total;
+	@FXML
+	private MenuButton orderby;
+	@FXML
+	private MenuItem DateMenuItem;
+	@FXML
+	private MenuItem VoyageMenuItem;
+	@FXML
+	private MenuItem NomMenuItem;
+	@FXML
+	private JFXTextField recherchetxt;
+	@FXML
+	private Label label;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Methode.showMenuItem(orderby , label);
-        List<Chauffeur> listChauffeursDB = ChauffeurQueries.list() ; 
-        List<ChauffeurCell> list = new ArrayList<>();
-        for (int i = 0; i < listChauffeursDB.size(); i++) {
-            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+	@FXML
+	private void AjouterMethode(ActionEvent event) {
+		Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		AjouterChauffeuerDialog dialog = new AjouterChauffeuerDialog(g);
+		dialog.show();
+		setTotal();
 
-        }
+	}
 
-        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
-        listeView.setItems(myObservableList);
-        listeView.setExpanded(true);
+	@FXML
+	private void archive(ActionEvent event) {
+		orderby.setText("Archivé");
+		listeView.getItems().clear();
 
-        setTotal();
+		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listArchived();
+		System.out.println("°°°°°°°°°°" + listChauffeursDB.size());
+		List<ChauffeurCell> list = new ArrayList<>();
+		for (int i = 0; i < listChauffeursDB.size(); i++) {
+			list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+		}
 
-    }
+		ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+		listeView.setItems(myObservableList);
+		listeView.setExpanded(true);
 
-    @FXML
-    private void AjouterMethode(ActionEvent event) {
-        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        AjouterChauffeuerDialog dialog = new AjouterChauffeuerDialog(g);
-        dialog.show();
-        setTotal();
+		setTotal();
 
-    }
+	}
 
-    private void setTotal() {
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		Methode.showMenuItem(orderby, label);
+		List<Chauffeur> listChauffeursDB = ChauffeurQueries.list();
+		List<ChauffeurCell> list = new ArrayList<>();
+		for (int i = 0; i < listChauffeursDB.size(); i++) {
+			list.add(new ChauffeurCell(listChauffeursDB.get(i)));
 
-        String nb = Integer.toString(listeView.getItems().size());
-        total.setText(nb);
-    }
+		}
 
-    @FXML
-    private void showChaffeur(MouseEvent event) {
+		ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+		listeView.setItems(myObservableList);
+		listeView.setExpanded(true);
 
-        try {
-            Stage courrentStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-            int selectitem = listeView.getSelectionModel().getSelectedIndex();
+		setTotal();
 
-            System.out.println(selectitem);
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(ViewUrl.showChaffeur));
-            loader.load();
+	}
 
-            ShowChauffeurController showchaf = loader.getController();
-            showchaf.setListechauffeur(this.listeView, selectitem);
+	@FXML
+	private void nonArchive(ActionEvent event) {
+		orderby.setText("Non Archivé");
+		listeView.getItems().clear();
+		List<Chauffeur> listChauffeursDB = ChauffeurQueries.list();
+		List<ChauffeurCell> list = new ArrayList<>();
+		for (int i = 0; i < listChauffeursDB.size(); i++) {
+			list.add(new ChauffeurCell(listChauffeursDB.get(i)));
 
-            AnchorPane pane = loader.getRoot();
+		}
 
-            StageDialog stage = new StageDialog(courrentStage, pane);
-            stage.show();
+		ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+		listeView.setItems(myObservableList);
+		listeView.setExpanded(true);
 
-        } catch (IOException ex) {
-            Logger.getLogger(ChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+		setTotal();
+	}
 
-    }
+	public void possibleMot() {
 
-    @FXML
-    private void recherche(KeyEvent event) {
-        listeView.getItems().clear();
-        List<Chauffeur> listChauffeursDB = ChauffeurQueries.listRecherche(recherchetxt.getText());
-        List<ChauffeurCell> list = new ArrayList<>();
-        for (int i = 0; i < listChauffeursDB.size(); i++) {
-            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+		ArrayList<String> list = new ArrayList<>();
+		list.add("karim");
+		list.add("hichem1");
+		list.add("hichem2");
+		list.add("mohammed ouadhi");
+		list.add("mohammed cherberabe");
 
-        }
+		TextFields.bindAutoCompletion(recherchetxt, list);
 
-        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
-        listeView.setItems(myObservableList);
+	}
 
-        setTotal();
-    }
+	@FXML
+	private void recherche(KeyEvent event) {
+		listeView.getItems().clear();
+		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listRecherche(recherchetxt.getText());
+		List<ChauffeurCell> list = new ArrayList<>();
+		for (int i = 0; i < listChauffeursDB.size(); i++) {
+			list.add(new ChauffeurCell(listChauffeursDB.get(i)));
 
-    public void possibleMot() {
+		}
 
-        ArrayList<String> list = new ArrayList<>();
-        list.add("karim");
-        list.add("hichem1");
-        list.add("hichem2");
-        list.add("mohammed ouadhi");
-        list.add("mohammed cherberabe");
+		ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+		listeView.setItems(myObservableList);
 
-        TextFields.bindAutoCompletion(recherchetxt, list);
+		setTotal();
+	}
 
-    }
+	private void setTotal() {
 
-    @FXML
-    private void archive(ActionEvent event) {
-        orderby.setText("Archivé");
-        listeView.getItems().clear(); 
-        
-        List<Chauffeur> listChauffeursDB = ChauffeurQueries.listArchived();
-        System.out.println("°°°°°°°°°°"+listChauffeursDB.size());
-        List<ChauffeurCell> list = new ArrayList<>();
-        for (int i = 0; i < listChauffeursDB.size(); i++) {
-            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
-        }
+		String nb = Integer.toString(listeView.getItems().size());
+		total.setText(nb);
+	}
 
-        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
-        listeView.setItems(myObservableList);
-        listeView.setExpanded(true);
+	@FXML
+	private void showChaffeur(MouseEvent event) {
 
-        setTotal();
-        
-        
-    }
+		try {
+			Stage courrentStage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+			int selectitem = listeView.getSelectionModel().getSelectedIndex();
 
-    @FXML
-    private void nonArchive(ActionEvent event) {
-        orderby.setText("Non Archivé");
-        listeView.getItems().clear(); 
-        List<Chauffeur> listChauffeursDB = ChauffeurQueries.list() ;
-        List<ChauffeurCell> list = new ArrayList<>();
-        for (int i = 0; i < listChauffeursDB.size(); i++) {
-            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+			System.out.println(selectitem);
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.showChaffeur));
+			loader.load();
 
-        }
+			ShowChauffeurController showchaf = loader.getController();
+			showchaf.setListechauffeur(this.listeView, selectitem);
 
-        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
-        listeView.setItems(myObservableList);
-        listeView.setExpanded(true);
+			AnchorPane pane = loader.getRoot();
 
-        setTotal();
-    }
+			StageDialog stage = new StageDialog(courrentStage, pane);
+			stage.show();
 
-    @FXML
-    private void tout(ActionEvent event) {
-        orderby.setText("Tout");
-        listeView.getItems().clear(); 
-        List<Chauffeur> listChauffeursDB = ChauffeurQueries.listAll();
-        List<ChauffeurCell> list = new ArrayList<>();
-        for (int i = 0; i < listChauffeursDB.size(); i++) {
-            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+		} catch (IOException ex) {
+			Logger.getLogger(ChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
+		}
 
-        }
+	}
 
-        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
-        listeView.setItems(myObservableList);
-        listeView.setExpanded(true);
+	@FXML
+	private void tout(ActionEvent event) {
+		orderby.setText("Tout");
+		listeView.getItems().clear();
+		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listAll();
+		List<ChauffeurCell> list = new ArrayList<>();
+		for (int i = 0; i < listChauffeursDB.size(); i++) {
+			list.add(new ChauffeurCell(listChauffeursDB.get(i)));
 
-        setTotal();
-    }
+		}
+
+		ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+		listeView.setItems(myObservableList);
+		listeView.setExpanded(true);
+
+		setTotal();
+	}
 
 }
