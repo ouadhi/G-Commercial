@@ -11,7 +11,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.swing.UIManager;
+
 import net.sf.jasperreports.engine.DefaultJasperReportsContext;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRPropertiesUtil;
@@ -29,44 +31,41 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class OperationEtatBleReport {
 
-    Collection<EtatBleBean> collBean = new ArrayList<EtatBleBean>();
-    int id = 1;
+	Collection<EtatBleBean> collBean = new ArrayList<EtatBleBean>();
+	int id = 1;
 
-    public JRDataSource getData() {
-        return new JRBeanCollectionDataSource(collBean, false);
+	public JRDataSource getData() {
+		return new JRBeanCollectionDataSource(collBean, false);
 
-    }
+	}
 
-    public void putReportInfo(String jour, String totalPoid, String totalNet, String totalEcart,
-            List<String> numBls, List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs,
-            List<String> matricules, List<String> ptcs, List<String> tares,
-            List<String> nets, List<String> ecarts) {
-        //patient info is the first to be written
+	public void printReport() {
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
+			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
+			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
+			// InputStream stream=
+			// this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
+			InputStream stream = getClass().getResourceAsStream("EtatBle.jasper");
+			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, getData());
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			JasperViewer.viewReport(jasperPrint, false);
+			// this.collBean.clear();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        EtatBleBean beanInfo = new EtatBleBean(jour, id, totalPoid, totalNet, totalEcart,
-                numBls, numTiquets, poidTiquets, chauffeurs,
-                matricules, ptcs, tares,
-                nets, ecarts);
-        collBean.add(beanInfo);
-        id++;
-    }
+	public void putReportInfo(String jour, String totalPoid, String totalNet, String totalEcart, List<String> numBls,
+			List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs, List<String> matricules,
+			List<String> ptcs, List<String> tares, List<String> nets, List<String> ecarts) {
+		// patient info is the first to be written
 
-    public void printReport() {
-        try {
-            Map<String, Object> params = new HashMap<String, Object>();
-            JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
-            JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
-            jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
-            //InputStream stream= this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-            InputStream stream = getClass().getResourceAsStream("EtatBle.jasper");
-            JasperReport report = (JasperReport) JRLoader.loadObject(stream);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(report,
-                    params, getData());
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            JasperViewer.viewReport(jasperPrint, false);
-            //this.collBean.clear();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+		EtatBleBean beanInfo = new EtatBleBean(jour, id, totalPoid, totalNet, totalEcart, numBls, numTiquets,
+				poidTiquets, chauffeurs, matricules, ptcs, tares, nets, ecarts);
+		collBean.add(beanInfo);
+		id++;
+	}
 }

@@ -12,182 +12,181 @@ import java.util.List;
  */
 public class EtatEstimatifClientBean {
 
-    String nomPrenom;
-    String activity;
-    String address;
-    String rc;
-    String fiscal;
-    String article;
-    String dateDebut;
-    String dateFin;
-    String totalMontant;
-    String totalTva;
-    String totalTtc;
-    List<String> dates;
-    List<String> nums;
-    List<String> produits;
-    List<String> montants;
-    List<String> tvas;
-    List<String> ttcs;
+	String nomPrenom;
+	String activity;
+	String address;
+	String rc;
+	String fiscal;
+	String article;
+	String dateDebut;
+	String dateFin;
+	String totalMontant;
+	String totalTva;
+	String totalTtc;
+	List<String> dates;
+	List<String> nums;
+	List<String> produits;
+	List<String> montants;
+	List<String> tvas;
+	List<String> ttcs;
 
-    public EtatEstimatifClientBean(String nomPrenom, String activity, String address,
-             String rc, String fiscal, String article, String dateDebut, String dateFin,
-             String totalMontant, String totalTva, String totalTtc, List<String> dates,
-             List<String> nums, List<String> produits,
-             List<String> montants, List<String> tvas, List<String> ttcs) {
-        this.nomPrenom = nomPrenom;
-        this.activity = activity;
-        this.address = address;
-        this.rc = rc;
-        this.fiscal = fiscal;
-        this.article = article;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.totalMontant = totalMontant;
-        this.totalTva = totalTva;
-        this.totalTtc = totalTtc;
-        this.dates = dates;
-        this.nums = nums;
-        this.produits = produits;
-        this.montants = montants;
-        this.tvas = tvas;
-        this.ttcs = ttcs;
-    }
+	public EtatEstimatifClientBean(String nomPrenom, String activity, String address, String rc, String fiscal,
+			String article, String dateDebut, String dateFin, String totalMontant, String totalTva, String totalTtc,
+			List<String> dates, List<String> nums, List<String> produits, List<String> montants, List<String> tvas,
+			List<String> ttcs) {
+		this.nomPrenom = nomPrenom;
+		this.activity = activity;
+		this.address = address;
+		this.rc = rc;
+		this.fiscal = fiscal;
+		this.article = article;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.totalMontant = totalMontant;
+		this.totalTva = totalTva;
+		this.totalTtc = totalTtc;
+		this.dates = dates;
+		this.nums = nums;
+		this.produits = produits;
+		this.montants = montants;
+		this.tvas = tvas;
+		this.ttcs = ttcs;
+	}
 
-    public String getNomPrenom() {
-        return nomPrenom;
-    }
+	public String getActivity() {
+		return activity;
+	}
 
-    public void setNomPrenom(String nomPrenom) {
-        this.nomPrenom = nomPrenom;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public String getActivity() {
-        return activity;
-    }
+	public String getArticle() {
+		return article;
+	}
 
-    public void setActivity(String activity) {
-        this.activity = activity;
-    }
+	public String getDateDebut() {
+		return dateDebut;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public String getDateFin() {
+		return dateFin;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public List<String> getDates() {
+		return dates;
+	}
 
-    public String getRc() {
-        return rc;
-    }
+	public String getFiscal() {
+		return fiscal;
+	}
 
-    public void setRc(String rc) {
-        this.rc = rc;
-    }
+	public List<String> getMontants() {
+		return montants;
+	}
 
-    public String getFiscal() {
-        return fiscal;
-    }
+	public String getNomPrenom() {
+		return nomPrenom;
+	}
 
-    public void setFiscal(String fiscal) {
-        this.fiscal = fiscal;
-    }
+	public List<String> getNums() {
+		return nums;
+	}
 
-    public String getArticle() {
-        return article;
-    }
+	public List<String> getProduits() {
+		return produits;
+	}
 
-    public void setArticle(String article) {
-        this.article = article;
-    }
+	public String getRc() {
+		return rc;
+	}
 
-    public String getDateDebut() {
-        return dateDebut;
-    }
+	public String getTotalMontant() {
+		return totalMontant;
+	}
 
-    public void setDateDebut(String dateDebut) {
-        this.dateDebut = dateDebut;
-    }
+	public String getTotalTtc() {
+		return totalTtc;
+	}
 
-    public String getDateFin() {
-        return dateFin;
-    }
+	public String getTotalTva() {
+		return totalTva;
+	}
 
-    public void setDateFin(String dateFin) {
-        this.dateFin = dateFin;
-    }
+	public List<String> getTtcs() {
+		return ttcs;
+	}
 
-    public String getTotalMontant() {
-        return totalMontant;
-    }
+	public List<String> getTvas() {
+		return tvas;
+	}
 
-    public void setTotalMontant(String totalMontant) {
-        this.totalMontant = totalMontant;
-    }
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
 
-    public String getTotalTva() {
-        return totalTva;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setTotalTva(String totalTva) {
-        this.totalTva = totalTva;
-    }
+	public void setArticle(String article) {
+		this.article = article;
+	}
 
-    public String getTotalTtc() {
-        return totalTtc;
-    }
+	public void setDateDebut(String dateDebut) {
+		this.dateDebut = dateDebut;
+	}
 
-    public void setTotalTtc(String totalTtc) {
-        this.totalTtc = totalTtc;
-    }
+	public void setDateFin(String dateFin) {
+		this.dateFin = dateFin;
+	}
 
-    public List<String> getDates() {
-        return dates;
-    }
+	public void setDates(List<String> dates) {
+		this.dates = dates;
+	}
 
-    public void setDates(List<String> dates) {
-        this.dates = dates;
-    }
+	public void setFiscal(String fiscal) {
+		this.fiscal = fiscal;
+	}
 
-    public List<String> getNums() {
-        return nums;
-    }
+	public void setMontants(List<String> montants) {
+		this.montants = montants;
+	}
 
-    public void setNums(List<String> nums) {
-        this.nums = nums;
-    }
+	public void setNomPrenom(String nomPrenom) {
+		this.nomPrenom = nomPrenom;
+	}
 
-    public List<String> getProduits() {
-        return produits;
-    }
+	public void setNums(List<String> nums) {
+		this.nums = nums;
+	}
 
-    public void setProduits(List<String> produits) {
-        this.produits = produits;
-    }
+	public void setProduits(List<String> produits) {
+		this.produits = produits;
+	}
 
-    public List<String> getMontants() {
-        return montants;
-    }
+	public void setRc(String rc) {
+		this.rc = rc;
+	}
 
-    public void setMontants(List<String> montants) {
-        this.montants = montants;
-    }
+	public void setTotalMontant(String totalMontant) {
+		this.totalMontant = totalMontant;
+	}
 
-    public List<String> getTvas() {
-        return tvas;
-    }
+	public void setTotalTtc(String totalTtc) {
+		this.totalTtc = totalTtc;
+	}
 
-    public void setTvas(List<String> tvas) {
-        this.tvas = tvas;
-    }
+	public void setTotalTva(String totalTva) {
+		this.totalTva = totalTva;
+	}
 
-    public List<String> getTtcs() {
-        return ttcs;
-    }
+	public void setTtcs(List<String> ttcs) {
+		this.ttcs = ttcs;
+	}
 
-    public void setTtcs(List<String> ttcs) {
-        this.ttcs = ttcs;
-    }
+	public void setTvas(List<String> tvas) {
+		this.tvas = tvas;
+	}
 
 }

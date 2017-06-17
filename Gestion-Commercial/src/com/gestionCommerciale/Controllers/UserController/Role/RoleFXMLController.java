@@ -1,16 +1,18 @@
 package com.gestionCommerciale.Controllers.UserController.Role;
 
-import com.gestionCommerciale.Controllers.UserController.Administrator.AdminFXMLController;
-import com.gestionCommerciale.Controllers.UserController.UIControle.Notification;
-import com.gestionCommerciale.Controllers.UserController.UIControle.ShowPane;
-import com.gestionCommerciale.Controllers.UserController.Users_List.Users_ListController;
-import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.gestionCommerciale.Controllers.UserController.Administrator.AdminFXMLController;
+import com.gestionCommerciale.Controllers.UserController.UIControle.Notification;
+import com.gestionCommerciale.Controllers.UserController.UIControle.ShowPane;
+import com.gestionCommerciale.Controllers.UserController.Users_List.Users_ListController;
+import com.jfoenix.controls.JFXButton;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -31,162 +33,157 @@ import javafx.scene.layout.AnchorPane;
 
 public class RoleFXMLController implements Initializable {
 
-    @FXML
-    private JFXButton Add_role_button;
+	public static class EditableRow {
 
-    @FXML
-    private TableView<EditableRow> table_roles;
-    
-    ObservableList<EditableRow> data ; 
+		private final SimpleStringProperty id;
+		private final SimpleStringProperty role;
+		private final SimpleStringProperty description;
+		private final SimpleObjectProperty<EditButton> editButton;
 
-    @FXML
-    void show_add_role_form(ActionEvent event) {
+		public EditableRow(String id, String role, String description) {
+			this.id = new SimpleStringProperty(id);
+			this.role = new SimpleStringProperty(role);
+			this.description = new SimpleStringProperty(description);
+			this.editButton = new SimpleObjectProperty<>(new EditButton());
 
-        try {
-            FXMLLoader loader = new FXMLLoader();
+		}
 
-            AnchorPane root = FXMLLoader.load(getClass().getResource("/Role/AddRoleFxml.fxml"));
-            AdminFXMLController.rootp.getChildren().setAll(root);
-            //administrateur.AdminFXMLController.rootp.getChildren().setAll(root);
-        } catch (IOException ex) {
-            Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+		public ObjectProperty<EditButton> editButtonProperty() {
+			return editButton;
+		}
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-         data = FXCollections.observableArrayList(
-                new EditableRow("1", "kada", "mohammed")
-        );
-        table_column();
-    }
+		// description
+		public String getDescription() {
+			return description.get();
+		}
 
-    private void table_column() {
+		public StringProperty getDescriptionPropery() {
+			return description;
+		}
 
-        
+		// action button
+		public EditButton getEditButton() {
+			return editButton.get();
+		}
 
-        // add clumn buttton
-        TableColumn editColumn = new TableColumn("Action");
-        editColumn.setCellValueFactory(new PropertyValueFactory<>("editButton"));
-        editColumn.setPrefWidth(213.6);
+		public String getId() {
+			return id.get();
+		}
 
-        // add picture 
-        TableColumn picturecolumn = new TableColumn("ID");
-        picturecolumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        picturecolumn.setPrefWidth(213.6);
-        // add fullname
-        TableColumn fullnameColumn = new TableColumn("Role");
-        fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
-        fullnameColumn.setPrefWidth(213.6);
-        // add  user name 
-        TableColumn usernameColumn = new TableColumn("Description");
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-        usernameColumn.setPrefWidth(427.2);
+		public StringProperty getIdPropery() {
+			return id;
+		}
 
-        table_roles.getColumns().addAll(picturecolumn, fullnameColumn, usernameColumn, editColumn);
-        table_roles.setItems(data);
+		// role
+		public String getRole() {
+			return role.get();
+		}
 
-    }
+		public StringProperty getRolePropery() {
+			return role;
+		}
 
-    public static class EditableRow {
+		public void setDescription(String role) {
+			this.role.set(role);
+		}
 
-        private final SimpleStringProperty id;
-        private final SimpleStringProperty role;
-        private final SimpleStringProperty description;
-        private final SimpleObjectProperty<EditButton> editButton;
+		public void setEditButton(EditButton editButton) {
+			this.editButton.set(editButton);
+		}
 
-        public EditableRow(String id, String role, String description) {
-            this.id = new SimpleStringProperty(id);
-            this.role = new SimpleStringProperty(role);
-            this.description = new SimpleStringProperty(description);
-            this.editButton = new SimpleObjectProperty<>(new EditButton());
+		public void setId(String id) {
+			this.id.set(id);
+		}
 
-        }
+		public void setrole(String role) {
+			this.role.set(role);
+		}
+	}
 
-        public String getId() {
-            return id.get();
-        }
+	public static class EditButton extends Button {
 
-        public void setId(String id) {
-            this.id.set(id);
-        }
+		public EditButton() {
 
-        public StringProperty getIdPropery() {
-            return id;
-        }
+			super("Supprimer");
+			getStyleClass().add("add_button");
+			setPrefWidth(128);
+			setAlignment(Pos.CENTER);
+			setOnAction((event) -> {
 
-        // role
-        public String getRole() {
-            return role.get();
-        }
+				try {
+					Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
 
-        public void setrole(String role) {
-            this.role.set(role);
-        }
+					if (result.get() == ButtonType.OK) {
 
-        public StringProperty getRolePropery() {
-            return role;
-        }
+						Notification.Deletenotification();
+						ShowPane show = new ShowPane();
+						show.showRole();
+					}
+				} catch (Exception e) {
+					System.out.println(e);
+				}
 
-        // description
-        public String getDescription() {
-            return description.get();
-        }
+			});
+		}
+	}
 
-        public void setDescription(String role) {
-            this.role.set(role);
-        }
+	@FXML
+	private JFXButton Add_role_button;
 
-        public StringProperty getDescriptionPropery() {
-            return description;
-        }
+	@FXML
+	private TableView<EditableRow> table_roles;
 
-        //  action button 
-        public EditButton getEditButton() {
-            return editButton.get();
-        }
+	ObservableList<EditableRow> data;
 
-        public void setEditButton(EditButton editButton) {
-            this.editButton.set(editButton);
-        }
+	public void addrows(ObservableList<EditableRow> data) {
+		table_roles.getItems().clear();
 
-        public ObjectProperty<EditButton> editButtonProperty() {
-            return editButton;
-        }
-    }
+		table_roles.setItems(data);
+	}
 
-    public static class EditButton extends Button {
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		data = FXCollections.observableArrayList(new EditableRow("1", "kada", "mohammed"));
+		table_column();
+	}
 
-        public EditButton() {
+	@FXML
+	void show_add_role_form(ActionEvent event) {
 
-            super("Supprimer");
-            getStyleClass().add("add_button");
-            setPrefWidth(128);
-            setAlignment(Pos.CENTER);
-            setOnAction((event) -> {
+		try {
+			FXMLLoader loader = new FXMLLoader();
 
-                try {
-                    Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
+			AnchorPane root = FXMLLoader.load(getClass().getResource("/Role/AddRoleFxml.fxml"));
+			AdminFXMLController.rootp.getChildren().setAll(root);
+			// administrateur.AdminFXMLController.rootp.getChildren().setAll(root);
+		} catch (IOException ex) {
+			Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-                    if (result.get() == ButtonType.OK) {
+	private void table_column() {
 
-                        Notification.Deletenotification();
-                        ShowPane show = new ShowPane() ; 
-                        show.showRole();
-                    }
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
+		// add clumn buttton
+		TableColumn editColumn = new TableColumn("Action");
+		editColumn.setCellValueFactory(new PropertyValueFactory<>("editButton"));
+		editColumn.setPrefWidth(213.6);
 
-            });
-        }
-    }
-    
-    
-    public void addrows (ObservableList<EditableRow> data) {
-        table_roles.getItems().clear();
-        
-        table_roles.setItems(data);
-    }
+		// add picture
+		TableColumn picturecolumn = new TableColumn("ID");
+		picturecolumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+		picturecolumn.setPrefWidth(213.6);
+		// add fullname
+		TableColumn fullnameColumn = new TableColumn("Role");
+		fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
+		fullnameColumn.setPrefWidth(213.6);
+		// add user name
+		TableColumn usernameColumn = new TableColumn("Description");
+		usernameColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+		usernameColumn.setPrefWidth(427.2);
+
+		table_roles.getColumns().addAll(picturecolumn, fullnameColumn, usernameColumn, editColumn);
+		table_roles.setItems(data);
+
+	}
 
 }

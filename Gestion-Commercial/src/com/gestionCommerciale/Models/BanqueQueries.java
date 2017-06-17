@@ -1,121 +1,119 @@
 
 package com.gestionCommerciale.Models;
 
-import com.gestionCommerciale.HibernateSchema.Banque;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Session;
 
+import com.gestionCommerciale.HibernateSchema.Banque;
 
 public class BanqueQueries {
 
-    public void SaveOrUpdate(Banque banque) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        try {
+	public void delete(Banque banque) {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		try {
 
-            session.beginTransaction();
-            session.saveOrUpdate(banque);
-            session.getTransaction().commit();
+			session.beginTransaction();
+			session.delete(banque);
+			session.getTransaction().commit();
 
-        } finally {
-            session.close();
-        }
-    }
+		} finally {
+			session.close();
+		}
+	}
 
-    public void delete(Banque banque) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        try {
+	public List<Banque> list() {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Banque> banqueList = null;
+		try {
+			banqueList = new ArrayList<>();
+			banqueList = session.createQuery("from Banque where deleted='" + false + "'").list();
 
-            session.beginTransaction();
-            session.delete(banque);
-            session.getTransaction().commit();
+		} finally {
+			session.close();
+		}
 
-        } finally {
-            session.close();
-        }
-    }
+		return banqueList;
+	}
 
-    public List<Banque> list() {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        List<Banque> banqueList = null;
-        try {
-            banqueList = new ArrayList<>();
-            banqueList = session.createQuery("from Banque where deleted='"+false+"'").list();
-           
-        } finally {
-            session.close();
-        }
+	public List<Banque> listAll() {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Banque> banqueList = null;
+		try {
+			banqueList = new ArrayList<>();
+			banqueList = session.createQuery("from Banque").list();
 
-        return banqueList;
-    }
-    public List<Banque> listArchived() {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        List<Banque> banqueList = null;
-        try {
-            banqueList = new ArrayList<>();
-            banqueList = session.createQuery("from Banque Ble where deleted= true").list();
-           
-        } finally {
-            session.close();
-        }
+		} finally {
+			session.close();
+		}
 
-        return banqueList;
-    }
-    public List<Banque> listAll() {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        List<Banque> banqueList = null;
-        try {
-            banqueList = new ArrayList<>();
-            banqueList = session.createQuery("from Banque").list();
-           
-        } finally {
-            session.close();
-        }
+		return banqueList;
+	}
 
-        return banqueList;
-    }
-    
-     public List<String> listNomBanque() {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        List<Banque> banqueList = null;
-        List<String> banqueNom= new ArrayList<>();
-        try {
-            banqueList = new ArrayList<>();
-            banqueList = session.createQuery("from Banque").list();
-            for(int i=0; i<banqueList.size();i++){
-                banqueNom.add(banqueList.get(i).getNom());
-            }
-        } finally {
-            session.close();
-        }
+	public List<Banque> listArchived() {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Banque> banqueList = null;
+		try {
+			banqueList = new ArrayList<>();
+			banqueList = session.createQuery("from Banque Ble where deleted= true").list();
 
-        return banqueNom;
-    }
-    
-    
-    public List<Banque> listRechreche( String key) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        List<Banque> banqueList = null;
-        try {
-            banqueList = new ArrayList<>();
-            banqueList = session.createQuery("from Banque where (nom like '"+key+"%' OR compte Like '"+key+"%' ) ").list();
-        } finally {
-            session.close();
-        }
+		} finally {
+			session.close();
+		}
 
-        return banqueList;
-    }
-    
-    
-    
+		return banqueList;
+	}
 
-    
+	public List<String> listNomBanque() {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Banque> banqueList = null;
+		List<String> banqueNom = new ArrayList<>();
+		try {
+			banqueList = new ArrayList<>();
+			banqueList = session.createQuery("from Banque").list();
+			for (int i = 0; i < banqueList.size(); i++) {
+				banqueNom.add(banqueList.get(i).getNom());
+			}
+		} finally {
+			session.close();
+		}
+
+		return banqueNom;
+	}
+
+	public List<Banque> listRechreche(String key) {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Banque> banqueList = null;
+		try {
+			banqueList = new ArrayList<>();
+			banqueList = session
+					.createQuery("from Banque where (nom like '" + key + "%' OR compte Like '" + key + "%' ) ").list();
+		} finally {
+			session.close();
+		}
+
+		return banqueList;
+	}
+
+	public void SaveOrUpdate(Banque banque) {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		try {
+
+			session.beginTransaction();
+			session.saveOrUpdate(banque);
+			session.getTransaction().commit();
+
+		} finally {
+			session.close();
+		}
+	}
 
 }

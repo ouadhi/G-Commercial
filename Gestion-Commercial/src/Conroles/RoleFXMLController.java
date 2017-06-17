@@ -1,11 +1,5 @@
 package Conroles;
 
-import UIControle.Notification;
-import UIControle.ShowPane;
-import com.gestionCommerciale.HibernateSchema.Role;
-import com.gestionCommerciale.HibernateSchema.User;
-import com.gestionCommerciale.Models.RoleQueries;
-import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -13,6 +7,13 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.gestionCommerciale.HibernateSchema.Role;
+import com.gestionCommerciale.Models.RoleQueries;
+import com.jfoenix.controls.JFXButton;
+
+import UIControle.Notification;
+import UIControle.ShowPane;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -26,186 +27,184 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class RoleFXMLController implements Initializable {
 
-    @FXML
-    private JFXButton Add_role_button;
+	public class EditableRow {
 
-    @FXML
-    private TableView<EditableRow> table_roles;
+		private final SimpleIntegerProperty id;
+		private final SimpleStringProperty role;
+		private final SimpleStringProperty description;
+		private final SimpleObjectProperty<EditButton> editButton;
 
-    ObservableList<EditableRow> data;
+		public EditableRow(int id, String role, String description) {
+			this.id = new SimpleIntegerProperty(id);
+			this.role = new SimpleStringProperty(role);
+			this.description = new SimpleStringProperty(description);
+			this.editButton = new SimpleObjectProperty<>(new EditButton());
 
-    RoleQueries roleQueries = new RoleQueries();
+		}
 
-    @FXML
-    void show_add_role_form(ActionEvent event) {
+		public ObjectProperty<EditButton> editButtonProperty() {
+			return editButton;
+		}
 
-        try {
-            FXMLLoader loader = new FXMLLoader();
+		// description
+		public String getDescription() {
+			return description.get();
+		}
 
-            AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/AddRoleFxml.fxml"));
+		public StringProperty getDescriptionPropery() {
+			return description;
+		}
 
-            Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
-        } catch (IOException ex) {
-            Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+		// action button
+		public EditButton getEditButton() {
+			return editButton.get();
+		}
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        /*data = FXCollections.observableArrayList(
-                new EditableRow(1, "kada", "mohammed")
-          );*/
+		public int getId() {
+			return id.get();
+		}
 
-        data = FXCollections.observableArrayList();
-        List<Role> listOfDbRoles = roleQueries.list();
-        for (int i = 0; i < listOfDbRoles.size(); i++) {
-            data.add(new EditableRow(listOfDbRoles.get(i).getIdRole(),
-                     listOfDbRoles.get(i).getRole(),
-                     listOfDbRoles.get(i).getDescription()));
-        }
+		public IntegerProperty getIdPropery() {
+			return id;
+		}
 
-        table_column();
-    }
+		// role
+		public String getRole() {
+			return role.get();
+		}
 
-    private void table_column() {
+		public StringProperty getRolePropery() {
+			return role;
+		}
 
-        // add clumn buttton
-        TableColumn editColumn = new TableColumn("Action");
-        editColumn.setCellValueFactory(new PropertyValueFactory<>("editButton"));
-        editColumn.setPrefWidth(213.6);
+		public void setDescription(String role) {
+			this.role.set(role);
+		}
 
-        // add picture 
-        TableColumn picturecolumn = new TableColumn("ID");
-        picturecolumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        picturecolumn.setPrefWidth(213.6);
-        // add fullname
-        TableColumn fullnameColumn = new TableColumn("Role");
-        fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
-        fullnameColumn.setPrefWidth(213.6);
-        // add  user name 
-        TableColumn usernameColumn = new TableColumn("Description");
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-        usernameColumn.setPrefWidth(427.2);
+		public void setEditButton(EditButton editButton) {
+			this.editButton.set(editButton);
+		}
 
-        table_roles.getColumns().addAll(picturecolumn, fullnameColumn, usernameColumn, editColumn);
-        table_roles.setItems(data);
+		public void setId(int id) {
+			this.id.set(id);
+		}
 
-    }
+		public void setrole(String role) {
+			this.role.set(role);
+		}
+	}
 
-    public class EditableRow {
+	public class EditButton extends Button {
 
-        private final SimpleIntegerProperty id;
-        private final SimpleStringProperty role;
-        private final SimpleStringProperty description;
-        private final SimpleObjectProperty<EditButton> editButton;
+		public EditButton() {
 
-        public EditableRow(int id, String role, String description) {
-            this.id = new SimpleIntegerProperty(id);
-            this.role = new SimpleStringProperty(role);
-            this.description = new SimpleStringProperty(description);
-            this.editButton = new SimpleObjectProperty<>(new EditButton());
+			super("Supprimer");
+			getStyleClass().add("delete-button");
+			setPrefWidth(128);
+			setAlignment(Pos.CENTER);
+			setOnAction((event) -> {
 
-        }
+				try {
+					Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
 
-        public int getId() {
-            return id.get();
-        }
+					if (result.get() == ButtonType.OK) {
+						// Role must be selected before deleting
+						// either let notify user when the row is not selected
+						// or auomatically select row
+						int id = table_roles.getSelectionModel().getSelectedItem().getId();
+						Role role = roleQueries.getRole(id);
+						roleQueries.delete(role);
+						Notification.Deletenotification();
+						ShowPane show = new ShowPane();
+						show.showRole();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
-        public void setId(int id) {
-            this.id.set(id);
-        }
+			});
+		}
+	}
 
-        public IntegerProperty getIdPropery() {
-            return id;
-        }
+	@FXML
+	private JFXButton Add_role_button;
 
-        // role
-        public String getRole() {
-            return role.get();
-        }
+	@FXML
+	private TableView<EditableRow> table_roles;
 
-        public void setrole(String role) {
-            this.role.set(role);
-        }
+	ObservableList<EditableRow> data;
 
-        public StringProperty getRolePropery() {
-            return role;
-        }
+	RoleQueries roleQueries = new RoleQueries();
 
-        // description
-        public String getDescription() {
-            return description.get();
-        }
+	public void addrows(ObservableList<EditableRow> data) {
+		table_roles.getItems().clear();
 
-        public void setDescription(String role) {
-            this.role.set(role);
-        }
+		table_roles.setItems(data);
+	}
 
-        public StringProperty getDescriptionPropery() {
-            return description;
-        }
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		/*
+		 * data = FXCollections.observableArrayList( new EditableRow(1, "kada",
+		 * "mohammed") );
+		 */
 
-        //  action button 
-        public EditButton getEditButton() {
-            return editButton.get();
-        }
+		data = FXCollections.observableArrayList();
+		List<Role> listOfDbRoles = roleQueries.list();
+		for (int i = 0; i < listOfDbRoles.size(); i++) {
+			data.add(new EditableRow(listOfDbRoles.get(i).getIdRole(), listOfDbRoles.get(i).getRole(),
+					listOfDbRoles.get(i).getDescription()));
+		}
 
-        public void setEditButton(EditButton editButton) {
-            this.editButton.set(editButton);
-        }
+		table_column();
+	}
 
-        public ObjectProperty<EditButton> editButtonProperty() {
-            return editButton;
-        }
-    }
+	@FXML
+	void show_add_role_form(ActionEvent event) {
 
-    public class EditButton extends Button {
+		try {
+			FXMLLoader loader = new FXMLLoader();
 
-        public EditButton() {
+			AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/AddRoleFxml.fxml"));
 
-            super("Supprimer");
-            getStyleClass().add("delete-button");
-            setPrefWidth(128);
-            setAlignment(Pos.CENTER);
-            setOnAction((event) -> {
+			Conroles.AdminFXMLController.rootp.getChildren().setAll(root);
+		} catch (IOException ex) {
+			Logger.getLogger(Users_ListController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-                try {
-                    Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
+	private void table_column() {
 
-                    if (result.get() == ButtonType.OK) {
-                        //Role must be selected before deleting 
-                        //either let notify user when the row is not selected or auomatically select row
-                        int id = table_roles.getSelectionModel().getSelectedItem().getId();
-                        Role role = roleQueries.getRole(id);
-                        roleQueries.delete(role);
-                        Notification.Deletenotification();
-                        ShowPane show = new ShowPane();
-                        show.showRole();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+		// add clumn buttton
+		TableColumn editColumn = new TableColumn("Action");
+		editColumn.setCellValueFactory(new PropertyValueFactory<>("editButton"));
+		editColumn.setPrefWidth(213.6);
 
-            });
-        }
-    }
+		// add picture
+		TableColumn picturecolumn = new TableColumn("ID");
+		picturecolumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+		picturecolumn.setPrefWidth(213.6);
+		// add fullname
+		TableColumn fullnameColumn = new TableColumn("Role");
+		fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
+		fullnameColumn.setPrefWidth(213.6);
+		// add user name
+		TableColumn usernameColumn = new TableColumn("Description");
+		usernameColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+		usernameColumn.setPrefWidth(427.2);
 
-    public void addrows(ObservableList<EditableRow> data) {
-        table_roles.getItems().clear();
+		table_roles.getColumns().addAll(picturecolumn, fullnameColumn, usernameColumn, editColumn);
+		table_roles.setItems(data);
 
-        table_roles.setItems(data);
-    }
+	}
 
 }

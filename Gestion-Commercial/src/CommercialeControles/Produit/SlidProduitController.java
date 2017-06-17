@@ -1,17 +1,17 @@
 package CommercialeControles.Produit;
 
-import CommercialeControles.Camion.ShowdDetailCamionController;
-import CommercialeControles.Dock.DockCell;
-import CommercialeControles.Dock.ModifierDockController;
-import UIControle.Transition;
-import UIControle.ViewUrl;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+
+import CommercialeControles.Camion.ShowdDetailCamionController;
+import UIControle.Transition;
+import UIControle.ViewUrl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,83 +20,82 @@ import javafx.scene.layout.AnchorPane;
 
 public class SlidProduitController implements Initializable {
 
-    @FXML
-    private JFXButton last;
-    @FXML
-    private JFXButton next;
-    @FXML
-    private AnchorPane panemain;
+	@FXML
+	private JFXButton last;
+	@FXML
+	private JFXButton next;
+	@FXML
+	private AnchorPane panemain;
 
-    private JFXListView<ProduitCell> liste;
-    private int i = 0;
+	private JFXListView<ProduitCell> liste;
+	private int i = 0;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+	private AnchorPane getProduit(int index) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.ModifierProduit));
+			loader.load();
 
-    }
+			ProduitCell produit = liste.getItems().get(index);
 
-    @FXML
-    private void lastslid(ActionEvent event) {
+			ModifierProduitController produitController = loader.getController();
+			produitController.setData(produit.getProduit());
 
-        if (i > 0) {
-            --i;
+			AnchorPane pane = loader.getRoot();
 
-            Transition transition = new Transition(panemain, getProduit(i), 2000, 0, -2000);
-            transition.show();
+			return pane;
+		} catch (IOException ex) {
+			Logger.getLogger(ShowdDetailCamionController.class.getName()).log(Level.SEVERE, null, ex);
+			return null;
+		}
+	}
 
-            if (i == 0) {
-                last.setDisable(true);
-            } else {
-                last.setDisable(false);
-                next.setDisable(false);
-            }
-        }
-    }
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
 
-    @FXML
-    private void nextslid(ActionEvent event) {
-        if (i < liste.getItems().size()) {
-            i++;
-            Transition transition = new Transition(panemain, getProduit(i), 2000, 0, -2000);
-            transition.show();
+	}
 
-            if (i == liste.getItems().size() - 1) {
-                next.setDisable(true);
-            } else {
-                next.setDisable(false);
-                last.setDisable(false);
-            }
-        }
+	@FXML
+	private void lastslid(ActionEvent event) {
 
-    }
+		if (i > 0) {
+			--i;
 
-    private AnchorPane getProduit(int index) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(ViewUrl.ModifierProduit));
-            loader.load();
+			Transition transition = new Transition(panemain, getProduit(i), 2000, 0, -2000);
+			transition.show();
 
-            ProduitCell produit = liste.getItems().get(index);
+			if (i == 0) {
+				last.setDisable(true);
+			} else {
+				last.setDisable(false);
+				next.setDisable(false);
+			}
+		}
+	}
 
-            ModifierProduitController produitController = loader.getController();
-            produitController.setData(produit.getProduit());
+	@FXML
+	private void nextslid(ActionEvent event) {
+		if (i < liste.getItems().size()) {
+			i++;
+			Transition transition = new Transition(panemain, getProduit(i), 2000, 0, -2000);
+			transition.show();
 
-            AnchorPane pane = loader.getRoot();
+			if (i == liste.getItems().size() - 1) {
+				next.setDisable(true);
+			} else {
+				next.setDisable(false);
+				last.setDisable(false);
+			}
+		}
 
-            return pane;
-        } catch (IOException ex) {
-            Logger.getLogger(ShowdDetailCamionController.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
+	}
 
-    public void setData(JFXListView<ProduitCell> liste, int index) {
+	public void setData(JFXListView<ProduitCell> liste, int index) {
 
-        this.liste = liste;
-        this.i = index;
-        panemain.getChildren().setAll(getProduit(index)) ; 
-        
+		this.liste = liste;
+		this.i = index;
+		panemain.getChildren().setAll(getProduit(index));
 
-    }
+	}
 
 }

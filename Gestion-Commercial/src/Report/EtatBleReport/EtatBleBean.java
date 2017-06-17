@@ -13,151 +13,150 @@ import java.util.List;
  */
 public class EtatBleBean {
 
-    String jour;
-    int num;
-    String totalPoid;
-    String totalNet;
-    String totalEcart;
-    public List<String> numBls;
-    public List<String> numTiquets;
-    public List<String> poidTiquets;
-    public List<String> chauffeurs;
-    public List<String> matricules;
-    public List<String> ptcs;
-    public List<String> tares;
-    public List<String> nets;
-    public List<String> ecarts;
+	String jour;
+	int num;
+	String totalPoid;
+	String totalNet;
+	String totalEcart;
+	public List<String> numBls;
+	public List<String> numTiquets;
+	public List<String> poidTiquets;
+	public List<String> chauffeurs;
+	public List<String> matricules;
+	public List<String> ptcs;
+	public List<String> tares;
+	public List<String> nets;
+	public List<String> ecarts;
 
-    public EtatBleBean(String jour, int num, String totalPoid, String totalNet, String totalEcart,
-            List<String> numBls, List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs,
-             List<String> matricules, List<String> ptcs, List<String> tares,
-             List<String> nets, List<String> ecarts) {
-        this.jour = jour;
-        this.num = num;
-        this.totalPoid = totalPoid;
-        this.totalNet = totalNet;
-        this.totalEcart = totalEcart;
-        this.numBls = numBls;
-        this.numTiquets = numTiquets;
-        this.poidTiquets = poidTiquets;
-        this.chauffeurs = chauffeurs;
-        this.matricules = matricules;
-        this.ptcs = ptcs;
-        this.tares = tares;
-        this.nets = nets;
-        this.ecarts = ecarts;
-    }
+	public EtatBleBean(String jour, int num, String totalPoid, String totalNet, String totalEcart, List<String> numBls,
+			List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs, List<String> matricules,
+			List<String> ptcs, List<String> tares, List<String> nets, List<String> ecarts) {
+		this.jour = jour;
+		this.num = num;
+		this.totalPoid = totalPoid;
+		this.totalNet = totalNet;
+		this.totalEcart = totalEcart;
+		this.numBls = numBls;
+		this.numTiquets = numTiquets;
+		this.poidTiquets = poidTiquets;
+		this.chauffeurs = chauffeurs;
+		this.matricules = matricules;
+		this.ptcs = ptcs;
+		this.tares = tares;
+		this.nets = nets;
+		this.ecarts = ecarts;
+	}
 
-    public String getJour() {
-        return jour;
-    }
+	public List<String> getChauffeurs() {
+		return chauffeurs;
+	}
 
-    public void setJour(String jour) {
-        this.jour = jour;
-    }
-    
-    public int getNum() {
-        return num;
-    }
+	public List<String> getEcarts() {
+		return ecarts;
+	}
 
-    public void setNum(int num) {
-        this.num = num;
-    }
+	public String getJour() {
+		return jour;
+	}
 
-    public String getTotalPoid() {
-        return totalPoid;
-    }
+	public List<String> getMatricules() {
+		return matricules;
+	}
 
-    public void setTotalPoid(String totalPoid) {
-        this.totalPoid = totalPoid;
-    }
+	public List<String> getNets() {
+		return nets;
+	}
 
-    public String getTotalNet() {
-        return totalNet;
-    }
+	public int getNum() {
+		return num;
+	}
 
-    public void setTotalNet(String totalNet) {
-        this.totalNet = totalNet;
-    }
+	public List<String> getNumBls() {
+		return numBls;
+	}
 
-    public String getTotalEcart() {
-        return totalEcart;
-    }
+	public List<String> getNumTiquets() {
+		return numTiquets;
+	}
 
-    public void setTotalEcart(String totalEcart) {
-        this.totalEcart = totalEcart;
-    }
+	public List<String> getPoidTiquets() {
+		return poidTiquets;
+	}
 
-    public List<String> getNumBls() {
-        return numBls;
-    }
+	public List<String> getPtcs() {
+		return ptcs;
+	}
 
-    public void setNumBls(List<String> numBls) {
-        this.numBls = numBls;
-    }
+	public List<String> getTares() {
+		return tares;
+	}
 
-    public List<String> getNumTiquets() {
-        return numTiquets;
-    }
+	public String getTotalEcart() {
+		return totalEcart;
+	}
 
-    public void setNumTiquets(List<String> numTiquets) {
-        this.numTiquets = numTiquets;
-    }
+	public String getTotalNet() {
+		return totalNet;
+	}
 
-    public List<String> getPoidTiquets() {
-        return poidTiquets;
-    }
+	public String getTotalPoid() {
+		return totalPoid;
+	}
 
-    public void setPoidTiquets(List<String> poidTiquets) {
-        this.poidTiquets = poidTiquets;
-    }
+	public void setChauffeurs(List<String> chauffeurs) {
+		this.chauffeurs = chauffeurs;
+	}
 
-    public List<String> getChauffeurs() {
-        return chauffeurs;
-    }
+	public void setEcarts(List<String> ecarts) {
+		this.ecarts = ecarts;
+	}
 
-    public void setChauffeurs(List<String> chauffeurs) {
-        this.chauffeurs = chauffeurs;
-    }
+	public void setJour(String jour) {
+		this.jour = jour;
+	}
 
-    public List<String> getMatricules() {
-        return matricules;
-    }
+	public void setMatricules(List<String> matricules) {
+		this.matricules = matricules;
+	}
 
-    public void setMatricules(List<String> matricules) {
-        this.matricules = matricules;
-    }
+	public void setNets(List<String> nets) {
+		this.nets = nets;
+	}
 
-    public List<String> getPtcs() {
-        return ptcs;
-    }
+	public void setNum(int num) {
+		this.num = num;
+	}
 
-    public void setPtcs(List<String> ptcs) {
-        this.ptcs = ptcs;
-    }
+	public void setNumBls(List<String> numBls) {
+		this.numBls = numBls;
+	}
 
-    public List<String> getTares() {
-        return tares;
-    }
+	public void setNumTiquets(List<String> numTiquets) {
+		this.numTiquets = numTiquets;
+	}
 
-    public void setTares(List<String> tares) {
-        this.tares = tares;
-    }
+	public void setPoidTiquets(List<String> poidTiquets) {
+		this.poidTiquets = poidTiquets;
+	}
 
-    public List<String> getNets() {
-        return nets;
-    }
+	public void setPtcs(List<String> ptcs) {
+		this.ptcs = ptcs;
+	}
 
-    public void setNets(List<String> nets) {
-        this.nets = nets;
-    }
+	public void setTares(List<String> tares) {
+		this.tares = tares;
+	}
 
-    public List<String> getEcarts() {
-        return ecarts;
-    }
+	public void setTotalEcart(String totalEcart) {
+		this.totalEcart = totalEcart;
+	}
 
-    public void setEcarts(List<String> ecarts) {
-        this.ecarts = ecarts;
-    }
+	public void setTotalNet(String totalNet) {
+		this.totalNet = totalNet;
+	}
+
+	public void setTotalPoid(String totalPoid) {
+		this.totalPoid = totalPoid;
+	}
 
 }

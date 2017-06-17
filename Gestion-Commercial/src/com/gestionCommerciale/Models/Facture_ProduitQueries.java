@@ -5,15 +5,14 @@
  */
 package com.gestionCommerciale.Models;
 
-import com.gestionCommerciale.HibernateSchema.Client;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Produit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.hibernate.Session;
 
 /**
  *
@@ -21,58 +20,61 @@ import org.hibernate.Session;
  */
 public class Facture_ProduitQueries {
 
-    //inserer/Update/Delete
-    // when you create the object of the relation you set the corresponding objects
-    //of Facture and Produit in the assiciatibe table
-    public void insertOrUpdate(Facture_Produit facture_Produit, Facture facture, Produit produit) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        try {
+	public static List<Facture_Produit> list(Facture f) {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Facture_Produit> list = new ArrayList<>();
+		try {
+			list = session.createQuery("from Facture_Produit where id_fact='" + f.getIdFacture() + "'").list();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 
-            session.beginTransaction();
-            //set  the corresponding objects before saving
-            facture_Produit.setProduit(produit);
-            facture_Produit.setFacture(facture);
-            session.saveOrUpdate(facture_Produit);
-            session.getTransaction().commit();
+	public void delete(Facture_Produit facture_Produit) {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		try {
 
-        } finally {
-            session.close();
-        }
-    }
+			session.beginTransaction();
+			session.delete(facture_Produit);
+			session.getTransaction().commit();
 
-    public void delete(Facture_Produit facture_Produit) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        try {
+		} finally {
+			session.close();
+		}
+	}
+	// get info du Facture( les produits dans la factures + les qtes des
+	// produits)
+	// public Map<Facture_Produit,Produit> getFactureInfo2(Facture facture){
+	// Map<Facture_Produit,Produit> produitEtQte= new HashMap<>();
+	// for (int i = 0; i < facture.getQtes().size(); i++) {
+	// produitEtQte.put(facture.getQtes().get(i),
+	// facture.getQtes().get(i).getProduit());
+	// }
+	// return produitEtQte;
+	// }
 
-            session.beginTransaction();
-            session.delete(facture_Produit);
-            session.getTransaction().commit();
+	// inserer/Update/Delete
+	// when you create the object of the relation you set the corresponding
+	// objects
+	// of Facture and Produit in the assiciatibe table
+	public void insertOrUpdate(Facture_Produit facture_Produit, Facture facture, Produit produit) {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		try {
 
-        } finally {
-            session.close();
-        }
-    }
-    //get info du Facture( les produits dans la factures + les qtes des produits)
-//     public Map<Facture_Produit,Produit> getFactureInfo2(Facture facture){
-//         Map<Facture_Produit,Produit> produitEtQte= new HashMap<>();
-//         for (int i = 0; i < facture.getQtes().size(); i++) {
-//             produitEtQte.put(facture.getQtes().get(i), facture.getQtes().get(i).getProduit());
-//         }
-//          return produitEtQte;
-//     }
+			session.beginTransaction();
+			// set the corresponding objects before saving
+			facture_Produit.setProduit(produit);
+			facture_Produit.setFacture(facture);
+			session.saveOrUpdate(facture_Produit);
+			session.getTransaction().commit();
 
-    public static List<Facture_Produit> list(Facture f) {
-        SessionsGenerator FactoryObject = new SessionsGenerator();
-        Session session = FactoryObject.getFactory().openSession();
-        List<Facture_Produit> list = new ArrayList<>();
-        try {
-            list = session.createQuery("from Facture_Produit where id_fact='" + f.getIdFacture() + "'").list();
-        } finally {
-            session.close();
-        }
-        return list;
-    }
+		} finally {
+			session.close();
+		}
+	}
 
 }
