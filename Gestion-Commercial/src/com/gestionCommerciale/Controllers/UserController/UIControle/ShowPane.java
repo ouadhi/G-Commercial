@@ -15,11 +15,6 @@ public class ShowPane {
 
 	public void showRole() {
 		try {
-<<<<<<< HEAD
-			FXMLLoader loader = new FXMLLoader();
-
-=======
->>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 			AnchorPane root = FXMLLoader.load(getClass().getResource("/Role/RoleFXML.fxml"));
 
 			AdminFXMLController.rootp.getChildren().setAll(root);
@@ -30,11 +25,6 @@ public class ShowPane {
 
 	public void showUserList() {
 		try {
-<<<<<<< HEAD
-			FXMLLoader loader = new FXMLLoader();
-
-=======
->>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 			AnchorPane root = FXMLLoader.load(getClass().getResource("/Users_List/Users_List.fxml"));
 
 			AdminFXMLController.rootp.getChildren().setAll(root);

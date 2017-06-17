@@ -61,11 +61,8 @@ public class Facture {
 	public Facture() {
 	}
 
-<<<<<<< HEAD
-	public Facture(Date date, double montant, double tva) {
-=======
+
 	public Facture(Date date, double montant, double tva, double timbre) {
->>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		this.date = date;
 		this.montant = montant;
 		// this.tva = tva;

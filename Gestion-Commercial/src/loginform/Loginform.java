@@ -5,11 +5,6 @@ import java.util.List;
 
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.Models.FactureQueries;
-<<<<<<< HEAD
-=======
-import com.gestionCommerciale.Models.SessionsGenerator;
->>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
-
 import Report.FactureReport.ToutFacture;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
@@ -32,10 +27,6 @@ public class Loginform extends Application {
 		new Thread() {
 			@Override
 			public void run() {
-<<<<<<< HEAD
-=======
-				SessionsGenerator FactoryObject = new SessionsGenerator();
->>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 				List<Facture> factures = FactureQueries.list();
 
 				List<JasperPrint> jasperPrints = new ArrayList<JasperPrint>();
