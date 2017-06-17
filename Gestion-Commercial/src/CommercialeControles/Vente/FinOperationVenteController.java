@@ -117,7 +117,11 @@ public class FinOperationVenteController implements Initializable {
 		double montantVal = Double.parseDouble(montant_static.getText());
 		double montantFinalVal = Double.parseDouble(montant_static.getText());
 		double versmentVal = Double.parseDouble(versement_static.getText());
+<<<<<<< HEAD
 		Facture f = new Facture(date, montantVal, AnneeQueries.getSelected().getTva());
+=======
+		Facture f = new Facture(date, montantVal, AnneeQueries.getSelected().getTva(), 0);
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		f.setMontantFinal(montantFinalVal);
 		List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
 		for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {

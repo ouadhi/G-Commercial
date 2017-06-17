@@ -16,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -36,6 +35,7 @@ public class NotificationController implements Initializable {
 			this.getChildren().setAll(supp_btn, edit_bttn);
 			this.setAlignment(Pos.CENTER);
 			this.setPadding(new Insets(5, 5, 5, 5));
+<<<<<<< HEAD
 
 		}
 
@@ -201,6 +201,158 @@ public class NotificationController implements Initializable {
 
 	private void table_column() {
 
+=======
+
+		}
+
+	}
+
+	public static class EditButton extends Button {
+
+		public EditButton() {
+
+			super("");
+			Image img = new Image(getClass().getResourceAsStream("ok.png"));
+			ImageView icon = new ImageView(img);
+			icon.prefHeight(20);
+			icon.prefWidth(20);
+			this.setGraphic(new ImageView(img));
+			getStyleClass().add("ok_button");
+			this.setPrefSize(20, 20);
+			setAlignment(Pos.CENTER);
+			setOnAction((event) -> {
+
+			});
+		}
+	}
+
+	public static class Profile extends ImageView {
+
+		public Profile(String name) {
+			Image img = new Image("icons/man.png");
+			setImage(img);
+		}
+
+	}
+
+	public static class SuppButton extends Button {
+
+		public SuppButton() {
+
+			super("");
+			Image img = new Image(getClass().getResourceAsStream("delete.png"));
+			ImageView icon = new ImageView(img);
+			icon.prefHeight(20);
+			icon.prefWidth(20);
+			this.setGraphic(icon);
+			getStyleClass().add("supp_button");
+			this.setPrefSize(20, 20);
+
+			setAlignment(Pos.CENTER);
+
+			setOnAction((event) -> {
+
+				Notification.Deletenotification();
+			});
+		}
+	}
+
+	// spicifier les columns
+	public static class table_notification {
+
+		private final SimpleObjectProperty<Profile> utilisateur;
+		private final SimpleStringProperty date;
+		private final SimpleStringProperty sujet;
+		private final SimpleStringProperty message;
+		private final SimpleObjectProperty<Box_button> action;
+
+		// remplacer le paramaitre
+		public table_notification(String utilisateur, String date, String sujet, String message) {
+			this.utilisateur = new SimpleObjectProperty(new Profile(utilisateur));
+			this.date = new SimpleStringProperty(date);
+			this.sujet = new SimpleStringProperty(sujet);
+			this.message = new SimpleStringProperty(message);
+			this.action = new SimpleObjectProperty(new Box_button());
+		}
+
+		public SimpleObjectProperty<Box_button> editActionProperty() {
+			return action;
+		}
+
+		// Edit buttun
+		public Box_button getAction() {
+			return action.get();
+		}
+
+		public String getDate() {
+			return date.get();
+		}
+
+		public StringProperty getDatePropery() {
+			return date;
+		}
+
+		public String getMessage() {
+			return message.get();
+		}
+
+		public StringProperty getMessagePropery() {
+			return message;
+		}
+
+		public ObjectProperty<Profile> getPicturePropery() {
+			return utilisateur;
+		}
+
+		public String getSujet() {
+			return sujet.get();
+		}
+
+		public StringProperty getSujetPropery() {
+			return sujet;
+		}
+
+		// picture geter and setter
+		public Profile getUtilisateur() {
+			return utilisateur.get();
+		}
+
+		public void setAction(Box_button editButton) {
+			this.action.set(editButton);
+		}
+
+		public void setDate(String full) {
+			this.date.set(full);
+		}
+
+		public void setMessage(String msg) {
+			this.message.set(msg);
+		}
+
+		public void setSujet(String suj) {
+			this.sujet.set(suj);
+		}
+
+		public void setUtilisateur(Profile pic) {
+			this.utilisateur.set(pic);
+		}
+	}
+
+	@FXML
+	private TableView<table_notification> table_notification;
+
+	@FXML
+	private TextField search_inpuut;
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		table_column();
+
+	}
+
+	private void table_column() {
+
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		// add clumn buttton
 		TableColumn editColumn = new TableColumn("Action");
 		editColumn.setCellValueFactory(new PropertyValueFactory<>("action"));

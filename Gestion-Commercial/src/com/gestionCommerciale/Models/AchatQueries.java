@@ -14,7 +14,10 @@ import com.gestionCommerciale.HibernateSchema.Achat;
 public class AchatQueries {
 
 	public static boolean archive(Achat achat) {
+<<<<<<< HEAD
 		SessionsGenerator FactoryObject = new SessionsGenerator();
+=======
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		Session session = SessionsGenerator.getFactory().openSession();
 		try {
 			achat.setDeleted(true);
@@ -30,7 +33,10 @@ public class AchatQueries {
 	}
 
 	public static boolean delete(Achat achat) {
+<<<<<<< HEAD
 		SessionsGenerator FactoryObject = new SessionsGenerator();
+=======
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		Session session = SessionsGenerator.getFactory().openSession();
 		try {
 			session.beginTransaction();
@@ -46,7 +52,10 @@ public class AchatQueries {
 
 	public static Achat getAchatByCode(String code) {
 
+<<<<<<< HEAD
 		SessionsGenerator FactoryObject = new SessionsGenerator();
+=======
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		Session session = SessionsGenerator.getFactory().openSession();
 
 		Achat d;
@@ -61,7 +70,10 @@ public class AchatQueries {
 	}
 
 	public static Achat getAchatById(int id) {
+<<<<<<< HEAD
 		SessionsGenerator FactoryObject = new SessionsGenerator();
+=======
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		Session session = SessionsGenerator.getFactory().openSession();
 		Achat d;
 		try {
@@ -73,15 +85,24 @@ public class AchatQueries {
 	}
 
 	public static List<Achat> list() {
+<<<<<<< HEAD
 		SessionsGenerator FactoryObject = new SessionsGenerator();
+=======
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		Session session = SessionsGenerator.getFactory().openSession();
 		List<Achat> list = new ArrayList<>();
 		try {
 			// list = session.createQuery("from Achat where deleted='" + false +
 			// "' AND id_annee='" + AnneeQueries.getSelected().getIdAnnee() +
 			// "'").list();
+<<<<<<< HEAD
 			list = session.createQuery("from Achat where deleted='" + false + "' AND id_annee='"
 					+ AnneeQueries.getSelected().getIdAnnee() + "' ORDER BY id_achat DESC").list();
+=======
+			List list2 = session.createQuery("from Achat where deleted='" + false + "' AND id_annee='"
+					+ AnneeQueries.getSelected().getIdAnnee() + "' ORDER BY id_achat DESC").list();
+			list = list2;
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 
 		} finally {
 			session.close();
@@ -90,7 +111,10 @@ public class AchatQueries {
 	}
 
 	public static List<Achat> listAll() {
+<<<<<<< HEAD
 		SessionsGenerator FactoryObject = new SessionsGenerator();
+=======
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		Session session = SessionsGenerator.getFactory().openSession();
 		List<Achat> list = new ArrayList<>();
 		try {
@@ -104,7 +128,10 @@ public class AchatQueries {
 	}
 
 	public static List<Achat> listArchived() {
+<<<<<<< HEAD
 		SessionsGenerator FactoryObject = new SessionsGenerator();
+=======
+>>>>>>> 48e5978c8ca1edc489606e1fad7288796221534e
 		Session session = SessionsGenerator.getFactory().openSession();
 		List<Achat> list = new ArrayList<>();
 		try {
