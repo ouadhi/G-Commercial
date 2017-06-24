@@ -333,91 +333,82 @@ public class GenerateEtatExpeditionReport {
         return total;
     }
 
-	
-	
-	
-	
+    public List<List<String>> getExpedition() {
+        List<List<String>> expeditions = new ArrayList<>();
+        for (Facture facture : map.keySet()) {
+            List<String> expedition = new ArrayList<>();
+            List<Facture_Produit> getQtes = Facture_ProduitQueries.list(facture);
+            for (int i = 0; i < getQtes.size(); i++) {
+                expedition.add(facture.getClient().getName());
+                expedition.add(String.valueOf(facture.getIdFacture()));
+                expedition.add(getQtes.get(i).getProduit().getNom().toString());
+                if (getQtes.get(i).getProduit().getNom().equals("FARINE 50")) {
+                    expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
+                    expedition.add("0");
+                } else {
+                    expedition.add("0");
+                    expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
+                }
+                expedition.add(String.valueOf(getQtes.get(i).getProduit().getPrix()));
+                expedition.add(String.valueOf(facture.getMontant()));
+                // check if empty
+                if (facture.getClient().getPayments().isEmpty()) {
+                    expedition.add(String.valueOf(0));
+                } else {
+                    expedition.add(String.valueOf(0));
+                    // iterate over payement checking date
+                    // double totalVersement = 0;
+                    // for (int k = 0; k <
+                    // facture.getClient().getPayments().size(); k++) {
+                    // if
+                    // (facture.getDate().equals(facture.getClient().getPayments().get(k).getDate()))
+                    // {
+                    // totalVersement = totalVersement +
+                    // facture.getClient().getPayments().get(k).getMontant();
+                    // }
+                    // }
+                    // expedition.add(String.valueOf(totalVersement));
 
-	public List<List<String>> getExpedition() {
-		List<List<String>> expeditions = new ArrayList<>();
-		for (Facture facture : map.keySet()) {
-			List<String> expedition = new ArrayList<>();
-			List<Facture_Produit> getQtes = Facture_ProduitQueries.list(facture);
-			for (int i = 0; i < getQtes.size(); i++) {
-				expedition.add(facture.getClient().getName());
-				expedition.add(String.valueOf(facture.getIdFacture()));
-				expedition.add(getQtes.get(i).getProduit().getNom().toString());
-				if (getQtes.get(i).getProduit().getNom().equals("FARINE 50")) {
-					expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
-					expedition.add("0");
-				} else {
-					expedition.add("0");
-					expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
-				}
-				expedition.add(String.valueOf(getQtes.get(i).getProduit().getPrix()));
-				expedition.add(String.valueOf(facture.getMontant()));
-				// check if empty
-				if (facture.getClient().getPayments().isEmpty()) {
-					expedition.add(String.valueOf(0));
-				} else {
-					expedition.add(String.valueOf(0));
-					// iterate over payement checking date
-					// double totalVersement = 0;
-					// for (int k = 0; k <
-					// facture.getClient().getPayments().size(); k++) {
-					// if
-					// (facture.getDate().equals(facture.getClient().getPayments().get(k).getDate()))
-					// {
-					// totalVersement = totalVersement +
-					// facture.getClient().getPayments().get(k).getMontant();
-					// }
-					// }
-					// expedition.add(String.valueOf(totalVersement));
+                }
+                observations.add("");
 
-				}
-				observations.add("");
+            }
 
-			}
+            // System.out.println("list expidition ------------------" +
+            // expedition);
+            expeditions.add(expedition);
+        }
+        // versement par un clien
+        List<Payment> listPay = PaymentQueries.list();
+        double total = 0;
+        for (int i = 0; i < listPay.size(); i++) {
+            for (int j = 0; j < dates.size(); j++) {
+                if (dates.get(j).equals(listPay.get(i).getDate())) {
+                    boolean found = false;
+                    for (Facture facture : map.keySet()) {
+                        if (facture.getClient().equals(listPay.get(i).getClient())) {
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        List<String> expedition = new ArrayList<>();
+                        expedition.add(
+                                listPay.get(i).getClient().getName() + " " + listPay.get(i).getClient().getPrenom());
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add("");
+                        expedition.add(String.valueOf(listPay.get(i).getMontant()));
+                        observations.add("");
+                        expeditions.add(expedition);
 
-			// System.out.println("list expidition ------------------" +
-			// expedition);
-			expeditions.add(expedition);
-		}
-		// versement par un clien
-		List<Payment> listPay = PaymentQueries.list();
-		double total = 0;
-		for (int i = 0; i < listPay.size(); i++) {
-			for (int j = 0; j < dates.size(); j++) {
-				if (dates.get(j).equals(listPay.get(i).getDate())) {
-					boolean found = false;
-					for (Facture facture : map.keySet()) {
-						if (facture.getClient().equals(listPay.get(i).getClient())) {
-							found = true;
-						}
-					}
-					if (!found) {
-						List<String> expedition = new ArrayList<>();
-						expedition.add(
-								listPay.get(i).getClient().getName() + " " + listPay.get(i).getClient().getPrenom());
-						expedition.add("");
-						expedition.add("");
-						expedition.add("");
-						expedition.add("");
-						expedition.add("");
-						expedition.add("");
-						expedition.add(String.valueOf(listPay.get(i).getMontant()));
-						observations.add("");
-						expeditions.add(expedition);
-
-					}
-				}
-			}
-		}
-		return expeditions;
-	}
-
-	
-
-	
+                    }
+                }
+            }
+        }
+        return expeditions;
+    }
 
 }
