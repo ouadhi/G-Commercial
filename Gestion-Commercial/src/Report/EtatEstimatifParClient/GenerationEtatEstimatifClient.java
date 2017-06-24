@@ -27,111 +27,112 @@ import Report.EtatEstimatifGlobal.OperationEtatEstimatifGlobal;
  */
 public class GenerationEtatEstimatifClient {
 
-	public static List<Date> getDaysBetweenDates(Date startdate, Date enddate) {
-		List<Date> dates = new ArrayList<Date>();
-		Calendar calendar = new GregorianCalendar();
-		calendar.setTime(startdate);
+    public static List<Date> getDaysBetweenDates(Date startdate, Date enddate) {
+        List<Date> dates = new ArrayList<Date>();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(startdate);
 
-		while (calendar.getTime().before(enddate)) {
-			Date result = calendar.getTime();
-			dates.add(result);
-			calendar.add(Calendar.DATE, 1);
-		}
-		return dates;
-	}
-	public static Date increment_decrementDays(boolean increment, Date date, int days) {
-		Date newdDate = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		if (increment) {
-			cal.add(Calendar.DATE, days); // minus number would decrement the
-											// days
-			newdDate = cal.getTime();
-		} else {
-			cal.add(Calendar.DATE, -days);
-			newdDate = cal.getTime();
-		}
+        while (calendar.getTime().before(enddate)) {
+            Date result = calendar.getTime();
+            dates.add(result);
+            calendar.add(Calendar.DATE, 1);
+        }
+        return dates;
+    }
 
-		return newdDate;
-	}
-	public static double round(double value, int places) {
-		if (places < 0) {
-			throw new IllegalArgumentException();
-		}
+    public static Date increment_decrementDays(boolean increment, Date date, int days) {
+        Date newdDate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        if (increment) {
+            cal.add(Calendar.DATE, days); // minus number would decrement the
+            // days
+            newdDate = cal.getTime();
+        } else {
+            cal.add(Calendar.DATE, -days);
+            newdDate = cal.getTime();
+        }
 
-		BigDecimal bd = new BigDecimal(value);
-		bd = bd.setScale(places, RoundingMode.HALF_UP);
-		return bd.doubleValue();
+        return newdDate;
+    }
 
-	}
-	List<String> dates = new ArrayList<>();
-	List<String> nums = new ArrayList<>();
-	List<String> produits = new ArrayList<>();
-	List<String> montants = new ArrayList<>();
-	List<String> tvas = new ArrayList<>();
-	List<String> ttcs = new ArrayList<>();
-	double ttcTotal = 0;
+    public static double round(double value, int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
 
-	double montantTotal = 0;
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
 
-	double tvaTotal = 0;
+    }
+    List<String> dates = new ArrayList<>();
+    List<String> nums = new ArrayList<>();
+    List<String> produits = new ArrayList<>();
+    List<String> montants = new ArrayList<>();
+    List<String> tvas = new ArrayList<>();
+    List<String> ttcs = new ArrayList<>();
+    double ttcTotal = 0;
 
-	Client client = new Client();
+    double montantTotal = 0;
 
-	public void generateReport(Date dateDebut, Date dateFin, String clientNomPrenom) {
-		getFactureParClient(dateDebut, dateFin, clientNomPrenom);
-		String start = new SimpleDateFormat("dd-MM-yyyy").format(dateDebut);
-		String end = new SimpleDateFormat("dd-MM-yyyy").format(dateFin);
-		OperationEtatEstimatifClient operationEtatEstimatifClient = new OperationEtatEstimatifClient();
+    double tvaTotal = 0;
 
-		operationEtatEstimatifClient.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
-				client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-				String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal), dates, this.nums,
-				this.produits, this.montants, this.tvas, this.ttcs);
-		operationEtatEstimatifClient.printReport();
-	}
+    Client client = new Client();
 
-	public void generateReportGeneral(Date dateDebut, Date dateFin, String clientNomPrenom) {
-		// add true false
-		getFactureParClient(dateDebut, dateFin, clientNomPrenom);
-		String start = new SimpleDateFormat("dd-MM-yyyy").format(dateDebut);
-		String end = new SimpleDateFormat("dd-MM-yyyy").format(dateFin);
-		OperationEtatEstimatifGlobal operationEtatEstimatifGlobal = new OperationEtatEstimatifGlobal();
-		operationEtatEstimatifGlobal.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
-				client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-				String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal));
-		operationEtatEstimatifGlobal.printReport();
-	}
+    public void generateReport(Date dateDebut, Date dateFin, String clientNomPrenom) {
+        getFactureParClient(dateDebut, dateFin, clientNomPrenom);
+        String start = new SimpleDateFormat("dd-MM-yyyy").format(dateDebut);
+        String end = new SimpleDateFormat("dd-MM-yyyy").format(dateFin);
+        OperationEtatEstimatifClient operationEtatEstimatifClient = new OperationEtatEstimatifClient();
 
-	public void getFactureParClient(Date debut, Date fin, String nomprenom) {
-		List<Date> intervalDate = getDaysBetweenDates(debut, increment_decrementDays(true, fin, 1));
-		client = ClientQueries.getClientByNom(nomprenom);
-		System.out.println("client name-----------" + client.getName());
-		List<Facture> factures = client.getFactures();
-		for (int i = 0; i < intervalDate.size(); i++) {
-			for (int j = 0; j < factures.size(); j++) {
-				if (intervalDate.get(i).equals(factures.get(j).getDate())) {
-					// edited
-					List<Facture_Produit> fpList = Facture_ProduitQueries.list(factures.get(j));
+        operationEtatEstimatifClient.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
+                client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
+                String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal), dates, this.nums,
+                this.produits, this.montants, this.tvas, this.ttcs);
+        operationEtatEstimatifClient.printReport();
+    }
 
-					for (int k = 0; k < fpList.size(); k++) {
-						String date = new SimpleDateFormat("dd-MM-yyyy").format(intervalDate.get(i));
-						dates.add(date);
-						nums.add(String.valueOf(factures.get(j).getIdFacture()));
-						produits.add(fpList.get(k).getProduit().getNom());
-						montants.add(String.valueOf(factures.get(j).getMontant()));
-						double tva = factures.get(j).getTva() * factures.get(j).getMontant();
-						tvas.add(String.valueOf(tva));
-						ttcs.add(String.valueOf(factures.get(j).getMontantFinal()));
-						ttcTotal = ttcTotal + factures.get(j).getMontantFinal();
-						montantTotal = montantTotal + factures.get(j).getMontant();
-						tvaTotal = tvaTotal + tva;
-					}
-				}
+    public void generateReportGeneral(Date dateDebut, Date dateFin, String clientNomPrenom) {
+        // add true false
+        getFactureParClient(dateDebut, dateFin, clientNomPrenom);
+        String start = new SimpleDateFormat("dd-MM-yyyy").format(dateDebut);
+        String end = new SimpleDateFormat("dd-MM-yyyy").format(dateFin);
+        OperationEtatEstimatifGlobal operationEtatEstimatifGlobal = new OperationEtatEstimatifGlobal();
+        operationEtatEstimatifGlobal.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
+                client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
+                String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal));
+        operationEtatEstimatifGlobal.printReport();
+    }
 
-			}
-		}
+    public void getFactureParClient(Date debut, Date fin, String nomprenom) {
+        List<Date> intervalDate = getDaysBetweenDates(debut, increment_decrementDays(true, fin, 1));
+        client = ClientQueries.getClientByNom(nomprenom);
+        List<Facture> factures = client.getFactures();
+        for (int i = 0; i < intervalDate.size(); i++) {
+            for (int j = 0; j < factures.size(); j++) {
+                if (intervalDate.get(i).equals(factures.get(j).getDate())) {
+                    // edited
+                    List<Facture_Produit> fpList = Facture_ProduitQueries.list(factures.get(j));
 
-	}
+                    for (int k = 0; k < fpList.size(); k++) {
+                        String date = new SimpleDateFormat("dd-MM-yyyy").format(intervalDate.get(i));
+                        dates.add(date);
+                        nums.add(String.valueOf(factures.get(j).getIdFacture()));
+                        produits.add(fpList.get(k).getProduit().getNom());
+                        montants.add(String.valueOf(factures.get(j).getMontant()));
+                        double tva = factures.get(j).getTva() * factures.get(j).getMontant();
+                        tvas.add(String.valueOf(tva));
+                        ttcs.add(String.valueOf(factures.get(j).getMontantFinal()));
+                        ttcTotal = ttcTotal + factures.get(j).getMontantFinal();
+                        montantTotal = montantTotal + factures.get(j).getMontant();
+                        tvaTotal = tvaTotal + tva;
+                    }
+                }
+
+            }
+        }
+
+    }
 
 }

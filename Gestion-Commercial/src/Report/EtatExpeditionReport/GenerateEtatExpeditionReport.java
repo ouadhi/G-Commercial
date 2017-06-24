@@ -16,9 +16,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.hibernate.Session;
-
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Payment;
@@ -104,7 +102,6 @@ public class GenerateEtatExpeditionReport {
                     }
                 }
             }
-
             for (int i = 0; i < listFactures.size(); i++) {
                 if (listFactures.get(i).getDate().equals(jour)) {
                     map.put(listFactures.get(i), listFactures.get(i).getClient().getName());
@@ -113,9 +110,7 @@ public class GenerateEtatExpeditionReport {
 
             // Total a ce jour
             for (int i = 0; i < listFactures.size(); i++) {
-
                 List<Facture_Produit> fpList = Facture_ProduitQueries.list(listFactures.get(i));
-
                 for (int j = 0; j < fpList.size(); j++) {
 
                     if (fpList.get(j).getProduit().getNom().equals("FARINE 50")) {
@@ -124,12 +119,6 @@ public class GenerateEtatExpeditionReport {
                         sonTotal = sonTotal + fpList.get(j).getQte_fact();
                     }
                 }
-
-                // for (int j = 0; j <
-                // listFactures.get(i).getClient().getPayments().size(); j++) {
-                // versementTotal = versementTotal +
-                // listFactures.get(i).getClient().getPayments().get(j).getMontant();
-                // }
                 montantTotal = montantTotal + listFactures.get(i).getMontant();
 
             }
@@ -148,7 +137,6 @@ public class GenerateEtatExpeditionReport {
             session.close();
         }
         this.map = map;
-        System.out.println("---------------map: " + map);
     }
 
     public void generateReport(Date jour) throws IOException, JRException {
@@ -210,7 +198,7 @@ public class GenerateEtatExpeditionReport {
                     expedition.add(String.valueOf(0));
                 } else {
                     expedition.add(String.valueOf(0));
-                    
+
                 }
                 observations.add("");
 
@@ -222,23 +210,21 @@ public class GenerateEtatExpeditionReport {
         List<Payment> listPay = PaymentQueries.list();
         double total = 0;
         for (int i = 0; i < listPay.size(); i++) {
-                if (jour.equals(listPay.get(i).getDate())) {
-                    
-                        List<String> expedition = new ArrayList<>();
-                        expedition.add(
-                                listPay.get(i).getClient().getName() + " " + listPay.get(i).getClient().getPrenom());
-                        expedition.add("");
-                        expedition.add("");
-                        expedition.add("");
-                        expedition.add("");
-                        expedition.add("");
-                        expedition.add("");
-                        expedition.add(String.valueOf(listPay.get(i).getMontant()));
-                        observations.add("");
-                        expeditions.add(expedition);
+            if (jour.equals(listPay.get(i).getDate())) {
 
-                    
-                
+                List<String> expedition = new ArrayList<>();
+                expedition.add(
+                        listPay.get(i).getClient().getName() + " " + listPay.get(i).getClient().getPrenom());
+                expedition.add("");
+                expedition.add("");
+                expedition.add("");
+                expedition.add("");
+                expedition.add("");
+                expedition.add("");
+                expedition.add(String.valueOf(listPay.get(i).getMontant()));
+                observations.add("");
+                expeditions.add(expedition);
+
             }
         }
         return expeditions;
@@ -335,16 +321,6 @@ public class GenerateEtatExpeditionReport {
         return listSommes;
     }
 
-    // public double sommeVersement() {
-    // double total = 0;
-    // for (Facture facture : map.keySet()) {
-    // for (int i = 0; i < facture.getClient().getPayments().size(); i++) {
-    // total = total + facture.getClient().getPayments().get(i).getMontant();
-    //
-    // }
-    // }
-    // return total;
-    // }
     public double sommeVersement(Date jour) {
         List<Payment> listPayment = PaymentQueries.list();
         double total = 0;

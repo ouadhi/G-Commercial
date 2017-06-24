@@ -60,7 +60,7 @@ public class ClientQueries {
 		Client c = new Client();
 		List<Client> listClients = new ArrayList<>();
 		try {
-			listClients = session.createQuery("from Client").list();
+			listClients = session.createQuery("from Client where deleted='" + false + "'").list();
 
 			for (int i = 0; i < listClients.size(); i++) {
 				if ((listClients.get(i).getName() + " " + listClients.get(i).getPrenom()).equals(nomPrenom)) {

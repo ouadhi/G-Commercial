@@ -57,7 +57,7 @@ public class GenerateEtatRecetteDepense {
 		Session session = SessionsGenerator.getFactory().openSession();
 		try {
 
-			List<Payment> list = session.createQuery("from Payment").list();
+			List<Payment> list = session.createQuery("from Payment where deleted='" + false + "'").list();
 			double solde = 0;
 			for (int i = 0; i < list.size(); i++) {
 				if (jour.equals(list.get(i).getDate())) {

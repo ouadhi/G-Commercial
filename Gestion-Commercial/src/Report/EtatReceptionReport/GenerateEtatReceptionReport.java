@@ -80,7 +80,7 @@ public class GenerateEtatReceptionReport {
 		try {
 
 			list = new ArrayList<>();
-			list = session.createQuery("from Achat").list();
+			list = session.createQuery("from Achat where deleted='" + false + "'").list();
 			for (int i = 0; i < intervalDate.size(); i++) {
 				boolean notAddedDate = false;
 				List<Achat> achatParJour = new ArrayList<>();
