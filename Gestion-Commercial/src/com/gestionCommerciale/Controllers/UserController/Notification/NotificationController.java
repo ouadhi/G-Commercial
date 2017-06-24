@@ -1,5 +1,6 @@
 package com.gestionCommerciale.Controllers.UserController.Notification;
 
+import java.awt.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,7 +36,6 @@ public class NotificationController implements Initializable {
 			this.getChildren().setAll(supp_btn, edit_bttn);
 			this.setAlignment(Pos.CENTER);
 			this.setPadding(new Insets(5, 5, 5, 5));
-
 		}
 
 	}
@@ -64,6 +64,8 @@ public class NotificationController implements Initializable {
 		public Profile(String name) {
 			Image img = new Image("icons/man.png");
 			setImage(img);
+
+			Label user_name = new Label(name);
 		}
 
 	}
@@ -87,6 +89,10 @@ public class NotificationController implements Initializable {
 
 				Notification.Deletenotification();
 			});
+		}
+
+		private void setGraphic(Image img) {
+			throw new UnsupportedOperationException("Not supported yet."); 
 		}
 	}
 

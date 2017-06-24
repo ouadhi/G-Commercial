@@ -6,9 +6,8 @@ import java.util.List;
 
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.Models.FactureQueries;
-import com.gestionCommerciale.Models.SessionsGenerator;
-
 import Report.FactureReport.ToutFacture;
+import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
@@ -31,7 +30,6 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.JasperReportsContext;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
 
 public class Loginform extends Application {
 
@@ -109,5 +107,6 @@ public class Loginform extends Application {
         return new JRBeanCollectionDataSource(collBean, false);
 
     }
+
 
 }

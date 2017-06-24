@@ -117,7 +117,9 @@ public class FinOperationVenteController implements Initializable {
 		double montantVal = Double.parseDouble(montant_static.getText());
 		double montantFinalVal = Double.parseDouble(montant_static.getText());
 		double versmentVal = Double.parseDouble(versement_static.getText());
+
 		Facture f = new Facture(date, montantVal, AnneeQueries.getSelected().getTva(), 0);
+
 		f.setMontantFinal(montantFinalVal);
 		List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
 		for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
@@ -249,23 +251,6 @@ public class FinOperationVenteController implements Initializable {
 		dialog.show();
 
 	}
-
-	// public static double getsSolde() {
-	// List<Payment> payments =
-	// PaymentQueries.getPaymentsListByClientId(OperationVenteController.client.getId());
-	// double solde = 0;
-	// for (Payment p : payments) {
-	// solde += p.getMontant();
-	// }
-	//
-	// List<Facture> factures =
-	// FactureQueries.getFacturesListByClientId(OperationVenteController.client.getId());
-	// for (Facture f : factures) {
-	// solde -= f.getMontantFinal();
-	// }
-	// return solde;
-	// }
-
 	@FXML
 	private void produitOUT(MouseEvent event) {
 		dialog.close();

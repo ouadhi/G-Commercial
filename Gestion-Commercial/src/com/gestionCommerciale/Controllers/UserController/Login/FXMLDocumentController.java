@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.controlsfx.control.Notifications;
+import org.controlsfx.control.textfield.TextFields;
+
 
 import com.gestionCommerciale.Views.UserViews.loginform.Erreurmsg;
 import com.jfoenix.controls.JFXPasswordField;
@@ -120,6 +122,14 @@ public class FXMLDocumentController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 
 		// possible_utilisateur();
+	}
+
+	private void possible_utilisateur() {
+
+		String[] possiblewords = { "karim", "hichem1", "hichem2", "mohammed ouadhi", "mohammed cherberabe" };
+
+		TextFields.bindAutoCompletion(username, possiblewords);
+
 	}
 
 	private void showNotification() {

@@ -149,7 +149,6 @@ public class RoleFXMLController implements Initializable {
 
 	@FXML
 	void show_add_role_form(ActionEvent event) {
-
 		try {
 			AnchorPane root = FXMLLoader.load(getClass().getResource("/Role/AddRoleFxml.fxml"));
 			AdminFXMLController.rootp.getChildren().setAll(root);

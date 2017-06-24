@@ -61,6 +61,7 @@ public class Facture {
 	public Facture() {
 	}
 
+
 	public Facture(Date date, double montant, double tva, double timbre) {
 		this.date = date;
 		this.montant = montant;
