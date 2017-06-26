@@ -14,6 +14,7 @@ import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Payment;
+import com.gestionCommerciale.Models.BanqueQueries;
 import com.gestionCommerciale.Models.SessionsGenerator;
 
 /**
@@ -25,11 +26,13 @@ public class GenerateEtatRecetteDepense {
 	List<Double> listPayement = new ArrayList<>();
 	List<Client> listClients = new ArrayList<>();
 	List<Double> listSoldes = new ArrayList<>();
+        BanqueQueries banqueQueries= new BanqueQueries();
 
 	public void generateReport(Date jour, String nomBanque, double versementBanque) {
 		OperationEtatRecetteDepense operationEtatRecetteDepense = new OperationEtatRecetteDepense();
 		getVersementParJour(jour);
 		String reste = String.valueOf(listSoldes.get(listSoldes.size() - 1) - versementBanque);
+                String numBanquaire=banqueQueries.getCompteBancaire(nomBanque);
 		int counter = 1;
 		for (int i = 0; i < listClients.size(); i++) {
 			List<String> clients = new ArrayList<>();
@@ -44,7 +47,7 @@ public class GenerateEtatRecetteDepense {
 			nums.add(String.valueOf(counter));
 			String newDate = new SimpleDateFormat("dd-MM-yyyy").format(jour);
 			operationEtatRecetteDepense.putReportInfo(newDate, String.valueOf(listSoldes.get(listSoldes.size() - 1)),
-					"", nomBanque, reste, nums, clients, montants, depenses, soldes);
+					"", nomBanque, reste,numBanquaire,String.valueOf(versementBanque), nums, clients, montants, depenses, soldes);
 			counter++;
 
 		}

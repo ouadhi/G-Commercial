@@ -31,39 +31,42 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class OperationEtatRecetteDepense {
 
-	Collection<EtatRecetteDepenseBean> collBean = new ArrayList<EtatRecetteDepenseBean>();
+    Collection<EtatRecetteDepenseBean> collBean = new ArrayList<EtatRecetteDepenseBean>();
 
-	public JRDataSource getData() {
-		return new JRBeanCollectionDataSource(collBean, false);
+    public JRDataSource getData() {
+        return new JRBeanCollectionDataSource(collBean, false);
 
-	}
+    }
 
-	public void printReport() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
-			JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
-			jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
-			// InputStream stream=
-			// this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
-			InputStream stream = getClass().getResourceAsStream("EtatRecetteDepense.jasper");
-			JasperReport report = (JasperReport) JRLoader.loadObject(stream);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, getData());
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			JasperViewer.viewReport(jasperPrint, false);
-			// this.collBean.clear();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public void printReport() {
+        try {
+            Map<String, Object> params = new HashMap<String, Object>();
+            JasperReportsContext jasperReportsContext = DefaultJasperReportsContext.getInstance();
+            JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(jasperReportsContext);
+            jrPropertiesUtil.setProperty("net.sf.jasperreports.awt.ignore.missing.font", "true");
+            // InputStream stream=
+            // this.getClass().getResourceAsStream("jasperreport/tableExample.jasper");
+            InputStream stream = getClass().getResourceAsStream("EtatRecetteDepense.jasper");
+            JasperReport report = (JasperReport) JRLoader.loadObject(stream);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, getData());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            JasperViewer.viewReport(jasperPrint, false);
+            // this.collBean.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	public void putReportInfo(String date, String montantTotal, String depenseTotal, String banque, String reste,
-			List<String> nums, List<String> clients, List<String> montants, List<String> depenses,
-			List<String> soldes) {
+    public void putReportInfo(String date, String montantTotal, String depenseTotal, String banque, String reste,
+            String numBancaire, String versementBancaire,
+            List<String> nums, List<String> clients, List<String> montants, List<String> depenses,
+            List<String> soldes) {
 
-		EtatRecetteDepenseBean beanInfo = new EtatRecetteDepenseBean(date, montantTotal, depenseTotal, banque, reste,
-				nums, clients, montants, depenses, soldes);
-		collBean.add(beanInfo);
-	}
+        EtatRecetteDepenseBean beanInfo = new EtatRecetteDepenseBean(date, montantTotal, depenseTotal, banque, reste,
+                numBancaire, versementBancaire,
+                nums, clients, montants, depenses, soldes
+        );
+        collBean.add(beanInfo);
+    }
 
 }

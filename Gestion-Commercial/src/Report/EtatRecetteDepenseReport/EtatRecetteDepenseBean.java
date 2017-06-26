@@ -13,110 +13,132 @@ import java.util.List;
  */
 public class EtatRecetteDepenseBean {
 
-	String date;
-	String montantTotal;
-	String depenseTotal;
-	String banque;
-	String reste;
-	public List<String> nums;
-	public List<String> clients;
-	public List<String> montants;
-	public List<String> depenses;
-	public List<String> soldes;
+    String date;
+    String montantTotal;
+    String depenseTotal;
+    String banque;
+    String reste;
+    String numBancaire;
+    String versementBancaire;
 
-	public EtatRecetteDepenseBean(String date, String montantTotal, String depenseTotal, String banque, String reste,
-			List<String> nums, List<String> clients, List<String> montants, List<String> depenses,
-			List<String> soldes) {
-		this.date = date;
-		this.montantTotal = montantTotal;
-		this.depenseTotal = depenseTotal;
-		this.banque = banque;
-		this.reste = reste;
-		this.nums = nums;
-		this.clients = clients;
-		this.montants = montants;
-		this.depenses = depenses;
-		this.soldes = soldes;
-	}
+    public List<String> nums;
+    public List<String> clients;
+    public List<String> montants;
+    public List<String> depenses;
+    public List<String> soldes;
 
-	public String getBanque() {
-		return banque;
-	}
+    public EtatRecetteDepenseBean(String date, String montantTotal, String depenseTotal, String banque, String reste,
+            String numBancaire,String versementBancaire,
+            List<String> nums, List<String> clients, List<String> montants, List<String> depenses,
+            List<String> soldes) {
+        this.date = date;
+        this.montantTotal = montantTotal;
+        this.depenseTotal = depenseTotal;
+        this.banque = banque;
+        this.reste = reste;
+        this.nums = nums;
+        this.clients = clients;
+        this.montants = montants;
+        this.depenses = depenses;
+        this.soldes = soldes;
+        this.numBancaire= numBancaire;
+        this.versementBancaire= versementBancaire;
+    }
 
-	public List<String> getClients() {
-		return clients;
-	}
+    public String getBanque() {
+        return banque;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public List<String> getClients() {
+        return clients;
+    }
 
-	public List<String> getDepenses() {
-		return depenses;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public String getDepenseTotal() {
-		return depenseTotal;
-	}
+    public List<String> getDepenses() {
+        return depenses;
+    }
 
-	public List<String> getMontants() {
-		return montants;
-	}
+    public String getDepenseTotal() {
+        return depenseTotal;
+    }
 
-	public String getMontantTotal() {
-		return montantTotal;
-	}
+    public List<String> getMontants() {
+        return montants;
+    }
 
-	public List<String> getNums() {
-		return nums;
-	}
+    public String getMontantTotal() {
+        return montantTotal;
+    }
 
-	public String getReste() {
-		return reste;
-	}
+    public List<String> getNums() {
+        return nums;
+    }
 
-	public List<String> getSoldes() {
-		return soldes;
-	}
+    public String getReste() {
+        return reste;
+    }
 
-	public void setBanque(String banque) {
-		this.banque = banque;
-	}
+    public List<String> getSoldes() {
+        return soldes;
+    }
 
-	public void setClients(List<String> clients) {
-		this.clients = clients;
-	}
+    public void setBanque(String banque) {
+        this.banque = banque;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public void setClients(List<String> clients) {
+        this.clients = clients;
+    }
 
-	public void setDepenses(List<String> depenses) {
-		this.depenses = depenses;
-	}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public void setDepenseTotal(String depenseTotal) {
-		this.depenseTotal = depenseTotal;
-	}
+    public void setDepenses(List<String> depenses) {
+        this.depenses = depenses;
+    }
 
-	public void setMontants(List<String> montants) {
-		this.montants = montants;
-	}
+    public void setDepenseTotal(String depenseTotal) {
+        this.depenseTotal = depenseTotal;
+    }
 
-	public void setMontantTotal(String montantTotal) {
-		this.montantTotal = montantTotal;
-	}
+    public void setMontants(List<String> montants) {
+        this.montants = montants;
+    }
 
-	public void setNums(List<String> nums) {
-		this.nums = nums;
-	}
+    public void setMontantTotal(String montantTotal) {
+        this.montantTotal = montantTotal;
+    }
 
-	public void setReste(String reste) {
-		this.reste = reste;
-	}
+    public void setNums(List<String> nums) {
+        this.nums = nums;
+    }
 
-	public void setSoldes(List<String> soldes) {
-		this.soldes = soldes;
-	}
+    public void setReste(String reste) {
+        this.reste = reste;
+    }
 
+    public void setSoldes(List<String> soldes) {
+        this.soldes = soldes;
+    }
+
+    public String getNumBancaire() {
+        return numBancaire;
+    }
+
+    public void setNumBancaire(String numBancaire) {
+        this.numBancaire = numBancaire;
+    }
+
+    public String getVersementBancaire() {
+        return versementBancaire;
+    }
+
+    public void setVersementBancaire(String versementBancaire) {
+        this.versementBancaire = versementBancaire;
+    }
+    
 }
