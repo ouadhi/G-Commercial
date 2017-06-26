@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Gestion-Commercial.jar" size="48892882" download="eager" />
+    <jar href="Gestion-Commercial.jar" size="48895213" download="eager" />
     <jar href="lib\TrayNotification.jar" size="41019" download="eager" />
     <jar href="lib\TrayTester.jar" size="52070" download="eager" />
     <jar href="lib\antlr-2.7.7.jar" size="445288" download="eager" />
