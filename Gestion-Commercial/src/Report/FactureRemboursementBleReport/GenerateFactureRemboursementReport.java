@@ -112,8 +112,19 @@ public class GenerateFactureRemboursementReport {
 
     }
 
-    public void generateReport(Date startDate, Date endDate, String doit, String num) {
+    public String getNumFromDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH)+1;
+        //int day = cal.get(Calendar.DAY_OF_MONTH);
+        String num = String.valueOf(month) + "/" + String.valueOf(year);
+        return num;
+    }
+
+    public void generateReport(Date startDate, Date endDate, String doit) {
         // Date newStartDate = increment_decrementDays(false, startDate, 1);
+        String num = getNumFromDate(startDate);
         Date newFinDate = increment_decrementDays(true, endDate, 1);
         String start = new SimpleDateFormat("dd-MM-yyyy").format(startDate);
         String end = new SimpleDateFormat("dd-MM-yyyy").format(endDate);
@@ -121,7 +132,6 @@ public class GenerateFactureRemboursementReport {
         achatParJour(startDate, newFinDate);
         List<String> qtes = getQteParDock();
         List<String> montants = getMontantParDock(qtes);
-
         RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
                 RuleBasedNumberFormat.SPELLOUT);
         String montantlettre = ruleBasedNumberFormat.format(new Double(montantTotal)) + " Dinars Algérien";

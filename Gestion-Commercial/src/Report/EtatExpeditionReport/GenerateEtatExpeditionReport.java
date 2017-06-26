@@ -181,7 +181,7 @@ public class GenerateEtatExpeditionReport {
             List<String> expedition = new ArrayList<>();
             List<Facture_Produit> getQtes = Facture_ProduitQueries.list(facture);
             for (int i = 0; i < getQtes.size(); i++) {
-                expedition.add(facture.getClient().getName());
+                expedition.add(facture.getClient().getName() + " " + facture.getClient().getPrenom());
                 expedition.add(String.valueOf(facture.getIdFacture()));
                 expedition.add(getQtes.get(i).getProduit().getNom().toString());
                 if (getQtes.get(i).getProduit().getNom().equals("FARINE 50")) {
