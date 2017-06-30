@@ -134,10 +134,11 @@ public class ShowPane {
 	public void showHome(ActionEvent event) {
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("/CommercialeView/HomeFXML.fxml"));
-			Scene scene = new Scene(pane);
-			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-
-			stage.setScene(scene);
+			//Scene scene = new Scene(pane);
+                        ((Node) (event.getSource())).getScene().setRoot(pane);
+//			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+//
+//			stage.setScene(scene);
 
 		} catch (IOException ex) {
 			Logger.getLogger(HomeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -200,9 +201,7 @@ public class ShowPane {
 
 			AnchorPane root = loader.getRoot();
 
-			Scene scene = new Scene(root);
-			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-			stage.setScene(scene);
+			((Node) (event.getSource())).getScene().setRoot(root);
 
 			new ShowPane().showRapport();
 

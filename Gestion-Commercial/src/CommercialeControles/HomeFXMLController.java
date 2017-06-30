@@ -68,10 +68,9 @@ public class HomeFXMLController implements Initializable {
 			control.setMenu(menu2);
 
 			AnchorPane root = loader.getRoot();
-
-			Scene scene = new Scene(root);
-			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-			stage.setScene(scene);
+                        
+                        ((Node) (event.getSource())).getScene().setRoot(root);
+                        
 			changeMenutoSmall();
 			new ShowPane().showListAchat();
 
@@ -96,9 +95,8 @@ public class HomeFXMLController implements Initializable {
 
 			AnchorPane root = loader.getRoot();
 
-			Scene scene = new Scene(root);
-			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-			stage.setScene(scene);
+			 ((Node) (event.getSource())).getScene().setRoot(root);
+                         
 			changeMenutoSmall();
 			new ShowPane().showRapport();
 
@@ -121,9 +119,8 @@ public class HomeFXMLController implements Initializable {
 
 			AnchorPane root = loader.getRoot();
 
-			Scene scene = new Scene(root);
-			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-			stage.setScene(scene);
+			((Node) (event.getSource())).getScene().setRoot(root);
+                         
 			changeMenutoSmall();
 			new ShowPane().showChauffeur();
 
@@ -147,9 +144,8 @@ public class HomeFXMLController implements Initializable {
 
 			AnchorPane root = loader.getRoot();
 
-			Scene scene = new Scene(root);
-			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-			stage.setScene(scene);
+			 ((Node) (event.getSource())).getScene().setRoot(root);
+                         
 			changeMenutoSmall();
 			new ShowPane().showVenteListe();
 

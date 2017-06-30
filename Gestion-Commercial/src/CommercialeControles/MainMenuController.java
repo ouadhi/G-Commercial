@@ -119,8 +119,11 @@ public class MainMenuController implements Initializable {
 		Home2FXMLController.bttn_menu.setGraphic(icon);
 
 		AnchorPane menu = FXMLLoader.load(getClass().getResource(ViewUrl.VenteMenu));
+                
 		Home2FXMLController.menup.getChildren().setAll(menu);
+                
 		changeMenutoSmall();
+                
 		new ShowPane().showVenteListe();
 
 	}
