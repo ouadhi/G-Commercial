@@ -125,6 +125,6 @@ public class AjouterCamionExtratController implements Initializable {
         ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
         listeCamion.setItems(myObservableList);
         listeCamion.setOrientation(Orientation.HORIZONTAL);
-        listeCamion.setExpanded(true);
+       
     }
 }

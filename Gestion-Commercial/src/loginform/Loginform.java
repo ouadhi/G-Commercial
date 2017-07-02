@@ -64,7 +64,7 @@ public class Loginform extends Application {
 
         stage.show();
 
-        transitionIN(root);
+       // transitionIN(root);
 
     }
 

@@ -164,7 +164,7 @@ public class AjouterChauffeurExtratController implements Initializable {
         listeChaffeur.setItems(myObservableList);
         
         listeChaffeur.setOrientation(Orientation.HORIZONTAL);
-        listeChaffeur.setExpanded(true);
+        
     }
 
 }

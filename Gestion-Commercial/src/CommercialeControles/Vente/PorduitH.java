@@ -1,5 +1,7 @@
 package CommercialeControles.Vente;
 
+import CommercialeControles.Dock.AjouterDockController;
+import CommercialeControles.Produit.AjouterProduitController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +15,7 @@ import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.jfoenix.controls.JFXListView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +28,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class PorduitH extends GridPane {
 
@@ -45,7 +49,9 @@ public class PorduitH extends GridPane {
 	Label nomproduit;
 	JFXButton Ajouterbttn;
 	Label prix;
-	public PorduitH() {
+        
+        
+	public PorduitH(JFXListView<PorduitH> listeProduit) {
 		ColumnConstraints columnConstraints;
 		RowConstraints rowConstraints;
 		RowConstraints rowConstraints0;
@@ -88,10 +94,18 @@ public class PorduitH extends GridPane {
 
 		jFXButton.setOnAction(event -> {
 			try {
-				AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterProduit));
-				StageDialog stage = new StageDialog(Methode.getStage(event), pane);
+	                Stage stage = Methode.getStage(event) ; 
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.AjouterProduit));
+			loader.load();
 
-				stage.showAndWait();
+			AjouterProduitController AddDock = loader.getController();
+			AddDock.setData(listeProduit);
+
+			AnchorPane root = loader.getRoot();
+
+			StageDialog dialog = new StageDialog(stage, root);
+			dialog.show();
 			} catch (IOException ex) {
 				Logger.getLogger(ProduitListController.class.getName()).log(Level.SEVERE, null, ex);
 			}

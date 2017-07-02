@@ -52,41 +52,41 @@ public class Employee_LoginFXMLController implements Initializable {
 
 				try {
 
-					AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/Splash.fxml"));
-					// Parent root =
-					// FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
+//					AnchorPane root = FXMLLoader.load(getClass().getResource("/Views/Splash.fxml"));
+//					// Parent root =
+//					// FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
+//
+//					rootpane.getChildren().setAll(root);
+//
+//					FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), root);
+//					fadeIn.setFromValue(0);
+//					fadeIn.setToValue(1);
+//					fadeIn.setCycleCount(1);
+//
+//					FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), root);
+//					fadeOut.setFromValue(1);
+//					fadeOut.setToValue(0);
+//					fadeOut.setCycleCount(1);
+//
+//					fadeIn.play();
+//
+//					fadeIn.setOnFinished((e) -> {
+//						fadeOut.play();
+//
+//					});
+//
+//					fadeOut.setOnFinished((e) -> {
 
-					rootpane.getChildren().setAll(root);
-
-					FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), root);
-					fadeIn.setFromValue(0);
-					fadeIn.setToValue(1);
-					fadeIn.setCycleCount(1);
-
-					FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), root);
-					fadeOut.setFromValue(1);
-					fadeOut.setToValue(0);
-					fadeOut.setCycleCount(1);
-
-					fadeIn.play();
-
-					fadeIn.setOnFinished((e) -> {
-						fadeOut.play();
-
-					});
-
-					fadeOut.setOnFinished((e) -> {
-
-						try {
+						///try {
 
 							AnchorPane root2 = FXMLLoader.load(getClass().getResource(ViewUrl.Home1));
 							rootpane.getChildren().setAll(root2);
-							transitionIN(root2);
-						} catch (IOException ex) {
+							//transitionIN(root2);
+						//} catch (IOException ex) {
 
-						}
+						//}
 
-					});
+					//});
 
 				} catch (IOException ex) {
 

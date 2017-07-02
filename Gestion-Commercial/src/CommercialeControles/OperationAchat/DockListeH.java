@@ -1,6 +1,8 @@
 
 package CommercialeControles.OperationAchat;
 
+import CommercialeControles.Dock.AjouterDockController;
+import CommercialeControles.Dock.DockLisController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,6 +12,7 @@ import com.gestionCommerciale.HibernateSchema.Dock;
 import UIControle.Methode;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.jfoenix.controls.JFXListView;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -20,6 +23,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class DockListeH extends GridPane {
 
@@ -33,7 +37,7 @@ public class DockListeH extends GridPane {
 
 	private Dock dock;
 
-	public DockListeH() {
+	public DockListeH(JFXListView<DockListeH> listeDock) {
 
 		columnConstraints = new ColumnConstraints();
 		rowConstraints = new RowConstraints();
@@ -113,14 +117,23 @@ public class DockListeH extends GridPane {
 		this.setOnMouseClicked(event -> {
 
 			try {
-				AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterDock));
 
-				StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
-				dialog.show();
-			} catch (IOException ex) {
-				Logger.getLogger(DockListeH.class.getName()).log(Level.SEVERE, null, ex);
-			}
+			Stage stage = Methode.getStageMouses(event) ; 
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.AjouterDock));
+			loader.load();
 
+			AjouterDockController AddDock = loader.getController();
+			AddDock.setData(listeDock);
+
+			AnchorPane root = loader.getRoot();
+
+			StageDialog dialog = new StageDialog(stage, root);
+			dialog.show();
+
+		} catch (IOException ex) {
+			Logger.getLogger(DockLisController.class.getName()).log(Level.SEVERE, null, ex);
+		}
 		});
 	}
 

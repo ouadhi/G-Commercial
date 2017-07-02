@@ -36,10 +36,10 @@ public class SelectionnerDockController implements Initializable {
 		for (int i = 0; i < listDocksDB.size(); i++) {
 			list.add(new DockListeH(listDocksDB.get(i)));
 		}
-		// list.add(new DockListeH()) ;
+		 list.add(new DockListeH(listeDock)) ;
 		ObservableList<DockListeH> myObservableList = FXCollections.observableList(list);
 		listeDock.setItems(myObservableList);
-		listeDock.setExpanded(true);
+		
 
 	}
 
@@ -53,7 +53,7 @@ public class SelectionnerDockController implements Initializable {
 		for (int i = 0; i < listDocksDB.size(); i++) {
 			list.add(new DockListeH(listDocksDB.get(i)));
 		}
-		// list.add(new DockListeH()) ;
+		 list.add(new DockListeH(listeDock)) ;
 		ObservableList<DockListeH> myObservableList = FXCollections.observableList(list);
 		listeDock.setItems(myObservableList);
 	}
