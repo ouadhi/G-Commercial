@@ -116,10 +116,27 @@ public class GenerateFactureRemboursementReport {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH)+1;
+        int month = cal.get(Calendar.MONTH) + 1;
         //int day = cal.get(Calendar.DAY_OF_MONTH);
         String num = String.valueOf(month) + "/" + String.valueOf(year);
         return num;
+    }
+
+    public String transformationEnLettre(double montant) {
+        //get part before decimal point
+        int decimal = (int) Math.floor(montant);
+        //get after decimal point 
+        int fraction = (int) (round(montant - decimal, 2) * 100);
+        //change first part tpo charcater 
+        RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
+                RuleBasedNumberFormat.SPELLOUT);
+        String firstPart = ruleBasedNumberFormat.format(new Double(decimal)) + " Dinars";
+        String secondPart = " et "+ruleBasedNumberFormat.format(new Double(fraction)) + " Centimes";
+        if(fraction==0){
+           secondPart="";
+        }
+        String all = firstPart + secondPart;
+        return all;
     }
 
     public void generateReport(Date startDate, Date endDate, String doit) {
@@ -132,11 +149,11 @@ public class GenerateFactureRemboursementReport {
         achatParJour(startDate, newFinDate);
         List<String> qtes = getQteParDock();
         List<String> montants = getMontantParDock(qtes);
-        RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
-                RuleBasedNumberFormat.SPELLOUT);
-        String montantlettre = ruleBasedNumberFormat.format(new Double(montantTotal)) + " Dinars Algérien";
-
-        operation.putReportInfo(doit, num, start, end, String.valueOf(totalQte), String.valueOf(round(montantTotal, 2)),
+//        RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
+//                RuleBasedNumberFormat.SPELLOUT);
+//        String montantlettre = ruleBasedNumberFormat.format(new Double(montantTotal)) + " Dinars Algérien";
+        String montantlettre= transformationEnLettre(montantTotal);
+        operation.putReportInfo(doit, num, start, end, String.valueOf(round(totalQte,2)), String.valueOf(round(montantTotal, 2)),
                 montantlettre, references, qtes, dockNomList, prixUnitair, montants);
         operation.printReport();
 
@@ -174,7 +191,7 @@ public class GenerateFactureRemboursementReport {
                 }
             }
             totalQte = totalQte + total;
-            listTotalQte.add(new Double(total).toString());
+            listTotalQte.add(new Double(round(total,2)).toString());
         }
         return listTotalQte;
     }

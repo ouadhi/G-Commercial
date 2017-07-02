@@ -13,6 +13,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import Report.EtatRecetteDepenseReport.GenerateEtatRecetteDepense;
 import UIControle.Methode;
+import UIControle.Notification;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,43 +21,48 @@ import javafx.scene.input.MouseEvent;
 
 public class RecetteViewController implements Initializable {
 
-	@FXML
-	private JFXDatePicker debut;
-	@FXML
-	private JFXComboBox<String> banque;
-	@FXML
-	private JFXTextField versement;
+    @FXML
+    private JFXDatePicker debut;
+    @FXML
+    private JFXComboBox<String> banque;
+    @FXML
+    private JFXTextField versement;
 
-	@FXML
-	private void close(ActionEvent event) {
-		Methode.getStage(event).close();
-	}
+    @FXML
+    private void close(ActionEvent event) {
+        Methode.getStage(event).close();
+    }
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
-		BanqueQueries querie = new BanqueQueries();
-		List<String> listDB = querie.listNomBanque();
-		for (int i = 0; i < listDB.size(); i++) {
-			banque.getItems().add(listDB.get(i));
-		}
+        BanqueQueries querie = new BanqueQueries();
+        List<String> listDB = querie.listNomBanque();
+        for (int i = 0; i < listDB.size(); i++) {
+            banque.getItems().add(listDB.get(i));
+        }
 
-		Methode.setOnlyDouble(versement, 10);
+        Methode.setOnlyDouble(versement, 10);
 
-	}
+    }
 
-	@FXML
-	private void print(ActionEvent event) {
-		GenerateEtatRecetteDepense generateEtatRecetteDepense = new GenerateEtatRecetteDepense();
-		Date dateOb = Date.from(debut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		generateEtatRecetteDepense.generateReport(dateOb, banque.getSelectionModel().getSelectedItem(),
-				Double.parseDouble(versement.getText()));
+    @FXML
+    private void print(ActionEvent event) {
+        try {
+            GenerateEtatRecetteDepense generateEtatRecetteDepense = new GenerateEtatRecetteDepense();
+            Date dateOb = Date.from(debut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            generateEtatRecetteDepense.generateReport(dateOb, banque.getSelectionModel().getSelectedItem(),
+                    Double.parseDouble(versement.getText()));
+        } catch (Exception ex) {
+            Notification.error("Il n ya pas de versement a ce jour.");
+            ex.printStackTrace();
+        }
 
-	}
+    }
 
-	@FXML
-	private void quitter(MouseEvent event) {
-		Methode.getStageMouses(event).close();
-	}
+    @FXML
+    private void quitter(MouseEvent event) {
+        Methode.getStageMouses(event).close();
+    }
 
 }

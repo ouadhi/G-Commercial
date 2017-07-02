@@ -90,8 +90,8 @@ public class GenerateEtatBleReport {
             String numBl = String.valueOf(achatDuJour.get(i).getNumAcqt());
             numBls.add(numBl);
 
-            operationEtatBleReport.putReportInfo(jourOB, String.valueOf(totalPoid), String.valueOf(totalNet),
-                    String.valueOf(totalEcart), numBls, numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares,
+            operationEtatBleReport.putReportInfo(jourOB, String.valueOf(round(totalPoid,2)), String.valueOf(round(totalNet,2)),
+                    String.valueOf(round(totalEcart,2)), numBls, numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares,
                     nets, ecarts);
         }
         operationEtatBleReport.printReport();

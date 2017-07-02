@@ -13,120 +13,120 @@ import java.util.List;
  */
 public class EtatRemboursementBean {
 
-	String doit;
-	String date;
-	String jour;
-	String montantTotal;
-	String montantLettre;
-	public List<String> parcours;
-	public List<String> distances;
-	public List<String> nums;
-	public List<String> qtes;
-	public List<String> prixs;
-	public List<String> montants;
+    String doit;
+    String date;
+    String montantTotal;
+    String montantLettre;
+    public List<String> parcours;
+    public List<String> distances;
+    public List<String> nums;
+    public List<String> qtes;
+    public List<String> prixs;
+    public List<String> montants;
+    public List<String> jours;
 
-	public EtatRemboursementBean(String doit, String date, String jour, String montantTotal, String montantLettre,
-			List<String> parcours, List<String> distances, List<String> nums, List<String> qtes, List<String> prixs,
-			List<String> montants) {
-		this.doit = doit;
-		this.date = date;
-		this.jour = jour;
-		this.montantTotal = montantTotal;
-		this.montantLettre = montantLettre;
-		this.parcours = parcours;
-		this.distances = distances;
-		this.nums = nums;
-		this.qtes = qtes;
-		this.prixs = prixs;
-		this.montants = montants;
-	}
+    public EtatRemboursementBean(String doit, String date, String montantTotal, String montantLettre,
+            List<String> parcours, List<String> distances, List<String> nums, List<String> qtes, List<String> prixs,
+            List<String> montants, List<String> jours) {
+        this.doit = doit;
+        this.date = date;
+        this.jours = jours;
+        this.montantTotal = montantTotal;
+        this.montantLettre = montantLettre;
+        this.parcours = parcours;
+        this.distances = distances;
+        this.nums = nums;
+        this.qtes = qtes;
+        this.prixs = prixs;
+        this.montants = montants;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public List<String> getDistances() {
-		return distances;
-	}
+    public List<String> getDistances() {
+        return distances;
+    }
 
-	public String getDoit() {
-		return doit;
-	}
+    public String getDoit() {
+        return doit;
+    }
 
-	public String getJour() {
-		return jour;
-	}
+    public String getMontantLettre() {
+        return montantLettre;
+    }
 
-	public String getMontantLettre() {
-		return montantLettre;
-	}
+    public List<String> getMontants() {
+        return montants;
+    }
 
-	public List<String> getMontants() {
-		return montants;
-	}
+    public String getMontantTotal() {
+        return montantTotal;
+    }
 
-	public String getMontantTotal() {
-		return montantTotal;
-	}
+    public List<String> getNums() {
+        return nums;
+    }
 
-	public List<String> getNums() {
-		return nums;
-	}
+    public List<String> getParcours() {
+        return parcours;
+    }
 
-	public List<String> getParcours() {
-		return parcours;
-	}
+    public List<String> getPrixs() {
+        return prixs;
+    }
 
-	public List<String> getPrixs() {
-		return prixs;
-	}
+    public List<String> getQtes() {
+        return qtes;
+    }
 
-	public List<String> getQtes() {
-		return qtes;
-	}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public void setDistances(List<String> distances) {
+        this.distances = distances;
+    }
 
-	public void setDistances(List<String> distances) {
-		this.distances = distances;
-	}
+    public void setDoit(String doit) {
+        this.doit = doit;
+    }
 
-	public void setDoit(String doit) {
-		this.doit = doit;
-	}
+    public void setMontantLettre(String montantLettre) {
+        this.montantLettre = montantLettre;
+    }
 
-	public void setJour(String jour) {
-		this.jour = jour;
-	}
+    public void setMontants(List<String> montants) {
+        this.montants = montants;
+    }
 
-	public void setMontantLettre(String montantLettre) {
-		this.montantLettre = montantLettre;
-	}
+    public void setMontantTotal(String montantTotal) {
+        this.montantTotal = montantTotal;
+    }
 
-	public void setMontants(List<String> montants) {
-		this.montants = montants;
-	}
+    public void setNums(List<String> nums) {
+        this.nums = nums;
+    }
 
-	public void setMontantTotal(String montantTotal) {
-		this.montantTotal = montantTotal;
-	}
+    public void setParcours(List<String> parcours) {
+        this.parcours = parcours;
+    }
 
-	public void setNums(List<String> nums) {
-		this.nums = nums;
-	}
+    public void setPrixs(List<String> prixs) {
+        this.prixs = prixs;
+    }
 
-	public void setParcours(List<String> parcours) {
-		this.parcours = parcours;
-	}
+    public void setQtes(List<String> qtes) {
+        this.qtes = qtes;
+    }
 
-	public void setPrixs(List<String> prixs) {
-		this.prixs = prixs;
-	}
+    public List<String> getJours() {
+        return jours;
+    }
 
-	public void setQtes(List<String> qtes) {
-		this.qtes = qtes;
-	}
+    public void setJours(List<String> jours) {
+        this.jours = jours;
+    }
 
 }
