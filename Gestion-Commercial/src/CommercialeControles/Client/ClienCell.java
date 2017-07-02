@@ -245,6 +245,7 @@ public class ClienCell extends GridPane {
 				pay.setDate(this.client);
 
 				AnchorPane root = loader.getRoot();
+                                 Methode.moveFocus(root);
 
 				StageDialog dialog = new StageDialog(Methode.getStage(event), root);
 				dialog.show();

@@ -152,6 +152,7 @@ public class DockLisController implements Initializable {
 			AddDock.SetData(listedock, total);
 
 			AnchorPane root = loader.getRoot();
+                         Methode.moveFocus(root);
 
 			StageDialog dialog = new StageDialog(stage, root);
 			dialog.show();
@@ -177,6 +178,7 @@ public class DockLisController implements Initializable {
 			controlClient.setData(seletedrow, listedock);
 
 			AnchorPane root = loader.getRoot();
+                         Methode.moveFocus(root);
 
 			StageDialog dialog = new StageDialog(stage, root);
 			dialog.show();

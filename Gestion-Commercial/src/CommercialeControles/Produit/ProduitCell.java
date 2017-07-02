@@ -230,6 +230,7 @@ public class ProduitCell extends GridPane {
 				ModifierProduit.setData(produit);
 
 				AnchorPane root = loader.getRoot();
+                                Methode.moveFocus(root);
 
 				StageDialog dialog = new StageDialog(Methode.getStage(event), root);
 				dialog.show();

@@ -27,7 +27,7 @@
       <Label alignment="CENTER" layoutX="595.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" styleClass="labelselecte" text="3" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="751.0" layoutY="85.0" prefHeight="23.0" prefWidth="22.0" styleClass="labelselecte" text="5" textAlignment="CENTER" />
       <Line endX="15.0" layoutX="735.0" layoutY="98.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
-      <GridPane hgap="5.0" layoutX="278.0" layoutY="182.0" prefHeight="148.0" prefWidth="748.0" vgap="3.0">
+      <GridPane hgap="4.0" layoutX="278.0" layoutY="170.0" prefHeight="148.0" prefWidth="748.0" vgap="2.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -47,7 +47,7 @@
                   <Insets bottom="40.0" />
                </GridPane.margin>
             </Label>
-            <JFXTextField fx:id="montant" focusColor="#405aa800" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1">
+            <JFXTextField fx:id="montant" focusColor="#36d484e5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
@@ -62,7 +62,7 @@
                   <Insets bottom="40.0" />
                </GridPane.margin>
             </Label>
-            <JFXTextField fx:id="montantFinal" focusColor="#405aa800" maxWidth="276.0" minWidth="165.0" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
+            <JFXTextField fx:id="montantFinal" focusColor="#36d484e5" maxWidth="276.0" minWidth="165.0" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
@@ -71,14 +71,14 @@
                <GridPane.margin>
                   <Insets bottom="40.0" />
                </GridPane.margin></Label>
-            <JFXTextField fx:id="solde" focusColor="#405aa800" maxWidth="276.0" minWidth="165.0" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <JFXTextField fx:id="solde" focusColor="#36d484e5" maxWidth="276.0" minWidth="165.0" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-25.0" />
                </GridPane.margin></JFXTextField>
          </children>
       </GridPane>
-      <JFXButton fx:id="save" layoutX="902.0" layoutY="453.0" onAction="#sauvgader" prefHeight="48.0" prefWidth="183.0" styleClass="button_save" text="Enregistrer" />
-      <JFXButton fx:id="annuler" layoutX="689.0" layoutY="453.0" onAction="#quitter" prefHeight="48.0" prefWidth="183.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton fx:id="save" layoutX="810.0" layoutY="466.0" onAction="#sauvgader" prefHeight="48.0" prefWidth="183.0" styleClass="button_save" text="Enregistrer" />
+      <JFXButton fx:id="annuler" layoutX="597.0" layoutY="466.0" onAction="#quitter" prefHeight="48.0" prefWidth="183.0" styleClass="button_annuler" text="Annuler" />
       <Label layoutX="384.0" layoutY="139.0" styleClass="label_txt" text="Client" />
       <Label layoutX="479.0" layoutY="139.0" styleClass="label_txt" text="Chauffeur" />
       <Label layoutX="618.0" layoutY="139.0" styleClass="label_txt" text="Camion" />
@@ -103,10 +103,10 @@
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <HBox layoutX="279.0" layoutY="341.0" prefHeight="78.0" prefWidth="653.0" spacing="16.0">
+      <HBox layoutX="276.0" layoutY="318.0" prefHeight="78.0" prefWidth="653.0" spacing="16.0">
          <children>
             <Label prefHeight="20.0" prefWidth="99.0" styleClass="label_txt" text="Versement " />
-            <JFXTextField fx:id="versement" focusColor="#405aa800" maxWidth="163.0" minWidth="155.0" prefHeight="40.0" prefWidth="156.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="versement" focusColor="#36d484e5" maxWidth="163.0" minWidth="155.0" prefHeight="40.0" prefWidth="156.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
                <HBox.margin>
                   <Insets left="-113.0" top="20.0" />
                </HBox.margin>
@@ -116,7 +116,7 @@
                   <Insets left="35.0" />
                </HBox.margin>
             </Label>
-            <JFXComboBox fx:id="versemetCombo" prefHeight="40.0" prefWidth="219.0" styleClass="champtxt">
+            <JFXComboBox fx:id="versemetCombo" onAction="#typeEvent" prefHeight="40.0" prefWidth="219.0" styleClass="champtxt">
                <HBox.margin>
                   <Insets left="-169.0" top="20.0" />
                </HBox.margin>
@@ -126,9 +126,29 @@
                   <Insets left="38.0" />
                </HBox.margin>
             </Label>
-            <JFXTextField fx:id="timbre" focusColor="#405aa800" maxWidth="155.0" minWidth="155.0" prefHeight="40.0" prefWidth="155.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="timbre" focusColor="#36d484e5" maxWidth="155.0" minWidth="155.0" prefHeight="40.0" prefWidth="155.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
                <HBox.margin>
                   <Insets left="-79.0" top="20.0" />
+               </HBox.margin>
+            </JFXTextField>
+         </children>
+      </HBox>
+      <HBox fx:id="extrat" layoutX="276.0" layoutY="396.0" prefHeight="57.0" prefWidth="653.0" spacing="16.0" visible="false">
+         <children>
+            <Label prefHeight="20.0" prefWidth="99.0" styleClass="label_txt" text="Banque " />
+            <JFXTextField fx:id="banque" focusColor="#36d484e5" maxWidth="233.0" minWidth="155.0" prefHeight="37.0" prefWidth="233.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
+               <HBox.margin>
+                  <Insets left="-115.0" top="20.0" />
+               </HBox.margin>
+            </JFXTextField>
+            <Label styleClass="label_txt" text="Numero Compte / Virement">
+               <HBox.margin>
+                  <Insets left="38.0" />
+               </HBox.margin>
+            </Label>
+            <JFXTextField fx:id="numeroCmpt" focusColor="#36d484e5" maxWidth="206.0" minWidth="155.0" prefHeight="37.0" prefWidth="206.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
+               <HBox.margin>
+                  <Insets left="-223.0" top="20.0" />
                </HBox.margin>
             </JFXTextField>
          </children>

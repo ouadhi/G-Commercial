@@ -146,6 +146,7 @@ public class ProduitListController implements Initializable {
 
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterProduit));
+                        Methode.moveFocus(pane);
 			StageDialog stage = new StageDialog(Methode.getStage(event), pane);
 
 			stage.showAndWait();

@@ -141,6 +141,7 @@ public class BelCell extends GridPane {
 				ModifierBleController Modifier = loader.getController();
 				Modifier.setData(ble);
 				AnchorPane root = loader.getRoot();
+                                Methode.moveFocus(root);
 				StageDialog dialog = new StageDialog(Methode.getStage(event), root);
 				dialog.show();
 			} catch (IOException ex) {

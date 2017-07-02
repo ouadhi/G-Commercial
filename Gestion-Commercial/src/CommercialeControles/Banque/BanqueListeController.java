@@ -142,6 +142,7 @@ public class BanqueListeController implements Initializable {
 
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterBanque));
+                        Methode.moveFocus(pane);
 			StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
 			dialog.show();
 		} catch (IOException ex) {

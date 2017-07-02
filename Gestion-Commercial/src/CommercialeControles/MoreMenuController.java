@@ -1,5 +1,6 @@
 package CommercialeControles;
 
+import UIControle.Methode;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,6 +53,7 @@ public class MoreMenuController implements Initializable {
 	private void showgestion(ActionEvent event) throws IOException {
 		if (User.isAdministrateur()) {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.Login2));
+                        Methode.moveFocus(pane);
 			StageDialog dialog = new StageDialog(stage, pane);
 			dialog.show();
 		} else {
@@ -65,6 +67,7 @@ public class MoreMenuController implements Initializable {
 
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.infoEntreprise));
+                        Methode.moveFocus(pane);
 			StageDialog dialog = new StageDialog(stage, pane);
 			dialog.show();
 		} catch (IOException ex) {
@@ -75,6 +78,8 @@ public class MoreMenuController implements Initializable {
 	@FXML
 	private void showLoginform(ActionEvent event) throws IOException {
 		AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.Login));
+                Methode.moveFocus(pane);
+                
 		Scene scene = new Scene(pane);
 
 		this.stage.setScene(scene);
@@ -86,6 +91,7 @@ public class MoreMenuController implements Initializable {
 
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.parametreView));
+                        Methode.moveFocus(pane);
 			StageDialog dialog = new StageDialog(stage, pane);
 			dialog.show();
 		} catch (IOException ex) {

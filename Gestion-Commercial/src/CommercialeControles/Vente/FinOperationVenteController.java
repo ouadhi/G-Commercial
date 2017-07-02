@@ -42,6 +42,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 
 public class FinOperationVenteController implements Initializable {
 
@@ -111,6 +112,12 @@ public class FinOperationVenteController implements Initializable {
 
 	@FXML
 	private JFXTextField timbre;
+    @FXML
+    private HBox extrat;
+    @FXML
+    private JFXTextField banque;
+    @FXML
+    private JFXTextField numeroCmpt;
 
 	public void addFacture(ActionEvent event) {
 		Date date = java.sql.Date.valueOf(dateOperation.getValue());
@@ -276,11 +283,24 @@ public class FinOperationVenteController implements Initializable {
 	}
 
 	public void setVersement() {
-		versemetCombo.getItems().add("Cheque");
+		
 		versemetCombo.getItems().add("Especes");
+                versemetCombo.getItems().add("Cheque");
 		versemetCombo.getItems().add("A terme");
+                versemetCombo.getItems().add("Virement");
+                
 		versemetCombo.getSelectionModel().selectFirst();
 
 	}
+
+    @FXML
+    private void typeEvent(ActionEvent event) {
+        
+        if (versemetCombo.getSelectionModel().getSelectedItem().equals("Cheque") ||versemetCombo.getSelectionModel().getSelectedItem().equals("Virement") ) {
+            extrat.setVisible(true);
+        } else {
+            extrat.setVisible(false);
+        }
+    }
 
 }

@@ -184,7 +184,8 @@ public class DockCell extends GridPane {
 				ModifierDockController ModifierDock = loader.getController();
 				ModifierDock.setData(dock);
 
-				AnchorPane root = loader.getRoot();
+				AnchorPane root = loader.getRoot(); Methode.moveFocus(root);
+                                
 
 				StageDialog dialog = new StageDialog(Methode.getStage(event), root);
 				dialog.show();

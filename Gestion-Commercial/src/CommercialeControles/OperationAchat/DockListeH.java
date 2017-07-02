@@ -127,6 +127,7 @@ public class DockListeH extends GridPane {
 			AddDock.setData(listeDock);
 
 			AnchorPane root = loader.getRoot();
+                        Methode.moveFocus(root);
 
 			StageDialog dialog = new StageDialog(stage, root);
 			dialog.show();

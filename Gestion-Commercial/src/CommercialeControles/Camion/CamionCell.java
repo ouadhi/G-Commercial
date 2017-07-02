@@ -149,7 +149,7 @@ public class CamionCell extends GridPane {
 		modifier.setOnAction(event -> {
 
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
+                        
 			ModifierCamionDialog dialog = new ModifierCamionDialog(stage, this);
 			dialog.show();
 			popup.close();

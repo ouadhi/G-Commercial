@@ -194,6 +194,7 @@ public class BanqueCell extends GridPane {
 				Modifier.setData(banque);
 
 				AnchorPane root = loader.getRoot();
+                                Methode.moveFocus(root);
 
 				StageDialog dialog = new StageDialog(Methode.getStage(event), root);
 				dialog.show();

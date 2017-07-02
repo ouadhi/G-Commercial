@@ -2,32 +2,24 @@ package loginform;
 
 import Report.EtatBleReport.EtatBleBean;
 import java.util.ArrayList;
-import java.util.List;
-
-import com.gestionCommerciale.HibernateSchema.Facture;
-import com.gestionCommerciale.Models.FactureQueries;
-import Report.FactureReport.ToutFacture;
 import UIControle.Methode;
+import UIControle.Notification;
 import com.gestionCommerciale.Models.SessionsGenerator;
-import com.jfoenix.controls.JFXTextField;
-import java.awt.AWTException;
-import java.awt.Robot;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javax.swing.UIManager;
 import net.sf.jasperreports.engine.DefaultJasperReportsContext;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRPropertiesUtil;
@@ -64,9 +56,21 @@ public class Loginform extends Application {
         Methode.moveFocus(root);
 
         stage.show();
+      
 
-       // transitionIN(root);
+        stage.setOnCloseRequest(e ->  {
+            e.consume();
+            closeStage();
+                
+        });
 
+    }
+
+    private void closeStage() {
+        Optional<ButtonType> result =  Notification.quitterAlert().showAndWait();
+        if (result.get() == ButtonType.OK) {
+            System.exit(0);
+        }
     }
 
     public void transitionIN(Parent root) {

@@ -101,6 +101,7 @@ public class AjouterChauffeurViewController implements Initializable {
 		Methode.setOnlyInteger(telchauffeur, 10);
 		Methode.setsizeString(prenomchauffeur, 30);
 		setType();
+                
 	}
 
 	@FXML

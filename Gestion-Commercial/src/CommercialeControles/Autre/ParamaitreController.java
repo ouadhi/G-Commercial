@@ -38,6 +38,7 @@ public class ParamaitreController implements Initializable {
 	private void addAnnee(ActionEvent event) {
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.addAnneeEtTva));
+                        Methode.moveFocus(pane);
 			StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
 			dialog.show();
 		} catch (IOException ex) {
@@ -84,6 +85,7 @@ public class ParamaitreController implements Initializable {
 			ModifierAnneeController Modifier = loader.getController();
 			Modifier.setData(annee);
 			AnchorPane root = loader.getRoot();
+                        Methode.moveFocus(root);
 			StageDialog dialog = new StageDialog(Methode.getStage(event), root);
 			dialog.show();
 		} catch (IOException ex) {

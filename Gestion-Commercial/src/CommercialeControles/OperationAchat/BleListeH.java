@@ -214,6 +214,7 @@ public class BleListeH extends GridPane {
 				control.setData2(listeBle);
 
 				AnchorPane root = loader.getRoot();
+                                Methode.moveFocus(root);
 
 				StageDialog dialog = new StageDialog(stage, root);
 				dialog.show();

@@ -103,6 +103,7 @@ public class PorduitH extends GridPane {
 			AddDock.setData(listeProduit);
 
 			AnchorPane root = loader.getRoot();
+                        Methode.moveFocus(root);
 
 			StageDialog dialog = new StageDialog(stage, root);
 			dialog.show();

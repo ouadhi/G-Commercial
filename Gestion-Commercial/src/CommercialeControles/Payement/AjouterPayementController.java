@@ -26,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import tray.notification.NotificationType;
 
@@ -45,6 +46,12 @@ public class AjouterPayementController implements Initializable {
 	private JFXListView<PayementCell> listepayement;
 	@FXML
 	private JFXTextField timbre;
+    @FXML
+    private HBox extrat;
+    @FXML
+    private JFXTextField banque;
+    @FXML
+    private JFXTextField numeroCmpt;
 
 	private void AfficheListePayement() {
 
@@ -78,6 +85,7 @@ public class AjouterPayementController implements Initializable {
 		Types.add("Especes");
 		Types.add("Cheque");
 		Types.add("A terme");
+                Types.add("Virement");
 		ObservableList<String> liste = FXCollections.observableList(Types);
 		type.setItems(liste);
 		type.getSelectionModel().select(0);
@@ -118,5 +126,14 @@ public class AjouterPayementController implements Initializable {
 		this.listepayement = listepayement;
 		Nfacture.setText(client.getPrenom() + " " + client.getName());
 	}
+
+    @FXML
+    private void typeEvent(ActionEvent event) {
+         if (type.getSelectionModel().getSelectedItem().equals("Cheque") ||type.getSelectionModel().getSelectedItem().equals("Virement") ) {
+            extrat.setVisible(true);
+        } else {
+            extrat.setVisible(false);
+        }
+    }
 
 }

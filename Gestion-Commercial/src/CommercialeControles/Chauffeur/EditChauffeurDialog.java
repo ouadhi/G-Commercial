@@ -1,5 +1,6 @@
 package CommercialeControles.Chauffeur;
 
+import UIControle.Methode;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +34,7 @@ public class EditChauffeurDialog extends Stage {
 
 			modification.setData(box.getChauffeur());
 			AnchorPane pane = loader.getRoot();
+                        Methode.moveFocus(pane);
 
 			Scene scene = new Scene(pane, 614, 475);
 			setScene(scene);

@@ -196,6 +196,7 @@ public class PayementCell extends GridPane {
 				controlClient.setData(this.payment, PayementListeController.listepay);
 
 				AnchorPane root = loader.getRoot();
+                                Methode.moveFocus(root);
 
 				StageDialog dialog = new StageDialog(Methode.getStage(event), root);
 				dialog.show();

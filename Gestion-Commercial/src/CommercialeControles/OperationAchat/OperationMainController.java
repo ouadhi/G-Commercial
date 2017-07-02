@@ -1,5 +1,6 @@
 package CommercialeControles.OperationAchat;
 
+import UIControle.Methode;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,6 +40,11 @@ public class OperationMainController implements Initializable {
 			Ble = FXMLLoader.load(getClass().getResource(ViewUrl.selectBle));
 			information = FXMLLoader.load(getClass().getResource(ViewUrl.informationAcaht));
 			etape = 1;
+                        Methode.moveFocus(chauffeur);
+                        Methode.moveFocus(dock);
+                        Methode.moveFocus(camion);
+                        Methode.moveFocus(Ble);
+                        Methode.moveFocus(information);
 
 			precedent.setVisible(false);
 		} catch (IOException ex) {
