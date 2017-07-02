@@ -19,7 +19,7 @@ public class GenerateFactureReport {
 	public void generateReport(String nom, String code, String address, String rc, String fiscal, String date,
 			String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
 			String montantlettre, String chauffeur, String matricule, List<String> designationsVente,
-			List<String> qtesVente, List<String> prixsVente, List<String> montantsVente, List<String> typesVente)
+			List<String> qtesVente, List<String> prixsVente, List<String> montantsVente, String payement)
 			throws IOException, JRException {
 		OperationFactuReport operationFactuReport = new OperationFactuReport();
 
@@ -36,11 +36,8 @@ public class GenerateFactureReport {
 			String qte = qtesVente.get(i);
 			List<String> qtes = new ArrayList<>();
 			qtes.add(qte);
-			String type = typesVente.get(i);
-			List<String> types = new ArrayList<>();
-			types.add(type);
 			operationFactuReport.putReportInfo(nom, code, address, rc, fiscal, date, numFacture, article, montantHT,
-					tva, timbre, ttc, montantlettre, chauffeur, matricule, designations, qtes, prixs, montants, types);
+					tva, timbre, ttc, montantlettre, chauffeur, matricule, designations, qtes, prixs, montants, payement);
 		}
 		operationFactuReport.printReport();
 

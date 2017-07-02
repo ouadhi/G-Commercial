@@ -36,7 +36,7 @@ public class GenerateEtatRecetteDepense {
 		int counter = 1;
 		for (int i = 0; i < listClients.size(); i++) {
 			List<String> clients = new ArrayList<>();
-			clients.add(String.valueOf(listClients.get(i).getName()));
+			clients.add(String.valueOf(listClients.get(i).getName()+" "+listClients.get(i).getPrenom()));
 			List<String> montants = new ArrayList<>();
 			montants.add(String.valueOf(listPayement.get(i)));
 			List<String> soldes = new ArrayList<>();

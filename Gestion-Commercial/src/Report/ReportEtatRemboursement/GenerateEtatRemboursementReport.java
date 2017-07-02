@@ -5,6 +5,7 @@
  */
 package Report.ReportEtatRemboursement;
 
+import static Report.FactureRemboursementBleReport.GenerateFactureRemboursementReport.round;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -112,7 +113,24 @@ public class GenerateEtatRemboursementReport {
 
     public String calculeMantant(double qte, double prix) {
         double montant = qte * prix;
-        return new Double(montant).toString();
+        return new Double(round(montant,2)).toString();
+    }
+
+    public String transformationEnLettre(double montant) {
+        //get part before decimal point
+        int decimal = (int) Math.floor(montant);
+        //get after decimal point 
+        int fraction = (int) (round(montant - decimal, 2) * 100);
+        //change first part tpo charcater 
+        RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
+                RuleBasedNumberFormat.SPELLOUT);
+        String firstPart = ruleBasedNumberFormat.format(new Double(decimal)) + " Dinars";
+        String secondPart = " et " + ruleBasedNumberFormat.format(new Double(fraction)) + " Centimes";
+        if (fraction == 0) {
+            secondPart = "";
+        }
+        String all = firstPart + secondPart;
+        return all;
     }
 
     public void generateReport(Date startDate, Date endDate, String doit) {
@@ -123,9 +141,7 @@ public class GenerateEtatRemboursementReport {
         String start = new SimpleDateFormat("dd-MM-yyyy").format(startDate);
 
         String date = "De: " + start + " a " + end;
-        RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
-                RuleBasedNumberFormat.SPELLOUT);
-        String montantlettre = ruleBasedNumberFormat.format(new Double(round(montantTotal, 2))) + " Dinars Algérien";
+        String montantlettre = transformationEnLettre(montantTotal);
 
         for (int i = 0; i < jour.size(); i++) {
             List<String> parcours = getParcourList(i);
@@ -134,11 +150,23 @@ public class GenerateEtatRemboursementReport {
             List<String> qtes = getQteList(i);
             List<String> prixs = getPrixList(i);
             List<String> montants = getMontantsList(i);
-            String jourDate = new SimpleDateFormat("dd-MM-yyyy").format(jour.get(i));
+            System.out.println("montants--------------" + montants);
+            System.out.println("prixs--------------" + prixs);
+            System.out.println("qtes--------------" + qtes);
 
-            operationEtatRemboursementReport.putReportInfo(doit, date, jourDate,
+            String jourDate = new SimpleDateFormat("dd-MM-yyyy").format(jour.get(i));
+            List<String> jours = new ArrayList<>();
+            jours.add(jourDate);
+//            for (int j = 0; j < montants.size(); j++) {
+//                if (montants.size() != 1 & j == ((int) montants.size() / 2)) {
+//                    jours.add("");
+//                } else {
+//                    jours.add(jourDate);
+//                }
+//            }
+            operationEtatRemboursementReport.putReportInfo(doit, date,
                     new Double(round(montantTotal, 2)).toString(), montantlettre, parcours, distances, nums, qtes,
-                    prixs, montants);
+                    prixs, montants, jours);
         }
         operationEtatRemboursementReport.printReport();
 
@@ -187,7 +215,7 @@ public class GenerateEtatRemboursementReport {
     public List<String> getPrixList(int n) {
         List<String> prixs = new ArrayList<>();
         for (int i = 0; i < listAchats.get(n).size(); i++) {
-            String prix = String.valueOf(listAchats.get(n).get(i).getDock().getPrixUnitTrans());
+            String prix = String.valueOf(round(listAchats.get(n).get(i).getDock().getPrixUnitTrans(),4));
             prixs.add(prix);
         }
         return prixs;

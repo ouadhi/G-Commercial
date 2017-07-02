@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Report.EtatReceptionReport;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -14,9 +13,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
-
 import org.hibernate.Session;
-
 import com.gestionCommerciale.HibernateSchema.Achat;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import com.ibm.icu.text.RuleBasedNumberFormat;
@@ -105,11 +102,29 @@ public class GenerateEtatReceptionReport {
         }
     }
 
+    public String transformationEnLettre(double montant) {
+        //get part before decimal point
+        int decimal = (int) Math.floor(montant);
+        //get after decimal point 
+        int fraction = (int) (round(montant - decimal, 2) * 100);
+        //change first part tpo charcater 
+        RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
+                RuleBasedNumberFormat.SPELLOUT);
+        String firstPart = ruleBasedNumberFormat.format(new Double(decimal)) + " Dinars";
+        String secondPart = " et " + ruleBasedNumberFormat.format(new Double(fraction)) + " Centimes";
+        if (fraction == 0) {
+            secondPart = "";
+        }
+        String all = firstPart + secondPart;
+        return all;
+    }
+
     public void generateReport(Date startDate, Date endDate) {
         OperationEtatReceptionReport operationEtatReceptionReport = new OperationEtatReceptionReport();
         achatParJour(increment_decrementDays(false, startDate, 1), increment_decrementDays(true, endDate, 1));
         RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
                 RuleBasedNumberFormat.SPELLOUT);
+
         double prixOAIC = 0;
         if (!listAchats.isEmpty()) {
             prixOAIC = listAchats.get(0).get(0).getBle().getPrix();
@@ -126,11 +141,12 @@ public class GenerateEtatReceptionReport {
             //calcule montant total 
             double montantTotaltttt = prixOAIC * totalFour;
             double montantCheque = round(montantTotaltttt, 2);
-            String montantlettre = ruleBasedNumberFormat.format(montantCheque) + " Dinars Algérien";
+            //String montantlettre = ruleBasedNumberFormat.format(montantCheque) + " Dinars Algérien";
+            String montantlettre = transformationEnLettre(montantCheque);
 
-            operationEtatReceptionReport.putReportInfo(newStartDate, newEndDate, dateJour, String.valueOf(totalFour),
-                    String.valueOf(totalMoulin), String.valueOf(totalDif),
-                    String.valueOf(montantCheque), montantlettre,
+            operationEtatReceptionReport.putReportInfo(newStartDate, newEndDate, dateJour, String.valueOf(round(totalFour,2)),
+                    String.valueOf(round(totalMoulin,2)), String.valueOf(round(totalDif,2)),
+                    String.valueOf(round(montantCheque,2)), montantlettre,
                     nums, qteFours, qteMoulins, qteDifs);
         }
         operationEtatReceptionReport.printReport();
@@ -167,7 +183,6 @@ public class GenerateEtatReceptionReport {
         }
         return qteFours;
     }
-
 
     public List<String> getQteMoulinList(int n) {
         List<String> qteMoulins = new ArrayList<>();

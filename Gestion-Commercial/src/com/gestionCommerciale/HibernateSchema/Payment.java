@@ -21,89 +21,113 @@ import javax.persistence.TemporalType;
 @Table(name = "Payment")
 public class Payment {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_payment", nullable = false)
-	int idPayment;
-	@Column(name = "type", nullable = false)
-	String type;
-	@Column(name = "montant", nullable = false)
-	double montant;
-	@Column(name = "date", nullable = false)
-	@Temporal(value = TemporalType.DATE)
-	Date date;
-	@ManyToOne
-	@JoinColumn(name = "id_client")
-	private Client client;
-	@Column(name = "deleted", nullable = false)
-	boolean deleted;
-	@ManyToOne
-	@JoinColumn(name = "id_annee")
-	private Annee annee;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_payment", nullable = false)
+    int idPayment;
+    @Column(name = "type", nullable = false)
+    String type;
+    //num de cheque ou virement
+    @Column(name = "num_chv", nullable = true)
+    String numCV;
+    @Column(name = "banque", nullable = true)
+    String banque;
 
-	public Payment() {
-	}
+    @Column(name = "montant", nullable = false)
+    double montant;
+    @Column(name = "date", nullable = false)
+    @Temporal(value = TemporalType.DATE)
+    Date date;
+    @ManyToOne
+    @JoinColumn(name = "id_client")
+    private Client client;
+    @Column(name = "deleted", nullable = false)
+    boolean deleted;
+    @ManyToOne
+    @JoinColumn(name = "id_annee")
+    private Annee annee;
 
-	public Payment(String type, double montant, Date date) {
-		this.type = type;
-		this.montant = montant;
-		this.date = date;
-	}
+    public Payment() {
+    }
 
-	public Annee getAnnee() {
-		return annee;
-	}
+    public Payment(String type,String numCV,String banque, double montant, Date date) {
+        this.type = type;
+        this.numCV = numCV;
+        this.banque = banque;
+        this.montant = montant;
+        this.date = date;
+    }
 
-	public Client getClient() {
-		return client;
-	}
+    public Annee getAnnee() {
+        return annee;
+    }
 
-	public Date getDate() {
-		return date;
-	}
+    public Client getClient() {
+        return client;
+    }
 
-	public int getIdPayment() {
-		return idPayment;
-	}
+    public Date getDate() {
+        return date;
+    }
 
-	public double getMontant() {
-		return montant;
-	}
+    public int getIdPayment() {
+        return idPayment;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public double getMontant() {
+        return montant;
+    }
 
-	public boolean isDeleted() {
-		return deleted;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setAnnee(Annee annee) {
-		this.annee = annee;
-	}
+    public boolean isDeleted() {
+        return deleted;
+    }
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
+    public void setAnnee(Annee annee) {
+        this.annee = annee;
+    }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-	public void setIdPayment(int idPayment) {
-		this.idPayment = idPayment;
-	}
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
-	public void setMontant(double montant) {
-		this.montant = montant;
-	}
+    public void setIdPayment(int idPayment) {
+        this.idPayment = idPayment;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setMontant(double montant) {
+        this.montant = montant;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getNumCV() {
+        return numCV;
+    }
+
+    public void setNumCV(String numCV) {
+        this.numCV = numCV;
+    }
+
+    public String getBanque() {
+        return banque;
+    }
+
+    public void setBanque(String banque) {
+        this.banque = banque;
+    }
 
 }

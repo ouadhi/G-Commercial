@@ -72,14 +72,16 @@ public class GenerationEtatEstimatifClient {
     List<String> montants = new ArrayList<>();
     List<String> tvas = new ArrayList<>();
     List<String> timbres = new ArrayList<>();
-
+    List<String> qtes = new ArrayList<>();
     List<String> ttcs = new ArrayList<>();
+
     double ttcTotal = 0;
     double timbreTotal = 0;
     double montantTotal = 0;
     double tvaTotal = 0;
     double farineTotal = 0;
     double sonTotal = 0;
+    double qteTotal = 0;
 
     Client client = new Client();
 
@@ -92,8 +94,8 @@ public class GenerationEtatEstimatifClient {
         operationEtatEstimatifClient.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
                 String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal), String.valueOf(timbreTotal),
-                String.valueOf(farineTotal),String.valueOf(sonTotal),
-                dates, this.nums, this.produits, this.montants, this.tvas, this.ttcs, this.timbres);
+                String.valueOf(farineTotal), String.valueOf(sonTotal), String.valueOf(round(qteTotal, 2)),
+                dates, this.nums, this.produits, this.montants, this.tvas, this.ttcs, this.timbres, this.qtes);
         operationEtatEstimatifClient.printReport();
     }
 
@@ -105,8 +107,8 @@ public class GenerationEtatEstimatifClient {
         OperationEtatEstimatifGlobal operationEtatEstimatifGlobal = new OperationEtatEstimatifGlobal();
         operationEtatEstimatifGlobal.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-                String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal),String.valueOf(timbreTotal)
-                ,String.valueOf(farineTotal),String.valueOf(sonTotal));
+                String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal), String.valueOf(timbreTotal),
+                String.valueOf(farineTotal), String.valueOf(sonTotal));
         operationEtatEstimatifGlobal.printReport();
     }
 
@@ -137,10 +139,16 @@ public class GenerationEtatEstimatifClient {
                         //calcule total farine et son
                         for (int z = 0; z < factures.get(j).getQtes2().size(); z++) {
                             if ("FARINE 50".equals(factures.get(j).getQtes2().get(z).getProduit().getNom())) {
-                                farineTotal = farineTotal + factures.get(j).getQtes2().get(z).getQte_fact();
+                                farineTotal = farineTotal + (factures.get(j).getQtes2().get(z).getQte_fact()
+                                        * factures.get(j).getQtes2().get(z).getProduit().getPrix());
+                                qtes.add(String.valueOf(round(factures.get(j).getQtes2().get(z).getQte_fact(), 2)));
+                                qteTotal = qteTotal + factures.get(j).getQtes2().get(z).getQte_fact();
                             }
                             if ("SON".equals(factures.get(j).getQtes2().get(z).getProduit().getNom())) {
-                                sonTotal = sonTotal + factures.get(j).getQtes2().get(z).getQte_fact();
+                                sonTotal = sonTotal + (factures.get(j).getQtes2().get(z).getQte_fact()
+                                        * factures.get(j).getQtes2().get(z).getProduit().getPrix());
+                                qtes.add(String.valueOf(round(factures.get(j).getQtes2().get(z).getQte_fact(), 2)));
+                                qteTotal = qteTotal + factures.get(j).getQtes2().get(z).getQte_fact();
                             }
                         }
                     }
