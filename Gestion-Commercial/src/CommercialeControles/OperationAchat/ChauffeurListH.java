@@ -2,17 +2,24 @@ package CommercialeControles.OperationAchat;
 
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
 
-import CommercialeControles.Chauffeur.AjouterChauffeuerDialog;
+import CommercialeControles.Chauffeur.AjouterChauffeurExtratController;
+import UIControle.Methode;
+import UIControle.StageDialog;
+import UIControle.ViewUrl;
+import com.jfoenix.controls.JFXListView;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 public class ChauffeurListH extends GridPane {
 
@@ -26,7 +33,7 @@ public class ChauffeurListH extends GridPane {
 
 	private Chauffeur chauffeur;
 
-	public ChauffeurListH() {
+	public ChauffeurListH(JFXListView<ChauffeurListH> listeChaffeur) {
 
 		columnConstraints = new ColumnConstraints();
 		rowConstraints = new RowConstraints();
@@ -104,9 +111,23 @@ public class ChauffeurListH extends GridPane {
 		getChildren().add(label0);
 
 		this.setOnMouseClicked(event -> {
-			Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			AjouterChauffeuerDialog dialog = new AjouterChauffeuerDialog(g);
+                    
+                   try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.AjouterchauffeurExtart));
+			loader.load();
+
+			 AjouterChauffeurExtratController controler = loader.getController();
+			controler.setData(listeChaffeur);
+
+			AnchorPane pane = loader.getRoot();
+
+			StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
 			dialog.show();
+
+		} catch (IOException ex) {
+			Logger.getLogger(ListeAchatController.class.getName()).log(Level.SEVERE, null, ex);
+		}
 
 		});
 	}

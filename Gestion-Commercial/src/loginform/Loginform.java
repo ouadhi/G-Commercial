@@ -7,17 +7,24 @@ import java.util.List;
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.Models.FactureQueries;
 import Report.FactureReport.ToutFacture;
+import UIControle.Methode;
 import com.gestionCommerciale.Models.SessionsGenerator;
+import com.jfoenix.controls.JFXTextField;
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.swing.UIManager;
@@ -45,14 +52,7 @@ public class Loginform extends Application {
             public void run() {
                 SessionsGenerator FactoryObject = new SessionsGenerator();
                 printReport();
-//				List<Facture> factures = FactureQueries.list();
-//
-//				List<JasperPrint> jasperPrints = new ArrayList<JasperPrint>();
-//				for (int i = 0; i < factures.size(); i++) {
-//					jasperPrints.add(ToutFacture.ItererJaspoerPrint(factures.get(i)));
-//					System.out.println("------------- facture: " + factures.get(i).getClient().getPrenom());
-//
-//				}
+
             }
         }.start();
         Image icon = new Image(getClass().getResourceAsStream("/icons/logo.jpg"));
@@ -61,10 +61,11 @@ public class Loginform extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Employee_LoginFXML.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        Methode.moveFocus(root);
 
         stage.show();
 
-        transitionIN(root);
+       // transitionIN(root);
 
     }
 
@@ -107,6 +108,9 @@ public class Loginform extends Application {
         return new JRBeanCollectionDataSource(collBean, false);
 
     }
+    
+    
+   
 
 
 }

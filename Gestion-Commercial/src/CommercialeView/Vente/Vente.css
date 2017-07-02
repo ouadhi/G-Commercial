@@ -252,3 +252,8 @@ button_annuler:pressed {
     -fx-background-color :   #fa9f47; 
     -fx-background-raduis : 4px ; 
 }
+
+.addbttn {
+    -fx-background-color: #fd9252  ;
+    -fx-background-raduis : 50 ; 
+}

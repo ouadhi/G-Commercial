@@ -191,4 +191,6 @@ public class ClientListController implements Initializable {
 
 		setTotal();
 	}
+        
+       
 }

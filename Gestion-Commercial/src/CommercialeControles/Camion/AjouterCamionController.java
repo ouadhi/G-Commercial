@@ -91,7 +91,7 @@ public class AjouterCamionController implements Initializable {
 					new ShowPane().showCamion();
 					Notification.Addnotification();
 					Methode.getStage(event).close();
-					;
+					
 
 				} catch (Exception ex) {
 					ex.printStackTrace();

@@ -45,7 +45,9 @@ public class AjouterDockController implements Initializable {
 	@FXML
 	private ImageView close;
 	JFXListView<DockCell> listedock = null;
+        JFXListView<DockListeH> listeDockh =  null  ; 
 	Label totale;
+        
 
 	@FXML
 	private void close(MouseEvent event) {
@@ -74,10 +76,10 @@ public class AjouterDockController implements Initializable {
 		for (int i = 0; i < listDocksDB.size(); i++) {
 			list.add(new DockListeH(listDocksDB.get(i)));
 		}
-		list.add(new DockListeH());
+		list.add(new DockListeH(listeDockh));
 		ObservableList<DockListeH> myObservableList = FXCollections.observableList(list);
 		SelectionnerDockController.listeDocks.setItems(myObservableList);
-		SelectionnerDockController.listeDocks.setExpanded(true);
+		
 	}
 
 	public void refreshVliste() {
@@ -129,4 +131,9 @@ public class AjouterDockController implements Initializable {
 		this.listedock = listedock;
 		this.totale = totale;
 	}
+          
+        public void setData (JFXListView<DockListeH> listeDockh) {
+            this.listeDockh  =  listeDockh  ; 
+            
+        }
 }

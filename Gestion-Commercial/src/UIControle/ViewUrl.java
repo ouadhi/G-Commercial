@@ -8,6 +8,7 @@ public class ViewUrl {
 	public static String modifierCamion = "/CommercialeView/Camion/ModifierCamionView.fxml";
 	public static String showHomeChauffeur = "/CommercialeView/HomeFXML.fxml";
 	public static String SelectCamionchauffeur = "/CommercialeView/Chauffeur/SelectionnerCamion.fxml";
+        public static String AjouterchauffeurExtart  =  "/CommercialeView/Chauffeur/AjouterChauffeurExtrat.fxml";
 
 	public static String ClientView = "/CommercialeView/Client/ClientListView.fxml";
 	public static String AjouteClient = "/CommercialeView/Client/AjouterClientView.fxml";
@@ -31,6 +32,7 @@ public class ViewUrl {
 
 	public static String CamionListe = "/CommercialeView/Camion/CamionView.fxml";
 	public static String ChauffeurListe = "/CommercialeView/Chauffeur/ChauffeurView.fxml";
+        public static String AjoutercamionExtrat = "/CommercialeView/Camion/AjouterCamionExtrat.fxml";
 
 	public static String Home1 = "/CommercialeView/HomeFXML.fxml";
 	public static String Home2 = "/CommercialeView/Home2FXML.fxml";

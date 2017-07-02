@@ -3,11 +3,22 @@ package CommercialeControles.OperationAchat;
 import com.gestionCommerciale.HibernateSchema.Camion;
 
 import CommercialeControles.Camion.AjouterCamionDialog;
+import CommercialeControles.Camion.AjouterCamionExtratController;
+import CommercialeControles.Chauffeur.AjouterChauffeurExtratController;
+import UIControle.Methode;
+import UIControle.StageDialog;
+import UIControle.ViewUrl;
+import com.jfoenix.controls.JFXListView;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -26,7 +37,7 @@ public class CamionListeH extends GridPane {
 
 	private Camion camion;
 
-	public CamionListeH() {
+	public CamionListeH(JFXListView<CamionListeH> listeCamion) {
 
 		columnConstraints = new ColumnConstraints();
 		rowConstraints = new RowConstraints();
@@ -107,9 +118,22 @@ public class CamionListeH extends GridPane {
 
 		this.setOnMouseClicked(event -> {
 
-			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			AjouterCamionDialog dialog = new AjouterCamionDialog(stage);
+			try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.AjoutercamionExtrat));
+			loader.load();
+
+                        AjouterCamionExtratController controler = loader.getController();
+			controler.setData(listeCamion);
+
+			AnchorPane pane = loader.getRoot();
+
+			StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
 			dialog.show();
+
+		} catch (IOException ex) {
+			Logger.getLogger(ListeAchatController.class.getName()).log(Level.SEVERE, null, ex);
+		}
 
 		});
 	}

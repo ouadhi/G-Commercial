@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1160.0" style="-fx-background-color: white;" stylesheets="@Vente.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Vente.SelectionnerClientController">
    <children>
-      <JFXListView fx:id="ClientListe" layoutX="22.0" layoutY="98.0" onMouseClicked="#select" prefHeight="356.0" prefWidth="1117.0" />
+      <JFXListView fx:id="ClientListe" layoutX="22.0" layoutY="98.0" onMouseClicked="#select" prefHeight="370.0" prefWidth="1117.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="535.0" layoutY="20.0" styleClass="titre" text=" Client" textAlignment="CENTER" AnchorPane.leftAnchor="535.0" AnchorPane.rightAnchor="534.0" />
       <Label alignment="CENTER" layoutX="421.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="500.0" layoutY="65.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="2" textAlignment="CENTER" />
@@ -37,5 +38,14 @@
             </ImageView>
          </children>
       </Pane>
+      <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="1096.0" layoutY="404.0" onAction="#addClient" prefHeight="64.0" prefWidth="64.0" style="-fx-background-radius: 50;" styleClass="addbttn" text=" ">
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="icons/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>
