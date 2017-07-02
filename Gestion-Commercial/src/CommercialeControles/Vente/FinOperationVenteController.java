@@ -45,242 +45,255 @@ import javafx.scene.layout.AnchorPane;
 
 public class FinOperationVenteController implements Initializable {
 
-	public static JFXTextField montant_static = new JFXTextField();
-	static JFXTextField montantFinal_static = new JFXTextField();
-	private static JFXTextField versement_static = new JFXTextField();
-	private static JFXTextField solde_static = new JFXTextField();
-	private static JFXTextField timbre_static = new JFXTextField();
-	public static void calcule() {
-		montantFinal_static.setText(Methode.DoubleFormat(getMontantFinale()) + "");
-		solde_static.setText(Methode.DoubleFormat(ClientQueries.solde(OperationVenteController.client)) + "");
-	}
-	public static void calculeOnChange(JFXTextField field) {
-		field.setOnKeyReleased(new EventHandler<KeyEvent>() {
-			@Override
-			public void handle(javafx.scene.input.KeyEvent event) {
-				if (field.getText().isEmpty()) {
-					field.setText("0.00");
-					field.selectAll();
-				}
+    public static JFXTextField montant_static = new JFXTextField();
+    static JFXTextField montantFinal_static = new JFXTextField();
+    private static JFXTextField versement_static = new JFXTextField();
+    private static JFXTextField solde_static = new JFXTextField();
+    private static JFXTextField timbre_static = new JFXTextField();
 
-				calcule();
-			}
-		});
+    public static void calcule() {
+        montantFinal_static.setText(Methode.DoubleFormat(getMontantFinale()) + "");
+        solde_static.setText(Methode.DoubleFormat(ClientQueries.solde(OperationVenteController.client)) + "");
+    }
 
-	}
-	static double getMontantFinale() {
-		double mf = 0;
-		for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
-			mf = (OperationVenteController.produitselected.get(i).getProduit().getTTC()
-					* OperationVenteController.produitselected.get(i).getQuantite()) + mf;
-		}
-		mf += Double.parseDouble(timbre_static.getText());
+    public static void calculeOnChange(JFXTextField field) {
+        field.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(javafx.scene.input.KeyEvent event) {
+                if (field.getText().isEmpty()) {
+                    field.setText("0.00");
+                    field.selectAll();
+                }
 
-		return mf;
-	}
-	@FXML
-	private JFXTextField montant;
-	@FXML
-	private JFXDatePicker dateOperation;
-	@FXML
-	private JFXTextField montantFinal;
-	@FXML
-	private JFXTextField versement;
-	@FXML
-	private JFXButton save;
-	@FXML
-	private JFXButton annuler;
-	@FXML
-	private ImageView clienticon;
-	@FXML
-	private ImageView chauffeuricon;
-	@FXML
-	private ImageView camionIcon;
-	@FXML
-	private ImageView produitIcon;
-	PopOver popup;
-	private Image view = new Image(getClass().getResourceAsStream("/icons/preview.png"));
-	private Image viewHover = new Image(getClass().getResourceAsStream("/icons/previewGreen.png"));
-	@FXML
-	private JFXTextField solde;
+                calcule();
+            }
+        });
 
-	@FXML
-	private JFXComboBox<String> versemetCombo;
+    }
 
-	StageDialog dialog;
+    static double getMontantFinale() {
+        double mf = 0;
+        for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
+            mf = (OperationVenteController.produitselected.get(i).getProduit().getTTC()
+                    * OperationVenteController.produitselected.get(i).getQuantite()) + mf;
+        }
+        mf += Double.parseDouble(timbre_static.getText());
 
-	@FXML
-	private JFXTextField timbre;
+        return mf;
+    }
+    @FXML
+    private JFXTextField montant;
+    @FXML
+    private JFXDatePicker dateOperation;
+    @FXML
+    private JFXTextField montantFinal;
+    @FXML
+    private JFXTextField versement;
+    @FXML
+    private JFXButton save;
+    @FXML
+    private JFXButton annuler;
+    @FXML
+    private ImageView clienticon;
+    @FXML
+    private ImageView chauffeuricon;
+    @FXML
+    private ImageView camionIcon;
+    @FXML
+    private ImageView produitIcon;
+    PopOver popup;
+    private Image view = new Image(getClass().getResourceAsStream("/icons/preview.png"));
+    private Image viewHover = new Image(getClass().getResourceAsStream("/icons/previewGreen.png"));
+    @FXML
+    private JFXTextField solde;
 
-	public void addFacture(ActionEvent event) {
-		Date date = java.sql.Date.valueOf(dateOperation.getValue());
-		double montantVal = Double.parseDouble(montant_static.getText());
-		double montantFinalVal = Double.parseDouble(montant_static.getText());
-		double versmentVal = Double.parseDouble(versement_static.getText());
+    @FXML
+    private JFXComboBox<String> versemetCombo;
 
-		Facture f = new Facture(date, montantVal, AnneeQueries.getSelected().getTva(), 0);
+    StageDialog dialog;
 
-		f.setMontantFinal(montantFinalVal);
-		List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
-		for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
-			Produit p = OperationVenteController.produitselected.get(i).getProduit();
-			int qt = OperationVenteController.produitselected.get(i).getQuantite();
-			double prix = OperationVenteController.produitselected.get(i).getProduit().getPrix();
-			Facture_Produit fp = new Facture_Produit(qt, prix);
-			fp.setProduit(p);
-			fp.setFacture(f);
-			fpsList.add(fp);
-		}
-		f.setQtes(fpsList);
-		f.setAnnee(AnneeQueries.getSelected());
-		// back
-		Payment payment = new Payment(versemetCombo.getSelectionModel().getSelectedItem(), versmentVal, date);
-		payment.setClient(OperationVenteController.client);
-		payment.setAnnee(AnneeQueries.getSelected());
-		payment.setClient(OperationVenteController.client);
-		// PaymentQueries.SaveOrUpdate(payment);
-		f.setClient(OperationVenteController.client);
-		f.setChauffeur(OperationVenteController.chauffeur);
-		f.setCamion(OperationVenteController.camion);
-		f.setMontantFinal(Double.parseDouble(montantFinal_static.getText()));
-		f.setTimbre(Double.parseDouble(timbre_static.getText()));
-		FactureQueries.insert(f, payment, fpsList);
-		imprimer(f, event);
-	}
+    @FXML
+    private JFXTextField timbre;
 
-	@FXML
-	private void camionIN(MouseEvent event) {
-		camionIcon.setImage(viewHover);
-		CamionListeH ch = new CamionListeH(OperationVenteController.camion);
-		popup.setContentNode(ch);
-		popup.show(camionIcon);
-	}
+    public void addFacture(ActionEvent event) {
+        Date date = java.sql.Date.valueOf(dateOperation.getValue());
+        double montantVal = Double.parseDouble(montant_static.getText());
+        double montantFinalVal = Double.parseDouble(montant_static.getText());
+        double versmentVal = Double.parseDouble(versement_static.getText());
 
-	@FXML
-	private void camionOUT(MouseEvent event) {
-		popup.hide();
-		camionIcon.setImage(view);
-	}
+        Facture f = new Facture(date, montantVal, AnneeQueries.getSelected().getTva(), 0);
 
-	@FXML
-	private void chauffeurIN(MouseEvent event) {
-		chauffeuricon.setImage(viewHover);
-		ChauffeurListH ch = new ChauffeurListH(OperationVenteController.chauffeur);
-		popup.setContentNode(ch);
-		popup.show(chauffeuricon);
-	}
+        f.setMontantFinal(montantFinalVal);
+        List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
+        for (int i = 0; i < OperationVenteController.produitselected.size(); i++) {
+            Produit p = OperationVenteController.produitselected.get(i).getProduit();
+            int qt = OperationVenteController.produitselected.get(i).getQuantite();
+            double prix = OperationVenteController.produitselected.get(i).getProduit().getPrix();
+            Facture_Produit fp = new Facture_Produit(qt, prix);
+            fp.setProduit(p);
+            fp.setFacture(f);
+            fpsList.add(fp);
+        }
+        f.setQtes(fpsList);
+        f.setAnnee(AnneeQueries.getSelected());
+        // back
+        String typeValue = versemetCombo.getSelectionModel().getSelectedItem();
+        String numCVValue = "";
+        String banqueValue = "";
+        //kada
+        if (typeValue == "Cheque" || typeValue == "virement") {
+            //String numCVValue = numCV.getValue();
+            //String banqueValue = banque.getValue();
+        }
 
-	@FXML
-	private void chauffeurOUT(MouseEvent event) {
-		popup.hide();
-		chauffeuricon.setImage(view);
-	}
+        Payment payment = new Payment(typeValue, numCVValue, banqueValue, versmentVal, date);
+        payment.setClient(OperationVenteController.client);
+        payment.setAnnee(AnneeQueries.getSelected());
+        payment.setClient(OperationVenteController.client);
+        // PaymentQueries.SaveOrUpdate(payment);
+        f.setClient(OperationVenteController.client);
+        f.setChauffeur(OperationVenteController.chauffeur);
+        f.setCamion(OperationVenteController.camion);
+        f.setMontantFinal(Double.parseDouble(montantFinal_static.getText()));
+        f.setTimbre(Double.parseDouble(timbre_static.getText()));
+        FactureQueries.insert(f, payment, fpsList);
+        imprimer(f, event);
+    }
 
-	@FXML
-	private void clientIN(MouseEvent event) {
-		clienticon.setImage(viewHover);
-		popup.setContentNode(montant);
-	}
+    @FXML
+    private void camionIN(MouseEvent event) {
+        camionIcon.setImage(viewHover);
+        CamionListeH ch = new CamionListeH(OperationVenteController.camion);
+        popup.setContentNode(ch);
+        popup.show(camionIcon);
+    }
 
-	@FXML
-	private void clientOUT(MouseEvent event) {
-		clienticon.setImage(view);
-	}
+    @FXML
+    private void camionOUT(MouseEvent event) {
+        popup.hide();
+        camionIcon.setImage(view);
+    }
 
-	public void imprimer(Facture f, ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource(ViewUrl.printvent));
-			loader.load();
-			PrintViewController print = loader.getController();
-			print.setData(f);
-			AnchorPane root = loader.getRoot();
-			StageDialog dialog = new StageDialog(Methode.getStage(event), root);
-			dialog.show();
-		} catch (IOException ex) {
-			Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+    @FXML
+    private void chauffeurIN(MouseEvent event) {
+        chauffeuricon.setImage(viewHover);
+        ChauffeurListH ch = new ChauffeurListH(OperationVenteController.chauffeur);
+        popup.setContentNode(ch);
+        popup.show(chauffeuricon);
+    }
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		Methode.setOnlyDouble(timbre, 4);
-		Methode.setOnlyDouble(versement, 7);
-		montantFinal.setEditable(false);
-		montant.setEditable(false);
-		solde.setEditable(false);
-		montant_static = montant;
-		setVersement();
-		montantFinal_static = montantFinal;
-		versement_static = versement;
-		solde_static = solde;
-		timbre_static = timbre;
-		Methode.setSelectedMouseClick(versement);
-		Methode.setZeroRemoved(versement);
-		Methode.setSelectedMouseClick(timbre);
-		Methode.setZeroRemoved(timbre);
-		calculeOnChange(timbre);
-		versement.setText("0.00");
-		timbre.setText("0.00");
-		dateOperation.setValue(LocalDate.now());
-		montantFinal_static.setEditable(false);
-		montant.setEditable(false);
-		solde.setEditable(false);
-		intpop();
-	}
+    @FXML
+    private void chauffeurOUT(MouseEvent event) {
+        popup.hide();
+        chauffeuricon.setImage(view);
+    }
 
-	private void intpop() {
-		popup = new PopOver();
-		popup.setCornerRadius(4);
-		popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
-	}
+    @FXML
+    private void clientIN(MouseEvent event) {
+        clienticon.setImage(viewHover);
+        popup.setContentNode(montant);
+    }
 
-	@FXML
-	private void produitIN(MouseEvent event) throws IOException {
-		produitIcon.setImage(viewHover);
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource(ViewUrl.produitfacture));
-		loader.load();
+    @FXML
+    private void clientOUT(MouseEvent event) {
+        clienticon.setImage(view);
+    }
 
-		ListeProduitVenteController Modifier = loader.getController();
-		Modifier.setData2(OperationVenteController.produitselected);
+    public void imprimer(Facture f, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(ViewUrl.printvent));
+            loader.load();
+            PrintViewController print = loader.getController();
+            print.setData(f);
+            AnchorPane root = loader.getRoot();
+            StageDialog dialog = new StageDialog(Methode.getStage(event), root);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-		AnchorPane root = loader.getRoot();
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Methode.setOnlyDouble(timbre, 4);
+        Methode.setOnlyDouble(versement, 7);
+        montantFinal.setEditable(false);
+        montant.setEditable(false);
+        solde.setEditable(false);
+        montant_static = montant;
+        setVersement();
+        montantFinal_static = montantFinal;
+        versement_static = versement;
+        solde_static = solde;
+        timbre_static = timbre;
+        Methode.setSelectedMouseClick(versement);
+        Methode.setZeroRemoved(versement);
+        Methode.setSelectedMouseClick(timbre);
+        Methode.setZeroRemoved(timbre);
+        calculeOnChange(timbre);
+        versement.setText("0.00");
+        timbre.setText("0.00");
+        dateOperation.setValue(LocalDate.now());
+        montantFinal_static.setEditable(false);
+        montant.setEditable(false);
+        solde.setEditable(false);
+        intpop();
+    }
 
-		dialog = new StageDialog(Methode.getStageMouses(event), root);
-		dialog.show();
+    private void intpop() {
+        popup = new PopOver();
+        popup.setCornerRadius(4);
+        popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
+    }
 
-	}
-	@FXML
-	private void produitOUT(MouseEvent event) {
-		dialog.close();
-		produitIcon.setImage(view);
-	}
+    @FXML
+    private void produitIN(MouseEvent event) throws IOException {
+        produitIcon.setImage(viewHover);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(ViewUrl.produitfacture));
+        loader.load();
 
-	@FXML
-	private void quitter(ActionEvent event) throws IOException {
-		new ShowPane().showVenteListe();
-	}
+        ListeProduitVenteController Modifier = loader.getController();
+        Modifier.setData2(OperationVenteController.produitselected);
 
-	@FXML
-	private void sauvgader(ActionEvent event) throws IOException {
-		if (this.montant.getText().isEmpty() || this.montantFinal.getText().isEmpty()
-				|| this.versement.getText().isEmpty() || dateOperation.getValue().toString().isEmpty()) {
-			// || dateOperation.getValue().toString().isEmpty()
-			Notification.champVideNotification();
-		} else {
-			addFacture(event);
-			Notification.Addnotification();
-			quitter(event);
-		}
-	}
+        AnchorPane root = loader.getRoot();
 
-	public void setVersement() {
-		versemetCombo.getItems().add("Cheque");
-		versemetCombo.getItems().add("Especes");
-		versemetCombo.getItems().add("A terme");
-		versemetCombo.getSelectionModel().selectFirst();
+        dialog = new StageDialog(Methode.getStageMouses(event), root);
+        dialog.show();
 
-	}
+    }
+
+    @FXML
+    private void produitOUT(MouseEvent event) {
+        dialog.close();
+        produitIcon.setImage(view);
+    }
+
+    @FXML
+    private void quitter(ActionEvent event) throws IOException {
+        new ShowPane().showVenteListe();
+    }
+
+    @FXML
+    private void sauvgader(ActionEvent event) throws IOException {
+        if (this.montant.getText().isEmpty() || this.montantFinal.getText().isEmpty()
+                || this.versement.getText().isEmpty() || dateOperation.getValue().toString().isEmpty()) {
+            // || dateOperation.getValue().toString().isEmpty()
+            Notification.champVideNotification();
+        } else {
+            addFacture(event);
+            Notification.Addnotification();
+            quitter(event);
+        }
+    }
+
+    public void setVersement() {
+        versemetCombo.getItems().add("Cheque");
+        versemetCombo.getItems().add("Especes");
+        versemetCombo.getItems().add("A terme");
+        versemetCombo.getSelectionModel().selectFirst();
+
+    }
 
 }
