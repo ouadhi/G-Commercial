@@ -76,7 +76,7 @@ public class VenteListController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		Methode.showMenuItem(Order, label);
-
+                //////////
 		List<Facture> factureList = FactureQueries.list();
 		List<VenteCell> list = new ArrayList<>();
 		for (int i = 0; i < factureList.size(); i++) {

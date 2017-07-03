@@ -6,12 +6,14 @@
 package Report.FactureReport;
 
 import static Report.FactureRemboursementBleReport.GenerateFactureRemboursementReport.round;
+import com.gestionCommerciale.HibernateSchema.Company;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
+import com.gestionCommerciale.Models.CompanyQueries;
 import com.gestionCommerciale.Models.Facture_ProduitQueries;
 import com.ibm.icu.text.RuleBasedNumberFormat;
 import java.text.SimpleDateFormat;
@@ -60,22 +62,26 @@ public class ToutFacture {
         }
         // double ttc = factureimp.getMontant() * ((factureimp.getTva() / 100) +
         // factureimp.getMontant());
-        double ttc = (montantTotal * (facture.getTva() / 100)) + montantTotal;
-        
+        double ttc = facture.getMontantFinal();
+        double tva = ttc - (montantTotal + facture.getTimbre());
+        //double ttc = (montantTotal * (facture.getTva() / 100)) + montantTotal;
+
         //String montantlettre = ruleBasedNumberFormat.format(new Double(ttc)) + " Dinars Algérien";
-        String montantlettre = transformationEnLettre(ttc);   
-        String date = new SimpleDateFormat("dd-MM-yyyy").format(facture.getDate());
+        Company company = CompanyQueries.getCompany();
         
+        String montantlettre = transformationEnLettre(ttc);
+        String date = new SimpleDateFormat("dd-MM-yyyy").format(facture.getDate());
         OperationFactuReport operationFactuReport = new OperationFactuReport();
-        operationFactuReport.putReportInfo( facture.getClient().getName()+" "+ facture.getClient().getPrenom(),
+        operationFactuReport.putReportInfo(facture.getClient().getName() + " " + facture.getClient().getPrenom(),
                 String.valueOf(facture.getClient().getTypeActivity()), facture.getClient().getAddressClient(),
                 facture.getClient().getNumRegCom(), facture.getClient().getnCarteFiscale(),
                 date, String.valueOf(facture.getIdFacture()),
-                facture.getClient().getNumArticle(), String.valueOf(montantTotal), String.valueOf(facture.getTva()),
+                facture.getClient().getNumArticle(), String.valueOf(montantTotal), String.valueOf(round(tva, 2)),
                 String.valueOf(facture.getTimbre()), new Double(ttc).toString(), montantlettre,
-                facture.getChauffeur().getNom() + facture.getChauffeur().getPrenom(),
+                facture.getChauffeur().getNom() + " " + facture.getChauffeur().getPrenom(),
                 facture.getCamion().getMatricule(), designationsVente, qtesVente, prixsVente, montantsVente,
-                "A terme");
+                "A terme",company.getRegistre(),company.getFiscale(),company.getArticle(),
+                    company.getTelephone(),company.getFax(),company.getEmail());
         return operationFactuReport.getJasperPrint();
     }
 }

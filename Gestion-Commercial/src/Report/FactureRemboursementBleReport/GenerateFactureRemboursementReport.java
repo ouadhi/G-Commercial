@@ -20,7 +20,9 @@ import java.util.Set;
 import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Achat;
+import com.gestionCommerciale.HibernateSchema.Company;
 import com.gestionCommerciale.HibernateSchema.Dock;
+import com.gestionCommerciale.Models.CompanyQueries;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import com.ibm.icu.text.RuleBasedNumberFormat;
 
@@ -131,9 +133,9 @@ public class GenerateFactureRemboursementReport {
         RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
                 RuleBasedNumberFormat.SPELLOUT);
         String firstPart = ruleBasedNumberFormat.format(new Double(decimal)) + " Dinars";
-        String secondPart = " et "+ruleBasedNumberFormat.format(new Double(fraction)) + " Centimes";
-        if(fraction==0){
-           secondPart="";
+        String secondPart = " et " + ruleBasedNumberFormat.format(new Double(fraction)) + " Centimes";
+        if (fraction == 0) {
+            secondPart = "";
         }
         String all = firstPart + secondPart;
         return all;
@@ -146,15 +148,19 @@ public class GenerateFactureRemboursementReport {
         String start = new SimpleDateFormat("dd-MM-yyyy").format(startDate);
         String end = new SimpleDateFormat("dd-MM-yyyy").format(endDate);
         OperationFactureRemboursementReport operation = new OperationFactureRemboursementReport();
+
+        Company company = CompanyQueries.getCompany();
+
         achatParJour(startDate, newFinDate);
         List<String> qtes = getQteParDock();
         List<String> montants = getMontantParDock(qtes);
 //        RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
 //                RuleBasedNumberFormat.SPELLOUT);
 //        String montantlettre = ruleBasedNumberFormat.format(new Double(montantTotal)) + " Dinars Algérien";
-        String montantlettre= transformationEnLettre(montantTotal);
-        operation.putReportInfo(doit, num, start, end, String.valueOf(round(totalQte,2)), String.valueOf(round(montantTotal, 2)),
-                montantlettre, references, qtes, dockNomList, prixUnitair, montants);
+        String montantlettre = transformationEnLettre(montantTotal);
+        operation.putReportInfo(doit, num, start, end, String.valueOf(round(totalQte, 2)), String.valueOf(round(montantTotal, 2)),
+                montantlettre, references, qtes, dockNomList, prixUnitair, montants, company.getRegistre(), company.getFiscale(), company.getArticle(),
+                company.getTelephone(), company.getFax(), company.getEmail());
         operation.printReport();
 
     }
@@ -191,7 +197,7 @@ public class GenerateFactureRemboursementReport {
                 }
             }
             totalQte = totalQte + total;
-            listTotalQte.add(new Double(round(total,2)).toString());
+            listTotalQte.add(new Double(round(total, 2)).toString());
         }
         return listTotalQte;
     }

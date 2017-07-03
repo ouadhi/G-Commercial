@@ -12,109 +12,142 @@ import java.util.List;
  * @author Hicham
  */
 public class BonChargementBean {
-	String num;
-	String date;
-	String nomEtPrenom;
-	String code;
-	String address;
-	public String rc;
-	public String fiscal;
-	public String article;
-	public List<String> designations;
-	public List<String> qtes;
 
-	public BonChargementBean(String num, String date, String nomEtPrenom, String code, String address, String rc,
-			String fiscal, String article, List<String> designations, List<String> qtes) {
-		this.num = num;
-		this.date = date;
-		this.nomEtPrenom = nomEtPrenom;
-		this.code = code;
-		this.address = address;
-		this.designations = designations;
-		this.qtes = qtes;
-		this.rc = rc;
-		this.fiscal = fiscal;
-		this.article = article;
-	}
+    String num;
+    String date;
+    String nomEtPrenom;
+    String code;
+    String address;
+    public String rc;
+    public String fiscal;
+    public String article;
+    public List<String> designations;
+    public List<String> qtes;
+    
+    String titreTel;
+    String titreFax;
+    String titreEmail;
 
-	public String getAddress() {
-		return address;
-	}
+    public BonChargementBean(String num, String date, String nomEtPrenom, String code, String address, String rc,
+            String fiscal, String article, List<String> designations, List<String> qtes
+            ,String titreTel,String titreFax,String titreEmail) {
+        this.num = num;
+        this.date = date;
+        this.nomEtPrenom = nomEtPrenom;
+        this.code = code;
+        this.address = address;
+        this.designations = designations;
+        this.qtes = qtes;
+        this.rc = rc;
+        this.fiscal = fiscal;
+        this.article = article;
+        this.titreTel = titreTel;
+        this.titreFax = titreFax;
+        this.titreEmail = titreEmail;
+    }
 
-	public String getArticle() {
-		return article;
-	}
+    public String getTitreTel() {
+        return titreTel;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public void setTitreTel(String titreTel) {
+        this.titreTel = titreTel;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public String getTitreFax() {
+        return titreFax;
+    }
 
-	public List<String> getDesignations() {
-		return designations;
-	}
+    public void setTitreFax(String titreFax) {
+        this.titreFax = titreFax;
+    }
 
-	public String getFiscal() {
-		return fiscal;
-	}
+    public String getTitreEmail() {
+        return titreEmail;
+    }
 
-	public String getNomEtPrenom() {
-		return nomEtPrenom;
-	}
+    public void setTitreEmail(String titreEmail) {
+        this.titreEmail = titreEmail;
+    }
 
-	public String getNum() {
-		return num;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public List<String> getQtes() {
-		return qtes;
-	}
+    public String getArticle() {
+        return article;
+    }
 
-	public String getRc() {
-		return rc;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public void setArticle(String article) {
-		this.article = article;
-	}
+    public List<String> getDesignations() {
+        return designations;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public String getFiscal() {
+        return fiscal;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public String getNomEtPrenom() {
+        return nomEtPrenom;
+    }
 
-	public void setDesignations(List<String> designations) {
-		this.designations = designations;
-	}
+    public String getNum() {
+        return num;
+    }
 
-	public void setFiscal(String fiscal) {
-		this.fiscal = fiscal;
-	}
+    public List<String> getQtes() {
+        return qtes;
+    }
 
-	public void setNomEtPrenom(String nomEtPrenom) {
-		this.nomEtPrenom = nomEtPrenom;
-	}
+    public String getRc() {
+        return rc;
+    }
 
-	public void setNum(String num) {
-		this.num = num;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setQtes(List<String> qtes) {
-		this.qtes = qtes;
-	}
+    public void setArticle(String article) {
+        this.article = article;
+    }
 
-	public void setRc(String rc) {
-		this.rc = rc;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setDesignations(List<String> designations) {
+        this.designations = designations;
+    }
+
+    public void setFiscal(String fiscal) {
+        this.fiscal = fiscal;
+    }
+
+    public void setNomEtPrenom(String nomEtPrenom) {
+        this.nomEtPrenom = nomEtPrenom;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public void setQtes(List<String> qtes) {
+        this.qtes = qtes;
+    }
+
+    public void setRc(String rc) {
+        this.rc = rc;
+    }
 
 }

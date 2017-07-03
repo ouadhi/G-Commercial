@@ -13,150 +13,213 @@ import java.util.List;
  */
 public class BonLivraisonBean {
 
-	int id;
-	String nom;
-	String code;
-	String address;
-	String rc;
-	String fiscal;
-	String date;
-	String numFacture;
-	String article;
-	String chauffeur;
-	String matricule;
-	public List<String> designations;
-	public List<String> qtes;
-	public List<String> types;
+    int id;
+    String nom;
+    String code;
+    String address;
+    String rc;
+    String fiscal;
+    String date;
+    String numFacture;
+    String article;
+    String chauffeur;
+    String matricule;
+    public List<String> designations;
+    public List<String> qtes;
+    public List<String> types;
 
-	public BonLivraisonBean(int id, String nom, String code, String address, String rc, String fiscal, String date,
-			String numFacture, String article, String chauffeur, String matricule, List<String> designations,
-			List<String> qtes, List<String> types) {
-		this.id = id;
-		this.nom = nom;
-		this.code = code;
-		this.address = address;
-		this.rc = rc;
-		this.fiscal = fiscal;
-		this.date = date;
-		this.numFacture = numFacture;
-		this.article = article;
-		this.chauffeur = chauffeur;
-		this.matricule = matricule;
-		this.designations = designations;
-		this.qtes = qtes;
-		this.types = types;
-	}
+    String titreRC;
+    String titreFiscal;
+    String titreArticle;
+    String titreTel;
+    String titreFax;
+    String titreEmail;
 
-	public String getAddress() {
-		return address;
-	}
+    public BonLivraisonBean(int id, String nom, String code, String address, String rc, String fiscal, String date,
+            String numFacture, String article, String chauffeur, String matricule, List<String> designations,
+            List<String> qtes, List<String> types, String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail) {
+        this.id = id;
+        this.nom = nom;
+        this.code = code;
+        this.address = address;
+        this.rc = rc;
+        this.fiscal = fiscal;
+        this.date = date;
+        this.numFacture = numFacture;
+        this.article = article;
+        this.chauffeur = chauffeur;
+        this.matricule = matricule;
+        this.designations = designations;
+        this.qtes = qtes;
+        this.types = types;
+        this.titreRC = titreRC;
+        this.titreFiscal = titreFiscal;
+        this.titreArticle = titreArticle;
+        this.titreTel = titreTel;
+        this.titreFax = titreFax;
+        this.titreEmail = titreEmail;
+    }
 
-	public String getArticle() {
-		return article;
-	}
+    public String getTitreRC() {
+        return titreRC;
+    }
 
-	public String getChauffeur() {
-		return chauffeur;
-	}
+    public void setTitreRC(String titreRC) {
+        this.titreRC = titreRC;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getTitreFiscal() {
+        return titreFiscal;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public void setTitreFiscal(String titreFiscal) {
+        this.titreFiscal = titreFiscal;
+    }
 
-	public List<String> getDesignations() {
-		return designations;
-	}
+    public String getTitreArticle() {
+        return titreArticle;
+    }
 
-	public String getFiscal() {
-		return fiscal;
-	}
+    public void setTitreArticle(String titreArticle) {
+        this.titreArticle = titreArticle;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public String getTitreTel() {
+        return titreTel;
+    }
 
-	public String getMatricule() {
-		return matricule;
-	}
+    public void setTitreTel(String titreTel) {
+        this.titreTel = titreTel;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public String getTitreFax() {
+        return titreFax;
+    }
 
-	public String getNumFacture() {
-		return numFacture;
-	}
+    public void setTitreFax(String titreFax) {
+        this.titreFax = titreFax;
+    }
 
-	public List<String> getQtes() {
-		return qtes;
-	}
+    public String getTitreEmail() {
+        return titreEmail;
+    }
 
-	public String getRc() {
-		return rc;
-	}
+    public void setTitreEmail(String titreEmail) {
+        this.titreEmail = titreEmail;
+    }
+    
 
-	public List<String> getTypes() {
-		return types;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getArticle() {
+        return article;
+    }
 
-	public void setArticle(String article) {
-		this.article = article;
-	}
+    public String getChauffeur() {
+        return chauffeur;
+    }
 
-	public void setChauffeur(String chauffeur) {
-		this.chauffeur = chauffeur;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public List<String> getDesignations() {
+        return designations;
+    }
 
-	public void setDesignations(List<String> designations) {
-		this.designations = designations;
-	}
+    public String getFiscal() {
+        return fiscal;
+    }
 
-	public void setFiscal(String fiscal) {
-		this.fiscal = fiscal;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public String getMatricule() {
+        return matricule;
+    }
 
-	public void setMatricule(String matricule) {
-		this.matricule = matricule;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public String getNumFacture() {
+        return numFacture;
+    }
 
-	public void setNumFacture(String numFacture) {
-		this.numFacture = numFacture;
-	}
+    public List<String> getQtes() {
+        return qtes;
+    }
 
-	public void setQtes(List<String> qtes) {
-		this.qtes = qtes;
-	}
+    public String getRc() {
+        return rc;
+    }
 
-	public void setRc(String rc) {
-		this.rc = rc;
-	}
+    public List<String> getTypes() {
+        return types;
+    }
 
-	public void setTypes(List<String> types) {
-		this.types = types;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setArticle(String article) {
+        this.article = article;
+    }
+
+    public void setChauffeur(String chauffeur) {
+        this.chauffeur = chauffeur;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setDesignations(List<String> designations) {
+        this.designations = designations;
+    }
+
+    public void setFiscal(String fiscal) {
+        this.fiscal = fiscal;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setNumFacture(String numFacture) {
+        this.numFacture = numFacture;
+    }
+
+    public void setQtes(List<String> qtes) {
+        this.qtes = qtes;
+    }
+
+    public void setRc(String rc) {
+        this.rc = rc;
+    }
+
+    public void setTypes(List<String> types) {
+        this.types = types;
+    }
 
 }

@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/EtatEstimatifParClient/EtatEstimatifClientBean.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/ReportEtatRemboursement/OperationEtatRemboursementReport.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/ReportEtatRemboursement/GenerateEtatRemboursementReport.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/FactureRemboursementBleReport/GenerateFactureRemboursementReport.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/ReportEtatRemboursement/EtatRemboursementBean.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/FactureRemboursementBleReport/FactureRemboursementBean.java</file>
         </group>
     </open-files>
 </project-private>

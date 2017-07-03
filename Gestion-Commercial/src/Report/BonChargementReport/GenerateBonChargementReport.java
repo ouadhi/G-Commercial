@@ -5,6 +5,8 @@
  */
 package Report.BonChargementReport;
 
+import com.gestionCommerciale.HibernateSchema.Company;
+import com.gestionCommerciale.Models.CompanyQueries;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,22 +19,24 @@ import net.sf.jasperreports.engine.JRException;
  */
 public class GenerateBonChargementReport {
 
-	public void generateReport(String num, String date, String nomEtPrenom, String code, String address, String rc,
-			String fiscal, String article, List<String> designationsVente, List<String> qtesVente)
-			throws IOException, JRException {
-		OperationBonChargementReport operationBonChargementReport = new OperationBonChargementReport();
-		for (int i = 0; i < designationsVente.size(); i++) {
-			String designation = designationsVente.get(i);
-			List<String> designations = new ArrayList<>();
-			designations.add(designation);
-			String qte = qtesVente.get(i);
-			List<String> qtes = new ArrayList<>();
-			qtes.add(qte);
-			operationBonChargementReport.putReportInfo(num, date, nomEtPrenom, code, address, rc, fiscal, article,
-					designations, qtes);
+    public void generateReport(String num, String date, String nomEtPrenom, String code, String address, String rc,
+            String fiscal, String article, List<String> designationsVente, List<String> qtesVente)
+            throws IOException, JRException {
+        OperationBonChargementReport operationBonChargementReport = new OperationBonChargementReport();
+        Company company = CompanyQueries.getCompany();
 
-		}
-		operationBonChargementReport.printReport();
-	}
+        for (int i = 0; i < designationsVente.size(); i++) {
+            String designation = designationsVente.get(i);
+            List<String> designations = new ArrayList<>();
+            designations.add(designation);
+            String qte = qtesVente.get(i);
+            List<String> qtes = new ArrayList<>();
+            qtes.add(qte);
+            operationBonChargementReport.putReportInfo(num, date, nomEtPrenom, code, address, rc, fiscal, article,
+                    designations, qtes, company.getTelephone(), company.getFax(), company.getEmail());
+
+        }
+        operationBonChargementReport.printReport();
+    }
 
 }

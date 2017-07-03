@@ -19,6 +19,8 @@ import java.util.Locale;
 import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Achat;
+import com.gestionCommerciale.HibernateSchema.Company;
+import com.gestionCommerciale.Models.CompanyQueries;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import com.ibm.icu.text.RuleBasedNumberFormat;
 
@@ -142,7 +144,8 @@ public class GenerateEtatRemboursementReport {
 
         String date = "De: " + start + " a " + end;
         String montantlettre = transformationEnLettre(montantTotal);
-
+        Company company= CompanyQueries.getCompany();
+      
         for (int i = 0; i < jour.size(); i++) {
             List<String> parcours = getParcourList(i);
             List<String> distances = getDistancesList(i);
@@ -150,10 +153,7 @@ public class GenerateEtatRemboursementReport {
             List<String> qtes = getQteList(i);
             List<String> prixs = getPrixList(i);
             List<String> montants = getMontantsList(i);
-            System.out.println("montants--------------" + montants);
-            System.out.println("prixs--------------" + prixs);
-            System.out.println("qtes--------------" + qtes);
-
+            
             String jourDate = new SimpleDateFormat("dd-MM-yyyy").format(jour.get(i));
             List<String> jours = new ArrayList<>();
             jours.add(jourDate);
@@ -166,7 +166,8 @@ public class GenerateEtatRemboursementReport {
 //            }
             operationEtatRemboursementReport.putReportInfo(doit, date,
                     new Double(round(montantTotal, 2)).toString(), montantlettre, parcours, distances, nums, qtes,
-                    prixs, montants, jours);
+                    prixs, montants, jours,company.getRegistre(),company.getFiscale(),company.getArticle(),
+                    company.getTelephone(),company.getFax(),company.getEmail());
         }
         operationEtatRemboursementReport.printReport();
 

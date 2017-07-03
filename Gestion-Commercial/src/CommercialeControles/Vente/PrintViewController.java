@@ -15,6 +15,8 @@ import Report.BonLivraisonReport.GenerateBonLivraisonReport;
 import static Report.FactureRemboursementBleReport.GenerateFactureRemboursementReport.round;
 import Report.FactureReport.GenerateFactureReport;
 import UIControle.Methode;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,7 +74,8 @@ public class PrintViewController implements Initializable {
                 // double ttc = factureimp.getMontant() * ((factureimp.getTva()
                 // / 100) + factureimp.getMontant());
                 double ttc = factureimp.getMontantFinal();
-                //double tva = ttc - montantTotal;
+                double tva = ttc - (montantTotal+factureimp.getTimbre());
+                System.out.println("tva--------------"+tva);
                 // String montantlettre = ruleBasedNumberFormat.format(new Double(ttc)) + " Dinars Algérien";
                 String montantlettre = transformationEnLettre(ttc);
                 String date = new SimpleDateFormat("dd-MM-yyyy").format(factureimp.getDate());
@@ -83,9 +86,9 @@ public class PrintViewController implements Initializable {
                         factureimp.getClient().getAddressClient(), factureimp.getClient().getNumRegCom(),
                         factureimp.getClient().getnCarteFiscale(), date,
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(),
-                        String.valueOf(montantTotal), String.valueOf(factureimp.getTva()), String.valueOf(factureimp.getTimbre()),
+                        String.valueOf(montantTotal), String.valueOf(round(tva,2)), String.valueOf(factureimp.getTimbre()),
                         new Double(ttc).toString(), montantlettre,
-                        factureimp.getChauffeur().getNom() + factureimp.getChauffeur().getPrenom(),
+                        factureimp.getChauffeur().getNom() +" "+ factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente, qtesVente, prixsVente, montantsVente,
                         "A terme");
             } catch (Exception ex) {
@@ -180,5 +183,6 @@ public class PrintViewController implements Initializable {
         String all = firstPart + secondPart;
         return all;
     }
+    
 
 }

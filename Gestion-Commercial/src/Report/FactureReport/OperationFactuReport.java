@@ -90,11 +90,13 @@ public class OperationFactuReport {
 	public void putReportInfo(String nom, String code, String address, String rc, String fiscal, String date,
             String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
             String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
-            List<String> prixs, List<String> montants, String payement) {
+            List<String> prixs, List<String> montants, String payement,String titreRC, String titreFiscal,String titreArticle,
+            String titreTel,String titreFax,String titreEmail) {
 		// patient info is the first to be written
 
 		FactureBean beanInfo = new FactureBean(id, nom, code, address, rc, fiscal, date, numFacture, article, montantHT,
-				tva, timbre, ttc, montantlettre, chauffeur, matricule, designations, qtes, prixs, montants,payement);
+				tva, timbre, ttc, montantlettre, chauffeur, matricule, designations, qtes, prixs, montants,payement,
+                titreRC,  titreFiscal, titreArticle,titreTel, titreFax, titreEmail);
 		collBean.add(beanInfo);
 		id++;
 	}

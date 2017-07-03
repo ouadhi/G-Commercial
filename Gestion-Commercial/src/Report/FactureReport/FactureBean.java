@@ -35,10 +35,19 @@ public class FactureBean {
     public List<String> prixs;
     public List<String> montants;
 
+    String titreRC;
+    String titreFiscal;
+    String titreArticle;
+    String titreTel;
+    String titreFax;
+    String titreEmail;
+
     public FactureBean(int id, String nom, String code, String address, String rc, String fiscal, String date,
             String numFacture, String article, String montantHT, String tva, String timbre, String ttc,
             String montantlettre, String chauffeur, String matricule, List<String> designations, List<String> qtes,
-            List<String> prixs, List<String> montants, String payement) {
+            List<String> prixs, List<String> montants, String payement, String titreRC, String titreFiscal,
+             String titreArticle,
+            String titreTel, String titreFax, String titreEmail) {
         super();
         this.id = id;
         this.nom = nom;
@@ -61,7 +70,63 @@ public class FactureBean {
         this.prixs = prixs;
         this.montants = montants;
         this.payement = payement;
+
+        this.titreRC = titreRC;
+        this.titreFiscal = titreFiscal;
+        this.titreArticle = titreArticle;
+        this.titreTel = titreTel;
+        this.titreFax = titreFax;
+        this.titreEmail = titreEmail;
     }
+
+    public String getTitreRC() {
+        return titreRC;
+    }
+
+    public void setTitreRC(String titreRC) {
+        this.titreRC = titreRC;
+    }
+
+    public String getTitreFiscal() {
+        return titreFiscal;
+    }
+
+    public void setTitreFiscal(String titreFiscal) {
+        this.titreFiscal = titreFiscal;
+    }
+
+    public String getTitreArticle() {
+        return titreArticle;
+    }
+
+    public void setTitreArticle(String titreArticle) {
+        this.titreArticle = titreArticle;
+    }
+
+    public String getTitreTel() {
+        return titreTel;
+    }
+
+    public void setTitreTel(String titreTel) {
+        this.titreTel = titreTel;
+    }
+
+    public String getTitreFax() {
+        return titreFax;
+    }
+
+    public void setTitreFax(String titreFax) {
+        this.titreFax = titreFax;
+    }
+
+    public String getTitreEmail() {
+        return titreEmail;
+    }
+
+    public void setTitreEmail(String titreEmail) {
+        this.titreEmail = titreEmail;
+    }
+    
 
     public String getAddress() {
         return address;
