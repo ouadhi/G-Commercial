@@ -10,6 +10,10 @@ import com.jfoenix.controls.JFXDatePicker;
 
 import Report.FactureRemboursementBleReport.GenerateFactureRemboursementReport;
 import UIControle.Methode;
+import com.gestionCommerciale.HibernateSchema.Dock;
+import com.gestionCommerciale.Models.DockQueries;
+import com.jfoenix.controls.JFXComboBox;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,6 +28,8 @@ public class FactureRembourecementBleController implements Initializable {
 	private JFXDatePicker dateFin;
 	@FXML
 	private HBox Hbox;
+    @FXML
+    private JFXComboBox<String> listedock;
 
 	@FXML
 	private void close(ActionEvent event) {
@@ -32,6 +38,7 @@ public class FactureRembourecementBleController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+            setDocklist();
 
 	}
 
@@ -48,5 +55,16 @@ public class FactureRembourecementBleController implements Initializable {
 	private void quitter(MouseEvent event) {
 		Methode.getStageMouses(event).close();
 	}
+        
+        
+         public void  setDocklist () {
+        List<Dock>  liste  =   DockQueries.list()   ; 
+            for (Dock dock : liste) {
+                listedock.getItems().add(dock.getNom())  ; 
+            }
+            
+            listedock.getSelectionModel().selectFirst();  
+            
+        }
 
 }

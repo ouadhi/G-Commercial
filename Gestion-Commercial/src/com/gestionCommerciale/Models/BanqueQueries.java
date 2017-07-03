@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Banque;
+import com.gestionCommerciale.HibernateSchema.Ble;
 
 public class BanqueQueries {
 
@@ -130,5 +131,22 @@ public class BanqueQueries {
             session.close();
         }
     }
+    
+    public  boolean archive(Banque banque) {
+        
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		try {
+			banque.setDeleted(true);
+			session.beginTransaction();
+			session.update(banque);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			return false;
+		} finally {
+			session.close();
+		}
+		return true;
+	}
 
 }

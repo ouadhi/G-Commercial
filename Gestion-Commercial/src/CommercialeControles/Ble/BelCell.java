@@ -101,16 +101,24 @@ public class BelCell extends GridPane {
 		label1.setFont(new Font(17.0));
 		GridPane.setColumnIndex(bttn, 3);
 		GridPane.setMargin(bttn, new Insets(0.0, 48.0, 0.0, 0.0));
+                
 		getColumnConstraints().add(columnConstraints);
 		getColumnConstraints().add(columnConstraints0);
 		getColumnConstraints().add(columnConstraints1);
 		getColumnConstraints().add(columnConstraints2);
 		getRowConstraints().add(rowConstraints);
+                
 		getChildren().add(label);
 		getChildren().add(label0);
 		getChildren().add(label1);
 		getChildren().add(bttn);
+                
 		intpopup();
+                
+        if (ble.isDeleted()) {
+            this.setStyle("-fx-background-color:eec5c5;");
+        }
+                
 		bttn.setOnMouseClicked((event) -> {
 			popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
 		});

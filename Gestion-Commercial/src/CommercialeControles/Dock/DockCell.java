@@ -150,6 +150,10 @@ public class DockCell extends GridPane {
 		getChildren().add(bttn);
 
 		intpopup();
+                
+                 if (this.dock.isDeleted()) {
+            this.setStyle("-fx-background-color:eec5c5;");
+        }
 		bttn.setOnMouseClicked((event) -> {
 			popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
 		});
