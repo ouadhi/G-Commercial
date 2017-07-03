@@ -31,7 +31,6 @@ public class Methode {
         BigDecimal bd = new BigDecimal(f);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         DecimalFormat df = new DecimalFormat("##.00");
-        System.err.println(df.format(f) + "---------");
         return df.format(bd);
     }
 

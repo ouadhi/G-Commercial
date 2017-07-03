@@ -129,7 +129,7 @@ public class ModifierVenteController implements Initializable {
 
 	public void setData(Facture facture) {
 		this.facture = facture;
-		montantFinal.setText(this.facture.getMontantFinal() + "");
+		montantFinal.setText(Methode.DoubleFormat(this.facture.getMontantFinal()) + "");
 		montant1.setText(this.facture.getDate().toString());
 		intpop();
 	}
