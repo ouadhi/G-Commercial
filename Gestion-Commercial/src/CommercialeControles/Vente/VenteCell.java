@@ -133,7 +133,8 @@ public class VenteCell extends GridPane {
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
-        label2.setText("" + this.facture.getMontantFinal());
+        //double
+        label2.setText(Methode.DoubleFormatS(this.facture.getMontantFinal()));
         label2.setFont(new Font(17.0));
 
         JFXButton produitdefacture = new JFXButton("Porduit");
@@ -146,7 +147,7 @@ public class VenteCell extends GridPane {
             versment += this.facture.getClient().getPayments().get(i).getMontant();
         }
         GridPane.setColumnIndex(produitdefacture, 4);
-        label3.setText(Double.toString(this.facture.getMontant() - versment));
+        label3.setText(Methode.DoubleFormatS((this.facture.getMontant() - versment)));
         label3.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(bttn, 5);

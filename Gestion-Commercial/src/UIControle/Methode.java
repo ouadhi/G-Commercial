@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import com.gestionCommerciale.HibernateSchema.User;
 import com.jfoenix.controls.JFXTextField;
 import java.awt.Robot;
+import java.text.DecimalFormat;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,6 +26,12 @@ public class Methode {
         BigDecimal bd = new BigDecimal(f);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         return bd.doubleValue();
+    }
+    public static String DoubleFormatS(double f) {
+        BigDecimal bd = new BigDecimal(f);
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        DecimalFormat df = new DecimalFormat("##.00"); 
+        return df.format(bd);
     }
 
     public static Stage getStage(ActionEvent event) {
