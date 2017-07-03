@@ -39,11 +39,11 @@
                </rowConstraints>
                <children>
                   <Label styleClass="label_info" text="Code Camion" />
-                  <JFXTextField fx:id="codecamion" focusColor="#405aa800" maxWidth="270.0" minWidth="270.0" prefHeight="42.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1" />
-                  <JFXTextField fx:id="matricule" focusColor="#405aa800" maxWidth="268.0" minWidth="268.0" prefHeight="45.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="codecamion" focusColor="#36d484e5" maxWidth="270.0" minWidth="270.0" prefHeight="42.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="matricule" focusColor="#36d484e5" maxWidth="268.0" minWidth="268.0" prefHeight="45.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label styleClass="label_info" text="Matricule Camion" GridPane.columnIndex="1" />
                   <Label styleClass="label_info" text="Marque " GridPane.rowIndex="2" />
-                  <JFXTextField fx:id="taillecamion" focusColor="#405aa800" prefHeight="42.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="taillecamion" focusColor="#36d484e5" prefHeight="42.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="3" />
                   <JFXTextField fx:id="PoisCamion" focusColor="#405aa800" prefHeight="42.0" styleClass="champtxt" text="-" unFocusColor="#4d4d4d00" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label styleClass="label_info" text="Poid Camion " visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>

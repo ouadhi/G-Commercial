@@ -46,7 +46,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="nom" focusColor="#405aa802" maxWidth="293.0" minWidth="249.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09">
+            <JFXTextField fx:id="nom" focusColor="#37d483e5" maxWidth="293.0" minWidth="249.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
@@ -54,7 +54,7 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="categorie" focusColor="#405aa802" maxWidth="293.0" minWidth="293.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09" GridPane.columnIndex="1">
+            <JFXTextField fx:id="categorie" focusColor="#37d483e5" maxWidth="293.0" minWidth="293.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
@@ -62,7 +62,7 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="prix" focusColor="#405aa802" maxWidth="293.0" minWidth="293.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09" GridPane.rowIndex="1">
+            <JFXTextField fx:id="prix" focusColor="#37d483e5" maxWidth="293.0" minWidth="293.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
@@ -70,7 +70,7 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="code" focusColor="#405aa802" maxWidth="293.0" minWidth="263.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <JFXTextField fx:id="code" focusColor="#37d483e5" maxWidth="293.0" minWidth="263.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
@@ -102,7 +102,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="quantite" focusColor="#405aa802" layoutX="10.0" layoutY="167.0" maxWidth="293.0" minWidth="293.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09" GridPane.rowIndex="2">
+            <JFXTextField fx:id="quantite" focusColor="#37d483e5" layoutX="10.0" layoutY="167.0" maxWidth="293.0" minWidth="293.0" prefHeight="45.0" prefWidth="293.0" styleClass="champtxt" unFocusColor="#4d4d4d09" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>

@@ -53,7 +53,7 @@
             <Label styleClass="label_txt" text="Date:" />
             <Label styleClass="label_txt" text="Montant:" GridPane.columnIndex="1" />
             <Label styleClass="label_txt" text="Type:" GridPane.rowIndex="1" />
-            <JFXDatePicker fx:id="datepayment" prefHeight="40.0" prefWidth="188.0" styleClass="champtxt">
+            <JFXDatePicker fx:id="datepayment" defaultColor="#36d484" prefHeight="40.0" prefWidth="188.0" styleClass="champtxt">
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>

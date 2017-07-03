@@ -112,7 +112,7 @@ public class AjouterChauffeurViewController implements Initializable {
 		String tel = telchauffeur.getText();
 		String type = typechauffeur.getSelectionModel().getSelectedItem();
 
-		if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty() || type.isEmpty()) {
+		if (nom.isEmpty() || prenom.isEmpty() || type.isEmpty()) {
 
 			Notification.champVideNotification();
 		} else {

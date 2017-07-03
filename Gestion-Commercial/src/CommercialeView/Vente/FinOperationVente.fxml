@@ -47,16 +47,16 @@
                   <Insets bottom="40.0" />
                </GridPane.margin>
             </Label>
+            <JFXDatePicker fx:id="dateOperation" defaultColor="#36d484" prefHeight="40.0" prefWidth="270.0">
+               <GridPane.margin>
+                  <Insets bottom="-20.0" />
+               </GridPane.margin>
+            </JFXDatePicker>
             <JFXTextField fx:id="montant" focusColor="#36d484e5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="270.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXDatePicker fx:id="dateOperation" defaultColor="#008f81" prefHeight="40.0" prefWidth="270.0">
-               <GridPane.margin>
-                  <Insets bottom="-20.0" />
-               </GridPane.margin>
-            </JFXDatePicker>
             <Label styleClass="label_txt" text="Montant Final " GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="40.0" />
@@ -77,32 +77,6 @@
                </GridPane.margin></JFXTextField>
          </children>
       </GridPane>
-      <JFXButton fx:id="save" layoutX="810.0" layoutY="466.0" onAction="#sauvgader" prefHeight="48.0" prefWidth="183.0" styleClass="button_save" text="Enregistrer" />
-      <JFXButton fx:id="annuler" layoutX="597.0" layoutY="466.0" onAction="#quitter" prefHeight="48.0" prefWidth="183.0" styleClass="button_annuler" text="Annuler" />
-      <Label layoutX="384.0" layoutY="139.0" styleClass="label_txt" text="Client" />
-      <Label layoutX="479.0" layoutY="139.0" styleClass="label_txt" text="Chauffeur" />
-      <Label layoutX="618.0" layoutY="139.0" styleClass="label_txt" text="Camion" />
-      <Label layoutX="740.0" layoutY="139.0" styleClass="label_txt" text="Produit" />
-      <ImageView fx:id="clienticon" fitHeight="28.0" fitWidth="28.0" layoutX="437.0" layoutY="136.0" onMouseEntered="#clientIN" onMouseExited="#clientOUT" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/icons/preview.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="chauffeuricon" fitHeight="28.0" fitWidth="28.0" layoutX="563.0" layoutY="136.0" onMouseEntered="#chauffeurIN" onMouseExited="#chauffeurOUT" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/icons/preview.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="camionIcon" fitHeight="28.0" fitWidth="28.0" layoutX="689.0" layoutY="136.0" onMouseEntered="#camionIN" onMouseExited="#camionOUT" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/icons/preview.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="produitIcon" fitHeight="28.0" fitWidth="28.0" layoutX="802.0" layoutY="136.0" onMouseEntered="#produitIN" onMouseExited="#produitOUT" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/icons/preview.png" />
-         </image>
-      </ImageView>
       <HBox layoutX="276.0" layoutY="318.0" prefHeight="78.0" prefWidth="653.0" spacing="16.0">
          <children>
             <Label prefHeight="20.0" prefWidth="99.0" styleClass="label_txt" text="Versement " />
@@ -153,5 +127,31 @@
             </JFXTextField>
          </children>
       </HBox>
+      <Label layoutX="384.0" layoutY="139.0" styleClass="label_txt" text="Client" />
+      <Label layoutX="479.0" layoutY="139.0" styleClass="label_txt" text="Chauffeur" />
+      <Label layoutX="618.0" layoutY="139.0" styleClass="label_txt" text="Camion" />
+      <Label layoutX="740.0" layoutY="139.0" styleClass="label_txt" text="Produit" />
+      <ImageView fx:id="clienticon" fitHeight="28.0" fitWidth="28.0" layoutX="437.0" layoutY="136.0" onMouseEntered="#clientIN" onMouseExited="#clientOUT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/icons/preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="chauffeuricon" fitHeight="28.0" fitWidth="28.0" layoutX="563.0" layoutY="136.0" onMouseEntered="#chauffeurIN" onMouseExited="#chauffeurOUT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/icons/preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="camionIcon" fitHeight="28.0" fitWidth="28.0" layoutX="689.0" layoutY="136.0" onMouseEntered="#camionIN" onMouseExited="#camionOUT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/icons/preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="produitIcon" fitHeight="28.0" fitWidth="28.0" layoutX="802.0" layoutY="136.0" onMouseEntered="#produitIN" onMouseExited="#produitOUT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/icons/preview.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="save" layoutX="810.0" layoutY="466.0" onAction="#sauvgader" prefHeight="48.0" prefWidth="183.0" styleClass="button_save" text="Enregistrer" />
+      <JFXButton fx:id="annuler" layoutX="597.0" layoutY="466.0" onAction="#quitter" prefHeight="48.0" prefWidth="183.0" styleClass="button_annuler" text="Annuler" />
    </children>
 </AnchorPane>

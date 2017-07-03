@@ -41,17 +41,17 @@
                </GridPane.margin>
             </Label>
             <Label styleClass="label_txt" text="Solde :" GridPane.columnIndex="2" />
-            <JFXTextField fx:id="totalefacture" editable="false" focusColor="#405aa84e" maxWidth="117.0" minWidth="75.0" prefHeight="33.0" prefWidth="117.0" styleClass="champtxt" unFocusColor="#ffffff00">
+            <JFXTextField fx:id="totalefacture" editable="false" focusColor="#36d4844f" maxWidth="117.0" minWidth="75.0" prefHeight="33.0" prefWidth="117.0" styleClass="champtxt" unFocusColor="#ffffff00">
                <GridPane.margin>
                   <Insets left="103.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="totlepaye" editable="false" focusColor="#405aa84e" maxWidth="125.0" minWidth="75.0" prefHeight="33.0" prefWidth="125.0" styleClass="champtxt" unFocusColor="#ffffff00" GridPane.columnIndex="1">
+            <JFXTextField fx:id="totlepaye" editable="false" focusColor="#36d4844f" maxWidth="125.0" minWidth="75.0" prefHeight="33.0" prefWidth="125.0" styleClass="champtxt" unFocusColor="#ffffff00" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="92.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="reste" editable="false" focusColor="#405aa84e" maxWidth="117.0" minWidth="75.0" prefHeight="33.0" prefWidth="117.0" styleClass="champtxt" unFocusColor="#ffffff00" GridPane.columnIndex="2">
+            <JFXTextField fx:id="reste" editable="false" focusColor="#36d4844f" maxWidth="117.0" minWidth="75.0" prefHeight="33.0" prefWidth="117.0" styleClass="champtxt" unFocusColor="#ffffff00" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="57.0" />
                </GridPane.margin>

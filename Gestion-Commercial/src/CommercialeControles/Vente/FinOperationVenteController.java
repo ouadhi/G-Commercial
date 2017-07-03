@@ -148,10 +148,10 @@ public class FinOperationVenteController implements Initializable {
         String typeValue = versemetCombo.getSelectionModel().getSelectedItem();
         String numCVValue = "";
         String banqueValue = "";
-        //kada
+        
         if (typeValue == "Cheque" || typeValue == "virement") {
-            //String numCVValue = numCV.getValue();
-            //String banqueValue = banque.getValue();
+            numCVValue = numeroCmpt.getText()  ; 
+            banqueValue = banque.getText()  ; 
         }
 
         Payment payment = new Payment(typeValue, numCVValue, banqueValue, versmentVal, date);

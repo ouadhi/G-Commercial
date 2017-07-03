@@ -108,9 +108,9 @@ public class AjouterPayementController implements Initializable {
         String numCVValue = "";
         String banqueValue = "";
         //kada
-        if (typeValue == "Cheque" || typeValue == "virement") {
-            //String numCVValue = numCV.getValue();
-            //String banqueValue = banque.getValue();
+        if (typeValue == "Cheque" || typeValue == "Virement") {
+             numCVValue = numeroCmpt.getText()  ;  
+             banqueValue = banque.getText()  ; 
         }
         double montant = Double.parseDouble(montont.getText());
         Date dateValue = Date.from(datepayment.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
