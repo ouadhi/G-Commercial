@@ -33,138 +33,134 @@ import javafx.scene.layout.AnchorPane;
 
 public class BanqueListeController implements Initializable {
 
-	@FXML
-	private Label total;
-	@FXML
-	private JFXTextField rechreche;
-	@FXML
-	private JFXButton ajouter;
-	@FXML
-	private JFXListView<BanqueCell> listebanque;
+    @FXML
+    private Label total;
+    @FXML
+    private JFXTextField rechreche;
+    @FXML
+    private JFXButton ajouter;
+    @FXML
+    private JFXListView<BanqueCell> listebanque;
 
-	private BanqueQueries querie = new BanqueQueries();
-	@FXML
-	private MenuButton Order;
-	@FXML
-	private MenuItem byquantite;
-	@FXML
-	private Label label;
+    private BanqueQueries querie = new BanqueQueries();
+    @FXML
+    private MenuButton Order;
+    @FXML
+    private MenuItem byquantite;
+    @FXML
+    private Label label;
 
-	@FXML
-	private void Archive(ActionEvent event) {
-		// Order.setText("Archivé");
-		// List<Banque> listBanque = querie.
-		// List<BanqueCell> list = new ArrayList<>();
-		//
-		// for (int i = 0; i < listBanque.size(); i++) {
-		// list.add(new BanqueCell(listBanque.get(i)));
-		// }
-		// ObservableList<BanqueCell> myObservableList =
-		// FXCollections.observableList(list);
-		// listebanque.setItems(myObservableList);
-		// listebanque.setExpanded(true);
-		//
-		// setTotale();
-	}
+    @FXML
+    private void Archive(ActionEvent event) {
+        Order.setText("Non Archivé");
+        List<Banque> listBanque = querie.listArchived();
+        List<BanqueCell> list = new ArrayList<>();
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		Methode.showMenuItem(Order, label);
-		List<BanqueCell> list = new ArrayList<>();
+        for (int i = 0; i < listBanque.size(); i++) {
+            list.add(new BanqueCell(listBanque.get(i)));
+        }
+        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+        listebanque.setItems(myObservableList);
+        listebanque.setExpanded(true);
+        setTotale();
+    }
 
-		for (int i = 0; i < querie.list().size(); i++) {
-			list.add(new BanqueCell(querie.list().get(i)));
-		}
-		ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
-		listebanque.setItems(myObservableList);
-		listebanque.setExpanded(true);
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Methode.showMenuItem(Order, label);
+        List<BanqueCell> list = new ArrayList<>();
 
-		setTotale();
+        for (int i = 0; i < querie.list().size(); i++) {
+            list.add(new BanqueCell(querie.list().get(i)));
+        }
+        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+        listebanque.setItems(myObservableList);
+        listebanque.setExpanded(true);
 
-	}
+        setTotale();
 
-	@FXML
-	private void NonArchiv(ActionEvent event) {
-		Order.setText("Non Archivé");
-		List<Banque> listBanque = querie.list();
-		List<BanqueCell> list = new ArrayList<>();
+    }
 
-		for (int i = 0; i < listBanque.size(); i++) {
-			list.add(new BanqueCell(listBanque.get(i)));
-		}
-		ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
-		listebanque.setItems(myObservableList);
-		listebanque.setExpanded(true);
+    @FXML
+    private void NonArchiv(ActionEvent event) {
+        Order.setText("Non Archivé");
+        List<Banque> listBanque = querie.list();
+        List<BanqueCell> list = new ArrayList<>();
 
-		setTotale();
-	}
+        for (int i = 0; i < listBanque.size(); i++) {
+            list.add(new BanqueCell(listBanque.get(i)));
+        }
+        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+        listebanque.setItems(myObservableList);
+        listebanque.setExpanded(true);
 
-	public void possibleMot() {
+        setTotale();
+    }
 
-		ArrayList<String> list = new ArrayList<>();
-		list.add("karim");
-		list.add("hichem1");
-		list.add("hichem2");
-		list.add("mohammed ouadhi");
-		list.add("mohammed cherberabe");
+    public void possibleMot() {
 
-		TextFields.bindAutoCompletion(rechreche, list);
+        ArrayList<String> list = new ArrayList<>();
+        list.add("karim");
+        list.add("hichem1");
+        list.add("hichem2");
+        list.add("mohammed ouadhi");
+        list.add("mohammed cherberabe");
 
-	}
+        TextFields.bindAutoCompletion(rechreche, list);
 
-	@FXML
-	private void recherche(KeyEvent event) {
-		listebanque.getItems().clear();
-		List<Banque> listbanque = querie.listRechreche(rechreche.getText());
-		List<BanqueCell> list = new ArrayList<>();
+    }
 
-		for (int i = 0; i < listbanque.size(); i++) {
-			list.add(new BanqueCell(listbanque.get(i)));
+    @FXML
+    private void recherche(KeyEvent event) {
+        listebanque.getItems().clear();
+        List<Banque> listbanque = querie.listRechreche(rechreche.getText());
+        List<BanqueCell> list = new ArrayList<>();
 
-		}
-		ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
-		listebanque.setItems(myObservableList);
-		listebanque.setExpanded(true);
+        for (int i = 0; i < listbanque.size(); i++) {
+            list.add(new BanqueCell(listbanque.get(i)));
 
-		setTotale();
-	}
+        }
+        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+        listebanque.setItems(myObservableList);
+        listebanque.setExpanded(true);
 
-	@FXML
-	private void setOrder(ActionEvent event) {
-	}
+        setTotale();
+    }
 
-	private void setTotale() {
-		total.setText("" + listebanque.getItems().size());
-	}
+    @FXML
+    private void setOrder(ActionEvent event) {
+    }
 
-	@FXML
-	private void showAddStage(ActionEvent event) {
+    private void setTotale() {
+        total.setText("" + listebanque.getItems().size());
+    }
 
-		try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterBanque));
-			StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
-			dialog.show();
-		} catch (IOException ex) {
-			Logger.getLogger(AjouterBanqueController.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+    @FXML
+    private void showAddStage(ActionEvent event) {
 
-	@FXML
-	private void Tout(ActionEvent event) {
-		// Order.setText("Archivé");
-		// List<Banque> listBanque = querie.
-		// List<BanqueCell> list = new ArrayList<>();
-		//
-		// for (int i = 0; i < listBanque.size(); i++) {
-		// list.add(new BanqueCell(listBanque.get(i)));
-		// }
-		// ObservableList<BanqueCell> myObservableList =
-		// FXCollections.observableList(list);
-		// listebanque.setItems(myObservableList);
-		// listebanque.setExpanded(true);
-		//
-		// setTotale();
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.AjouterBanque));
+            Methode.moveFocus(pane);
+            StageDialog dialog = new StageDialog(Methode.getStage(event), pane);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterBanqueController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-	}
+    @FXML
+    private void Tout(ActionEvent event) {
+        Order.setText("Non Archivé");
+        List<Banque> listBanque = querie.listAll();
+        List<BanqueCell> list = new ArrayList<>();
+
+        for (int i = 0; i < listBanque.size(); i++) {
+            list.add(new BanqueCell(listBanque.get(i)));
+        }
+        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+        listebanque.setItems(myObservableList);
+        listebanque.setExpanded(true);
+
+    }
 
 }

@@ -44,22 +44,22 @@
             <Label styleClass="label_txt" text="Adresse:" GridPane.rowIndex="1" />
             <Label styleClass="label_txt" text="N° Compte:" GridPane.columnIndex="1" />
             <Label styleClass="label_txt" text="N°Téléphone:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <JFXTextField fx:id="nombanque" focusColor="#405aa800" maxHeight="-Infinity" maxWidth="223.0" minHeight="-Infinity" minWidth="165.0" prefHeight="33.0" prefWidth="223.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="nombanque" focusColor="#36d484e5" maxHeight="-Infinity" maxWidth="223.0" minHeight="-Infinity" minWidth="165.0" prefHeight="33.0" prefWidth="223.0" styleClass="champtxt" unFocusColor="#4d4d4d00">
                <GridPane.margin>
                   <Insets left="73.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="adresse" focusColor="#405aa800" maxHeight="-Infinity" maxWidth="223.0" minHeight="-Infinity" minWidth="165.0" prefHeight="33.0" prefWidth="223.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="74.0" />
-               </GridPane.margin>
-            </JFXTextField>
-            <JFXTextField fx:id="NumCompte" focusColor="#405aa800" maxWidth="209.0" minWidth="202.0" prefHeight="33.0" prefWidth="209.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1">
+            <JFXTextField fx:id="NumCompte" focusColor="#36d484e5" maxWidth="209.0" minWidth="202.0" prefHeight="33.0" prefWidth="209.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="98.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="telephone" focusColor="#405aa800" maxWidth="192.0" minWidth="192.0" prefHeight="33.0" prefWidth="192.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <JFXTextField fx:id="adresse" focusColor="#36d484e5" maxHeight="-Infinity" maxWidth="223.0" minHeight="-Infinity" minWidth="165.0" prefHeight="33.0" prefWidth="223.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="74.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="telephone" focusColor="#36d484e5" maxWidth="192.0" minWidth="192.0" prefHeight="33.0" prefWidth="192.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="113.0" />
                </GridPane.margin>

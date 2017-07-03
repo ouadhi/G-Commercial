@@ -75,7 +75,7 @@ public class ModificationChauffeurController implements Initializable {
 		String type = typechauffeur.getSelectionModel().getSelectedItem();
 		Optional<ButtonType> result = Notification.updateAlert().showAndWait();
 		if (result.get() == ButtonType.OK) {
-			if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty() || type.isEmpty()) {
+			if (nom.isEmpty() || prenom.isEmpty() || type.isEmpty()) {
 				Notification.champVideNotification();
 			} else {
 				Chauffeur chauffeur = ShowChauffeurController.getChauffeur();

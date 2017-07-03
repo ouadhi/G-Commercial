@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import CommercialeControles.Chauffeur.AjouterChauffeuerDialog;
+import UIControle.Methode;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -29,6 +30,7 @@ public class ModifierCamionDialog extends Stage {
 			ShowdDetailCamionController.setCamion(camionCell.getCamion());
 			modification.setData(camionCell.getCamion());
 			AnchorPane pane = loader.getRoot();
+                        Methode.moveFocus(pane);
 			Scene scene = new Scene(pane, 614, 475);
 			setScene(scene);
 		} catch (IOException ex) {

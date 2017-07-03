@@ -38,12 +38,12 @@
         </rowConstraints>
          <children>
             <Label styleClass="label_info" text="Nom " />
-            <JFXTextField fx:id="nomchauffeur" focusColor="#405aa800" prefHeight="41.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1" />
-            <JFXTextField fx:id="prenomchauffeur" focusColor="#405aa800" prefHeight="41.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="nomchauffeur" focusColor="#37d483e6" prefHeight="41.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="prenomchauffeur" focusColor="#37d483e6" prefHeight="41.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label styleClass="label_info" text="Prénom" GridPane.columnIndex="1" />
             <Label styleClass="label_info" text="Téléphone " GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label styleClass="label_info" text="Type " GridPane.rowIndex="2" />
-            <JFXTextField fx:id="telchauffeur" focusColor="#405aa800" prefHeight="41.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <JFXTextField fx:id="telchauffeur" focusColor="#37d483e6" prefHeight="41.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <JFXComboBox fx:id="typechauffeur" prefHeight="38.0" prefWidth="264.0" styleClass="champtxt" GridPane.rowIndex="3" />
          </children>
       </GridPane>

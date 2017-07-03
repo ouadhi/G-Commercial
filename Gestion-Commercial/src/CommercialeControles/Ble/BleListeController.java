@@ -140,6 +140,7 @@ public class BleListeController implements Initializable {
 			AjouterBleController control = loader.getController();
 			control.setData(listeBle, total);
 			AnchorPane root = loader.getRoot();
+                        Methode.moveFocus(root);
 			StageDialog dialog = new StageDialog(stage, root);
 			dialog.show();
 		} catch (IOException ex) {

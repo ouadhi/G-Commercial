@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 
 import CommercialeControles.Camion.ShowdDetailCamionController;
+import UIControle.Methode;
 import UIControle.Transition;
 import UIControle.ViewUrl;
 import javafx.event.ActionEvent;
@@ -62,6 +63,7 @@ public class ShowChauffeurController implements Initializable {
 			}
 
 			AnchorPane pane = loader.getRoot();
+                         Methode.moveFocus(pane);
 
 			return pane;
 		} catch (IOException ex) {

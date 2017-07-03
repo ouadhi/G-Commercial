@@ -154,5 +154,15 @@ public class Notification {
 		tray.setNotificationType(type);
 		tray.showAndDismiss(Duration.seconds(4));
 	}
+        
+        public static Alert quitterAlert() {
+            
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation ");
+		alert.setHeaderText("Modification  ");
+		alert.setContentText("voulez vous vraiment effectuer cette opération ??");
+
+		return alert;
+	}
 
 }

@@ -1,5 +1,6 @@
 package CommercialeControles.Vente;
 
+import UIControle.Methode;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -78,6 +79,7 @@ public class OperationVenteController implements Initializable {
 			etapeCamion = FXMLLoader.load(getClass().getResource(ViewUrl.selectCamionVente));
 			etapePrdouit = FXMLLoader.load(getClass().getResource(ViewUrl.selectProduit));
 			etapeInformation = FXMLLoader.load(getClass().getResource(ViewUrl.infotmationVente));
+                        Methode.moveFocus(etapeInformation);
 			space.getChildren().setAll(etapeClient);
 			etape = 1;
 			precedent.setVisible(false);

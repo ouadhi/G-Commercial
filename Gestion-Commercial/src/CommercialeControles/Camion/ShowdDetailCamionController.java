@@ -1,5 +1,6 @@
 package CommercialeControles.Camion;
 
+import UIControle.Methode;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,7 +52,7 @@ public class ShowdDetailCamionController implements Initializable {
 			// camion.taille);
 			modification.setData(camionCell.getCamion());
 			AnchorPane pane = loader.getRoot();
-
+                         Methode.moveFocus(pane);
 			return pane;
 		} catch (IOException ex) {
 			Logger.getLogger(ShowdDetailCamionController.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,6 +62,7 @@ public class ShowdDetailCamionController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+            
 	}
 
 	@FXML

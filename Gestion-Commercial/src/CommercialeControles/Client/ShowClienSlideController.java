@@ -1,6 +1,7 @@
 
 package CommercialeControles.Client;
 
+import UIControle.Methode;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,6 +49,7 @@ public class ShowClienSlideController implements Initializable {
 			modification.SetData(client.getClient());
 
 			AnchorPane pane = loader.getRoot();
+                         Methode.moveFocus(pane);
 
 			return pane;
 		} catch (IOException ex) {

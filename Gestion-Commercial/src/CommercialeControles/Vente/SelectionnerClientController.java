@@ -93,7 +93,7 @@ public class SelectionnerClientController implements Initializable {
             controler.setData(ClientListe);
 
             AnchorPane root = loader.getRoot();
-           Methode.moveFocus(root); 
+            Methode.moveFocus(root); 
 
             StageDialog dialog = new StageDialog(Methode.getStage(event), root);
             dialog.show();

@@ -22,8 +22,6 @@ public class EtatDeRecepetionController implements Initializable {
 	private JFXDatePicker datedebut;
 	@FXML
 	private JFXDatePicker dateFin;
-	@FXML
-	private JFXTextField val;
 
 	@FXML
 	private void close(ActionEvent event) {

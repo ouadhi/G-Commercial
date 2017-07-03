@@ -167,6 +167,7 @@ public class CamionViewController implements Initializable {
 			ShowdDetailCamionController showcamion = loader.getController();
 			showcamion.setListechauffeur(this.listeView, selectitem);
 			AnchorPane pane = loader.getRoot();
+                        Methode.moveFocus(pane);
 
 			StageDialog stage = new StageDialog(courrentStage, pane);
 			stage.show();

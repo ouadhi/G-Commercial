@@ -122,6 +122,11 @@ public class CamionCell extends GridPane {
 		getChildren().add(bttn);
 
 		intpopup();
+                
+                
+        if (camion.isDeleted()) {
+            this.setStyle("-fx-background-color:eec5c5;");
+        }
 		bttn.setOnMouseClicked((event) -> {
 			popup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.RIGHT, event.getX(), event.getY());
 		});
@@ -149,7 +154,7 @@ public class CamionCell extends GridPane {
 		modifier.setOnAction(event -> {
 
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
+                        
 			ModifierCamionDialog dialog = new ModifierCamionDialog(stage, this);
 			dialog.show();
 			popup.close();

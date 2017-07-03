@@ -10,8 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="187.0" prefWidth="405.0" style="-fx-background-color: white;" stylesheets="@CssAutre.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Autre.ModifierAnneeController">
+<AnchorPane id="AnchorPane" prefHeight="187.0" prefWidth="405.0" style="-fx-background-color: white;" stylesheets="@CssAutre.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Autre.ModifierAnneeController">
    <children>
       <Pane layoutX="-2.0" prefHeight="50.0" prefWidth="451.0" styleClass="Toppanel">
          <children>
@@ -28,7 +27,7 @@
          </children>
       </Pane>
       <Label layoutX="92.0" layoutY="84.0" styleClass="label_txt" text="TVA  : " />
-      <JFXTextField fx:id="tva" focusColor="#405aa800" layoutX="142.0" layoutY="77.0" maxWidth="213.0" minWidth="213.0" prefHeight="33.0" prefWidth="213.0" styleClass="champtxt" unFocusColor="#4d4d4d00" />
+      <JFXTextField fx:id="tva" focusColor="#36d484e5" layoutX="142.0" layoutY="77.0" maxWidth="213.0" minWidth="213.0" prefHeight="33.0" prefWidth="213.0" styleClass="champtxt" unFocusColor="#4d4d4d00" />
       <JFXButton layoutX="236.0" layoutY="127.0" onAction="#save" prefHeight="50.0" prefWidth="133.0" styleClass="button_save" text="Sauvegarder" />
       <JFXButton layoutX="90.0" layoutY="127.0" onAction="#quitter" prefHeight="50.0" prefWidth="133.0" styleClass="button_annuler" text="Annuler" />
    </children>

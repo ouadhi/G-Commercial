@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1180.0" style="-fx-background-color: white;" stylesheets="@Vente.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Vente.RecherecheParDateController">
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1180.0" style="-fx-background-color: white;" stylesheets="@Vente.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Vente.RecherecheParDateController">
    <children>
       <JFXListView fx:id="listevente" layoutX="14.0" layoutY="138.0" minHeight="362.0" minWidth="1114.0" prefHeight="362.0" prefWidth="1114.0" showTooltip="true" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
       <GridPane hgap="3.0" layoutX="16.0" layoutY="94.0" maxHeight="51.0" maxWidth="1141.0" minHeight="51.0" minWidth="1114.0" prefHeight="51.0" prefWidth="1114.0" style="-fx-background-color: #edf1f5; -fx-border-color: #F3F3F3; -fx-border-insets: 0 0.0 1 0;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
@@ -57,8 +56,8 @@
             </Label>
          </children>
       </GridPane>
-      <JFXDatePicker fx:id="dtpStart" layoutX="243.0" layoutY="25.0" />
-      <JFXDatePicker fx:id="dtpEnd" layoutX="482.0" layoutY="25.0" />
+      <JFXDatePicker fx:id="dtpStart" defaultColor="#36d484" layoutX="243.0" layoutY="25.0" />
+      <JFXDatePicker fx:id="dtpEnd" defaultColor="#36d484" layoutX="482.0" layoutY="25.0" />
       <Label layoutX="218.0" layoutY="33.0" text="De">
          <font>
             <Font size="18.0" />

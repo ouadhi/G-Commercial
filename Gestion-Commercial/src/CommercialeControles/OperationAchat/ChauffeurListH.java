@@ -121,6 +121,7 @@ public class ChauffeurListH extends GridPane {
 			controler.setData(listeChaffeur);
 
 			AnchorPane pane = loader.getRoot();
+                        Methode.moveFocus(pane);
 
 			StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
 			dialog.show();

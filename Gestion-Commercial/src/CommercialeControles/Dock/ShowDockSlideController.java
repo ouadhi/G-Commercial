@@ -1,6 +1,7 @@
 
 package CommercialeControles.Dock;
 
+import UIControle.Methode;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -43,6 +44,7 @@ public class ShowDockSlideController implements Initializable {
 			modification.setData(dock.getDock());
 
 			AnchorPane pane = loader.getRoot();
+                         Methode.moveFocus(pane);
 
 			return pane;
 		} catch (IOException ex) {

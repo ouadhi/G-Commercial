@@ -127,6 +127,7 @@ public class CamionListeH extends GridPane {
 			controler.setData(listeCamion);
 
 			AnchorPane pane = loader.getRoot();
+                        Methode.moveFocus(pane);
 
 			StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
 			dialog.show();
