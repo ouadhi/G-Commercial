@@ -202,7 +202,7 @@ public class PorduitH extends GridPane {
 		prix.setLayoutY(149.0);
 		prix.setPrefHeight(17.0);
 		prix.setPrefWidth(97.0);
-		prix.setText(this.produit.getPrix() + " DA");
+		prix.setText(Methode.DoubleFormat(this.produit.getPrix()) + " DA");
 		prix.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
 		GridPane.setMargin(prix, new Insets(0.0, 0.0, 4.0, 0.0));
 

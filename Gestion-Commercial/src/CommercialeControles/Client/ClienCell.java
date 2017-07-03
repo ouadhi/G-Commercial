@@ -140,7 +140,7 @@ public class ClienCell extends GridPane {
         label2.setFont(new Font(17.0));
         
         GridPane.setColumnIndex(label3, 4);
-        label3.setText(getTotalFacture());
+        label3.setText(Methode.DoubleFormat(getTotalFacture()));
         label3.setFont(new Font(17.0));
         
         GridPane.setColumnIndex(bttn, 5);
@@ -177,14 +177,14 @@ public class ClienCell extends GridPane {
         return client;
     }
     
-    private String getTotalFacture() {
+    private double getTotalFacture() {
         double somme = 0;
         
         for (int i = 0; i < this.client.getFactures().size(); i++) {
             somme += this.client.getFactures().get(i).getMontantFinal();
         }
         
-        return Double.toString(somme);
+        return somme;
     }
     
     public void intpopup() {

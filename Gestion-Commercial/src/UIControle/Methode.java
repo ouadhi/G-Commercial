@@ -22,12 +22,12 @@ import javafx.stage.Stage;
 
 public class Methode {
 
-    public static Double DoubleFormat(double f) {
-        BigDecimal bd = new BigDecimal(f);
-        bd = bd.setScale(2, RoundingMode.HALF_UP);
-        return bd.doubleValue();
-    }
-    public static String DoubleFormatS(double f) {
+//    public static Double DoubleFormat(double f) {
+//        BigDecimal bd = new BigDecimal(f);
+//        bd = bd.setScale(2, RoundingMode.HALF_UP);
+//        return bd.doubleValue();
+//    }
+    public static String DoubleFormat(double f) {
         BigDecimal bd = new BigDecimal(f);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         DecimalFormat df = new DecimalFormat("##.00"); 
