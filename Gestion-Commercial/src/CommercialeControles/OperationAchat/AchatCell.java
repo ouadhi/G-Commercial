@@ -119,7 +119,7 @@ public class AchatCell extends GridPane {
         label1.setAlignment(javafx.geometry.Pos.CENTER);
         label1.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         // edited
-        label1.setText(Double.toString(achat.getQuantiteAcqt()));
+        label1.setText(Methode.DoubleFormat((achat.getQuantiteAcqt()))+"");
         label1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         label1.setFont(new Font(16.0));
 

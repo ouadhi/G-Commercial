@@ -30,7 +30,8 @@ public class Methode {
     public static String DoubleFormat(double f) {
         BigDecimal bd = new BigDecimal(f);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
-        DecimalFormat df = new DecimalFormat("##.00"); 
+        DecimalFormat df = new DecimalFormat("##.00");
+        System.err.println(df.format(f) + "---------");
         return df.format(bd);
     }
 

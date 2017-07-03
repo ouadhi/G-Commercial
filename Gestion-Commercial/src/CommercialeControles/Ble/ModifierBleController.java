@@ -62,6 +62,7 @@ public class ModifierBleController implements Initializable {
 		Methode.setOnlyDouble(prix, 10);
 
 		Methode.SetUpper(code, 8);
+                this.quntite.setEditable(false);
 	}
 
 	@FXML
@@ -96,11 +97,11 @@ public class ModifierBleController implements Initializable {
 
 		Methode.setOnlyDouble(quntite, 10);
 		Methode.setOnlyDouble(prix, 10);
-
+                
 		Methode.SetUpper(code, 8);
 		this.ble = ble;
 		this.code.setText(ble.getCodeBle());
-		this.prix.setText(Double.toString(ble.getPrix()));
-		this.quntite.setText(Double.toString(ble.getQte()));
+		this.prix.setText(Methode.DoubleFormat(ble.getPrix()));
+		//this.quntite.setText(Methode.DoubleFormat(ble.getQte()));
 	}
 }

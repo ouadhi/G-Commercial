@@ -97,7 +97,7 @@ public class BelCell extends GridPane {
 		label0.setFont(new Font(17.0));
 
 		GridPane.setColumnIndex(label1, 2);
-		label1.setText(Double.toString(ble.getPrix()));
+		label1.setText(Methode.DoubleFormat(ble.getPrix()));
 		label1.setFont(new Font(17.0));
 		GridPane.setColumnIndex(bttn, 3);
 		GridPane.setMargin(bttn, new Insets(0.0, 48.0, 0.0, 0.0));

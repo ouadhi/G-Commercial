@@ -140,7 +140,7 @@ public class ClienCell extends GridPane {
         label2.setFont(new Font(17.0));
         
         GridPane.setColumnIndex(label3, 4);
-        label3.setText(Methode.DoubleFormat(getTotalFacture()));
+        label3.setText(Methode.DoubleFormat(getTotalFacture())+"");
         label3.setFont(new Font(17.0));
         
         GridPane.setColumnIndex(bttn, 5);
