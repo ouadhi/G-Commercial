@@ -49,7 +49,8 @@ public class EtatRembourcementTransportBleController implements Initializable {
 		GenerateEtatRemboursementReport generateEtatRemboursementReport = new GenerateEtatRemboursementReport();
 		Date dateDebutOb = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date dateFinOb = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		generateEtatRemboursementReport.generateReport(dateDebutOb, dateFinOb, "doit");
+                String dock= listedock.getSelectionModel().getSelectedItem();
+		generateEtatRemboursementReport.generateReport(dateDebutOb, dateFinOb, dock);
 
 	}
 

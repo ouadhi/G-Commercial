@@ -57,17 +57,17 @@ public class OperationEtatEstimatifClient {
         }
     }
 
-    public void putReportInfo(String nomPrenom, String activity, String address
-            , String rc, String fiscal, String article, String dateDebut
-            , String dateFin, String totalMontant, String totalTva, String totalTtc
-            , String totalTimbre, String totalFarine, String totalSon, String totalQte
-            , List<String> dates, List<String> nums, List<String> produits, List<String> montants
-            , List<String> tvas, List<String> ttcs, List<String> timbres, List<String> qtes) {
+    public void putReportInfo(String nomPrenom, String activity, String address,
+             String rc, String fiscal, String article, String dateDebut,
+             String dateFin, String totalMontant, String totalTva, String totalTtc,
+             String totalTimbre, String totalFarine, String totalSon, String totalQte,
+             List<String> dates, List<String> nums, List<String> produits, List<String> montants,
+             List<String> tvas, List<String> ttcs, List<String> timbres, List<String> qtes) {
         // patient info is the first to be written
 
         EtatEstimatifClientBean beanInfo = new EtatEstimatifClientBean(nomPrenom, activity, address, rc, fiscal,
-                article, dateDebut, dateFin, totalMontant, totalTva, totalTtc, totalTimbre,totalFarine,totalSon,totalQte, dates,
-                 nums, produits, montants, tvas, ttcs, timbres,qtes);
+                article, dateDebut, dateFin, totalMontant, totalTva, totalTtc, totalTimbre, totalFarine, totalSon, totalQte, dates,
+                nums, produits, montants, tvas, ttcs, timbres, qtes);
         collBean.add(beanInfo);
     }
 
