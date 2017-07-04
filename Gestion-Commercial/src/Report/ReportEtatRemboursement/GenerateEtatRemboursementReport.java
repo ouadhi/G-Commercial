@@ -5,7 +5,6 @@
  */
 package Report.ReportEtatRemboursement;
 
-import static Report.FactureRemboursementBleReport.GenerateFactureRemboursementReport.round;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;

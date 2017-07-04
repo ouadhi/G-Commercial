@@ -107,8 +107,8 @@ public class GenerationEtatEstimatifClient {
         OperationEtatEstimatifGlobal operationEtatEstimatifGlobal = new OperationEtatEstimatifGlobal();
         operationEtatEstimatifGlobal.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-                String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal), String.valueOf(timbreTotal),
-                String.valueOf(farineTotal), String.valueOf(sonTotal));
+                String.valueOf(round(montantTotal,2)), String.valueOf(round(tvaTotal,2)), String.valueOf(round(ttcTotal,2)), String.valueOf(round(timbreTotal,2)),
+                String.valueOf(round(farineTotal,2)), String.valueOf(round(sonTotal,2)));
         operationEtatEstimatifGlobal.printReport();
     }
 
@@ -128,10 +128,10 @@ public class GenerationEtatEstimatifClient {
                         nums.add(String.valueOf(factures.get(j).getIdFacture()));
                         produits.add(fpList.get(k).getProduit().getNom());
                         montants.add(String.valueOf(factures.get(j).getMontant()));
-                        double tva = factures.get(j).getTva() * factures.get(j).getMontant();
-                        tvas.add(String.valueOf(tva));
-                        ttcs.add(String.valueOf(factures.get(j).getMontantFinal()));
-                        timbres.add(String.valueOf(factures.get(j).getTimbre()));
+                        double tva = factures.get(j).getMontantFinal() - (factures.get(j).getMontant()+factures.get(j).getTimbre());
+                        tvas.add(String.valueOf(round(tva,2)));
+                        ttcs.add(String.valueOf(round(factures.get(j).getMontantFinal(),2)));
+                        timbres.add(String.valueOf(round(factures.get(j).getTimbre(),2)));
                         ttcTotal = ttcTotal + factures.get(j).getMontantFinal();
                         montantTotal = montantTotal + factures.get(j).getMontant();
                         tvaTotal = tvaTotal + tva;

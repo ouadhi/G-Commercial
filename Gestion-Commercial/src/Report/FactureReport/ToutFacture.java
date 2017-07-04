@@ -55,8 +55,8 @@ public class ToutFacture {
 
         for (int i = 0; i < fpList.size(); i++) {
             designationsVente.add(fpList.get(i).getProduit().getNom());
-            qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
-            prixsVente.add(String.valueOf(fpList.get(i).getProduit().getPrix()));
+            qtesVente.add(String.valueOf(round(fpList.get(i).getQte_fact(),2)));
+            prixsVente.add(String.valueOf(round(fpList.get(i).getProduit().getPrix(),2)));
             montantsVente.add(String.valueOf(fpList.get(i).getQte_fact() * fpList.get(i).getProduit().getPrix()));
             montantTotal = montantTotal + (fpList.get(i).getQte_fact() * fpList.get(i).getProduit().getPrix());
         }
@@ -76,8 +76,8 @@ public class ToutFacture {
                 String.valueOf(facture.getClient().getTypeActivity()), facture.getClient().getAddressClient(),
                 facture.getClient().getNumRegCom(), facture.getClient().getnCarteFiscale(),
                 date, String.valueOf(facture.getIdFacture()),
-                facture.getClient().getNumArticle(), String.valueOf(montantTotal), String.valueOf(round(tva, 2)),
-                String.valueOf(facture.getTimbre()), new Double(ttc).toString(), montantlettre,
+                facture.getClient().getNumArticle(), String.valueOf(round(montantTotal,2)), String.valueOf(round(tva, 2)),
+                String.valueOf(round(facture.getTimbre(),2)), new Double(round(ttc,2)).toString(), montantlettre,
                 facture.getChauffeur().getNom() + " " + facture.getChauffeur().getPrenom(),
                 facture.getCamion().getMatricule(), designationsVente, qtesVente, prixsVente, montantsVente,
                 "A terme",company.getRegistre(),company.getFiscale(),company.getArticle(),
