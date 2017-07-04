@@ -27,19 +27,41 @@ public class Methode {
 //        bd = bd.setScale(2, RoundingMode.HALF_UP);
 //        return bd.doubleValue();
 //    }
+//    public static String DoubleFormat(double f) {
+//        BigDecimal bd = new BigDecimal(f);
+//        bd = bd.setScale(2, RoundingMode.HALF_UP);
+//        DecimalFormat df = new DecimalFormat("##.00");
+//        return df.format(bd).replace(".00", "0.00");
+//    }
+//    public static String DoubleFormat4(double f) {
+//        BigDecimal bd = new BigDecimal(f);
+//        bd = bd.setScale(4, RoundingMode.HALF_UP);
+//        DecimalFormat df = new DecimalFormat("##.0000");
+//        return df.format(bd).replace(".00", "0.00");
+//    }
     public static String DoubleFormat(double f) {
         BigDecimal bd = new BigDecimal(f);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         DecimalFormat df = new DecimalFormat("##.00");
-        return df.format(bd).replace(".00", "0.00");
+        String sdb = df.format(bd);
+        if (sdb.equals(".00")) {
+            return sdb.replace(".00", "0.00");
+        } else {
+            return sdb;
+        }
     }
+
     public static String DoubleFormat4(double f) {
         BigDecimal bd = new BigDecimal(f);
         bd = bd.setScale(4, RoundingMode.HALF_UP);
         DecimalFormat df = new DecimalFormat("##.0000");
-        return df.format(bd).replace(".00", "0.00");
+        String sdb = df.format(bd);
+        if (sdb.equals(".00")) {
+            return sdb.replace(".00", "0.00");
+        } else {
+            return sdb;
+        }
     }
-
     public static Stage getStage(ActionEvent event) {
 
         return (Stage) ((Node) event.getSource()).getScene().getWindow();
