@@ -80,7 +80,7 @@ public class ToutFacture {
                 String.valueOf(round(facture.getTimbre(),2)), new Double(round(ttc,2)).toString(), montantlettre,
                 facture.getChauffeur().getNom() + " " + facture.getChauffeur().getPrenom(),
                 facture.getCamion().getMatricule(), designationsVente, qtesVente, prixsVente, montantsVente,
-                "A terme",company.getRegistre(),company.getFiscale(),company.getArticle(),
+                facture.getTypeVersement(),company.getRegistre(),company.getFiscale(),company.getArticle(),
                     company.getTelephone(),company.getFax(),company.getEmail());
         return operationFactuReport.getJasperPrint();
     }
