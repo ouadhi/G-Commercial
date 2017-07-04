@@ -75,6 +75,7 @@ public class PrintViewController implements Initializable {
                 // / 100) + factureimp.getMontant());
                 double ttc = factureimp.getMontantFinal();
                 double tva = ttc - (montantTotal+factureimp.getTimbre());
+
                 String montantlettre = transformationEnLettre(ttc);
                 String date = new SimpleDateFormat("dd-MM-yyyy").format(factureimp.getDate());
 

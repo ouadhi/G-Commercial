@@ -62,6 +62,7 @@ public class ModifierBleController implements Initializable {
 		Methode.setOnlyDouble(prix, 10);
 
 		Methode.SetUpper(code, 8);
+                this.quntite.setEditable(false);
 	}
 
 	@FXML
@@ -79,7 +80,7 @@ public class ModifierBleController implements Initializable {
 				ble.setQte(Double.parseDouble(quantiteval));
 				Ble ble2 = BleQueries.getBleByCode(codeval);
 				if (ble2 != null && ble2.getIdBle() != ble.getIdBle()) {
-					Notification.error("Ce code existe déja, utilisé un autre");
+					Notification.error("Ce code existe d\u00E9ja, utilis\u00E9 un autre");
 				} else {
 					BleQueries.SaveOrUpdate(ble);
 					Notification.Updatenotification();
@@ -96,11 +97,11 @@ public class ModifierBleController implements Initializable {
 
 		Methode.setOnlyDouble(quntite, 10);
 		Methode.setOnlyDouble(prix, 10);
-
+                
 		Methode.SetUpper(code, 8);
 		this.ble = ble;
 		this.code.setText(ble.getCodeBle());
-		this.prix.setText(Double.toString(ble.getPrix()));
-		this.quntite.setText(Double.toString(ble.getQte()));
+		this.prix.setText(Methode.DoubleFormat(ble.getPrix()));
+		//this.quntite.setText(Methode.DoubleFormat(ble.getQte()));
 	}
 }

@@ -178,7 +178,7 @@ public class ClientQueries {
 	 * //method insertion/modification public void SaveOrUpdate(Client client) {
 	 * SessionsGenerator FactoryObject = new SessionsGenerator(); Session
 	 * session = FactoryObject.getFactory().openSession(); try {
-	 * session.beginTransaction(); //save pour ajouté, update pour modifie
+	 * session.beginTransaction(); //save pour ajout\u00E9, update pour modifie
 	 * session.saveOrUpdate(client); session.getTransaction().commit(); }
 	 * finally { session.close(); } } //supprimer un client public void
 	 * delete(Client client) { SessionsGenerator FactoryObject = new
@@ -189,19 +189,19 @@ public class ClientQueries {
 	 * liste des clients public List<Client> list() { SessionsGenerator
 	 * FactoryObject = new SessionsGenerator(); Session session =
 	 * FactoryObject.getFactory().openSession(); List<Client> listClients = new
-	 * ArrayList<>(); try { //Requete HQL pour selectioné tout les client:
+	 * ArrayList<>(); try { //Requete HQL pour selection\u00E9 tout les client:
 	 * listClients = session.createQuery("from Client").list(); } finally {
 	 * session.close(); } return listClients; } public Client
 	 * getClientByRegistre(String registre) { SessionsGenerator FactoryObject =
 	 * new SessionsGenerator(); Session session =
 	 * FactoryObject.getFactory().openSession(); Client c; try { //Requete HQL
-	 * pour selectioné tout les client: c = (Client)
+	 * pour selection\u00E9 tout les client: c = (Client)
 	 * session.createQuery("from Client where numRegCom='" + registre +
 	 * "'").uniqueResult(); } finally { session.close(); } return c; } public
 	 * Client getClient(String id) { SessionsGenerator FactoryObject = new
 	 * SessionsGenerator(); Session session =
 	 * FactoryObject.getFactory().openSession(); Client c; try { //Requete HQL
-	 * pour selectioné tout les client: c = (Client)
+	 * pour selection\u00E9 tout les client: c = (Client)
 	 * session.createQuery("from Client where id='" + id + "'").uniqueResult();
 	 * } finally { session.close(); } return c; }
 	 */

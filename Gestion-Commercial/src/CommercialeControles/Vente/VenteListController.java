@@ -60,7 +60,7 @@ public class VenteListController implements Initializable {
 
 	@FXML
 	private void Archive(ActionEvent event) {
-		Order.setText("Archivé");
+		Order.setText("Archiv\u00E9");
 		List<Facture> factureList = FactureQueries.listArchived();
 		List<VenteCell> list = new ArrayList<>();
 		for (int i = 0; i < factureList.size(); i++) {
@@ -92,7 +92,7 @@ public class VenteListController implements Initializable {
 
 	@FXML
 	private void NonArchive(ActionEvent event) {
-		Order.setText("Non Archivé");
+		Order.setText("Non Archiv\u00E9");
 		List<Facture> factureList = FactureQueries.list();
 		List<VenteCell> list = new ArrayList<>();
 		for (int i = 0; i < factureList.size(); i++) {

@@ -107,9 +107,10 @@ public class GenerationEtatEstimatifClient {
         OperationEtatEstimatifGlobal operationEtatEstimatifGlobal = new OperationEtatEstimatifGlobal();
         operationEtatEstimatifGlobal.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-                String.valueOf(round(montantTotal,2)), String.valueOf(round(tvaTotal,2)), String.valueOf(round(ttcTotal,2)), String.valueOf(round(timbreTotal,2)),
+                String.valueOf(round(montantTotal,2)), "ff", String.valueOf(round(ttcTotal,2)), String.valueOf(round(timbreTotal,2)),
                 String.valueOf(round(farineTotal,2)), String.valueOf(round(sonTotal,2)));
         operationEtatEstimatifGlobal.printReport();
+        //String.valueOf(round(tvaTotal,2))
     }
 
     public void getFactureParClient(Date debut, Date fin, String nomprenom) {

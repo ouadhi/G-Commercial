@@ -118,7 +118,7 @@ public class PayementCell extends GridPane {
         GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
         label0.setAlignment(javafx.geometry.Pos.CENTER);
         label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label0.setText("" + this.payment.getMontant());
+        label0.setText("" + Methode.DoubleFormat(this.payment.getMontant()));
         label0.setFont(new Font(16.0));
 
         GridPane.setColumnIndex(label1, 2);

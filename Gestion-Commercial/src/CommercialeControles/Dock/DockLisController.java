@@ -50,7 +50,7 @@ public class DockLisController implements Initializable {
 
 	@FXML
 	private void Archive(ActionEvent event) {
-		Order.setText("Archivé");
+		Order.setText("Archiv\u00E9");
 		List<Dock> listDocksDB = DockQueries.listArchived();
 
 		List<DockCell> list = new ArrayList<>();
@@ -85,7 +85,7 @@ public class DockLisController implements Initializable {
 
 	@FXML
 	private void nonArchive(ActionEvent event) {
-		Order.setText("Non Archivé");
+		Order.setText("Non Archiv\u00E9");
 		List<Dock> listDocksDB = DockQueries.list();
 
 		List<DockCell> list = new ArrayList<>();

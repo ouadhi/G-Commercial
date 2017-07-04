@@ -85,7 +85,7 @@ public class ModifierProduitController implements Initializable {
 				Produit p = ProduitQueries.getProduitByCode(code);
 				if (p != null && p.getIdProduit() != produit.getIdProduit()) {
 					// notification for already exists
-					Notification.error("Ce produit exite déja!");
+					Notification.error("Ce produit exite d\u00E9ja!");
 				} else {
 					produit.setCodeProduit(code);
 					produit.setNom(nomVal);
@@ -116,7 +116,7 @@ public class ModifierProduitController implements Initializable {
 		this.nom.setText(produit.getNom());
 		this.categorie.setText(produit.getCategory());
 		this.quantite.setText(Integer.toString(produit.getQuantite()));
-		this.prix.setText(Double.toString(produit.getPrix()));
+		this.prix.setText(Methode.DoubleFormat(produit.getPrix())+"");
 		this.code.setText(this.produit.getCodeProduit());
 		if (this.produit.isHaveTva()) {
 			TVA.setSelected(true);

@@ -50,7 +50,7 @@ public class ModifierDockController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		Methode.setOnlyDouble(prix, 10);
+		Methode.setOnlyDouble4(prix, 10);
 		Methode.setOnlyDouble(distance, 10);
 		Methode.setsizeString(wilaya, 22);
 		Methode.SetUpper(nom, 30);
@@ -79,8 +79,8 @@ public class ModifierDockController implements Initializable {
 			Optional<ButtonType> result = Notification.updateAlert().showAndWait();
 			if (result.get() == ButtonType.OK) {
 				if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
-					Notification.notif(NotificationType.ERROR, "Vérification",
-							"Vérifier que tout les champs sont remplis!");
+					Notification.notif(NotificationType.ERROR, "V\u00E9rification",
+							"V\u00E9rifier que tout les champs sont remplis!");
 				} else {
 					dock.setNom(nom);
 					dock.setWilaya(wilaya);
@@ -97,7 +97,7 @@ public class ModifierDockController implements Initializable {
 	}
 
 	public void setData(Dock dock) {
-		Methode.setOnlyDouble(prix, 10);
+		Methode.setOnlyDouble4(prix, 10);
 		Methode.setOnlyDouble(distance, 10);
 		Methode.setsizeString(wilaya, 22);
 		Methode.SetUpper(nom, 30);
@@ -105,6 +105,6 @@ public class ModifierDockController implements Initializable {
 		this.nom.setText(dock.getNom());
 		this.wilaya.setText(dock.getWilaya());
 		this.distance.setText(Methode.DoubleFormat(dock.getDistance()) + "");
-		this.prix.setText(Methode.DoubleFormat(dock.getPrixUnitTrans()) + "");
+		this.prix.setText(Methode.DoubleFormat4(dock.getPrixUnitTrans()) + "");
 	}
 }

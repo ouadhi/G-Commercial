@@ -6,8 +6,14 @@ import UIControle.Methode;
 import UIControle.Notification;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.InputStream;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.Collection;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javafx.animation.FadeTransition;
@@ -32,8 +38,16 @@ import net.sf.jasperreports.engine.util.JRLoader;
 public class Loginform extends Application {
 
     public static void main(String[] args) {
-        launch(args);
+        List<String> macs = getMacs();
+//change && uncomment
+//        if (macs.contains(("mac1").replace(" ", "").replace("-", ""))
+//                || macs.contains(("mac2").replace(" ", "").replace("-", ""))) 
+        {
+            launch(args);
+        }
+
     }
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -54,18 +68,17 @@ public class Loginform extends Application {
         stage.setScene(scene);
         Methode.moveFocus(root);
         stage.show();
-      
 
-        stage.setOnCloseRequest(e ->  {
+        stage.setOnCloseRequest(e -> {
             e.consume();
             closeStage();
-                
+
         });
 
     }
 
     private void closeStage() {
-        Optional<ButtonType> result =  Notification.quitterAlert().showAndWait();
+        Optional<ButtonType> result = Notification.quitterAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
             System.exit(0);
         }
@@ -110,9 +123,28 @@ public class Loginform extends Application {
         return new JRBeanCollectionDataSource(collBean, false);
 
     }
-    
-    
-   
+    private static List<String> getMacs() {
+        List<String> macsList = new ArrayList<String>();
 
+        try {
+            Enumeration<NetworkInterface> networks = NetworkInterface.getNetworkInterfaces();
+            while (networks.hasMoreElements()) {
+                NetworkInterface network = networks.nextElement();
+                byte[] mac = network.getHardwareAddress();
+
+                if (mac != null) {
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < mac.length; i++) {
+                        sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : "").replace(" ", "").replace("-", ""));
+                    }
+                    //System.out.println(sb.toString());
+                    macsList.add(sb.toString());
+                }
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+        return macsList;
+    }
 
 }

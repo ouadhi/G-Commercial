@@ -115,7 +115,7 @@ public class AjouterPayementController implements Initializable {
         double montant = Double.parseDouble(montont.getText());
         Date dateValue = Date.from(datepayment.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         if (typeValue.isEmpty() || montant == 0 || dateValue == null) {
-            Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
+            Notification.notif(NotificationType.ERROR, "V\u00E9rification", "V\u00E9rifier que tout les champs sont remplis!");
         } else {
 
             Payment p = new Payment(typeValue, numCVValue, banqueValue, montant, dateValue);

@@ -117,8 +117,8 @@ public class ModifierAchatController implements Initializable {
 	public void setData(Achat achat) {
 		this.achat = achat;
 		numero.setText(achat.getNumAcqt());
-		Q_Acquit.setText(this.achat.getQuantiteAcqt() + "");
-		Q_fournie.setText(this.achat.getQuantiteFour() + "");
+		Q_Acquit.setText(Methode.DoubleFormat(this.achat.getQuantiteAcqt() )+"");
+		Q_fournie.setText(Methode.DoubleFormat(this.achat.getQuantiteFour())+"" );
 		date.setValue(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.achat.getDateAcqt())));
 
 		ch = new ChauffeurListH(this.achat.getChauffeur());

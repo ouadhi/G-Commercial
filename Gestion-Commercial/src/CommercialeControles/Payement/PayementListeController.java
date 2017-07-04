@@ -120,7 +120,7 @@ public class PayementListeController implements Initializable {
 
 	@FXML
 	private void Archive(ActionEvent event) {
-		Order.setText("Archivé");
+		Order.setText("Archiv\u00E9");
 		List<Payment> listDB = PaymentQueries.listArchived();
 
 		List<PayementCell> list = new ArrayList<>();
@@ -146,7 +146,7 @@ public class PayementListeController implements Initializable {
 
 	@FXML
 	private void NonArchiv(ActionEvent event) {
-		Order.setText("Non Archivé");
+		Order.setText("Non Archiv\u00E9");
 		List<Payment> listDB = PaymentQueries.list();
 
 		List<PayementCell> list = new ArrayList<>();

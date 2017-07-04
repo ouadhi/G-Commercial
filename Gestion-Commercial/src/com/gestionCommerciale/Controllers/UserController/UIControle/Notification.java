@@ -10,7 +10,7 @@ public class Notification {
 
 	public static void Addnotification() {
 		String title = "Ajoute";
-		String message = "l'operation est terminé avec succès ";
+		String message = "l'operation est termin\u00E9 avec succ\u00E8s ";
 		NotificationType type = NotificationType.SUCCESS;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);
@@ -23,14 +23,14 @@ public class Notification {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation ");
 		alert.setHeaderText("suppression  ");
-		alert.setContentText("voulez vous vraiment effectuer cette opération ??");
+		alert.setContentText("voulez vous vraiment effectuer cette op\u00E9ration ??");
 
 		return alert;
 	}
 
 	public static void Deletenotification() {
 		String title = "Suppression";
-		String message = "l'operation est terminé avec succès ";
+		String message = "l'operation est termin\u00E9 avec succ\u00E8s ";
 		NotificationType type = NotificationType.SUCCESS;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);
@@ -41,8 +41,8 @@ public class Notification {
 	}
 
 	public static void errorNotification() {
-		String title = "problème";
-		String message = " vérifier tous les champs s'il vous plait ";
+		String title = "probl\u00E8me";
+		String message = " v\u00E9rifier tous les champs s'il vous plait ";
 		NotificationType type = NotificationType.WARNING;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);
@@ -53,7 +53,7 @@ public class Notification {
 
 	public static void Updatenotification() {
 		String title = "Modification";
-		String message = "l'operation est terminé avec succès ";
+		String message = "l'operation est termin\u00E9 avec succ\u00E8s ";
 		NotificationType type = NotificationType.SUCCESS;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);

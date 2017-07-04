@@ -11,6 +11,7 @@ import com.gestionCommerciale.Models.Facture_ProduitQueries;
 import com.jfoenix.controls.JFXListView;
 
 import UIControle.Methode;
+import java.lang.reflect.Method;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -155,7 +156,7 @@ public class ListeProduitVenteController implements Initializable {
 		for (int i = 0; i < fpList.size(); i++) {
 			System.err.println(fpList.size());
 			Facture_Produit pro = fpList.get(i);
-			list.add(new cellProduit(pro.getProduit().getNom(), pro.getProduit().getPrix() + "",
+			list.add(new cellProduit(pro.getProduit().getNom(), Methode.DoubleFormat(pro.getProduit().getPrix()) + "",
 					pro.getQte_fact() + ""));
 		}
 

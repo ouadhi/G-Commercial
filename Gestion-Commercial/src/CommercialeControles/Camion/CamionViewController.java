@@ -69,7 +69,7 @@ public class CamionViewController implements Initializable {
 
 	@FXML
 	private void Archive(ActionEvent event) {
-		orderby.setText("Archivé");
+		orderby.setText("Archiv\u00E9");
 
 		List<Camion> listCamionsDB = CamionQueries.listArchived();
 		List<CamionCell> list = new ArrayList<>();
@@ -104,7 +104,7 @@ public class CamionViewController implements Initializable {
 
 	@FXML
 	private void NonArchive(ActionEvent event) {
-		orderby.setText("Non Archivé");
+		orderby.setText("Non Archiv\u00E9");
 
 		List<Camion> listCamionsDB = CamionQueries.list();
 		List<CamionCell> list = new ArrayList<>();

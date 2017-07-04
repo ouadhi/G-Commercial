@@ -149,7 +149,9 @@ public class ProduitCell extends GridPane {
 
         GridPane.setColumnIndex(label3, 4);
         GridPane.setHalignment(label3, javafx.geometry.HPos.CENTER);
-        label3.setText(Double.toString(this.produit.getPrix()));
+        //label3.setText(Double.toString(this.produit.getPrix()));
+        label3.setText(Methode.DoubleFormat(produit.getPrix()) + "");
+
         label3.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label4, 5);

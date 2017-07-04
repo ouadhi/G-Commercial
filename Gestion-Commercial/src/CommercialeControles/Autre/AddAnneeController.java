@@ -53,7 +53,7 @@ public class AddAnneeController implements Initializable {
 					Notification.check("Erreur!");
 				}
 			} else {
-				Notification.check("Cette année existe déja!");
+				Notification.check("Cette ann\u00E9e existe d\u00E9ja!");
 			}
 
 		}

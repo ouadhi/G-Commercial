@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import com.gestionCommerciale.HibernateSchema.User;
 import com.jfoenix.controls.JFXTextField;
 import java.awt.Robot;
+import java.text.DecimalFormat;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,10 +22,22 @@ import javafx.stage.Stage;
 
 public class Methode {
 
-    public static Double DoubleFormat(double f) {
+//    public static Double DoubleFormat(double f) {
+//        BigDecimal bd = new BigDecimal(f);
+//        bd = bd.setScale(2, RoundingMode.HALF_UP);
+//        return bd.doubleValue();
+//    }
+    public static String DoubleFormat(double f) {
         BigDecimal bd = new BigDecimal(f);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
-        return bd.doubleValue();
+        DecimalFormat df = new DecimalFormat("##.00");
+        return df.format(bd).replace(".00", "0.00");
+    }
+    public static String DoubleFormat4(double f) {
+        BigDecimal bd = new BigDecimal(f);
+        bd = bd.setScale(4, RoundingMode.HALF_UP);
+        DecimalFormat df = new DecimalFormat("##.0000");
+        return df.format(bd).replace(".00", "0.00");
     }
 
     public static Stage getStage(ActionEvent event) {
@@ -45,6 +58,21 @@ public class Methode {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
                 if (!newValue.matches("\\d{0," + max + "}([\\.]\\d{0,2})?")) {
+                    field.setText(oldValue);
+                }
+
+            }
+        });
+
+    }
+    public static void setOnlyDouble4(JFXTextField field, int max) {
+
+        field.textProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if (!newValue.matches("\\d{0," + max + "}([\\.]\\d{0,4})?")) {
                     field.setText(oldValue);
                 }
 

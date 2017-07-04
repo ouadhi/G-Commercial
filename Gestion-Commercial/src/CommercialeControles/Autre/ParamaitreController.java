@@ -89,7 +89,7 @@ public class ParamaitreController implements Initializable {
 			StageDialog dialog = new StageDialog(Methode.getStage(event), root);
 			dialog.show();
 		} catch (IOException ex) {
-			Notification.errorNotification("Selectionner une année SVP !!");
+			Notification.errorNotification("Selectionner une ann\u00E9e SVP !!");
 		}
 	}
 
@@ -102,7 +102,7 @@ public class ParamaitreController implements Initializable {
 	private void selectAnnee(ActionEvent event) {
 
 		if (annee == null) {
-			Notification.errorNotification("Selectionner une année SVP !!");
+			Notification.errorNotification("Selectionner une ann\u00E9e SVP !!");
 		} else {
 			anneeselected.setText(annee.getIdAnnee() + "");
 			Annee aa = AnneeQueries.getSelected();

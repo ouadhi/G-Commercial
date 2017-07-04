@@ -152,7 +152,7 @@ public class ProduitQueries {
 	 * getProduit(String id) { SessionsGenerator FactoryObject = new
 	 * SessionsGenerator(); Session session =
 	 * FactoryObject.getFactory().openSession(); Produit d; try { //Requete HQL
-	 * pour selectioné tout les client: d = (Produit)
+	 * pour selection\u00E9 tout les client: d = (Produit)
 	 * session.createQuery("from Produit where id='" + id + "'").uniqueResult();
 	 * } finally { session.close(); } return d; }
 	 */

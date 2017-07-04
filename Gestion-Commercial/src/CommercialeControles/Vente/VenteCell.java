@@ -133,7 +133,8 @@ public class VenteCell extends GridPane {
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
-        label2.setText("" + this.facture.getMontantFinal());
+        //double
+        label2.setText(Methode.DoubleFormat(this.facture.getMontantFinal())+"");
         label2.setFont(new Font(17.0));
 
         JFXButton produitdefacture = new JFXButton("Porduit");
@@ -146,7 +147,7 @@ public class VenteCell extends GridPane {
             versment += this.facture.getClient().getPayments().get(i).getMontant();
         }
         GridPane.setColumnIndex(produitdefacture, 4);
-        label3.setText(Double.toString(this.facture.getMontant() - versment));
+        label3.setText(Methode.DoubleFormat((this.facture.getMontant() - versment))+"");
         label3.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(bttn, 5);
@@ -228,7 +229,7 @@ public class VenteCell extends GridPane {
     }
 
     public void intpopup() {
-        JFXButton modifier = new JFXButton("Détail");
+        JFXButton modifier = new JFXButton("D\u00E9tail");
         JFXButton supprimer = new JFXButton("Archiver");
         JFXButton details = new JFXButton("imprimer");
 
@@ -247,7 +248,23 @@ public class VenteCell extends GridPane {
         }
 
         modifier.setOnAction(event -> {
+            try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.showvente));
+			loader.load();
 
+			ModifierVenteController Modifier = loader.getController();
+			Modifier.setData(facture);
+
+			AnchorPane root = loader.getRoot();
+
+			StageDialog dialog = new StageDialog(Methode.getStage(event), root);
+			dialog.show();
+
+		} catch (IOException ex) {
+			Logger.getLogger(VenteCell.class.getName()).log(Level.SEVERE, null, ex);
+		}
             popup.close();
 
         });

@@ -83,12 +83,12 @@ public class AjouterProduitController implements Initializable {
 
         if (nomVal.isEmpty() || categorieVal.isEmpty() || quantiteVal.isEmpty() || prixVal.isEmpty()
                 || code.isEmpty()) {
-            Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
+            Notification.notif(NotificationType.ERROR, "V\u00E9rification", "V\u00E9rifier que tout les champs sont remplis!");
 
         } else {
             if (ProduitQueries.getProduitByCode(code) != null) {
                 // notification for already exists
-                Notification.error("Ce produit exite déja!");
+                Notification.error("Ce produit exite d\u00E9ja!");
             } else {
                 try {
                     Produit ob = new Produit(code, nomVal, categorieVal, Integer.parseInt(quantiteVal),
