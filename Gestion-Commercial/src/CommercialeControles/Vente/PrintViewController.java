@@ -90,7 +90,7 @@ public class PrintViewController implements Initializable {
                        Methode.DoubleFormat(round(ttc,2)), montantlettre,
                         factureimp.getChauffeur().getNom() +" "+ factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente, qtesVente, prixsVente, montantsVente,
-                        "A terme");
+                        factureimp.getTypeVersement());
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
