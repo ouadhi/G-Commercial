@@ -80,7 +80,7 @@ public class ModifierBleController implements Initializable {
 				ble.setQte(Double.parseDouble(quantiteval));
 				Ble ble2 = BleQueries.getBleByCode(codeval);
 				if (ble2 != null && ble2.getIdBle() != ble.getIdBle()) {
-					Notification.error("Ce code existe déja, utilisé un autre");
+					Notification.error("Ce code existe d\u00E9ja, utilis\u00E9 un autre");
 				} else {
 					BleQueries.SaveOrUpdate(ble);
 					Notification.Updatenotification();

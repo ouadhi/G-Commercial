@@ -171,7 +171,7 @@ public class PorduitH extends GridPane {
 		qantitproduit.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
 		qantitproduit.setPrefHeight(17.0);
 		qantitproduit.setPrefWidth(106.0);
-		qantitproduit.setText(this.produit.getQuantite() + " unité");
+		qantitproduit.setText(this.produit.getQuantite() + " unit\u00E9");
 		qantitproduit.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
 		GridPane.setMargin(qantitproduit, new Insets(0.0, 0.0, -41.0, 0.0));
 
@@ -193,7 +193,7 @@ public class PorduitH extends GridPane {
 		quantite.setVisible(false);
 		quantite.setAlignment(javafx.geometry.Pos.CENTER);
 		quantite.setFont(new Font(14.0));
-		quantite.setPromptText("Quantité");
+		quantite.setPromptText("Quantit\u00E9");
 
 		GridPane.setRowIndex(prix, 1);
 		prix.setAlignment(javafx.geometry.Pos.CENTER);
@@ -247,7 +247,7 @@ public class PorduitH extends GridPane {
 				int quan = Integer.parseInt(newValue);
 				if (quan > produit.getQuantite()) {
 					quantite.setText(oldValue);
-					Notification.errorNotification("Vous dépasser quantité disponible au stocke");
+					Notification.errorNotification("Vous d\u00E9passer quantit\u00E9 disponible au stocke");
 				}
 
 			}

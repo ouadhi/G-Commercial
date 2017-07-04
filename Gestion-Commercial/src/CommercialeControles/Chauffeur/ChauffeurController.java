@@ -67,7 +67,7 @@ public class ChauffeurController implements Initializable {
 
 	@FXML
 	private void archive(ActionEvent event) {
-		orderby.setText("Archivé");
+		orderby.setText("Archiv\u00E9");
 		listeView.getItems().clear();
 
 		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listArchived();
@@ -105,7 +105,7 @@ public class ChauffeurController implements Initializable {
 
 	@FXML
 	private void nonArchive(ActionEvent event) {
-		orderby.setText("Non Archivé");
+		orderby.setText("Non Archiv\u00E9");
 		listeView.getItems().clear();
 		List<Chauffeur> listChauffeursDB = ChauffeurQueries.list();
 		List<ChauffeurCell> list = new ArrayList<>();

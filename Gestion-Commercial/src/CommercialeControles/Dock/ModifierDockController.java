@@ -79,8 +79,8 @@ public class ModifierDockController implements Initializable {
 			Optional<ButtonType> result = Notification.updateAlert().showAndWait();
 			if (result.get() == ButtonType.OK) {
 				if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
-					Notification.notif(NotificationType.ERROR, "Vérification",
-							"Vérifier que tout les champs sont remplis!");
+					Notification.notif(NotificationType.ERROR, "V\u00E9rification",
+							"V\u00E9rifier que tout les champs sont remplis!");
 				} else {
 					dock.setNom(nom);
 					dock.setWilaya(wilaya);

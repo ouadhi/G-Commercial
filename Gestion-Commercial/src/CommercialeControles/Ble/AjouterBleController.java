@@ -102,10 +102,10 @@ public class AjouterBleController implements Initializable {
 		// this.quntite.getText();
 		String prixval = this.prix.getText();
 		if (codeval.isEmpty() || quantiteval.isEmpty() || prixval.isEmpty()) {
-			Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
+			Notification.notif(NotificationType.ERROR, "V\u00E9rification", "V\u00E9rifier que tout les champs sont remplis!");
 		} else {
 			if (BleQueries.getBleByCode(codeval) != null) {
-				Notification.error("Ce ble exite déja!");
+				Notification.error("Ce ble exite d\u00E9ja!");
 			} else {
 				try {
 					Ble ble = new Ble(codeval, Double.parseDouble(quantiteval), Double.parseDouble(prixval));

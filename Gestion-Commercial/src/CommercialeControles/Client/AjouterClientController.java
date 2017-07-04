@@ -118,14 +118,14 @@ public class AjouterClientController implements Initializable {
 
         if (nom.isEmpty() || prenom.isEmpty() || NR.isEmpty() || NA.isEmpty() || adresse.isEmpty() || activite.isEmpty()
                 || Ncarte.isEmpty() || datedept.getValue() == null) {
-            Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
+            Notification.notif(NotificationType.ERROR, "V\u00E9rification", "V\u00E9rifier que tout les champs sont remplis!");
         } else {
 
             Date dateDepotDossier = Date.from(datedept.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 
             if (ClientQueries.getClientByRegistre(NR) != null) {
                 // notification for already exists
-                Notification.error("Ce client est exite déja!");
+                Notification.error("Ce client est exite d\u00E9ja!");
             } else {
                 // add to database
                 try {

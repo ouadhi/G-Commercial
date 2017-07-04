@@ -52,7 +52,7 @@ public class BanqueListeController implements Initializable {
 
     @FXML
     private void Archive(ActionEvent event) {
-        Order.setText("Non Archivé");
+        Order.setText("Non Archiv\u00E9");
         List<Banque> listBanque = querie.listArchived();
         List<BanqueCell> list = new ArrayList<>();
 
@@ -83,7 +83,7 @@ public class BanqueListeController implements Initializable {
 
     @FXML
     private void NonArchiv(ActionEvent event) {
-        Order.setText("Non Archivé");
+        Order.setText("Non Archiv\u00E9");
         List<Banque> listBanque = querie.list();
         List<BanqueCell> list = new ArrayList<>();
 
@@ -150,7 +150,7 @@ public class BanqueListeController implements Initializable {
 
     @FXML
     private void Tout(ActionEvent event) {
-        Order.setText("Non Archivé");
+        Order.setText("Non Archiv\u00E9");
         List<Banque> listBanque = querie.listAll();
         List<BanqueCell> list = new ArrayList<>();
 

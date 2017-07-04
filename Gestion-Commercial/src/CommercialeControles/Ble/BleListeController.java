@@ -54,7 +54,7 @@ public class BleListeController implements Initializable {
 
 	@FXML
 	private void Archive(ActionEvent event) {
-		Order.setText("Archivé");
+		Order.setText("Archiv\u00E9");
 		List<Ble> listBlesDB = BleQueries.listArchived();
 		List<BelCell> list = new ArrayList<>();
 		for (int i = 0; i < listBlesDB.size(); i++) {
@@ -84,7 +84,7 @@ public class BleListeController implements Initializable {
 
 	@FXML
 	private void NonArchiv(ActionEvent event) {
-		Order.setText("Non Archivé");
+		Order.setText("Non Archiv\u00E9");
 		List<Ble> listBlesDB = BleQueries.list();
 		List<BelCell> list = new ArrayList<>();
 		for (int i = 0; i < listBlesDB.size(); i++) {

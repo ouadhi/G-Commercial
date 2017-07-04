@@ -85,7 +85,7 @@ public class ModifierProduitController implements Initializable {
 				Produit p = ProduitQueries.getProduitByCode(code);
 				if (p != null && p.getIdProduit() != produit.getIdProduit()) {
 					// notification for already exists
-					Notification.error("Ce produit exite déja!");
+					Notification.error("Ce produit exite d\u00E9ja!");
 				} else {
 					produit.setCodeProduit(code);
 					produit.setNom(nomVal);

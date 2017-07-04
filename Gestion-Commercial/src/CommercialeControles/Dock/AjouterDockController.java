@@ -101,10 +101,10 @@ public class AjouterDockController implements Initializable {
 		String prix = this.prix.getText();
 		String distance = this.distance.getText();
 		if (nom.isEmpty() || wilaya.isEmpty() || distance.isEmpty() || prix.isEmpty()) {
-			Notification.notif(NotificationType.ERROR, "Vérification", "Vérifier que tout les champs sont remplis!");
+			Notification.notif(NotificationType.ERROR, "V\u00E9rification", "V\u00E9rifier que tout les champs sont remplis!");
 		} else {
 			if (DockQueries.getDockByNameAndWilaya(nom, wilaya) != null) {
-				Notification.error("Ce dock est exite déja!");
+				Notification.error("Ce dock est exite d\u00E9ja!");
 			} else {
 				try {
 					Dock dock = new Dock(nom, wilaya, Double.parseDouble(distance), Double.parseDouble(prix));

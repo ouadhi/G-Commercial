@@ -51,7 +51,7 @@ public class ClientListController implements Initializable {
 
     @FXML
     private void Archive(ActionEvent event) {
-        Order.setText("Archivé");
+        Order.setText("Archiv\u00E9");
         List<Client> listClientsDB = ClientQueries.listArchived();
 
         List<ClienCell> list = new ArrayList<>();
@@ -87,7 +87,7 @@ public class ClientListController implements Initializable {
 
     @FXML
     private void NonArchive(ActionEvent event) {
-        Order.setText("Non Archivé");
+        Order.setText("Non Archiv\u00E9");
         List<Client> listClientsDB = ClientQueries.list();
 
         List<ClienCell> list = new ArrayList<>();

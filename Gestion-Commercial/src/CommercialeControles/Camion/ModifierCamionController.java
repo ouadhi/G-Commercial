@@ -89,9 +89,9 @@ public class ModifierCamionController implements Initializable {
 				Camion c = CamionQueries.getCamionByCode(code);
 				Camion c2 = CamionQueries.getCamionByMatricule(matricule);
 				if (c != null && c.getId() != camion.getId()) {
-					Notification.error("Ce Code existe déja!");
+					Notification.error("Ce Code existe d\u00E9ja!");
 				} else if (c2 != null && c2.getId() != camion.getId()) {
-					Notification.error("Cette matriquelle existe déja!");
+					Notification.error("Cette matriquelle existe d\u00E9ja!");
 				} else {
 					CamionQueries.SaveOrUpdate(camion);
 					Notification.Updatenotification();
