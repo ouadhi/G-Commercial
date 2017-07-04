@@ -1,5 +1,6 @@
 .topbar{
     -fx-background-color : #00b5b8 ; 
+     -fx-background-size: cover; 
 }
 
 .search-input{
