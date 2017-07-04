@@ -38,6 +38,8 @@ public class Facture {
 	double montantFinal;
 	@Column(name = "tva", nullable = false)
 	double tva;
+	@Column(name = "type_versement", nullable = false)
+	String typeVersement;
 	@Column(name = "timbre", nullable = false)
 	double timbre;
 	@ManyToOne
@@ -62,11 +64,12 @@ public class Facture {
 	}
 
 
-	public Facture(Date date, double montant, double tva, double timbre) {
+	public Facture(Date date, double montant, double tva, double timbre,String typeVersement) {
 		this.date = date;
 		this.montant = montant;
 		// this.tva = tva;
 		this.timbre = timbre;
+		this.typeVersement = typeVersement;
 	}
 
 	public Annee getAnnee() {
@@ -164,5 +167,13 @@ public class Facture {
 	public void setTva(double tva) {
 		this.tva = tva;
 	}
+
+    public String getTypeVersement() {
+        return typeVersement;
+    }
+
+    public void setTypeVersement(String typeVersement) {
+        this.typeVersement = typeVersement;
+    }
 
 }

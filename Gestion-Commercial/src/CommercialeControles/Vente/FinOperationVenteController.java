@@ -128,8 +128,9 @@ public class FinOperationVenteController implements Initializable {
         double montantVal = Double.parseDouble(montant_static.getText());
         double montantFinalVal = Double.parseDouble(montant_static.getText());
         double versmentVal = Double.parseDouble(versement_static.getText());
-
-        Facture f = new Facture(date, montantVal, AnneeQueries.getSelected().getTva(), 0);
+        String typeValue = versemetCombo.getSelectionModel().getSelectedItem();
+        
+        Facture f = new Facture(date, montantVal, AnneeQueries.getSelected().getTva(), 0,typeValue);
 
         f.setMontantFinal(montantFinalVal);
         List<Facture_Produit> fpsList = new ArrayList<Facture_Produit>();
@@ -145,7 +146,6 @@ public class FinOperationVenteController implements Initializable {
         f.setQtes(fpsList);
         f.setAnnee(AnneeQueries.getSelected());
         // back
-        String typeValue = versemetCombo.getSelectionModel().getSelectedItem();
         String numCVValue = "";
         String banqueValue = "";
         
