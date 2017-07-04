@@ -130,7 +130,7 @@ public class DockCell extends GridPane {
 		GridPane.setColumnIndex(label3, 4);
 		label3.setLayoutX(545.0);
 		label3.setLayoutY(27.0);
-		label3.setText(Methode.DoubleFormat(dock.getPrixUnitTrans()) + "");
+		label3.setText(Methode.DoubleFormat4(dock.getPrixUnitTrans()) + "");
 
 		label3.setFont(new Font(17.0));
 		GridPane.setColumnIndex(bttn, 5);

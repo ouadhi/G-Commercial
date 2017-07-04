@@ -50,7 +50,7 @@ public class ModifierDockController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		Methode.setOnlyDouble(prix, 10);
+		Methode.setOnlyDouble4(prix, 10);
 		Methode.setOnlyDouble(distance, 10);
 		Methode.setsizeString(wilaya, 22);
 		Methode.SetUpper(nom, 30);
@@ -97,7 +97,7 @@ public class ModifierDockController implements Initializable {
 	}
 
 	public void setData(Dock dock) {
-		Methode.setOnlyDouble(prix, 10);
+		Methode.setOnlyDouble4(prix, 10);
 		Methode.setOnlyDouble(distance, 10);
 		Methode.setsizeString(wilaya, 22);
 		Methode.SetUpper(nom, 30);
@@ -105,6 +105,6 @@ public class ModifierDockController implements Initializable {
 		this.nom.setText(dock.getNom());
 		this.wilaya.setText(dock.getWilaya());
 		this.distance.setText(Methode.DoubleFormat(dock.getDistance()) + "");
-		this.prix.setText(Methode.DoubleFormat(dock.getPrixUnitTrans()) + "");
+		this.prix.setText(Methode.DoubleFormat4(dock.getPrixUnitTrans()) + "");
 	}
 }
