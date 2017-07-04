@@ -43,7 +43,7 @@ public class Methode {
         BigDecimal bd = new BigDecimal(f);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         DecimalFormat df = new DecimalFormat("##.00");
-        String sdb = df.format(bd);
+        String sdb = df.format(bd).replace(",", ".");
         if (sdb.equals(".00")) {
             return sdb.replace(".00", "0.00");
         } else {
@@ -55,7 +55,7 @@ public class Methode {
         BigDecimal bd = new BigDecimal(f);
         bd = bd.setScale(4, RoundingMode.HALF_UP);
         DecimalFormat df = new DecimalFormat("##.0000");
-        String sdb = df.format(bd);
+        String sdb = df.format(bd).replace(",", ".");
         if (sdb.equals(".00")) {
             return sdb.replace(".00", "0.00");
         } else {
