@@ -248,7 +248,23 @@ public class VenteCell extends GridPane {
         }
 
         modifier.setOnAction(event -> {
+            try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(ViewUrl.showvente));
+			loader.load();
 
+			ModifierVenteController Modifier = loader.getController();
+			Modifier.setData(facture);
+
+			AnchorPane root = loader.getRoot();
+
+			StageDialog dialog = new StageDialog(Methode.getStage(event), root);
+			dialog.show();
+
+		} catch (IOException ex) {
+			Logger.getLogger(VenteCell.class.getName()).log(Level.SEVERE, null, ex);
+		}
             popup.close();
 
         });
