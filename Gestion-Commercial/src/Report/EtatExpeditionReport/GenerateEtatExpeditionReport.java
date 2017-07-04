@@ -5,6 +5,7 @@
  */
 package Report.EtatExpeditionReport;
 
+import UIControle.Methode;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -161,11 +162,11 @@ public class GenerateEtatExpeditionReport {
         double totalVersemntMoinMontant = round(sommes.get(4), 2);
         double totalQuantite = round(sommes.get(5), 2);
         String newDate = new SimpleDateFormat("dd-MM-yyyy").format(jour);
-        operationEtatExpedition.putReportInfo(newDate, String.valueOf(totalFarine), String.valueOf(totalSon),
-                String.valueOf(totalMontant), String.valueOf(totalVersement), String.valueOf(totalQuantite),
-                String.valueOf(totalVersemntMoinMontant), String.valueOf(round(farineTotal, 2)),
-                String.valueOf(round(sonTotal, 2)), String.valueOf(round(montantTotal, 2)),
-                String.valueOf(round(versementTotal, 2)), String.valueOf(round(differenceTotal, 2)), clients, nums,
+        operationEtatExpedition.putReportInfo(newDate, Methode.DoubleFormat(totalFarine), Methode.DoubleFormat(totalSon),
+                Methode.DoubleFormat(totalMontant), Methode.DoubleFormat(totalVersement), Methode.DoubleFormat(totalQuantite),
+                Methode.DoubleFormat(totalVersemntMoinMontant), Methode.DoubleFormat(round(farineTotal, 2)),
+                Methode.DoubleFormat(round(sonTotal, 2)), Methode.DoubleFormat(round(montantTotal, 2)),
+                Methode.DoubleFormat(round(versementTotal, 2)), Methode.DoubleFormat(round(differenceTotal, 2)), clients, nums,
                 produits, qteFarins, qteSons, prixs, montants, versements, observations);
         operationEtatExpedition.printReport();
 
@@ -185,14 +186,14 @@ public class GenerateEtatExpeditionReport {
                 expedition.add(String.valueOf(facture.getIdFacture()));
                 expedition.add(getQtes.get(i).getProduit().getNom().toString());
                 if (getQtes.get(i).getProduit().getNom().equals("FARINE 50")) {
-                    expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
-                    expedition.add("0");
+                    expedition.add(Methode.DoubleFormat(getQtes.get(i).getQte_fact()));
+                    expedition.add("0.00");
                 } else {
-                    expedition.add("0");
-                    expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
+                    expedition.add("0.00");
+                    expedition.add(Methode.DoubleFormat(getQtes.get(i).getQte_fact()));
                 }
-                expedition.add(String.valueOf(getQtes.get(i).getProduit().getPrix()));
-                expedition.add(String.valueOf(facture.getMontant()));
+                expedition.add(Methode.DoubleFormat(getQtes.get(i).getProduit().getPrix()));
+                expedition.add(Methode.DoubleFormat(facture.getMontant()));
                 // check if empty
                 if (facture.getClient().getPayments().isEmpty()) {
                     expedition.add(String.valueOf(0));
@@ -221,7 +222,7 @@ public class GenerateEtatExpeditionReport {
                 expedition.add("");
                 expedition.add("");
                 expedition.add("");
-                expedition.add(String.valueOf(listPay.get(i).getMontant()));
+                expedition.add(Methode.DoubleFormat(listPay.get(i).getMontant()));
                 observations.add("");
                 expeditions.add(expedition);
 
@@ -344,9 +345,9 @@ public class GenerateEtatExpeditionReport {
                 expedition.add(getQtes.get(i).getProduit().getNom().toString());
                 if (getQtes.get(i).getProduit().getNom().equals("FARINE 50")) {
                     expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
-                    expedition.add("0");
+                    expedition.add("0.00");
                 } else {
-                    expedition.add("0");
+                    expedition.add("0.00");
                     expedition.add(String.valueOf(getQtes.get(i).getQte_fact()));
                 }
                 expedition.add(String.valueOf(getQtes.get(i).getProduit().getPrix()));

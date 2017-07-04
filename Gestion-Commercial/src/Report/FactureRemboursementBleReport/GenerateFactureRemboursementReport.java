@@ -5,6 +5,7 @@
  */
 package Report.FactureRemboursementBleReport;
 
+import UIControle.Methode;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -158,8 +159,9 @@ public class GenerateFactureRemboursementReport {
 //                RuleBasedNumberFormat.SPELLOUT);
 //        String montantlettre = ruleBasedNumberFormat.format(new Double(montantTotal)) + " Dinars Algérien";
         String montantlettre = transformationEnLettre(montantTotal);
-        operation.putReportInfo(doit, num, start, end, String.valueOf(round(totalQte, 2)), String.valueOf(round(montantTotal, 2)),
-                montantlettre, references, qtes, dockNomList, prixUnitair, montants, company.getRegistre(), company.getFiscale(), company.getArticle(),
+        operation.putReportInfo(doit, num, start, end, Methode.DoubleFormat(round(totalQte, 2)), Methode.DoubleFormat(round(montantTotal, 2)),
+                montantlettre, references, qtes, dockNomList,  prixUnitair
+                , montants, company.getRegistre(), company.getFiscale(), company.getArticle(),
                 company.getTelephone(), company.getFax(), company.getEmail());
         operation.printReport();
 
@@ -178,11 +180,11 @@ public class GenerateFactureRemboursementReport {
                 session.close();
             }
             double prix = dock.getPrixUnitTrans();
-            this.prixUnitair.add(new Double(prix).toString());
+            this.prixUnitair.add(String.valueOf(round(prix,4)));
             double montantqtePrix = 0;
             montantqtePrix = round((Double.parseDouble(listTotalQte.get(i)) * prix), 2);
             montantTotal = montantTotal + montantqtePrix;
-            listMontant.add(new Double(montantqtePrix).toString());
+            listMontant.add(Methode.DoubleFormat(montantqtePrix));
         }
         return listMontant;
     }
@@ -197,7 +199,7 @@ public class GenerateFactureRemboursementReport {
                 }
             }
             totalQte = totalQte + total;
-            listTotalQte.add(new Double(round(total, 2)).toString());
+            listTotalQte.add(Methode.DoubleFormat(round(total, 2)));
         }
         return listTotalQte;
     }

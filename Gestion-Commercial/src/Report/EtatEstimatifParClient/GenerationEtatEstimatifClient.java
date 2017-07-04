@@ -94,7 +94,7 @@ public class GenerationEtatEstimatifClient {
 
         operationEtatEstimatifClient.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-                Methode.DoubleFormat(montantTotal), Methode.DoubleFormat(tvaTotal), String.valueOf(ttcTotal), String.valueOf(timbreTotal),
+                Methode.DoubleFormat(montantTotal), Methode.DoubleFormat(tvaTotal), Methode.DoubleFormat(ttcTotal), Methode.DoubleFormat(timbreTotal),
                 Methode.DoubleFormat(farineTotal), Methode.DoubleFormat(sonTotal), Methode.DoubleFormat(round(qteTotal, 2)),
                 dates, this.nums, this.produits, this.montants, this.tvas, this.ttcs, this.timbres, this.qtes);
         operationEtatEstimatifClient.printReport();
@@ -108,8 +108,8 @@ public class GenerationEtatEstimatifClient {
         OperationEtatEstimatifGlobal operationEtatEstimatifGlobal = new OperationEtatEstimatifGlobal();
         operationEtatEstimatifGlobal.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-                String.valueOf(round(montantTotal,2)), Methode.DoubleFormat(tvaTotal), String.valueOf(round(ttcTotal,2)), String.valueOf(round(timbreTotal,2)),
-                String.valueOf(round(farineTotal,2)), String.valueOf(round(sonTotal,2)));
+                Methode.DoubleFormat(round(montantTotal,2)), Methode.DoubleFormat(tvaTotal), Methode.DoubleFormat(round(ttcTotal,2)), Methode.DoubleFormat(round(timbreTotal,2)),
+                Methode.DoubleFormat(round(farineTotal,2)), Methode.DoubleFormat(round(sonTotal,2)));
         operationEtatEstimatifGlobal.printReport();
         //String.valueOf(round(tvaTotal,2))
     }

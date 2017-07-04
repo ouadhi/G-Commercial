@@ -5,6 +5,7 @@
  */
 package Report.EtatRecetteDepenseReport;
 
+import UIControle.Methode;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,23 +32,23 @@ public class GenerateEtatRecetteDepense {
 	public void generateReport(Date jour, String nomBanque, double versementBanque) {
 		OperationEtatRecetteDepense operationEtatRecetteDepense = new OperationEtatRecetteDepense();
 		getVersementParJour(jour);
-		String reste = String.valueOf(listSoldes.get(listSoldes.size() - 1) - versementBanque);
+		String reste = Methode.DoubleFormat(listSoldes.get(listSoldes.size() - 1) - versementBanque);
                 String numBanquaire=banqueQueries.getCompteBancaire(nomBanque);
 		int counter = 1;
 		for (int i = 0; i < listClients.size(); i++) {
 			List<String> clients = new ArrayList<>();
 			clients.add(String.valueOf(listClients.get(i).getName()+" "+listClients.get(i).getPrenom()));
 			List<String> montants = new ArrayList<>();
-			montants.add(String.valueOf(listPayement.get(i)));
+			montants.add(Methode.DoubleFormat(listPayement.get(i)));
 			List<String> soldes = new ArrayList<>();
-			soldes.add(String.valueOf(listSoldes.get(i)));
+			soldes.add(Methode.DoubleFormat(listSoldes.get(i)));
 			List<String> depenses = new ArrayList<>();
 			depenses.add("");
 			List<String> nums = new ArrayList<>();
 			nums.add(String.valueOf(counter));
 			String newDate = new SimpleDateFormat("dd-MM-yyyy").format(jour);
-			operationEtatRecetteDepense.putReportInfo(newDate, String.valueOf(listSoldes.get(listSoldes.size() - 1)),
-					"", nomBanque, reste,numBanquaire,String.valueOf(versementBanque), nums, clients, montants, depenses, soldes);
+			operationEtatRecetteDepense.putReportInfo(newDate, Methode.DoubleFormat(listSoldes.get(listSoldes.size() - 1)),
+					"", nomBanque, reste,numBanquaire,Methode.DoubleFormat(versementBanque), nums, clients, montants, depenses, soldes);
 			counter++;
 
 		}
