@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Report.EtatReceptionReport;
+import UIControle.Methode;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -144,9 +145,9 @@ public class GenerateEtatReceptionReport {
             //String montantlettre = ruleBasedNumberFormat.format(montantCheque) + " Dinars Algérien";
             String montantlettre = transformationEnLettre(montantCheque);
 
-            operationEtatReceptionReport.putReportInfo(newStartDate, newEndDate, dateJour, String.valueOf(round(totalFour,2)),
-                    String.valueOf(round(totalMoulin,2)), String.valueOf(round(totalDif,2)),
-                    String.valueOf(round(montantCheque,2)), montantlettre,
+            operationEtatReceptionReport.putReportInfo(newStartDate, newEndDate, dateJour, Methode.DoubleFormat(round(totalFour,2)),
+                    Methode.DoubleFormat(round(totalMoulin,2)), Methode.DoubleFormat(round(totalDif,2)),
+                   Methode.DoubleFormat(round(montantCheque,2)), montantlettre,
                     nums, qteFours, qteMoulins, qteDifs);
         }
         operationEtatReceptionReport.printReport();
@@ -167,7 +168,7 @@ public class GenerateEtatReceptionReport {
         List<String> qteDiffs = new ArrayList<>();
         for (int i = 0; i < listAchats.get(n).size(); i++) {
             totalDif = totalDif + listAchats.get(n).get(i).getQuantiteDiff();
-            String qteDiff = String.valueOf(listAchats.get(n).get(i).getQuantiteDiff());
+            String qteDiff = Methode.DoubleFormat(listAchats.get(n).get(i).getQuantiteDiff());
             qteDiffs.add(qteDiff);
         }
         return qteDiffs;
@@ -177,7 +178,7 @@ public class GenerateEtatReceptionReport {
         List<String> qteFours = new ArrayList<>();
         for (int i = 0; i < listAchats.get(n).size(); i++) {
             totalFour = totalFour + listAchats.get(n).get(i).getQuantiteFour();
-            String qteFour = String.valueOf(listAchats.get(n).get(i).getQuantiteFour());
+            String qteFour = Methode.DoubleFormat(listAchats.get(n).get(i).getQuantiteFour());
             qteFours.add(qteFour);
 
         }
@@ -188,7 +189,7 @@ public class GenerateEtatReceptionReport {
         List<String> qteMoulins = new ArrayList<>();
         for (int i = 0; i < listAchats.get(n).size(); i++) {
             totalMoulin = totalMoulin + listAchats.get(n).get(i).getQuantiteAcqt();
-            String qteMoulin = String.valueOf(listAchats.get(n).get(i).getQuantiteAcqt());
+            String qteMoulin = Methode.DoubleFormat(listAchats.get(n).get(i).getQuantiteAcqt());
             qteMoulins.add(qteMoulin);
         }
         return qteMoulins;

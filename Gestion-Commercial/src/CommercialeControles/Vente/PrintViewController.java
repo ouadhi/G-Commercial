@@ -63,10 +63,10 @@ public class PrintViewController implements Initializable {
 
                 for (int i = 0; i < fpList.size(); i++) {
                     designationsVente.add(fpList.get(i).getProduit().getNom());
-                    qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
-                    prixsVente.add(String.valueOf(fpList.get(i).getProduit().getPrix()));
+                    qtesVente.add(Methode.DoubleFormat(fpList.get(i).getQte_fact()));
+                    prixsVente.add(Methode.DoubleFormat(fpList.get(i).getProduit().getPrix()));
                     montantsVente
-                            .add(String.valueOf(fpList.get(i).getQte_fact() * fpList.get(i).getProduit().getPrix()));
+                            .add(Methode.DoubleFormat(fpList.get(i).getQte_fact() * fpList.get(i).getProduit().getPrix()));
                     // montantTotal = montantTotal +
                     // (fpList.get(i).getQte_fact()
                     // * fpList.get(i).getProduit().getPrix());
@@ -85,9 +85,9 @@ public class PrintViewController implements Initializable {
                         factureimp.getClient().getAddressClient(), factureimp.getClient().getNumRegCom(),
                         factureimp.getClient().getnCarteFiscale(), date,
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(),
-                        String.valueOf(round(montantTotal,2)), String.valueOf(round(tva,2))
-                        ,String.valueOf(round(factureimp.getTimbre(),2)),
-                        new Double(ttc).toString(), montantlettre,
+                        Methode.DoubleFormat(round(montantTotal,2)), Methode.DoubleFormat(round(tva,2))
+                        ,Methode.DoubleFormat(round(factureimp.getTimbre(),2)),
+                       Methode.DoubleFormat(round(ttc,2)), montantlettre,
                         factureimp.getChauffeur().getNom() +" "+ factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente, qtesVente, prixsVente, montantsVente,
                         "A terme");
@@ -108,7 +108,7 @@ public class PrintViewController implements Initializable {
 
                 for (int i = 0; i < fpList.size(); i++) {
                     designationsVente.add(fpList.get(i).getProduit().getNom());
-                    qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
+                    qtesVente.add(Methode.DoubleFormat(fpList.get(i).getQte_fact()));
                 }
                 generateBonChargementReport.generateReport(String.valueOf(factureimp.getIdFacture()),
                         date,
@@ -136,7 +136,7 @@ public class PrintViewController implements Initializable {
 
                 for (int i = 0; i < fpList.size(); i++) {
                     designationsVente.add(fpList.get(i).getProduit().getNom());
-                    qtesVente.add(String.valueOf(fpList.get(i).getQte_fact()));
+                    qtesVente.add(Methode.DoubleFormat(fpList.get(i).getQte_fact()));
                     typesVente.add(fpList.get(i).getProduit().getCategory());
                 }
                 generateBonLivraisonReport.generateReport(

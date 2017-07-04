@@ -5,6 +5,7 @@
  */
 package Report.EtatBleReport;
 
+import UIControle.Methode;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -50,7 +51,7 @@ public class GenerateEtatBleReport {
         for (int i = 0; i < achatDuJour.size(); i++) {
             List<String> poidTiquets = new ArrayList<>();
             totalPoid = totalPoid + achatDuJour.get(i).getQuantiteAcqt();
-            String poidTiquet = String.valueOf(achatDuJour.get(i).getQuantiteAcqt());
+            String poidTiquet = Methode.DoubleFormat(achatDuJour.get(i).getQuantiteAcqt());
             poidTiquets.add(poidTiquet);
 
             List<String> chauffeurs = new ArrayList<>();
@@ -63,23 +64,22 @@ public class GenerateEtatBleReport {
             matricules.add(matricule);
 
             List<String> ptcs = new ArrayList<>();
-            String ptc = String
-                    .valueOf(round(achatDuJour.get(i).getQuantiteFour() + achatDuJour.get(i).getPoidCamion(), 2));
+            String ptc = Methode.DoubleFormat(round(achatDuJour.get(i).getQuantiteFour() + achatDuJour.get(i).getPoidCamion(), 2));
             ptcs.add(ptc);
 
             List<String> tares = new ArrayList<>();
-            String tare = String.valueOf(round(achatDuJour.get(i).getPoidCamion(), 2));
+            String tare = Methode.DoubleFormat(round(achatDuJour.get(i).getPoidCamion(), 2));
             tares.add(tare);
 
             List<String> nets = new ArrayList<>();
             totalNet = totalNet + achatDuJour.get(i).getQuantiteFour();
-            String net = String.valueOf(round(achatDuJour.get(i).getQuantiteFour(), 2));
+            String net = Methode.DoubleFormat(round(achatDuJour.get(i).getQuantiteFour(), 2));
             nets.add(net);
 
             List<String> ecarts = new ArrayList<>();
             double ecrt = achatDuJour.get(i).getQuantiteDiff();//
             totalEcart = totalEcart + ecrt;
-            String ecart = String.valueOf(round(ecrt, 2));
+            String ecart = Methode.DoubleFormat(round(ecrt, 2));
             ecarts.add(ecart);
 
             List<String> numTiquets = new ArrayList<>();
@@ -90,8 +90,8 @@ public class GenerateEtatBleReport {
             String numBl = String.valueOf(achatDuJour.get(i).getNumAcqt());
             numBls.add(numBl);
 
-            operationEtatBleReport.putReportInfo(jourOB, String.valueOf(round(totalPoid,2)), String.valueOf(round(totalNet,2)),
-                    String.valueOf(round(totalEcart,2)), numBls, numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares,
+            operationEtatBleReport.putReportInfo(jourOB, Methode.DoubleFormat(round(totalPoid,2)), Methode.DoubleFormat(round(totalNet,2)),
+                    Methode.DoubleFormat(round(totalEcart,2)), numBls, numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares,
                     nets, ecarts);
         }
         operationEtatBleReport.printReport();

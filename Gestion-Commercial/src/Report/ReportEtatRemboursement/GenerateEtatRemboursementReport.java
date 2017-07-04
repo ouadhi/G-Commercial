@@ -5,6 +5,7 @@
  */
 package Report.ReportEtatRemboursement;
 
+import UIControle.Methode;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -114,7 +115,7 @@ public class GenerateEtatRemboursementReport {
 
     public String calculeMantant(double qte, double prix) {
         double montant = qte * prix;
-        return new Double(round(montant,2)).toString();
+        return Methode.DoubleFormat(round(montant,2));
     }
 
     public String transformationEnLettre(double montant) {
@@ -164,7 +165,7 @@ public class GenerateEtatRemboursementReport {
 //                }
 //            }
             operationEtatRemboursementReport.putReportInfo(doit, date,
-                    new Double(round(montantTotal, 2)).toString(), montantlettre, parcours, distances, nums, qtes,
+                    Methode.DoubleFormat(round(montantTotal, 2)), montantlettre, parcours, distances, nums, qtes,
                     prixs, montants, jours,company.getRegistre(),company.getFiscale(),company.getArticle(),
                     company.getTelephone(),company.getFax(),company.getEmail());
         }
@@ -175,7 +176,7 @@ public class GenerateEtatRemboursementReport {
     public List<String> getDistancesList(int n) {
         List<String> distances = new ArrayList<>();
         for (int i = 0; i < listAchats.get(n).size(); i++) {
-            String distance = String.valueOf(listAchats.get(n).get(i).getDock().getDistance());
+            String distance = Methode.DoubleFormat(listAchats.get(n).get(i).getDock().getDistance());
             distances.add(distance);
         }
 
@@ -224,7 +225,7 @@ public class GenerateEtatRemboursementReport {
     public List<String> getQteList(int n) {
         List<String> qtes = new ArrayList<>();
         for (int i = 0; i < listAchats.get(n).size(); i++) {
-            String qte = String.valueOf(listAchats.get(n).get(i).getQuantiteAcqt());
+            String qte = Methode.DoubleFormat(listAchats.get(n).get(i).getQuantiteAcqt());
             qtes.add(qte);
         }
         return qtes;

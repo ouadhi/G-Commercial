@@ -21,6 +21,7 @@ import com.gestionCommerciale.Models.ClientQueries;
 import com.gestionCommerciale.Models.Facture_ProduitQueries;
 
 import Report.EtatEstimatifGlobal.OperationEtatEstimatifGlobal;
+import UIControle.Methode;
 
 /**
  * @author Hicham
@@ -93,8 +94,8 @@ public class GenerationEtatEstimatifClient {
 
         operationEtatEstimatifClient.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-                String.valueOf(montantTotal), String.valueOf(tvaTotal), String.valueOf(ttcTotal), String.valueOf(timbreTotal),
-                String.valueOf(farineTotal), String.valueOf(sonTotal), String.valueOf(round(qteTotal, 2)),
+                Methode.DoubleFormat(montantTotal), Methode.DoubleFormat(tvaTotal), Methode.DoubleFormat(ttcTotal), Methode.DoubleFormat(timbreTotal),
+                Methode.DoubleFormat(farineTotal), Methode.DoubleFormat(sonTotal), Methode.DoubleFormat(round(qteTotal, 2)),
                 dates, this.nums, this.produits, this.montants, this.tvas, this.ttcs, this.timbres, this.qtes);
         operationEtatEstimatifClient.printReport();
     }
@@ -107,8 +108,8 @@ public class GenerationEtatEstimatifClient {
         OperationEtatEstimatifGlobal operationEtatEstimatifGlobal = new OperationEtatEstimatifGlobal();
         operationEtatEstimatifGlobal.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-                String.valueOf(round(montantTotal,2)), "ff", String.valueOf(round(ttcTotal,2)), String.valueOf(round(timbreTotal,2)),
-                String.valueOf(round(farineTotal,2)), String.valueOf(round(sonTotal,2)));
+                Methode.DoubleFormat(round(montantTotal,2)), Methode.DoubleFormat(tvaTotal), Methode.DoubleFormat(round(ttcTotal,2)), Methode.DoubleFormat(round(timbreTotal,2)),
+                Methode.DoubleFormat(round(farineTotal,2)), Methode.DoubleFormat(round(sonTotal,2)));
         operationEtatEstimatifGlobal.printReport();
         //String.valueOf(round(tvaTotal,2))
     }
@@ -128,11 +129,11 @@ public class GenerationEtatEstimatifClient {
                         dates.add(date);
                         nums.add(String.valueOf(factures.get(j).getIdFacture()));
                         produits.add(fpList.get(k).getProduit().getNom());
-                        montants.add(String.valueOf(factures.get(j).getMontant()));
+                        montants.add(Methode.DoubleFormat(factures.get(j).getMontant()));
                         double tva = factures.get(j).getMontantFinal() - (factures.get(j).getMontant()+factures.get(j).getTimbre());
-                        tvas.add(String.valueOf(round(tva,2)));
-                        ttcs.add(String.valueOf(round(factures.get(j).getMontantFinal(),2)));
-                        timbres.add(String.valueOf(round(factures.get(j).getTimbre(),2)));
+                        tvas.add(Methode.DoubleFormat(round(tva,2)));
+                        ttcs.add(Methode.DoubleFormat(round(factures.get(j).getMontantFinal(),2)));
+                        timbres.add(Methode.DoubleFormat(round(factures.get(j).getTimbre(),2)));
                         ttcTotal = ttcTotal + factures.get(j).getMontantFinal();
                         montantTotal = montantTotal + factures.get(j).getMontant();
                         tvaTotal = tvaTotal + tva;
@@ -142,13 +143,13 @@ public class GenerationEtatEstimatifClient {
                             if ("FARINE 50".equals(factures.get(j).getQtes2().get(z).getProduit().getNom())) {
                                 farineTotal = farineTotal + (factures.get(j).getQtes2().get(z).getQte_fact()
                                         * factures.get(j).getQtes2().get(z).getProduit().getPrix());
-                                qtes.add(String.valueOf(round(factures.get(j).getQtes2().get(z).getQte_fact(), 2)));
+                                qtes.add(Methode.DoubleFormat(round(factures.get(j).getQtes2().get(z).getQte_fact(), 2)));
                                 qteTotal = qteTotal + factures.get(j).getQtes2().get(z).getQte_fact();
                             }
                             if ("SON".equals(factures.get(j).getQtes2().get(z).getProduit().getNom())) {
                                 sonTotal = sonTotal + (factures.get(j).getQtes2().get(z).getQte_fact()
                                         * factures.get(j).getQtes2().get(z).getProduit().getPrix());
-                                qtes.add(String.valueOf(round(factures.get(j).getQtes2().get(z).getQte_fact(), 2)));
+                                qtes.add(Methode.DoubleFormat(round(factures.get(j).getQtes2().get(z).getQte_fact(), 2)));
                                 qteTotal = qteTotal + factures.get(j).getQtes2().get(z).getQte_fact();
                             }
                         }
