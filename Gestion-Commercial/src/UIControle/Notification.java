@@ -9,8 +9,8 @@ import tray.notification.TrayNotification;
 public class Notification {
 
 	public static void Addnotification() {
-		String title = "Succès";
-		String message = "l'operation est terminé avec succès ";
+		String title = "Succ\u00E8s";
+		String message = "l'operation est termin\u00E9 avec succ\u00E8s ";
 		NotificationType type = NotificationType.SUCCESS;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);
@@ -20,8 +20,8 @@ public class Notification {
 	}
 
 	public static void champVideNotification() {
-		String title = "Vérification";
-		String message = "Vérifier tous les champs s'il vous plait!";
+		String title = "V\u00E9rification";
+		String message = "V\u00E9rifier tous les champs s'il vous plait!";
 		NotificationType type = NotificationType.ERROR;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);
@@ -44,14 +44,14 @@ public class Notification {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation ");
 		alert.setHeaderText("suppression  ");
-		alert.setContentText("voulez vous vraiment effectuer cette opération ??");
+		alert.setContentText("voulez vous vraiment effectuer cette op\u00E9ration ??");
 
 		return alert;
 	}
 
 	public static void Deletenotification() {
 		String title = "Suppression";
-		String message = "l'operation est terminé avec succès ";
+		String message = "l'operation est termin\u00E9 avec succ\u00E8s ";
 		NotificationType type = NotificationType.SUCCESS;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);
@@ -62,7 +62,7 @@ public class Notification {
 	}
 
 	public static void error(String message) {
-		String title = "problème";
+		String title = "probl\u00E8me";
 		NotificationType type = NotificationType.WARNING;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);
@@ -72,8 +72,8 @@ public class Notification {
 	}
 
 	public static void errorNotification() {
-		String title = "problème";
-		String message = " vérifier tous les champs s'il vous plait ";
+		String title = "probl\u00E8me";
+		String message = " v\u00E9rifier tous les champs s'il vous plait ";
 		NotificationType type = NotificationType.WARNING;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);
@@ -83,7 +83,7 @@ public class Notification {
 	}
 
 	public static void errorNotification(String msg) {
-		String title = "problème";
+		String title = "probl\u00E8me";
 		String message = msg;
 		NotificationType type = NotificationType.WARNING;
 		TrayNotification tray = new TrayNotification();
@@ -94,7 +94,7 @@ public class Notification {
 	}
 
 	public static void errorNotificationUserExists() {
-		String title = "problème";
+		String title = "probl\u00E8me";
 		String message = "L'utilisateur que vous avez specifie exit deja";
 		NotificationType type = NotificationType.WARNING;
 		TrayNotification tray = new TrayNotification();
@@ -139,14 +139,14 @@ public class Notification {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation ");
 		alert.setHeaderText("Modification  ");
-		alert.setContentText("voulez vous vraiment effectuer cette opération ??");
+		alert.setContentText("voulez vous vraiment effectuer cette op\u00E9ration ??");
 
 		return alert;
 	}
 
 	public static void Updatenotification() {
 		String title = "Modification";
-		String message = "l'operation est terminé avec succès ";
+		String message = "l'operation est termin\u00E9 avec succ\u00E8s ";
 		NotificationType type = NotificationType.SUCCESS;
 		TrayNotification tray = new TrayNotification();
 		tray.setTitle(title);
@@ -160,7 +160,7 @@ public class Notification {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation ");
 		alert.setHeaderText("Modification  ");
-		alert.setContentText("voulez vous vraiment effectuer cette opération ??");
+		alert.setContentText("voulez vous vraiment effectuer cette op\u00E9ration ??");
 
 		return alert;
 	}
