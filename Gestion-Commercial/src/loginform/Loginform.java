@@ -4,6 +4,7 @@ import Report.EtatBleReport.EtatBleBean;
 import java.util.ArrayList;
 import UIControle.Methode;
 import UIControle.Notification;
+import UIControle.backup;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.InputStream;
 import java.net.InetAddress;
@@ -39,13 +40,13 @@ public class Loginform extends Application {
 
     public static void main(String[] args) {
         List<String> macs = getMacs();
+        
 //change && uncomment
 //        if (macs.contains(("mac1").replace(" ", "").replace("-", ""))
 //                || macs.contains(("mac2").replace(" ", "").replace("-", ""))) 
         {
             launch(args);
         }
-
     }
 
 
