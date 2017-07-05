@@ -114,7 +114,7 @@ public class ChauffeurQueries {
 		List<Chauffeur> list = new ArrayList<>();
 		try {
 			list = session.createQuery("from Chauffeur where( nomChauffeur Like'%" + key
-					+ "%' OR prenomChauffeur Like '%" + key + "%'  )and deleted='" + false + "' ").list();
+					+ "%' OR prenomChauffeur Like '%" + key + "%' OR type Like '%" + key + "%'  )and deleted='" + false + "' ").list();
 		} finally {
 			session.close();
 		}
