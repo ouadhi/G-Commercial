@@ -62,7 +62,9 @@ public class AjouterBleController implements Initializable {
 		Methode.setOnlyDouble(quntite, 10);
 		Methode.setOnlyDouble(prix, 10);
 		Methode.SetUpper(code, 8);
-		quntite.setEditable(false);
+                quntite.setText("0.00");
+                Methode.setSelectedMouseClick(quntite);
+                Methode.setZeroRemoved(quntite);
 	}
 
 	public void refresheH() {
@@ -98,8 +100,7 @@ public class AjouterBleController implements Initializable {
 	@FXML
 	private void saveble(ActionEvent event) {
 		String codeval = this.code.getText();
-		String quantiteval = 0 + "";
-		// this.quntite.getText();
+		String quantiteval = this.quntite.getText();
 		String prixval = this.prix.getText();
 		if (codeval.isEmpty() || quantiteval.isEmpty() || prixval.isEmpty()) {
 			Notification.notif(NotificationType.ERROR, "V\u00E9rification", "V\u00E9rifier que tout les champs sont remplis!");
