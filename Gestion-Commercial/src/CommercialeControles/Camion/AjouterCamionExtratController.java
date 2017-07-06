@@ -7,6 +7,7 @@ import UIControle.ShowPane;
 import com.gestionCommerciale.HibernateSchema.Camion;
 import com.gestionCommerciale.Models.CamionQueries;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -45,6 +46,7 @@ public class AjouterCamionExtratController implements Initializable {
     private Label labelsave;
 
     JFXListView<CamionListeH> listeCamion;
+	private JFXComboBox<String> typec;
 
     @FXML
     private void annuler(ActionEvent event) {
@@ -73,14 +75,24 @@ public class AjouterCamionExtratController implements Initializable {
 
         poisCamion.setText("0.00");
         Methode.setsizeString(typecamion, 32);
+		setType();
+        
+        
 
     }
+    	public void setType() {
+		typec.getItems().add("INTERNE");
+		typec.getItems().add("EXTERNE");
+	}
+
 
     @FXML
     private void sauvegarder(ActionEvent event) {
         String code = codecamion.getText();
         String matricule = this.matricule.getText();
         String marque = typecamion.getText();
+		String type = typec.getSelectionModel().getSelectedItem();
+        
         // Double poid = Double.parseDouble(poisCamion.getText());
 
         if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty()) {
@@ -92,7 +104,7 @@ public class AjouterCamionExtratController implements Initializable {
                 Notification.error("Ce code exist deja!");
             } else {
                 try {
-                    Camion camion = new Camion(code, matricule, marque);
+                    Camion camion = new Camion(code, matricule, marque,type);
                     camion.setDeleted(false);
                     CamionQueries.SaveOrUpdate(camion);
 

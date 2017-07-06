@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXTextField;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,6 +44,7 @@ public class ModifierCamionController implements Initializable {
 	@FXML
 	private JFXTextField PoisCamion;
 	Camion camion;
+	private JFXComboBox<String> typec;
 
 	@FXML
 	private void annuler(ActionEvent event) {
@@ -67,6 +69,7 @@ public class ModifierCamionController implements Initializable {
 		// Methode.setSelectedMouseClick(type);
 		Methode.setZeroRemoved(PoisCamion);
 		Methode.setsizeString(taillecamion, 32);
+                
 	}
 
 	@FXML
@@ -104,10 +107,20 @@ public class ModifierCamionController implements Initializable {
 	}
 
 	public void setData(Camion camion) {
+		setType();
+            
 		this.camion = camion;
 		codecamion.setText(camion.getCodeCamion());
 		matricule.setText(camion.getMatricule());
+		typec.setValue(camion.getType());
+                
 		// PoisCamion.setText(Double.toString(camion.getPoid()));
 		taillecamion.setText(camion.getMarque());
 	}
+        
+	public void setType() {
+		typec.getItems().add("INTERNE");
+		typec.getItems().add("EXTERNE");
+	}
+        
 }

@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXTextField;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,6 +39,7 @@ public class AjouterCamionController implements Initializable {
 	private JFXTextField poisCamion;
 	@FXML
 	private Label labelsave;
+	private JFXComboBox<String> typec;
 
 	@FXML
 	private void annuler(ActionEvent event) {
@@ -66,7 +68,12 @@ public class AjouterCamionController implements Initializable {
 
 		poisCamion.setText("0.00");
 		Methode.setsizeString(typecamion, 32);
+                setType();
 
+	}
+    	public void setType() {
+		typec.getItems().add("INTERNE");
+		typec.getItems().add("EXTERNE");
 	}
 
 	@FXML
@@ -74,6 +81,8 @@ public class AjouterCamionController implements Initializable {
 		String code = codecamion.getText();
 		String matricule = this.matricule.getText();
 		String marque = typecamion.getText();
+		String type = typec.getSelectionModel().getSelectedItem();
+                
 		// Double poid = Double.parseDouble(poisCamion.getText());
 
 		if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty()) {
@@ -85,7 +94,7 @@ public class AjouterCamionController implements Initializable {
 				Notification.error("Ce code exist deja!");
 			} else {
 				try {
-					Camion camion = new Camion(code, matricule, marque);
+					Camion camion = new Camion(code, matricule, marque,type);
 					camion.setDeleted(false);
 					CamionQueries.SaveOrUpdate(camion);
 					new ShowPane().showCamion();
