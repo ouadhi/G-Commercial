@@ -87,6 +87,28 @@ public class CamionQueries {
 		}
 		return list;
 	}
+	public static List<Camion> listInterne() {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Camion> list = new ArrayList<>();
+		try {
+			list = session.createQuery("from Camion where  where type='INTERNE' AND deleted='" + false + "'").list();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	public static List<Camion> listExterne() {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Camion> list = new ArrayList<>();
+		try {
+			list = session.createQuery("from Camion where  where type='EXTERNE' AND deleted='" + false + "'").list();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 
 	public static List<Camion> listAll() {
 		SessionsGenerator FactoryObject = new SessionsGenerator();

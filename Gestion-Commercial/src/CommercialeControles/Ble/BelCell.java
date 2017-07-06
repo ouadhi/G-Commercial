@@ -93,7 +93,7 @@ public class BelCell extends GridPane {
 		label.setFont(new Font(17.0));
 
 		GridPane.setColumnIndex(label0, 1);
-		label0.setText("-");
+		label0.setText(ble.getQte()+"");
 		label0.setFont(new Font(17.0));
 
 		GridPane.setColumnIndex(label1, 2);
