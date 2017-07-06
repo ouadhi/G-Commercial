@@ -60,9 +60,9 @@ public class ModifierBleController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		Methode.setOnlyDouble(quntite, 10);
 		Methode.setOnlyDouble(prix, 10);
-
 		Methode.SetUpper(code, 8);
-                this.quntite.setEditable(false);
+                Methode.setSelectedMouseClick(quntite);
+                Methode.setZeroRemoved(quntite);
 	}
 
 	@FXML
@@ -102,6 +102,6 @@ public class ModifierBleController implements Initializable {
 		this.ble = ble;
 		this.code.setText(ble.getCodeBle());
 		this.prix.setText(Methode.DoubleFormat(ble.getPrix()));
-		//this.quntite.setText(Methode.DoubleFormat(ble.getQte()));
+		this.quntite.setText(Methode.DoubleFormat(ble.getQte()));
 	}
 }

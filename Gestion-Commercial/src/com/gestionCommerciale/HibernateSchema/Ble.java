@@ -26,7 +26,7 @@ public class Ble {
 	int idBle;
 	@Column(name = "designation", nullable = false)
 	int designation;
-	@Column(name = "quantite", nullable = true)
+	@Column(name = "quantite", nullable = false)
 	double qte;
 	@Column(name = "prix", nullable = false)
 	double prix;
