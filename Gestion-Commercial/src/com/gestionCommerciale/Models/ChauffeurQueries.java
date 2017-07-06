@@ -82,6 +82,28 @@ public class ChauffeurQueries {
 		}
 		return list;
 	}
+	public static List<Chauffeur> listInterne() {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Chauffeur> list = new ArrayList<>();
+		try {
+			list = session.createQuery("from Chauffeur where type='INTERNE' AND deleted='" + false + "'").list();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	public static List<Chauffeur> listExterne() {
+		SessionsGenerator FactoryObject = new SessionsGenerator();
+		Session session = SessionsGenerator.getFactory().openSession();
+		List<Chauffeur> list = new ArrayList<>();
+		try {
+			list = session.createQuery("from Chauffeur where type='EXTERNE' AND deleted='" + false + "'").list();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 
 	public static List<Chauffeur> listAll() {
 		SessionsGenerator FactoryObject = new SessionsGenerator();
