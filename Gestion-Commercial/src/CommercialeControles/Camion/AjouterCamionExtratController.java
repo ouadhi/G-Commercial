@@ -46,7 +46,8 @@ public class AjouterCamionExtratController implements Initializable {
     private Label labelsave;
 
     JFXListView<CamionListeH> listeCamion;
-	private JFXComboBox<String> typec;
+    @FXML    
+    private JFXComboBox<String> typec;
 
     @FXML
     private void annuler(ActionEvent event) {
@@ -75,26 +76,23 @@ public class AjouterCamionExtratController implements Initializable {
 
         poisCamion.setText("0.00");
         Methode.setsizeString(typecamion, 32);
-		setType();
-        
-        
+        setType();
 
     }
-    	public void setType() {
-		typec.getItems().add("INTERNE");
-		typec.getItems().add("EXTERNE");
-	}
 
+    public void setType() {
+        typec.getItems().add("INTERNE");
+        typec.getItems().add("EXTERNE");
+    }
 
     @FXML
     private void sauvegarder(ActionEvent event) {
         String code = codecamion.getText();
         String matricule = this.matricule.getText();
         String marque = typecamion.getText();
-		String type = typec.getSelectionModel().getSelectedItem();
-        
-        // Double poid = Double.parseDouble(poisCamion.getText());
+        String type = typec.getSelectionModel().getSelectedItem();
 
+        // Double poid = Double.parseDouble(poisCamion.getText());
         if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty()) {
             Notification.champVideNotification();
         } else {
@@ -104,7 +102,7 @@ public class AjouterCamionExtratController implements Initializable {
                 Notification.error("Ce code exist deja!");
             } else {
                 try {
-                    Camion camion = new Camion(code, matricule, marque,type);
+                    Camion camion = new Camion(code, matricule, marque, type);
                     camion.setDeleted(false);
                     CamionQueries.SaveOrUpdate(camion);
 
@@ -137,6 +135,6 @@ public class AjouterCamionExtratController implements Initializable {
         ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
         listeCamion.setItems(myObservableList);
         listeCamion.setOrientation(Orientation.HORIZONTAL);
-       
+
     }
 }
