@@ -95,6 +95,7 @@ public class Home2FXMLController implements Initializable {
 		}
 
 		if (main_menu.isShown()) {
+                    
 			main_menu.close();
 		}
 	}
