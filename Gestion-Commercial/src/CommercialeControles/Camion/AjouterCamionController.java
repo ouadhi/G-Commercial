@@ -76,6 +76,7 @@ public class AjouterCamionController implements Initializable {
     public void setType() {
         typec.getItems().add("INTERNE");
         typec.getItems().add("EXTERNE");
+        typec.getSelectionModel().selectFirst(); 
     }
 
     @FXML

@@ -26,8 +26,6 @@ import javafx.stage.Stage;
 public class ModifierCamionController implements Initializable {
 
     @FXML
-    private JFXTextField nomchauffeur;
-    @FXML
     private JFXButton savebttn;
     @FXML
     private JFXButton anullerbttn;
