@@ -91,38 +91,54 @@ public class AchatQueries {
         }
         return list;
     }
-	public static List<Achat> getAchatsByDate(Date d) {
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		String sd = df.format(d);
 
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		List<Achat> list = new ArrayList<>();
-		try {
-			list = session.createQuery("from Achat where date= '" + sd + "'").list();
-		} finally {
-			session.close();
-		}
-		return list;
-	}
+    public static List<Achat> getAchatsByDate(Date d) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String sd = df.format(d);
+
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        List<Achat> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Achat where dateAcqt= '" + sd + "'").list();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
 
     public static double totaleAchat() {
         List<Achat> list = new ArrayList<>();
         list = list();
         double totale = 0;
         for (Achat achat : list) {
-            totale+=achat.getQuantiteFour();
+            totale += achat.getQuantiteFour();
         }
         return totale;
     }
+
+    public static int nbtotaleAchat() {
+        List<Achat> list = new ArrayList<>();
+        list = list();
+
+        return list.size();
+    }
+
     public static double totaleAchatByDate(Date d) {
         List<Achat> list = new ArrayList<>();
         list = getAchatsByDate(d);
         double totale = 0;
         for (Achat achat : list) {
-            totale+=achat.getQuantiteFour();
+            totale += achat.getQuantiteFour();
         }
         return totale;
+    }
+
+    public static int nbtotaleAchatByDate(Date d) {
+        List<Achat> list = new ArrayList<>();
+        list = getAchatsByDate(d);
+
+        return list.size();
     }
 
     public static List<Achat> listAll() {
@@ -184,4 +200,5 @@ public class AchatQueries {
             return true;
         }
     }
+
 }

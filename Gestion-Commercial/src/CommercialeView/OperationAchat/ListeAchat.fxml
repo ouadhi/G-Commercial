@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -131,25 +132,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Text layoutX="725.0" layoutY="613.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant" wrappingWidth="75.00001430511475">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="725.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant" wrappingWidth="75.00001430511475">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Label fx:id="todayquantite1" layoutX="818.0" layoutY="597.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="todayquantite2" layoutX="818.0" layoutY="643.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
+      <Separator layoutX="58.0" layoutY="624.0" opacity="0.2" prefHeight="0.0" prefWidth="621.0" />
    </children>
 </AnchorPane>

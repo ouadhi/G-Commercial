@@ -19,6 +19,9 @@ import UIControle.Methode;
 import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.gestionCommerciale.HibernateSchema.Facture_Produit;
+import static com.gestionCommerciale.Models.FactureQueries.list;
+import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,28 +38,28 @@ import javafx.stage.Stage;
 
 public class VenteListController implements Initializable {
 
-	@FXML
-	private Label total;
-	@FXML
-	private MenuButton Order;
-	@FXML
-	private JFXTextField rechreche;
-	@FXML
-	private JFXButton ajouter;
-	@FXML
-	private JFXListView<VenteCell> listevente;
-	@FXML
-	private Label label;
-	@FXML
-	private MenuItem pardate;
-	@FXML
-	private MenuItem nonArchive;
-	@FXML
-	private MenuItem archive;
-	@FXML
-	private MenuItem toutb;
+    @FXML
+    private Label total;
+    @FXML
+    private MenuButton Order;
+    @FXML
+    private JFXTextField rechreche;
+    @FXML
+    private JFXButton ajouter;
+    @FXML
+    private JFXListView<VenteCell> listevente;
+    @FXML
+    private Label label;
+    @FXML
+    private MenuItem pardate;
+    @FXML
+    private MenuItem nonArchive;
+    @FXML
+    private MenuItem archive;
+    @FXML
+    private MenuItem toutb;
 
-	Stage stage = null;
+    Stage stage = null;
     @FXML
     private Label quntitetAnnee;
     @FXML
@@ -70,143 +73,199 @@ public class VenteListController implements Initializable {
     @FXML
     private Label montantAnnee;
 
-	@FXML
-	private void Archive(ActionEvent event) {
-		Order.setText("Archiv\u00E9");
-		List<Facture> factureList = FactureQueries.listArchived();
-		List<VenteCell> list = new ArrayList<>();
-		for (int i = 0; i < factureList.size(); i++) {
-			list.add(new VenteCell(factureList.get(i)));
-		}
+    @FXML
+    private void Archive(ActionEvent event) {
+        Order.setText("Archiv\u00E9");
+        List<Facture> factureList = FactureQueries.listArchived();
+        List<VenteCell> list = new ArrayList<>();
+        for (int i = 0; i < factureList.size(); i++) {
+            list.add(new VenteCell(factureList.get(i)));
+        }
 
-		ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
-		listevente.setItems(myObservableList);
-		listevente.setExpanded(true);
-		setTotale();
-	}
+        ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
+        listevente.setItems(myObservableList);
+        setinformation(factureList);
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		Methode.showMenuItem(Order, label);
-                //////////
-		List<Facture> factureList = FactureQueries.list();
-		List<VenteCell> list = new ArrayList<>();
-		for (int i = 0; i < factureList.size(); i++) {
-			list.add(new VenteCell(factureList.get(i)));
-		}
+        listevente.setExpanded(true);
 
-		ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
-		listevente.setItems(myObservableList);
-		listevente.setExpanded(true);
-		setTotale();
+        setTotale();
+    }
 
-	}
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Methode.showMenuItem(Order, label);
+        //////////
+        List<Facture> factureList = FactureQueries.list();
+        List<VenteCell> list = new ArrayList<>();
+        for (int i = 0; i < factureList.size(); i++) {
+            list.add(new VenteCell(factureList.get(i)));
+        }
 
-	@FXML
-	private void NonArchive(ActionEvent event) {
-		Order.setText("Non Archiv\u00E9");
-		List<Facture> factureList = FactureQueries.list();
-		List<VenteCell> list = new ArrayList<>();
-		for (int i = 0; i < factureList.size(); i++) {
-			list.add(new VenteCell(factureList.get(i)));
-		}
+        ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
+        listevente.setItems(myObservableList);
 
-		ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
-		listevente.setItems(myObservableList);
-		listevente.setExpanded(true);
-		setTotale();
-	}
+        listevente.setExpanded(true);
+        setinformation(factureList);
+        
+        nbventetoday.setText(FactureQueries.NbtotaleFacture(new Date())+"");
+        quntitetoday.setText(FactureQueries.qantiteTotalDeVente(new Date())+"");
+        montantToday.setText(FactureQueries.montantTotalFacture(new Date())+"");
 
-	@FXML
-	private void pardate(ActionEvent event) {
-		try {
+        setTotale();
 
-			AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.rechrecheparDate));
-			StageDialog dialog = new StageDialog(stage, pane);
+    }
 
-			dialog.show();
-		} catch (IOException ex) {
-			Logger.getLogger(VenteListController.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+    @FXML
+    private void NonArchive(ActionEvent event) {
+        Order.setText("Non Archiv\u00E9");
+        List<Facture> factureList = FactureQueries.list();
+        List<VenteCell> list = new ArrayList<>();
+        for (int i = 0; i < factureList.size(); i++) {
+            list.add(new VenteCell(factureList.get(i)));
+        }
 
-	@FXML
-	private void rechrecher(KeyEvent event) {
-		listevente.getItems().clear();
+        ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
+        listevente.setItems(myObservableList);
+        setinformation(factureList);
 
-		List<Facture> factureList = FactureQueries.listrechreche(rechreche.getText());
-		List<VenteCell> list = new ArrayList<>();
+        listevente.setExpanded(true);
+        setTotale();
+    }
 
-		for (int i = 0; i < factureList.size(); i++) {
-			list.add(new VenteCell(factureList.get(i)));
-		}
+    @FXML
+    private void pardate(ActionEvent event) {
+        try {
 
-		ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
-		listevente.setItems(myObservableList);
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(ViewUrl.rechrecheparDate));
+            StageDialog dialog = new StageDialog(stage, pane);
 
-		setTotale();
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(VenteListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-	}
+    @FXML
+    private void rechrecher(KeyEvent event) {
+        listevente.getItems().clear();
 
-	@FXML
-	private void setOrder(ActionEvent event) {
-		stage = Methode.getStage(event);
-	}
+        List<Facture> factureList = FactureQueries.listrechreche(rechreche.getText());
+        List<VenteCell> list = new ArrayList<>();
 
-	public void setTotale() {
-		total.setText(listevente.getItems().size() + "");
-	}
+        for (int i = 0; i < factureList.size(); i++) {
+            list.add(new VenteCell(factureList.get(i)));
+        }
 
-	@FXML
-	private void showAddStage(ActionEvent event) {
-		OperationVenteController.ClearVar();
-		new ShowPane().showAjouterVente();
-	}
+        ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
+        listevente.setItems(myObservableList);
+        setinformation(factureList);
 
-	@FXML
-	private void showDockSlide(MouseEvent event) {
+        setTotale();
 
-		try {
-			Facture facture = listevente.getSelectionModel().getSelectedItem().getFacture();
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource(ViewUrl.showvente));
-			loader.load();
+    }
 
-			ModifierVenteController Modifier = loader.getController();
-			Modifier.setData(facture);
+    @FXML
+    private void setOrder(ActionEvent event) {
+        stage = Methode.getStage(event);
+    }
 
-			AnchorPane root = loader.getRoot();
+    public void setTotale() {
+        total.setText(listevente.getItems().size() + "");
+    }
 
-			StageDialog dialog = new StageDialog(Methode.getStageMouses(event), root);
-			dialog.show();
+    @FXML
+    private void showAddStage(ActionEvent event) {
+        OperationVenteController.ClearVar();
+        new ShowPane().showAjouterVente();
+    }
 
-		} catch (IOException ex) {
-			Logger.getLogger(VenteCell.class.getName()).log(Level.SEVERE, null, ex);
-		}
+    @FXML
+    private void showDockSlide(MouseEvent event) {
 
-	}
+        try {
+            Facture facture = listevente.getSelectionModel().getSelectedItem().getFacture();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(ViewUrl.showvente));
+            loader.load();
 
-	public void showMenuItem() {
-		if (!User.isAdministrateur()) {
-			archive.setVisible(false);
-			nonArchive.setVisible(false);
-			toutb.setVisible(false);
-		}
-	}
+            ModifierVenteController Modifier = loader.getController();
+            Modifier.setData(facture);
 
-	@FXML
-	private void tout(ActionEvent event) {
-		Order.setText("Tout");
-		List<Facture> factureList = FactureQueries.listAll();
-		List<VenteCell> list = new ArrayList<>();
-		for (int i = 0; i < factureList.size(); i++) {
-			list.add(new VenteCell(factureList.get(i)));
-		}
+            AnchorPane root = loader.getRoot();
 
-		ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
-		listevente.setItems(myObservableList);
-		listevente.setExpanded(true);
-		setTotale();
-	}
+            StageDialog dialog = new StageDialog(Methode.getStageMouses(event), root);
+            dialog.show();
+
+        } catch (IOException ex) {
+            Logger.getLogger(VenteCell.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void showMenuItem() {
+        if (!User.isAdministrateur()) {
+            archive.setVisible(false);
+            nonArchive.setVisible(false);
+            toutb.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void tout(ActionEvent event) {
+        Order.setText("Tout");
+        List<Facture> factureList = FactureQueries.listAll();
+        List<VenteCell> list = new ArrayList<>();
+        for (int i = 0; i < factureList.size(); i++) {
+            list.add(new VenteCell(factureList.get(i)));
+        }
+
+        ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
+        listevente.setItems(myObservableList);
+        setinformation(factureList);
+        listevente.setExpanded(true);
+        setTotale();
+    }
+
+    private double montantTotal(List<Facture> list) {
+        double total = 0;
+
+        for (Facture facture : list) {
+            total += facture.getMontantFinal();
+
+        }
+        return total;
+    }
+
+    public double qantiteTotalDeVente(List<Facture> list) {
+        double total = 0;
+
+        for (Facture facture : list) {
+
+            total += qunatiteDeFacture(facture);
+
+        }
+        return total;
+    }
+
+    public int NbtotaleFacture(List<Facture> list) {
+        return list.size();
+    }
+
+    public double qunatiteDeFacture(Facture facture) {
+        double somme = 0;
+
+        for (Facture_Produit facture_Produit : facture.getQtes2()) {
+            somme += facture_Produit.getQte_fact();
+        }
+        return somme;
+    }
+
+    private void setinformation(List<Facture> list) {
+        nbventeannee.setText(NbtotaleFacture(list) + "");
+        quntitetAnnee.setText(qantiteTotalDeVente(list) + "");
+        montantAnnee.setText(montantTotal(list) + "");
+    }
+    
+    
 
 }

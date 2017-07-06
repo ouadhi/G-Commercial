@@ -47,7 +47,7 @@
                   <JFXTextField fx:id="taillecamion" focusColor="#36d484e5" prefHeight="42.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="3" />
                   <JFXTextField fx:id="PoisCamion" focusColor="#405aa800" prefHeight="42.0" styleClass="champtxt" text="-" unFocusColor="#4d4d4d00" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label styleClass="label_info" text="Type" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <JFXComboBox fx:id="typec" prefHeight="42.0" prefWidth="265.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXComboBox fx:id="typec" prefHeight="42.0" prefWidth="265.0" styleClass="champtxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <JFXButton fx:id="savebttn" layoutX="471.0" layoutY="335.0" onAction="#sauvegarder" styleClass="button_save" text="Enregistrer" />
