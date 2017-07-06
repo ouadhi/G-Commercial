@@ -47,6 +47,14 @@ public class ListeAchatController implements Initializable {
 	private JFXTextField rechreche;
 	@FXML
 	private Label label;
+    @FXML
+    private Label totalquantite;
+    @FXML
+    private Label todayAchat;
+    @FXML
+    private Label todayquantite;
+    @FXML
+    private Label totalAcaht;
 
 	@FXML
 	private void Archive(ActionEvent event) {

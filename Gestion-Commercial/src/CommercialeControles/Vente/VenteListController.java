@@ -57,6 +57,18 @@ public class VenteListController implements Initializable {
 	private MenuItem toutb;
 
 	Stage stage = null;
+    @FXML
+    private Label quntitetAnnee;
+    @FXML
+    private Label nbventetoday;
+    @FXML
+    private Label quntitetoday;
+    @FXML
+    private Label nbventeannee;
+    @FXML
+    private Label montantToday;
+    @FXML
+    private Label montantAnnee;
 
 	@FXML
 	private void Archive(ActionEvent event) {
