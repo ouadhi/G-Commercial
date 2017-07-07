@@ -112,22 +112,22 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="totalquantite" layoutX="596.0" layoutY="642.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="totalquantite" layoutX="596.0" layoutY="642.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="todayAchat" layoutX="328.0" layoutY="596.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="todayAchat" layoutX="328.0" layoutY="596.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="todayquantite" layoutX="596.0" layoutY="596.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="todayquantite" layoutX="596.0" layoutY="596.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="totalAcaht" layoutX="328.0" layoutY="642.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="totalAcaht" layoutX="328.0" layoutY="642.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>

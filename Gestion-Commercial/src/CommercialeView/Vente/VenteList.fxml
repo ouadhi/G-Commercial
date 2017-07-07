@@ -116,22 +116,22 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="quntitetAnnee" layoutX="606.0" layoutY="652.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="quntitetAnnee" layoutX="606.0" layoutY="652.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="nbventetoday" layoutX="338.0" layoutY="606.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="nbventetoday" layoutX="338.0" layoutY="606.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="quntitetoday" layoutX="606.0" layoutY="606.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="quntitetoday" layoutX="606.0" layoutY="606.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="nbventeannee" layoutX="338.0" layoutY="652.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="nbventeannee" layoutX="338.0" layoutY="652.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
@@ -141,7 +141,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="montantToday" layoutX="793.0" layoutY="605.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="montantToday" layoutX="793.0" layoutY="605.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
@@ -151,7 +151,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="montantAnnee" layoutX="793.0" layoutY="651.0" prefHeight="20.0" prefWidth="101.0" text="00000000">
+      <Label fx:id="montantAnnee" layoutX="793.0" layoutY="651.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>

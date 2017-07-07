@@ -87,11 +87,11 @@ public class ListeAchatController implements Initializable {
         listeAchats.setItems(myObservableList);
         listeAchats.setExpanded(true);
 
-        todayquantite.setText(AchatQueries.totaleAchatByDate(new Date()) + "");
-        todayAchat.setText(AchatQueries.nbtotaleAchatByDate(new Date()) + "");
+        todayquantite.setText(Methode.DoubleFormat(AchatQueries.totaleAchatByDate(new Date())));
+        todayAchat.setText(Methode.DoubleFormat(AchatQueries.nbtotaleAchatByDate(new Date())));
 
-        totalAcaht.setText(AchatQueries.nbtotaleAchat() + "");
-        totalquantite.setText(AchatQueries.totaleAchat() + "");
+        totalAcaht.setText(Methode.DoubleFormat(AchatQueries.nbtotaleAchat()));
+        totalquantite.setText(Methode.DoubleFormat(AchatQueries.totaleAchat()));
         setTotale();
 
     }

@@ -33,7 +33,9 @@ public class SelectionnerChauffeurController implements Initializable {
 		List<ChauffeurListH> list = new ArrayList<>();
 		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listInterne();
 		for (int i = 0; i < listChauffeursDB.size(); i++) {
-			list.add(new ChauffeurListH(listChauffeursDB.get(i)));
+                     if (listChauffeursDB.get(i).getType().equals("EXTERNE")) {
+                        list.add(new ChauffeurListH(listChauffeursDB.get(i)));
+                    }
 
 		}
 
