@@ -53,6 +53,11 @@
                   <Insets left="10.0" top="32.0" />
                </GridPane.margin>
             </JFXTextField>
+            <JFXTextField fx:id="prix" focusColor="#405aa800" maxWidth="378.0" minWidth="327.0" prefHeight="40.0" prefWidth="327.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" top="32.0" />
+               </GridPane.margin>
+            </JFXTextField>
             <JFXTextField fx:id="quntite" focusColor="#405aa800" maxWidth="379.0" minWidth="341.0" prefHeight="40.0" prefWidth="341.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" top="32.0" />
@@ -63,11 +68,6 @@
                   <Insets bottom="32.0" left="10.0" />
                </GridPane.margin>
             </Label>
-            <JFXTextField fx:id="prix" focusColor="#405aa800" maxWidth="378.0" minWidth="327.0" prefHeight="40.0" prefWidth="327.0" styleClass="champtxt" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="10.0" top="32.0" />
-               </GridPane.margin>
-            </JFXTextField>
          </children>
       </GridPane>
       <Label fx:id="savelabel" layoutX="67.0" layoutY="403.0" text="Enregistré" textFill="#36d484" visible="false">
