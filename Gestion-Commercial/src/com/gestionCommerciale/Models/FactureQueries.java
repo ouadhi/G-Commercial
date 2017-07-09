@@ -221,7 +221,7 @@ public class FactureQueries {
         List<Facture> list = new ArrayList<>();
         try {
             list = session.createQuery("from Facture where deleted='" + false + "' AND id_annee='"
-                    + AnneeQueries.getSelected().getIdAnnee() + "' AND date ='"+sd+"'  ORDER BY id_facture DESC").list();
+                    + AnneeQueries.getSelected().getIdAnnee() + "' AND date ='"+sd+"'  ORDER BY id_facture DESC ").list();
         } finally {
             session.close();
         }
@@ -232,8 +232,10 @@ public class FactureQueries {
     //--------------- information total  "" Today"" ----------------
     public static Double montantTotalFacture( Date d) {
         double total = 0;
+        
+                List<Facture> list = listFactureParDate(d);
 
-        for (Facture facture : listFactureParDate(d)) {
+        for (Facture facture : list ) {
             total += facture.getMontantFinal();
 
         }
