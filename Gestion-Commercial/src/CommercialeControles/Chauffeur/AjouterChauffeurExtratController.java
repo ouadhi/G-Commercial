@@ -59,6 +59,8 @@ public class AjouterChauffeurExtratController implements Initializable {
     private JFXComboBox<String> camionbox;
 
     JFXListView<ChauffeurListH> listeChaffeur;
+    
+    String  type_Liste = null ; 
 
     private void addmaion(ActionEvent event) {
         try {
@@ -134,7 +136,12 @@ public class AjouterChauffeurExtratController implements Initializable {
                 }
                 Notification.Addnotification();
                 annuler(event);
-                refreshListe();
+                if (type_Liste.equals("INTERNE")) {
+                    refreshListeInterne();
+                    
+                } else {
+                    refreshListeExterne();
+                }
             }
 
         }
@@ -146,19 +153,37 @@ public class AjouterChauffeurExtratController implements Initializable {
         typechauffeur.getItems().add("EXTERNE");
     }
 
-    public void setData(JFXListView<ChauffeurListH> listeChaffeur) {
+    public void setData(JFXListView<ChauffeurListH> listeChaffeur , String type ) {
         this.listeChaffeur = listeChaffeur;
+        this.type_Liste = type ; 
     }
 
-    public void refreshListe() {
+    public void refreshListeInterne() {
         List<ChauffeurListH> list = new ArrayList<>();
-        List<Chauffeur> listChauffeursDB = ChauffeurQueries.list();
+        List<Chauffeur> listChauffeursDB = ChauffeurQueries.listInterne() ; 
         for (int i = 0; i < listChauffeursDB.size(); i++) {
             list.add(new ChauffeurListH(listChauffeursDB.get(i)));
 
         }
 
-        ChauffeurListH ch = new ChauffeurListH(listeChaffeur);
+        ChauffeurListH ch = new ChauffeurListH(listeChaffeur, type_Liste);
+         list.add(ch) ;
+        ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
+        listeChaffeur.setItems(myObservableList);
+        
+        listeChaffeur.setOrientation(Orientation.HORIZONTAL);
+        
+    }
+    
+     public void refreshListeExterne() {
+        List<ChauffeurListH> list = new ArrayList<>();
+        List<Chauffeur> listChauffeursDB = ChauffeurQueries.listExterne() ; 
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurListH(listChauffeursDB.get(i)));
+
+        }
+
+        ChauffeurListH ch = new ChauffeurListH(listeChaffeur , type_Liste);
          list.add(ch) ;
         ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
         listeChaffeur.setItems(myObservableList);

@@ -107,17 +107,17 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="593.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NB">
+      <Text layoutX="593.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NB">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="753.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q">
+      <Text layoutX="753.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="quntitetAnnee" layoutX="793.0" layoutY="603.0" text="00000000">
+      <Label fx:id="quntitetAnnee" layoutX="793.0" layoutY="606.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
@@ -132,7 +132,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="nbventeannee" layoutX="625.0" layoutY="603.0" text="00000000">
+      <Label fx:id="nbventeannee" layoutX="625.0" layoutY="606.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
@@ -147,12 +147,12 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Text layoutX="937.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M">
+      <Text layoutX="937.0" layoutY="623.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="montantAnnee" layoutX="960.0" layoutY="603.0" text="00000000">
+      <Label fx:id="montantAnnee" layoutX="960.0" layoutY="607.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>

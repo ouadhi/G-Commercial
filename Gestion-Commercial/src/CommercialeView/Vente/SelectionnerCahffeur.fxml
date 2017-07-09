@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="1160.0" stylesheets="@Vente.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Vente.SelectionnerCahffeurController">
    <children>
-      <JFXListView fx:id="listeChaffeur" layoutX="33.0" layoutY="129.0" onMouseClicked="#select" orientation="HORIZONTAL" prefHeight="312.0" prefWidth="1095.0" showTooltip="true" />
+      <JFXListView fx:id="listeChaffeur" layoutX="33.0" layoutY="129.0" onMouseClicked="#select" orientation="HORIZONTAL" prefHeight="312.0" prefWidth="1095.0" showTooltip="true">
+         <styleClass>
+            <String fx:value="list-view" />
+            <String fx:value="list-cell" />
+         </styleClass></JFXListView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="505.0" layoutY="28.0" styleClass="titre" text=" Chauffeur" textAlignment="CENTER" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="505.0" />
       <Label alignment="CENTER" layoutX="431.0" layoutY="75.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #fd9252;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="510.0" layoutY="75.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: fd9252;" styleClass="etapenumero" text="2" textAlignment="CENTER" />

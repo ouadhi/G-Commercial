@@ -27,206 +27,206 @@ import javafx.stage.Stage;
 
 public class CamionListeH extends GridPane {
 
-	protected ColumnConstraints columnConstraints;
-	protected RowConstraints rowConstraints;
-	protected RowConstraints rowConstraints0;
-	protected RowConstraints rowConstraints1;
-	protected ImageView imageView;
-	protected Label label;
-	protected Label label0;
+    protected ColumnConstraints columnConstraints;
+    protected RowConstraints rowConstraints;
+    protected RowConstraints rowConstraints0;
+    protected RowConstraints rowConstraints1;
+    protected ImageView imageView;
+    protected Label label;
+    protected Label label0;
 
-	private Camion camion;
+    private Camion camion;
 
-	public CamionListeH(JFXListView<CamionListeH> listeCamion) {
+    public CamionListeH(JFXListView<CamionListeH> listeCamion, String type) {
 
-		columnConstraints = new ColumnConstraints();
-		rowConstraints = new RowConstraints();
-		rowConstraints0 = new RowConstraints();
-		rowConstraints1 = new RowConstraints();
-		imageView = new ImageView();
-		label = new Label();
-		label0 = new Label();
+        columnConstraints = new ColumnConstraints();
+        rowConstraints = new RowConstraints();
+        rowConstraints0 = new RowConstraints();
+        rowConstraints1 = new RowConstraints();
+        imageView = new ImageView();
+        label = new Label();
+        label0 = new Label();
 
-		setAlignment(javafx.geometry.Pos.CENTER);
-		setMaxHeight(USE_PREF_SIZE);
-		setMaxWidth(USE_PREF_SIZE);
-		setMinHeight(USE_PREF_SIZE);
-		setMinWidth(USE_PREF_SIZE);
-		setPrefHeight(270.0);
-		setPrefWidth(218.0);
-		setStyle("-fx-backgrounde-color:#f4f8f9;");
-		setStyle("-fx-border-color: #39e18c;");
+        setAlignment(javafx.geometry.Pos.CENTER);
+        setMaxHeight(USE_PREF_SIZE);
+        setMaxWidth(USE_PREF_SIZE);
+        setMinHeight(USE_PREF_SIZE);
+        setMinWidth(USE_PREF_SIZE);
+        setPrefHeight(270.0);
+        setPrefWidth(218.0);
+        setStyle("-fx-backgrounde-color:#f4f8f9;");
+        setStyle("-fx-border-color: #39e18c;");
 
-		columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-		columnConstraints.setMinWidth(10.0);
-		columnConstraints.setPrefWidth(100.0);
+        columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints.setMinWidth(10.0);
+        columnConstraints.setPrefWidth(100.0);
 
-		rowConstraints.setMaxHeight(171.0);
-		rowConstraints.setMinHeight(10.0);
-		rowConstraints.setPrefHeight(171.0);
-		rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+        rowConstraints.setMaxHeight(171.0);
+        rowConstraints.setMinHeight(10.0);
+        rowConstraints.setPrefHeight(171.0);
+        rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-		rowConstraints0.setMaxHeight(149.0);
-		rowConstraints0.setMinHeight(10.0);
-		rowConstraints0.setPrefHeight(39.0);
-		rowConstraints0.setValignment(javafx.geometry.VPos.CENTER);
-		rowConstraints0.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+        rowConstraints0.setMaxHeight(149.0);
+        rowConstraints0.setMinHeight(10.0);
+        rowConstraints0.setPrefHeight(39.0);
+        rowConstraints0.setValignment(javafx.geometry.VPos.CENTER);
+        rowConstraints0.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-		rowConstraints1.setMaxHeight(109.0);
-		rowConstraints1.setMinHeight(10.0);
-		rowConstraints1.setPrefHeight(34.0);
-		rowConstraints1.setValignment(javafx.geometry.VPos.CENTER);
-		rowConstraints1.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+        rowConstraints1.setMaxHeight(109.0);
+        rowConstraints1.setMinHeight(10.0);
+        rowConstraints1.setPrefHeight(34.0);
+        rowConstraints1.setValignment(javafx.geometry.VPos.CENTER);
+        rowConstraints1.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-		imageView.setFitHeight(109.0);
-		imageView.setFitWidth(140.0);
-		imageView.setPickOnBounds(true);
-		imageView.setPreserveRatio(true);
-		GridPane.setMargin(imageView, new Insets(0.0, 0.0, 0.0, 39.0));
-		Image img = new Image(getClass().getResourceAsStream("/icons/plus.png"));
-		imageView.setImage(img);
+        imageView.setFitHeight(109.0);
+        imageView.setFitWidth(140.0);
+        imageView.setPickOnBounds(true);
+        imageView.setPreserveRatio(true);
+        GridPane.setMargin(imageView, new Insets(0.0, 0.0, 0.0, 39.0));
+        Image img = new Image(getClass().getResourceAsStream("/icons/plus.png"));
+        imageView.setImage(img);
 
-		GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
-		GridPane.setRowIndex(label, 1);
-		GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
-		label.setAlignment(javafx.geometry.Pos.CENTER);
-		label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-		label.setText("Ajouter Nouveau");
-		label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-		label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
-		GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));
-		label.setFont(new Font("System Bold", 16.0));
+        GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
+        GridPane.setRowIndex(label, 1);
+        GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
+        label.setAlignment(javafx.geometry.Pos.CENTER);
+        label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        label.setText("Ajouter Nouveau");
+        label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
+        GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));
+        label.setFont(new Font("System Bold", 16.0));
 
-		GridPane.setHalignment(label0, javafx.geometry.HPos.CENTER);
-		GridPane.setRowIndex(label0, 2);
-		GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
-		label0.setAlignment(javafx.geometry.Pos.CENTER);
-		label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-		label0.setText("Camion");
-		label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-		label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
-		GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));
-		label0.setFont(new Font(16.0));
+        GridPane.setHalignment(label0, javafx.geometry.HPos.CENTER);
+        GridPane.setRowIndex(label0, 2);
+        GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
+        label0.setAlignment(javafx.geometry.Pos.CENTER);
+        label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        label0.setText("Camion");
+        label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
+        GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));
+        label0.setFont(new Font(16.0));
 
-		getColumnConstraints().add(columnConstraints);
-		getRowConstraints().add(rowConstraints);
-		getRowConstraints().add(rowConstraints0);
-		getRowConstraints().add(rowConstraints1);
-		getChildren().add(imageView);
-		getChildren().add(label);
-		getChildren().add(label0);
+        getColumnConstraints().add(columnConstraints);
+        getRowConstraints().add(rowConstraints);
+        getRowConstraints().add(rowConstraints0);
+        getRowConstraints().add(rowConstraints1);
+        getChildren().add(imageView);
+        getChildren().add(label);
+        getChildren().add(label0);
 
-		this.setOnMouseClicked(event -> {
+        this.setOnMouseClicked(event -> {
 
-			try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource(ViewUrl.AjoutercamionExtrat));
-			loader.load();
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.AjoutercamionExtrat));
+                loader.load();
 
-                        AjouterCamionExtratController controler = loader.getController();
-			controler.setData(listeCamion);
+                AjouterCamionExtratController controler = loader.getController();
+                controler.setData(listeCamion, type);
 
-			AnchorPane pane = loader.getRoot();
-                        Methode.moveFocus(pane);
+                AnchorPane pane = loader.getRoot();
+                Methode.moveFocus(pane);
 
-			StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
-			dialog.show();
+                StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
+                dialog.show();
 
-		} catch (IOException ex) {
-			Logger.getLogger(ListeAchatController.class.getName()).log(Level.SEVERE, null, ex);
-		}
+            } catch (IOException ex) {
+                Logger.getLogger(ListeAchatController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-		});
-	}
+        });
+    }
 
-	public CamionListeH(Camion camion) {
-		this.camion = camion;
+    public CamionListeH(Camion camion) {
+        this.camion = camion;
 
-		columnConstraints = new ColumnConstraints();
-		rowConstraints = new RowConstraints();
-		rowConstraints0 = new RowConstraints();
-		rowConstraints1 = new RowConstraints();
-		imageView = new ImageView();
-		label = new Label();
-		label0 = new Label();
+        columnConstraints = new ColumnConstraints();
+        rowConstraints = new RowConstraints();
+        rowConstraints0 = new RowConstraints();
+        rowConstraints1 = new RowConstraints();
+        imageView = new ImageView();
+        label = new Label();
+        label0 = new Label();
 
-		setAlignment(javafx.geometry.Pos.CENTER);
-		setMaxHeight(USE_PREF_SIZE);
-		setMaxWidth(USE_PREF_SIZE);
-		setMinHeight(USE_PREF_SIZE);
-		setMinWidth(USE_PREF_SIZE);
-		setPrefHeight(270.0);
-		setPrefWidth(215.0);
-		setStyle("-fx-backgrounde-color:#f4f8f9;");
-		setStyle("-fx-border-color: #39e18c;");
+        setAlignment(javafx.geometry.Pos.CENTER);
+        setMaxHeight(USE_PREF_SIZE);
+        setMaxWidth(USE_PREF_SIZE);
+        setMinHeight(USE_PREF_SIZE);
+        setMinWidth(USE_PREF_SIZE);
+        setPrefHeight(270.0);
+        setPrefWidth(215.0);
+        setStyle("-fx-backgrounde-color:#f4f8f9;");
+        setStyle("-fx-border-color: #39e18c;");
 
-		columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-		columnConstraints.setMinWidth(10.0);
-		columnConstraints.setPrefWidth(100.0);
+        columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+        columnConstraints.setMinWidth(10.0);
+        columnConstraints.setPrefWidth(100.0);
 
-		rowConstraints.setMaxHeight(171.0);
-		rowConstraints.setMinHeight(10.0);
-		rowConstraints.setPrefHeight(171.0);
-		rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+        rowConstraints.setMaxHeight(171.0);
+        rowConstraints.setMinHeight(10.0);
+        rowConstraints.setPrefHeight(171.0);
+        rowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-		rowConstraints0.setMaxHeight(149.0);
-		rowConstraints0.setMinHeight(10.0);
-		rowConstraints0.setPrefHeight(39.0);
-		rowConstraints0.setValignment(javafx.geometry.VPos.CENTER);
-		rowConstraints0.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+        rowConstraints0.setMaxHeight(149.0);
+        rowConstraints0.setMinHeight(10.0);
+        rowConstraints0.setPrefHeight(39.0);
+        rowConstraints0.setValignment(javafx.geometry.VPos.CENTER);
+        rowConstraints0.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-		rowConstraints1.setMaxHeight(109.0);
-		rowConstraints1.setMinHeight(10.0);
-		rowConstraints1.setPrefHeight(34.0);
-		rowConstraints1.setValignment(javafx.geometry.VPos.CENTER);
-		rowConstraints1.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+        rowConstraints1.setMaxHeight(109.0);
+        rowConstraints1.setMinHeight(10.0);
+        rowConstraints1.setPrefHeight(34.0);
+        rowConstraints1.setValignment(javafx.geometry.VPos.CENTER);
+        rowConstraints1.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
 
-		imageView.setFitHeight(109.0);
-		imageView.setFitWidth(140.0);
-		imageView.setPickOnBounds(true);
-		imageView.setPreserveRatio(true);
-		GridPane.setMargin(imageView, new Insets(0.0, 0.0, 0.0, 35.0));
-		Image img = new Image(getClass().getResourceAsStream("/icons/CamionMagent.png"));
-		imageView.setImage(img);
+        imageView.setFitHeight(109.0);
+        imageView.setFitWidth(140.0);
+        imageView.setPickOnBounds(true);
+        imageView.setPreserveRatio(true);
+        GridPane.setMargin(imageView, new Insets(0.0, 0.0, 0.0, 35.0));
+        Image img = new Image(getClass().getResourceAsStream("/icons/CamionMagent.png"));
+        imageView.setImage(img);
 
-		GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
-		GridPane.setRowIndex(label, 1);
-		GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
-		label.setAlignment(javafx.geometry.Pos.CENTER);
-		label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-		label.setText("Mat: " + this.camion.getMatricule());
-		label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-		label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
-		GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));
-		label.setFont(new Font("System Bold", 16.0));
+        GridPane.setHalignment(label, javafx.geometry.HPos.CENTER);
+        GridPane.setRowIndex(label, 1);
+        GridPane.setValignment(label, javafx.geometry.VPos.CENTER);
+        label.setAlignment(javafx.geometry.Pos.CENTER);
+        label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        label.setText("Mat: " + this.camion.getMatricule());
+        label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        label.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
+        GridPane.setMargin(label, new Insets(0.0, 0.0, 0.0, -2.0));
+        label.setFont(new Font("System Bold", 16.0));
 
-		GridPane.setHalignment(label0, javafx.geometry.HPos.CENTER);
-		GridPane.setRowIndex(label0, 2);
-		GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
-		label0.setAlignment(javafx.geometry.Pos.CENTER);
-		label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-		label0.setText(this.camion.getMarque());
-		label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-		label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
-		GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));
-		label0.setFont(new Font(16.0));
+        GridPane.setHalignment(label0, javafx.geometry.HPos.CENTER);
+        GridPane.setRowIndex(label0, 2);
+        GridPane.setValignment(label0, javafx.geometry.VPos.CENTER);
+        label0.setAlignment(javafx.geometry.Pos.CENTER);
+        label0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        label0.setText(this.camion.getMarque());
+        label0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        label0.setTextFill(javafx.scene.paint.Color.valueOf("#2c537a"));
+        GridPane.setMargin(label0, new Insets(0.0, 0.0, 0.0, -1.0));
+        label0.setFont(new Font(16.0));
 
-		getColumnConstraints().add(columnConstraints);
-		getRowConstraints().add(rowConstraints);
-		getRowConstraints().add(rowConstraints0);
-		getRowConstraints().add(rowConstraints1);
-		getChildren().add(imageView);
-		getChildren().add(label);
-		getChildren().add(label0);
+        getColumnConstraints().add(columnConstraints);
+        getRowConstraints().add(rowConstraints);
+        getRowConstraints().add(rowConstraints0);
+        getRowConstraints().add(rowConstraints1);
+        getChildren().add(imageView);
+        getChildren().add(label);
+        getChildren().add(label0);
 
-	}
+    }
 
-	public Camion getCamion() {
-		return camion;
-	}
+    public Camion getCamion() {
+        return camion;
+    }
 
-	public void setCamion(Camion camion) {
-		this.camion = camion;
-	}
+    public void setCamion(Camion camion) {
+        this.camion = camion;
+    }
 
 }

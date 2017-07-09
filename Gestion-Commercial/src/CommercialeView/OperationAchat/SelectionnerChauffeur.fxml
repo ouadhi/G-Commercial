@@ -13,7 +13,7 @@
 <AnchorPane prefHeight="468.0" prefWidth="1050.0" style="-fx-background-color: white;" stylesheets="@AchatCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.OperationAchat.SelectionnerChauffeurController">
    <children>
       <Label contentDisplay="CENTER" layoutX="478.0" layoutY="9.0" styleClass="titre" text="Chauffeur" textAlignment="CENTER" AnchorPane.leftAnchor="478.0" AnchorPane.rightAnchor="477.0" />
-      <JFXListView fx:id="listeChaffeur" layoutX="63.0" layoutY="107.0" onMouseClicked="#select" orientation="HORIZONTAL" prefHeight="312.0" prefWidth="949.0" showTooltip="true" />
+      <JFXListView id="ss" fx:id="listeChaffeur" layoutX="63.0" layoutY="107.0" onMouseClicked="#select" orientation="HORIZONTAL" prefHeight="312.0" prefWidth="949.0" showTooltip="true" />
       <Label alignment="CENTER" layoutX="401.0" layoutY="57.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="1" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="569.0" layoutY="56.0" prefHeight="23.0" prefWidth="22.0" styleClass="etapenumero" text="3" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="484.0" layoutY="58.0" prefHeight="23.0" prefWidth="22.0" style="-fx-background-color: #36d484;" styleClass="etapenumero" text="2" textAlignment="CENTER" />
