@@ -40,15 +40,14 @@ public class Loginform extends Application {
 
     public static void main(String[] args) {
         List<String> macs = getMacs();
-        
+
 //change && uncomment
-//        if (macs.contains(("mac1").replace(" ", "").replace("-", ""))
-//                || macs.contains(("mac2").replace(" ", "").replace("-", ""))) 
+//   if (macs.contains(("DC-85-DE-BF-05-50").replace(" ", "").replace("-", ""))
+//                || macs.contains(("00-E0-4C-68-01-33").replace(" ", "").replace("-", ""))) 
         {
             launch(args);
         }
     }
-
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -56,7 +55,12 @@ public class Loginform extends Application {
         new Thread() {
             @Override
             public void run() {
+                System.out.println("-------start creating hibernate factory object ");
+                long startTime = System.nanoTime();
                 SessionsGenerator FactoryObject = new SessionsGenerator();
+                long stopTime = System.nanoTime();
+                System.out.println("-------finish creating hibernate factory object ");
+                System.out.println("------time taken"+ new Long(stopTime - startTime));
                 printReport();
 
             }
@@ -124,6 +128,7 @@ public class Loginform extends Application {
         return new JRBeanCollectionDataSource(collBean, false);
 
     }
+
     private static List<String> getMacs() {
         List<String> macsList = new ArrayList<String>();
 

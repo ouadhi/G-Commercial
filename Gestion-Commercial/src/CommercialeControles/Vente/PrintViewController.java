@@ -15,8 +15,6 @@ import Report.BonLivraisonReport.GenerateBonLivraisonReport;
 import static Report.FactureRemboursementBleReport.GenerateFactureRemboursementReport.round;
 import Report.FactureReport.GenerateFactureReport;
 import UIControle.Methode;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +23,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class PrintViewController implements Initializable {
-
     @FXML
     private JFXCheckBox facture;
     @FXML
@@ -74,7 +71,7 @@ public class PrintViewController implements Initializable {
                 // double ttc = factureimp.getMontant() * ((factureimp.getTva()
                 // / 100) + factureimp.getMontant());
                 double ttc = factureimp.getMontantFinal();
-                double tva = ttc - (montantTotal+factureimp.getTimbre());
+                double tva = ttc - (montantTotal + factureimp.getTimbre());
 
                 String montantlettre = transformationEnLettre(ttc);
                 String date = new SimpleDateFormat("dd-MM-yyyy").format(factureimp.getDate());
@@ -85,10 +82,10 @@ public class PrintViewController implements Initializable {
                         factureimp.getClient().getAddressClient(), factureimp.getClient().getNumRegCom(),
                         factureimp.getClient().getnCarteFiscale(), date,
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(),
-                        Methode.DoubleFormat(round(montantTotal,2)), Methode.DoubleFormat(round(tva,2))
-                        ,Methode.DoubleFormat(round(factureimp.getTimbre(),2)),
-                       Methode.DoubleFormat(round(ttc,2)), montantlettre,
-                        factureimp.getChauffeur().getNom() +" "+ factureimp.getChauffeur().getPrenom(),
+                        Methode.DoubleFormat(round(montantTotal, 2)), Methode.DoubleFormat(round(tva, 2)),
+                         Methode.DoubleFormat(round(factureimp.getTimbre(), 2)),
+                        Methode.DoubleFormat(round(ttc, 2)), montantlettre,
+                        factureimp.getChauffeur().getNom() + " " + factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente, qtesVente, prixsVente, montantsVente,
                         factureimp.getTypeVersement());
             } catch (Exception ex) {
@@ -183,6 +180,5 @@ public class PrintViewController implements Initializable {
         String all = firstPart + secondPart;
         return all;
     }
-    
 
 }

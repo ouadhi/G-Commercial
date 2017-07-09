@@ -24,7 +24,7 @@ public class EtatRemboursementBean {
     public List<String> prixs;
     public List<String> montants;
     public List<String> jours;
-    
+
     String titreRC;
     String titreFiscal;
     String titreArticle;
@@ -32,13 +32,10 @@ public class EtatRemboursementBean {
     String titreFax;
     String titreEmail;
 
-    
-    
-
     public EtatRemboursementBean(String doit, String date, String montantTotal, String montantLettre,
             List<String> parcours, List<String> distances, List<String> nums, List<String> qtes, List<String> prixs,
-            List<String> montants, List<String> jours, String titreRC, String titreFiscal,String titreArticle,
-           String titreTel,String titreFax,String titreEmail) {
+            List<String> montants, List<String> jours, String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail) {
         this.doit = doit;
         this.date = date;
         this.jours = jours;
@@ -50,12 +47,12 @@ public class EtatRemboursementBean {
         this.qtes = qtes;
         this.prixs = prixs;
         this.montants = montants;
-        this.titreRC=titreRC;
-        this.titreFiscal=titreFiscal;
-        this.titreArticle=titreArticle;
-        this.titreTel=titreTel;
-        this.titreFax=titreFax;
-        this.titreEmail=titreEmail;
+        this.titreRC = titreRC;
+        this.titreFiscal = titreFiscal;
+        this.titreArticle = titreArticle;
+        this.titreTel = titreTel;
+        this.titreFax = titreFax;
+        this.titreEmail = titreEmail;
     }
 
     public String getTitreRC() {
@@ -105,7 +102,6 @@ public class EtatRemboursementBean {
     public void setTitreEmail(String titreEmail) {
         this.titreEmail = titreEmail;
     }
-    
 
     public String getDate() {
         return date;
