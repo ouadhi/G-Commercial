@@ -92,7 +92,7 @@ public class CamionQueries {
 		Session session = SessionsGenerator.getFactory().openSession();
 		List<Camion> list = new ArrayList<>();
 		try {
-			list = session.createQuery("from Camion where  where type='INTERNE' AND deleted='" + false + "'").list();
+			list = session.createQuery("from Camion where  type='INTERNE' AND deleted='" + false + "'").list();
 		} finally {
 			session.close();
 		}
@@ -103,7 +103,7 @@ public class CamionQueries {
 		Session session = SessionsGenerator.getFactory().openSession();
 		List<Camion> list = new ArrayList<>();
 		try {
-			list = session.createQuery("from Camion where  where type='EXTERNE' AND deleted='" + false + "'").list();
+			list = session.createQuery("from Camion where type='EXTERNE' AND deleted='" + false + "'").list();
 		} finally {
 			session.close();
 		}
