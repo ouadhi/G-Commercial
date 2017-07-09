@@ -37,15 +37,13 @@ public class Loginform extends Application {
 
     public static void main(String[] args) {
         List<String> macs = getMacs();
-        
-//change && uncomment
-//        if (macs.contains(("A8-86-DD-91-25-3E").replace(" ", "").replace("-", ""))
-//                || macs.contains(("68-5b-35-95-f1-47").replace(" ", "").replace("-", ""))) 
-        {
-            launch(args);
-        }
-    }
 
+// uncomment
+//        if (macs.contains(("DC-85-DE-BF-05-50").replace(" ", "").replace("-", ""))
+//                || macs.contains(("00-E0-4C-68-01-33").replace(" ", "").replace("-", ""))) {
+//            launch(args);
+//        }
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -121,6 +119,7 @@ public class Loginform extends Application {
         return new JRBeanCollectionDataSource(collBean, false);
 
     }
+
     private static List<String> getMacs() {
         List<String> macsList = new ArrayList<String>();
 
@@ -135,7 +134,7 @@ public class Loginform extends Application {
                     for (int i = 0; i < mac.length; i++) {
                         sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : "").replace(" ", "").replace("-", ""));
                     }
-                    System.out.println(sb.toString());
+                    //System.out.println(sb.toString());
                     macsList.add(sb.toString());
                 }
             }
