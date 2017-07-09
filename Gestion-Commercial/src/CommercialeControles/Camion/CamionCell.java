@@ -116,7 +116,7 @@ public class CamionCell extends GridPane {
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(camion.getMarque());
+        label1.setText(camion.getMatricule());
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);

@@ -100,7 +100,7 @@ public class AchatQueries {
         Session session = SessionsGenerator.getFactory().openSession();
         List<Achat> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Achat where dateAcqt= '" + sd + "'").list();
+            list = session.createQuery("from Achat where dateAcqt= '" + sd + "' and deleted='" + false + "'").list();
         } finally {
             session.close();
         }

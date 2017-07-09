@@ -107,7 +107,7 @@ public class VenteListController implements Initializable {
         listevente.setExpanded(true);
         setinformation(factureList);
         
-        nbventetoday.setText(Methode.DoubleFormat(FactureQueries.NbtotaleFacture(new Date())));
+        nbventetoday.setText(FactureQueries.NbtotaleFacture(new Date())+"");
         quntitetoday.setText(Methode.DoubleFormat(FactureQueries.qantiteTotalDeVente(new Date())));
         montantToday.setText(Methode.DoubleFormat(FactureQueries.montantTotalFacture(new Date())));
 
@@ -261,7 +261,7 @@ public class VenteListController implements Initializable {
     }
 
     private void setinformation(List<Facture> list) {
-        nbventeannee.setText(Methode.DoubleFormat(NbtotaleFacture(list)));
+        nbventeannee.setText(NbtotaleFacture(list)+"");
         quntitetAnnee.setText(Methode.DoubleFormat(qantiteTotalDeVente(list)));
         montantAnnee.setText(Methode.DoubleFormat(montantTotal(list)));
     }
