@@ -40,9 +40,10 @@ public class Loginform extends Application {
 
 // uncomment
 //        if (macs.contains(("DC-85-DE-BF-05-50").replace(" ", "").replace("-", ""))
-//                || macs.contains(("00-E0-4C-68-01-33").replace(" ", "").replace("-", ""))) {
-//            launch(args);
-//        }
+//                || macs.contains(("00-E0-4C-68-01-33").replace(" ", "").replace("-", ""))) 
+        {
+            launch(args);
+        }
     }
 
     @Override
