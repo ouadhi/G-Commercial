@@ -38,16 +38,15 @@ public class Loginform extends Application {
     public static void main(String[] args) {
         List<String> macs = getMacs();
 
-<<<<<<< HEAD
 //change && uncomment
 
 //        if (macs.contains(("A8-86-DD-91-25-3E").replace(" ", "").replace("-", ""))
-//                || macs.contains(("68-5b-35-95-f1-47").replace(" ", "").replace("-", ""))) 
-=======
+//                || macs.contains(("68-5b-35-95-f1-47").replace(" ", "").replace("-", "")))
+        
+        
 // uncomment
-//        if (macs.contains(("DC-85-DE-BF-05-50").replace(" ", "").replace("-", ""))
-//                || macs.contains(("00-E0-4C-68-01-33").replace(" ", "").replace("-", ""))) 
->>>>>>> 58086ba94f87232418ef7ef2883ba137ff4376d2
+      // if (macs.contains(("DC-85-DE-BF-05-50").replace(" ", "").replace("-", ""))
+      //          || macs.contains(("00-E0-4C-68-01-33").replace(" ", "").replace("-", ""))) 
         {
             launch(args);
         }
