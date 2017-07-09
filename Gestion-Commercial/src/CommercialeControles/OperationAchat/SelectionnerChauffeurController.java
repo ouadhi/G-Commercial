@@ -1,4 +1,3 @@
-
 package CommercialeControles.OperationAchat;
 
 import java.net.URL;
@@ -21,56 +20,53 @@ import javafx.scene.input.MouseEvent;
 
 public class SelectionnerChauffeurController implements Initializable {
 
-	@FXML
-	private JFXListView<ChauffeurListH> listeChaffeur;
-	ChauffeurListH chauffeurSelected;
-	private ChauffeurQueries chauffeurQueries = new ChauffeurQueries();
-	@FXML
-	private JFXTextField rechreche;
+    @FXML
+    private JFXListView<ChauffeurListH> listeChaffeur;
+    ChauffeurListH chauffeurSelected;
+    @FXML
+    private JFXTextField rechreche;
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		List<ChauffeurListH> list = new ArrayList<>();
-		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listInterne();
-		for (int i = 0; i < listChauffeursDB.size(); i++) {
-                     if (listChauffeursDB.get(i).getType().equals("EXTERNE")) {
-                        list.add(new ChauffeurListH(listChauffeursDB.get(i)));
-                    }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        List<ChauffeurListH> list = new ArrayList<>();
+        List<Chauffeur> listChauffeursDB = ChauffeurQueries.listInterne();
+        System.err.println(listChauffeursDB.size() + "---------");
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+                list.add(new ChauffeurListH(listChauffeursDB.get(i)));
+        }
 
-		}
+        ChauffeurListH ch = new ChauffeurListH(listeChaffeur);
+        list.add(ch);
+        ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
+        listeChaffeur.setItems(myObservableList);
+        listeChaffeur.setOrientation(Orientation.HORIZONTAL);
+        listeChaffeur.setExpanded(true);
 
-		ChauffeurListH ch = new ChauffeurListH(listeChaffeur);
-		list.add(ch) ;
-		ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
-		listeChaffeur.setItems(myObservableList);
-		listeChaffeur.setOrientation(Orientation.HORIZONTAL);
-		listeChaffeur.setExpanded(true);
+    }
 
-	}
+    @FXML
+    private void recherche(KeyEvent event) {
 
-	@FXML
-	private void recherche(KeyEvent event) {
+        listeChaffeur.getItems().clear();
+        List<ChauffeurListH> list = new ArrayList<>();
+        List<Chauffeur> listChauffeursDB = ChauffeurQueries.listRecherche(rechreche.getText());
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurListH(listChauffeursDB.get(i)));
 
-		listeChaffeur.getItems().clear();
-		List<ChauffeurListH> list = new ArrayList<>();
-		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listRecherche(rechreche.getText());
-		for (int i = 0; i < listChauffeursDB.size(); i++) {
-			list.add(new ChauffeurListH(listChauffeursDB.get(i)));
+        }
 
-		}
+        ChauffeurListH ch = new ChauffeurListH(listeChaffeur);
+        // list.add(ch) ;
+        ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
+        listeChaffeur.setItems(myObservableList);
+    }
 
-		ChauffeurListH ch = new ChauffeurListH(listeChaffeur);
-		// list.add(ch) ;
-		ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
-		listeChaffeur.setItems(myObservableList);
-	}
+    @FXML
+    private void select(MouseEvent event) {
 
-	@FXML
-	private void select(MouseEvent event) {
+        chauffeurSelected = listeChaffeur.getSelectionModel().getSelectedItem();
+        FinOperationController.chauffeur = chauffeurSelected;
 
-		chauffeurSelected = listeChaffeur.getSelectionModel().getSelectedItem();
-		FinOperationController.chauffeur = chauffeurSelected;
-
-	}
+    }
 
 }

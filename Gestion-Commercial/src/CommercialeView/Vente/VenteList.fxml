@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -86,75 +87,76 @@
             </Label>
          </children>
       </GridPane>
-      <Text layoutX="71.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aujourd'hui ">
+      <Text layoutX="71.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aujourd'hui ">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="71.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Année ">
+      <Text layoutX="586.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Année ">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="185.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de vente">
+      <Text layoutX="71.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NB">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="460.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantité venté">
+      <Text layoutX="241.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="185.0" layoutY="669.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de vente">
+      <Text layoutX="593.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NB">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="460.0" layoutY="669.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantité venté">
+      <Text layoutX="753.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="quntitetAnnee" layoutX="606.0" layoutY="652.0" text="00000000">
+      <Label fx:id="quntitetAnnee" layoutX="793.0" layoutY="603.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="nbventetoday" layoutX="338.0" layoutY="606.0" text="00000000">
+      <Label fx:id="nbventetoday" layoutX="103.0" layoutY="605.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="quntitetoday" layoutX="606.0" layoutY="606.0" text="00000000">
+      <Label fx:id="quntitetoday" layoutX="264.0" layoutY="607.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="nbventeannee" layoutX="338.0" layoutY="652.0" text="00000000">
+      <Label fx:id="nbventeannee" layoutX="625.0" layoutY="603.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Text layoutX="707.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant">
+      <Text layoutX="390.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="montantToday" layoutX="793.0" layoutY="605.0" text="00000000">
+      <Label fx:id="montantToday" layoutX="416.0" layoutY="606.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Text layoutX="707.0" layoutY="669.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant">
+      <Text layoutX="937.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="montantAnnee" layoutX="793.0" layoutY="651.0" text="00000000">
+      <Label fx:id="montantAnnee" layoutX="960.0" layoutY="603.0" text="00000000">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
+      <Separator layoutX="516.0" layoutY="576.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="7.0" />
    </children>
 </AnchorPane>
