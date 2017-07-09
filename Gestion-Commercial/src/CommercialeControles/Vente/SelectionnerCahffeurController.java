@@ -32,12 +32,8 @@ public class SelectionnerCahffeurController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		List<ChauffeurListH> list = new ArrayList<>();
 		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listExterne();
-		for (int i = 0; i < listChauffeursDB.size(); i++) {
-                    
-                        list.add(new ChauffeurListH(listChauffeursDB.get(i)));
-                    
-			
-
+		for (int i = 0; i < listChauffeursDB.size(); i++) {                  
+                        list.add(new ChauffeurListH(listChauffeursDB.get(i)));           
 		}
 
 		ChauffeurListH ch = new ChauffeurListH(listeChaffeur);

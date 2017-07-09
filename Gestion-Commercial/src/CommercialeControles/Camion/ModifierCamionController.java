@@ -78,13 +78,17 @@ public class ModifierCamionController implements Initializable {
         // double poid = Double.parseDouble(PoisCamion.getText());
         // String marque = camion.getMarque();
         String marque = taillecamion.getText();
+        String type = typec.getSelectionModel().getSelectedItem();
+
         Optional<ButtonType> result = Notification.updateAlert().showAndWait();
         if (result.get() == ButtonType.OK) {
             if (code.isEmpty() || matricule.isEmpty() || marque.isEmpty()) {
                 Notification.champVideNotification();
             } else {
                 Camion camion = ShowdDetailCamionController.getCamion();
+                System.err.println(code+"fffffff");                
                 camion.setCodeCamion(code);
+                camion.setType(type);
                 camion.setMatricule(matricule);
                 // camion.setPoid(poid);
                 camion.setMarque(marque);
