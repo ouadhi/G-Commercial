@@ -25,6 +25,8 @@ public class Camion {
 	String matricule;
 	@Column(name = "marque", nullable = false)
 	String marque;
+	@Column(name = "type", nullable = false)
+	String type;
 	// @Column(name = "poid", nullable = true)
 	// double poid;
 	@OneToMany(targetEntity = Facture.class, mappedBy = "camion", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -37,10 +39,11 @@ public class Camion {
 	public Camion() {
 	}
 
-	public Camion(String codeCamion, String matricule, String marque) {
+	public Camion(String codeCamion, String matricule, String marque,String type) {
 		this.codeCamion = codeCamion;
 		this.matricule = matricule;
 		this.marque = marque;
+		this.type = type;
 		// this.poid= poid;
 		this.deleted = false;
 	}
@@ -108,5 +111,13 @@ public class Camion {
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
 	}
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
 }

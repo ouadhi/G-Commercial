@@ -35,7 +35,9 @@ public class SelectionnerCamionController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		List<Camion> listCamionsDB = CamionQueries.list();
+                //kada kada!! commenti lwla w decommenti zawja
+		//List<Camion> listCamionsDB = CamionQueries.list();
+		List<Camion> listCamionsDB = CamionQueries.listExterne();
 		List<CamionListeH> list = new ArrayList<>();
 		for (int i = 0; i < listCamionsDB.size(); i++) {
 			list.add(new CamionListeH(listCamionsDB.get(i)));

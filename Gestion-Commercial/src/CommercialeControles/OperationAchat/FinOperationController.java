@@ -17,6 +17,8 @@ import com.jfoenix.controls.JFXTextField;
 import UIControle.Methode;
 import UIControle.Notification;
 import UIControle.ShowPane;
+import com.gestionCommerciale.HibernateSchema.Ble;
+import com.gestionCommerciale.Models.BleQueries;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -138,6 +140,9 @@ public class FinOperationController implements Initializable {
         achat.setChauffeur(chauffeur.getChauffeur());
         achat.setDock(dock.getDock());
         achat.setBle(ble.getBle());
+        Ble b = ble.getBle();
+        b.setQte(b.getQte()+qFourVal);
+        BleQueries.SaveOrUpdate(b);
         AchatQueries.SaveOrUpdate(achat);
     }
 

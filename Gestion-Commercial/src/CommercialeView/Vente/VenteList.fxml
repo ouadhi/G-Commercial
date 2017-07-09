@@ -86,5 +86,75 @@
             </Label>
          </children>
       </GridPane>
+      <Text layoutX="71.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aujourd'hui ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="71.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Année ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="185.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de vente">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="460.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantité venté">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="185.0" layoutY="669.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de vente">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="460.0" layoutY="669.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantité venté">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="quntitetAnnee" layoutX="606.0" layoutY="652.0" text="00000000">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="nbventetoday" layoutX="338.0" layoutY="606.0" text="00000000">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="quntitetoday" layoutX="606.0" layoutY="606.0" text="00000000">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="nbventeannee" layoutX="338.0" layoutY="652.0" text="00000000">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Text layoutX="707.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="montantToday" layoutX="793.0" layoutY="605.0" text="00000000">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Text layoutX="707.0" layoutY="669.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="montantAnnee" layoutX="793.0" layoutY="651.0" text="00000000">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

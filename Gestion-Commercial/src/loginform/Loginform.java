@@ -4,13 +4,10 @@ import Report.EtatBleReport.EtatBleBean;
 import java.util.ArrayList;
 import UIControle.Methode;
 import UIControle.Notification;
-import UIControle.backup;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import java.io.InputStream;
-import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -42,8 +39,9 @@ public class Loginform extends Application {
         List<String> macs = getMacs();
 
 //change && uncomment
-//   if (macs.contains(("DC-85-DE-BF-05-50").replace(" ", "").replace("-", ""))
-//                || macs.contains(("00-E0-4C-68-01-33").replace(" ", "").replace("-", ""))) 
+
+//        if (macs.contains(("A8-86-DD-91-25-3E").replace(" ", "").replace("-", ""))
+//                || macs.contains(("68-5b-35-95-f1-47").replace(" ", "").replace("-", ""))) 
         {
             launch(args);
         }
@@ -143,7 +141,7 @@ public class Loginform extends Application {
                     for (int i = 0; i < mac.length; i++) {
                         sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : "").replace(" ", "").replace("-", ""));
                     }
-                    //System.out.println(sb.toString());
+                    System.out.println(sb.toString());
                     macsList.add(sb.toString());
                 }
             }

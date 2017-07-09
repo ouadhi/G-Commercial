@@ -51,10 +51,11 @@
       <JFXListView fx:id="listeView" layoutX="51.0" layoutY="173.0" onMouseClicked="#showChaffeur" prefHeight="410.0" prefWidth="1117.0" stylesheets="@ChauffeurCSS.css" AnchorPane.topAnchor="160.0" />
       <GridPane hgap="3.0" layoutX="51.0" layoutY="120.0" prefHeight="55.0" prefWidth="1117.0" style="-fx-background-color: #edf1f5;;" styleClass="title_panel" AnchorPane.topAnchor="100.0">
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="36.0" prefWidth="151.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="293.0" minWidth="100.0" prefWidth="277.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="126.0" prefWidth="228.0" />
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="554.0" minWidth="77.0" prefWidth="406.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="36.0" prefWidth="166.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="293.0" minWidth="100.0" prefWidth="249.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="26.0" prefWidth="195.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="492.0" minWidth="99.0" prefWidth="207.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="554.0" minWidth="77.0" prefWidth="288.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -71,6 +72,11 @@
                </font>
             </Label>
             <Label text="Téléphone" GridPane.columnIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label text="Type" GridPane.columnIndex="3">
                <font>
                   <Font size="17.0" />
                </font>

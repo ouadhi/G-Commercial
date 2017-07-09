@@ -18,6 +18,7 @@ import UIControle.Methode;
 import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,132 +34,147 @@ import javafx.scene.layout.AnchorPane;
 
 public class ListeAchatController implements Initializable {
 
-	@FXML
-	private Label total;
-	@FXML
-	private MenuButton Order;
-	@FXML
-	private MenuItem bycode;
-	@FXML
-	private JFXButton ajouter;
-	@FXML
-	private JFXListView<AchatCell> listeAchats;
-	@FXML
-	private JFXTextField rechreche;
-	@FXML
-	private Label label;
+    @FXML
+    private Label total;
+    @FXML
+    private MenuButton Order;
+    @FXML
+    private MenuItem bycode;
+    @FXML
+    private JFXButton ajouter;
+    @FXML
+    private JFXListView<AchatCell> listeAchats;
+    @FXML
+    private JFXTextField rechreche;
+    @FXML
+    private Label label;
+    @FXML
+    private Label totalquantite;
+    @FXML
+    private Label todayAchat;
+    @FXML
+    private Label todayquantite;
+    @FXML
+    private Label totalAcaht;
 
-	@FXML
-	private void Archive(ActionEvent event) {
-		Order.setText("Archiv\u00E9");
-		List<Achat> achatList = AchatQueries.listArchived();
+    @FXML
+    private void Archive(ActionEvent event) {
+        Order.setText("Archiv\u00E9");
+        List<Achat> achatList = AchatQueries.listArchived();
 
-		List<AchatCell> list = new ArrayList<>();
-		for (int i = 0; i < achatList.size(); i++) {
-			list.add(new AchatCell(achatList.get(i)));
-		}
-		ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
-		listeAchats.setItems(myObservableList);
-		listeAchats.setExpanded(true);
-		setTotale();
-	}
+        List<AchatCell> list = new ArrayList<>();
+        for (int i = 0; i < achatList.size(); i++) {
+            list.add(new AchatCell(achatList.get(i)));
+        }
+        ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
+        listeAchats.setItems(myObservableList);
+        listeAchats.setExpanded(true);
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		Methode.showMenuItem(Order, label);
-		List<Achat> achatList = AchatQueries.list();
+        setTotale();
+    }
 
-		List<AchatCell> list = new ArrayList<>();
-		for (int i = 0; i < achatList.size(); i++) {
-			list.add(new AchatCell(achatList.get(i)));
-		}
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Methode.showMenuItem(Order, label);
+        List<Achat> achatList = AchatQueries.list();
 
-		ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
-		listeAchats.setItems(myObservableList);
-		listeAchats.setExpanded(true);
-		setTotale();
+        List<AchatCell> list = new ArrayList<>();
+        for (int i = 0; i < achatList.size(); i++) {
+            list.add(new AchatCell(achatList.get(i)));
+        }
 
-	}
+        ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
+        listeAchats.setItems(myObservableList);
+        listeAchats.setExpanded(true);
 
-	@FXML
-	private void NonArchive(ActionEvent event) {
-		Order.setText("Non Archiv\u00E9");
-		List<Achat> achatList = AchatQueries.list();
+        todayquantite.setText(Methode.DoubleFormat(AchatQueries.totaleAchatByDate(new Date())));
+        todayAchat.setText(Methode.DoubleFormat(AchatQueries.nbtotaleAchatByDate(new Date())));
 
-		List<AchatCell> list = new ArrayList<>();
-		for (int i = 0; i < achatList.size(); i++) {
-			list.add(new AchatCell(achatList.get(i)));
-		}
-		ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
-		listeAchats.setItems(myObservableList);
-		listeAchats.setExpanded(true);
-		setTotale();
-	}
+        totalAcaht.setText(Methode.DoubleFormat(AchatQueries.nbtotaleAchat()));
+        totalquantite.setText(Methode.DoubleFormat(AchatQueries.totaleAchat()));
+        setTotale();
 
-	@FXML
-	private void rechrecher(KeyEvent event) {
-		List<Achat> achatList = AchatQueries.listRecherche(rechreche.getText());
+    }
 
-		List<AchatCell> list = new ArrayList<>();
-		for (int i = 0; i < achatList.size(); i++) {
-			list.add(new AchatCell(achatList.get(i)));
-		}
+    @FXML
+    private void NonArchive(ActionEvent event) {
+        Order.setText("Non Archiv\u00E9");
+        List<Achat> achatList = AchatQueries.list();
 
-		ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
-		listeAchats.setItems(myObservableList);
-		listeAchats.setExpanded(true);
+        List<AchatCell> list = new ArrayList<>();
+        for (int i = 0; i < achatList.size(); i++) {
+            list.add(new AchatCell(achatList.get(i)));
+        }
+        ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
+        listeAchats.setItems(myObservableList);
+        listeAchats.setExpanded(true);
+        setTotale();
+    }
 
-		setTotale();
-	}
+    @FXML
+    private void rechrecher(KeyEvent event) {
+        List<Achat> achatList = AchatQueries.listRecherche(rechreche.getText());
 
-	@FXML
-	private void setOrder(ActionEvent event) {
-	}
+        List<AchatCell> list = new ArrayList<>();
+        for (int i = 0; i < achatList.size(); i++) {
+            list.add(new AchatCell(achatList.get(i)));
+        }
 
-	private void setTotale() {
-		total.setText(Integer.toString(listeAchats.getItems().size()));
-	}
+        ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
+        listeAchats.setItems(myObservableList);
+        listeAchats.setExpanded(true);
 
-	@FXML
-	private void showAchatSlide(MouseEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource(ViewUrl.AchatSlid));
-			loader.load();
+        setTotale();
+    }
 
-			AchatSlidController controler = loader.getController();
-			controler.setData(listeAchats, listeAchats.getSelectionModel().getSelectedIndex());
+    @FXML
+    private void setOrder(ActionEvent event) {
+    }
 
-			AnchorPane pane = loader.getRoot();
+    private void setTotale() {
+        total.setText(Integer.toString(listeAchats.getItems().size()));
+    }
 
-			StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
-			dialog.show();
+    @FXML
+    private void showAchatSlide(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(ViewUrl.AchatSlid));
+            loader.load();
 
-		} catch (IOException ex) {
-			Logger.getLogger(ListeAchatController.class.getName()).log(Level.SEVERE, null, ex);
-		}
+            AchatSlidController controler = loader.getController();
+            controler.setData(listeAchats, listeAchats.getSelectionModel().getSelectedIndex());
 
-	}
+            AnchorPane pane = loader.getRoot();
 
-	@FXML
-	private void showAddStage(ActionEvent event) {
-		FinOperationController.ClearVar();
-		new ShowPane().showOperationAchat();
-	}
+            StageDialog dialog = new StageDialog(Methode.getStageMouses(event), pane);
+            dialog.show();
 
-	@FXML
-	private void Tout(ActionEvent event) {
-		Order.setText("Tout");
-		List<Achat> achatList = AchatQueries.listAll();
+        } catch (IOException ex) {
+            Logger.getLogger(ListeAchatController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-		List<AchatCell> list = new ArrayList<>();
-		for (int i = 0; i < achatList.size(); i++) {
-			list.add(new AchatCell(achatList.get(i)));
-		}
-		ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
-		listeAchats.setItems(myObservableList);
-		listeAchats.setExpanded(true);
-		setTotale();
-	}
+    }
+
+    @FXML
+    private void showAddStage(ActionEvent event) {
+        FinOperationController.ClearVar();
+        new ShowPane().showOperationAchat();
+    }
+
+    @FXML
+    private void Tout(ActionEvent event) {
+        Order.setText("Tout");
+        List<Achat> achatList = AchatQueries.listAll();
+
+        List<AchatCell> list = new ArrayList<>();
+        for (int i = 0; i < achatList.size(); i++) {
+            list.add(new AchatCell(achatList.get(i)));
+        }
+        ObservableList<AchatCell> myObservableList = FXCollections.observableList(list);
+        listeAchats.setItems(myObservableList);
+        listeAchats.setExpanded(true);
+        setTotale();
+    }
 
 }

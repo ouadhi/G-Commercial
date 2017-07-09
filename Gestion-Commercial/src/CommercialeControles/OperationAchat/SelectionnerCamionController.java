@@ -1,4 +1,3 @@
-
 package CommercialeControles.OperationAchat;
 
 import java.net.URL;
@@ -21,56 +20,58 @@ import javafx.scene.input.MouseEvent;
 
 public class SelectionnerCamionController implements Initializable {
 
-	@FXML
-	private JFXListView<CamionListeH> listeCamion;
-	private CamionListeH camion;
+    @FXML
+    private JFXListView<CamionListeH> listeCamion;
+    private CamionListeH camion;
 
-	private CamionQueries camionQueries = new CamionQueries();
-	@FXML
-	private JFXTextField rechreche;
+    private CamionQueries camionQueries = new CamionQueries();
+    @FXML
+    private JFXTextField rechreche;
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		List<Camion> listCamionsDB = CamionQueries.list();
-		List<CamionListeH> list = new ArrayList<>();
-		for (int i = 0; i < listCamionsDB.size(); i++) {
-			list.add(new CamionListeH(listCamionsDB.get(i)));
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //kada kada!! commenti lwla w decommenti zawja
+        //List<Camion> listCamionsDB = CamionQueries.list();
+        List<Camion> listCamionsDB = CamionQueries.listInterne();
+        List<CamionListeH> list = new ArrayList<>();
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionListeH(listCamionsDB.get(i)));
 
-		}
+        }
 
-		CamionListeH ch = new CamionListeH(listeCamion);
-	        list.add(ch) ;
-		ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
-		listeCamion.setItems(myObservableList);
-		listeCamion.setOrientation(Orientation.HORIZONTAL);
-		listeCamion.setExpanded(true);
+        CamionListeH ch = new CamionListeH(listeCamion);
+        list.add(ch);
+        ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
+        listeCamion.setItems(myObservableList);
+        listeCamion.setOrientation(Orientation.HORIZONTAL);
+        listeCamion.setExpanded(true);
 
-	}
+    }
 
-	@FXML
-	private void recherche(KeyEvent event) {
-		listeCamion.getItems().clear();
+    @FXML
+    private void recherche(KeyEvent event) {
+        listeCamion.getItems().clear();
 
-		List<Camion> listCamionsDB = CamionQueries.listRechreche(rechreche.getText());
-		List<CamionListeH> list = new ArrayList<>();
-		for (int i = 0; i < listCamionsDB.size(); i++) {
-			list.add(new CamionListeH(listCamionsDB.get(i)));
+        List<Camion> listCamionsDB = CamionQueries.listRechreche(rechreche.getText());
+        List<CamionListeH> list = new ArrayList<>();
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionListeH(listCamionsDB.get(i)));
 
-		}
+        }
 
-		CamionListeH ch = new CamionListeH(listeCamion);
-		 list.add(ch) ;
-		ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
-		listeCamion.setItems(myObservableList);
-		listeCamion.setOrientation(Orientation.HORIZONTAL);
-		listeCamion.setExpanded(true);
-	}
+        CamionListeH ch = new CamionListeH(listeCamion);
+        list.add(ch);
+        ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
+        listeCamion.setItems(myObservableList);
+        listeCamion.setOrientation(Orientation.HORIZONTAL);
+        listeCamion.setExpanded(true);
+    }
 
-	@FXML
-	private void select(MouseEvent event) {
+    @FXML
+    private void select(MouseEvent event) {
 
-		camion = listeCamion.getSelectionModel().getSelectedItem();
-		FinOperationController.camion = camion;
-	}
+        camion = listeCamion.getSelectionModel().getSelectedItem();
+        FinOperationController.camion = camion;
+    }
 
 }
