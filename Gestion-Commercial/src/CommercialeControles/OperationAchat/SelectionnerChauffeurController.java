@@ -35,7 +35,7 @@ public class SelectionnerChauffeurController implements Initializable {
                 list.add(new ChauffeurListH(listChauffeursDB.get(i)));
         }
 
-        ChauffeurListH ch = new ChauffeurListH(listeChaffeur ,"EXTERNE");
+        ChauffeurListH ch = new ChauffeurListH(listeChaffeur ,"INTERNE");
         list.add(ch);
         ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
         listeChaffeur.setItems(myObservableList);
@@ -55,7 +55,7 @@ public class SelectionnerChauffeurController implements Initializable {
 
         }
 
-        ChauffeurListH ch = new ChauffeurListH(listeChaffeur ,"EXTERNE");
+        ChauffeurListH ch = new ChauffeurListH(listeChaffeur ,"INTERNE");
         list.add(ch) ;
         ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
         listeChaffeur.setItems(myObservableList);
