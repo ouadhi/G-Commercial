@@ -33,7 +33,7 @@ public class ChauffeurListH extends GridPane {
 
 	private Chauffeur chauffeur;
 
-	public ChauffeurListH(JFXListView<ChauffeurListH> listeChaffeur) {
+	public ChauffeurListH(JFXListView<ChauffeurListH> listeChaffeur , String type ) {
 
 		columnConstraints = new ColumnConstraints();
 		rowConstraints = new RowConstraints();
@@ -118,7 +118,7 @@ public class ChauffeurListH extends GridPane {
 			loader.load();
 
 			 AjouterChauffeurExtratController controler = loader.getController();
-			controler.setData(listeChaffeur);
+			controler.setData(listeChaffeur , type);
 
 			AnchorPane pane = loader.getRoot();
                         Methode.moveFocus(pane);

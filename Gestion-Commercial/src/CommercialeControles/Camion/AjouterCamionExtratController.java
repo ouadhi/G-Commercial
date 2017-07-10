@@ -46,8 +46,10 @@ public class AjouterCamionExtratController implements Initializable {
     private Label labelsave;
 
     JFXListView<CamionListeH> listeCamion;
-    @FXML    
+    @FXML
     private JFXComboBox<String> typec;
+
+    String type_liste = null;
 
     @FXML
     private void annuler(ActionEvent event) {
@@ -107,7 +109,11 @@ public class AjouterCamionExtratController implements Initializable {
                     CamionQueries.SaveOrUpdate(camion);
 
                     Notification.Addnotification();
-                    refresh();
+                    if (type_liste.equals("INTERNE")) {
+                        refreshInterne();
+                    } else {
+                        refreshExterne();
+                    }
                     Methode.getStage(event).close();
 
                 } catch (Exception ex) {
@@ -117,20 +123,38 @@ public class AjouterCamionExtratController implements Initializable {
         }
     }
 
-    public void setData(JFXListView<CamionListeH> listeCamion) {
+    public void setData(JFXListView<CamionListeH> listeCamion, String type_liste) {
         this.listeCamion = listeCamion;
+        this.type_liste = type_liste;
     }
 
-    public void refresh() {
+    public void refreshInterne() {
 
-        List<Camion> listCamionsDB = CamionQueries.list();
+        List<Camion> listCamionsDB = CamionQueries.listInterne();
         List<CamionListeH> list = new ArrayList<>();
         for (int i = 0; i < listCamionsDB.size(); i++) {
             list.add(new CamionListeH(listCamionsDB.get(i)));
 
         }
 
-        CamionListeH ch = new CamionListeH(listeCamion);
+        CamionListeH ch = new CamionListeH(listeCamion , type_liste);
+        list.add(ch);
+        ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
+        listeCamion.setItems(myObservableList);
+        listeCamion.setOrientation(Orientation.HORIZONTAL);
+
+    }
+
+    public void refreshExterne() {
+
+        List<Camion> listCamionsDB = CamionQueries.listExterne();
+        List<CamionListeH> list = new ArrayList<>();
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionListeH(listCamionsDB.get(i)));
+
+        }
+
+        CamionListeH ch = new CamionListeH(listeCamion ,type_liste);
         list.add(ch);
         ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
         listeCamion.setItems(myObservableList);

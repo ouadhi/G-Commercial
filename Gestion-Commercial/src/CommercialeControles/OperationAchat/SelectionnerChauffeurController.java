@@ -35,12 +35,12 @@ public class SelectionnerChauffeurController implements Initializable {
                 list.add(new ChauffeurListH(listChauffeursDB.get(i)));
         }
 
-        ChauffeurListH ch = new ChauffeurListH(listeChaffeur);
+        ChauffeurListH ch = new ChauffeurListH(listeChaffeur ,"EXTERNE");
         list.add(ch);
         ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
         listeChaffeur.setItems(myObservableList);
         listeChaffeur.setOrientation(Orientation.HORIZONTAL);
-        listeChaffeur.setExpanded(true);
+       
 
     }
 
@@ -55,8 +55,8 @@ public class SelectionnerChauffeurController implements Initializable {
 
         }
 
-        ChauffeurListH ch = new ChauffeurListH(listeChaffeur);
-        // list.add(ch) ;
+        ChauffeurListH ch = new ChauffeurListH(listeChaffeur ,"EXTERNE");
+        list.add(ch) ;
         ObservableList<ChauffeurListH> myObservableList = FXCollections.observableList(list);
         listeChaffeur.setItems(myObservableList);
     }

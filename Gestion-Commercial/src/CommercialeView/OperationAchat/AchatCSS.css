@@ -223,3 +223,24 @@ button_annuler:pressed {
     -fx-background-raduis : 4px ; 
     -fx-padding: 8 16 8 16 ; 
 }
+
+.list-cell:selected{
+    -fx-background-color: #0083C5; 
+}
+
+.list-cell:selected{
+    -fx-background-insets: 0.0 ; 
+}
+
+.list-cell .jfx-rippler{
+    -fx-rippler-fill : BLUE ; 
+}
+
+.list-cell:hover{
+    -fx-background-color:#cff4f5 ; 
+}
+
+.list-view {
+    -fx-background-insets: 0.0 ; 
+    -fx-background-color : #f4f8f9; ; 
+}
