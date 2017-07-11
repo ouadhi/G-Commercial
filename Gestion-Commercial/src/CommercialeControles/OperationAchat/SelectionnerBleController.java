@@ -46,7 +46,7 @@ public class SelectionnerBleController implements Initializable {
 		listeBle.setItems(myObservableList);
                 
 		listeBle.setOrientation(Orientation.HORIZONTAL);
-		//listeBle.setExpanded(true);
+		
 	}
 
 	@FXML
