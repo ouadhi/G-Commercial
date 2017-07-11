@@ -167,7 +167,7 @@ public class GenerateEtatRemboursementReport {
             operationEtatRemboursementReport.putReportInfo(doit, date,
                     Methode.DoubleFormat(round(montantTotal, 2)), montantlettre, parcours, distances, nums, qtes,
                     prixs, montants, jours,company.getRegistre(),company.getFiscale(),company.getArticle(),
-                    company.getTelephone(),company.getFax(),company.getEmail());
+                    company.getTelephone(),company.getFax(),company.getEmail(),company.getNom(),"");
         }
         operationEtatRemboursementReport.printReport();
 

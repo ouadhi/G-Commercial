@@ -6,6 +6,7 @@
 package Report.EtatExpeditionReport;
 
 import UIControle.Methode;
+import com.gestionCommerciale.HibernateSchema.Company;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -21,6 +22,7 @@ import org.hibernate.Session;
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Payment;
+import com.gestionCommerciale.Models.CompanyQueries;
 import com.gestionCommerciale.Models.Facture_ProduitQueries;
 import com.gestionCommerciale.Models.PaymentQueries;
 import com.gestionCommerciale.Models.SessionsGenerator;
@@ -143,6 +145,8 @@ public class GenerateEtatExpeditionReport {
     public void generateReport(Date jour) throws IOException, JRException {
 
         OperationEtatExpedition operationEtatExpedition = new OperationEtatExpedition();
+        Company company = CompanyQueries.getCompany();
+
         Facture_ClientParJour(jour);
         List<List<String>> expeditions = getExpedition(jour);
         List<String> clients = getClients(expeditions);
@@ -167,7 +171,8 @@ public class GenerateEtatExpeditionReport {
                 Methode.DoubleFormat(totalVersemntMoinMontant), Methode.DoubleFormat(round(farineTotal, 2)),
                 Methode.DoubleFormat(round(sonTotal, 2)), Methode.DoubleFormat(round(montantTotal, 2)),
                 Methode.DoubleFormat(round(versementTotal, 2)), Methode.DoubleFormat(round(differenceTotal, 2)), clients, nums,
-                produits, qteFarins, qteSons, prixs, montants, versements, observations);
+                produits, qteFarins, qteSons, prixs, montants, versements, observations,company.getRegistre(), company.getFiscale(), company.getArticle(),
+                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), "");
         operationEtatExpedition.printReport();
 
     }

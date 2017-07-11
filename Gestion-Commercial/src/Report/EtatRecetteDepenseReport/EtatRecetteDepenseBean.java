@@ -26,11 +26,21 @@ public class EtatRecetteDepenseBean {
     public List<String> montants;
     public List<String> depenses;
     public List<String> soldes;
+    
+    String titreRC;
+    String titreFiscal;
+    String titreArticle;
+    String titreTel;
+    String titreFax;
+    String titreEmail;
+    String entrepriseNom;
+    String entrepriseAddress;
 
     public EtatRecetteDepenseBean(String date, String montantTotal, String depenseTotal, String banque, String reste,
             String numBancaire,String versementBancaire,
             List<String> nums, List<String> clients, List<String> montants, List<String> depenses,
-            List<String> soldes) {
+            List<String> soldes, String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail, String entrepriseNom, String entrepriseAddress) {
         this.date = date;
         this.montantTotal = montantTotal;
         this.depenseTotal = depenseTotal;
@@ -43,7 +53,81 @@ public class EtatRecetteDepenseBean {
         this.soldes = soldes;
         this.numBancaire= numBancaire;
         this.versementBancaire= versementBancaire;
+        
+        this.titreRC = titreRC;
+        this.titreFiscal = titreFiscal;
+        this.titreArticle = titreArticle;
+        this.titreTel = titreTel;
+        this.titreFax = titreFax;
+        this.titreEmail = titreEmail; 
+        this.entrepriseNom=entrepriseNom;
+        this.entrepriseAddress=entrepriseAddress;
     }
+
+    public String getTitreRC() {
+        return titreRC;
+    }
+
+    public void setTitreRC(String titreRC) {
+        this.titreRC = titreRC;
+    }
+
+    public String getTitreFiscal() {
+        return titreFiscal;
+    }
+
+    public void setTitreFiscal(String titreFiscal) {
+        this.titreFiscal = titreFiscal;
+    }
+
+    public String getTitreArticle() {
+        return titreArticle;
+    }
+
+    public void setTitreArticle(String titreArticle) {
+        this.titreArticle = titreArticle;
+    }
+
+    public String getTitreTel() {
+        return titreTel;
+    }
+
+    public void setTitreTel(String titreTel) {
+        this.titreTel = titreTel;
+    }
+
+    public String getTitreFax() {
+        return titreFax;
+    }
+
+    public void setTitreFax(String titreFax) {
+        this.titreFax = titreFax;
+    }
+
+    public String getTitreEmail() {
+        return titreEmail;
+    }
+
+    public void setTitreEmail(String titreEmail) {
+        this.titreEmail = titreEmail;
+    }
+
+    public String getEntrepriseNom() {
+        return entrepriseNom;
+    }
+
+    public void setEntrepriseNom(String entrepriseNom) {
+        this.entrepriseNom = entrepriseNom;
+    }
+
+    public String getEntrepriseAddress() {
+        return entrepriseAddress;
+    }
+
+    public void setEntrepriseAddress(String entrepriseAddress) {
+        this.entrepriseAddress = entrepriseAddress;
+    }
+    
 
     public String getBanque() {
         return banque;

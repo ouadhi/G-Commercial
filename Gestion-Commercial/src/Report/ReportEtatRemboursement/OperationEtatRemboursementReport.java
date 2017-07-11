@@ -59,12 +59,12 @@ public class OperationEtatRemboursementReport {
     public void putReportInfo(String doit, String date, String montantTotal, String montantLettre,
             List<String> parcours, List<String> distances, List<String> nums, List<String> qtes, List<String> prixs,
             List<String> montants, List<String> jours, String titreRC, String titreFiscal,String titreArticle,
-            String titreTel,String titreFax,String titreEmail) {
+            String titreTel,String titreFax,String titreEmail,String entrepriseNom,String entrepriseAddress) {
         // patient info is the first to be written
 
         EtatRemboursementBean beanInfo = new EtatRemboursementBean(doit, date, montantTotal, montantLettre,
                 parcours, distances, nums, qtes, prixs, montants, jours, titreRC,  titreFiscal, titreArticle,
-             titreTel, titreFax, titreEmail);
+             titreTel, titreFax, titreEmail, entrepriseNom, entrepriseAddress);
         collBean.add(beanInfo);
     }
 }

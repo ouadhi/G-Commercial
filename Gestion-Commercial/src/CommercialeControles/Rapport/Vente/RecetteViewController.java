@@ -49,13 +49,18 @@ public class RecetteViewController implements Initializable {
     @FXML
     private void print(ActionEvent event) {
         try {
+
             GenerateEtatRecetteDepense generateEtatRecetteDepense = new GenerateEtatRecetteDepense();
             Date dateOb = Date.from(debut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
             generateEtatRecetteDepense.generateReport(dateOb, banque.getSelectionModel().getSelectedItem(),
                     Double.parseDouble(versement.getText()));
         } catch (Exception ex) {
-            Notification.error("Il n ya pas de versement a ce jour.");
-            ex.printStackTrace();
+            if (banque.getSelectionModel().getSelectedItem() == null) {
+                Notification.error("Choisir une banque");
+            } else {
+                Notification.error("Il n ya pas de versement a ce jour.");
+                ex.printStackTrace();
+            }
         }
 
     }

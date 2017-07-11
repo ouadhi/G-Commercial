@@ -61,10 +61,10 @@ public class OperationBonLivraisonReport {
     public void putReportInfo(String nom, String code, String address, String rc, String fiscal, String date,
             String numFacture, String article, String chauffeur, String matricule, List<String> designations,
             List<String> qtes, List<String> types, String titreRC, String titreFiscal, String titreArticle,
-            String titreTel, String titreFax, String titreEmail) {
+            String titreTel, String titreFax, String titreEmail,String entrepriseNom,String entrepriseAddress) {
         BonLivraisonBean beanInfo = new BonLivraisonBean(id, nom, code, address, rc, fiscal, date, numFacture, article,
                 chauffeur, matricule, designations, qtes, types, titreRC, titreFiscal, titreArticle,
-                titreTel, titreFax, titreEmail);
+                titreTel, titreFax, titreEmail, entrepriseNom, entrepriseAddress);
         collBean.add(beanInfo);
         id++;
     }

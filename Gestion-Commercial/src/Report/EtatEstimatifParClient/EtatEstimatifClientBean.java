@@ -36,13 +36,23 @@ public class EtatEstimatifClientBean {
     List<String> ttcs;
     List<String> timbres;
     List<String> qtes;
+    
+    String titreRC;
+    String titreFiscal;
+    String titreArticle;
+    String titreTel;
+    String titreFax;
+    String titreEmail;
+    String entrepriseNom;
+    String entrepriseAddress;
 
     public EtatEstimatifClientBean(String nomPrenom, String activity, String address
             , String rc, String fiscal, String article, String dateDebut
             , String dateFin, String totalMontant, String totalTva, String totalTtc
             , String totalTimbre, String totalFarine, String totalSon, String totalQte
             , List<String> dates, List<String> nums, List<String> produits, List<String> montants
-            , List<String> tvas, List<String> ttcs, List<String> timbres, List<String> qtes) {
+            , List<String> tvas, List<String> ttcs, List<String> timbres, List<String> qtes,String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail,String entrepriseNom,String entrepriseAddress) {
         this.nomPrenom = nomPrenom;
         this.activity = activity;
         this.address = address;
@@ -66,6 +76,79 @@ public class EtatEstimatifClientBean {
         this.ttcs = ttcs;
         this.timbres = timbres;
         this.qtes = qtes;
+        
+        this.titreRC = titreRC;
+        this.titreFiscal = titreFiscal;
+        this.titreArticle = titreArticle;
+        this.titreTel = titreTel;
+        this.titreFax = titreFax;
+        this.titreEmail = titreEmail; 
+        this.entrepriseNom=entrepriseNom;
+        this.entrepriseAddress=entrepriseAddress;
+    }
+
+    public String getTitreRC() {
+        return titreRC;
+    }
+
+    public void setTitreRC(String titreRC) {
+        this.titreRC = titreRC;
+    }
+
+    public String getTitreFiscal() {
+        return titreFiscal;
+    }
+
+    public void setTitreFiscal(String titreFiscal) {
+        this.titreFiscal = titreFiscal;
+    }
+
+    public String getTitreArticle() {
+        return titreArticle;
+    }
+
+    public void setTitreArticle(String titreArticle) {
+        this.titreArticle = titreArticle;
+    }
+
+    public String getTitreTel() {
+        return titreTel;
+    }
+
+    public void setTitreTel(String titreTel) {
+        this.titreTel = titreTel;
+    }
+
+    public String getTitreFax() {
+        return titreFax;
+    }
+
+    public void setTitreFax(String titreFax) {
+        this.titreFax = titreFax;
+    }
+
+    public String getTitreEmail() {
+        return titreEmail;
+    }
+
+    public void setTitreEmail(String titreEmail) {
+        this.titreEmail = titreEmail;
+    }
+
+    public String getEntrepriseNom() {
+        return entrepriseNom;
+    }
+
+    public void setEntrepriseNom(String entrepriseNom) {
+        this.entrepriseNom = entrepriseNom;
+    }
+
+    public String getEntrepriseAddress() {
+        return entrepriseAddress;
+    }
+
+    public void setEntrepriseAddress(String entrepriseAddress) {
+        this.entrepriseAddress = entrepriseAddress;
     }
     
 

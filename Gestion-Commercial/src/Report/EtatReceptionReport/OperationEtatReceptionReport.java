@@ -60,13 +60,13 @@ public class OperationEtatReceptionReport {
 
 	public void putReportInfo(String dateDebut, String dateFin, String date, String totalFour, String totalMoulin,
 			String totalDif, String montantTotal, String montantLettre, List<String> nums, List<String> qteFours,
-			List<String> qteMoulins, List<String> qteDifs) {
+			List<String> qteMoulins, List<String> qteDifs, String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail, String entrepriseNom, String entrepriseAddress) {
 		// add date field here for each line
 
-		EtatReceptionBean beanInfo = new EtatReceptionBean(dateDebut, dateFin, date // change
-																					// date
-																					// here
-				, totalFour, totalMoulin, totalDif, montantTotal, montantLettre, nums, qteFours, qteMoulins, qteDifs);
+		EtatReceptionBean beanInfo = new EtatReceptionBean(dateDebut, dateFin, date																		// here
+				, totalFour, totalMoulin, totalDif, montantTotal, montantLettre, nums, qteFours, qteMoulins, qteDifs,  titreRC,  titreFiscal,  titreArticle,
+             titreTel,  titreFax,  titreEmail,  entrepriseNom,  entrepriseAddress);
 		collBean.add(beanInfo);
 	}
 

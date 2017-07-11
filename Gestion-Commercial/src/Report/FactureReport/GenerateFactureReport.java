@@ -42,7 +42,7 @@ public class GenerateFactureReport {
             operationFactuReport.putReportInfo(nom, code, address, rc, fiscal, date, numFacture, article, montantHT,
                     tva, timbre, ttc, montantlettre, chauffeur, matricule, designations, qtes, prixs, montants, payement,
                     company.getRegistre(),company.getFiscale(),company.getArticle(),company.getTelephone(),
-                    company.getFax(),company.getEmail());
+                    company.getFax(),company.getEmail(),company.getNom(),"");
         }
         operationFactuReport.printReport();
 

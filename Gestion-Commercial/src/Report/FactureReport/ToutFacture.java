@@ -81,7 +81,7 @@ public class ToutFacture {
                 facture.getChauffeur().getNom() + " " + facture.getChauffeur().getPrenom(),
                 facture.getCamion().getMatricule(), designationsVente, qtesVente, prixsVente, montantsVente,
                 facture.getTypeVersement(),company.getRegistre(),company.getFiscale(),company.getArticle(),
-                    company.getTelephone(),company.getFax(),company.getEmail());
+                    company.getTelephone(),company.getFax(),company.getEmail(),company.getNom(),"");
         return operationFactuReport.getJasperPrint();
     }
 }
