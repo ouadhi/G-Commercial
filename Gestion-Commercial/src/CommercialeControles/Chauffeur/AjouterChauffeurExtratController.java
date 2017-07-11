@@ -108,7 +108,7 @@ public class AjouterChauffeurExtratController implements Initializable {
         Methode.SetUpper(nomchauffeur, 30);
         Methode.setOnlyInteger(telchauffeur, 10);
         Methode.setsizeString(prenomchauffeur, 30);
-        setType();
+       // setType();
     }
 
     @FXML
@@ -119,7 +119,7 @@ public class AjouterChauffeurExtratController implements Initializable {
         String tel = telchauffeur.getText();
         String type = typechauffeur.getSelectionModel().getSelectedItem();
 
-        if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty() || type.isEmpty()) {
+        if (nom.isEmpty() || prenom.isEmpty() ) {
 
             Notification.champVideNotification();
         } else {
@@ -155,7 +155,13 @@ public class AjouterChauffeurExtratController implements Initializable {
 
     public void setData(JFXListView<ChauffeurListH> listeChaffeur , String type ) {
         this.listeChaffeur = listeChaffeur;
-        this.type_Liste = type ; 
+        this.type_Liste = type ;
+        if (this.type_Liste.equals("EXTERNE")) {
+              typechauffeur.getItems().add("EXTERNE");
+        } else {
+            typechauffeur.getItems().add("INTERNE");
+        }
+        typechauffeur.getSelectionModel().selectFirst();
     }
 
     public void refreshListeInterne() {

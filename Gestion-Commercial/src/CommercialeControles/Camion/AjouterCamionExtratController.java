@@ -78,7 +78,7 @@ public class AjouterCamionExtratController implements Initializable {
 
         poisCamion.setText("0.00");
         Methode.setsizeString(typecamion, 32);
-        setType();
+       // setType();
 
     }
 
@@ -126,6 +126,12 @@ public class AjouterCamionExtratController implements Initializable {
     public void setData(JFXListView<CamionListeH> listeCamion, String type_liste) {
         this.listeCamion = listeCamion;
         this.type_liste = type_liste;
+        if (this.type_liste.equals("INTERNE")) {
+            typec.getItems().add("INTERNE");
+        } else {
+            typec.getItems().add("EXTERNE");
+        }
+        typec.getSelectionModel().selectFirst();
     }
 
     public void refreshInterne() {

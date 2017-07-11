@@ -39,12 +39,12 @@ public class SelectionnerCamionController implements Initializable {
 
         }
 
-        CamionListeH ch = new CamionListeH(listeCamion,"EXTERNE");
+        CamionListeH ch = new CamionListeH(listeCamion,"INTERNE");
         list.add(ch);
         ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
         listeCamion.setItems(myObservableList);
         listeCamion.setOrientation(Orientation.HORIZONTAL);
-        listeCamion.setExpanded(true);
+        
 
     }
 
@@ -59,7 +59,7 @@ public class SelectionnerCamionController implements Initializable {
 
         }
 
-        CamionListeH ch = new CamionListeH(listeCamion,"EXTERNE");
+        CamionListeH ch = new CamionListeH(listeCamion,"INTERNE");
         list.add(ch);
         ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
         listeCamion.setItems(myObservableList);
