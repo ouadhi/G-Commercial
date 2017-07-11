@@ -162,7 +162,7 @@ public class GenerateFactureRemboursementReport {
         operation.putReportInfo(doit, num, start, end, Methode.DoubleFormat(round(totalQte, 2)), Methode.DoubleFormat(round(montantTotal, 2)),
                 montantlettre, references, qtes, dockNomList,  prixUnitair
                 , montants, company.getRegistre(), company.getFiscale(), company.getArticle(),
-                company.getTelephone(), company.getFax(), company.getEmail(),company.getNom(),"");
+                company.getTelephone(), company.getFax(), company.getEmail(),company.getNom(),company.getAddress());
         operation.printReport();
 
     }

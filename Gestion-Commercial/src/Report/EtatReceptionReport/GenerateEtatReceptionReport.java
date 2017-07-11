@@ -152,7 +152,7 @@ public class GenerateEtatReceptionReport {
                     Methode.DoubleFormat(round(totalMoulin,2)), Methode.DoubleFormat(round(totalDif,2)),
                    Methode.DoubleFormat(round(montantCheque,2)), montantlettre,
                     nums, qteFours, qteMoulins, qteDifs,company.getRegistre(), company.getFiscale(), company.getArticle(),
-                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), "");
+                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), company.getAddress());
         }
         operationEtatReceptionReport.printReport();
 

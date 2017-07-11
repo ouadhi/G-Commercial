@@ -55,7 +55,7 @@ public class GenerateEtatRecetteDepense {
                     "", nomBanque, reste, numBanquaire, Methode.DoubleFormat(versementBanque), nums,
                     clients, montants, depenses, soldes, company.getRegistre(), company.getFiscale(),
                     company.getArticle(),
-                    company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), "");
+                    company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(),company.getAddress());
             counter++;
 
         }

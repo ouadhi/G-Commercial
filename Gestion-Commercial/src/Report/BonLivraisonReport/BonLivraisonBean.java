@@ -34,7 +34,6 @@ public class BonLivraisonBean {
     String titreTel;
     String titreFax;
     String titreEmail;
-    
     String entrepriseNom;
     String entrepriseAddress;
 

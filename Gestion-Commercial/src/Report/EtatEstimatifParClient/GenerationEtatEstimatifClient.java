@@ -100,7 +100,7 @@ public class GenerationEtatEstimatifClient {
                 Methode.DoubleFormat(montantTotal), Methode.DoubleFormat(tvaTotal), Methode.DoubleFormat(ttcTotal), Methode.DoubleFormat(timbreTotal),
                 Methode.DoubleFormat(farineTotal), Methode.DoubleFormat(sonTotal), Methode.DoubleFormat(round(qteTotal, 2)),
                 dates, this.nums, this.produits, this.montants, this.tvas, this.ttcs, this.timbres, this.qtes, company.getRegistre(), company.getFiscale(), company.getArticle(),
-                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), "");
+                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), company.getAddress());
         operationEtatEstimatifClient.printReport();
     }
 
@@ -116,7 +116,7 @@ public class GenerationEtatEstimatifClient {
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
                 Methode.DoubleFormat(round(montantTotal, 2)), Methode.DoubleFormat(tvaTotal), Methode.DoubleFormat(round(ttcTotal, 2)), Methode.DoubleFormat(round(timbreTotal, 2)),
                 Methode.DoubleFormat(round(farineTotal, 2)), Methode.DoubleFormat(round(sonTotal, 2)), company.getRegistre(), company.getFiscale(), company.getArticle(),
-                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), "");
+                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), company.getAddress());
         operationEtatEstimatifGlobal.printReport();
         //String.valueOf(round(tvaTotal,2))
     }

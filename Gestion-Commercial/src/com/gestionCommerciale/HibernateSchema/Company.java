@@ -28,13 +28,15 @@ public class Company {
 	String telephone;
 	@Column(name = "fax", nullable = false)
 	String fax;
+        @Column(name = "address", nullable = false)
+	String address;
 
 	public Company() {
 
 	}
 
 	public Company(String nom, String registre, String fiscale, String article, String email, String telephone,
-			String fax) {
+			String fax,String address) {
 		this.nom = nom;
 		this.registre = registre;
 		this.fiscale = fiscale;
@@ -42,8 +44,25 @@ public class Company {
 		this.email = email;
 		this.telephone = telephone;
 		this.fax = fax;
+                this.address= address;
 	}
 
+    public int getIdCompany() {
+        return idCompany;
+    }
+
+    public void setIdCompany(int idCompany) {
+        this.idCompany = idCompany;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+        
 	public String getArticle() {
 		return article;
 	}

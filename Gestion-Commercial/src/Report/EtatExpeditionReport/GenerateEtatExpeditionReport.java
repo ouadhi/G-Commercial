@@ -172,7 +172,7 @@ public class GenerateEtatExpeditionReport {
                 Methode.DoubleFormat(round(sonTotal, 2)), Methode.DoubleFormat(round(montantTotal, 2)),
                 Methode.DoubleFormat(round(versementTotal, 2)), Methode.DoubleFormat(round(differenceTotal, 2)), clients, nums,
                 produits, qteFarins, qteSons, prixs, montants, versements, observations,company.getRegistre(), company.getFiscale(), company.getArticle(),
-                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), "");
+                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), company.getAddress());
         operationEtatExpedition.printReport();
 
     }

@@ -142,7 +142,7 @@ public class GenerateEtatRemboursementReport {
         String end = new SimpleDateFormat("dd-MM-yyyy").format(endDate);
         String start = new SimpleDateFormat("dd-MM-yyyy").format(startDate);
 
-        String date = "De: " + start + " a " + end;
+        String date = "De: " + start + " au " + end;
         String montantlettre = transformationEnLettre(montantTotal);
         Company company= CompanyQueries.getCompany();
       
@@ -167,7 +167,7 @@ public class GenerateEtatRemboursementReport {
             operationEtatRemboursementReport.putReportInfo(doit, date,
                     Methode.DoubleFormat(round(montantTotal, 2)), montantlettre, parcours, distances, nums, qtes,
                     prixs, montants, jours,company.getRegistre(),company.getFiscale(),company.getArticle(),
-                    company.getTelephone(),company.getFax(),company.getEmail(),company.getNom(),"");
+                    company.getTelephone(),company.getFax(),company.getEmail(),company.getNom(),company.getAddress());
         }
         operationEtatRemboursementReport.printReport();
 

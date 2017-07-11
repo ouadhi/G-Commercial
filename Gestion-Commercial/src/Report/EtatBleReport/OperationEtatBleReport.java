@@ -60,11 +60,13 @@ public class OperationEtatBleReport {
 
 	public void putReportInfo(String jour, String totalPoid, String totalNet, String totalEcart, List<String> numBls,
 			List<String> numTiquets, List<String> poidTiquets, List<String> chauffeurs, List<String> matricules,
-			List<String> ptcs, List<String> tares, List<String> nets, List<String> ecarts) {
+			List<String> ptcs, List<String> tares, List<String> nets, List<String> ecarts,String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail,String entrepriseNom,String entrepriseAddress) {
 		// patient info is the first to be written
 
 		EtatBleBean beanInfo = new EtatBleBean(jour, id, totalPoid, totalNet, totalEcart, numBls, numTiquets,
-				poidTiquets, chauffeurs, matricules, ptcs, tares, nets, ecarts);
+				poidTiquets, chauffeurs, matricules, ptcs, tares, nets, ecarts, titreRC, titreFiscal,  titreArticle,
+             titreTel,  titreFax,  titreEmail, entrepriseNom, entrepriseAddress);
 		collBean.add(beanInfo);
 		id++;
 	}

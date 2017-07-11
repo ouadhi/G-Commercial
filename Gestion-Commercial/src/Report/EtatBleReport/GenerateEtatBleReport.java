@@ -17,6 +17,8 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Achat;
+import com.gestionCommerciale.HibernateSchema.Company;
+import com.gestionCommerciale.Models.CompanyQueries;
 import com.gestionCommerciale.Models.SessionsGenerator;
 
 import net.sf.jasperreports.engine.JRException;
@@ -47,6 +49,7 @@ public class GenerateEtatBleReport {
         OperationEtatBleReport operationEtatBleReport = new OperationEtatBleReport();
         getAchatDuJour(jour);
         String jourOB = new SimpleDateFormat("dd-MM-yyyy").format(jour);
+        Company company = CompanyQueries.getCompany();
 
         for (int i = 0; i < achatDuJour.size(); i++) {
             List<String> poidTiquets = new ArrayList<>();
@@ -90,9 +93,10 @@ public class GenerateEtatBleReport {
             String numBl = String.valueOf(achatDuJour.get(i).getNumAcqt());
             numBls.add(numBl);
 
-            operationEtatBleReport.putReportInfo(jourOB, Methode.DoubleFormat(round(totalPoid,2)), Methode.DoubleFormat(round(totalNet,2)),
-                    Methode.DoubleFormat(round(totalEcart,2)), numBls, numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares,
-                    nets, ecarts);
+            operationEtatBleReport.putReportInfo(jourOB, Methode.DoubleFormat(round(totalPoid, 2)), Methode.DoubleFormat(round(totalNet, 2)),
+                    Methode.DoubleFormat(round(totalEcart, 2)), numBls, numTiquets, poidTiquets, chauffeurs, matricules, ptcs, tares,
+                    nets, ecarts,company.getRegistre(),company.getFiscale(),company.getArticle(),
+                    company.getTelephone(),company.getFax(),company.getEmail(),company.getNom(),company.getAddress());
         }
         operationEtatBleReport.printReport();
 

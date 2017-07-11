@@ -33,7 +33,8 @@ public class GenerateBonChargementReport {
             List<String> qtes = new ArrayList<>();
             qtes.add(qte);
             operationBonChargementReport.putReportInfo(num, date, nomEtPrenom, code, address, rc, fiscal, article,
-                    designations, qtes, company.getTelephone(), company.getFax(), company.getEmail(),company.getNom(),"");
+                    designations, qtes, company.getTelephone(), company.getFax()
+                    , company.getEmail(),company.getNom(),company.getAddress());
 
         }
         operationBonChargementReport.printReport();
