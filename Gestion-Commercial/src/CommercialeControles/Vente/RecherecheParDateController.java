@@ -16,13 +16,16 @@ import com.jfoenix.controls.JFXListView;
 import Report.FactureReport.ToutFacture;
 import UIControle.Methode;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
+import java.io.File;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.DirectoryChooser;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
@@ -31,135 +34,130 @@ import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 
 public class RecherecheParDateController implements Initializable {
 
-    @FXML
-    private JFXListView<VenteCell> listevente;
-    @FXML
-    private JFXDatePicker dtpStart;
-    @FXML
-    private JFXDatePicker dtpEnd;
-    List<Facture> factureList;
-    @FXML
-    private Label nbventetoday;
-    @FXML
-    private Label quntitetoday;
-    @FXML
-    private Label montantToday;
+	@FXML
+	private JFXListView<VenteCell> listevente;
+	@FXML
+	private JFXDatePicker dtpStart;
+	@FXML
+	private JFXDatePicker dtpEnd;
+	List<Facture> factureList;
+	@FXML
+	private Label nbventetoday;
+	@FXML
+	private Label quntitetoday;
+	@FXML
+	private Label montantToday;
 
-    @FXML
-    private void close(MouseEvent event) {
-        Methode.getStageMouses(event).close();
-    }
+	@FXML
+	private void close(MouseEvent event) {
+		Methode.getStageMouses(event).close();
+	}
 
-    private void getFactures() {
-        Date start = Date.from(dtpStart.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Date end = Date.from(dtpEnd.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        factureList = FactureQueries.getFactureByDates(start, end);
-        List<VenteCell> list = new ArrayList<>();
-        for (int i = 0; i < factureList.size(); i++) {
-            list.add(new VenteCell(factureList.get(i)));
-        }
-        ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
-        listevente.setItems(myObservableList);
-        
-        listevente.setExpanded(true);
-        
-        setinformation(factureList);
+	private void getFactures() {
+		Date start = Date.from(dtpStart.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date end = Date.from(dtpEnd.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		factureList = FactureQueries.getFactureByDates(start, end);
+		List<VenteCell> list = new ArrayList<>();
+		for (int i = 0; i < factureList.size(); i++) {
+			list.add(new VenteCell(factureList.get(i)));
+		}
+		ObservableList<VenteCell> myObservableList = FXCollections.observableList(list);
+		listevente.setItems(myObservableList);
 
-    }
+		listevente.setExpanded(true);
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+		setinformation(factureList);
 
-        dtpStart.setValue(LocalDate.now());
-        dtpEnd.setValue(LocalDate.now());
-        getFactures();
-    }
+	}
 
-    @FXML
-    private void print(ActionEvent event) {
-        try {
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
 
-            List<JasperPrint> jasperPrints = new ArrayList<JasperPrint>();
-            for (int i = 0; i < factureList.size(); i++) {
-                jasperPrints.add(ToutFacture.ItererJaspoerPrint(factureList.get(i)));
-                System.out.println("------------- facture: " + factureList.get(i).getClient().getPrenom());
+		dtpStart.setValue(LocalDate.now());
+		dtpEnd.setValue(LocalDate.now());
+		getFactures();
+	}
 
-            }
-            JRPdfExporter exporter = new JRPdfExporter();
-            exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrints)); // Set
-            // as
-            // export
-            // input
-            // my
-            // list
-            // with
-            // JasperPrint
-            // s
-            exporter.setExporterOutput(
-                    new SimpleOutputStreamExporterOutput(System.getProperty("user.home") + "/Desktop" + "/out.pdf")); // or
-            // any
-            // other
-            // out
-            // streaam
-            SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
-            configuration.setCreatingBatchModeBookmarks(true); // add this so
-            // your
-            // bookmarks
-            // work, you may
-            // set other
-            // parameters
-            exporter.setConfiguration(configuration);
-            exporter.exportReport();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+	@FXML
+	private void print(ActionEvent event) {
+		try {
+			DirectoryChooser chooser = new DirectoryChooser();
+			chooser.setTitle("Choisir un dossier");
+			File defaultDirectory = new File(System.getProperty("user.home"));
+			chooser.setInitialDirectory(defaultDirectory);
+			File selectedDirectory = chooser.showDialog(((Node) event.getTarget()).getScene().getWindow());
+			if (selectedDirectory == null) {
+				// do nothing
+			} else {
+				List<JasperPrint> jasperPrints = new ArrayList<JasperPrint>();
+				for (int i = 0; i < factureList.size(); i++) {
+					jasperPrints.add(ToutFacture.ItererJaspoerPrint(factureList.get(i)));
 
-    }
+				}
+				JRPdfExporter exporter = new JRPdfExporter();
+				exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrints));
 
-    @FXML
-    private void valider(ActionEvent event) {
-        getFactures();
+				//exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(
+				//		System.getProperty("user.home") + "/Desktop" + "/out.pdf"));
+				exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(selectedDirectory.getAbsolutePath()+"/Factures.pdf"));
 
-    }
-    
-    private double montantTotal(List<Facture> list) {
-        double total = 0;
+				SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
+				configuration.setCreatingBatchModeBookmarks(true);
 
-        for (Facture facture : list) {
-            total += facture.getMontantFinal();
+				exporter.setConfiguration(configuration);
+				exporter.exportReport();
+			}
 
-        }
-        return total;
-    }
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 
-    public double qantiteTotalDeVente(List<Facture> list) {
-        double total = 0;
+	}
 
-        for (Facture facture : list) {
+	@FXML
+	private void valider(ActionEvent event) {
+		getFactures();
 
-            total += qunatiteDeFacture(facture);
+	}
 
-        }
-        return total;
-    }
+	private double montantTotal(List<Facture> list) {
+		double total = 0;
 
-    public int NbtotaleFacture(List<Facture> list) {
-        return list.size();
-    }
+		for (Facture facture : list) {
+			total += facture.getMontantFinal();
 
-    public double qunatiteDeFacture(Facture facture) {
-        double somme = 0;
+		}
+		return total;
+	}
 
-        for (Facture_Produit facture_Produit : facture.getQtes2()) {
-            somme += facture_Produit.getQte_fact();
-        }
-        return somme;
-    }
+	public double qantiteTotalDeVente(List<Facture> list) {
+		double total = 0;
 
-    private void setinformation(List<Facture> list) {
-        nbventetoday.setText( Methode.DoubleFormat(NbtotaleFacture(list)));
-        quntitetoday.setText(Methode.DoubleFormat(qantiteTotalDeVente(list)));
-        montantToday.setText(Methode.DoubleFormat(montantTotal(list)));
-    }
+		for (Facture facture : list) {
+
+			total += qunatiteDeFacture(facture);
+
+		}
+		return total;
+	}
+
+	public int NbtotaleFacture(List<Facture> list) {
+		return list.size();
+	}
+
+	public double qunatiteDeFacture(Facture facture) {
+		double somme = 0;
+
+		for (Facture_Produit facture_Produit : facture.getQtes2()) {
+			somme += facture_Produit.getQte_fact();
+		}
+		return somme;
+	}
+
+	private void setinformation(List<Facture> list) {
+		nbventetoday.setText(Methode.DoubleFormat(NbtotaleFacture(list)));
+		quntitetoday.setText(Methode.DoubleFormat(qantiteTotalDeVente(list)));
+		montantToday.setText(Methode.DoubleFormat(montantTotal(list)));
+	}
 
 }
