@@ -55,6 +55,10 @@ public class ChauffeurController implements Initializable {
 	private JFXTextField recherchetxt;
 	@FXML
 	private Label label;
+    @FXML
+    private MenuItem FiltreInterne;
+    @FXML
+    private MenuItem FiltreExterne;
 
 	@FXML
 	private void AjouterMethode(ActionEvent event) {
@@ -199,5 +203,42 @@ public class ChauffeurController implements Initializable {
 
 		setTotal();
 	}
+
+    @FXML
+    private void interne(ActionEvent event) {
+        
+        orderby.setText("Interne");
+		listeView.getItems().clear();
+		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listInterne() ; 
+		List<ChauffeurCell> list = new ArrayList<>();
+		for (int i = 0; i < listChauffeursDB.size(); i++) {
+			list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+
+		}
+
+		ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+		listeView.setItems(myObservableList);
+		listeView.setExpanded(true);
+
+		setTotal();
+    }
+
+    @FXML
+    private void Externe(ActionEvent event) {
+         orderby.setText("Externe");
+		listeView.getItems().clear();
+		List<Chauffeur> listChauffeursDB = ChauffeurQueries.listExterne() ; 
+		List<ChauffeurCell> list = new ArrayList<>();
+		for (int i = 0; i < listChauffeursDB.size(); i++) {
+			list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+
+		}
+
+		ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+		listeView.setItems(myObservableList);
+		listeView.setExpanded(true);
+
+		setTotal();
+    }
 
 }
