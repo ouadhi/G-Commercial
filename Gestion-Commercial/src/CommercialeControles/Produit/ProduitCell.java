@@ -211,11 +211,13 @@ public class ProduitCell extends GridPane {
     public void intpopup() {
         JFXButton modifier = new JFXButton("Modifier");
         JFXButton supprimer = new JFXButton("Archiver");
+        JFXButton stocke = new JFXButton("Stocke");
 
         modifier.setPadding(new Insets(10));
         supprimer.setPadding(new Insets(10));
+        stocke.setPadding(new Insets(10));
 
-        VBox box = new VBox(modifier, supprimer);
+        VBox box = new VBox(modifier, supprimer , stocke);
         box.setStyle("-fx-background-color: #ffffff");
 
         popup.setContent(box);
@@ -260,6 +262,30 @@ public class ProduitCell extends GridPane {
 
             popup.close();
 
+        });
+        
+        
+        stocke.setOnAction(event -> {
+         try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(ViewUrl.StockeProduit));
+                loader.load();
+
+                StockProduitController ModifierProduit = loader.getController();
+                ModifierProduit.SetData(produit);
+
+                AnchorPane root = loader.getRoot();
+                Methode.moveFocus(root);
+
+                StageDialog dialog = new StageDialog(Methode.getStage(event), root);
+                dialog.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ClienCell.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            popup.close();
+
+        
         });
 
     }
