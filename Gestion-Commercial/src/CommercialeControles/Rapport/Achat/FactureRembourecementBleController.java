@@ -43,12 +43,13 @@ public class FactureRembourecementBleController implements Initializable {
 
     @FXML
     private void print(ActionEvent event) {
-        
+
         GenerateFactureRemboursementReport generateFactureRemboursementReport = new GenerateFactureRemboursementReport();
         Date dateDebutOb = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date dateFinOb = Date.from(dateFin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         String dock = listedock.getSelectionModel().getSelectedItem();
         generateFactureRemboursementReport.generateReport(dateDebutOb, dateFinOb, dock);
+        System.gc();
         close(event);
     }
 

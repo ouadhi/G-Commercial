@@ -23,53 +23,55 @@ import javafx.scene.input.MouseEvent;
 
 public class ClienntRapportController implements Initializable {
 
-	@FXML
-	private JFXDatePicker datedebut;
-	@FXML
-	private JFXDatePicker datefin;
-	@FXML
-	private JFXButton rapport2;
-	@FXML
-	private JFXTextField client;
+    @FXML
+    private JFXDatePicker datedebut;
+    @FXML
+    private JFXDatePicker datefin;
+    @FXML
+    private JFXButton rapport2;
+    @FXML
+    private JFXTextField client;
 
-	@FXML
-	private void close(MouseEvent event) {
-		Methode.getStageMouses(event).close();
-	}
+    @FXML
+    private void close(MouseEvent event) {
+        Methode.getStageMouses(event).close();
+    }
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
-		possibleMot();
+        possibleMot();
 
-		rapport2.setOnAction(event -> {
+        rapport2.setOnAction(event -> {
 
-			GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
-			Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-			Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-			String nomEtPrenomClient = client.getText();
-			generationEtatEstimatifClient.generateReport(dateObDebut, dateObFin, nomEtPrenomClient);
+            GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
+            Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            String nomEtPrenomClient = client.getText();
+            generationEtatEstimatifClient.generateReport(dateObDebut, dateObFin, nomEtPrenomClient);
+            System.gc();
 
-		});
+        });
 
-	}
+    }
 
-	public void possibleMot() {
-		ArrayList<String> liste = new ArrayList<>();
-		for (Client client1 : ClientQueries.list()) {
-			liste.add(client1.getName() + " " + client1.getPrenom());
-		}
+    public void possibleMot() {
+        ArrayList<String> liste = new ArrayList<>();
+        for (Client client1 : ClientQueries.list()) {
+            liste.add(client1.getName() + " " + client1.getPrenom());
+        }
 
-		TextFields.bindAutoCompletion(client, liste);
-	}
+        TextFields.bindAutoCompletion(client, liste);
+    }
 
-	@FXML
-	private void rapport1(ActionEvent event) {
-		GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
-		Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		String nomEtPrenomClient = client.getText();
-		generationEtatEstimatifClient.generateReportGeneral(dateObDebut, dateObFin, nomEtPrenomClient);
+    @FXML
+    private void rapport1(ActionEvent event) {
+        GenerationEtatEstimatifClient generationEtatEstimatifClient = new GenerationEtatEstimatifClient();
+        Date dateObDebut = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date dateObFin = Date.from(datefin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        String nomEtPrenomClient = client.getText();
+        generationEtatEstimatifClient.generateReportGeneral(dateObDebut, dateObFin, nomEtPrenomClient);
+        System.gc();
 
-	}
+    }
 }
