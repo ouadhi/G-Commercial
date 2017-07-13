@@ -38,14 +38,19 @@ public class Loginform extends Application {
     public static void main(String[] args) {
         List<String> macs = getMacs();
 
-// uncomment
-//        if (macs.contains(("DC-85-DE-BF-05-50").replace(" ", "").replace("-", ""))
-//                || macs.contains(("00-E0-4C-68-01-33").replace(" ", "").replace("-", ""))) 
+//change && uncomment
+
+//        if (macs.contains(("A8-86-DD-91-25-3E").replace(" ", "").replace("-", ""))
+//                || macs.contains(("68-5b-35-95-f1-47").replace(" ", "").replace("-", "")))
+        
+        
+// uncomment poste 1
+       //if (macs.contains(("DC-85-DE-BF-05-50").replace(" ", "").replace("-", ""))
+       //         || macs.contains(("00-E0-4C-68-01-33").replace(" ", "").replace("-", ""))) 
         {
             launch(args);
         }
     }
-
     @Override
     public void start(Stage stage) throws Exception {
         // Thread for creating the session factory

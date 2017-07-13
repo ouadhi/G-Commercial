@@ -22,6 +22,8 @@ import com.gestionCommerciale.Models.Facture_ProduitQueries;
 
 import Report.EtatEstimatifGlobal.OperationEtatEstimatifGlobal;
 import UIControle.Methode;
+import com.gestionCommerciale.HibernateSchema.Company;
+import com.gestionCommerciale.Models.CompanyQueries;
 
 /**
  * @author Hicham
@@ -91,12 +93,14 @@ public class GenerationEtatEstimatifClient {
         String start = new SimpleDateFormat("dd-MM-yyyy").format(dateDebut);
         String end = new SimpleDateFormat("dd-MM-yyyy").format(dateFin);
         OperationEtatEstimatifClient operationEtatEstimatifClient = new OperationEtatEstimatifClient();
+        Company company = CompanyQueries.getCompany();
 
         operationEtatEstimatifClient.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
                 Methode.DoubleFormat(montantTotal), Methode.DoubleFormat(tvaTotal), Methode.DoubleFormat(ttcTotal), Methode.DoubleFormat(timbreTotal),
                 Methode.DoubleFormat(farineTotal), Methode.DoubleFormat(sonTotal), Methode.DoubleFormat(round(qteTotal, 2)),
-                dates, this.nums, this.produits, this.montants, this.tvas, this.ttcs, this.timbres, this.qtes);
+                dates, this.nums, this.produits, this.montants, this.tvas, this.ttcs, this.timbres, this.qtes, company.getRegistre(), company.getFiscale(), company.getArticle(),
+                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), company.getAddress());
         operationEtatEstimatifClient.printReport();
     }
 
@@ -106,10 +110,13 @@ public class GenerationEtatEstimatifClient {
         String start = new SimpleDateFormat("dd-MM-yyyy").format(dateDebut);
         String end = new SimpleDateFormat("dd-MM-yyyy").format(dateFin);
         OperationEtatEstimatifGlobal operationEtatEstimatifGlobal = new OperationEtatEstimatifGlobal();
+        Company company = CompanyQueries.getCompany();
+
         operationEtatEstimatifGlobal.putReportInfo(clientNomPrenom, client.getTypeActivity(), client.getAddressClient(),
                 client.getNumRegCom(), client.getnCarteFiscale(), client.getNumArticle(), start, end,
-                Methode.DoubleFormat(round(montantTotal,2)), Methode.DoubleFormat(tvaTotal), Methode.DoubleFormat(round(ttcTotal,2)), Methode.DoubleFormat(round(timbreTotal,2)),
-                Methode.DoubleFormat(round(farineTotal,2)), Methode.DoubleFormat(round(sonTotal,2)));
+                Methode.DoubleFormat(round(montantTotal, 2)), Methode.DoubleFormat(tvaTotal), Methode.DoubleFormat(round(ttcTotal, 2)), Methode.DoubleFormat(round(timbreTotal, 2)),
+                Methode.DoubleFormat(round(farineTotal, 2)), Methode.DoubleFormat(round(sonTotal, 2)), company.getRegistre(), company.getFiscale(), company.getArticle(),
+                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), company.getAddress());
         operationEtatEstimatifGlobal.printReport();
         //String.valueOf(round(tvaTotal,2))
     }
@@ -130,10 +137,10 @@ public class GenerationEtatEstimatifClient {
                         nums.add(String.valueOf(factures.get(j).getIdFacture()));
                         produits.add(fpList.get(k).getProduit().getNom());
                         montants.add(Methode.DoubleFormat(factures.get(j).getMontant()));
-                        double tva = factures.get(j).getMontantFinal() - (factures.get(j).getMontant()+factures.get(j).getTimbre());
-                        tvas.add(Methode.DoubleFormat(round(tva,2)));
-                        ttcs.add(Methode.DoubleFormat(round(factures.get(j).getMontantFinal(),2)));
-                        timbres.add(Methode.DoubleFormat(round(factures.get(j).getTimbre(),2)));
+                        double tva = factures.get(j).getMontantFinal() - (factures.get(j).getMontant() + factures.get(j).getTimbre());
+                        tvas.add(Methode.DoubleFormat(round(tva, 2)));
+                        ttcs.add(Methode.DoubleFormat(round(factures.get(j).getMontantFinal(), 2)));
+                        timbres.add(Methode.DoubleFormat(round(factures.get(j).getTimbre(), 2)));
                         ttcTotal = ttcTotal + factures.get(j).getMontantFinal();
                         montantTotal = montantTotal + factures.get(j).getMontant();
                         tvaTotal = tvaTotal + tva;

@@ -13,222 +13,306 @@ import java.util.List;
  */
 public class EtatExpeditionBean {
 
-	String date;
-	String totalFarine;
-	String totalSon;
-	String totalMontant;
-	String totalVersement;
-	String totalVersemntMoinMontant;
-	String totalQuantite;
-	String farineTotal;
-	String sonTotal;
-	String montantTotal;
-	String versementTotal;
-	String differenceTotal;
-	public List<String> clients;
-	public List<String> nums;
-	public List<String> produits;
-	public List<String> qteFarins;
-	public List<String> qteSons;
-	public List<String> prixs;
-	public List<String> montants;
-	public List<String> versements;
-	public List<String> observations;
+    String date;
+    String totalFarine;
+    String totalSon;
+    String totalMontant;
+    String totalVersement;
+    String totalVersemntMoinMontant;
+    String totalQuantite;
+    String farineTotal;
+    String sonTotal;
+    String montantTotal;
+    String versementTotal;
+    String differenceTotal;
+    public List<String> clients;
+    public List<String> nums;
+    public List<String> produits;
+    public List<String> qteFarins;
+    public List<String> qteSons;
+    public List<String> prixs;
+    public List<String> montants;
+    public List<String> versements;
+    public List<String> observations;
 
-	public EtatExpeditionBean(String date, String totalFarine, String totalSon, String totalMontant,
-			String totalVersement, String totalVersemntMoinMontant, String totalQuantite, String farineTotal,
-			String sonTotal, String montantTotal, String versementTotal, String differenceTotal, List<String> clients,
-			List<String> nums, List<String> produits, List<String> qteFarins, List<String> qteSons, List<String> prixs,
-			List<String> montants, List<String> versements, List<String> observations) {
-		this.date = date;
-		this.totalFarine = totalFarine;
-		this.totalSon = totalSon;
-		this.totalMontant = totalMontant;
-		this.totalVersement = totalVersement;
-		this.totalVersemntMoinMontant = totalVersemntMoinMontant;
-		this.totalQuantite = totalQuantite;
-		this.farineTotal = farineTotal;
-		this.sonTotal = sonTotal;
-		this.montantTotal = montantTotal;
-		this.versementTotal = versementTotal;
-		this.differenceTotal = differenceTotal;
-		this.clients = clients;
-		this.nums = nums;
-		this.produits = produits;
-		this.qteFarins = qteFarins;
-		this.qteSons = qteSons;
-		this.prixs = prixs;
-		this.montants = montants;
-		this.versements = versements;
-		this.observations = observations;
-	}
+    String titreRC;
+    String titreFiscal;
+    String titreArticle;
+    String titreTel;
+    String titreFax;
+    String titreEmail;
+    String entrepriseNom;
+    String entrepriseAddress;
 
-	public List<String> getClients() {
-		return clients;
-	}
+    public EtatExpeditionBean(String date, String totalFarine, String totalSon, String totalMontant,
+            String totalVersement, String totalVersemntMoinMontant, String totalQuantite, String farineTotal,
+            String sonTotal, String montantTotal, String versementTotal, String differenceTotal, List<String> clients,
+            List<String> nums, List<String> produits, List<String> qteFarins, List<String> qteSons, List<String> prixs,
+            List<String> montants, List<String> versements, List<String> observations, String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail, String entrepriseNom, String entrepriseAddress) {
+        this.date = date;
+        this.totalFarine = totalFarine;
+        this.totalSon = totalSon;
+        this.totalMontant = totalMontant;
+        this.totalVersement = totalVersement;
+        this.totalVersemntMoinMontant = totalVersemntMoinMontant;
+        this.totalQuantite = totalQuantite;
+        this.farineTotal = farineTotal;
+        this.sonTotal = sonTotal;
+        this.montantTotal = montantTotal;
+        this.versementTotal = versementTotal;
+        this.differenceTotal = differenceTotal;
+        this.clients = clients;
+        this.nums = nums;
+        this.produits = produits;
+        this.qteFarins = qteFarins;
+        this.qteSons = qteSons;
+        this.prixs = prixs;
+        this.montants = montants;
+        this.versements = versements;
+        this.observations = observations;
+        
+        this.titreRC = titreRC;
+        this.titreFiscal = titreFiscal;
+        this.titreArticle = titreArticle;
+        this.titreTel = titreTel;
+        this.titreFax = titreFax;
+        this.titreEmail = titreEmail; 
+        this.entrepriseNom=entrepriseNom;
+        this.entrepriseAddress=entrepriseAddress;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public String getTitreRC() {
+        return titreRC;
+    }
 
-	public String getDifferenceTotal() {
-		return differenceTotal;
-	}
+    public void setTitreRC(String titreRC) {
+        this.titreRC = titreRC;
+    }
 
-	public String getFarineTotal() {
-		return farineTotal;
-	}
+    public String getTitreFiscal() {
+        return titreFiscal;
+    }
 
-	public List<String> getMontants() {
-		return montants;
-	}
+    public void setTitreFiscal(String titreFiscal) {
+        this.titreFiscal = titreFiscal;
+    }
 
-	public String getMontantTotal() {
-		return montantTotal;
-	}
+    public String getTitreArticle() {
+        return titreArticle;
+    }
 
-	public List<String> getNums() {
-		return nums;
-	}
+    public void setTitreArticle(String titreArticle) {
+        this.titreArticle = titreArticle;
+    }
 
-	public List<String> getObservations() {
-		return observations;
-	}
+    public String getTitreTel() {
+        return titreTel;
+    }
 
-	public List<String> getPrixs() {
-		return prixs;
-	}
+    public void setTitreTel(String titreTel) {
+        this.titreTel = titreTel;
+    }
 
-	public List<String> getProduits() {
-		return produits;
-	}
+    public String getTitreFax() {
+        return titreFax;
+    }
 
-	public List<String> getQteFarins() {
-		return qteFarins;
-	}
+    public void setTitreFax(String titreFax) {
+        this.titreFax = titreFax;
+    }
 
-	public List<String> getQteSons() {
-		return qteSons;
-	}
+    public String getTitreEmail() {
+        return titreEmail;
+    }
 
-	public String getSonTotal() {
-		return sonTotal;
-	}
+    public void setTitreEmail(String titreEmail) {
+        this.titreEmail = titreEmail;
+    }
 
-	public String getTotalFarine() {
-		return totalFarine;
-	}
+    public String getEntrepriseNom() {
+        return entrepriseNom;
+    }
 
-	public String getTotalMontant() {
-		return totalMontant;
-	}
+    public void setEntrepriseNom(String entrepriseNom) {
+        this.entrepriseNom = entrepriseNom;
+    }
 
-	public String getTotalQuantite() {
-		return totalQuantite;
-	}
+    public String getEntrepriseAddress() {
+        return entrepriseAddress;
+    }
 
-	public String getTotalSon() {
-		return totalSon;
-	}
+    public void setEntrepriseAddress(String entrepriseAddress) {
+        this.entrepriseAddress = entrepriseAddress;
+    }
+    
 
-	public String getTotalVersement() {
-		return totalVersement;
-	}
+    public List<String> getClients() {
+        return clients;
+    }
 
-	public String getTotalVersemntMoinMontant() {
-		return totalVersemntMoinMontant;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public List<String> getVersements() {
-		return versements;
-	}
+    public String getDifferenceTotal() {
+        return differenceTotal;
+    }
 
-	public String getVersementTotal() {
-		return versementTotal;
-	}
+    public String getFarineTotal() {
+        return farineTotal;
+    }
 
-	public void setClients(List<String> clients) {
-		this.clients = clients;
-	}
+    public List<String> getMontants() {
+        return montants;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public String getMontantTotal() {
+        return montantTotal;
+    }
 
-	public void setDifferenceTotal(String differenceTotal) {
-		this.differenceTotal = differenceTotal;
-	}
+    public List<String> getNums() {
+        return nums;
+    }
 
-	public void setFarineTotal(String farineTotal) {
-		this.farineTotal = farineTotal;
-	}
+    public List<String> getObservations() {
+        return observations;
+    }
 
-	public void setMontants(List<String> montants) {
-		this.montants = montants;
-	}
+    public List<String> getPrixs() {
+        return prixs;
+    }
 
-	public void setMontantTotal(String montantTotal) {
-		this.montantTotal = montantTotal;
-	}
+    public List<String> getProduits() {
+        return produits;
+    }
 
-	public void setNums(List<String> nums) {
-		this.nums = nums;
-	}
+    public List<String> getQteFarins() {
+        return qteFarins;
+    }
 
-	public void setObservations(List<String> observations) {
-		this.observations = observations;
-	}
+    public List<String> getQteSons() {
+        return qteSons;
+    }
 
-	public void setPrixs(List<String> prixs) {
-		this.prixs = prixs;
-	}
+    public String getSonTotal() {
+        return sonTotal;
+    }
 
-	public void setProduits(List<String> produits) {
-		this.produits = produits;
-	}
+    public String getTotalFarine() {
+        return totalFarine;
+    }
 
-	public void setQteFarins(List<String> qteFarins) {
-		this.qteFarins = qteFarins;
-	}
+    public String getTotalMontant() {
+        return totalMontant;
+    }
 
-	public void setQteSons(List<String> qteSons) {
-		this.qteSons = qteSons;
-	}
+    public String getTotalQuantite() {
+        return totalQuantite;
+    }
 
-	public void setSonTotal(String sonTotal) {
-		this.sonTotal = sonTotal;
-	}
+    public String getTotalSon() {
+        return totalSon;
+    }
 
-	public void setTotalFarine(String totalFarine) {
-		this.totalFarine = totalFarine;
-	}
+    public String getTotalVersement() {
+        return totalVersement;
+    }
 
-	public void setTotalMontant(String totalMontant) {
-		this.totalMontant = totalMontant;
-	}
+    public String getTotalVersemntMoinMontant() {
+        return totalVersemntMoinMontant;
+    }
 
-	public void setTotalQuantite(String totalQuantite) {
-		this.totalQuantite = totalQuantite;
-	}
+    public List<String> getVersements() {
+        return versements;
+    }
 
-	public void setTotalSon(String totalSon) {
-		this.totalSon = totalSon;
-	}
+    public String getVersementTotal() {
+        return versementTotal;
+    }
 
-	public void setTotalVersement(String totalVersement) {
-		this.totalVersement = totalVersement;
-	}
+    public void setClients(List<String> clients) {
+        this.clients = clients;
+    }
 
-	public void setTotalVersemntMoinMontant(String totalVersemntMoinMontant) {
-		this.totalVersemntMoinMontant = totalVersemntMoinMontant;
-	}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public void setVersements(List<String> versements) {
-		this.versements = versements;
-	}
+    public void setDifferenceTotal(String differenceTotal) {
+        this.differenceTotal = differenceTotal;
+    }
 
-	public void setVersementTotal(String versementTotal) {
-		this.versementTotal = versementTotal;
-	}
+    public void setFarineTotal(String farineTotal) {
+        this.farineTotal = farineTotal;
+    }
+
+    public void setMontants(List<String> montants) {
+        this.montants = montants;
+    }
+
+    public void setMontantTotal(String montantTotal) {
+        this.montantTotal = montantTotal;
+    }
+
+    public void setNums(List<String> nums) {
+        this.nums = nums;
+    }
+
+    public void setObservations(List<String> observations) {
+        this.observations = observations;
+    }
+
+    public void setPrixs(List<String> prixs) {
+        this.prixs = prixs;
+    }
+
+    public void setProduits(List<String> produits) {
+        this.produits = produits;
+    }
+
+    public void setQteFarins(List<String> qteFarins) {
+        this.qteFarins = qteFarins;
+    }
+
+    public void setQteSons(List<String> qteSons) {
+        this.qteSons = qteSons;
+    }
+
+    public void setSonTotal(String sonTotal) {
+        this.sonTotal = sonTotal;
+    }
+
+    public void setTotalFarine(String totalFarine) {
+        this.totalFarine = totalFarine;
+    }
+
+    public void setTotalMontant(String totalMontant) {
+        this.totalMontant = totalMontant;
+    }
+
+    public void setTotalQuantite(String totalQuantite) {
+        this.totalQuantite = totalQuantite;
+    }
+
+    public void setTotalSon(String totalSon) {
+        this.totalSon = totalSon;
+    }
+
+    public void setTotalVersement(String totalVersement) {
+        this.totalVersement = totalVersement;
+    }
+
+    public void setTotalVersemntMoinMontant(String totalVersemntMoinMontant) {
+        this.totalVersemntMoinMontant = totalVersemntMoinMontant;
+    }
+
+    public void setVersements(List<String> versements) {
+        this.versements = versements;
+    }
+
+    public void setVersementTotal(String versementTotal) {
+        this.versementTotal = versementTotal;
+    }
 
 }

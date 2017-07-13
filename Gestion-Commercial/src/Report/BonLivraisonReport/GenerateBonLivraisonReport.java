@@ -37,7 +37,7 @@ public class GenerateBonLivraisonReport {
             types.add(type);
             operationBonLivraisonReport.putReportInfo(nom, code, address, rc, fiscal, date, numFacture, article,
                     chauffeur, matricule, designations, qtes, types,company.getRegistre(),company.getFiscale(),company.getArticle(),
-                    company.getTelephone(),company.getFax(),company.getEmail());
+                    company.getTelephone(),company.getFax(),company.getEmail(),company.getNom(),company.getAddress());
 
         }
         operationBonLivraisonReport.printReport();

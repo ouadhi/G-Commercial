@@ -58,11 +58,13 @@ public class OperationEtatEstimatifGlobal {
 
     public void putReportInfo(String nomPrenom, String activity, String address, String rc, String fiscal,
             String article, String dateDebut, String dateFin, String totalMontant, String totalTva, String totalTtc,
-            String totalTimbre, String totalFarine, String totalSon) {
+            String totalTimbre, String totalFarine, String totalSon, String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail,String entrepriseNom,String entrepriseAddress) {
         
         EtatEstimatifGlobalBean beanInfo = new EtatEstimatifGlobalBean(nomPrenom, activity, address, rc, fiscal,
                 article, dateDebut, dateFin, totalMontant, totalTva,
-                 totalTtc, totalTimbre, totalFarine, totalSon);
+                 totalTtc, totalTimbre, totalFarine, totalSon,  titreRC,  titreFiscal,  titreArticle,
+             titreTel,  titreFax,  titreEmail, entrepriseNom, entrepriseAddress);
         collBean.add(beanInfo);
     }
 

@@ -13,130 +13,214 @@ import java.util.List;
  */
 public class EtatReceptionBean {
 
-	String dateDebut;
-	String dateFin;
-	String date;
-	String totalFour;
-	String totalMoulin;
-	String totalDif;
-	String montantTotal;
-	String montantLettre;
-	public List<String> nums;
-	public List<String> qteFours;
-	public List<String> qteMoulins;
-	public List<String> qteDifs;
+    String dateDebut;
+    String dateFin;
+    String date;
+    String totalFour;
+    String totalMoulin;
+    String totalDif;
+    String montantTotal;
+    String montantLettre;
+    public List<String> nums;
+    public List<String> qteFours;
+    public List<String> qteMoulins;
+    public List<String> qteDifs;
 
-	public EtatReceptionBean(String dateDebut, String dateFin, String date, String totalFour, String totalMoulin,
-			String totalDif, String montantTotal, String montantLettre, List<String> nums, List<String> qteFours,
-			List<String> qteMoulins, List<String> qteDifs) {
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.date = date;
-		this.totalFour = totalFour;
-		this.totalMoulin = totalMoulin;
-		this.totalDif = totalDif;
-		this.montantTotal = montantTotal;
-		this.montantLettre = montantLettre;
-		this.nums = nums;
-		this.qteFours = qteFours;
-		this.qteMoulins = qteMoulins;
-		this.qteDifs = qteDifs;
-	}
+    String titreRC;
+    String titreFiscal;
+    String titreArticle;
+    String titreTel;
+    String titreFax;
+    String titreEmail;
+    String entrepriseNom;
+    String entrepriseAddress;
 
-	public String getDate() {
-		return date;
-	}
+    public EtatReceptionBean(String dateDebut, String dateFin, String date, String totalFour, String totalMoulin,
+            String totalDif, String montantTotal, String montantLettre, List<String> nums, List<String> qteFours,
+            List<String> qteMoulins, List<String> qteDifs, String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail, String entrepriseNom, String entrepriseAddress) {
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.date = date;
+        this.totalFour = totalFour;
+        this.totalMoulin = totalMoulin;
+        this.totalDif = totalDif;
+        this.montantTotal = montantTotal;
+        this.montantLettre = montantLettre;
+        this.nums = nums;
+        this.qteFours = qteFours;
+        this.qteMoulins = qteMoulins;
+        this.qteDifs = qteDifs;
+        
+        this.titreRC = titreRC;
+        this.titreFiscal = titreFiscal;
+        this.titreArticle = titreArticle;
+        this.titreTel = titreTel;
+        this.titreFax = titreFax;
+        this.titreEmail = titreEmail; 
+        this.entrepriseNom=entrepriseNom;
+        this.entrepriseAddress=entrepriseAddress;
+    }
 
-	public String getDateDebut() {
-		return dateDebut;
-	}
+    public String getTitreRC() {
+        return titreRC;
+    }
 
-	public String getDateFin() {
-		return dateFin;
-	}
+    public void setTitreRC(String titreRC) {
+        this.titreRC = titreRC;
+    }
 
-	public String getMontantLettre() {
-		return montantLettre;
-	}
+    public String getTitreFiscal() {
+        return titreFiscal;
+    }
 
-	public String getMontantTotal() {
-		return montantTotal;
-	}
+    public void setTitreFiscal(String titreFiscal) {
+        this.titreFiscal = titreFiscal;
+    }
 
-	public List<String> getNums() {
-		return nums;
-	}
+    public String getTitreArticle() {
+        return titreArticle;
+    }
 
-	public List<String> getQteDifs() {
-		return qteDifs;
-	}
+    public void setTitreArticle(String titreArticle) {
+        this.titreArticle = titreArticle;
+    }
 
-	public List<String> getQteFours() {
-		return qteFours;
-	}
+    public String getTitreTel() {
+        return titreTel;
+    }
 
-	public List<String> getQteMoulins() {
-		return qteMoulins;
-	}
+    public void setTitreTel(String titreTel) {
+        this.titreTel = titreTel;
+    }
 
-	public String getTotalDif() {
-		return totalDif;
-	}
+    public String getTitreFax() {
+        return titreFax;
+    }
 
-	public String getTotalFour() {
-		return totalFour;
-	}
+    public void setTitreFax(String titreFax) {
+        this.titreFax = titreFax;
+    }
 
-	public String getTotalMoulin() {
-		return totalMoulin;
-	}
+    public String getTitreEmail() {
+        return titreEmail;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public void setTitreEmail(String titreEmail) {
+        this.titreEmail = titreEmail;
+    }
 
-	public void setDateDebut(String dateDebut) {
-		this.dateDebut = dateDebut;
-	}
+    public String getEntrepriseNom() {
+        return entrepriseNom;
+    }
 
-	public void setDateFin(String dateFin) {
-		this.dateFin = dateFin;
-	}
+    public void setEntrepriseNom(String entrepriseNom) {
+        this.entrepriseNom = entrepriseNom;
+    }
 
-	public void setMontantLettre(String montantLettre) {
-		this.montantLettre = montantLettre;
-	}
+    public String getEntrepriseAddress() {
+        return entrepriseAddress;
+    }
 
-	public void setMontantTotal(String montantTotal) {
-		this.montantTotal = montantTotal;
-	}
+    public void setEntrepriseAddress(String entrepriseAddress) {
+        this.entrepriseAddress = entrepriseAddress;
+    }
+    
 
-	public void setNums(List<String> nums) {
-		this.nums = nums;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public void setQteDifs(List<String> qteDifs) {
-		this.qteDifs = qteDifs;
-	}
+    public String getDateDebut() {
+        return dateDebut;
+    }
 
-	public void setQteFours(List<String> qteFours) {
-		this.qteFours = qteFours;
-	}
+    public String getDateFin() {
+        return dateFin;
+    }
 
-	public void setQteMoulins(List<String> qteMoulins) {
-		this.qteMoulins = qteMoulins;
-	}
+    public String getMontantLettre() {
+        return montantLettre;
+    }
 
-	public void setTotalDif(String totalDif) {
-		this.totalDif = totalDif;
-	}
+    public String getMontantTotal() {
+        return montantTotal;
+    }
 
-	public void setTotalFour(String totalFour) {
-		this.totalFour = totalFour;
-	}
+    public List<String> getNums() {
+        return nums;
+    }
 
-	public void setTotalMoulin(String totalMoulin) {
-		this.totalMoulin = totalMoulin;
-	}
+    public List<String> getQteDifs() {
+        return qteDifs;
+    }
+
+    public List<String> getQteFours() {
+        return qteFours;
+    }
+
+    public List<String> getQteMoulins() {
+        return qteMoulins;
+    }
+
+    public String getTotalDif() {
+        return totalDif;
+    }
+
+    public String getTotalFour() {
+        return totalFour;
+    }
+
+    public String getTotalMoulin() {
+        return totalMoulin;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setDateDebut(String dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public void setDateFin(String dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public void setMontantLettre(String montantLettre) {
+        this.montantLettre = montantLettre;
+    }
+
+    public void setMontantTotal(String montantTotal) {
+        this.montantTotal = montantTotal;
+    }
+
+    public void setNums(List<String> nums) {
+        this.nums = nums;
+    }
+
+    public void setQteDifs(List<String> qteDifs) {
+        this.qteDifs = qteDifs;
+    }
+
+    public void setQteFours(List<String> qteFours) {
+        this.qteFours = qteFours;
+    }
+
+    public void setQteMoulins(List<String> qteMoulins) {
+        this.qteMoulins = qteMoulins;
+    }
+
+    public void setTotalDif(String totalDif) {
+        this.totalDif = totalDif;
+    }
+
+    public void setTotalFour(String totalFour) {
+        this.totalFour = totalFour;
+    }
+
+    public void setTotalMoulin(String totalMoulin) {
+        this.totalMoulin = totalMoulin;
+    }
 
 }

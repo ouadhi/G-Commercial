@@ -60,11 +60,13 @@ public class OperationEtatRecetteDepense {
     public void putReportInfo(String date, String montantTotal, String depenseTotal, String banque, String reste,
             String numBancaire, String versementBancaire,
             List<String> nums, List<String> clients, List<String> montants, List<String> depenses,
-            List<String> soldes) {
+            List<String> soldes, String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail, String entrepriseNom, String entrepriseAddress) {
 
         EtatRecetteDepenseBean beanInfo = new EtatRecetteDepenseBean(date, montantTotal, depenseTotal, banque, reste,
                 numBancaire, versementBancaire,
-                nums, clients, montants, depenses, soldes
+                nums, clients, montants, depenses, soldes,  titreRC,  titreFiscal,  titreArticle,
+             titreTel,  titreFax,  titreEmail,  entrepriseNom,  entrepriseAddress
         );
         collBean.add(beanInfo);
     }

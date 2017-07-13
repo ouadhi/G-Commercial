@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="447.0" prefWidth="605.0" style="-fx-background-color: white;" styleClass="Toppanel" stylesheets="@CssAutre.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Autre.InfoEntrepriseController">
+<AnchorPane id="AnchorPane" prefHeight="497.0" prefWidth="586.0" style="-fx-background-color: white;" styleClass="Toppanel" stylesheets="@CssAutre.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.Autre.InfoEntrepriseController">
    <children>
       <Pane prefHeight="59.0" prefWidth="605.0" styleClass="Toppanel" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -80,8 +80,10 @@
             </JFXTextField>
          </children>
       </GridPane>
-      <JFXButton layoutX="431.0" layoutY="381.0" onAction="#save" prefHeight="46.0" prefWidth="149.0" styleClass="button_save" text="Sauvegarder " />
-      <JFXButton layoutX="246.0" layoutY="381.0" onAction="#quitter" prefHeight="46.0" prefWidth="149.0" styleClass="button_annuler" text="Annuler" />
+      <JFXButton layoutX="423.0" layoutY="427.0" onAction="#save" prefHeight="46.0" prefWidth="149.0" styleClass="button_save" text="Sauvegarder " />
+      <JFXButton layoutX="249.0" layoutY="427.0" onAction="#quitter" prefHeight="46.0" prefWidth="149.0" styleClass="button_annuler" text="Annuler" />
       <Label layoutX="120.0" layoutY="79.0" styleClass="label_txt" text="Nom d'Entreprise : " />
+      <Label layoutX="14.0" layoutY="391.0" styleClass="label_txt" text="Address:" />
+      <JFXTextField fx:id="address" focusColor="#36d484e5" layoutX="75.0" layoutY="381.0" maxWidth="204.0" minWidth="112.0" prefHeight="38.0" prefWidth="194.0" styleClass="champtxt" unFocusColor="#4d4d4d00" />
    </children>
 </AnchorPane>

@@ -23,14 +23,16 @@ public class BonChargementBean {
     public String article;
     public List<String> designations;
     public List<String> qtes;
-    
+   
     String titreTel;
     String titreFax;
     String titreEmail;
+    String entrepriseNom;
+    String entrepriseAddress;
 
     public BonChargementBean(String num, String date, String nomEtPrenom, String code, String address, String rc,
             String fiscal, String article, List<String> designations, List<String> qtes
-            ,String titreTel,String titreFax,String titreEmail) {
+            ,String titreTel,String titreFax,String titreEmail,String entrepriseNom,String entrepriseAddress) {
         this.num = num;
         this.date = date;
         this.nomEtPrenom = nomEtPrenom;
@@ -44,7 +46,26 @@ public class BonChargementBean {
         this.titreTel = titreTel;
         this.titreFax = titreFax;
         this.titreEmail = titreEmail;
+        this.entrepriseNom=entrepriseNom;
+        this.entrepriseAddress=entrepriseAddress;
     }
+
+    public String getEntrepriseNom() {
+        return entrepriseNom;
+    }
+
+    public void setEntrepriseNom(String entrepriseNom) {
+        this.entrepriseNom = entrepriseNom;
+    }
+
+    public String getEntrepriseAddress() {
+        return entrepriseAddress;
+    }
+
+    public void setEntrepriseAddress(String entrepriseAddress) {
+        this.entrepriseAddress = entrepriseAddress;
+    }
+    
 
     public String getTitreTel() {
         return titreTel;

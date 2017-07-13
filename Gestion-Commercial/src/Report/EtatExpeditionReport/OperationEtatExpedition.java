@@ -61,12 +61,14 @@ public class OperationEtatExpedition {
 			String totalVersement, String totalVersemntMoinMontant, String totalQuantite, String farineTotal,
 			String sonTotal, String montantTotal, String versementTotal, String differenceTotal, List<String> clients,
 			List<String> nums, List<String> produits, List<String> qteFarins, List<String> qteSons, List<String> prixs,
-			List<String> montants, List<String> versements, List<String> observations) {
+			List<String> montants, List<String> versements, List<String> observations, String titreRC, String titreFiscal, String titreArticle,
+            String titreTel, String titreFax, String titreEmail, String entrepriseNom, String entrepriseAddress) {
 
 		EtatExpeditionBean beanInfo = new EtatExpeditionBean(date, totalFarine, totalSon, totalMontant, totalVersement,
 				totalVersemntMoinMontant, totalQuantite, farineTotal, sonTotal, montantTotal, versementTotal,
 				differenceTotal, clients, nums, produits, qteFarins, qteSons, prixs, montants, versements,
-				observations);
+				observations,  titreRC,  titreFiscal,  titreArticle,
+             titreTel,  titreFax,  titreEmail,  entrepriseNom,  entrepriseAddress);
 		collBean.add(beanInfo);
 	}
 

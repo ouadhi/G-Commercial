@@ -34,11 +34,13 @@ public class BonLivraisonBean {
     String titreTel;
     String titreFax;
     String titreEmail;
+    String entrepriseNom;
+    String entrepriseAddress;
 
     public BonLivraisonBean(int id, String nom, String code, String address, String rc, String fiscal, String date,
             String numFacture, String article, String chauffeur, String matricule, List<String> designations,
             List<String> qtes, List<String> types, String titreRC, String titreFiscal, String titreArticle,
-            String titreTel, String titreFax, String titreEmail) {
+            String titreTel, String titreFax, String titreEmail,String entrepriseNom,String entrepriseAddress) {
         this.id = id;
         this.nom = nom;
         this.code = code;
@@ -59,8 +61,26 @@ public class BonLivraisonBean {
         this.titreTel = titreTel;
         this.titreFax = titreFax;
         this.titreEmail = titreEmail;
+        this.entrepriseNom=entrepriseNom;
+        this.entrepriseAddress=entrepriseAddress;
     }
 
+    public String getEntrepriseNom() {
+        return entrepriseNom;
+    }
+
+    public void setEntrepriseNom(String entrepriseNom) {
+        this.entrepriseNom = entrepriseNom;
+    }
+
+    public String getEntrepriseAddress() {
+        return entrepriseAddress;
+    }
+
+    public void setEntrepriseAddress(String entrepriseAddress) {
+        this.entrepriseAddress = entrepriseAddress;
+    }
+    
     public String getTitreRC() {
         return titreRC;
     }

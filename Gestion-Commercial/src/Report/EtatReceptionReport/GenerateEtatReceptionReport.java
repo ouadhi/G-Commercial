@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Locale;
 import org.hibernate.Session;
 import com.gestionCommerciale.HibernateSchema.Achat;
+import com.gestionCommerciale.HibernateSchema.Company;
+import com.gestionCommerciale.Models.CompanyQueries;
 import com.gestionCommerciale.Models.SessionsGenerator;
 import com.ibm.icu.text.RuleBasedNumberFormat;
 
@@ -125,6 +127,7 @@ public class GenerateEtatReceptionReport {
         achatParJour(increment_decrementDays(false, startDate, 1), increment_decrementDays(true, endDate, 1));
         RuleBasedNumberFormat ruleBasedNumberFormat = new RuleBasedNumberFormat(new Locale("fr", "FR"),
                 RuleBasedNumberFormat.SPELLOUT);
+        Company company = CompanyQueries.getCompany();
 
         double prixOAIC = 0;
         if (!listAchats.isEmpty()) {
@@ -148,7 +151,8 @@ public class GenerateEtatReceptionReport {
             operationEtatReceptionReport.putReportInfo(newStartDate, newEndDate, dateJour, Methode.DoubleFormat(round(totalFour,2)),
                     Methode.DoubleFormat(round(totalMoulin,2)), Methode.DoubleFormat(round(totalDif,2)),
                    Methode.DoubleFormat(round(montantCheque,2)), montantlettre,
-                    nums, qteFours, qteMoulins, qteDifs);
+                    nums, qteFours, qteMoulins, qteDifs,company.getRegistre(), company.getFiscale(), company.getArticle(),
+                company.getTelephone(), company.getFax(), company.getEmail(), company.getNom(), company.getAddress());
         }
         operationEtatReceptionReport.printReport();
 

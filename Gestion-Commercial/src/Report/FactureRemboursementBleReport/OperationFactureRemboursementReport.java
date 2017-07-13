@@ -60,12 +60,12 @@ public class OperationFactureRemboursementReport {
     public void putReportInfo(String doit, String numFacture, String dateDebut, String dateFin, String qteTotal,
             String montantTotal, String montantLettre, List<String> references, List<String> qtes,
             List<String> designations, List<String> prixs, List<String> montants, String titreRC, String titreFiscal, String titreArticle,
-            String titreTel, String titreFax, String titreEmail) {
+            String titreTel, String titreFax, String titreEmail,String entrepriseNom,String entrepriseAddress) {
         // patient info is the first to be written
 
         FactureRemboursementBean beanInfo = new FactureRemboursementBean(doit, numFacture, dateDebut, dateFin, qteTotal,
                 montantTotal, montantLettre, references, qtes, designations, prixs, montants, titreRC, titreFiscal, titreArticle,
-                titreTel, titreFax, titreEmail);
+                titreTel, titreFax, titreEmail, entrepriseNom, entrepriseAddress);
         collBean.add(beanInfo);
     }
 

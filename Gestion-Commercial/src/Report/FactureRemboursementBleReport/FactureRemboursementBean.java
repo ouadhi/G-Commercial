@@ -32,11 +32,14 @@ public class FactureRemboursementBean {
     String titreTel;
     String titreFax;
     String titreEmail;
+    
+    String entrepriseNom;
+    String entrepriseAddress;
 
     public FactureRemboursementBean(String doit, String numFacture, String dateDebut, String dateFin, String qteTotal,
             String montantTotal, String montantLettre, List<String> references, List<String> qtes,
             List<String> designations, List<String> prixs, List<String> montants,String titreRC, String titreFiscal,String titreArticle,
-           String titreTel,String titreFax,String titreEmail) {
+           String titreTel,String titreFax,String titreEmail,String entrepriseNom,String entrepriseAddress) {
         this.doit = doit;
         this.numFacture = numFacture;
         this.dateDebut = dateDebut;
@@ -56,8 +59,26 @@ public class FactureRemboursementBean {
         this.titreTel = titreTel;
         this.titreFax = titreFax;
         this.titreEmail = titreEmail;
+        this.entrepriseNom=entrepriseNom;
+        this.entrepriseAddress=entrepriseAddress;
     }
 
+    public String getEntrepriseNom() {
+        return entrepriseNom;
+    }
+
+    public void setEntrepriseNom(String entrepriseNom) {
+        this.entrepriseNom = entrepriseNom;
+    }
+
+    public String getEntrepriseAddress() {
+        return entrepriseAddress;
+    }
+
+    public void setEntrepriseAddress(String entrepriseAddress) {
+        this.entrepriseAddress = entrepriseAddress;
+    }
+    
     public String getTitreRC() {
         return titreRC;
     }

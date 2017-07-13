@@ -11,7 +11,6 @@ import com.gestionCommerciale.Models.Facture_ProduitQueries;
 import com.jfoenix.controls.JFXListView;
 
 import UIControle.Methode;
-import java.lang.reflect.Method;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
