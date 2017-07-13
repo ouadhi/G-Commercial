@@ -26,17 +26,17 @@
       <Line endX="20.0" layoutX="565.0" layoutY="71.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
       <Line endX="20.0" layoutX="484.0" layoutY="71.0" startX="-41.0" stroke="#36d484" strokeWidth="2.0" styleClass="lien_clor" />
       <Label layoutX="777.0" layoutY="94.0" styleClass="finOperation" text="Ble" />
-      <ImageView fx:id="infochaffeur" fitHeight="23.0" fitWidth="31.0" layoutX="462.0" layoutY="93.0" onMouseEntered="#opneInfoChauufeur" onMouseExited="#CloseInforChauffeur" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infochaffeur" fitHeight="23.0" fitWidth="31.0" layoutX="462.0" layoutY="93.0" onMouseClicked="#opneInfoChauufeur" onMouseExited="#CloseInforChauffeur" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="infocamion" fitHeight="23.0" fitWidth="31.0" layoutX="640.0" layoutY="93.0" onMouseEntered="#opneInfoCamion" onMouseExited="#CloseInfoCamion" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infocamion" fitHeight="23.0" fitWidth="31.0" layoutX="640.0" layoutY="93.0" onMouseClicked="#opneInfoCamion" onMouseExited="#CloseInfoCamion" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="infoBle" fitHeight="23.0" fitWidth="31.0" layoutX="806.0" layoutY="93.0" onMouseEntered="#opneInfoBle" onMouseExited="#CloseinfoBle" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infoBle" fitHeight="23.0" fitWidth="31.0" layoutX="806.0" layoutY="93.0" onMouseClicked="#opneInfoBle" onMouseExited="#CloseinfoBle" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
@@ -142,7 +142,7 @@
       <JFXButton fx:id="save" layoutX="815.0" layoutY="355.0" onAction="#sauvgarder" styleClass="button_save" text="Enregistrer" />
       <JFXButton fx:id="annuler" layoutX="682.0" layoutY="355.0" onAction="#quitter" styleClass="button_annuler" text="Annuler" />
       <Label layoutX="220.0" layoutY="95.0" styleClass="finOperation" text="Dock" />
-      <ImageView fx:id="infodock" fitHeight="23.0" fitWidth="31.0" layoutX="272.0" layoutY="93.0" onMouseEntered="#opneInfoDock" onMouseExited="#CloseInforDock" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infodock" fitHeight="23.0" fitWidth="31.0" layoutX="272.0" layoutY="93.0" onMouseClicked="#opneInfoDock" onMouseExited="#CloseInforDock" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>

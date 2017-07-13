@@ -31,6 +31,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class ListeAchatController implements Initializable {
 
@@ -56,6 +57,7 @@ public class ListeAchatController implements Initializable {
     private Label todayquantite;
     @FXML
     private Label totalAcaht;
+    Stage  stage  =  null  ; 
 
     @FXML
     private void Archive(ActionEvent event) {
@@ -131,6 +133,7 @@ public class ListeAchatController implements Initializable {
 
     @FXML
     private void setOrder(ActionEvent event) {
+        stage = Methode.getStage(event);
     }
 
     private void setTotale() {
@@ -177,6 +180,17 @@ public class ListeAchatController implements Initializable {
         listeAchats.setItems(myObservableList);
         listeAchats.setExpanded(true);
         setTotale();
+    }
+
+    @FXML
+    private void RechDate(ActionEvent event) {
+        try {
+            AnchorPane pane  =  FXMLLoader.load(getClass().getResource(ViewUrl.AchatDate))  ;
+            StageDialog stageD  =  new StageDialog(stage, pane) ;  
+            stageD.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ListeAchatController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

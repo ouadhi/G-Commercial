@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="641.0" prefWidth="1180.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommercialeControles.OperationAchat.FiltreDateController">
+   <children>
+      <JFXListView fx:id="listeAchats" layoutX="38.0" layoutY="160.0" onMouseClicked="#showAchatSlide" prefHeight="400.0" prefWidth="1114.0" />
+      <GridPane alignment="CENTER" layoutX="38.0" layoutY="97.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="1114.0" style="-fx-background-color: #edf1f5;">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="182.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="207.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="349.0" minWidth="10.0" prefWidth="177.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="555.0" minWidth="10.0" prefWidth="547.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="171.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="N° acquit ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text="Date fournir" GridPane.columnIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text="Quantité fournie" GridPane.columnIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <JFXDatePicker fx:id="dtpStart" defaultColor="#36d484" layoutX="253.0" layoutY="35.0" stylesheets="@AchatCSS.css" />
+      <JFXDatePicker fx:id="dtpEnd" defaultColor="#36d484" layoutX="492.0" layoutY="35.0" stylesheets="@AchatCSS.css" />
+      <Label layoutX="228.0" layoutY="43.0" stylesheets="@AchatCSS.css" text="De">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="476.0" layoutY="43.0" stylesheets="@AchatCSS.css" text="à">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="730.0" layoutY="36.0" onAction="#valider" styleClass="Ajouter_button" stylesheets="@AchatCSS.css" text="Valider">
+         <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton layoutX="821.0" layoutY="36.0" onAction="#print" prefHeight="36.0" prefWidth="100.0" styleClass="Ajouter_button" stylesheets="@AchatCSS.css" text="Imprimer">
+         <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+         </padding>
+      </JFXButton>
+      <Text layoutX="70.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VB">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="277.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="todayAchat" layoutX="122.0" layoutY="593.0" text="00000000">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="todayquantite" layoutX="311.0" layoutY="593.0" text="00000000">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="close" fitHeight="20.0" fitWidth="31.0" layoutX="1128.0" layoutY="26.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="icons/close.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

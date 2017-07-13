@@ -131,22 +131,22 @@
       <Label layoutX="479.0" layoutY="139.0" styleClass="label_txt" text="Chauffeur" />
       <Label layoutX="618.0" layoutY="139.0" styleClass="label_txt" text="Camion" />
       <Label layoutX="740.0" layoutY="139.0" styleClass="label_txt" text="Produit" />
-      <ImageView fx:id="clienticon" fitHeight="28.0" fitWidth="28.0" layoutX="437.0" layoutY="136.0" onMouseEntered="#clientIN" onMouseExited="#clientOUT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clienticon" fitHeight="28.0" fitWidth="28.0" layoutX="437.0" layoutY="136.0" onMouseClicked="#clientIN" onMouseExited="#clientOUT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="chauffeuricon" fitHeight="28.0" fitWidth="28.0" layoutX="563.0" layoutY="136.0" onMouseEntered="#chauffeurIN" onMouseExited="#chauffeurOUT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="chauffeuricon" fitHeight="28.0" fitWidth="28.0" layoutX="563.0" layoutY="136.0" onMouseClicked="#chauffeurIN" onMouseExited="#chauffeurOUT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="camionIcon" fitHeight="28.0" fitWidth="28.0" layoutX="689.0" layoutY="136.0" onMouseEntered="#camionIN" onMouseExited="#camionOUT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="camionIcon" fitHeight="28.0" fitWidth="28.0" layoutX="689.0" layoutY="136.0" onMouseClicked="#camionIN" onMouseExited="#camionOUT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="produitIcon" fitHeight="28.0" fitWidth="28.0" layoutX="802.0" layoutY="136.0" onMouseEntered="#produitIN" onMouseExited="#produitOUT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="produitIcon" fitHeight="28.0" fitWidth="28.0" layoutX="802.0" layoutY="136.0" onMouseClicked="#produitIN" onMouseExited="#produitOUT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/icons/preview.png" />
          </image>

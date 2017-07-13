@@ -200,5 +200,24 @@ public class AchatQueries {
             return true;
         }
     }
+    
+    public static  List<Achat>  RechercheParDate (Date debut ,  Date  Fin )  {
+       
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String startString = df.format(debut);
+        String endString = df.format(Fin);
 
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        List<Achat> list = new ArrayList<>();
+        try {
+          
+            list = session.createQuery("from Achat where deleted =  false and  dateAcqt BETWEEN '" + startString + "' and '" + endString +"'  ").list();
+            
+         } finally {
+            session.close();
+        }
+        return list;
+    }
+    
 }
