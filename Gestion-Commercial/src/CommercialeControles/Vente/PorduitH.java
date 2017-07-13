@@ -232,6 +232,7 @@ public class PorduitH extends GridPane {
 			} else {
 				Ajouterbttn.setStyle("-fx-background-color: #74c080;-fx-background-radius: 30; -fx-text-fill: white;");
 				quantite.setVisible(false);
+                                quantite.setText("1");
 				selected = false;
 				OperationVenteController.produitselected.remove(this);
 				SelectionnerProduitController.staticNbselected

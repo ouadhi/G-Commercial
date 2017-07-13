@@ -80,7 +80,7 @@
             <Image url="icons/ChauffeurGry.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bleicon" fitHeight="28.0" fitWidth="33.0" layoutX="380.0" layoutY="80.0" onMouseClicked="#bleIN" onMouseEntered="#bleIN" onMouseExited="#bleOUT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bleicon" fitHeight="28.0" fitWidth="33.0" layoutX="380.0" layoutY="80.0" onMouseClicked="#bleIN" onMouseExited="#bleOUT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="icons/BleGry.png" />
          </image>

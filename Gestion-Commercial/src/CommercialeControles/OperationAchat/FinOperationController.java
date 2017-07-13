@@ -236,6 +236,12 @@ public class FinOperationController implements Initializable {
         PopOver popup = new PopOver();
         popup.setCornerRadius(4);
         popup.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
+        
+        infocamion.setOnMouseClicked(e -> {
+         infocamion.setImage(viewHover);
+        popup.setContentNode(camion);
+        popup.show(infocamion);
+        });
 
     }
 
@@ -248,9 +254,7 @@ public class FinOperationController implements Initializable {
 
     @FXML
     private void opneInfoCamion(MouseEvent event) {
-        infocamion.setImage(viewHover);
-        popup.setContentNode(camion);
-        popup.show(infocamion);
+       
     }
 
     @FXML
