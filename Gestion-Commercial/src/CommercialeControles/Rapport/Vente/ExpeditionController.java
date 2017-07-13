@@ -1,4 +1,3 @@
-
 package CommercialeControles.Rapport.Vente;
 
 import java.io.IOException;
@@ -19,31 +18,31 @@ import net.sf.jasperreports.engine.JRException;
 
 public class ExpeditionController implements Initializable {
 
-	@FXML
-	private JFXDatePicker date;
+    @FXML
+    private JFXDatePicker date;
 
-	@FXML
-	private void close(ActionEvent event) {
-		Methode.getStage(event).close();
-	}
+    @FXML
+    private void close(ActionEvent event) {
+        Methode.getStage(event).close();
+    }
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
-	}
+    }
 
-	@FXML
-	private void print(ActionEvent event) throws IOException, JRException {
-		// code
-		GenerateEtatExpeditionReport generateEtatExpeditionReport = new GenerateEtatExpeditionReport();
-		Date dateOb = Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		generateEtatExpeditionReport.generateReport(dateOb);
+    @FXML
+    private void print(ActionEvent event) throws IOException, JRException {
+        // code
+        GenerateEtatExpeditionReport generateEtatExpeditionReport = new GenerateEtatExpeditionReport();
+        Date dateOb = Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        generateEtatExpeditionReport.generateReport(dateOb);
+        System.gc();
+    }
 
-	}
-
-	@FXML
-	private void quitter(MouseEvent event) {
-		Methode.getStageMouses(event).close();
-	}
+    @FXML
+    private void quitter(MouseEvent event) {
+        Methode.getStageMouses(event).close();
+    }
 
 }

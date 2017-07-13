@@ -23,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class PrintViewController implements Initializable {
+
     @FXML
     private JFXCheckBox facture;
     @FXML
@@ -83,11 +84,13 @@ public class PrintViewController implements Initializable {
                         factureimp.getClient().getnCarteFiscale(), date,
                         String.valueOf(factureimp.getIdFacture()), factureimp.getClient().getNumArticle(),
                         Methode.DoubleFormat(round(montantTotal, 2)), Methode.DoubleFormat(round(tva, 2)),
-                         Methode.DoubleFormat(round(factureimp.getTimbre(), 2)),
+                        Methode.DoubleFormat(round(factureimp.getTimbre(), 2)),
                         Methode.DoubleFormat(round(ttc, 2)), montantlettre,
                         factureimp.getChauffeur().getNom() + " " + factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente, qtesVente, prixsVente, montantsVente,
                         factureimp.getTypeVersement());
+                System.gc();
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -113,6 +116,7 @@ public class PrintViewController implements Initializable {
                         factureimp.getClient().getTypeActivity(), factureimp.getClient().getAddressClient(),
                         factureimp.getClient().getNumRegCom(), factureimp.getClient().getnCarteFiscale(),
                         factureimp.getClient().getNumArticle(), designationsVente, qtesVente);
+                System.gc();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -144,6 +148,8 @@ public class PrintViewController implements Initializable {
                         factureimp.getClient().getNumArticle(),
                         factureimp.getChauffeur().getNom() + " " + factureimp.getChauffeur().getPrenom(),
                         factureimp.getCamion().getMatricule(), designationsVente, qtesVente, typesVente);
+                System.gc();
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

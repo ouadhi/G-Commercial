@@ -1,4 +1,3 @@
-
 package CommercialeControles.Rapport.Achat;
 
 import java.net.URL;
@@ -18,32 +17,33 @@ import javafx.scene.input.MouseEvent;
 
 public class EtatDeRecepetionController implements Initializable {
 
-	@FXML
-	private JFXDatePicker datedebut;
-	@FXML
-	private JFXDatePicker dateFin;
+    @FXML
+    private JFXDatePicker datedebut;
+    @FXML
+    private JFXDatePicker dateFin;
 
-	@FXML
-	private void close(ActionEvent event) {
-		Methode.getStage(event).close();
-	}
+    @FXML
+    private void close(ActionEvent event) {
+        Methode.getStage(event).close();
+    }
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
-	}
+    }
 
-	@FXML
-	private void print(ActionEvent event) {
-		GenerateEtatReceptionReport generateEtatReceptionReport = new GenerateEtatReceptionReport();
-		Date dateDebutOb = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date dateFinOb = Date.from(dateFin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		generateEtatReceptionReport.generateReport(dateDebutOb, dateFinOb);
-	}
+    @FXML
+    private void print(ActionEvent event) {
+        GenerateEtatReceptionReport generateEtatReceptionReport = new GenerateEtatReceptionReport();
+        Date dateDebutOb = Date.from(datedebut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date dateFinOb = Date.from(dateFin.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        generateEtatReceptionReport.generateReport(dateDebutOb, dateFinOb);
+        System.gc();
+    }
 
-	@FXML
-	private void quitter(MouseEvent event) {
-		Methode.getStageMouses(event).close();
-	}
+    @FXML
+    private void quitter(MouseEvent event) {
+        Methode.getStageMouses(event).close();
+    }
 
 }

@@ -54,6 +54,8 @@ public class RecetteViewController implements Initializable {
             Date dateOb = Date.from(debut.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
             generateEtatRecetteDepense.generateReport(dateOb, banque.getSelectionModel().getSelectedItem(),
                     Double.parseDouble(versement.getText()));
+            System.gc(); 
+
         } catch (Exception ex) {
             if (banque.getSelectionModel().getSelectedItem() == null) {
                 Notification.error("Choisir une banque");

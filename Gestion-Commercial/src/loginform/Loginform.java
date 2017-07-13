@@ -59,7 +59,6 @@ public class Loginform extends Application {
             public void run() {
                 SessionsGenerator FactoryObject = new SessionsGenerator();
                 printReport();
-
             }
         }.start();
         Image icon = new Image(getClass().getResourceAsStream("/icons/logo.jpg"));
@@ -70,7 +69,6 @@ public class Loginform extends Application {
         stage.setScene(scene);
         Methode.moveFocus(root);
         stage.show();
-
         stage.setOnCloseRequest(e -> {
             e.consume();
             closeStage();
