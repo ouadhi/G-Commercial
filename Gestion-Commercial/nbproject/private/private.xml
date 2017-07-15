@@ -5,7 +5,11 @@
         <group>
             <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/loginform/Loginform.java</file>
             <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/CommercialeControles/Vente/PrintViewController.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/BonLivraisonReport/BonLivraisonBean.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/Report/BonLivraisonReport/OperationBonLivraisonReport.java</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/com/gestionCommerciale/HibernateSchema/Facture_Produit.java</file>
             <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/resources/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/Hicham/service_comercial/Gestion-Commercial/src/com/gestionCommerciale/Models/Facture_ProduitQueries.java</file>
         </group>
     </open-files>
 </project-private>

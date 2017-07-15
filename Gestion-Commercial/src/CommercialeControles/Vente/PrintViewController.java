@@ -58,25 +58,23 @@ public class PrintViewController implements Initializable {
                 List<String> prixsVente = new ArrayList<>();
                 List<String> montantsVente = new ArrayList<>();
                 List<Facture_Produit> fpList = Facture_ProduitQueries.list(factureimp);
-
                 for (int i = 0; i < fpList.size(); i++) {
                     designationsVente.add(fpList.get(i).getProduit().getNom());
                     qtesVente.add(Methode.DoubleFormat(fpList.get(i).getQte_fact()));
                     prixsVente.add(Methode.DoubleFormat(fpList.get(i).getProduit().getPrix()));
                     montantsVente
-                            .add(Methode.DoubleFormat(fpList.get(i).getQte_fact() * fpList.get(i).getProduit().getPrix()));
+                            .add(Methode.DoubleFormat(fpList.get(i).getQte_fact() * 
+                                    fpList.get(i).getProduit().getPrix()));
                     // montantTotal = montantTotal +
                     // (fpList.get(i).getQte_fact()
                     // * fpList.get(i).getProduit().getPrix());
                 }
-                // double ttc = factureimp.getMontant() * ((factureimp.getTva()
-                // / 100) + factureimp.getMontant());
                 double ttc = factureimp.getMontantFinal();
                 double tva = ttc - (montantTotal + factureimp.getTimbre());
 
                 String montantlettre = transformationEnLettre(ttc);
                 String date = new SimpleDateFormat("dd-MM-yyyy").format(factureimp.getDate());
-
+                
                 generateFactureReport.generateReport(
                         factureimp.getClient().getName() + " " + factureimp.getClient().getPrenom(),
                         String.valueOf(factureimp.getClient().getTypeActivity()),

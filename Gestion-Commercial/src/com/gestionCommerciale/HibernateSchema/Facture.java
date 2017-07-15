@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -25,148 +27,148 @@ import javax.persistence.TemporalType;
 @Table(name = "Facture")
 public class Facture {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_facture", nullable = false)
-	int idFacture;
-	@Column(name = "date", nullable = false)
-	@Temporal(value = TemporalType.DATE)
-	Date date;
-	@Column(name = "montant", nullable = false)
-	double montant;
-	@Column(name = "montant_final", nullable = false)
-	double montantFinal;
-	@Column(name = "tva", nullable = false)
-	double tva;
-	@Column(name = "type_versement", nullable = false)
-	String typeVersement;
-	@Column(name = "timbre", nullable = false)
-	double timbre;
-	@ManyToOne
-	@JoinColumn(name = "id_client")
-	private Client client;
-	@ManyToOne
-	@JoinColumn(name = "id_chauffeur")
-	private Chauffeur chauffeur;
-	@ManyToOne
-	@JoinColumn(name = "id_camion")
-	private Camion camion;
-	@OneToMany(targetEntity = Facture_Produit.class, mappedBy = "facture", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Facture_Produit> qtes;
-	@Column(name = "deleted", nullable = false)
-	boolean deleted;
-	@ManyToOne
-	@JoinColumn(name = "id_annee")
-	private Annee annee;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_facture", nullable = false)
+    int idFacture;
+    @Column(name = "date", nullable = false)
+    @Temporal(value = TemporalType.DATE)
+    Date date;
+    @Column(name = "montant", nullable = false)
+    double montant;
+    @Column(name = "montant_final", nullable = false)
+    double montantFinal;
+    @Column(name = "tva", nullable = false)
+    double tva;
+    @Column(name = "type_versement", nullable = false)
+    String typeVersement;
+    @Column(name = "timbre", nullable = false)
+    double timbre;
+    @ManyToOne
+    @JoinColumn(name = "id_client")
+    private Client client;
+    @ManyToOne
+    @JoinColumn(name = "id_chauffeur")
+    private Chauffeur chauffeur;
+    @ManyToOne
+    @JoinColumn(name = "id_camion")
+    private Camion camion;
+    @OneToMany(targetEntity = Facture_Produit.class, mappedBy = "facture", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch (FetchMode.SELECT)
+    private List<Facture_Produit> qtes;
+    @Column(name = "deleted", nullable = false)
+    boolean deleted;
+    @ManyToOne
+    @JoinColumn(name = "id_annee")
+    private Annee annee;
 
-	//
-	public Facture() {
-	}
+    //
+    public Facture() {
+    }
 
+    public Facture(Date date, double montant, double tva, double timbre, String typeVersement) {
+        this.date = date;
+        this.montant = montant;
+        // this.tva = tva;
+        this.timbre = timbre;
+        this.typeVersement = typeVersement;
+    }
 
-	public Facture(Date date, double montant, double tva, double timbre,String typeVersement) {
-		this.date = date;
-		this.montant = montant;
-		// this.tva = tva;
-		this.timbre = timbre;
-		this.typeVersement = typeVersement;
-	}
+    public Annee getAnnee() {
+        return annee;
+    }
 
-	public Annee getAnnee() {
-		return annee;
-	}
+    public Camion getCamion() {
+        return camion;
+    }
 
-	public Camion getCamion() {
-		return camion;
-	}
+    public Chauffeur getChauffeur() {
+        return chauffeur;
+    }
 
-	public Chauffeur getChauffeur() {
-		return chauffeur;
-	}
+    public Client getClient() {
+        return client;
+    }
 
-	public Client getClient() {
-		return client;
-	}
+    public Date getDate() {
+        return date;
+    }
 
-	public Date getDate() {
-		return date;
-	}
+    public int getIdFacture() {
+        return idFacture;
+    }
 
-	public int getIdFacture() {
-		return idFacture;
-	}
+    public double getMontant() {
+        return montant;
+    }
 
-	public double getMontant() {
-		return montant;
-	}
+    public double getMontantFinal() {
+        return montantFinal;
+    }
 
-	public double getMontantFinal() {
-		return montantFinal;
-	}
+    public List<Facture_Produit> getQtes2() {
+        return qtes;
+    }
 
-	public List<Facture_Produit> getQtes2() {
-		return qtes;
-	}
+    public double getTimbre() {
+        return timbre;
+    }
 
-	public double getTimbre() {
-		return timbre;
-	}
+    public double getTva() {
+        return tva;
+    }
 
-	public double getTva() {
-		return tva;
-	}
+    public boolean isDeleted() {
+        return deleted;
+    }
 
-	public boolean isDeleted() {
-		return deleted;
-	}
+    public void setAnnee(Annee annee) {
+        this.annee = annee;
+    }
 
-	public void setAnnee(Annee annee) {
-		this.annee = annee;
-	}
+    public void setCamion(Camion camion) {
+        this.camion = camion;
+    }
 
-	public void setCamion(Camion camion) {
-		this.camion = camion;
-	}
+    public void setChauffeur(Chauffeur chauffeur) {
+        this.chauffeur = chauffeur;
+    }
 
-	public void setChauffeur(Chauffeur chauffeur) {
-		this.chauffeur = chauffeur;
-	}
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
+    public void setIdFacture(int idFacture) {
+        this.idFacture = idFacture;
+    }
 
-	public void setIdFacture(int idFacture) {
-		this.idFacture = idFacture;
-	}
+    public void setMontant(double montant) {
+        this.montant = montant;
+    }
 
-	public void setMontant(double montant) {
-		this.montant = montant;
-	}
+    public void setMontantFinal(double montantFinal) {
+        this.montantFinal = montantFinal;
+    }
 
-	public void setMontantFinal(double montantFinal) {
-		this.montantFinal = montantFinal;
-	}
+    public void setQtes(List<Facture_Produit> qtes) {
+        this.qtes = qtes;
+    }
 
-	public void setQtes(List<Facture_Produit> qtes) {
-		this.qtes = qtes;
-	}
+    public void setTimbre(double timbre) {
+        this.timbre = timbre;
+    }
 
-	public void setTimbre(double timbre) {
-		this.timbre = timbre;
-	}
-
-	public void setTva(double tva) {
-		this.tva = tva;
-	}
+    public void setTva(double tva) {
+        this.tva = tva;
+    }
 
     public String getTypeVersement() {
         return typeVersement;

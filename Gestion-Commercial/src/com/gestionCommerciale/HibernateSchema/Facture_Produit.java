@@ -33,7 +33,6 @@ public class Facture_Produit {
 	@ManyToOne
 	@JoinColumn(name = "id_fact")
 	private Facture facture;
-
 	@ManyToOne
 	@JoinColumn(name = "id_produit")
 	private Produit produit;

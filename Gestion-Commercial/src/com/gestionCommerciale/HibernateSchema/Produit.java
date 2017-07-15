@@ -42,7 +42,7 @@ public class Produit {
 	@Column(name = "deleted", nullable = false)
 	boolean deleted;
 
-	@OneToMany(targetEntity = Facture_Produit.class, mappedBy = "produit", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = Facture_Produit.class, mappedBy = "produit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Facture_Produit> qtes;
 
 	public Produit() {
