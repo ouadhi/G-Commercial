@@ -112,11 +112,11 @@ public class ChauffeurCell extends GridPane {
         label0.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label1, 2);
-        label1.setText(this.chauffeur.getTelephone());
+        label1.setText(this.chauffeur.getType());
         label1.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(label2, 3);
-        label2.setText(this.chauffeur.getType());
+        label2.setText(this.chauffeur.getTelephone());
         label2.setFont(new Font(17.0));
 
         GridPane.setColumnIndex(bttn, 4);

@@ -33,6 +33,7 @@
             <MenuItem mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
             <MenuItem fx:id="bycode" mnemonicParsing="false" onAction="#Archive" text="Archivé" />
             <MenuItem mnemonicParsing="false" onAction="#Tout" text="Tout" />
+            <MenuItem mnemonicParsing="false" onAction="#RechDate" text="Date" />
          </items>
       </MenuButton>
       <JFXButton fx:id="ajouter" layoutX="1023.0" layoutY="39.0" onAction="#showAddStage" styleClass="Ajouter_button" text="Nouvelle Achat" />

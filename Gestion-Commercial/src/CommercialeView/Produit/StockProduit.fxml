@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="355.0" prefWidth="512.0" style="-fx-background-color: white;" stylesheets="@ProduitCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="CommercialeControles.Produit.StockProduitController">
+   <children>
+      <Pane prefHeight="64.0" prefWidth="512.0" style="-fx-background-color: #f6f7fb;">
+         <children>
+            <Text layoutX="32.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produit ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="463.0" layoutY="22.0" onMouseClicked="#quitter" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="icons/close.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <JFXTextField fx:id="nomProduit" layoutX="196.0" layoutY="101.0" maxWidth="207.0" minWidth="192.0" prefHeight="33.0" prefWidth="207.0" styleClass="champtxt" />
+      <JFXTextField fx:id="stocke" layoutX="199.0" layoutY="166.0" maxWidth="207.0" minWidth="195.0" prefHeight="33.0" prefWidth="207.0" styleClass="champtxt" />
+      <JFXTextField fx:id="Qadd" layoutX="199.0" layoutY="222.0" maxWidth="207.0" minWidth="195.0" prefHeight="33.0" prefWidth="207.0" styleClass="champtxt" />
+      <Label layoutX="121.0" layoutY="107.0" styleClass="label_txt" text="Produit " />
+      <Label layoutX="43.0" layoutY="172.0" styleClass="label_txt" text="Quantité (Stocke )" />
+      <Label layoutX="49.0" layoutY="229.0" styleClass="label_txt" text="Quantité ( Ajouter) " />
+      <JFXButton layoutX="287.0" layoutY="294.0" onAction="#save" styleClass="button_save" text="Sauvegarder" />
+      <JFXButton layoutX="131.0" layoutY="294.0" onAction="#annuler" styleClass="button_annuler" text="Annuler" />
+   </children>
+</AnchorPane>

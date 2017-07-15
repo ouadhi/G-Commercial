@@ -70,17 +70,17 @@
             </JFXTextField>
          </children>
       </GridPane>
-      <ImageView fx:id="camionicon" fitHeight="28.0" fitWidth="33.0" layoutX="263.0" layoutY="80.0" onMouseEntered="#camionIN" onMouseExited="#camionOut" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="camionicon" fitHeight="28.0" fitWidth="33.0" layoutX="263.0" layoutY="80.0" onMouseClicked="#camionIN" onMouseExited="#camionOut" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="icons/CamionGry.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="chauffeuricon" fitHeight="28.0" fitWidth="33.0" layoutX="323.0" layoutY="80.0" onMouseEntered="#chaffeurIN" onMouseExited="#chaffeurOUT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="chauffeuricon" fitHeight="28.0" fitWidth="33.0" layoutX="323.0" layoutY="80.0" onMouseClicked="#chaffeurIN" onMouseExited="#chaffeurOUT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="icons/ChauffeurGry.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bleicon" fitHeight="28.0" fitWidth="33.0" layoutX="380.0" layoutY="80.0" onMouseEntered="#bleIN" onMouseExited="#bleOUT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bleicon" fitHeight="28.0" fitWidth="33.0" layoutX="380.0" layoutY="80.0" onMouseClicked="#bleIN" onMouseExited="#bleOUT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="icons/BleGry.png" />
          </image>

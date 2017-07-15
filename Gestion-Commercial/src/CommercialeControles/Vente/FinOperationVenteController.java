@@ -199,11 +199,14 @@ public class FinOperationVenteController implements Initializable {
     @FXML
     private void clientIN(MouseEvent event) {
         clienticon.setImage(viewHover);
-        popup.setContentNode(montant);
+        ClienCell cell  = new  ClienCell(OperationVenteController.client) ; 
+        popup.setContentNode(cell);
+        popup.show(clienticon);
     }
 
     @FXML
     private void clientOUT(MouseEvent event) {
+        popup.hide(); 
         clienticon.setImage(view);
     }
 
@@ -266,6 +269,8 @@ public class FinOperationVenteController implements Initializable {
         Modifier.setData2(OperationVenteController.produitselected);
 
         AnchorPane root = loader.getRoot();
+       dialog = new StageDialog(Methode.getStageMouses(event), root) ; 
+        dialog.show();
     }
 
     public void setVersement() {

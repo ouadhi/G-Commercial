@@ -31,6 +31,8 @@
             <MenuItem mnemonicParsing="false" onAction="#NonArchive" text="Non Archivé" />
             <MenuItem mnemonicParsing="false" onAction="#Archive" text="Archivé" />
             <MenuItem mnemonicParsing="false" onAction="#tout" text="Tout" />
+            <MenuItem fx:id="menuInterne" mnemonicParsing="false" onAction="#filtreInterne" text="Interne" />
+            <MenuItem fx:id="menuExterne" mnemonicParsing="false" onAction="#filtreExterne" text="Externe" />
          </items>
       </MenuButton>
       <Text fill="#7d6dfb" layoutX="55.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Camion">

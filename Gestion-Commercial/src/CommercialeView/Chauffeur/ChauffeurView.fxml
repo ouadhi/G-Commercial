@@ -41,6 +41,8 @@
           <MenuItem fx:id="DateMenuItem" mnemonicParsing="false" onAction="#archive" text="Archivé" />
             <MenuItem fx:id="VoyageMenuItem" mnemonicParsing="false" onAction="#nonArchive" text="Non Archivé" />
           <MenuItem fx:id="NomMenuItem" mnemonicParsing="false" onAction="#tout" text="Tout" />
+            <MenuItem fx:id="FiltreInterne" mnemonicParsing="false" onAction="#interne" text="Interne" />
+            <MenuItem fx:id="FiltreExterne" mnemonicParsing="false" onAction="#Externe" text="Externe" />
         </items>
       </MenuButton>
       <Text fill="#7d6dfb" layoutX="51.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Chauffeur">
@@ -71,12 +73,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Téléphone" GridPane.columnIndex="2">
+            <Label text="Type" GridPane.columnIndex="2">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label text="Type" GridPane.columnIndex="3">
+            <Label text="Téléphone" GridPane.columnIndex="3">
                <font>
                   <Font size="17.0" />
                </font>
