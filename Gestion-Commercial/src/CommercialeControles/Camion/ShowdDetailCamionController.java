@@ -1,16 +1,13 @@
 package CommercialeControles.Camion;
-
 import UIControle.Methode;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import com.gestionCommerciale.HibernateSchema.Camion;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
-
 import UIControle.Transition;
 import UIControle.ViewUrl;
 import javafx.event.ActionEvent;
@@ -48,8 +45,6 @@ public class ShowdDetailCamionController implements Initializable {
 
 			CamionCell camionCell = liste.getItems().get(id);
 			ModifierCamionController modification = loader.getController();
-			// modification.setData(camion.id, camion.marque, camion.matricule,
-			// camion.taille);
 			modification.setData(camionCell.getCamion());
 			AnchorPane pane = loader.getRoot();
                          Methode.moveFocus(pane);

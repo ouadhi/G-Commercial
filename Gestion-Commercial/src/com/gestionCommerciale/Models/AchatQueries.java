@@ -25,7 +25,10 @@ public class AchatQueries {
             session.beginTransaction();
             session.update(achat);
             session.getTransaction().commit();
+            session.flush();
+            session.clear();
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         } finally {
             session.close();
@@ -40,7 +43,10 @@ public class AchatQueries {
             session.beginTransaction();
             session.delete(achat);
             session.getTransaction().commit();
+            session.flush();
+            session.clear();
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         } finally {
             session.close();
@@ -56,6 +62,8 @@ public class AchatQueries {
 
         try {
             d = (Achat) session.createQuery("from Achat where code_achat='" + code + "'").uniqueResult();
+            session.flush();
+            session.clear();
         } finally {
             session.close();
         }
@@ -69,6 +77,8 @@ public class AchatQueries {
         Achat d;
         try {
             d = (Achat) session.createQuery("from Achat where id_Achat='" + id + "'").uniqueResult();
+            session.flush();
+            session.clear();
         } finally {
             session.close();
         }
@@ -85,8 +95,12 @@ public class AchatQueries {
             // "'").list();
             list = session.createQuery("from Achat where deleted='" + false + "' AND id_annee='"
                     + AnneeQueries.getSelected().getIdAnnee() + "' ORDER BY id_achat DESC").list();
+            session.flush();
+            session.clear();
 
-        } finally {
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
             session.close();
         }
         return list;
@@ -101,7 +115,11 @@ public class AchatQueries {
         List<Achat> list = new ArrayList<>();
         try {
             list = session.createQuery("from Achat where dateAcqt= '" + sd + "' and deleted='" + false + "'").list();
-        } finally {
+            session.flush();
+            session.clear();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
             session.close();
         }
         return list;
@@ -149,7 +167,11 @@ public class AchatQueries {
             list = session.createQuery(
                     "from Achat where id_annee='" + AnneeQueries.getSelected().getIdAnnee() + "'ORDER BY id_achat DESC")
                     .list();
-        } finally {
+            session.flush();
+            session.clear();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
             session.close();
         }
         return list;
@@ -161,7 +183,11 @@ public class AchatQueries {
         try {
             list = session.createQuery("from Achat where deleted=true AND id_annee='"
                     + AnneeQueries.getSelected().getIdAnnee() + "' ORDER BY id_achat DESC").list();
-        } finally {
+            session.flush();
+            session.clear();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
             session.close();
         }
         return list;
@@ -178,7 +204,11 @@ public class AchatQueries {
             list = session.createQuery(
                     "from Achat where dock.nom Like '" + key + "%' and deleted='" + false + "'  ORDER BY id_achat DESC")
                     .list();
-        } finally {
+            session.flush();
+            session.clear();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
             session.close();
         }
 
@@ -193,7 +223,10 @@ public class AchatQueries {
             session.beginTransaction();
             session.saveOrUpdate(achat);
             session.getTransaction().commit();
+            session.flush();
+            session.clear();
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         } finally {
             session.close();
@@ -213,8 +246,12 @@ public class AchatQueries {
         try {
           
             list = session.createQuery("from Achat where deleted =  false and  dateAcqt BETWEEN '" + startString + "' and '" + endString +"'  ").list();
+            session.flush();
+            session.clear();
             
-         } finally {
+         }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
             session.close();
         }
         return list;

@@ -1,12 +1,8 @@
 package com.gestionCommerciale.Models;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
-
 import com.gestionCommerciale.HibernateSchema.Banque;
-import com.gestionCommerciale.HibernateSchema.Ble;
 
 public class BanqueQueries {
 
@@ -18,7 +14,10 @@ public class BanqueQueries {
             session.beginTransaction();
             session.delete(banque);
             session.getTransaction().commit();
+            session.flush();
 
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -30,8 +29,11 @@ public class BanqueQueries {
         List<Banque> banqueList = null;
         try {
             banqueList = new ArrayList<>();
-            banqueList = session.createQuery("from Banque where deleted='" + false + "'").list();
+            banqueList = session.createQuery("from Banque where deleted= false").list();
+            session.flush();
 
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -46,7 +48,10 @@ public class BanqueQueries {
         try {
             banqueList = new ArrayList<>();
             banqueList = session.createQuery("from Banque").list();
+            session.flush();
 
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -61,7 +66,10 @@ public class BanqueQueries {
         try {
             banqueList = new ArrayList<>();
             banqueList = session.createQuery("from Banque Ble where deleted= true").list();
+            session.flush();
 
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -80,6 +88,9 @@ public class BanqueQueries {
             for (int i = 0; i < banqueList.size(); i++) {
                 banqueNom.add(banqueList.get(i).getNom());
             }
+            session.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -95,6 +106,9 @@ public class BanqueQueries {
             banqueList = new ArrayList<>();
             banqueList = session
                     .createQuery("from Banque where (nom like '" + key + "%' OR compte Like '" + key + "%' ) ").list();
+            session.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -110,8 +124,11 @@ public class BanqueQueries {
 
             Banque banque = (Banque) session
                     .createQuery("from Banque where nom = '" + nomBanque + "' ").uniqueResult();
-            numBancaire= banque.getCompte();
+            numBancaire = banque.getCompte();
+            session.flush();
 
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -126,27 +143,32 @@ public class BanqueQueries {
             session.beginTransaction();
             session.saveOrUpdate(banque);
             session.getTransaction().commit();
+            session.flush();
 
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
     }
-    
-    public  boolean archive(Banque banque) {
-        
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		try {
-			banque.setDeleted(true);
-			session.beginTransaction();
-			session.update(banque);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			return false;
-		} finally {
-			session.close();
-		}
-		return true;
-	}
+
+    public boolean archive(Banque banque) {
+
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        try {
+            banque.setDeleted(true);
+            session.beginTransaction();
+            session.update(banque);
+            session.getTransaction().commit();
+            session.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+        return true;
+    }
 
 }

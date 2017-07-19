@@ -1,7 +1,6 @@
 package com.gestionCommerciale.HibernateSchema;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,16 +18,14 @@ public class Camion {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_camion", nullable = false)
 	int id;
-	@Column(name = "codeCamion", nullable = false, unique = true)
+	@Column(name = "codeCamion", nullable = false)
 	String codeCamion;
-	@Column(name = "matricule", nullable = false, unique = true)
+	@Column(name = "matricule", nullable = false)
 	String matricule;
 	@Column(name = "marque", nullable = false)
 	String marque;
 	@Column(name = "type", nullable = false)
 	String type;
-	// @Column(name = "poid", nullable = true)
-	// double poid;
 	@OneToMany(targetEntity = Facture.class, mappedBy = "camion", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Facture> factures;
 	@OneToMany(targetEntity = Achat.class, mappedBy = "camion", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -44,18 +41,9 @@ public class Camion {
 		this.matricule = matricule;
 		this.marque = marque;
 		this.type = type;
-		// this.poid= poid;
 		this.deleted = false;
 	}
 
-	// public double getPoid() {
-	// return poid;
-	// }
-	//
-	// public void setPoid(double poid) {
-	// this.poid = poid;
-	// }
-	//
 	public List<Achat> getAchats() {
 		return achats;
 	}

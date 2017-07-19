@@ -1,4 +1,3 @@
-
 package CommercialeControles.Chauffeur;
 
 import java.net.URL;
@@ -24,68 +23,71 @@ import javafx.scene.input.MouseEvent;
 
 public class selectionnerCamionController implements Initializable {
 
-	@FXML
-	private JFXListView<CamionListeH> listeCamion;
-	private CamionListeH camion;
+    @FXML
+    private JFXListView<CamionListeH> listeCamion;
+    private CamionListeH camion;
 
-	private CamionQueries camionQueries = new CamionQueries();
-	@FXML
-	private JFXButton btnnenvoyer;
+    private CamionQueries camionQueries = new CamionQueries();
+    @FXML
+    private JFXButton btnnenvoyer;
 
-	ArrayList<Camion> camions_Chauffeur;
-	JFXComboBox<String> camionbox;
+    ArrayList<Camion> camions_Chauffeur;
+    JFXComboBox<String> camionbox;
 
-	@FXML
-	private void envoyer(ActionEvent event) {
-		camions_Chauffeur.add(camion.getCamion());
-		setCamionBox();
+    CamionQueries camionQuer = new CamionQueries();
 
-		Methode.getStage(event).close();
-	}
+    @FXML
+    private void envoyer(ActionEvent event) {
+        camions_Chauffeur.add(camion.getCamion());
+        setCamionBox();
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		List<Camion> listCamionsDB = CamionQueries.list();
-		List<CamionListeH> list = new ArrayList<>();
-		for (int i = 0; i < listCamionsDB.size(); i++) {
-			list.add(new CamionListeH(listCamionsDB.get(i)));
+        Methode.getStage(event).close();
+    }
 
-		}
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //List<Camion> listCamionsDB = CamionQueries.list();
+        List<Camion> listCamionsDB =camionQuer.list();
+        List<CamionListeH> list = new ArrayList<>();
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionListeH(listCamionsDB.get(i)));
+
+        }
 
 //		CamionListeH ch = new CamionListeH();
 //		list.add(ch);
-		ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
-		listeCamion.setItems(myObservableList);
-		listeCamion.setOrientation(Orientation.HORIZONTAL);
-		listeCamion.setExpanded(true);
-		btnnenvoyer.setVisible(false);
+        ObservableList<CamionListeH> myObservableList = FXCollections.observableList(list);
+        listeCamion.setItems(myObservableList);
+        listeCamion.setOrientation(Orientation.HORIZONTAL);
+        listeCamion.setExpanded(true);
+        btnnenvoyer.setVisible(false);
 
-	}
+    }
 
-	@FXML
-	private void quitter(ActionEvent event) {
-		Methode.getStage(event).close();
-	}
+    @FXML
+    private void quitter(ActionEvent event) {
+        Methode.getStage(event).close();
+    }
 
-	@FXML
-	private void select(MouseEvent event) {
+    @FXML
+    private void select(MouseEvent event) {
 
-		camion = listeCamion.getSelectionModel().getSelectedItem();
-		btnnenvoyer.setVisible(true);
+        camion = listeCamion.getSelectionModel().getSelectedItem();
+        btnnenvoyer.setVisible(true);
 
-	}
+    }
 
-	public void setCamionBox() {
-		camionbox.getItems().clear();
-		for (Camion cam : camions_Chauffeur) {
-			camionbox.getItems().add(cam.getMatricule() + " " + cam.getMarque());
-		}
+    public void setCamionBox() {
+        camionbox.getItems().clear();
+        for (Camion cam : camions_Chauffeur) {
+            camionbox.getItems().add(cam.getMatricule() + " " + cam.getMarque());
+        }
 
-	}
+    }
 
-	public void setData(ArrayList<Camion> camions_Chauffeur, JFXComboBox<String> camionbox) {
-		this.camions_Chauffeur = camions_Chauffeur;
-		this.camionbox = camionbox;
+    public void setData(ArrayList<Camion> camions_Chauffeur, JFXComboBox<String> camionbox) {
+        this.camions_Chauffeur = camions_Chauffeur;
+        this.camionbox = camionbox;
 
-	}
+    }
 }

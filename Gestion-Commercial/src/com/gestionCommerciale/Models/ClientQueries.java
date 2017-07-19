@@ -2,207 +2,197 @@ package com.gestionCommerciale.Models;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
-
 import com.gestionCommerciale.HibernateSchema.Client;
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Payment;
 
 public class ClientQueries {
 
-	public static boolean archive(Client client) {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		try {
-			client.setDeleted(true);
-			session.beginTransaction();
-			session.update(client);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			return false;
-		} finally {
-			session.close();
-		}
-		return true;
-	}
+    public static boolean archive(Client client) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        try {
+            client.setDeleted(true);
+            session.beginTransaction();
+            session.update(client);
+            session.getTransaction().commit();
+            session.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+        return true;
+    }
 
-	public static boolean delete(Client client) {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		try {
-			session.beginTransaction();
-			session.delete(client);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			return false;
-		} finally {
-			session.close();
-		}
-		return true;
-	}
+    public static boolean delete(Client client) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.delete(client);
+            session.getTransaction().commit();
+            session.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+        return true;
+    }
 
-	public static Client getClientById(int id) {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		Client d;
-		try {
-			d = (Client) session.createQuery("from Client where id_client='" + id + "'").uniqueResult();
-		} finally {
-			session.close();
-		}
-		return d;
-	}
+    public static Client getClientById(int id) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        Client d;
+        try {
+            d = (Client) session.createQuery("from Client where id_client='" + id + "'").uniqueResult();
+            session.flush();
+        } finally {
+            session.close();
+        }
+        return d;
+    }
 
-	public static Client getClientByNom(String nomPrenom) {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		Client c = new Client();
-		List<Client> listClients = new ArrayList<>();
-		try {
-			listClients = session.createQuery("from Client where deleted='" + false + "'").list();
+    public static Client getClientByNom(String nomPrenom) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        Client c = new Client();
+        List<Client> listClients = new ArrayList<>();
+        try {
+            listClients = session.createQuery("from Client where deleted='" + false + "'").list();
 
-			for (int i = 0; i < listClients.size(); i++) {
-				if ((listClients.get(i).getName() + " " + listClients.get(i).getPrenom()).equals(nomPrenom)) {
-					c = listClients.get(i);
-				}
-			}
-		} finally {
-			session.close();
-		}
-		return c;
-	}
+            for (int i = 0; i < listClients.size(); i++) {
+                if ((listClients.get(i).getName() + " " + listClients.get(i).getPrenom()).equals(nomPrenom)) {
+                    c = listClients.get(i);
+                }
+            }
+            session.flush();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
+            session.close();
+        }
+        return c;
+    }
 
-	public static Client getClientByRegistre(String num) {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		Client d;
-		try {
-			d = (Client) session.createQuery("from Client where numRegCom='" + num + "'").uniqueResult();
-		} finally {
-			session.close();
-		}
-		return d;
-	}
+    public static Client getClientByRegistre(String num) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        Client d;
+        try {
+            d = (Client) session.createQuery("from Client where numRegCom='" + num + "'").uniqueResult();
+            session.flush();
+        } finally {
+            session.close();
+        }
+        return d;
+    }
 
-	public static List<Client> list() {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		List<Client> list = new ArrayList<>();
-		try {
-			list = session.createQuery("from Client where deleted='" + false + "'  ORDER BY id_client DESC").list();
-		} finally {
-			session.close();
-		}
-		return list;
-	}
+    public static List<Client> list() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        List<Client> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Client where deleted='" + false + "'  ORDER BY id_client DESC").list();
+            session.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
 
-	public static List<Client> listAll() {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		List<Client> list = new ArrayList<>();
-		try {
-			list = session.createQuery("from Client  ORDER BY id_client DESC").list();
-		} finally {
-			session.close();
-		}
-		return list;
-	}
+    public static List<Client> listAll() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        List<Client> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Client  ORDER BY id_client DESC").list();
+            session.flush();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
+            session.close();
+        }
+        return list;
+    }
 
-	public static List<Client> listArchived() {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		List<Client> list = new ArrayList<>();
-		try {
-			list = session.createQuery("from Client where deleted = true  ORDER BY id_client DESC").list();
-		} finally {
-			session.close();
-		}
-		return list;
-	}
+    public static List<Client> listArchived() {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        List<Client> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Client where deleted = true  ORDER BY id_client DESC").list();
+            session.flush();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
+            session.close();
+        }
+        return list;
+    }
 
-	public static List<Client> listRechereche(String Key) {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		List<Client> list = new ArrayList<>();
-		try {
-			list = session.createQuery("from Client where (name like '%" + Key + "%' OR  prenom like '%" + Key
-					+ "%' ) AND deleted='" + false + "'  ORDER BY id_client DESC").list();
-		} finally {
-			session.close();
-		}
-		return list;
-	}
+    public static List<Client> listRechereche(String Key) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        List<Client> list = new ArrayList<>();
+        try {
+            list = session.createQuery("from Client where (name like '%" + Key + "%' OR  prenom like '%" + Key
+                    + "%' ) AND deleted='" + false + "'  ORDER BY id_client DESC").list();
+            session.flush();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
+            session.close();
+        }
+        return list;
+    }
 
-	public static boolean SaveOrUpdate(Client client) {
-		SessionsGenerator FactoryObject = new SessionsGenerator();
-		Session session = SessionsGenerator.getFactory().openSession();
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(client);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			return false;
-		} finally {
-			session.close();
-			return true;
-		}
-	}
+    public static boolean SaveOrUpdate(Client client) {
+        SessionsGenerator FactoryObject = new SessionsGenerator();
+        Session session = SessionsGenerator.getFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.saveOrUpdate(client);
+            session.getTransaction().commit();
+            session.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+            return true;
+        }
+    }
 
-	public static double solde(Client client) {
+    public static double solde(Client client) {
 
-		return totalVersed(client) - totalFactured(client);
-	}
+        return totalVersed(client) - totalFactured(client);
+    }
 
-	public static double totalFactured(Client client) {
+    public static double totalFactured(Client client) {
 
-		List<Facture> list = FactureQueries.getFacturesListByClientId(client.getId());
-		double totalefacture = 0;
-		for (Facture facture : list) {
-			totalefacture += facture.getMontantFinal();
-		}
-		return totalefacture;
-	}
+        List<Facture> list = FactureQueries.getFacturesListByClientId(client.getId());
+        double totalefacture = 0;
+        for (Facture facture : list) {
+            totalefacture += facture.getMontantFinal();
+        }
+        return totalefacture;
+    }
 
-	public static double totalVersed(Client client) {
+    public static double totalVersed(Client client) {
 
-		List<Payment> list = PaymentQueries.getPaymentsListByClientId(client.getId());
-		double totaleVersed = 0;
-		for (Payment payment : list) {
-			totaleVersed += payment.getMontant();
-		}
-		return totaleVersed;
-	}
+        List<Payment> list = PaymentQueries.getPaymentsListByClientId(client.getId());
+        double totaleVersed = 0;
+        for (Payment payment : list) {
+            totaleVersed += payment.getMontant();
+        }
+        return totaleVersed;
+    }
 
-	/*
-	 * //method insertion/modification public void SaveOrUpdate(Client client) {
-	 * SessionsGenerator FactoryObject = new SessionsGenerator(); Session
-	 * session = FactoryObject.getFactory().openSession(); try {
-	 * session.beginTransaction(); //save pour ajout\u00E9, update pour modifie
-	 * session.saveOrUpdate(client); session.getTransaction().commit(); }
-	 * finally { session.close(); } } //supprimer un client public void
-	 * delete(Client client) { SessionsGenerator FactoryObject = new
-	 * SessionsGenerator(); Session session =
-	 * FactoryObject.getFactory().openSession(); try {
-	 * session.beginTransaction(); session.delete(client);
-	 * session.getTransaction().commit(); } finally { session.close(); } } //la
-	 * liste des clients public List<Client> list() { SessionsGenerator
-	 * FactoryObject = new SessionsGenerator(); Session session =
-	 * FactoryObject.getFactory().openSession(); List<Client> listClients = new
-	 * ArrayList<>(); try { //Requete HQL pour selection\u00E9 tout les client:
-	 * listClients = session.createQuery("from Client").list(); } finally {
-	 * session.close(); } return listClients; } public Client
-	 * getClientByRegistre(String registre) { SessionsGenerator FactoryObject =
-	 * new SessionsGenerator(); Session session =
-	 * FactoryObject.getFactory().openSession(); Client c; try { //Requete HQL
-	 * pour selection\u00E9 tout les client: c = (Client)
-	 * session.createQuery("from Client where numRegCom='" + registre +
-	 * "'").uniqueResult(); } finally { session.close(); } return c; } public
-	 * Client getClient(String id) { SessionsGenerator FactoryObject = new
-	 * SessionsGenerator(); Session session =
-	 * FactoryObject.getFactory().openSession(); Client c; try { //Requete HQL
-	 * pour selection\u00E9 tout les client: c = (Client)
-	 * session.createQuery("from Client where id='" + id + "'").uniqueResult();
-	 * } finally { session.close(); } return c; }
-	 */
 }

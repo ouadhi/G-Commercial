@@ -1,4 +1,3 @@
-
 package CommercialeControles.Chauffeur;
 
 import java.io.IOException;
@@ -23,100 +22,100 @@ import javafx.scene.layout.AnchorPane;
 
 public class ShowChauffeurController implements Initializable {
 
-	private static Chauffeur chauffeur;
-	public static Chauffeur getChauffeur() {
-		return chauffeur;
-	}
-	public static void setChauffeur(Chauffeur chauffeur) {
-		ShowChauffeurController.chauffeur = chauffeur;
-	}
-	@FXML
-	private JFXButton precedent;
-	@FXML
-	private JFXButton suivant;
+    private static Chauffeur chauffeur;
 
-	@FXML
-	private AnchorPane PaneMain;
+    public static Chauffeur getChauffeur() {
+        return chauffeur;
+    }
 
-	private JFXListView<ChauffeurCell> liste;
+    public static void setChauffeur(Chauffeur chauffeur) {
+        ShowChauffeurController.chauffeur = chauffeur;
+    }
+    @FXML
+    private JFXButton precedent;
+    @FXML
+    private JFXButton suivant;
 
-	private int i = 0;
+    @FXML
+    private AnchorPane PaneMain;
 
-	public AnchorPane getChauffeur(int id) {
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource(ViewUrl.modifierChauffeur));
-			loader.load();
+    private JFXListView<ChauffeurCell> liste;
 
-			ChauffeurCell chauffeurCell = liste.getItems().get(id);
-			chauffeur = chauffeurCell.getChauffeur();
+    private int i = 0;
 
-			ModificationChauffeurController modification = loader.getController();
-			// modification.setData(chauffeur.nom, "112", chauffeur.telephone,
-			// chauffeur.voyage);
-			try {
+    public AnchorPane getChauffeur(int id) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(ViewUrl.modifierChauffeur));
+            loader.load();
 
-				modification.setData(chauffeurCell.getChauffeur());
-			} catch (Exception ex) {
+            ChauffeurCell chauffeurCell = liste.getItems().get(id);
+            chauffeur = chauffeurCell.getChauffeur();
 
-				ex.printStackTrace();
-			}
+            ModificationChauffeurController modification = loader.getController();
+            try {
 
-			AnchorPane pane = loader.getRoot();
-                         Methode.moveFocus(pane);
+                modification.setData(chauffeurCell.getChauffeur());
+            } catch (Exception ex) {
 
-			return pane;
-		} catch (IOException ex) {
-			Logger.getLogger(ShowdDetailCamionController.class.getName()).log(Level.SEVERE, null, ex);
-			return null;
-		}
+                ex.printStackTrace();
+            }
 
-	}
+            AnchorPane pane = loader.getRoot();
+            Methode.moveFocus(pane);
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
+            return pane;
+        } catch (IOException ex) {
+            Logger.getLogger(ShowdDetailCamionController.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
 
-	}
+    }
 
-	@FXML
-	private void precedent(ActionEvent event) {
-		if (i > 0) {
-			--i;
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
-			Transition transition = new Transition(PaneMain, getChauffeur(i), 2000, 0, -2000);
-			transition.show();
+    }
 
-			if (i == 0) {
-				precedent.setDisable(true);
-			} else {
-				suivant.setDisable(false);
-				precedent.setDisable(false);
-			}
-		}
+    @FXML
+    private void precedent(ActionEvent event) {
+        if (i > 0) {
+            --i;
 
-	}
+            Transition transition = new Transition(PaneMain, getChauffeur(i), 2000, 0, -2000);
+            transition.show();
 
-	public void setListechauffeur(JFXListView<ChauffeurCell> liste, int idItemSelceted) {
-		this.liste = liste;
-		i = idItemSelceted;
-		PaneMain.getChildren().setAll(getChauffeur(i));
-	}
+            if (i == 0) {
+                precedent.setDisable(true);
+            } else {
+                suivant.setDisable(false);
+                precedent.setDisable(false);
+            }
+        }
 
-	@FXML
-	private void suivant(ActionEvent event) {
-		if (i < liste.getItems().size()) {
-			i++;
-			Transition transition = new Transition(PaneMain, getChauffeur(i), -2000, 0, 2000);
-			transition.show();
+    }
 
-			if (i == liste.getItems().size() - 1) {
-				suivant.setDisable(true);
-			} else {
-				suivant.setDisable(false);
-				precedent.setDisable(false);
-			}
-		}
+    public void setListechauffeur(JFXListView<ChauffeurCell> liste, int idItemSelceted) {
+        this.liste = liste;
+        i = idItemSelceted;
+        PaneMain.getChildren().setAll(getChauffeur(i));
+    }
 
-	}
+    @FXML
+    private void suivant(ActionEvent event) {
+        if (i < liste.getItems().size()) {
+            i++;
+            Transition transition = new Transition(PaneMain, getChauffeur(i), -2000, 0, 2000);
+            transition.show();
+
+            if (i == liste.getItems().size() - 1) {
+                suivant.setDisable(true);
+            } else {
+                suivant.setDisable(false);
+                precedent.setDisable(false);
+            }
+        }
+
+    }
 
 }

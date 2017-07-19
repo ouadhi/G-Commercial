@@ -23,7 +23,10 @@ public class Facture_ProduitQueries {
             String id = String.valueOf(f.getIdFacture());
             //list = session.createQuery("from Facture_Produit where id_fact='" + id + "'").list();
             list= f.getQtes2();
-        } finally {
+            session.flush();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
             session.close();
         }
         return list;
@@ -37,6 +40,7 @@ public class Facture_ProduitQueries {
             session.beginTransaction();
             session.delete(facture_Produit);
             session.getTransaction().commit();
+            session.flush();
 
         } finally {
             session.close();
@@ -70,7 +74,9 @@ public class Facture_ProduitQueries {
             session.getTransaction().commit();
             session.flush();
 
-        } finally {
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
             session.close();
         }
     }

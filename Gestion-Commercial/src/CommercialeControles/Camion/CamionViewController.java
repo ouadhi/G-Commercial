@@ -47,7 +47,6 @@ public class CamionViewController implements Initializable {
     private JFXListView<CamionCell> listeView;
 
     private MenuButton nbvisibel;
-    CamionQueries camionQueries = new CamionQueries();
     @FXML
     private JFXTextField rechreche1;
     @FXML
@@ -56,6 +55,8 @@ public class CamionViewController implements Initializable {
     private MenuItem menuInterne;
     @FXML
     private MenuItem menuExterne;
+
+    CamionQueries camionQuer = new CamionQueries();
 
     @FXML
     private void AjouterMethode(ActionEvent event) {
@@ -93,7 +94,8 @@ public class CamionViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Methode.showMenuItem(orderby, label);
-        List<Camion> listCamionsDB = CamionQueries.list();
+        //List<Camion> listCamionsDB = CamionQueries.list();
+        List<Camion> listCamionsDB = camionQuer.list();
         List<CamionCell> list = new ArrayList<>();
         for (int i = 0; i < listCamionsDB.size(); i++) {
             list.add(new CamionCell(listCamionsDB.get(i)));
@@ -111,7 +113,8 @@ public class CamionViewController implements Initializable {
     private void NonArchive(ActionEvent event) {
         orderby.setText("Non Archiv\u00E9");
 
-        List<Camion> listCamionsDB = CamionQueries.list();
+        //List<Camion> listCamionsDB = CamionQueries.list();
+        List<Camion> listCamionsDB = camionQuer.list();
         List<CamionCell> list = new ArrayList<>();
         for (int i = 0; i < listCamionsDB.size(); i++) {
             list.add(new CamionCell(listCamionsDB.get(i)));

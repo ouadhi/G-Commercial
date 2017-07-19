@@ -166,8 +166,7 @@ public class AjouterClientController implements Initializable {
     }
 
     private void refreshListe() {
-        List<Client> listClientsDB = ClientQueries.list();
-        
+        List<Client> listClientsDB = ClientQueries.list();      
         List<ClienCell> list = new ArrayList<>();
         
         for (int i = 0; i < listClientsDB.size(); i++) {

@@ -7,7 +7,6 @@ package com.gestionCommerciale.HibernateSchema;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,19 +55,6 @@ public class Client {
 	@OneToMany(targetEntity = Payment.class, mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Payment> payments;
 
-	//
-	/*
-	 * @ManyToMany(fetch = FetchType.LAZY, cascade =
-	 * CascadeType.ALL,targetEntity = Chauffeur.class)
-	 * 
-	 * @JoinTable(name = "Chauffeur_client", joinColumns = {
-	 * 
-	 * @JoinColumn(name = "Id", nullable = false, updatable = false) }
-	 * ,inverseJoinColumns = { @JoinColumn(name = "IdChauffeur", nullable =
-	 * false, updatable = false) }) List<Chauffeur> chauffeurs= new
-	 * ArrayList<Chauffeur>();
-	 */
-
 	public Client() {
 
 	}
@@ -77,7 +63,6 @@ public class Client {
 			String typeActivity, Date dateDepotDossier, String nCarteFiscale) {
 		this.name = nom;
 		this.prenom = prenom;
-		// this.codeClient= codeClient;
 		this.numRegCom = numRegCom;
 		this.numArticle = numArticle;
 		this.addressClient = addressClient;
@@ -113,13 +98,7 @@ public class Client {
 	public String getNumArticle() {
 		return numArticle;
 	}
-
-	/*
-	 * public String getCodeClient() { return codeClient; }
-	 * 
-	 * public void setCodeClient(String codeClient) { this.codeClient =
-	 * codeClient; }
-	 */
+        
 	public String getNumRegCom() {
 		return numRegCom;
 	}

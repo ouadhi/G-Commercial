@@ -1,18 +1,14 @@
 package com.gestionCommerciale.Models;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.hibernate.Session;
-
 import com.gestionCommerciale.HibernateSchema.Facture;
 import com.gestionCommerciale.HibernateSchema.Facture_Produit;
 import com.gestionCommerciale.HibernateSchema.Payment;
 import com.gestionCommerciale.HibernateSchema.Produit;
-
 /**
  *
  * @author CHERABRAB
@@ -27,6 +23,7 @@ public class FactureQueries {
             session.beginTransaction();
             session.update(facture);
             session.getTransaction().commit();
+            session.flush();
         } catch (Exception e) {
             return false;
         } finally {
@@ -36,12 +33,14 @@ public class FactureQueries {
     }
 
     public static boolean delete(Facture facture) {
+
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = SessionsGenerator.getFactory().openSession();
         try {
             session.beginTransaction();
             session.delete(facture);
             session.getTransaction().commit();
+            session.flush();
         } catch (Exception e) {
             return false;
         } finally {
@@ -62,6 +61,7 @@ public class FactureQueries {
             System.err.println(startString + "**" + endString);
             list = session.createQuery("from Facture where date BETWEEN '" + startString + "' AND '" + endString
                     + "' ORDER BY id_facture DESC").list();
+            session.flush();
         } finally {
             session.close();
         }
@@ -74,6 +74,7 @@ public class FactureQueries {
         Facture d;
         try {
             d = (Facture) session.createQuery("from Facture where id_Facture='" + id + "'").uniqueResult();
+            session.flush();
         } finally {
             session.close();
         }
@@ -89,6 +90,7 @@ public class FactureQueries {
             list = session.createQuery(
                     "from Facture where id_client='" + id + "' AND deleted='" + false + "' ORDER BY id_facture DESC")
                     .list();
+            session.flush();
         } finally {
             session.close();
         }
@@ -106,6 +108,7 @@ public class FactureQueries {
         try {
             list = session.createQuery("from Facture where deleted='" + false + "' and date BETWEEN '" + startString
                     + "' AND '" + endString + "' ORDER BY id_facture DESC").list();
+            session.flush();
         } finally {
             session.close();
         }
@@ -129,6 +132,7 @@ public class FactureQueries {
 
             }
             session.getTransaction().commit();
+            session.flush();
         } catch (Exception e) {
             return false;
         } finally {
@@ -144,7 +148,10 @@ public class FactureQueries {
         try {
             list = session.createQuery("from Facture where deleted='" + false + "' AND id_annee='"
                     + AnneeQueries.getSelected().getIdAnnee() + "'  ORDER BY id_facture DESC").list();
-        } finally {
+            session.flush();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
             session.close();
         }
         return list;
@@ -157,6 +164,7 @@ public class FactureQueries {
         try {
             list = session.createQuery("from Facture where id_annee='" + AnneeQueries.getSelected().getIdAnnee()
                     + "' ORDER BY id_facture DESC").list();
+            session.flush();
         } finally {
             session.close();
         }
@@ -170,6 +178,7 @@ public class FactureQueries {
         try {
             list = session.createQuery("from Facture where deleted=true AND id_annee='"
                     + AnneeQueries.getSelected().getIdAnnee() + "' ORDER BY id_facture DESC").list();
+            session.flush();
         } finally {
             session.close();
         }
@@ -190,6 +199,7 @@ public class FactureQueries {
             // id_annee='"+AnneeQueries.getSelected().getIdAnnee()+"'").list();
             list = session.createQuery("from Facture where deleted='" + false + "' AND (client.name Like '" + text
                     + "%' OR client.prenom Like '" + text + "%'  ) ORDER BY id_facture DESC").list();
+            session.flush();
 
         } finally {
             session.close();
@@ -204,7 +214,9 @@ public class FactureQueries {
             session.beginTransaction();
             session.saveOrUpdate(facture);
             session.getTransaction().commit();
+            session.flush();
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         } finally {
             session.close();
@@ -215,27 +227,28 @@ public class FactureQueries {
     public static List<Facture> listFactureParDate(Date d) {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String sd = df.format(d);
-        
+
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = SessionsGenerator.getFactory().openSession();
         List<Facture> list = new ArrayList<>();
         try {
             list = session.createQuery("from Facture where deleted='" + false + "' AND id_annee='"
-                    + AnneeQueries.getSelected().getIdAnnee() + "' AND date ='"+sd+"'  ORDER BY id_facture DESC ").list();
+                    + AnneeQueries.getSelected().getIdAnnee() + "' AND date ='" + sd + "'  ORDER BY id_facture DESC ").list();
+            session.flush();
         } finally {
             session.close();
         }
         return list;
-        
+
     }
 
     //--------------- information total  "" Today"" ----------------
-    public static Double montantTotalFacture( Date d) {
+    public static Double montantTotalFacture(Date d) {
         double total = 0;
-        
-                List<Facture> list = listFactureParDate(d);
 
-        for (Facture facture : list ) {
+        List<Facture> list = listFactureParDate(d);
+
+        for (Facture facture : list) {
             total += facture.getMontantFinal();
 
         }
