@@ -96,6 +96,7 @@ public class AjouterCamionController implements Initializable {
                 Notification.error("Ce code exist deja!");
             } else {
                 try {
+                   
                     Camion camion = new Camion(code, matricule, marque, type);
                     camion.setDeleted(false);
                     CamionQueries.SaveOrUpdate(camion);

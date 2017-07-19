@@ -19,6 +19,10 @@ import UIControle.Notification;
 import UIControle.ShowPane;
 import UIControle.StageDialog;
 import UIControle.ViewUrl;
+import com.jfoenix.controls.JFXListView;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +57,9 @@ public class AjouterChauffeurViewController implements Initializable {
 	public ArrayList<Camion> camions_Chauffeur = new ArrayList<>();
 
 	private JFXComboBox<String> camionbox;
+        
+        private JFXListView<ChauffeurCell> listeView; 
+        private  Label total  ; 
 
 	private void addmaion(ActionEvent event) {
 		try {
@@ -127,7 +134,7 @@ public class AjouterChauffeurViewController implements Initializable {
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
-				new ShowPane().showChauffeur();
+				refreshChauffeur();
 				Notification.Addnotification();
 				savelabel.setVisible(true);
 				annuler(event);
@@ -141,5 +148,28 @@ public class AjouterChauffeurViewController implements Initializable {
 		typechauffeur.getItems().add("INTERNE");
 		typechauffeur.getItems().add("EXTERNE");
 	}
+        
+        public void  setData (JFXListView<ChauffeurCell> listeView  , Label total ) {
+            this.listeView  =  listeView  ;  
+            this.total = total  ; 
+        }
+        
+        private void refreshChauffeur () {
+           
+        List<Chauffeur> listChauffeursDB = ChauffeurQueries.list();
+        List<ChauffeurCell> list = new ArrayList<>();
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+
+        }
+
+        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+        listeView.setItems(myObservableList);
+        listeView.setExpanded(true);
+
+        String nb = Integer.toString(listeView.getItems().size());
+        total.setText(nb);
+        
+        }
 
 }
