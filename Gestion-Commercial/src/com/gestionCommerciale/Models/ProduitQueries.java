@@ -1,11 +1,15 @@
 package com.gestionCommerciale.Models;
 
+import CommercialeControles.Produit.ProduitCell;
+import CommercialeControles.Produit.ProduitListController;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Produit;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -66,7 +70,7 @@ public class ProduitQueries {
         try {
             d = (Produit) session.createQuery("from Produit where id_produit='" + id + "'").uniqueResult();
             session.flush();
-        }finally {
+        } finally {
             session.close();
         }
         return d;
@@ -143,5 +147,22 @@ public class ProduitQueries {
             session.close();
             return true;
         }
+    }
+
+    public static void refresh() {
+        
+        ProduitListController.listeproduitstatic.getItems().clear();
+        List<Produit> listBlesDB = ProduitQueries.list();
+        List<ProduitCell> list = new ArrayList<>();
+
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new ProduitCell(listBlesDB.get(i)));
+        }
+
+        ObservableList<ProduitCell> myObservableList = FXCollections.observableList(list);
+        ProduitListController.listeproduitstatic.setItems(myObservableList);
+        ProduitListController.listeproduitstatic.setExpanded(true);
+        ProduitListController.totalstatic.setText(list.size()+"");
+
     }
 }

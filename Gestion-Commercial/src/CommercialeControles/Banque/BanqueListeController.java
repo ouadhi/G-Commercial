@@ -35,12 +35,15 @@ public class BanqueListeController implements Initializable {
 
     @FXML
     private Label total;
+    public static Label totalstatic;
     @FXML
     private JFXTextField rechreche;
     @FXML
     private JFXButton ajouter;
     @FXML
     private JFXListView<BanqueCell> listebanque;
+    public static JFXListView<BanqueCell> listebanquestatic;
+
 
     private BanqueQueries querie = new BanqueQueries();
     @FXML
@@ -52,6 +55,8 @@ public class BanqueListeController implements Initializable {
 
     @FXML
     private void Archive(ActionEvent event) {
+        totalstatic  = totalstatic  ; 
+        listebanquestatic = listebanque   ; 
         Order.setText("Non Archiv\u00E9");
         List<Banque> listBanque = querie.listArchived();
         List<BanqueCell> list = new ArrayList<>();

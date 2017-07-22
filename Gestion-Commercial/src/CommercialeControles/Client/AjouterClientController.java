@@ -98,7 +98,7 @@ public class AjouterClientController implements Initializable {
         Stage currentSatge = Methode.getStage(event);
         currentSatge.close();
         if (clientLsit == null) {
-            new ShowPane().showClient();
+            ClientQueries.refresheListClient();
         } else {
             refreshListe();
         }
@@ -135,7 +135,7 @@ public class AjouterClientController implements Initializable {
 
                     if (!fermer.isSelected()) {
                         if (clientLsit == null) {
-                            new ShowPane().showClient();
+                            ClientQueries.refresheListClient();
                         } else {
                             refreshListe();
                         }

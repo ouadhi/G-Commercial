@@ -98,7 +98,7 @@ public class ModifierProduitController implements Initializable {
 
 					Notification.Updatenotification();
 					savelabel.setVisible(true);
-					new ShowPane().showProduit();
+                                        ProduitQueries.refresh();
 					quitter(event);
 				}
 			}

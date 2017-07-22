@@ -98,7 +98,7 @@ public class AjouterProduitController implements Initializable {
                     Notification.Addnotification();
                     //savelabel.setVisible(true);
                     if (listeProduit==null) {
-                      new ShowPane().showProduit();  
+                      ProduitQueries.refresh(); 
                     }else{
                         refreshListeProduitH();
                     }

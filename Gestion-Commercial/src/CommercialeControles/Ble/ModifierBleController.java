@@ -87,7 +87,7 @@ public class ModifierBleController implements Initializable {
 					savelabel.setVisible(true);
 					annuler(event);
 					closestage(event);
-					new ShowPane().showBle();
+					BleQueries.refresh();
 				}
 			}
 		}

@@ -204,7 +204,7 @@ public class DockCell extends GridPane {
 			if (result.get() == ButtonType.OK) {
 				DockQueries.archive(dock);
 				Notification.Deletenotification();
-				new ShowPane().showDock();
+				DockQueries.refreshListe();
 			}
 
 			popup.close();

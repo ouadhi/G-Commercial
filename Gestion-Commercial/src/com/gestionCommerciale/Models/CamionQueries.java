@@ -1,11 +1,16 @@
 package com.gestionCommerciale.Models;
 
+import CommercialeControles.Camion.CamionCell;
+import CommercialeControles.Camion.CamionViewController;
+import UIControle.Methode;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Camion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class CamionQueries {
 
@@ -194,6 +199,21 @@ public class CamionQueries {
             session.close();
             return true;
         }
+    }
+    
+    public static void refresh () {
+       
+        List<Camion> listCamionsDB = new CamionQueries().list() ; 
+        List<CamionCell> list = new ArrayList<>();
+        for (int i = 0; i < listCamionsDB.size(); i++) {
+            list.add(new CamionCell(listCamionsDB.get(i)));
+
+        }
+
+        ObservableList<CamionCell> myObservableList = FXCollections.observableList(list);
+        CamionViewController.listeViewStatic.setItems(myObservableList);
+        
+        CamionViewController.totalstatic.setText(list.size()+"");
     }
 
 }

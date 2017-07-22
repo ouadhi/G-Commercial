@@ -38,11 +38,13 @@ public class ChauffeurController implements Initializable {
 
     @FXML
     private JFXListView<ChauffeurCell> listeView;
+    public static  JFXListView<ChauffeurCell> listeChauffeur;
 
     @FXML
     private JFXButton Ajoute;
     @FXML
     private Label total;
+     public static Label totalstatic;
     @FXML
     private MenuButton orderby;
     @FXML
@@ -73,7 +75,7 @@ public class ChauffeurController implements Initializable {
             AnchorPane pane = loader.getRoot();
              
             StageDialog stage  =  new StageDialog(Methode.getStage(event), pane) ;
-            stage.show();
+            stage.show() ; 
         } catch (IOException ex) {
             Logger.getLogger(ChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -102,6 +104,8 @@ public class ChauffeurController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        listeChauffeur  =  listeView  ; 
+        totalstatic  = total  ; 
         Methode.showMenuItem(orderby, label);
         List<Chauffeur> listChauffeursDB = ChauffeurQueries.list();
         List<ChauffeurCell> list = new ArrayList<>();

@@ -1,11 +1,16 @@
 package com.gestionCommerciale.Models;
 
+import CommercialeControles.Chauffeur.ChauffeurCell;
+import CommercialeControles.Chauffeur.ChauffeurController;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Chauffeur;
+import com.jfoenix.controls.JFXListView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -196,6 +201,21 @@ public class ChauffeurQueries {
             session.close();
             return true;
         }
+    }
+    
+    public static void refreshListeView( ){
+        List<Chauffeur> listChauffeursDB = ChauffeurQueries.list();
+        List<ChauffeurCell> list = new ArrayList<>();
+        for (int i = 0; i < listChauffeursDB.size(); i++) {
+            list.add(new ChauffeurCell(listChauffeursDB.get(i)));
+
+        }
+
+        ObservableList<ChauffeurCell> myObservableList = FXCollections.observableList(list);
+        ChauffeurController.listeChauffeur.setItems(myObservableList);
+        ChauffeurController.listeChauffeur.setExpanded(true);
+
+        ChauffeurController.totalstatic.setText(list.size()+"");
     }
 
 }

@@ -235,7 +235,7 @@ public class ClienCell extends GridPane {
                 // requete DELETE from client Where id.client = codeclient
                 ClientQueries.archive(ClientQueries.getClientById(this.client.getId()));
                 Notification.Deletenotification();
-                new ShowPane().showClient();
+                ClientQueries.refresheListClient();
             }
         });
         

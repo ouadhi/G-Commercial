@@ -90,7 +90,7 @@ public class ModificationChauffeurController implements Initializable {
 
 					ChauffeurQueries.SaveOrUpdate(chauffeur);
 					Notification.Updatenotification();
-					new ShowPane().showChauffeur();
+					ChauffeurQueries.refreshListeView();
 
 					annuler(event);
 				}
@@ -111,5 +111,6 @@ public class ModificationChauffeurController implements Initializable {
 		typechauffeur.getItems().add("INTERNE");
 		typechauffeur.getItems().add("EXTERNE");
 	}
+        
 
 }
