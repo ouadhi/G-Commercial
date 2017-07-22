@@ -217,7 +217,7 @@ public class BanqueCell extends GridPane {
             if (result.get() == ButtonType.OK) {
                 BanqueQueries  querie = new  BanqueQueries() ; 
                 querie.archive(banque)   ; 
-                new ShowPane().showBanque(); 
+                BanqueQueries.refresh();
                 Notification.Deletenotification();
             }
 

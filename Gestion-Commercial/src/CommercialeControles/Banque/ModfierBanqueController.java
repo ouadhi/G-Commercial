@@ -68,7 +68,7 @@ public class ModfierBanqueController implements Initializable {
 
 			querie.SaveOrUpdate(banque);
 			Notification.Addnotification();
-			new ShowPane().showBanque();
+			BanqueQueries.refresh();
 			close(event);
 		}
 	}

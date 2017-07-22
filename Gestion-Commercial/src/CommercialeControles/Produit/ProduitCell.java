@@ -257,7 +257,7 @@ public class ProduitCell extends GridPane {
                 // requete DELETE from client Where id.client = codeclient
                 ProduitQueries.archive(produit);
                 Notification.Deletenotification();
-                new ShowPane().showProduit();
+                ProduitQueries.refresh();
             }
 
             popup.close();

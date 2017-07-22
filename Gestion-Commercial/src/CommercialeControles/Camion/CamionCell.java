@@ -179,7 +179,7 @@ public class CamionCell extends GridPane {
             Optional<ButtonType> result = Notification.deleteAlert().showAndWait();
             if (result.get() == ButtonType.OK) {
                 CamionQueries.archive(camion);
-                new ShowPane().showCamion();
+                CamionQueries.refresh();
                 Notification.Deletenotification();
             }
         });

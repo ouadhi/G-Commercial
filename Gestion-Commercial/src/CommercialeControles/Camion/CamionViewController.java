@@ -39,12 +39,14 @@ public class CamionViewController implements Initializable {
 
     @FXML
     private Label total;
+    public static Label totalstatic;
     @FXML
     private JFXButton Ajoute;
     @FXML
     private MenuButton orderby;
     @FXML
     private JFXListView<CamionCell> listeView;
+    public static JFXListView<CamionCell> listeViewStatic;
 
     private MenuButton nbvisibel;
     @FXML
@@ -93,6 +95,8 @@ public class CamionViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        totalstatic   = total  ;
+        listeViewStatic  =  listeView  ; 
         Methode.showMenuItem(orderby, label);
         //List<Camion> listCamionsDB = CamionQueries.list();
         List<Camion> listCamionsDB = camionQuer.list();

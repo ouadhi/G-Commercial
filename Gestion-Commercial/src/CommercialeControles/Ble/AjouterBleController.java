@@ -92,7 +92,7 @@ public class AjouterBleController implements Initializable {
         ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
         listeBle.setItems(myObservableList);
         listeBle.setExpanded(true);
-        total.setText(Integer.toString(listeBle.getItems().size()));
+        total.setText(Integer.toString(list.size()));
 
     }
 

@@ -88,8 +88,8 @@ public class ModifierDockController implements Initializable {
 					dock.setDistance(Float.parseFloat(distance));
 					DockQueries.SaveOrUpdate(dock);
 					Notification.Updatenotification();
-					new ShowPane().showDock();
-					savelabel.setVisible(true);
+                                        
+					DockQueries.refreshListe();
 					quitter(event);
 				}
 			}

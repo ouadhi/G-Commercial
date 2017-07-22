@@ -162,7 +162,7 @@ public class BelCell extends GridPane {
 			if (result.get() == ButtonType.OK) {
 				BleQueries.archive(ble);
 				Notification.Deletenotification();
-				new ShowPane().showBle();
+				BleQueries.refresh();
 			}
 			popup.close();
 		});

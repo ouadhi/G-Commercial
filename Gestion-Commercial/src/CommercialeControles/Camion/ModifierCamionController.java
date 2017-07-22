@@ -101,7 +101,7 @@ public class ModifierCamionController implements Initializable {
                 } else {
                     CamionQueries.SaveOrUpdate(camion);
                     Notification.Updatenotification();
-                    new ShowPane().showCamion();
+                    CamionQueries.refresh();
                     savelabel.setVisible(true);
                     annuler(event);
                 }

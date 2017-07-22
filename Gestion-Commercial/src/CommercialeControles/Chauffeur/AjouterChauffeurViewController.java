@@ -36,126 +36,126 @@ import javafx.stage.Stage;
 
 public class AjouterChauffeurViewController implements Initializable {
 
-	@FXML
-	private JFXTextField nomchauffeur;
-	@FXML
-	private JFXTextField prenomchauffeur;
+    @FXML
+    private JFXTextField nomchauffeur;
+    @FXML
+    private JFXTextField prenomchauffeur;
 
-	@FXML
-	private JFXTextField telchauffeur;
-	@FXML
-	private JFXComboBox<String> typechauffeur;
-	@FXML
-	private JFXButton savebttn;
-	@FXML
-	private JFXButton anullerbttn;
-	@FXML
-	private Label savelabel;
-	@FXML
-	private ImageView close;
+    @FXML
+    private JFXTextField telchauffeur;
+    @FXML
+    private JFXComboBox<String> typechauffeur;
+    @FXML
+    private JFXButton savebttn;
+    @FXML
+    private JFXButton anullerbttn;
+    @FXML
+    private Label savelabel;
+    @FXML
+    private ImageView close;
 
-	public ArrayList<Camion> camions_Chauffeur = new ArrayList<>();
+    public ArrayList<Camion> camions_Chauffeur = new ArrayList<>();
 
-	private JFXComboBox<String> camionbox;
-        
-        private JFXListView<ChauffeurCell> listeView; 
-        private  Label total  ; 
+    private JFXComboBox<String> camionbox;
 
-	private void addmaion(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource(ViewUrl.SelectCamionchauffeur));
-			loader.load();
+    private JFXListView<ChauffeurCell> listeView;
+    private Label total;
 
-			selectionnerCamionController Modifier = loader.getController();
-			Modifier.setData(camions_Chauffeur, camionbox);
+    private void addmaion(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(ViewUrl.SelectCamionchauffeur));
+            loader.load();
 
-			AnchorPane root = loader.getRoot();
+            selectionnerCamionController Modifier = loader.getController();
+            Modifier.setData(camions_Chauffeur, camionbox);
 
-			StageDialog dialog = new StageDialog(Methode.getStage(event), root);
-			dialog.show();
+            AnchorPane root = loader.getRoot();
 
-		} catch (IOException ex) {
-			Logger.getLogger(AjouterChauffeurViewController.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+            StageDialog dialog = new StageDialog(Methode.getStage(event), root);
+            dialog.show();
 
-	@FXML
-	private void annuler(ActionEvent event) {
-		Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		g.close();
-	}
-
-	@FXML
-	private void closewindow(MouseEvent event) {
-
-		Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		g.close();
-
-	}
-
-	private void deletecamion(ActionEvent event) {
-		int com = camionbox.getSelectionModel().getSelectedIndex();
-		if (com >= 0) {
-			camionbox.getItems().remove(com);
-			camions_Chauffeur.remove(com);
-		}
-	}
-
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		Methode.SetUpper(nomchauffeur, 30);
-		Methode.setOnlyInteger(telchauffeur, 10);
-		Methode.setsizeString(prenomchauffeur, 30);
-		setType();
-                
-	}
-
-	@FXML
-	private void sauvegarder(ActionEvent event) {
-
-		String nom = nomchauffeur.getText();
-		String prenom = prenomchauffeur.getText();
-		String tel = telchauffeur.getText();
-		String type = typechauffeur.getSelectionModel().getSelectedItem();
-
-		if (nom.isEmpty() || prenom.isEmpty() || type.isEmpty()) {
-
-			Notification.champVideNotification();
-		} else {
-			if (ChauffeurQueries.getChauffeurByNomPrenom(nom, prenom) != null) {
-
-				Notification.error("Ce chauffeur exist deja");
-			} else {
-
-				try {
-					Chauffeur chauffeur = new Chauffeur(nom, prenom, tel, type);
-					ChauffeurQueries.SaveOrUpdate(chauffeur);
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-				refreshChauffeur();
-				Notification.Addnotification();
-				savelabel.setVisible(true);
-				annuler(event);
-			}
-
-		}
-
-	}
-
-	public void setType() {
-		typechauffeur.getItems().add("INTERNE");
-		typechauffeur.getItems().add("EXTERNE");
-	}
-        
-        public void  setData (JFXListView<ChauffeurCell> listeView  , Label total ) {
-            this.listeView  =  listeView  ;  
-            this.total = total  ; 
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterChauffeurViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        private void refreshChauffeur () {
-           
+    }
+
+    @FXML
+    private void annuler(ActionEvent event) {
+        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        g.close();
+    }
+
+    @FXML
+    private void closewindow(MouseEvent event) {
+
+        Stage g = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        g.close();
+
+    }
+
+    private void deletecamion(ActionEvent event) {
+        int com = camionbox.getSelectionModel().getSelectedIndex();
+        if (com >= 0) {
+            camionbox.getItems().remove(com);
+            camions_Chauffeur.remove(com);
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Methode.SetUpper(nomchauffeur, 30);
+        Methode.setOnlyInteger(telchauffeur, 10);
+        Methode.setsizeString(prenomchauffeur, 30);
+        setType();
+
+    }
+
+    @FXML
+    private void sauvegarder(ActionEvent event) {
+
+        String nom = nomchauffeur.getText();
+        String prenom = prenomchauffeur.getText();
+        String tel = telchauffeur.getText();
+        String type = typechauffeur.getSelectionModel().getSelectedItem();
+
+        if (nom.isEmpty() || prenom.isEmpty() || type.isEmpty()) {
+
+            Notification.champVideNotification();
+        } else {
+            if (ChauffeurQueries.getChauffeurByNomPrenom(nom, prenom) != null) {
+
+                Notification.error("Ce chauffeur exist deja");
+            } else {
+
+                try {
+                    Chauffeur chauffeur = new Chauffeur(nom, prenom, tel, type);
+                    ChauffeurQueries.SaveOrUpdate(chauffeur);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                refreshChauffeur();
+                Notification.Addnotification();
+                savelabel.setVisible(true);
+                annuler(event);
+            }
+
+        }
+
+    }
+
+    public void setType() {
+        typechauffeur.getItems().add("INTERNE");
+        typechauffeur.getItems().add("EXTERNE");
+    }
+
+    public void setData(JFXListView<ChauffeurCell> listeView, Label total) {
+        this.listeView = listeView;
+        this.total = total;
+    }
+
+    private void refreshChauffeur() {
+
         List<Chauffeur> listChauffeursDB = ChauffeurQueries.list();
         List<ChauffeurCell> list = new ArrayList<>();
         for (int i = 0; i < listChauffeursDB.size(); i++) {
@@ -169,7 +169,7 @@ public class AjouterChauffeurViewController implements Initializable {
 
         String nb = Integer.toString(listeView.getItems().size());
         total.setText(nb);
-        
-        }
+
+    }
 
 }

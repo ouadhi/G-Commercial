@@ -1,11 +1,15 @@
 package com.gestionCommerciale.Models;
 
+import CommercialeControles.Ble.BelCell;
+import CommercialeControles.Ble.BleListeController;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Ble;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class BleQueries {
 
@@ -159,6 +163,19 @@ public class BleQueries {
             System.out.println("---------finished saving transaction ble");
             return true;
         }
+    }
+    
+    
+    public static  void refresh ()  {
+        List<Ble> listBlesDB = BleQueries.list();
+        List<BelCell> list = new ArrayList<>();
+        for (int i = 0; i < listBlesDB.size(); i++) {
+            list.add(new BelCell(listBlesDB.get(i)));
+        }
+        ObservableList<BelCell> myObservableList = FXCollections.observableList(list);
+        BleListeController.listeBleStatic.setItems(myObservableList);
+        BleListeController.listeBleStatic.setExpanded(true);
+        BleListeController.totalstatic.setText(list.size()+"");
     }
 
 }

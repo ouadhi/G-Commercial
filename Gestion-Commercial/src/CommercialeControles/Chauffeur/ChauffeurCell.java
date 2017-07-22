@@ -182,7 +182,7 @@ public class ChauffeurCell extends GridPane {
             if (result.get() == ButtonType.OK) {
                 // get cell info
                 ChauffeurQueries.archive(chauffeur);
-                new ShowPane().showChauffeur();
+                ChauffeurQueries.refreshListeView();
                 Notification.Deletenotification();
             }
 

@@ -36,6 +36,7 @@ public class DockLisController implements Initializable {
 
 	@FXML
 	private Label total;
+        public static  Label totalstatic;
 	@FXML
 	private MenuButton Order;
 	private MenuButton NbShow;
@@ -43,13 +44,15 @@ public class DockLisController implements Initializable {
 	private JFXButton ajouter;
 	@FXML
 	private JFXListView<DockCell> listedock;
+        public static JFXListView<DockCell> listedockstatic ;
 	@FXML
 	private JFXTextField recherchetxt;
 	@FXML
 	private Label label;
 
 	@FXML
-	private void Archive(ActionEvent event) {
+	private void Archive(ActionEvent event) { 
+            
 		Order.setText("Archiv\u00E9");
 		List<Dock> listDocksDB = DockQueries.listArchived();
 
@@ -67,6 +70,8 @@ public class DockLisController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+            listedockstatic  =  listedock ;  
+            totalstatic  =  total ; 
 		Methode.showMenuItem(Order, label);
 		List<Dock> listDocksDB = DockQueries.list();
 

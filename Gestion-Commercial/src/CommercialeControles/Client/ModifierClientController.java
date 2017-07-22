@@ -129,7 +129,7 @@ public class ModifierClientController implements Initializable {
 					ClientQueries.SaveOrUpdate(client);
 
 					Notification.Updatenotification();
-					new ShowPane().showClient();
+				        ClientQueries.refresheListClient();
 					savelabel.setVisible(true);
 					quitter(event);
 				}

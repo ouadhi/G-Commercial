@@ -1,8 +1,12 @@
 package com.gestionCommerciale.Models;
+import CommercialeControles.Banque.BanqueCell;
+import CommercialeControles.Banque.BanqueListeController;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import com.gestionCommerciale.HibernateSchema.Banque;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class BanqueQueries {
 
@@ -169,6 +173,21 @@ public class BanqueQueries {
             session.close();
         }
         return true;
+    }
+    
+    
+    public static void refresh () {
+        BanqueQueries querie = new BanqueQueries();
+        List<BanqueCell> list = new ArrayList<>();
+
+        for (int i = 0; i < querie.list().size(); i++) {
+            list.add(new BanqueCell(querie.list().get(i)));
+        }
+        ObservableList<BanqueCell> myObservableList = FXCollections.observableList(list);
+        BanqueListeController.listebanquestatic.setItems(myObservableList);
+        BanqueListeController.listebanquestatic.setExpanded(true);
+        BanqueListeController.totalstatic.setText(list.size()+"");
+
     }
 
 }

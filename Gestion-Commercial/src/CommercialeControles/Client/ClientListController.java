@@ -36,6 +36,7 @@ public class ClientListController implements Initializable {
 
     @FXML
     private Label total;
+    public static Label totalstatic  ; 
     @FXML
     private MenuButton Order;
     private MenuButton NbShow;
@@ -44,6 +45,7 @@ public class ClientListController implements Initializable {
     private JFXButton ajouter;
     @FXML
     private JFXListView<ClienCell> clientLsit;
+    public  static JFXListView<ClienCell> ListeClient;
     @FXML
     private JFXTextField rechreche;
     @FXML
@@ -67,7 +69,9 @@ public class ClientListController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) { 
+        ListeClient =  clientLsit  ; 
+        totalstatic  =  total  ; 
         Methode.showMenuItem(Order, lable);
 
         List<Client> listClientsDB = ClientQueries.list();

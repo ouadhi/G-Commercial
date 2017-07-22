@@ -100,7 +100,7 @@ public class AjouterCamionController implements Initializable {
                     Camion camion = new Camion(code, matricule, marque, type);
                     camion.setDeleted(false);
                     CamionQueries.SaveOrUpdate(camion);
-                    new ShowPane().showCamion();
+                    CamionQueries.refresh();
                     Notification.Addnotification();
                     Methode.getStage(event).close();
 
