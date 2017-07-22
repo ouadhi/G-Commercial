@@ -87,7 +87,9 @@ public class ChauffeurQueries {
         Session session = SessionsGenerator.getFactory().openSession();
         List<Chauffeur> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Chauffeur where deleted='" + false + "'").list();
+            //list = session.createQuery("from Chauffeur where deleted='" + false + "'").list();
+            list=session.createSQLQuery("select * from Chauffeur c where c.deleted= false")
+                    .addEntity(Chauffeur.class).list();
             session.flush();
             session.clear();
         } catch (Exception e) {

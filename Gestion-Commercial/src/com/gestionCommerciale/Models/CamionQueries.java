@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.gestionCommerciale.HibernateSchema.Camion;
+import com.gestionCommerciale.HibernateSchema.Chauffeur;
 
 public class CamionQueries {
 
@@ -18,7 +19,7 @@ public class CamionQueries {
             session.flush();
             session.clear();
             session.getTransaction().commit();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -36,7 +37,7 @@ public class CamionQueries {
             session.flush();
             session.clear();
             session.getTransaction().commit();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -90,10 +91,14 @@ public class CamionQueries {
         Session session = SessionsGenerator.getFactory().openSession();
         List<Camion> list = new ArrayList<>();
         try {
-            list = session.createQuery("from Camion where deleted= false").list();
+            //list = session.createQuery("from Camion where deleted= false").list();
+            list = session.createSQLQuery("select * from Camion c where c.deleted= false")
+                    .addEntity(Camion.class).list();
             session.flush();
             session.clear();
-            System.out.println("-------------- list camion: " + list);
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println("-------------- list camion: " + list.get(i).getCodeCamion());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -109,9 +114,9 @@ public class CamionQueries {
             list = session.createQuery("from Camion where  type='INTERNE' AND deleted= false").list();
             session.flush();
             session.clear();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
             session.close();
         }
         return list;
@@ -124,9 +129,9 @@ public class CamionQueries {
             list = session.createQuery("from Camion where type='EXTERNE' AND deleted= false ").list();
             session.flush();
             session.clear();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
             session.close();
         }
         return list;
@@ -139,9 +144,9 @@ public class CamionQueries {
             list = session.createQuery("from Camion").list();
             session.flush();
             session.clear();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
             session.close();
         }
         return list;
@@ -154,9 +159,9 @@ public class CamionQueries {
             list = session.createQuery("from Camion where deleted = true ").list();
             session.flush();
             session.clear();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
             session.close();
         }
         return list;
@@ -170,9 +175,9 @@ public class CamionQueries {
                     + "%'  OR marque like '" + key + "%' ) and deleted= false ").list();
             session.flush();
             session.clear();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
             session.close();
         }
         return list;
@@ -186,7 +191,7 @@ public class CamionQueries {
             session.flush();
             session.clear();
             session.getTransaction().commit();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;

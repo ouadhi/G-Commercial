@@ -1,12 +1,9 @@
 package com.gestionCommerciale.Models;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.hibernate.Session;
-
 import com.gestionCommerciale.HibernateSchema.User;
 
 /**
@@ -15,6 +12,8 @@ import com.gestionCommerciale.HibernateSchema.User;
  */
 public class UserQueries {
 
+
+    
     public static void delete(User user) {
         SessionsGenerator FactoryObject = new SessionsGenerator();
         Session session = SessionsGenerator.getFactory().openSession();

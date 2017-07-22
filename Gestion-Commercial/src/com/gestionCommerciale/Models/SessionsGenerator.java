@@ -30,30 +30,31 @@ import com.gestionCommerciale.HibernateSchema.User;
  * @author Hicham
  */
 public class SessionsGenerator {
-	// class singleton pour generer les sessions,
+    // class singleton pour generer les sessions,
 
-	static SessionFactory factory = null;
-	static int singletonCounter = 0;
+    static SessionFactory factory = null;
+    static int singletonCounter = 0;
 
-	public static SessionFactory getFactory() {
-		return factory;
-	}
+    public static SessionFactory getFactory() {
+        return factory;
+    }
 
-	public SessionsGenerator() {
+    public SessionsGenerator() {
 
-		if (singletonCounter == 0) {
-			// create singleton factory object
-			Configuration configuration = new Configuration().configure("/resources/hibernate.cfg.xml")
-					.addAnnotatedClass(Client.class).addAnnotatedClass(Chauffeur.class).addAnnotatedClass(Camion.class)
-					.addAnnotatedClass(Achat.class).addAnnotatedClass(Dock.class).addAnnotatedClass(Facture.class)
-					.addAnnotatedClass(Facture_Produit.class).addAnnotatedClass(Produit.class)
-					.addAnnotatedClass(Ble.class).addAnnotatedClass(Payment.class).addAnnotatedClass(User.class)
-					.addAnnotatedClass(Role.class).addAnnotatedClass(Banque.class).addAnnotatedClass(Annee.class)
-					.addAnnotatedClass(Company.class);
-			StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
-					.applySettings(configuration.getProperties());
-			factory = configuration.buildSessionFactory(builder.build());
-			singletonCounter++;
-		}
-	}
+        if (singletonCounter == 0) {
+            // create singleton factory object
+            Configuration configuration = new Configuration().configure("/resources/hibernate.cfg.xml")
+            //Configuration configuration = new Configuration().configure("/resources/hibernatep.cfg.xml")
+                    .addAnnotatedClass(Client.class).addAnnotatedClass(Chauffeur.class).addAnnotatedClass(Camion.class)
+                    .addAnnotatedClass(Achat.class).addAnnotatedClass(Dock.class).addAnnotatedClass(Facture.class)
+                    .addAnnotatedClass(Facture_Produit.class).addAnnotatedClass(Produit.class)
+                    .addAnnotatedClass(Ble.class).addAnnotatedClass(Payment.class).addAnnotatedClass(User.class)
+                    .addAnnotatedClass(Role.class).addAnnotatedClass(Banque.class).addAnnotatedClass(Annee.class)
+                    .addAnnotatedClass(Company.class);
+            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+                    .applySettings(configuration.getProperties());
+            factory = configuration.buildSessionFactory(builder.build());
+            singletonCounter++;
+        }
+    }
 }
