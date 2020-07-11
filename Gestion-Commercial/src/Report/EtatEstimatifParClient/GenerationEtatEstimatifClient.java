@@ -69,6 +69,7 @@ public class GenerationEtatEstimatifClient {
         return bd.doubleValue();
 
     }
+   
     List<String> dates = new ArrayList<>();
     List<String> nums = new ArrayList<>();
     List<String> produits = new ArrayList<>();

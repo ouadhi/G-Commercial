@@ -156,7 +156,9 @@ public class Users_ListController implements Initializable {
 		}
 
 	}
-	public static EditableFileRow row;
+	
+        
+        public static EditableFileRow row;
 
 	@FXML
 	private TableView<EditableFileRow> table;

@@ -30,12 +30,15 @@ public class Facture_Produit {
 	int qte_fact;
 	@Column(name = "prix_fact", nullable = false)
 	double prix_fact;
+        
 	@ManyToOne
 	@JoinColumn(name = "id_fact")
 	private Facture facture;
+        
 	@ManyToOne
 	@JoinColumn(name = "id_produit")
 	private Produit produit;
+        
 	@Column(name = "deleted", nullable = false)
 	boolean deleted;
 
